@@ -239,27 +239,7 @@
             line-height: 1.2; 
             margin-top: 8px;
         }
-        .section-1 .section-text { 
-            font-size: 16px; 
-            line-height: 1.4; 
-            font-weight: 400; 
-        }
-        .section-2 .section-text { 
-            font-size: 16px; 
-            line-height: 1.4; 
-            font-weight: 400; 
-        }
-        .section-3 .section-text { 
-            font-size: 16px; 
-            line-height: 1.4; 
-            font-weight: 400; 
-        }
-        .section-4 .section-text { 
-            font-size: 16px; 
-            line-height: 1.4; 
-            font-weight: 400; 
-        }
-        .section-5 .section-text { 
+        .section-1 .section-text, .section-2 .section-text, .section-3 .section-text, .section-4 .section-text, .section-5 .section-text { 
             font-size: 16px; 
             line-height: 1.4; 
             font-weight: 400; 
@@ -273,7 +253,6 @@
             margin-top: 8px;
         }
         
-        /* FLOATING SCROLL ARROW - COMPLETELY SEPARATE */
         .floating-scroll-arrow {
             position: fixed;
             bottom: 30px;
@@ -421,8 +400,101 @@
             background-color: rgba(139, 115, 85, 0.2);
         }
         
-        @media (max-width: 1024px) { .layout-container { flex-direction: column; gap: 30px; } .graph-column { width: 100%; height: 60vh; } .content-column { width: 100%; } }
-        @media (max-width: 768px) { .main-section { padding: 40px 20px; } .site-title-en { font-size: 48px; } .site-title-ar { font-size: 50px; margin-bottom: 40px; } .sections-container { flex-direction: column; height: auto; } .section { height: 120px; } .search-results-page { padding: 20px; } .search-results-header { flex-direction: column; align-items: flex-start; } }
+        /* --- Responsive Styles --- */
+
+        /* For tablets and smaller desktops */
+        @media (max-width: 1024px) {
+            .layout-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .graph-column {
+                width: 100%;
+                height: 60vh;
+            }
+            .content-column {
+                width: 100%;
+            }
+        }
+
+        /* For smaller tablets and large phones */
+        @media (max-width: 768px) {
+            .main-section {
+                padding: 30px 15px;
+            }
+            .site-title-en {
+                font-size: 42px;
+            }
+            .site-title-ar {
+                font-size: 46px;
+                margin-bottom: 25px;
+            }
+            .welcome-lang {
+                font-size: 20px;
+            }
+            .sections-container {
+                flex-direction: column;
+                height: auto;
+            }
+            .section {
+                height: auto;
+                min-height: 100px;
+                padding-top: 25px;
+                padding-bottom: 25px;
+                justify-content: center;
+            }
+            .search-results-page {
+                padding: 20px 15px;
+            }
+            .search-results-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .back-button {
+                padding: 16px 30px;
+                font-size: 16px;
+            }
+            .search-results-title {
+                font-size: 24px;
+            }
+            .graph-column {
+                height: 50vh;
+            }
+            .floating-scroll-arrow {
+                display: none;
+            }
+        }
+
+        /* For smaller mobile phones */
+        @media (max-width: 480px) {
+            .site-title-en {
+                font-size: 36px;
+            }
+            .site-title-ar {
+                font-size: 40px;
+            }
+            .welcome-container {
+                gap: 3px 8px;
+            }
+            .welcome-lang {
+                font-size: 18px;
+            }
+            .search-input {
+                padding: 14px 18px;
+                font-size: 15px;
+            }
+            .search-button {
+                padding: 15px 28px;
+                font-size: 16px;
+            }
+            .village-directory-title, .secondary-title {
+                font-size: 24px;
+            }
+            .section-text {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -538,11 +610,27 @@
             const context = canvas.getContext('2d');
             const loadingIndicator = document.getElementById('loading-indicator');
             const homeNodeId = 'Efrîn';
+            
+            // Check if on a mobile device based on screen width
+            const isMobile = window.innerWidth <= 768;
 
             let width = container.clientWidth;
             let height = container.clientHeight;
             canvas.width = width;
             canvas.height = height;
+            let simulation; // Declare simulation here to be accessible in resize listener
+
+            // Handle window resizing
+            window.addEventListener('resize', () => {
+                width = container.clientWidth;
+                height = container.clientHeight;
+                canvas.width = width;
+                canvas.height = height;
+                // Recenter simulation
+                if (simulation) {
+                    simulation.force("center", d3.forceCenter(width / 2, height / 2)).restart();
+                }
+            });
 
             const graph = await d3.json("landing/graph-data.json").catch(error => {
                 console.error("Failed to load graph-data.json:", error);
@@ -552,14 +640,14 @@
 
             if (!graph) return; 
 
-            // Extract villages for search
+            // The full village data is still needed for search functionality
             villageData = graph.nodes.filter(node => node.type === 'file').map(node => ({
                 name: node.label,
                 id: node.id,
                 filename: node.id + '.html'
             }));
 
-            // Create mapping from edge "to" values back to villages
+            // Create mapping from edge "to" values back to villages from the full dataset
             graph.edges.forEach(edge => {
                 const village = villageData.find(v => v.id === edge.from);
                 if (village) {
@@ -570,6 +658,27 @@
                 }
             });
 
+            let nodesForSimulation = graph.nodes;
+            let edgesForSimulation = graph.edges;
+
+            // If on mobile, filter the data to show a simplified view
+            if (isMobile) {
+                const directNeighborIds = new Set([homeNodeId]);
+                graph.edges.forEach(edge => {
+                    if (edge.from === homeNodeId) {
+                        directNeighborIds.add(edge.to);
+                    }
+                    if (edge.to === homeNodeId) {
+                        directNeighborIds.add(edge.from);
+                    }
+                });
+
+                nodesForSimulation = graph.nodes.filter(node => directNeighborIds.has(node.id));
+                edgesForSimulation = graph.edges.filter(edge => 
+                    directNeighborIds.has(edge.from) && directNeighborIds.has(edge.to)
+                );
+            }
+
             const nodeById = new Map(graph.nodes.map(node => [node.id, node]));
 
             const homeNode = nodeById.get(homeNodeId);
@@ -578,7 +687,7 @@
                 homeNode.fy = height / 2;
             }
             
-            const links = graph.edges.map(link => ({
+            const links = edgesForSimulation.map(link => ({
                 source: nodeById.get(link.from),
                 target: nodeById.get(link.to)
             }));
@@ -586,7 +695,7 @@
 
             loadingIndicator.innerText = 'Initializing Physics...';
 
-            const simulation = d3.forceSimulation(graph.nodes)
+            simulation = d3.forceSimulation(nodesForSimulation)
                 .force("link", d3.forceLink(validLinks).id(d => d.id).distance(100).strength(0.1))
                 .force("charge", d3.forceManyBody().strength(-60))
                 .force("center", d3.forceCenter(width / 2, height / 2))
@@ -606,7 +715,7 @@
                 });
                 context.stroke();
 
-                graph.nodes.forEach(d => {
+                nodesForSimulation.forEach(d => {
                     let radius = 2; 
                     let labelColor = "rgba(204, 204, 204, 0.7)";
                     let labelFont = "10px sans-serif";
@@ -632,7 +741,7 @@
                     context.fillText(d.label, d.x, d.y - radius - 3);
                 });
 
-                 graph.nodes.forEach(d => {
+                 nodesForSimulation.forEach(d => {
                     context.beginPath();
                     let radius = 2;
                     let fillColor = "#666";
@@ -850,10 +959,12 @@
             // Show main layout
             document.querySelector('.main-section').style.display = 'flex';
             document.querySelector('.sections-container').style.display = 'flex';
-            document.querySelector('.floating-scroll-arrow').style.display = 'flex';
             
             // Hide search results page
             document.getElementById('search-results-page').style.display = 'none';
+
+            // The arrow's visibility is now controlled by CSS media queries,
+            // so we don't need to set its display style here.
         }
 
         function openVillage(filename) {
