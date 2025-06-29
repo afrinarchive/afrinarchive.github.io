@@ -475,15 +475,52 @@
             margin-top: 15px;
         }
         
+        /* --- Responsive Styles --- */
+        
+        /* For tablets and large phones */
         @media (max-width: 768px) {
+            .header-section, .main-content {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
             .site-title-en { font-size: 36px; }
             .site-title-ar { font-size: 40px; }
-            .subtitle { font-size: 20px; }
+            .search-wrapper {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .stats-bar {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
             .nahiya-title { font-size: 24px; }
             .villages-grid { grid-template-columns: 1fr; }
-            .main-content { padding: 20px 10px; }
             .nahiya-section { padding: 20px; }
+            .search-results-header { flex-direction: column; align-items: flex-start; }
+            .back-button { width: 100%; text-align: center; }
         }
+
+        /* For smaller mobile phones */
+        @media (max-width: 480px) {
+            .header-section {
+                padding-top: 25px;
+                padding-bottom: 25px;
+            }
+            .main-content {
+                padding: 20px 10px;
+            }
+            .site-title-en { font-size: 28px; }
+            .site-title-ar { font-size: 32px; }
+            .stat-number { font-size: 20px; }
+            .stat-label { font-size: 12px; }
+            .nav-btn {
+                width: 100%; /* Make nav buttons full width */
+            }
+            .nahiya-title { font-size: 22px; }
+            .village-link { padding: 15px; }
+        }
+
     </style>
 </head>
 <body>
