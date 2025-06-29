@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Gewenda</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- START: LEAFLET & PLUGIN CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <!-- END: LEAFLET & PLUGIN CSS -->
+
+    <style>
+        /* Use the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Light theme variables */
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb; /* This is the blue for light mode */
+        }
+        /* Dark theme variables from user image */
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac; /* This is the light green from your image */
+        }
+        /* Applying theme colors */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .card {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        h1, h2, h3, .prose {
+            color: var(--text-color);
+        }
+        .subtext {
+             color: var(--subtext-color);
+        }
+        .themed-border {
+            border-color: var(--border-color);
+        }
+        .internal-link {
+            text-decoration: none; /* This removes the underline */
+            cursor: pointer;
+            color: var(--internal-link-color); /* This uses a new dedicated color variable */
+        }
+        .external-link {
+            color: var(--link-color);
+        }
+        .button-style {
+             border: 1px solid var(--border-color);
+        }
+        .button-style:hover {
+            background-color: var(--button-hover-bg);
+            color: var(--button-hover-text);
+        }
+        /* Details/Summary styles */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        .prose strong {
+            font-weight: 600;
+        }
+        .prose p {
+            margin-bottom: 1rem;
+        }
+        .prose ol, .prose ul {
+            margin-bottom: 1rem;
+        }
+        /* Inverted colors for the theme toggle button */
+        .toggle-button-colors {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            border: 1px solid var(--border-color);
+        }
+        /* Custom styles for Leaflet popups and controls to match theme */
+        .leaflet-popup-content-wrapper, .leaflet-control-layers {
+            background-color: var(--card-bg-color) !important;
+            color: var(--text-color) !important;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .leaflet-popup-tip {
+            background: var(--card-bg-color) !important;
+        }
+        .leaflet-popup-close-button {
+            color: var(--text-color) !important;
+        }
+        .leaflet-popup-content b {
+            font-weight: 600;
+        }
+        .leaflet-popup-content span {
+            color: var(--subtext-color);
+            text-transform: capitalize;
+        }
+        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line {
+            background: var(--card-bg-color);
+            border-color: var(--text-color);
+            color: var(--text-color);
+        }
+
+        /* Lightbox Styles */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        .lightbox-image {
+            max-width: 90vw;
+            max-height: 90vh;
+            border: 3px solid var(--border-color);
+            border-radius: 8px;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <!-- Header Section -->
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Gewenda</h1>
+        </header>
+
+        <main class="space-y-6">
+            <!-- Basic Information Card -->
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                        <p class="text-lg">Rajo</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
+                        <p class="text-lg">Gahunda, Kawenda, كاوندة, كاونده</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map and Location Card -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.787739, 36.726692</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <!-- Photos Card -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/Gewenda.jpg" alt="Photo of Gewenda" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Gewenda.jpg';"><img src="../village_photos/gawandh.jpg" alt="Photo of gawandh" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=gawandh.jpg';"></div>
+            </div>
+
+            <!-- Summaries Card (I-IV) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;"># Gewenda (كاوندة)</p>
+<p style="margin-bottom: 1em;">Villages of <span class="internal-link">Rajo District</span> (راجو) / Reco</p>
+<p style="margin-bottom: 1em;"><strong>Kawenda (كاوندة) - Gewenda</strong></p>
+<p style="margin-bottom: 1em;">According to the book '<span class="internal-link">عفرين.... نهرها وروابيها الخضراء</span>' '<span class="internal-link">Afrin... Its River and Green Hills</span>' by writer <span class="internal-link">Abdulrahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmah village</span> (قرية قطمه):</p>
+<p style="margin-bottom: 1em;"><strong>Kawenda (كاوندة)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), <span class="internal-link">Afrin City</span> region (منطقة عفرين), <span class="internal-link">Aleppo Governorate</span> (محافظة حلب).</p>
+<p style="margin-bottom: 1em;">It is a large village located on the slightly sloping southern slope of (<span class="internal-link">Ba'ifa Mountain</span> (جبل بعيفة)) which has an elevation of 909m in the northwestern part of <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), overlooking from the south and west the alluvial <span class="internal-link">Maydanli Plain</span> (سهل الميدانلي). It is 20 km from the town of <span class="internal-link">Rajo</span> (راجو) towards the northeast. It is bounded to the north by a high mountain chain, Turkish border and the village of <span class="internal-link">Bandarakli</span> (بندركلي), to the south by a fertile plain planted with olives, grains and fruit trees and the villages of <span class="internal-link">Jilanli</span> (جيلانلي) and <span class="internal-link">Balaliku</span> (بلاليكو), to the east by a high mountain chain, deep stream and the village of <span class="internal-link">Shankli</span> (شنكلي), and to the west 1 km away the villages of <span class="internal-link">Dudu</span> (ضوضو) and <span class="internal-link">Sheikh Mohammed Li</span> (شيخ محمد لي). The number of its houses is about 110 houses and its age is about 500 years. Its old houses are stone-clay with flat wooden roofs, while the modern ones are concrete that spread towards the south. It has an electricity network, drinking water network from a state well, elementary and preparatory schools. It connects to the district center and neighboring villages by paved road. There is also a shrine in the southern part of the village among trees, water spring and village cemetery. The residents work in rainfed agriculture on an area of 386 hectares (olives, grapes, grains, legumes, summer vegetables), in addition to raising sheep and goats. It is one of the field villages.</p>
+<p style="margin-bottom: 1em;">Among the holders of higher degrees in the village: <span class="internal-link">Sheikho Sheikho</span> (شيخو شيخو) / PhD in Electrical Engineering / <span class="internal-link">Russia</span> (روسيا)</p>
+<p style="margin-bottom: 1em;"><strong>Village Mukhtar:</strong> <span class="internal-link">Rashid Mastkalo</span> (رشيد مستكالو)</p>
+<p style="margin-bottom: 1em;"><strong>Prepared and implemented by:</strong> <span class="internal-link">Tirej Afrin website</span> manager: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
+<p style="margin-bottom: 1em;">20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">Summary to process: The village of Gahunda (also known as Gawanda) was established over 400 years ago (02:29), initially by four families (02:34). The name "Gahunda" is said to originate from people who brought their oxen ("ga") here from <span class="internal-link">El Ezîzê</span> (03:36). The name was later altered to "Gawanda" after the arrival of Arabs and Islam (04:07). While the current settlers (the Gahunda people) arrived about 400 years ago, the village site itself is older (04:31). Previously, the area was known as Şiqêf, which had ruins (04:36). The region experienced wars involving Ottomans, Romans, and Islam, leading to destruction (04:43). The inhabitants then moved 700 meters to the current village location (04:57). Key founders included <span class="internal-link">Şîro</span> and <span class="internal-link">Elî</span> (05:09); when they arrived, <span class="internal-link">Malê Hesenkê</span> (from <span class="internal-link">Gundê Ezezê</span>) and <span class="internal-link">Malê Memşedanê</span> (from <span class="internal-link">Eşîretî Qirdan</span>) were already present (05:11). <span class="internal-link">Elî Qasim</span> and <span class="internal-link">Kazim Qasim</span> also contributed to settling the village (05:24). Before the <span class="internal-link">1958</span> union of Egypt and Syria, the local economy relied on livestock and charcoal (06:56-07:02). A strict law then banned these activities (07:10), forcing a shift to cultivating vineyards and later olives (07:17). Government oppression and imprisonment led to emigration from the village (07:56). Historically, the villagers fought and gave martyrs alongside Romans, Ottomans, and during the Islamic period (08:42). In the three years preceding the recording, 17 martyrs were given for their land, and the village is also known as Kaniya Şehîdan (Spring of Martyrs) (08:55). Unlike other villages in Afrin, the Meydana region (where Gahunda is located) was not ruled by aghas due to the armed resistance of its people (09:13). A spring named Kaniya Devfereh, located in the village plain, was dug by the French in <span class="internal-link">1932</span> and is 15 meters deep (13:03, 14:34). The village cemetery contains a shrine for <span class="internal-link">Şêx Mûs</span>, considered an Islamic martyr (19:21). <span class="internal-link">Şêx Mûs</span> was reportedly from Şî'ê, was killed, and wished to be buried in the Meydana valley; this is an ancient story passed down by ancestors like <span class="internal-link">Kolik Bovko</span> (20:14). The shrine is very old, possibly predating the current specific village settlement (20:51). The wall around the <span class="internal-link">Şêx Mûs</span> shrine was constructed by villagers around <span class="internal-link">1979-1980</span> (23:54). About 1 km from the village lies an ancient city site called "şeqîf" (37:50), formerly named <span class="internal-link">Hewazîn</span> (37:57). This city existed around 1350 years prior to the recording, with evidence of habitation dating back 10,000 years before that, featuring olives and fortifications (38:04). <span class="internal-link">Hewazîn</span> endured invasions by Mongols, Tatars, and Byzantines (38:42); Ottomans arrived later (38:53). By the time French and English forces came, the site was in ruins (38:57), having been abandoned approximately 1200-1300 years before the recording (39:03). Ancient olive trees in the area were brought by Romans ("<span class="internal-link">Ralit Alyonî</span>") from <span class="internal-link">Kona</span> (39:20). The region was attacked by Circassians, who sought reinforcements from <span class="internal-link">Cizîra Botan</span> (41:13) and fought as far as the Citadels of Simeon and Aleppo (41:34). They demanded tribute from Kurdoxê (Kurd Mountains), ruled by <span class="internal-link">Kurmanc Cûmê</span>, an ancient lineage of about 7000 years (41:40). The <span class="internal-link">Cûmê</span> region's refusal led to war (41:54), after which <span class="internal-link">Kurmanc Cûmê</span> relocated, and their descendants became <span class="internal-link">Malê Cûm Bilo</span>, later evolving into <span class="internal-link">Canpolat</span> (Cûm Bilat), with descendants in Lebanon (41:59). This history is said to be recorded in works like the Şerefname by <span class="internal-link">Ehmedê Xanî</span> (42:23), who was born in <span class="internal-link">1601</span> (as stated by the speaker) (42:29, 43:04) and wrote diwans in Ottoman, Turkish, Kurdish, and Arabic (43:04). Around <span class="internal-link">1896</span>, a conference of Islamic scholars was held in Damascus (45:02), attended by a young Kurdish scholar, <span class="internal-link">Şêx Bedîî</span> (45:16). During the Ottoman era (the speaker mentions approximately <span class="internal-link">1980</span> in this context, though referring to an earlier period) (45:26), <span class="internal-link">Şêx Bedîî</span> predicted the Ottoman Empire's fall and the rise of new entities, whom he identified as Kurds, cautioning them against repeating Ottoman oppression (45:47). He was titled <span class="internal-link">Şêx Bedîî El Zeman</span> (46:04). He later went to Turkey and was arrested by Turkish intelligence for being Kurdish; the speaker mentions he was from <span class="internal-link">Bilecik</span> (46:13). The speaker also notes that Kurds, citing Medes, Nimrod, and the Pishdadian dynasty, have a long history of ruling the land (46:38, 46:48).</p></div></details><hr class="themed-border"></div>
+
+            <!-- Links Card (V) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Gewenda.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Gewenda.htm</a></li><li>Ax û Welat<br><a href="https://www.youtube.com/watch?v=xrzmFwKU3HU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=xrzmFwKU3HU</a></li><li>Video<br><a href="https://www.youtube.com/watch?v=fYNZ5_Z6Hb4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=fYNZ5_Z6Hb4</a><br><a href="https://www.youtube.com/watch?v=_sLK9KWICls" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_sLK9KWICls</a><br><a href="https://www.youtube.com/watch?v=nGDwL6HkeT8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=nGDwL6HkeT8</a></li></ul>
+            </div>
+
+            <!-- Additional Information Card (VI-X) -->
+            
+
+            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
+            
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Generated for archive purposes.</p>
+        </footer>
+    </div>
+
+    <!-- START: LIGHTBOX HTML -->
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <!-- END: LIGHTBOX HTML -->
+
+    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
+
+    <script>
+        // Theme toggle script (unchanged)
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Main script runs after the page content has loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- LIGHTBOX SCRIPT ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+
+            function closeLightbox() {
+                lightbox.classList.add('hidden');
+            }
+
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
+
+            // --- MAP SCRIPT ---
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+
+                return L.divIcon({
+                    html: html,
+                    className: '',
+                    iconSize: iconSize,
+                    iconAnchor: iconAnchor,
+                    popupAnchor: popupAnchor
+                });
+            }
+
+            const mainVillageName = "Gewenda";
+            const villageLat = 36.787739;
+            const villageLng = 36.726692;
+            const initialZoom = 14;
+
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+
+            // --- Define all the map layers ---
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Tiles &copy; Esri'
+            });
+
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            });
+
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                maxZoom: 22
+            });
+
+            // --- Set up the layer control ---
+            const baseMaps = {
+                "Satellite": esriImagery,
+                "Street": osmStreet,
+                "Terrain": thunderforestTerrain
+            };
+            
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+
+            // --- ADD MAP CONTROLS ---
+            // 1. Static Scale Bar
+            L.control.scale({ imperial: false }).addTo(map);
+
+            // --- Fetch data and add markers ---
+            fetch('afrin_locations.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        
+                        const marker = L.marker([location.lat, location.lng], { 
+                            icon: customIcon,
+                            zIndexOffset: isMainVillage ? 1000 : 0
+                        }).addTo(map);
+                        
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+
+                        if (isMainVillage) {
+                            marker.openPopup();
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading location data:', error);
+                    const mapDiv = document.getElementById('map');
+                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

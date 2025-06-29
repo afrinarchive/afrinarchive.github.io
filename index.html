@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive of Afrin</title>
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <style>
+        /* Importing a unique, historical font for each language */
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Cinzel&family=EB+Garamond&family=Forum&family=GFS+Didot&family=Inter:wght@400;500;700&family=Lateef&family=Marck+Script&family=Noto+Naskh+Arabic&family=Noto+Sans+Armenian&family=Noto+Sans+Cuneiform&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Syriac+Eastern&family=Noto+Serif+Armenian&family=Scheherazade+New:wght@400;700&family=UnifrakturMaguntia&family=Unna&family=Vollkorn&display=swap');
+
+        /* Base body font remains Inter */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f7f5f3; 
+            background-image: url('landing/images/background2.png'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            margin: 0; 
+            padding: 0; 
+            color: #3a3a3a; 
+            overflow-x: hidden; 
+        }
+        
+        .main-section { 
+            background: linear-gradient(135deg, rgba(247, 245, 243, 0.7) 0%, rgba(242, 237, 231, 0.7) 100%); 
+            padding: 40px; 
+            min-height: 80vh; 
+            display: flex; 
+            align-items: flex-start;
+            justify-content: center; 
+            box-sizing: border-box;
+        }
+        
+        .layout-container { 
+            display: flex; 
+            width: 100%; 
+            max-width: 1400px; 
+            gap: 40px; 
+            align-items: flex-start;
+        }
+
+        .graph-column { flex: 3; height: 70vh; background-color: #000000; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; cursor: grab; border: 3px solid #009A3D; }
+        
+        #graph-canvas { position: absolute; top: 0; left: 0; }
+        #loading-indicator { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-family: sans-serif; font-size: 1.2em; background-color: rgba(0,0,0,0.5); padding: 10px 15px; border-radius: 5px; }
+        
+        .content-column { 
+            flex: 2; 
+            text-align: center; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; 
+        }
+        
+        .site-title-en { 
+            font-size: 60px; 
+            font-weight: 700; 
+            color: rgba(44, 44, 44, 0.9); 
+            margin-bottom: 0px; 
+            letter-spacing: -1.5px; 
+            font-family: 'Inter', sans-serif; 
+            margin-top: 0;
+            line-height: 1.1; 
+        }
+        .site-title-ar { font-size: 64px; font-weight: 400; color: #8b7355; margin-top: -10px; margin-bottom: 15px; direction: rtl; font-family: 'Scheherazade New', 'Amiri', 'Noto Naskh Arabic', 'Times New Roman', serif; letter-spacing: 2px; line-height: 1.8; }
+        
+        .welcome-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 5px 5px; 
+            padding: 0 0px;
+            margin-bottom: 15px; 
+        }
+        .welcome-lang {
+            background-color: transparent;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 1; 
+        }
+        .lang-ar { color: #1d6a61; font-family: 'Scheherazade New', serif; }
+        .lang-ku { color: #a14e38; font-family: 'EB Garamond', serif; }
+        .lang-en { color: #aa7143; font-family: 'Cinzel', serif; }
+        .lang-fr { color: #1a3038; font-family: 'Unna', serif; }
+        .lang-de { color: #4b352d; font-family: 'UnifrakturMaguntia', cursive; font-size: 26px; }
+        .lang-so { color: #5c27a5; font-family: 'Noto Naskh Arabic', serif; }
+        .lang-fa { color: #b03d05; font-family: 'Lateef', serif; font-size: 28px; }
+        .lang-ru { color: #b3004d; font-family: 'Marck Script', cursive; }
+        .lang-hy { color: #285db3; font-family: 'Noto Serif Armenian', sans-serif; }
+        .lang-arc { color: #b38508; font-family: 'Noto Sans Syriac Eastern', sans-serif; }
+        .lang-ota { color: #004c52; font-family: 'Amiri', serif; }
+        .lang-tr { color: #a12831; font-family: 'Vollkorn', serif; }
+        .lang-akk { color: #624c45; font-family: 'Noto Sans Cuneiform', sans-serif; font-size: 28px; }
+        .lang-la { color: #4c4952; font-family: 'Forum', serif; }
+        .lang-el { color: #00537f; font-family: 'GFS Didot', serif; }
+        .lang-egy { color: #725736; font-family: 'Noto Sans Egyptian Hieroglyphs', sans-serif; font-size: 28px; }
+        .lang-hit { color: #847773; font-family: 'Noto Sans Cuneiform', sans-serif; font-size: 28px; }
+        .lang-hur { color: #705f58; font-family: 'Noto Sans Cuneiform', sans-serif; font-size: 28px; }
+        .lang-syr { color: #a84466; font-family: 'Noto Sans Syriac Eastern', sans-serif; }
+
+        .search-wrapper { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            align-items: center; 
+            justify-content: center; 
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .search-input { 
+            width: 100%; 
+            max-width: 420px; 
+            padding: 16px 22px; 
+            border: 2px solid #d4c4a8; 
+            border-radius: 6px; 
+            font-size: 16px; 
+            background-color: rgba(255, 255, 255, 0.7); 
+            transition: all 0.3s ease; 
+            font-family: 'Inter', sans-serif; 
+            color: #3a3a3a; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+            box-sizing: border-box; 
+        }
+        .search-input:focus { 
+            outline: none; 
+            border-color: #8b7355; 
+            box-shadow: 0 2px 12px rgba(139, 115, 85, 0.15); 
+        }
+        .search-input::placeholder { color: #999; }
+
+        .search-button { 
+            background-color: #ffcc00; 
+            color: #3a3a3a; 
+            border: none; 
+            padding: 18px 32px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-size: 18px; 
+            transition: all 0.3s ease; 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 500; 
+            width: 100%; 
+            max-width: 420px; 
+            box-sizing: border-box; 
+        }
+        .search-button:hover { 
+            background-color: #e6b800; 
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 420px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid #d4c4a8;
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .search-result-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #e5e5e5;
+            transition: background-color 0.2s ease;
+        }
+
+        .search-result-item:hover {
+            background-color: rgba(139, 115, 85, 0.1);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            font-weight: 500;
+            color: #3a3a3a;
+            margin-bottom: 2px;
+        }
+
+        .search-result-subtitle {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .sections-container { display: flex; height: 320px; width: 100%; }
+        .section { flex: 1; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-start; padding: 20px 15px; color: white; background-size: cover; background-position: center; background-repeat: no-repeat; min-width: 0; }
+        .section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: inherit; z-index: 1; }
+        .section-content { position: relative; z-index: 3; }
+        .section-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+        
+        .play-icon { display: none; }
+
+        .section-title { font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.2; }
+        .section-text { font-size: 15px; line-height: 1.4; font-weight: 400; }
+        
+        .section-1 { 
+            background-color: #009A3D; 
+            background-image: linear-gradient(rgba(0, 154, 61, 0.75), rgba(0, 154, 61, 0.75)), url('landing/images/villages.jpg'); 
+            cursor: pointer;
+            transition: background-image 0.2s ease;
+        }
+        .section-1:hover {
+            background-image: linear-gradient(rgba(0, 220, 88, 0.85), rgba(0, 220, 88, 0.85)), url('landing/images/villages.jpg');
+        }
+        .section-2 { background-color: #F32837; background-image: linear-gradient(rgba(243, 40, 55, 0.75), rgba(243, 40, 55, 0.75)), url('landing/images/general.jpg'); }
+        .section-3 { background-color: #FFCC00; color: #333; background-image: linear-gradient(rgba(255, 204, 0, 0.8), rgba(255, 204, 0, 0.8)), url('landing/images/who.jpg'); }
+        .section-4 { background-color: #F32837; background-image: linear-gradient(rgba(243, 40, 55, 0.75), rgba(243, 40, 55, 0.75)), url('landing/images/updates.jpg'); }
+        .section-5 { 
+            background-color: #009A3D; 
+            background-image: linear-gradient(rgba(0, 154, 61, 0.75), rgba(0, 154, 61, 0.75)), url('landing/images/contact.jpg'); 
+            cursor: pointer;
+            transition: background-image 0.2s ease;
+        }
+        .section-5:hover {
+            background-image: linear-gradient(rgba(0, 220, 88, 0.85), rgba(0, 220, 88, 0.85)), url('landing/images/contact.jpg');
+        }
+        
+        .village-directory-title { 
+            font-size: 28px; 
+            font-weight: 700; 
+            text-transform: none; 
+            letter-spacing: 0px; 
+            line-height: 1.2; 
+            margin-top: 8px;
+        }
+        .section-1 .section-text { 
+            font-size: 16px; 
+            line-height: 1.4; 
+            font-weight: 400; 
+        }
+        .section-2 .section-text { 
+            font-size: 16px; 
+            line-height: 1.4; 
+            font-weight: 400; 
+        }
+        .section-3 .section-text { 
+            font-size: 16px; 
+            line-height: 1.4; 
+            font-weight: 400; 
+        }
+        .section-4 .section-text { 
+            font-size: 16px; 
+            line-height: 1.4; 
+            font-weight: 400; 
+        }
+        .section-5 .section-text { 
+            font-size: 16px; 
+            line-height: 1.4; 
+            font-weight: 400; 
+        }
+        .secondary-title { 
+            font-size: 28px; 
+            font-weight: 700; 
+            text-transform: none; 
+            letter-spacing: 0px; 
+            line-height: 1.2; 
+            margin-top: 8px;
+        }
+        
+        /* FLOATING SCROLL ARROW - COMPLETELY SEPARATE */
+        .floating-scroll-arrow {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 70px;
+            background-color: rgba(139, 115, 85, 0.95);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 99999;
+            font-size: 36px;
+            font-weight: 900;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+        }
+        .floating-scroll-arrow:hover {
+            background-color: rgba(139, 115, 85, 1);
+            border-color: rgba(255, 255, 255, 1);
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        /* Search Results Page */
+        .search-results-page {
+            display: none;
+            min-height: 100vh;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(247, 245, 243, 0.7) 0%, rgba(242, 237, 231, 0.7) 100%);
+        }
+
+        .search-results-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-results-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .back-button {
+            background-color: #ffcc00;
+            color: #3a3a3a;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .back-button:hover {
+            background-color: #e6b800;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .search-results-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #3a3a3a;
+            margin: 0;
+        }
+
+        .search-results-count {
+            font-size: 16px;
+            color: #666;
+            margin-left: auto;
+        }
+
+        .search-results-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .search-result-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #d4c4a8;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-result-card:hover {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-color: #8b7355;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .search-result-card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 8px;
+        }
+
+        .search-result-card-title:hover {
+            text-decoration: underline;
+        }
+
+        .search-result-card-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .search-result-card-description {
+            font-size: 16px;
+            color: #3a3a3a;
+            line-height: 1.4;
+        }
+
+        .match-highlight {
+            font-weight: bold;
+            background-color: #ffeb3b;
+            padding: 1px 2px;
+            border-radius: 2px;
+        }
+
+        .see-more-button {
+            width: 100%;
+            padding: 8px;
+            background-color: rgba(139, 115, 85, 0.1);
+            border: none;
+            border-top: 1px solid #e5e5e5;
+            cursor: pointer;
+            color: #8b7355;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .see-more-button:hover {
+            background-color: rgba(139, 115, 85, 0.2);
+        }
+        
+        @media (max-width: 1024px) { .layout-container { flex-direction: column; gap: 30px; } .graph-column { width: 100%; height: 60vh; } .content-column { width: 100%; } }
+        @media (max-width: 768px) { .main-section { padding: 40px 20px; } .site-title-en { font-size: 48px; } .site-title-ar { font-size: 50px; margin-bottom: 40px; } .sections-container { flex-direction: column; height: auto; } .section { height: 120px; } .search-results-page { padding: 20px; } .search-results-header { flex-direction: column; align-items: flex-start; } }
+    </style>
+</head>
+<body>
+    <button class="floating-scroll-arrow" onclick="document.querySelector('.sections-container').scrollIntoView({behavior: 'smooth'})">↓</button>
+    
+    <div class="main-section">
+        <div class="layout-container">
+            <div class="graph-column" id="graph-container">
+                <canvas id="graph-canvas"></canvas>
+                <div id="loading-indicator">Loading Graph Data...</div>
+            </div>
+            <div class="content-column">
+                <h1 class="site-title-en">Archive of Afrin</h1>
+                <h2 class="site-title-ar">أرشيف عفرين</h2>
+                <div class="welcome-container">
+                    <span class="welcome-lang lang-ar">أهلاً وسهلاً</span>
+                    <span class="welcome-lang lang-ku">Bi xêr hatî</span>
+                    <span class="welcome-lang lang-en">Welcome</span>
+                    <span class="welcome-lang lang-fr">Bienvenue</span>
+                    <span class="welcome-lang lang-de">Willkommen</span>
+                    <span class="welcome-lang lang-so">بەخێربێیت</span>
+                    <span class="welcome-lang lang-fa">خوش آمدید</span>
+                    <span class="welcome-lang lang-ru">Добро пожаловать</span>
+                    <span class="welcome-lang lang-hy">Բարի գալուստ</span>
+                    <span class="welcome-lang lang-arc">ܒܫܲܝܢܵܐ</span>
+                    <span class="welcome-lang lang-ota">خوش کلدکز</span>
+                    <span class="welcome-lang lang-tr">Hoş geldiniz</span>
+                    <span class="welcome-lang lang-akk">𒀀<y_bin_365><y_bin_365></span>
+                    <span class="welcome-lang lang-la">Salvete</span>
+                    <span class="welcome-lang lang-el">Καλώς ήρθατε</span>
+                    <span class="welcome-lang lang-egy">𓇍𓇋𓇋𓀀</span>
+                    <span class="welcome-lang lang-hit">𒀀𒋗𒇷</span>
+                    <span class="welcome-lang lang-hur">𒄷𒌨𒊑ኛ</span>
+                    <span class="welcome-lang lang-syr">ܫܠܵܡܵܐ</span>
+                </div>
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search villages, people, places...">
+                    <div id="search-results" class="search-results"></div>
+                    <button class="search-button" onclick="showSearchResultsPage()">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-results-page" id="search-results-page">
+        <div class="search-results-container">
+            <div class="search-results-header">
+                <button class="back-button" onclick="returnToMain()">← Return to Archive</button>
+                <h1 class="search-results-title" id="search-results-page-title">Search Results</h1>
+                <div class="search-results-count" id="search-results-count"></div>
+            </div>
+            <div class="search-results-list" id="search-results-page-list">
+            </div>
+        </div>
+    </div>
+    
+    <div class="sections-container">
+        <div class="section section-1" onclick="window.open('village_sites/00_village_names.html', '_blank')">
+            <div class="section-content">
+                <div class="section-header">
+                    <div class="play-icon"></div>
+                    <h3 class="section-title">Online Archive</h3>
+                </div>
+                <h4 class="village-directory-title">Village Directory</h4>
+                <p class="section-text">A collection of information about the villages of Afrin. The database currently holds information about 320 villages.</p>
+            </div>
+        </div>
+        <div class="section section-2">
+            <div class="section-content">
+                <div class="section-header">
+                    <h3 class="section-title">Online Archive</h3>
+                </div>
+                <h4 class="secondary-title">General Information</h4>
+                <p class="section-text">In Development</p>
+            </div>
+        </div>
+        <div class="section section-3">
+            <div class="section-content">
+                <div class="section-header">
+                    <h3 class="secondary-title">About Us</h3>
+                </div>
+                <p class="section-text">We are dedicated to preserving and documenting the rich cultural heritage, history, and stories of Afrin for future generations.</p>
+            </div>
+        </div>
+        <div class="section section-4">
+            <div class="section-content">
+                <div class="section-header">
+                    <div class="play-icon"></div>
+                    <h3 class="secondary-title">Updates</h3>
+                </div>
+                <p class="section-text">June 28, 2025 - The archive is now online. Welcome!</p>
+            </div>
+        </div>
+        <div class="section section-5" onclick="window.location.href = 'mailto:afrin.archive@gmail.com'">
+            <div class="section-content">
+                <div class="section-header">
+                    <h3 class="secondary-title">Contact Us</h3>
+                </div>
+                <p class="section-text">afrin.archive@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        let villageData = [];
+        let edgeSearchMap = new Map();
+        let lastSearchResults = [];
+        let lastSearchQuery = '';
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            const container = document.getElementById('graph-container');
+            const canvas = document.getElementById('graph-canvas');
+            const context = canvas.getContext('2d');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const homeNodeId = 'Efrîn';
+
+            let width = container.clientWidth;
+            let height = container.clientHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+            const graph = await d3.json("landing/graph-data.json").catch(error => {
+                console.error("Failed to load graph-data.json:", error);
+                loadingIndicator.innerText = 'Error: Could not load graph data.';
+                return null;
+            });
+
+            if (!graph) return; 
+
+            // Extract villages for search
+            villageData = graph.nodes.filter(node => node.type === 'file').map(node => ({
+                name: node.label,
+                id: node.id,
+                filename: node.id + '.html'
+            }));
+
+            // Create mapping from edge "to" values back to villages
+            graph.edges.forEach(edge => {
+                const village = villageData.find(v => v.id === edge.from);
+                if (village) {
+                    if (!edgeSearchMap.has(edge.to.toLowerCase())) {
+                        edgeSearchMap.set(edge.to.toLowerCase(), []);
+                    }
+                    edgeSearchMap.get(edge.to.toLowerCase()).push(village);
+                }
+            });
+
+            const nodeById = new Map(graph.nodes.map(node => [node.id, node]));
+
+            const homeNode = nodeById.get(homeNodeId);
+            if (homeNode) {
+                homeNode.fx = width / 2;
+                homeNode.fy = height / 2;
+            }
+            
+            const links = graph.edges.map(link => ({
+                source: nodeById.get(link.from),
+                target: nodeById.get(link.to)
+            }));
+            const validLinks = links.filter(d => d.source && d.target);
+
+            loadingIndicator.innerText = 'Initializing Physics...';
+
+            const simulation = d3.forceSimulation(graph.nodes)
+                .force("link", d3.forceLink(validLinks).id(d => d.id).distance(100).strength(0.1))
+                .force("charge", d3.forceManyBody().strength(-60))
+                .force("center", d3.forceCenter(width / 2, height / 2))
+                .on("tick", ticked);
+
+            function ticked() {
+                context.clearRect(0, 0, width, height);
+                context.save();
+                context.translate(transform.x, transform.y);
+                context.scale(transform.k, transform.k);
+
+                context.strokeStyle = "rgba(255, 255, 255, 0.15)";
+                context.beginPath();
+                validLinks.forEach(d => {
+                    context.moveTo(d.source.x, d.source.y);
+                    context.lineTo(d.target.x, d.target.y);
+                });
+                context.stroke();
+
+                graph.nodes.forEach(d => {
+                    let radius = 2; 
+                    let labelColor = "rgba(204, 204, 204, 0.7)";
+                    let labelFont = "10px sans-serif";
+                    
+                    if (d.type === 'file') {
+                        radius = 5;
+                        labelColor = "#ccc";
+                        labelFont = "12px sans-serif";
+                    }
+                    if (d.id === homeNodeId) {
+                        radius = 8;
+                        labelColor = "#fff";
+                        labelFont = "14px sans-serif";
+                    }
+
+                    context.font = labelFont;
+                    context.textAlign = "center";
+                    context.strokeStyle = 'rgba(45, 45, 45, 0.8)';
+                    context.lineWidth = 2; 
+                    context.strokeText(d.label, d.x, d.y - radius - 3);
+                    
+                    context.fillStyle = labelColor;
+                    context.fillText(d.label, d.x, d.y - radius - 3);
+                });
+
+                 graph.nodes.forEach(d => {
+                    context.beginPath();
+                    let radius = 2;
+                    let fillColor = "#666";
+                    
+                    if (d.type === 'file') {
+                        radius = 5;
+                        fillColor = "#86efac";
+                    }
+                    if (d.id === homeNodeId) {
+                        radius = 8;
+                        fillColor = "#ffcc00";
+                    }
+                    
+                    context.moveTo(d.x + radius, d.y);
+                    context.arc(d.x, d.y, radius, 0, 2 * Math.PI);
+                    context.fillStyle = fillColor;
+                    context.fill();
+                });
+
+                context.restore();
+            }
+
+            let transform = d3.zoomIdentity;
+            const zoom = d3.zoom()
+                .scaleExtent([0.1, 8])
+                .on("zoom", (event) => {
+                    transform = event.transform;
+                    ticked();
+                });
+            
+            d3.select(canvas).call(zoom);
+
+            d3.select(canvas).on("click", function(event) {
+                const [mx, my] = d3.pointer(event);
+                const simX = transform.invertX(mx);
+                const simY = transform.invertY(my);
+
+                const closestNode = simulation.find(simX, simY, 30 / transform.k);
+
+                if (closestNode && closestNode.type === 'file') {
+                    const filename = encodeURIComponent(closestNode.id) + '.html';
+                    window.open(`village_sites/${filename}`, '_blank');
+                }
+            });
+            
+            setTimeout(() => {
+                 loadingIndicator.style.display = 'none';
+            }, 1000);
+
+            // Set up search functionality
+            setupSearch();
+        });
+
+        function setupSearch() {
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            
+            let searchTimeout;
+
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    performSearch();
+                }, 300);
+            });
+
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    showSearchResultsPage();
+                }
+            });
+
+            // Hide results when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+
+            searchInput.addEventListener('focus', function() {
+                if (searchInput.value.trim() && searchResults.innerHTML) {
+                    searchResults.style.display = 'block';
+                }
+            });
+        }
+
+        function performSearch() {
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            const query = searchInput.value.trim().toLowerCase();
+            
+            if (!query) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const results = getSearchResults(query);
+            lastSearchResults = results;
+            lastSearchQuery = query;
+
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item"><div class="search-result-title">No results found</div></div>';
+            } else {
+                const dropdownResults = results.slice(0, 8);
+                const hasMore = results.length > 8;
+                
+                const dropdownHTML = dropdownResults.map(result => {
+                    const safeName = escapeHtml(result.village.name);
+                    const safeFilename = result.village.filename.replace(/'/g, "\\'");
+                    const safeMatchType = escapeHtml(result.matchType);
+                    const highlightedMatch = highlightMatch(result.matchText, result.query);
+                    
+                    return `<div class="search-result-item" onclick="openVillage('${safeFilename}')">
+                        <div class="search-result-title">${safeName}</div>
+                        <div class="search-result-subtitle">${safeMatchType}: ${highlightedMatch}</div>
+                    </div>`;
+                }).join('');
+                
+                const seeMoreHTML = hasMore ? `<div class="see-more-button" onclick="showSearchResultsPage()">
+                    See More (${results.length - 8} additional results)
+                </div>` : '';
+                
+                searchResults.innerHTML = dropdownHTML + seeMoreHTML;
+            }
+            
+            searchResults.style.display = 'block';
+        }
+
+        function getSearchResults(query) {
+            const resultsSet = new Set();
+            
+            // Search village names directly
+            villageData.forEach(village => {
+                if (village.name.toLowerCase().includes(query)) {
+                    resultsSet.add(JSON.stringify({
+                        village: village,
+                        matchType: 'Village Name',
+                        matchText: village.name,
+                        query: query
+                    }));
+                }
+            });
+
+            // Search through edge connections
+            edgeSearchMap.forEach((villages, edgeText) => {
+                if (edgeText.includes(query)) {
+                    villages.forEach(village => {
+                        resultsSet.add(JSON.stringify({
+                            village: village,
+                            matchType: 'Related Content',
+                            matchText: edgeText,
+                            query: query
+                        }));
+                    });
+                }
+            });
+
+            return Array.from(resultsSet).map(item => JSON.parse(item));
+        }
+
+        function highlightMatch(text, query) {
+            if (!query) return escapeHtml(text);
+            const escapedText = escapeHtml(text);
+            const regex = new RegExp(`(${escapeHtml(query)})`, 'gi');
+            return escapedText.replace(regex, '<span class="match-highlight">$1</span>');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML.replace(/\n/g, ' ').replace(/\r/g, ' ');
+        }
+
+        function showSearchResultsPage() {
+            const query = document.getElementById('search-input').value.trim();
+            const results = query ? getSearchResults(query.toLowerCase()) : lastSearchResults;
+            
+            // Hide main layout
+            document.querySelector('.main-section').style.display = 'none';
+            document.querySelector('.sections-container').style.display = 'none';
+            document.querySelector('.floating-scroll-arrow').style.display = 'none';
+            document.getElementById('search-results').style.display = 'none';
+            
+            // Show search results page
+            document.getElementById('search-results-page').style.display = 'block';
+            
+            // Update page content
+            const safeQuery = escapeHtml(query || lastSearchQuery);
+            document.getElementById('search-results-page-title').textContent = `Search Results for "${safeQuery}"`;
+            document.getElementById('search-results-count').textContent = `${results.length} result${results.length !== 1 ? 's' : ''} found`;
+            
+            const list = document.getElementById('search-results-page-list');
+            if (results.length === 0) {
+                list.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">No results found</div>';
+            } else {
+                const listHTML = results.map(result => {
+                    const safeName = escapeHtml(result.village.name);
+                    const safeFilename = result.village.filename.replace(/'/g, "\\'");
+                    const safeMatchType = escapeHtml(result.matchType);
+                    const highlightedMatch = highlightMatch(result.matchText, result.query);
+                    
+                    return `<div class="search-result-card" onclick="openVillage('${safeFilename}')">
+                        <div class="search-result-card-title">${safeName}</div>
+                        <div class="search-result-card-subtitle">Found in: ${safeMatchType}</div>
+                        <div class="search-result-card-description">Match: ${highlightedMatch}</div>
+                    </div>`;
+                }).join('');
+                
+                list.innerHTML = listHTML;
+            }
+        }
+
+        function returnToMain() {
+            // Show main layout
+            document.querySelector('.main-section').style.display = 'flex';
+            document.querySelector('.sections-container').style.display = 'flex';
+            document.querySelector('.floating-scroll-arrow').style.display = 'flex';
+            
+            // Hide search results page
+            document.getElementById('search-results-page').style.display = 'none';
+        }
+
+        function openVillage(filename) {
+            console.log('Opening village:', filename);
+            console.log('Full URL:', `village_sites/${filename}`);
+            window.open(`village_sites/${filename}`, '_blank');
+            // Hide dropdown if it's open
+            const searchResults = document.getElementById('search-results');
+            if (searchResults) {
+                searchResults.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
