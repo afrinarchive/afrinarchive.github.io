@@ -620,231 +620,133 @@
         </div>
     </div>
 
+            <script src="js/search.js"></script>
     <script type="text/javascript">
-        let villageData = [];
-        let edgeSearchMap = new Map();
+        // This is the "glue" code for index.html
         let lastSearchResults = [];
         let lastSearchQuery = '';
 
         document.addEventListener('DOMContentLoaded', async function() {
+            // Initialize the shared search module with the correct path
+            await AfrinArchiveSearch.init("village_site_files/graph-data.json");
+            
+            // The D3 graph code remains here
             const container = document.getElementById('graph-container');
             const canvas = document.getElementById('graph-canvas');
             const context = canvas.getContext('2d');
             const loadingIndicator = document.getElementById('loading-indicator');
             const homeNodeId = 'Efrîn';
             
-            // Check if on a mobile device based on screen width
             const isMobile = window.innerWidth <= 768;
 
             let width = container.clientWidth;
             let height = container.clientHeight;
             canvas.width = width;
             canvas.height = height;
-            let simulation; // Declare simulation here to be accessible in resize listener
+            let simulation;
 
-            // Handle window resizing
             window.addEventListener('resize', () => {
                 width = container.clientWidth;
                 height = container.clientHeight;
                 canvas.width = width;
                 canvas.height = height;
-                // Recenter simulation
                 if (simulation) {
                     simulation.force("center", d3.forceCenter(width / 2, height / 2)).restart();
                 }
             });
 
-            const graph = await d3.json("village_site_files/graph-data.json").catch(error => {
-                console.error("Failed to load graph-data.json:", error);
-                loadingIndicator.innerText = 'Error: Could not load graph data.';
-                return null;
-            });
-
+            const graph = await d3.json("village_site_files/graph-data.json");
             if (!graph) return; 
-
-            // The full village data is still needed for search functionality
-            villageData = graph.nodes.filter(node => node.type === 'file').map(node => ({
-                name: node.label,
-                id: node.id,
-                filename: node.id + '.html'
-            }));
-
-            // Create mapping from edge "to" values back to villages from the full dataset
-            graph.edges.forEach(edge => {
-                const village = villageData.find(v => v.id === edge.from);
-                if (village) {
-                    if (!edgeSearchMap.has(edge.to.toLowerCase())) {
-                        edgeSearchMap.set(edge.to.toLowerCase(), []);
-                    }
-                    edgeSearchMap.get(edge.to.toLowerCase()).push(village);
-                }
-            });
 
             let nodesForSimulation = graph.nodes;
             let edgesForSimulation = graph.edges;
-
-            // If on mobile, filter the data to show a simplified view
             if (isMobile) {
                 const directNeighborIds = new Set([homeNodeId]);
                 graph.edges.forEach(edge => {
-                    if (edge.from === homeNodeId) {
-                        directNeighborIds.add(edge.to);
-                    }
-                    if (edge.to === homeNodeId) {
-                        directNeighborIds.add(edge.from);
-                    }
+                    if (edge.from === homeNodeId) { directNeighborIds.add(edge.to); }
+                    if (edge.to === homeNodeId) { directNeighborIds.add(edge.from); }
                 });
-
                 nodesForSimulation = graph.nodes.filter(node => directNeighborIds.has(node.id));
-                edgesForSimulation = graph.edges.filter(edge => 
-                    directNeighborIds.has(edge.from) && directNeighborIds.has(edge.to)
-                );
+                edgesForSimulation = graph.edges.filter(edge => directNeighborIds.has(edge.from) && directNeighborIds.has(edge.to));
             }
-
             const nodeById = new Map(graph.nodes.map(node => [node.id, node]));
-
             const homeNode = nodeById.get(homeNodeId);
-            if (homeNode) {
-                homeNode.fx = width / 2;
-                homeNode.fy = height / 2;
-            }
-            
-            const links = edgesForSimulation.map(link => ({
-                source: nodeById.get(link.from),
-                target: nodeById.get(link.to)
-            }));
+            if (homeNode) { homeNode.fx = width / 2; homeNode.fy = height / 2; }
+            const links = edgesForSimulation.map(link => ({ source: nodeById.get(link.from), target: nodeById.get(link.to) }));
             const validLinks = links.filter(d => d.source && d.target);
-
             loadingIndicator.innerText = 'Initializing Physics...';
-
             simulation = d3.forceSimulation(nodesForSimulation)
                 .force("link", d3.forceLink(validLinks).id(d => d.id).distance(100).strength(0.1))
                 .force("charge", d3.forceManyBody().strength(-60))
                 .force("center", d3.forceCenter(width / 2, height / 2))
                 .on("tick", ticked);
-
             function ticked() {
                 context.clearRect(0, 0, width, height);
                 context.save();
                 context.translate(transform.x, transform.y);
                 context.scale(transform.k, transform.k);
-
                 context.strokeStyle = "rgba(255, 255, 255, 0.15)";
                 context.beginPath();
-                validLinks.forEach(d => {
-                    context.moveTo(d.source.x, d.source.y);
-                    context.lineTo(d.target.x, d.target.y);
-                });
+                validLinks.forEach(d => { context.moveTo(d.source.x, d.source.y); context.lineTo(d.target.x, d.target.y); });
                 context.stroke();
-
                 nodesForSimulation.forEach(d => {
-                    let radius = 2; 
-                    let labelColor = "rgba(204, 204, 204, 0.7)";
-                    let labelFont = "10px sans-serif";
-                    
-                    if (d.type === 'file') {
-                        radius = 5;
-                        labelColor = "#ccc";
-                        labelFont = "12px sans-serif";
-                    }
-                    if (d.id === homeNodeId) {
-                        radius = 8;
-                        labelColor = "#fff";
-                        labelFont = "14px sans-serif";
-                    }
-
+                    let radius = d.type === 'file' ? 5 : (d.id === homeNodeId ? 8 : 2);
+                    let labelColor = d.id === homeNodeId ? "#fff" : "#ccc";
+                    let labelFont = d.id === homeNodeId ? "14px sans-serif" : (d.type === 'file' ? "12px sans-serif" : "10px sans-serif");
                     context.font = labelFont;
                     context.textAlign = "center";
                     context.strokeStyle = 'rgba(45, 45, 45, 0.8)';
                     context.lineWidth = 2; 
                     context.strokeText(d.label, d.x, d.y - radius - 3);
-                    
                     context.fillStyle = labelColor;
                     context.fillText(d.label, d.x, d.y - radius - 3);
                 });
-
-                 nodesForSimulation.forEach(d => {
+                nodesForSimulation.forEach(d => {
                     context.beginPath();
-                    let radius = 2;
-                    let fillColor = "#666";
-                    
-                    if (d.type === 'file') {
-                        radius = 5;
-                        fillColor = "#86efac";
-                    }
-                    if (d.id === homeNodeId) {
-                        radius = 8;
-                        fillColor = "#ffcc00";
-                    }
-                    
+                    let radius = d.type === 'file' ? 5 : (d.id === homeNodeId ? 8 : 2);
+                    let fillColor = d.type === 'file' ? "#86efac" : (d.id === homeNodeId ? "#ffcc00" : "#666");
                     context.moveTo(d.x + radius, d.y);
                     context.arc(d.x, d.y, radius, 0, 2 * Math.PI);
                     context.fillStyle = fillColor;
                     context.fill();
                 });
-
                 context.restore();
             }
-
             let transform = d3.zoomIdentity;
-            const zoom = d3.zoom()
-                .scaleExtent([0.1, 8])
-                .on("zoom", (event) => {
-                    transform = event.transform;
-                    ticked();
-                });
-            
+            const zoom = d3.zoom().scaleExtent([0.1, 8]).on("zoom", (event) => { transform = event.transform; ticked(); });
             d3.select(canvas).call(zoom);
-
             d3.select(canvas).on("click", function(event) {
                 const [mx, my] = d3.pointer(event);
                 const simX = transform.invertX(mx);
                 const simY = transform.invertY(my);
-
                 const closestNode = simulation.find(simX, simY, 30 / transform.k);
-
                 if (closestNode && closestNode.type === 'file') {
                     const filename = encodeURIComponent(closestNode.id) + '.html';
                     window.open(`village_sites/${filename}`, '_blank');
                 }
             });
-            
-            setTimeout(() => {
-                 loadingIndicator.style.display = 'none';
-            }, 1000);
+            setTimeout(() => { loadingIndicator.style.display = 'none'; }, 1000);
 
-            // Set up search functionality
-            setupSearch();
+            setupSearchUI();
         });
-
-        function setupSearch() {
+        
+        function setupSearchUI() {
             const searchInput = document.getElementById('search-input');
             const searchResults = document.getElementById('search-results');
-            
             let searchTimeout;
-
-            searchInput.addEventListener('input', function() {
+            searchInput.addEventListener('input', () => {
                 clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    performSearch();
-                }, 300);
+                searchTimeout = setTimeout(performSearch, 300);
             });
-
-            searchInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    showSearchResultsPage();
-                }
+            searchInput.addEventListener('keydown', e => {
+                if (e.key === 'Enter') { e.preventDefault(); showSearchResultsPage(); }
             });
-
-            // Hide results when clicking outside
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', e => {
                 if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
                     searchResults.style.display = 'none';
                 }
             });
-
-            searchInput.addEventListener('focus', function() {
+            searchInput.addEventListener('focus', () => {
                 if (searchInput.value.trim() && searchResults.innerHTML) {
                     searchResults.style.display = 'block';
                 }
@@ -854,82 +756,64 @@
         function performSearch() {
             const searchInput = document.getElementById('search-input');
             const searchResults = document.getElementById('search-results');
-            const query = searchInput.value.trim().toLowerCase();
-            
-            if (!query) {
-                searchResults.style.display = 'none';
-                return;
-            }
+            const query = searchInput.value.trim();
+            if (!query) { searchResults.style.display = 'none'; return; }
 
-            const results = getSearchResults(query);
+            const results = AfrinArchiveSearch.search(query);
             lastSearchResults = results;
             lastSearchQuery = query;
 
             if (results.length === 0) {
                 searchResults.innerHTML = '<div class="search-result-item"><div class="search-result-title">No results found</div></div>';
             } else {
-                const dropdownResults = results.slice(0, 8);
-                const hasMore = results.length > 8;
+                const dropdownHTML = results.slice(0, 8).map(result => `
+                    <div class="search-result-item" onclick="openVillage('${escapeHtml(result.village.filename).replace(/'/g, "\\'")}')">
+                        <div class="search-result-title">${escapeHtml(result.village.name)}</div>
+                        <div class="search-result-subtitle">${escapeHtml(result.matchType)}: ${highlightMatch(result.matchText, result.query)}</div>
+                    </div>`).join('');
                 
-                const dropdownHTML = dropdownResults.map(result => {
-                    const safeName = escapeHtml(result.village.name);
-                    const safeFilename = result.village.filename.replace(/'/g, "\\'");
-                    const safeMatchType = escapeHtml(result.matchType);
-                    const highlightedMatch = highlightMatch(result.matchText, result.query);
-                    
-                    return `<div class="search-result-item" onclick="openVillage('${safeFilename}')">
-                        <div class="search-result-title">${safeName}</div>
-                        <div class="search-result-subtitle">${safeMatchType}: ${highlightedMatch}</div>
-                    </div>`;
-                }).join('');
-                
-                const seeMoreHTML = hasMore ? `<div class="see-more-button" onclick="showSearchResultsPage()">
-                    See More (${results.length - 8} additional results)
-                </div>` : '';
-                
+                const seeMoreHTML = results.length > 8 ? `
+                    <div class="see-more-button" onclick="showSearchResultsPage()">
+                        See All ${results.length} results
+                    </div>` : '';
                 searchResults.innerHTML = dropdownHTML + seeMoreHTML;
             }
-            
             searchResults.style.display = 'block';
         }
 
-        function getSearchResults(query) {
-            const resultsSet = new Set();
+        function showSearchResultsPage() {
+            const query = document.getElementById('search-input').value.trim();
+            const results = query ? AfrinArchiveSearch.search(query) : lastSearchResults;
             
-            // Search village names directly
-            villageData.forEach(village => {
-                if (village.name.toLowerCase().includes(query)) {
-                    resultsSet.add(JSON.stringify({
-                        village: village,
-                        matchType: 'Village Name',
-                        matchText: village.name,
-                        query: query
-                    }));
-                }
-            });
-
-            // Search through edge connections
-            edgeSearchMap.forEach((villages, edgeText) => {
-                if (edgeText.includes(query)) {
-                    villages.forEach(village => {
-                        resultsSet.add(JSON.stringify({
-                            village: village,
-                            matchType: 'Related Content',
-                            matchText: edgeText,
-                            query: query
-                        }));
-                    });
-                }
-            });
-
-            return Array.from(resultsSet).map(item => JSON.parse(item));
+            document.querySelector('.main-section').style.display = 'none';
+            document.querySelector('.sections-container').style.display = 'none';
+            document.querySelector('.floating-scroll-arrow').style.display = 'none';
+            document.getElementById('search-results').style.display = 'none';
+            document.getElementById('search-results-page').style.display = 'block';
+            
+            const safeQuery = escapeHtml(query || lastSearchQuery);
+            document.getElementById('search-results-page-title').textContent = `Search Results for "${safeQuery}"`;
+            document.getElementById('search-results-count').textContent = `${results.length} result${results.length !== 1 ? 's' : ''} found`;
+            
+            const list = document.getElementById('search-results-page-list');
+            list.innerHTML = results.length === 0 ? '<div style="text-align: center; padding: 40px; color: #666;">No results found.</div>' :
+                results.map(result => `
+                    <div class="search-result-card" onclick="openVillage('${escapeHtml(result.village.filename).replace(/'/g, "\\'")}')">
+                        <div class="search-result-card-title">${escapeHtml(result.village.name)}</div>
+                        <div class="search-result-card-subtitle">Found in: ${escapeHtml(result.matchType)}</div>
+                        <div class="search-result-card-description">Match: ${highlightMatch(result.matchText, result.query)}</div>
+                    </div>`).join('');
         }
 
-        function highlightMatch(text, query) {
-            if (!query) return escapeHtml(text);
-            const escapedText = escapeHtml(text);
-            const regex = new RegExp(`(${escapeHtml(query)})`, 'gi');
-            return escapedText.replace(regex, '<span class="match-highlight">$1</span>');
+        function returnToMain() {
+            document.querySelector('.main-section').style.display = 'flex';
+            document.querySelector('.sections-container').style.display = 'flex';
+            document.getElementById('search-results-page').style.display = 'none';
+        }
+
+        function openVillage(filename) {
+            window.open(`village_sites/${filename}`, '_blank');
+            document.getElementById('search-results').style.display = 'none';
         }
 
         function escapeHtml(text) {
@@ -937,67 +821,11 @@
             div.textContent = text;
             return div.innerHTML.replace(/\n/g, ' ').replace(/\r/g, ' ');
         }
-
-        function showSearchResultsPage() {
-            const query = document.getElementById('search-input').value.trim();
-            const results = query ? getSearchResults(query.toLowerCase()) : lastSearchResults;
-            
-            // Hide main layout
-            document.querySelector('.main-section').style.display = 'none';
-            document.querySelector('.sections-container').style.display = 'none';
-            document.querySelector('.floating-scroll-arrow').style.display = 'none';
-            document.getElementById('search-results').style.display = 'none';
-            
-            // Show search results page
-            document.getElementById('search-results-page').style.display = 'block';
-            
-            // Update page content
-            const safeQuery = escapeHtml(query || lastSearchQuery);
-            document.getElementById('search-results-page-title').textContent = `Search Results for "${safeQuery}"`;
-            document.getElementById('search-results-count').textContent = `${results.length} result${results.length !== 1 ? 's' : ''} found`;
-            
-            const list = document.getElementById('search-results-page-list');
-            if (results.length === 0) {
-                list.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">No results found</div>';
-            } else {
-                const listHTML = results.map(result => {
-                    const safeName = escapeHtml(result.village.name);
-                    const safeFilename = result.village.filename.replace(/'/g, "\\'");
-                    const safeMatchType = escapeHtml(result.matchType);
-                    const highlightedMatch = highlightMatch(result.matchText, result.query);
-                    
-                    return `<div class="search-result-card" onclick="openVillage('${safeFilename}')">
-                        <div class="search-result-card-title">${safeName}</div>
-                        <div class="search-result-card-subtitle">Found in: ${safeMatchType}</div>
-                        <div class="search-result-card-description">Match: ${highlightedMatch}</div>
-                    </div>`;
-                }).join('');
-                
-                list.innerHTML = listHTML;
-            }
-        }
-
-        function returnToMain() {
-            // Show main layout
-            document.querySelector('.main-section').style.display = 'flex';
-            document.querySelector('.sections-container').style.display = 'flex';
-            
-            // Hide search results page
-            document.getElementById('search-results-page').style.display = 'none';
-
-            // The arrow's visibility is now controlled by CSS media queries,
-            // so we don't need to set its display style here.
-        }
-
-        function openVillage(filename) {
-            console.log('Opening village:', filename);
-            console.log('Full URL:', `village_sites/${filename}`);
-            window.open(`village_sites/${filename}`, '_blank');
-            // Hide dropdown if it's open
-            const searchResults = document.getElementById('search-results');
-            if (searchResults) {
-                searchResults.style.display = 'none';
-            }
+        
+        function highlightMatch(text, query) {
+            if (!query) return escapeHtml(text);
+            const regex = new RegExp(`(${escapeHtml(query)})`, 'gi');
+            return escapeHtml(text).replace(regex, '<span class="match-highlight">$1</span>');
         }
     </script>
 </body>

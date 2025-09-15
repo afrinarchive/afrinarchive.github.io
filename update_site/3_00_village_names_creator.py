@@ -297,11 +297,23 @@ html_template = """
         .site-title-ar { font-size: 52px; font-weight: 400; color: var(--brown-color); margin-top: -10px; margin-bottom: 20px; direction: rtl; font-family: 'Scheherazade New', serif; }
         .theme-toggle-container { margin-top: 15px; }
         .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
-        .search-wrapper { display: flex; gap: 15px; justify-content: center; margin-bottom: 30px; position: relative; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .search-input { flex: 1; padding: 16px 22px; border: 2px solid var(--village-border); border-radius: 6px; font-size: 16px; background-color: var(--white-bg); transition: all 0.3s ease; color: var(--text-color); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        
+        /* SEARCH STYLES FROM INDEX.HTML */
+        .search-wrapper { display: flex; flex-direction: column; gap: 15px; justify-content: center; align-items: center; margin-bottom: 30px; position: relative; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .search-input { width: 100%; padding: 16px 22px; border: 2px solid var(--village-border); border-radius: 6px; font-size: 16px; background-color: var(--white-bg); transition: all 0.3s ease; color: var(--text-color); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .search-input:focus { outline: none; border-color: var(--green-color); box-shadow: 0 2px 12px rgba(0, 154, 61, 0.15); }
-        .search-button { background-color: var(--green-color); color: var(--bg-color); border: none; padding: 18px 32px; border-radius: 6px; cursor: pointer; font-size: 18px; transition: all 0.3s ease; font-weight: 500; }
+        .search-button { background-color: var(--green-color); color: var(--bg-color); border: none; padding: 18px 32px; border-radius: 6px; cursor: pointer; font-size: 18px; transition: all 0.3s ease; font-weight: 500; width: 100%; }
         .search-button:hover { background-color: var(--brown-color); }
+        .search-results { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 100%; background-color: var(--bg-color); border: 2px solid var(--village-border); border-top: none; border-radius: 0 0 6px 6px; max-height: 300px; overflow-y: auto; z-index: 1000; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .search-result-item { padding: 12px 16px; cursor: pointer; border-bottom: 1px solid var(--village-border); transition: background-color 0.2s ease; text-align: left; }
+        .search-result-item:hover { background-color: var(--village-bg); }
+        .search-result-item:last-child { border-bottom: none; }
+        .search-result-title { font-weight: 500; color: var(--text-color); margin-bottom: 2px; }
+        .search-result-subtitle { font-size: 12px; color: var(--subtext-color); }
+        .see-more-button { width: 100%; padding: 8px; background-color: var(--village-bg); border: none; border-top: 1px solid var(--village-border); cursor: pointer; color: var(--brown-color); font-weight: 500; transition: background-color 0.2s ease; }
+        .see-more-button:hover { background-color: rgba(139, 115, 85, 0.2); }
+        .match-highlight { font-weight: bold; background-color: #ffeb3b; padding: 1px 2px; border-radius: 2px; color: #333; }
+
         .stats-bar { background: var(--nav-bg); padding: 20px; border-radius: 8px; margin-bottom: 30px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
         .stat-item { text-align: center; }
         .stat-number { font-size: 24px; font-weight: 700; color: var(--green-color); }
@@ -323,8 +335,6 @@ html_template = """
         .village-name-alt { padding: 4px 8px; background-color: var(--alt-name-bg); color: var(--alt-name-text); border-radius: 4px; font-size: 12px; font-weight: 400; white-space: nowrap; transition: all 0.2s ease-in-out; }
         .village-link:hover { background-color: var(--brown-color); color: white; transform: translateX(5px); box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3); }
         .village-link:hover .village-name-alt { background-color: var(--bg-color); color: var(--brown-color); }
-        
-        /* MODIFIED AND NEW STYLES FOR MAP LAYOUT */
         .map-wrapper { padding: 20px 0; border-bottom: 1px solid var(--village-border); margin-bottom: 20px; }
         .map-layout-container { display: flex; gap: 20px; align-items: flex-start; }
         .map-village-links-multicolumn { flex: 1; column-count: 2; column-gap: 10px; }
@@ -335,7 +345,6 @@ html_template = """
         .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         
-        /* ALL MAP COORDINATES COPIED DIRECTLY */
         #Bilbilê .singele { left: 12.71%; top: 6.48%; width: 8.48%; height: 8.24%; } #Bilbilê .beke { left: 21.60%; top: 13.05%; width: 8.27%; height: 8.05%; } #Bilbilê .eli-kere { left: 28.96%; top: 17.76%; width: 8.27%; height: 8.05%; } #Bilbilê .heyama { left: 30.07%; top: 21.59%; width: 8.07%; height: 7.85%; } #Bilbilê .zere { left: 38.24%; top: 21.98%; width: 8.07%; height: 7.85%; } #Bilbilê .baliya { left: 48.94%; top: 19.14%; width: 8.68%; height: 8.44%; } #Bilbilê .xilalka { left: 9.59%; top: 32.58%; width: 8.27%; height: 8.05%; } #Bilbilê .bexce { left: 22.60%; top: 29.73%; width: 8.68%; height: 8.44%; } #Bilbilê .bilbile { left: 41.37%; top: 26.40%; width: 10.09%; height: 9.81%; } #Bilbilê .qurne { left: 51.46%; top: 25.32%; width: 8.27%; height: 8.05%; } #Bilbilê .topeli-mehmud { left: 60.24%; top: 27.58%; width: 8.48%; height: 8.24%; } #Bilbilê .kurdo { left: 70.64%; top: 28.16%; width: 8.88%; height: 8.64%; } #Bilbilê .ebudane { left: 84.76%; top: 34.15%; width: 8.88%; height: 8.64%; } #Bilbilê .elcara { left: 58.63%; top: 38.96%; width: 8.88%; height: 8.64%; } #Bilbilê .uga { left: 51.66%; top: 39.16%; width: 8.88%; height: 8.64%; } #Bilbilê .qestele-xidiriya { left: 26.03%; top: 33.66%; width: 8.88%; height: 8.64%; } #Bilbilê .xidiriya { left: 32.09%; top: 36.02%; width: 8.88%; height: 8.64%; } #Bilbilê .kurzele { left: 18.37%; top: 46.42%; width: 9.28%; height: 9.03%; } #Bilbilê .berkase { left: 33.20%; top: 47.79%; width: 9.08%; height: 8.83%; } #Bilbilê .serqiya { left: 44.20%; top: 44.16%; width: 8.88%; height: 8.64%; } #Bilbilê .qestele-miqded { left: 56.81%; top: 45.24%; width: 9.69%; height: 9.42%; } #Bilbilê .sexorze { left: 64.38%; top: 45.34%; width: 9.28%; height: 9.03%; } #Bilbilê .bibaka { left: 41.07%; top: 51.52%; width: 8.48%; height: 8.24%; } #Bilbilê .qurta { left: 51.66%; top: 50.15%; width: 9.49%; height: 9.22%; } #Bilbilê .qasa { left: 48.33%; top: 52.11%; width: 8.68%; height: 8.44%; } #Bilbilê .kela { left: 18.47%; top: 55.05%; width: 8.68%; height: 8.44%; } #Bilbilê .kere { left: 24.52%; top: 57.41%; width: 8.68%; height: 8.44%; } #Bilbilê .qota { left: 33.80%; top: 53.09%; width: 8.27%; height: 8.05%; } #Bilbilê .kotana { left: 54.49%; top: 60.06%; width: 10.29%; height: 10.01%; } #Bilbilê .upila { left: 50.05%; top: 61.73%; width: 9.49%; height: 9.22%; } #Bilbilê .xelilaka { left: 33.90%; top: 62.71%; width: 9.28%; height: 9.03%; } #Bilbilê .esune { left: 26.64%; top: 60.75%; width: 8.68%; height: 8.44%; } #Bilbilê .zivinge { left: 28.76%; top: 69.28%; width: 9.28%; height: 9.03%; } #Bilbilê .qirigole { left: 45.41%; top: 64.97%; width: 9.89%; height: 9.62%; } #Bilbilê .qizilbasa { left: 61.96%; top: 65.85%; width: 9.49%; height: 9.22%; } #Bilbilê .bele { left: 58.22%; top: 69.48%; width: 10.09%; height: 9.81%; } #Bilbilê .hesendera { left: 48.23%; top: 77.13%; width: 9.69%; height: 9.42%; }
         #Cindires .remadiye { left: 36.63%; top: 3.61%; width: 8.88%; height: 8.82%; } #Cindires .hechesna { left: 34.21%; top: 10.02%; width: 8.88%; height: 8.82%; } #Cindires .xalta { left: 53.78%; top: 12.22%; width: 9.28%; height: 9.22%; } #Cindires .colaqa-1 { left: 66.50%; top: 15.63%; width: 9.69%; height: 9.62%; } #Cindires .gewrika { left: 72.45%; top: 12.53%; width: 9.28%; height: 9.22%; } #Cindires .gorda { left: 41.57%; top: 15.63%; width: 9.49%; height: 9.42%; } #Cindires .xerza { left: 63.47%; top: 16.93%; width: 10.09%; height: 10.02%; } #Cindires .tetera { left: 34.21%; top: 18.44%; width: 9.69%; height: 9.62%; } #Cindires .cobana { left: 43.99%; top: 23.65%; width: 9.89%; height: 9.82%; } #Cindires .miske-jorin { left: 47.93%; top: 22.55%; width: 9.49%; height: 9.42%; } #Cindires .miske-jerin { left: 49.45%; top: 27.56%; width: 9.89%; height: 9.82%; } #Cindires .colaqa-2 { left: 55.09%; top: 23.85%; width: 9.49%; height: 9.42%; } #Cindires .aske-serqi { left: 56.41%; top: 18.84%; width: 9.69%; height: 9.62%; } #Cindires .feqira { left: 71.24%; top: 17.94%; width: 9.08%; height: 9.02%; } #Cindires .sex-ebdirehmen { left: 73.16%; top: 32.67%; width: 9.69%; height: 9.62%; } #Cindires .qujuma { left: 63.37%; top: 30.96%; width: 10.29%; height: 10.22%; } #Cindires .bircike { left: 53.08%; top: 34.67%; width: 10.49%; height: 10.42%; } #Cindires .kora { left: 40.56%; top: 29.06%; width: 9.69%; height: 9.62%; } #Cindires .kefersefre { left: 34.91%; top: 33.87%; width: 10.29%; height: 10.22%; } #Cindires .hekice { left: 17.96%; top: 32.26%; width: 9.89%; height: 9.82%; } #Cindires .merwane-jerin { left: 11.91%; top: 35.87%; width: 9.89%; height: 9.82%; } #Cindires .merwane-jorin { left: 17.15%; top: 37.88%; width: 8.68%; height: 8.62%; } #Cindires .aske-xerbi { left: 25.23%; top: 45.19%; width: 9.89%; height: 9.82%; } #Cindires .baflor { left: 35.92%; top: 44.79%; width: 9.28%; height: 9.22%; } #Cindires .yalanqoze { left: 43.09%; top: 45.29%; width: 9.69%; height: 9.62%; } #Cindires .sindiyanke { left: 47.02%; top: 38.78%; width: 9.89%; height: 9.82%; } #Cindires .qurbe { left: 55.30%; top: 39.68%; width: 9.89%; height: 9.82%; } #Cindires .qile { left: 63.07%; top: 39.28%; width: 9.08%; height: 9.02%; } #Cindires .tilhemo { left: 73.86%; top: 40.78%; width: 9.49%; height: 9.42%; } #Cindires .hemame { left: 14.43%; top: 58.42%; width: 9.49%; height: 9.42%; } #Cindires .heciskendere { left: 25.23%; top: 55.51%; width: 9.89%; height: 9.82%; } #Cindires .axcele { left: 35.02%; top: 56.51%; width: 9.69%; height: 9.62%; } #Cindires .cindires { left: 43.79%; top: 50.40%; width: 11.50%; height: 11.42%; } #Cindires .hemelke { left: 56.41%; top: 48.00%; width: 9.49%; height: 9.42%; } #Cindires .remedena { left: 63.57%; top: 48.10%; width: 9.28%; height: 9.22%; } #Cindires .fireriye { left: 73.56%; top: 48.80%; width: 9.28%; height: 9.22%; } #Cindires .hecilere { left: 54.69%; top: 53.21%; width: 9.89%; height: 9.82%; } #Cindires .ebukebe { left: 64.18%; top: 54.21%; width: 11.10%; height: 11.02%; } #Cindires .zelaqe { left: 80.22%; top: 52.51%; width: 9.69%; height: 9.62%; } #Cindires .sifiye { left: 18.47%; top: 71.54%; width: 9.28%; height: 9.22%; } #Cindires .mila-xelila { left: 26.54%; top: 70.94%; width: 9.49%; height: 9.42%; } #Cindires .mehmediye { left: 40.36%; top: 69.04%; width: 9.69%; height: 9.62%; } #Cindires .derbelute { left: 41.17%; top: 75.15%; width: 8.68%; height: 8.62%; } #Cindires .medaya { left: 47.63%; top: 66.33%; width: 9.08%; height: 9.02%; } #Cindires .dewe-jerin { left: 54.09%; top: 65.63%; width: 9.49%; height: 9.42%; } #Cindires .dewe-jorin { left: 50.96%; top: 74.25%; width: 9.28%; height: 9.22%; } #Cindires .tilsilore { left: 56.31%; top: 62.22%; width: 9.49%; height: 9.42%; } #Cindires .celeme { left: 71.24%; top: 67.43%; width: 10.09%; height: 10.02%; }
         #Efrîn .aster { left: 34.84%; top: 6.93%; width: 11.92%; height: 9.03%; } #Efrîn .coqe { left: 16.85%; top: 13.55%; width: 8.43%; height: 6.39%; } #Efrîn .cumqe { left: 40.70%; top: 13.94%; width: 10.28%; height: 7.79%; } #Efrîn .meriske { left: 65.67%; top: 4.21%; width: 9.66%; height: 7.32%; } #Efrîn .kefermize { left: 59.92%; top: 7.16%; width: 11.31%; height: 8.57%; } #Efrîn .sewarxa { left: 66.60%; top: 8.02%; width: 9.04%; height: 6.85%; } #Efrîn .tirtewile { left: 35.25%; top: 17.60%; width: 10.48%; height: 7.94%; } #Efrîn .qibare { left: 50.87%; top: 18.46%; width: 9.66%; height: 7.32%; } #Efrîn .efrin { left: 37.82%; top: 22.04%; width: 10.69%; height: 8.10%; } #Efrîn .gaze { left: 7.50%; top: 22.82%; width: 8.43%; height: 6.39%; } #Efrîn .gunde-mezin { left: 13.16%; top: 19.00%; width: 10.28%; height: 7.79%; } #Efrîn .xelnare { left: 19.01%; top: 18.69%; width: 8.84%; height: 6.70%; } #Efrîn .kefersile { left: 23.54%; top: 22.90%; width: 9.04%; height: 6.85%; } #Efrîn .marate { left: 16.03%; top: 24.30%; width: 9.66%; height: 7.32%; } #Efrîn .keferdele-jorin { left: 5.76%; top: 24.77%; width: 8.84%; height: 6.70%; } #Efrîn .keferdele-jerin { left: 10.59%; top: 32.48%; width: 8.02%; height: 6.07%; } #Efrîn .bablite { left: 25.69%; top: 30.61%; width: 9.25%; height: 7.01%; } #Efrîn .xalta { left: 55.19%; top: 24.14%; width: 9.66%; height: 7.32%; } #Efrîn .meremine { left: 63.62%; top: 18.30%; width: 8.43%; height: 6.39%; } #Efrîn .inabke { left: 63.72%; top: 20.64%; width: 9.25%; height: 7.01%; } #Efrîn .cilbire { left: 68.86%; top: 31.00%; width: 9.25%; height: 7.01%; } #Efrîn .bene { left: 76.46%; top: 35.75%; width: 9.66%; height: 7.32%; } #Efrîn .basile { left: 63.00%; top: 37.62%; width: 9.66%; height: 7.32%; } #Efrîn .kurzele { left: 43.58%; top: 34.66%; width: 9.46%; height: 7.16%; } #Efrîn .turinde { left: 41.11%; top: 26.32%; width: 10.28%; height: 7.79%; } #Efrîn .kersane { left: 34.84%; top: 25.70%; width: 10.69%; height: 8.10%; } #Efrîn .pitete { left: 30.22%; top: 33.41%; width: 10.07%; height: 7.63%; } #Efrîn .endare { left: 36.99%; top: 34.74%; width: 10.07%; height: 7.63%; } #Efrîn .cidede { left: 34.74%; top: 28.50%; width: 10.90%; height: 8.26%; } #Efrîn .kefirbetre { left: 20.97%; top: 36.37%; width: 9.04%; height: 6.85%; } #Efrîn .kokebe { left: 26.72%; top: 38.94%; width: 9.46%; height: 7.16%; } #Efrîn .tilfe { left: 16.65%; top: 43.54%; width: 9.25%; height: 7.01%; } #Efrîn .keferzite { left: 19.22%; top: 50.08%; width: 9.66%; height: 7.32%; } #Efrîn .kifere { left: 34.12%; top: 47.98%; width: 8.84%; height: 6.70%; } #Efrîn .basute { left: 38.54%; top: 44.39%; width: 8.84%; height: 6.70%; } #Efrîn .soxaneke { left: 54.78%; top: 42.68%; width: 10.48%; height: 7.94%; } #Efrîn .aqibe { left: 68.35%; top: 43.54%; width: 9.25%; height: 7.01%; } #Efrîn .xurebke { left: 81.09%; top: 45.95%; width: 9.25%; height: 7.01%; } #Efrîn .zarete { left: 78.73%; top: 49.30%; width: 9.04%; height: 6.85%; } #Efrîn .kimare { left: 45.43%; top: 47.66%; width: 8.84%; height: 6.70%; } #Efrîn .birce { left: 36.48%; top: 51.95%; width: 9.25%; height: 7.01%; } #Efrîn .xeziwe { left: 28.57%; top: 61.37%; width: 9.25%; height: 7.01%; } #Efrîn .iska { left: 17.37%; top: 68.07%; width: 9.25%; height: 7.01%; } #Efrîn .sadere { left: 23.54%; top: 64.56%; width: 10.28%; height: 7.79%; } #Efrîn .berade { left: 45.63%; top: 58.33%; width: 10.07%; height: 7.63%; } #Efrîn .meyase { left: 61.46%; top: 56.23%; width: 9.04%; height: 6.85%; } #Efrîn .bircilqase { left: 59.30%; top: 64.72%; width: 9.25%; height: 7.01%; } #Efrîn .biiye { left: 36.28%; top: 66.98%; width: 9.04%; height: 6.85%; } #Efrîn .kefer-nabo { left: 49.54%; top: 66.51%; width: 9.04%; height: 6.85%; } #Efrîn .basufane { left: 38.34%; top: 71.96%; width: 9.25%; height: 7.01%; } #Efrîn .gundi-mezin { left: 62.90%; top: 72.35%; width: 10.07%; height: 7.63%; } #Efrîn .birc-hedar { left: 47.48%; top: 71.57%; width: 9.25%; height: 7.01%; } #Efrîn .kibesine { left: 50.77%; top: 75.16%; width: 9.46%; height: 7.16%; } #Efrîn .farfirtine { left: 47.58%; top: 77.57%; width: 9.87%; height: 7.48%; } #Efrîn .basemre { left: 66.80%; top: 80.76%; width: 9.87%; height: 7.48%; }
@@ -344,37 +353,64 @@ html_template = """
         #Şera .nebi-huri { left: 34.51%; top: 3.04%; width: 9.89%; height: 7.26%; } #Şera .mersewa { left: 45.41%; top: 9.34%; width: 9.89%; height: 7.26%; } #Şera .siltete { left: 59.84%; top: 11.05%; width: 9.28%; height: 6.82%; } #Şera .omer-simo { left: 38.85%; top: 14.75%; width: 8.88%; height: 6.52%; } #Şera .siiriya { left: 31.08%; top: 20.83%; width: 9.69%; height: 7.12%; } #Şera .zeytuneke { left: 42.89%; top: 21.05%; width: 9.69%; height: 7.12%; } #Şera .ikidame { left: 74.97%; top: 19.87%; width: 9.69%; height: 7.12%; } #Şera .dersiwane { left: 63.17%; top: 24.76%; width: 10.69%; height: 7.86%; } #Şera .diraqliya { left: 30.88%; top: 28.17%; width: 9.28%; height: 6.82%; } #Şera .pelusanke { left: 44.40%; top: 31.06%; width: 9.49%; height: 6.97%; } #Şera .alciya { left: 36.23%; top: 36.70%; width: 8.88%; height: 6.52%; } #Şera .qetlebiye { left: 47.73%; top: 37.73%; width: 9.28%; height: 6.82%; } #Şera .dewris { left: 28.15%; top: 38.77%; width: 8.88%; height: 6.52%; } #Şera .qerqina { left: 36.93%; top: 43.81%; width: 8.68%; height: 6.37%; } #Şera .naza { left: 21.09%; top: 41.88%; width: 9.69%; height: 7.12%; } #Şera .omera { left: 47.83%; top: 44.11%; width: 9.08%; height: 6.67%; } #Şera .erebwerane { left: 62.46%; top: 36.92%; width: 9.49%; height: 6.97%; } #Şera .dikmedase { left: 69.93%; top: 42.18%; width: 9.08%; height: 6.67%; } #Şera .yazibaxe { left: 80.93%; top: 44.85%; width: 9.69%; height: 7.12%; } #Şera .qastele-eli-cindo { left: 71.44%; top: 52.78%; width: 9.49%; height: 6.97%; } #Şera .baflune { left: 57.72%; top: 59.38%; width: 9.49%; height: 6.97%; } #Şera .ezaz { left: 79.21%; top: 67.16%; width: 9.69%; height: 7.12%; } #Şera .qitme { left: 51.16%; top: 65.68%; width: 9.28%; height: 6.82%; } #Şera .cema { left: 42.38%; top: 47.44%; width: 9.49%; height: 6.97%; } #Şera .sinka { left: 46.92%; top: 55.23%; width: 9.28%; height: 6.82%; } #Şera .berava { left: 35.72%; top: 46.55%; width: 8.48%; height: 6.23%; } #Şera .sera { left: 41.27%; top: 55.67%; width: 9.28%; height: 6.82%; } #Şera .gabeleke { left: 31.28%; top: 54.26%; width: 9.49%; height: 6.97%; } #Şera .meydanke { left: 20.99%; top: 50.04%; width: 9.49%; height: 6.97%; } #Şera .hilubiye { left: 23.11%; top: 63.53%; width: 9.69%; height: 7.12%; } #Şera .kerferome { left: 13.72%; top: 67.38%; width: 9.08%; height: 6.67%; } #Şera .qurtqulaqe-mezin { left: 22.50%; top: 70.05%; width: 9.69%; height: 7.12%; } #Şera .qurtqulaqe-cucik { left: 22.10%; top: 73.17%; width: 9.49%; height: 6.97%; } #Şera .xirabi-sera { left: 41.07%; top: 57.45%; width: 9.69%; height: 7.12%; } #Şera .metina { left: 41.37%; top: 63.90%; width: 9.49%; height: 6.97%; } #Şera .sere-kaniye { left: 46.42%; top: 67.61%; width: 9.49%; height: 6.97%; } #Şera .mesale { left: 39.15%; top: 69.46%; width: 10.09%; height: 7.41%; } #Şera .kortike { left: 30.98%; top: 73.17%; width: 9.69%; height: 7.12%; } #Şera .qeredepe { left: 26.74%; top: 78.28%; width: 10.09%; height: 7.41%; } #Şera .qestele-kistik { left: 20.38%; top: 80.73%; width: 8.88%; height: 6.52%; } #Şera .cumke { left: 20.69%; top: 84.58%; width: 8.68%; height: 6.37%; }
         #Şiyê .tirmisho { left: 66.2%; top: 37.0%; width: 9.1%; height: 6.0%; } #Şiyê .kela { left: 59.1%; top: 27.0%; width: 6.7%; height: 4.4%; } #Şiyê .alkana { left: 57.0%; top: 15.1%; width: 7.7%; height: 5.1%; } #Şiyê .xelil { left: 64.5%; top: 13.9%; width: 7.7%; height: 5.1%; } #Şiyê .ceqele-jorin { left: 45.2%; top: 18.1%; width: 9.1%; height: 6.0%; } #Şiyê .ceqele-jerin { left: 36.7%; top: 23.2%; width: 9.9%; height: 6.5%; } #Şiyê .hec-bilal { left: 54.7%; top: 18.8%; width: 8.3%; height: 5.5%; } #Şiyê .ceqele-orte { left: 44.1%; top: 22.5%; width: 9.3%; height: 6.1%; } #Şiyê .mistika { left: 44.1%; top: 27.1%; width: 9.5%; height: 6.3%; } #Şiyê .siketka { left: 70.7%; top: 34.5%; width: 8.5%; height: 5.6%; } #Şiyê .erende { left: 47.9%; top: 35.0%; width: 9.1%; height: 6.0%; } #Şiyê .qermitliq { left: 18.1%; top: 36.3%; width: 10.9%; height: 7.2%; } #Şiyê .siye { left: 28.4%; top: 44.3%; width: 17.8%; height: 11.7%; } #Şiyê .senare { left: 31.1%; top: 60.4%; width: 10.1%; height: 6.7%; } #Şiyê .anqele { left: 31.0%; top: 64.4%; width: 8.9%; height: 5.9%; } #Şiyê .baziya { left: 52.0%; top: 65.7%; width: 10.1%; height: 6.7%; } #Şiyê .hekice { left: 38.8%; top: 76.8%; width: 10.1%; height: 6.7%; }
 
+        /* FULL SCREEN SEARCH PAGE STYLES */
+        .search-results-page { display: none; min-height: 100vh; padding: 40px; background-color: var(--bg-color); background-image: url('../nahiyas/images/background2.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; }
+        .dark .search-results-page { background: linear-gradient(135deg, rgba(45, 45, 45, 0.9) 0%, rgba(60, 60, 60, 0.9) 100%); }
+        .search-results-container { max-width: 1200px; margin: 0 auto; }
+        .search-results-header { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+        .back-button { background-color: var(--green-color); color: var(--bg-color); border: none; padding: 20px 40px; border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .back-button:hover { background-color: var(--brown-color); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        .search-results-title { font-size: 32px; font-weight: 700; color: var(--text-color); margin: 0; }
+        .search-results-count { font-size: 16px; color: var(--subtext-color); margin-left: auto; }
+        .search-results-list { display: flex; flex-direction: column; gap: 16px; }
+        .search-result-card { background-color: var(--white-bg); border: 1px solid var(--village-border); border-radius: 8px; padding: 20px; cursor: pointer; transition: all 0.3s ease; }
+        .search-result-card:hover { border-color: var(--brown-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .search-result-card-title { font-size: 20px; font-weight: 600; color: var(--link-color); margin-bottom: 8px; }
+        .search-result-card-title:hover { text-decoration: underline; }
+        .search-result-card-subtitle { font-size: 14px; color: var(--subtext-color); margin-bottom: 4px; }
+        .search-result-card-description { font-size: 16px; color: var(--text-color); line-height: 1.4; }
+
         .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--village-border); color: var(--subtext-color); font-size: 14px; }
         
         @media (max-width: 768px) {
-            .header-section, .main-content { padding: 20px 15px; } .site-title-en { font-size: 36px; } .site-title-ar { font-size: 40px; } .search-wrapper, .stats-bar, .nav-buttons { flex-direction: column; align-items: stretch; gap: 15px; } .nahiya-title { font-size: 24px; } .nahiya-section { padding: 20px; }
-            /* NEW RESPONSIVE RULES FOR MAP */
+            .header-section, .main-content, .search-results-page { padding: 20px 15px; }
+            .site-title-en { font-size: 36px; } .site-title-ar { font-size: 40px; }
+            .search-wrapper, .stats-bar, .nav-buttons { flex-direction: column; align-items: stretch; gap: 15px; }
+            .nahiya-title { font-size: 24px; } .nahiya-section { padding: 20px; }
             .map-layout-container { flex-direction: column; }
             .map-village-links-multicolumn { column-count: 1; margin-bottom: 20px; }
+            .search-results-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .back-button { padding: 16px 30px; font-size: 16px; }
+            .search-results-title { font-size: 24px; }
         }
         @media (max-width: 480px) {
-            .header-section { padding: 25px 10px; } .main-content { padding: 20px 10px; } .site-title-en { font-size: 28px; } .site-title-ar { font-size: 32px; } .village-link { flex-direction: column; align-items: stretch; } .village-name-alt-container { justify-content: flex-start; }
+            .header-section { padding: 25px 10px; } .main-content { padding: 20px 10px; }
+            .site-title-en { font-size: 28px; } .site-title-ar { font-size: 32px; }
+            .village-link { flex-direction: column; align-items: stretch; }
+            .village-name-alt-container { justify-content: flex-start; }
         }
     </style>
 </head>
 <body>
-    <div class="header-section">
-        <h1 class="site-title-en">Archive of Afrin: Village Directory</h1>
-        <h2 class="site-title-ar">أرشيف عفرين: دليل القرى</h2>
-        <div class="theme-toggle-container">
-            <button id="theme-toggle" class="toggle-button-colors" style="padding: 8px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;">
-                <svg id="theme-toggle-dark-icon" class="hidden" style="width: 24px; height: 24px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                <svg id="theme-toggle-light-icon" class="hidden" style="width: 24px; height: 24px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" /></svg>
-            </button>
-        </div>
-    </div>
-
     <div class="main-content">
-        <div class="container">
-            <div class="search-wrapper">
-                <input type="text" id="search-input" class="search-input" placeholder="Search villages...">
-                <button class="search-button">Search</button>
+        <div class="header-section">
+            <h1 class="site-title-en">Archive of Afrin: Village Directory</h1>
+            <h2 class="site-title-ar">أرشيف عفرين: دليل القرى</h2>
+            <div class="theme-toggle-container">
+                <button id="theme-toggle" class="toggle-button-colors" style="padding: 8px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;">
+                    <svg id="theme-toggle-dark-icon" class="hidden" style="width: 24px; height: 24px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden" style="width: 24px; height: 24px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" /></svg>
+                </button>
             </div>
+        </div>
+        <div class="container">
+            <!-- IDENTICAL SEARCH BAR FROM INDEX.HTML -->
+            <div class="search-wrapper">
+                <input type="text" id="search-input" class="search-input" placeholder="Search villages, people, places...">
+                <div id="search-results" class="search-results"></div>
+                <button class="search-button" onclick="showSearchResultsPage()">Search</button>
+            </div>
+            
             <div class="stats-bar">
                 <div class="stat-item"><div id="village-count" class="stat-number"></div><div class="stat-label">Villages</div></div>
                 <div class="stat-item"><div id="nahiya-count" class="stat-number"></div><div class="stat-label">Nahiyas</div></div>
@@ -402,8 +438,22 @@ html_template = """
         </div>
     </div>
 
+    <!-- FULL SCREEN SEARCH RESULTS PAGE HTML -->
+    <div class="search-results-page" id="search-results-page">
+        <div class="search-results-container">
+            <div class="search-results-header">
+                <button class="back-button" onclick="returnToMain()">← Return to Directory</button>
+                <h1 class="search-results-title" id="search-results-page-title">Search Results</h1>
+                <div class="search-results-count" id="search-results-count"></div>
+            </div>
+            <div class="search-results-list" id="search-results-page-list">
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/search.js"></script>
     <script>
-        // EXACT SCRIPT FROM All_Nahiyas_Clickable_Maps.html
+        // --- 1. PAGE BUILDING AND THEME LOGIC (UNCHANGED) ---
         function showHighlight() {
             document.querySelectorAll('.highlight-box').forEach(box => { box.style.display = 'none'; });
             if (window.location.hash) {
@@ -423,10 +473,9 @@ html_template = """
         window.addEventListener('hashchange', showHighlight);
         window.addEventListener('DOMContentLoaded', showHighlight);
 
-        // --- Page Building and Other Logic ---
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             const nahiyas = __NAHIYAS_DATA_JSON_PLACEHOLDER__;
-
+            
             const alphabeticalContainer = document.getElementById('alphabetical-list-container');
             const byNahiyaContainer = document.getElementById('by-nahiya-list-container');
             const navButtonsContainer = document.getElementById('nahiya-nav-buttons');
@@ -435,19 +484,12 @@ html_template = """
             function createDetailedVillageLink(village) {
                 const linkWrapper = document.createElement('a');
                 linkWrapper.className = "village-link";
-                // Use the actual filename for the link
                 linkWrapper.href = `../village_sites/${village.filename}`;
                 linkWrapper.target = "_blank";
-
                 const mainName = document.createElement('span');
                 mainName.className = "village-name-main";
                 mainName.textContent = village.name;
-                
-                // NEW: Check the flag and apply blue color if info is minimal
-                if (village.has_minimal_info) {
-                    mainName.style.color = 'var(--internal-link-color)';
-                }
-                
+                if (village.has_minimal_info) { mainName.style.color = 'var(--internal-link-color)'; }
                 const altContainer = document.createElement('div');
                 altContainer.className = 'village-name-alt-container';
                 if (village.alt && village.alt.length > 0) {
@@ -458,37 +500,28 @@ html_template = """
                         altContainer.appendChild(altName);
                     });
                 }
-                
                 linkWrapper.appendChild(mainName);
                 linkWrapper.appendChild(altContainer);
                 return linkWrapper;
             }
 
-            // Sort nahiyas alphabetically for display
             const sortedNahiyaNames = Object.keys(nahiyas).sort((a, b) => a.localeCompare(b));
-
             for (const nahiyaName of sortedNahiyaNames) {
                 const nahiyaData = nahiyas[nahiyaName];
                 const safeId = `nahiya-${nahiyaName.replace(/[^a-zA-Z0-9]/g, '')}`;
-                
                 const groupDiv = document.createElement('div');
                 groupDiv.className = 'nahiya-group';
                 groupDiv.id = safeId;
-
                 const subtitle = document.createElement('h4');
                 subtitle.className = 'nahiya-subtitle';
                 subtitle.textContent = nahiyaName;
                 groupDiv.appendChild(subtitle);
-                
-                // This section uses the HARDCODED map data
                 if (nahiyaData.hasMap) {
                     const mapWrapper = document.createElement('div');
                     mapWrapper.className = 'map-wrapper';
                     mapWrapper.id = nahiyaName;
-
                     const mapLayoutContainer = document.createElement('div');
                     mapLayoutContainer.className = 'map-layout-container';
-
                     const villageLinks = document.createElement('div');
                     villageLinks.className = 'map-village-links-multicolumn';
                     nahiyaData.villages.forEach(village => {
@@ -497,58 +530,44 @@ html_template = """
                         link.textContent = village.name;
                         villageLinks.appendChild(link);
                     });
-
                     const mapContainer = document.createElement('div');
                     mapContainer.className = 'map-container';
-                    
                     const mapImage = document.createElement('img');
                     mapImage.alt = `Map of ${nahiyaName}`;
                     mapImage.onerror = function() { this.onerror=null; this.src=`https://placehold.co/500x331/ef4444/ffffff?text=IMAGE+NOT+FOUND`; };
-                    mapImage.src = `../nahiyas/${nahiyaData.image}`;
+                    mapImage.src = `../nahiyas/${nahiyas[nahiyaName].image}`;
                     mapContainer.appendChild(mapImage);
-
                     nahiyaData.villages.forEach(village => {
                         const highlightBox = document.createElement('div');
                         highlightBox.className = `${village.id} highlight-box`;
                         mapContainer.appendChild(highlightBox);
                     });
-                    
                     mapLayoutContainer.appendChild(villageLinks);
                     mapLayoutContainer.appendChild(mapContainer);
                     mapWrapper.appendChild(mapLayoutContainer);
                     groupDiv.appendChild(mapWrapper);
                 }
-
-                // This section uses the DYNAMICALLY SCRAPED data
                 const detailedVillageList = document.createElement('div');
                 detailedVillageList.className = 'village-list';
                 if (nahiyaData.all_villages_detailed) {
-                    // Sort villages alphabetically within the nahiya
                     nahiyaData.all_villages_detailed.sort((a, b) => a.name.localeCompare(b.name));
                     nahiyaData.all_villages_detailed.forEach(village => {
                         detailedVillageList.appendChild(createDetailedVillageLink(village));
-                        allVillagesForAlphabeticalList.push(village); // Collect for main alphabetical list
+                        allVillagesForAlphabeticalList.push(village);
                     });
                 }
                 groupDiv.appendChild(detailedVillageList);
-                
                 byNahiyaContainer.appendChild(groupDiv);
-
                 const navButton = document.createElement('button');
                 navButton.className = 'nav-btn';
                 navButton.textContent = nahiyaName;
                 navButton.onclick = () => scrollToSection(safeId);
                 navButtonsContainer.appendChild(navButton);
             }
-            
-            // Update counts based on the number of villages actually scraped and displayed
             document.getElementById('village-count').textContent = allVillagesForAlphabeticalList.length;
             document.getElementById('nahiya-count').textContent = sortedNahiyaNames.length;
-
-            // Build the main alphabetical list from all collected villages
             allVillagesForAlphabeticalList.sort((a, b) => a.name.localeCompare(b.name));
             allVillagesForAlphabeticalList.forEach(village => alphabeticalContainer.appendChild(createDetailedVillageLink(village)));
-
             const themeToggleBtn = document.getElementById('theme-toggle');
             const setupTheme = () => {
                 const isDark = localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -562,11 +581,117 @@ html_template = """
                 localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
                 setupTheme();
             });
+
+            // --- 2. SEARCH INITIALIZATION AND UI LOGIC ---
+            await AfrinArchiveSearch.init("graph-data.json");
+            setupSearchUI();
         });
         
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) { element.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        }
+
+        // --- 3. SEARCH UI FUNCTIONS (COPIED AND ADAPTED FROM INDEX.HTML) ---
+        let lastSearchResults = [];
+        let lastSearchQuery = '';
+
+        function setupSearchUI() {
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            let searchTimeout;
+            searchInput.addEventListener('input', () => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(performSearch, 300);
+            });
+            searchInput.addEventListener('keydown', e => {
+                if (e.key === 'Enter') { e.preventDefault(); showSearchResultsPage(); }
+            });
+            document.addEventListener('click', e => {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+            searchInput.addEventListener('focus', () => {
+                if (searchInput.value.trim() && searchResults.innerHTML) {
+                    searchResults.style.display = 'block';
+                }
+            });
+        }
+
+        function performSearch() {
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            const query = searchInput.value.trim();
+            if (!query) { searchResults.style.display = 'none'; return; }
+
+            const results = AfrinArchiveSearch.search(query);
+            lastSearchResults = results;
+            lastSearchQuery = query;
+
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item"><div class="search-result-title">No results found</div></div>';
+            } else {
+                const dropdownHTML = results.slice(0, 8).map(result => `
+                    <div class="search-result-item" onclick="openVillage('${escapeHtml(result.village.filename).replace(/'/g, "\\\\'")}')">
+                        <div class="search-result-title">${escapeHtml(result.village.name)}</div>
+                        <div class="search-result-subtitle">${escapeHtml(result.matchType)}: ${highlightMatch(result.matchText, result.query)}</div>
+                    </div>`).join('');
+                
+                const seeMoreHTML = results.length > 8 ? `
+                    <div class="see-more-button" onclick="showSearchResultsPage()">
+                        See All ${results.length} results
+                    </div>` : '';
+                searchResults.innerHTML = dropdownHTML + seeMoreHTML;
+            }
+            searchResults.style.display = 'block';
+        }
+
+        function showSearchResultsPage() {
+            const query = document.getElementById('search-input').value.trim();
+            const results = query ? AfrinArchiveSearch.search(query) : lastSearchResults;
+            
+            // Hide the main directory content
+            document.querySelector('.main-content').style.display = 'none';
+            // Show the search results page
+            document.getElementById('search-results-page').style.display = 'block';
+            
+            const safeQuery = escapeHtml(query || lastSearchQuery);
+            document.getElementById('search-results-page-title').textContent = `Search Results for "${safeQuery}"`;
+            document.getElementById('search-results-count').textContent = `${results.length} result${results.length !== 1 ? 's' : ''} found`;
+            
+            const list = document.getElementById('search-results-page-list');
+            list.innerHTML = results.length === 0 ? '<div style="text-align: center; padding: 40px; color: #666;">No results found.</div>' :
+                results.map(result => `
+                    <div class="search-result-card" onclick="openVillage('${escapeHtml(result.village.filename).replace(/'/g, "\\\\'")}')">
+                        <div class="search-result-card-title">${escapeHtml(result.village.name)}</div>
+                        <div class="search-result-card-subtitle">Found in: ${escapeHtml(result.matchType)}</div>
+                        <div class="search-result-card-description">Match: ${highlightMatch(result.matchText, result.query)}</div>
+                    </div>`).join('');
+        }
+
+        function returnToMain() {
+            // Hide search page and show the main directory content
+            document.getElementById('search-results-page').style.display = 'none';
+            document.querySelector('.main-content').style.display = 'block';
+        }
+
+        function openVillage(filename) {
+            // Path must be relative to this HTML file's location
+            window.open(`../village_sites/${filename}`, '_blank');
+            document.getElementById('search-results').style.display = 'none';
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML.replace(/\\n/g, ' ').replace(/\\r/g, ' ');
+        }
+        
+        function highlightMatch(text, query) {
+            if (!query) return escapeHtml(text);
+            const regex = new RegExp(`(${escapeHtml(query)})`, 'gi');
+            return escapeHtml(text).replace(regex, '<span class="match-highlight">$1</span>');
         }
     </script>
 </body>
