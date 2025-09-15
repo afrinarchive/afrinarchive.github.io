@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexşeyên Hemû Nahiyeyan - All Nahiyas Clickable Maps</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; background-color: #f4f4f9; color: #333; }
+        h1 { text-align: center; color: #2c3e50; padding: 20px 0; }
+        .nahiya-section { border-top: 5px solid #3498db; margin: 20px; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+        .nahiya-section h2 { background-color: #2c3e50; color: white; padding: 15px 20px; margin: 0; font-size: 1.5em; }
+        .content-wrapper { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; }
+        .village-list-column { flex: 1; min-width: 280px; }
+        .village-list-column a { display: block; padding: 9px 12px; color: #2980b9; text-decoration: none; border-bottom: 1px solid #f0f0f0; transition: background-color 0.2s, padding-left 0.2s; border-radius: 4px; }
+        .village-list-column a:hover { background-color: #ecf0f1; padding-left: 20px; }
+        a.clear-link { color: #c0392b; font-weight: bold; margin-top: 10px; }
+        a.clear-link:hover { background-color: #e74c3c; color: white; }
+        .maps-column { flex: 2; min-width: 300px; display: flex; justify-content: center; align-items: flex-start; }
+        .map-container { position: relative; width:100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        
+        /* --- COORDINATES FOR BILBILÊ MAP --- */
+
+        /* Basic setup for the map container and image */
+        #Bilbilê .map-container {
+            position: relative;
+        }
+        #Bilbilê .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #Bilbilê .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR BILBILE AREAS --- 
+         Recalculated for original image dimensions of 991x1019 pixels.
+        */
+        #Bilbilê .singele { left: 12.71%; top: 6.48%; width: 8.48%; height: 8.24%; }
+        #Bilbilê .beke { left: 21.60%; top: 13.05%; width: 8.27%; height: 8.05%; }
+        #Bilbilê .eli-kere { left: 28.96%; top: 17.76%; width: 8.27%; height: 8.05%; }
+        #Bilbilê .heyama { left: 30.07%; top: 21.59%; width: 8.07%; height: 7.85%; }
+        #Bilbilê .zere { left: 38.24%; top: 21.98%; width: 8.07%; height: 7.85%; }
+        #Bilbilê .baliya { left: 48.94%; top: 19.14%; width: 8.68%; height: 8.44%; }
+        #Bilbilê .xilalka { left: 9.59%; top: 32.58%; width: 8.27%; height: 8.05%; }
+        #Bilbilê .bexce { left: 22.60%; top: 29.73%; width: 8.68%; height: 8.44%; }
+        #Bilbilê .bilbile { left: 41.37%; top: 26.40%; width: 10.09%; height: 9.81%; }
+        #Bilbilê .qurne { left: 51.46%; top: 25.32%; width: 8.27%; height: 8.05%; }
+        #Bilbilê .topeli-mehmud { left: 60.24%; top: 27.58%; width: 8.48%; height: 8.24%; }
+        #Bilbilê .kurdo { left: 70.64%; top: 28.16%; width: 8.88%; height: 8.64%; }
+        #Bilbilê .ebudane { left: 84.76%; top: 34.15%; width: 8.88%; height: 8.64%; }
+        #Bilbilê .elcara { left: 58.63%; top: 38.96%; width: 8.88%; height: 8.64%; }
+        #Bilbilê .uga { left: 51.66%; top: 39.16%; width: 8.88%; height: 8.64%; }
+        #Bilbilê .qestele-xidiriya { left: 26.03%; top: 33.66%; width: 8.88%; height: 8.64%; }
+        #Bilbilê .xidiriya { left: 32.09%; top: 36.02%; width: 8.88%; height: 8.64%; }
+        #Bilbilê .kurzele { left: 18.37%; top: 46.42%; width: 9.28%; height: 9.03%; }
+        #Bilbilê .berkase { left: 33.20%; top: 47.79%; width: 9.08%; height: 8.83%; }
+        #Bilbilê .serqiya { left: 44.20%; top: 44.16%; width: 8.88%; height: 8.64%; }
+        #Bilbilê .qestele-miqded { left: 56.81%; top: 45.24%; width: 9.69%; height: 9.42%; }
+        #Bilbilê .sexorze { left: 64.38%; top: 45.34%; width: 9.28%; height: 9.03%; }
+        #Bilbilê .bibaka { left: 41.07%; top: 51.52%; width: 8.48%; height: 8.24%; }
+        #Bilbilê .qurta { left: 51.66%; top: 50.15%; width: 9.49%; height: 9.22%; }
+        #Bilbilê .qasa { left: 48.33%; top: 52.11%; width: 8.68%; height: 8.44%; }
+        #Bilbilê .kela { left: 18.47%; top: 55.05%; width: 8.68%; height: 8.44%; }
+        #Bilbilê .kere { left: 24.52%; top: 57.41%; width: 8.68%; height: 8.44%; }
+        #Bilbilê .qota { left: 33.80%; top: 53.09%; width: 8.27%; height: 8.05%; }
+        #Bilbilê .kotana { left: 54.49%; top: 60.06%; width: 10.29%; height: 10.01%; }
+        #Bilbilê .upila { left: 50.05%; top: 61.73%; width: 9.49%; height: 9.22%; }
+        #Bilbilê .xelilaka { left: 33.90%; top: 62.71%; width: 9.28%; height: 9.03%; }
+        #Bilbilê .esune { left: 26.64%; top: 60.75%; width: 8.68%; height: 8.44%; }
+        #Bilbilê .zivinge { left: 28.76%; top: 69.28%; width: 9.28%; height: 9.03%; }
+        #Bilbilê .qirigole { left: 45.41%; top: 64.97%; width: 9.89%; height: 9.62%; }
+        #Bilbilê .qizilbasa { left: 61.96%; top: 65.85%; width: 9.49%; height: 9.22%; }
+        #Bilbilê .bele { left: 58.22%; top: 69.48%; width: 10.09%; height: 9.81%; }
+        #Bilbilê .hesendera { left: 48.23%; top: 77.13%; width: 9.69%; height: 9.42%; }
+    
+/* --- COORDINATES FOR CINDIRES MAP --- */
+
+        /* Basic setup for the map container and image */
+        #Cindires .map-container {
+            position: relative;
+        }
+        #Cindires .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #Cindires .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR CINDARIS AREAS --- 
+         Recalculated for original image dimensions of 991x998 pixels.
+        */
+        #Cindires .remadiye { left: 36.63%; top: 3.61%; width: 8.88%; height: 8.82%; }
+        #Cindires .hechesna { left: 34.21%; top: 10.02%; width: 8.88%; height: 8.82%; }
+        #Cindires .xalta { left: 53.78%; top: 12.22%; width: 9.28%; height: 9.22%; }
+        #Cindires .colaqa-1 { left: 66.50%; top: 15.63%; width: 9.69%; height: 9.62%; }
+        #Cindires .gewrika { left: 72.45%; top: 12.53%; width: 9.28%; height: 9.22%; }
+        #Cindires .gorda { left: 41.57%; top: 15.63%; width: 9.49%; height: 9.42%; }
+        #Cindires .xerza { left: 63.47%; top: 16.93%; width: 10.09%; height: 10.02%; }
+        #Cindires .tetera { left: 34.21%; top: 18.44%; width: 9.69%; height: 9.62%; }
+        #Cindires .cobana { left: 43.99%; top: 23.65%; width: 9.89%; height: 9.82%; }
+        #Cindires .miske-jorin { left: 47.93%; top: 22.55%; width: 9.49%; height: 9.42%; }
+        #Cindires .miske-jerin { left: 49.45%; top: 27.56%; width: 9.89%; height: 9.82%; }
+        #Cindires .colaqa-2 { left: 55.09%; top: 23.85%; width: 9.49%; height: 9.42%; }
+        #Cindires .aske-serqi { left: 56.41%; top: 18.84%; width: 9.69%; height: 9.62%; }
+        #Cindires .feqira { left: 71.24%; top: 17.94%; width: 9.08%; height: 9.02%; }
+        #Cindires .sex-ebdirehmen { left: 73.16%; top: 32.67%; width: 9.69%; height: 9.62%; }
+        #Cindires .qujuma { left: 63.37%; top: 30.96%; width: 10.29%; height: 10.22%; }
+        #Cindires .bircike { left: 53.08%; top: 34.67%; width: 10.49%; height: 10.42%; }
+        #Cindires .kora { left: 40.56%; top: 29.06%; width: 9.69%; height: 9.62%; }
+        #Cindires .kefersefre { left: 34.91%; top: 33.87%; width: 10.29%; height: 10.22%; }
+        #Cindires .hekice { left: 17.96%; top: 32.26%; width: 9.89%; height: 9.82%; }
+        #Cindires .merwane-jerin { left: 11.91%; top: 35.87%; width: 9.89%; height: 9.82%; }
+        #Cindires .merwane-jorin { left: 17.15%; top: 37.88%; width: 8.68%; height: 8.62%; }
+        #Cindires .aske-xerbi { left: 25.23%; top: 45.19%; width: 9.89%; height: 9.82%; }
+        #Cindires .baflor { left: 35.92%; top: 44.79%; width: 9.28%; height: 9.22%; }
+        #Cindires .yalanqoze { left: 43.09%; top: 45.29%; width: 9.69%; height: 9.62%; }
+        #Cindires .sindiyanke { left: 47.02%; top: 38.78%; width: 9.89%; height: 9.82%; }
+        #Cindires .qurbe { left: 55.30%; top: 39.68%; width: 9.89%; height: 9.82%; }
+        #Cindires .qile { left: 63.07%; top: 39.28%; width: 9.08%; height: 9.02%; }
+        #Cindires .tilhemo { left: 73.86%; top: 40.78%; width: 9.49%; height: 9.42%; }
+        #Cindires .hemame { left: 14.43%; top: 58.42%; width: 9.49%; height: 9.42%; }
+        #Cindires .heciskendere { left: 25.23%; top: 55.51%; width: 9.89%; height: 9.82%; }
+        #Cindires .axcele { left: 35.02%; top: 56.51%; width: 9.69%; height: 9.62%; }
+        #Cindires .cindires { left: 43.79%; top: 50.40%; width: 11.50%; height: 11.42%; }
+        #Cindires .hemelke { left: 56.41%; top: 48.00%; width: 9.49%; height: 9.42%; }
+        #Cindires .remedena { left: 63.57%; top: 48.10%; width: 9.28%; height: 9.22%; }
+        #Cindires .fireriye { left: 73.56%; top: 48.80%; width: 9.28%; height: 9.22%; }
+        #Cindires .hecilere { left: 54.69%; top: 53.21%; width: 9.89%; height: 9.82%; }
+        #Cindires .ebukebe { left: 64.18%; top: 54.21%; width: 11.10%; height: 11.02%; }
+        #Cindires .zelaqe { left: 80.22%; top: 52.51%; width: 9.69%; height: 9.62%; }
+        #Cindires .sifiye { left: 18.47%; top: 71.54%; width: 9.28%; height: 9.22%; }
+        #Cindires .mila-xelila { left: 26.54%; top: 70.94%; width: 9.49%; height: 9.42%; }
+        #Cindires .mehmediye { left: 40.36%; top: 69.04%; width: 9.69%; height: 9.62%; }
+        #Cindires .derbelute { left: 41.17%; top: 75.15%; width: 8.68%; height: 8.62%; }
+        #Cindires .medaya { left: 47.63%; top: 66.33%; width: 9.08%; height: 9.02%; }
+        #Cindires .dewe-jerin { left: 54.09%; top: 65.63%; width: 9.49%; height: 9.42%; }
+        #Cindires .dewe-jorin { left: 50.96%; top: 74.25%; width: 9.28%; height: 9.22%; }
+        #Cindires .tilsilore { left: 56.31%; top: 62.22%; width: 9.49%; height: 9.42%; }
+        #Cindires .celeme { left: 71.24%; top: 67.43%; width: 10.09%; height: 10.02%; }
+    
+/* --- COORDINATES FOR EFRÎN MAP --- */
+
+        /* Basic setup for the map container and image */
+        #Efrîn .map-container {
+            position: relative;
+        }
+        #Efrîn .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #Efrîn .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR ÇK Map 11 --- 
+         Recalculated for original image dimensions of 973x1284 pixels.
+        */
+        #Efrîn .aster { left: 34.84%; top: 6.93%; width: 11.92%; height: 9.03%; }
+        #Efrîn .coqe { left: 16.85%; top: 13.55%; width: 8.43%; height: 6.39%; }
+        #Efrîn .cumqe { left: 40.70%; top: 13.94%; width: 10.28%; height: 7.79%; }
+        #Efrîn .meriske { left: 65.67%; top: 4.21%; width: 9.66%; height: 7.32%; }
+        #Efrîn .kefermize { left: 59.92%; top: 7.16%; width: 11.31%; height: 8.57%; }
+        #Efrîn .sewarxa { left: 66.60%; top: 8.02%; width: 9.04%; height: 6.85%; }
+        #Efrîn .tirtewile { left: 35.25%; top: 17.60%; width: 10.48%; height: 7.94%; }
+        #Efrîn .qibare { left: 50.87%; top: 18.46%; width: 9.66%; height: 7.32%; }
+        #Efrîn .efrin { left: 37.82%; top: 22.04%; width: 10.69%; height: 8.10%; }
+        #Efrîn .gaze { left: 7.50%; top: 22.82%; width: 8.43%; height: 6.39%; }
+        #Efrîn .gunde-mezin { left: 13.16%; top: 19.00%; width: 10.28%; height: 7.79%; }
+        #Efrîn .xelnare { left: 19.01%; top: 18.69%; width: 8.84%; height: 6.70%; }
+        #Efrîn .kefersile { left: 23.54%; top: 22.90%; width: 9.04%; height: 6.85%; }
+        #Efrîn .marate { left: 16.03%; top: 24.30%; width: 9.66%; height: 7.32%; }
+        #Efrîn .keferdele-jorin { left: 5.76%; top: 24.77%; width: 8.84%; height: 6.70%; }
+        #Efrîn .keferdele-jerin { left: 10.59%; top: 32.48%; width: 8.02%; height: 6.07%; }
+        #Efrîn .bablite { left: 25.69%; top: 30.61%; width: 9.25%; height: 7.01%; }
+        #Efrîn .xalta { left: 55.19%; top: 24.14%; width: 9.66%; height: 7.32%; }
+        #Efrîn .meremine { left: 63.62%; top: 18.30%; width: 8.43%; height: 6.39%; }
+        #Efrîn .inabke { left: 63.72%; top: 20.64%; width: 9.25%; height: 7.01%; }
+        #Efrîn .cilbire { left: 68.86%; top: 31.00%; width: 9.25%; height: 7.01%; }
+        #Efrîn .bene { left: 76.46%; top: 35.75%; width: 9.66%; height: 7.32%; }
+        #Efrîn .basile { left: 63.00%; top: 37.62%; width: 9.66%; height: 7.32%; }
+        #Efrîn .kurzele { left: 43.58%; top: 34.66%; width: 9.46%; height: 7.16%; }
+        #Efrîn .turinde { left: 41.11%; top: 26.32%; width: 10.28%; height: 7.79%; }
+        #Efrîn .kersane { left: 34.84%; top: 25.70%; width: 10.69%; height: 8.10%; }
+        #Efrîn .pitete { left: 30.22%; top: 33.41%; width: 10.07%; height: 7.63%; }
+        #Efrîn .endare { left: 36.99%; top: 34.74%; width: 10.07%; height: 7.63%; }
+        #Efrîn .cidede { left: 34.74%; top: 28.50%; width: 10.90%; height: 8.26%; }
+        #Efrîn .kefirbetre { left: 20.97%; top: 36.37%; width: 9.04%; height: 6.85%; }
+        #Efrîn .kokebe { left: 26.72%; top: 38.94%; width: 9.46%; height: 7.16%; }
+        #Efrîn .tilfe { left: 16.65%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #Efrîn .keferzite { left: 19.22%; top: 50.08%; width: 9.66%; height: 7.32%; }
+        #Efrîn .kifere { left: 34.12%; top: 47.98%; width: 8.84%; height: 6.70%; }
+        #Efrîn .basute { left: 38.54%; top: 44.39%; width: 8.84%; height: 6.70%; }
+        #Efrîn .soxaneke { left: 54.78%; top: 42.68%; width: 10.48%; height: 7.94%; }
+        #Efrîn .aqibe { left: 68.35%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #Efrîn .xurebke { left: 81.09%; top: 45.95%; width: 9.25%; height: 7.01%; }
+        #Efrîn .zarete { left: 78.73%; top: 49.30%; width: 9.04%; height: 6.85%; }
+        #Efrîn .kimare { left: 45.43%; top: 47.66%; width: 8.84%; height: 6.70%; }
+        #Efrîn .birce { left: 36.48%; top: 51.95%; width: 9.25%; height: 7.01%; }
+        #Efrîn .xeziwe { left: 28.57%; top: 61.37%; width: 9.25%; height: 7.01%; }
+        #Efrîn .iska { left: 17.37%; top: 68.07%; width: 9.25%; height: 7.01%; }
+        #Efrîn .sadere { left: 23.54%; top: 64.56%; width: 10.28%; height: 7.79%; }
+        #Efrîn .berade { left: 45.63%; top: 58.33%; width: 10.07%; height: 7.63%; }
+        #Efrîn .meyase { left: 61.46%; top: 56.23%; width: 9.04%; height: 6.85%; }
+        #Efrîn .bircilqase { left: 59.30%; top: 64.72%; width: 9.25%; height: 7.01%; }
+        #Efrîn .biiye { left: 36.28%; top: 66.98%; width: 9.04%; height: 6.85%; }
+        #Efrîn .kefer-nabo { left: 49.54%; top: 66.51%; width: 9.04%; height: 6.85%; }
+        #Efrîn .basufane { left: 38.34%; top: 71.96%; width: 9.25%; height: 7.01%; }
+        #Efrîn .gundi-mezin { left: 62.90%; top: 72.35%; width: 10.07%; height: 7.63%; }
+        #Efrîn .birc-hedar { left: 47.48%; top: 71.57%; width: 9.25%; height: 7.01%; }
+        #Efrîn .kibesine { left: 50.77%; top: 75.16%; width: 9.46%; height: 7.16%; }
+        #Efrîn .farfirtine { left: 47.58%; top: 77.57%; width: 9.87%; height: 7.48%; }
+        #Efrîn .basemre { left: 66.80%; top: 80.76%; width: 9.87%; height: 7.48%; }
+    
+/* --- COORDINATES FOR MABETA MAP --- */
+
+        /* Basic setup for the map container and image */
+        #Mabeta .map-container {
+            position: relative;
+        }
+        #Mabeta .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #Mabeta .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR ÇK Map 13 --- 
+         Recalculated for original image dimensions of 984x1495 pixels.
+        */
+        #Mabeta .sorbe { left: 46.85%; top: 9.70%; width: 8.54%; height: 5.62%; }
+        #Mabeta .gemruk { left: 56.20%; top: 13.11%; width: 8.54%; height: 5.62%; }
+        #Mabeta .semalka { left: 42.78%; top: 14.25%; width: 9.35%; height: 6.15%; }
+        #Mabeta .erebsexo { left: 58.33%; top: 16.45%; width: 9.35%; height: 6.15%; }
+        #Mabeta .sexutka { left: 53.15%; top: 19.46%; width: 8.94%; height: 5.89%; }
+        #Mabeta .emara { left: 51.83%; top: 23.95%; width: 9.15%; height: 6.02%; }
+        #Mabeta .avraze { left: 26.22%; top: 27.96%; width: 8.74%; height: 5.75%; }
+        #Mabeta .gobeke { left: 22.36%; top: 30.70%; width: 9.15%; height: 6.02%; }
+        #Mabeta .sexkele { left: 27.44%; top: 32.37%; width: 9.15%; height: 6.02%; }
+        #Mabeta .sewiya { left: 13.62%; top: 36.59%; width: 9.15%; height: 6.02%; }
+        #Mabeta .kelibo { left: 18.50%; top: 40.94%; width: 9.15%; height: 6.02%; }
+        #Mabeta .enhecere { left: 71.65%; top: 29.83%; width: 10.57%; height: 6.96%; }
+        #Mabeta .omo { left: 64.94%; top: 34.38%; width: 10.57%; height: 6.96%; }
+        #Mabeta .kokane { left: 64.53%; top: 44.35%; width: 10.37%; height: 6.82%; }
+        #Mabeta .qitraniye { left: 39.84%; top: 45.95%; width: 10.16%; height: 6.69%; }
+        #Mabeta .mabete { left: 43.60%; top: 51.97%; width: 10.77%; height: 7.09%; }
+        #Mabeta .dagire { left: 61.28%; top: 51.04%; width: 10.57%; height: 6.96%; }
+        #Mabeta .qentere { left: 41.77%; top: 54.45%; width: 9.76%; height: 6.42%; }
+        #Mabeta .ereba { left: 29.47%; top: 55.72%; width: 9.55%; height: 6.29%; }
+        #Mabeta .kurke-jerin { left: 13.31%; top: 54.78%; width: 9.76%; height: 6.42%; }
+        #Mabeta .kurke-jorin { left: 10.06%; top: 55.65%; width: 9.35%; height: 6.15%; }
+        #Mabeta .sariya { left: 10.98%; top: 58.19%; width: 10.16%; height: 6.69%; }
+        #Mabeta .hebo { left: 11.89%; top: 62.27%; width: 10.16%; height: 6.69%; }
+        #Mabeta .setana { left: 15.14%; top: 59.93%; width: 10.16%; height: 6.69%; }
+        #Mabeta .selo { left: 29.37%; top: 59.46%; width: 10.16%; height: 6.69%; }
+        #Mabeta .xazyane-jerin { left: 21.44%; top: 64.82%; width: 9.76%; height: 6.42%; }
+        #Mabeta .xazyane-jorin { left: 21.85%; top: 64.95%; width: 9.76%; height: 6.42%; } /* Note: Very close coords */
+        #Mabeta .birimce { left: 39.43%; top: 64.15%; width: 9.96%; height: 6.56%; }
+        #Mabeta .mirka { left: 48.48%; top: 64.08%; width: 9.76%; height: 6.42%; }
+        #Mabeta .sitka { left: 50.91%; top: 67.36%; width: 9.76%; height: 6.42%; }
+        #Mabeta .comezna { left: 33.74%; top: 68.63%; width: 10.37%; height: 6.82%; }
+        #Mabeta .merserke { left: 27.03%; top: 71.91%; width: 10.16%; height: 6.69%; }
+        #Mabeta .elcara { left: 32.93%; top: 71.71%; width: 10.16%; height: 6.69%; }
+        #Mabeta .reca { left: 36.08%; top: 71.97%; width: 9.96%; height: 6.56%; }
+        #Mabeta .kaxre { left: 53.15%; top: 73.18%; width: 9.55%; height: 6.29%; }
+        #Mabeta .mistesura { left: 41.67%; top: 77.86%; width: 9.15%; height: 6.02%; }
+        #Mabeta .hecqasma { left: 40.85%; top: 79.73%; width: 9.76%; height: 6.42%; }
+        #Mabeta .dela { left: 43.40%; top: 85.35%; width: 9.96%; height: 6.56%; }
+        #Mabeta .ruta { left: 51.32%; top: 83.01%; width: 9.55%; height: 6.29%; }
+    
+/* --- COORDINATES FOR RECO MAP --- */
+
+        /* Basic setup for the map container */
+        #Reco .map-container {
+            position: relative;
+        }
+        #Reco .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Styling for the yellow highlight circles */
+        #Reco .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR RECO MAP AREAS --- */
+        /* Each class corresponds to a location. The coordinates are calculated from the image map. */
+        #Reco .meydan-ekbez { left: 45.71%; top: 5.63%; width: 10.49%; height: 7.81%; }
+        #Reco .peynereke { left: 61.65%; top: 6.23%; width: 9.69%; height: 7.21%; }
+        #Reco .kosa { left: 62.56%; top: 9.01%; width: 9.89%; height: 7.36%; }
+        #Reco .gaze { left: 52.37%; top: 11.79%; width: 11.30%; height: 8.41%; }
+        #Reco .welikli { left: 59.33%; top: 15.54%; width: 10.09%; height: 7.51%; }
+        #Reco .dodo { left: 62.26%; top: 16.37%; width: 9.69%; height: 7.21%; }
+        #Reco .gewenda { left: 66.19%; top: 18.69%; width: 9.49%; height: 7.06%; }
+        #Reco .sexmihemed { left: 56.51%; top: 17.57%; width: 10.69%; height: 7.96%; }
+        #Reco .semala { left: 53.08%; top: 18.17%; width: 10.89%; height: 8.11%; }
+        #Reco .edema { left: 39.46%; top: 22.89%; width: 11.10%; height: 8.26%; }
+        #Reco .qerebaba { left: 25.33%; top: 30.63%; width: 11.10%; height: 8.26%; }
+        #Reco .elbiske { left: 43.09%; top: 30.86%; width: 11.30%; height: 8.41%; }
+        #Reco .bilelko { left: 47.83%; top: 30.01%; width: 11.10%; height: 8.26%; }
+        #Reco .xerabi-silug { left: 40.97%; top: 34.01%; width: 11.10%; height: 8.26%; }
+        #Reco .firfirke-jerin { left: 36.53%; top: 32.58%; width: 8.88%; height: 6.61%; }
+        #Reco .firfirke-jorin { left: 35.12%; top: 35.89%; width: 11.10%; height: 8.26%; }
+        #Reco .heydar { left: 38.04%; top: 39.26%; width: 10.89%; height: 8.11%; }
+        #Reco .ceinke { left: 44.60%; top: 35.51%; width: 11.70%; height: 8.71%; }
+        #Reco .cela { left: 56.91%; top: 33.86%; width: 11.50%; height: 8.56%; }
+        #Reco .ceqmaqe-mezin { left: 51.06%; top: 43.24%; width: 11.10%; height: 8.26%; }
+        #Reco .ceqmaqe-cucik { left: 59.03%; top: 45.35%; width: 9.89%; height: 7.36%; }
+        #Reco .elendara { left: 64.98%; top: 44.00%; width: 9.49%; height: 7.06%; }
+        #Reco .zerka { left: 68.21%; top: 47.82%; width: 10.29%; height: 7.66%; }
+        #Reco .memala { left: 40.77%; top: 48.72%; width: 10.29%; height: 7.66%; }
+        #Reco .cenceliya { left: 54.89%; top: 47.60%; width: 10.89%; height: 8.11%; }
+        #Reco .cobana { left: 65.19%; top: 49.47%; width: 11.30%; height: 8.41%; }
+        #Reco .holile { left: 49.34%; top: 51.28%; width: 11.50%; height: 8.56%; }
+        #Reco .cerxuta { left: 58.12%; top: 53.53%; width: 9.69%; height: 7.21%; }
+        #Reco .kura { left: 53.38%; top: 54.73%; width: 11.10%; height: 8.26%; }
+        #Reco .qesim { left: 69.43%; top: 54.28%; width: 10.49%; height: 7.81%; }
+        #Reco .dike { left: 79.11%; top: 54.20%; width: 10.89%; height: 8.11%; }
+        #Reco .maseka { left: 35.32%; top: 52.25%; width: 10.09%; height: 7.51%; }
+        #Reco .hopka { left: 29.77%; top: 58.03%; width: 10.49%; height: 7.81%; }
+        #Reco .sorka { left: 5.85%; top: 64.64%; width: 9.89%; height: 7.36%; }
+        #Reco .reco { left: 38.75%; top: 56.08%; width: 10.89%; height: 8.11%; }
+        #Reco .xecxelil { left: 44.90%; top: 56.68%; width: 11.10%; height: 8.26%; }
+        #Reco .ceqilme { left: 62.97%; top: 59.23%; width: 10.29%; height: 7.66%; }
+        #Reco .sex { left: 71.34%; top: 61.56%; width: 10.09%; height: 7.51%; }
+        #Reco .ciye { left: 80.12%; top: 65.54%; width: 10.09%; height: 7.51%; }
+        #Reco .banika { left: 35.42%; top: 62.16%; width: 9.28%; height: 6.91%; }
+        #Reco .etmana { left: 35.12%; top: 63.36%; width: 9.89%; height: 7.36%; }
+        #Reco .sexbila { left: 59.03%; top: 63.06%; width: 10.49%; height: 7.81%; }
+        #Reco .goliye-jerin { left: 63.47%; top: 66.07%; width: 10.49%; height: 7.81%; }
+        #Reco .goliye-jorin { left: 58.73%; top: 67.34%; width: 10.29%; height: 7.66%; }
+        #Reco .muske { left: 42.89%; top: 65.77%; width: 11.10%; height: 8.26%; }
+        #Reco .kure { left: 20.79%; top: 68.70%; width: 11.30%; height: 8.41%; }
+        #Reco .hecika { left: 31.89%; top: 66.89%; width: 10.69%; height: 7.96%; }
+        #Reco .sediya { left: 15.24%; top: 73.72%; width: 10.29%; height: 7.66%; }
+        #Reco .kumrese { left: 22.20%; top: 73.80%; width: 9.69%; height: 7.21%; }
+        #Reco .qude { left: 31.18%; top: 75.75%; width: 10.89%; height: 8.11%; }
+        #Reco .deewris { left: 39.76%; top: 71.02%; width: 10.49%; height: 7.81%; }
+        #Reco .hemseleke { left: 49.85%; top: 72.75%; width: 11.10%; height: 8.26%; }
+        #Reco .berbene { left: 56.61%; top: 71.40%; width: 10.69%; height: 7.96%; }
+        #Reco .bedina { left: 47.23%; top: 76.58%; width: 10.49%; height: 7.81%; }
+        #Reco .dumiliya { left: 42.18%; top: 79.95%; width: 10.49%; height: 7.81%; }
+        #Reco .umera { left: 23.71%; top: 80.63%; width: 9.89%; height: 7.36%; }
+        #Reco .memila { left: 26.44%; top: 83.71%; width: 10.29%; height: 7.66%; }
+        #Reco .hesen { left: 25.63%; top: 72.07%; width: 9.69%; height: 7.21%; }
+    
+/* --- COORDINATES FOR ŞERA MAP --- */
+
+        /* Basic setup for the map container and image */
+        #Şera .map-container {
+            position: relative;
+        }
+        #Şera .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #Şera .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR ÇK Map 12 --- 
+         Recalculated for original image dimensions of 991x1349 pixels.
+        */
+        #Şera .nebi-huri { left: 34.51%; top: 3.04%; width: 9.89%; height: 7.26%; }
+        #Şera .mersewa { left: 45.41%; top: 9.34%; width: 9.89%; height: 7.26%; }
+        #Şera .siltete { left: 59.84%; top: 11.05%; width: 9.28%; height: 6.82%; }
+        #Şera .omer-simo { left: 38.85%; top: 14.75%; width: 8.88%; height: 6.52%; }
+        #Şera .siiriya { left: 31.08%; top: 20.83%; width: 9.69%; height: 7.12%; }
+        #Şera .zeytuneke { left: 42.89%; top: 21.05%; width: 9.69%; height: 7.12%; }
+        #Şera .ikidame { left: 74.97%; top: 19.87%; width: 9.69%; height: 7.12%; }
+        #Şera .dersiwane { left: 63.17%; top: 24.76%; width: 10.69%; height: 7.86%; }
+        #Şera .diraqliya { left: 30.88%; top: 28.17%; width: 9.28%; height: 6.82%; }
+        #Şera .pelusanke { left: 44.40%; top: 31.06%; width: 9.49%; height: 6.97%; }
+        #Şera .alciya { left: 36.23%; top: 36.70%; width: 8.88%; height: 6.52%; }
+        #Şera .qetlebiye { left: 47.73%; top: 37.73%; width: 9.28%; height: 6.82%; }
+        #Şera .dewris { left: 28.15%; top: 38.77%; width: 8.88%; height: 6.52%; }
+        #Şera .qerqina { left: 36.93%; top: 43.81%; width: 8.68%; height: 6.37%; }
+        #Şera .naza { left: 21.09%; top: 41.88%; width: 9.69%; height: 7.12%; }
+        #Şera .omera { left: 47.83%; top: 44.11%; width: 9.08%; height: 6.67%; }
+        #Şera .erebwerane { left: 62.46%; top: 36.92%; width: 9.49%; height: 6.97%; }
+        #Şera .dikmedase { left: 69.93%; top: 42.18%; width: 9.08%; height: 6.67%; }
+        #Şera .yazibaxe { left: 80.93%; top: 44.85%; width: 9.69%; height: 7.12%; }
+        #Şera .qastele-eli-cindo { left: 71.44%; top: 52.78%; width: 9.49%; height: 6.97%; }
+        #Şera .baflune { left: 57.72%; top: 59.38%; width: 9.49%; height: 6.97%; }
+        #Şera .ezaz { left: 79.21%; top: 67.16%; width: 9.69%; height: 7.12%; }
+        #Şera .qitme { left: 51.16%; top: 65.68%; width: 9.28%; height: 6.82%; }
+        #Şera .cema { left: 42.38%; top: 47.44%; width: 9.49%; height: 6.97%; }
+        #Şera .sinka { left: 46.92%; top: 55.23%; width: 9.28%; height: 6.82%; }
+        #Şera .berava { left: 35.72%; top: 46.55%; width: 8.48%; height: 6.23%; }
+        #Şera .sera { left: 41.27%; top: 55.67%; width: 9.28%; height: 6.82%; }
+        #Şera .gabeleke { left: 31.28%; top: 54.26%; width: 9.49%; height: 6.97%; }
+        #Şera .meydanke { left: 20.99%; top: 50.04%; width: 9.49%; height: 6.97%; }
+        #Şera .hilubiye { left: 23.11%; top: 63.53%; width: 9.69%; height: 7.12%; }
+        #Şera .kerferome { left: 13.72%; top: 67.38%; width: 9.08%; height: 6.67%; }
+        #Şera .qurtqulaqe-mezin { left: 22.50%; top: 70.05%; width: 9.69%; height: 7.12%; }
+        #Şera .qurtqulaqe-cucik { left: 22.10%; top: 73.17%; width: 9.49%; height: 6.97%; }
+        #Şera .xirabi-sera { left: 41.07%; top: 57.45%; width: 9.69%; height: 7.12%; }
+        #Şera .metina { left: 41.37%; top: 63.90%; width: 9.49%; height: 6.97%; }
+        #Şera .sere-kaniye { left: 46.42%; top: 67.61%; width: 9.49%; height: 6.97%; }
+        #Şera .mesale { left: 39.15%; top: 69.46%; width: 10.09%; height: 7.41%; }
+        #Şera .kortike { left: 30.98%; top: 73.17%; width: 9.69%; height: 7.12%; }
+        #Şera .qeredepe { left: 26.74%; top: 78.28%; width: 10.09%; height: 7.41%; }
+        #Şera .qestele-kistik { left: 20.38%; top: 80.73%; width: 8.88%; height: 6.52%; }
+        #Şera .cumke { left: 20.69%; top: 84.58%; width: 8.68%; height: 6.37%; }
+    
+/* --- COORDINATES FOR ŞIYÊ MAP --- */
+
+        #Şiyê .map-container {
+            position: relative;
+        }
+        #Şiyê .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        #Şiyê .highlight-box {
+            display: none;
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* --- COORDINATES FOR YOUR AREAS --- */
+        #Şiyê .tirmisho {
+            left: 66.2%;
+            top: 37.0%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        #Şiyê .kela {
+            left: 59.1%;
+            top: 27.0%;
+            width: 6.7%;
+            height: 4.4%;
+        }
+        #Şiyê .alkana {
+            left: 57.0%;
+            top: 15.1%;
+            width: 7.7%;
+            height: 5.1%;
+        }
+        #Şiyê .xelil {
+            left: 64.5%;
+            top: 13.9%;
+            width: 7.7%;
+            height: 5.1%;
+        }
+        #Şiyê .ceqele-jorin {
+            left: 45.2%;
+            top: 18.1%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        #Şiyê .ceqele-jerin {
+            left: 36.7%;
+            top: 23.2%;
+            width: 9.9%;
+            height: 6.5%;
+        }
+        #Şiyê .hec-bilal {
+            left: 54.7%;
+            top: 18.8%;
+            width: 8.3%;
+            height: 5.5%;
+        }
+        #Şiyê .ceqele-orte {
+            left: 44.1%;
+            top: 22.5%;
+            width: 9.3%;
+            height: 6.1%;
+        }
+        #Şiyê .mistika {
+            left: 44.1%;
+            top: 27.1%;
+            width: 9.5%;
+            height: 6.3%;
+        }
+        #Şiyê .siketka {
+            left: 70.7%;
+            top: 34.5%;
+            width: 8.5%;
+            height: 5.6%;
+        }
+        #Şiyê .erende {
+            left: 47.9%;
+            top: 35.0%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        #Şiyê .qermitliq {
+            left: 18.1%;
+            top: 36.3%;
+            width: 10.9%;
+            height: 7.2%;
+        }
+        #Şiyê .siye {
+            left: 28.4%;
+            top: 44.3%;
+            width: 17.8%;
+            height: 11.7%;
+        }
+        #Şiyê .senare {
+            left: 31.1%;
+            top: 60.4%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+        #Şiyê .anqele {
+            left: 31.0%;
+            top: 64.4%;
+            width: 8.9%;
+            height: 5.9%;
+        }
+        #Şiyê .baziya {
+            left: 52.0%;
+            top: 65.7%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+        #Şiyê .hekice {
+            left: 38.8%;
+            top: 76.8%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+    
+
+    </style>
+</head>
+<body>
+    <h1>Nexşeyên Hemû Nahiyeyan</h1>
+    <div class="nahiya-section" id="Bilbilê">
+        <h2>Bilbilê</h2>
+        <div class="content-wrapper">
+            <div class="village-list-column">
+                <a href="#baliya">Baliya</a>
+                <a href="#beke">Bêkê</a>
+                <a href="#bele">Bêlê</a>
+                <a href="#berkase">Berkaşê</a>
+                <a href="#bexce">Bêxçe</a>
+                <a href="#bibaka">Bîbaka</a>
+                <a href="#bilbile">Bilbilê</a>
+                <a href="#ebudane">Ebûdanê</a>
+                <a href="#elcara">Elcara</a>
+                <a href="#eli-kere">Eli Kera</a>
+                <a href="#esune">Eşûnê</a>
+                <a href="#hesendera">Ĥesen Dêra</a>
+                <a href="#heyama">Heyama</a>
+                <a href="#kere">Kerê</a>
+                <a href="#kotana">Kotana</a>
+                <a href="#kurdo">Kurdo</a>
+                <a href="#kurzele">Kurzêl</a>
+                <a href="#qasa">Qaşa</a>
+                <a href="#qestele-miqded">Qestelê Miqdêd</a>
+                <a href="#qirigole">Qiri Golê</a>
+                <a href="#qizilbasa">Qizilbaşa</a>
+                <a href="#qurne">Qornê</a>
+                <a href="#qurta">Qorta</a>
+                <a href="#qota">Qota</a>
+                <a href="#serqiya">Şêrqiya</a>
+                <a href="#sexorze">Şêxorz</a>
+                <a href="#singele">Şingêl</a>
+                <a href="#topeli-mehmud">Topel Meĥmûd</a>
+                <a href="#uga">Uga</a>
+                <a href="#upila">Upila</a>
+                <a href="#xelilaka">Xelîlaka</a>
+                <a href="#qestele-xidiriya">Xidiriya</a>
+                <a href="#xidiriya">Xidiriya</a>
+                <a href="#xilalka">Xilalka</a>
+                <a href="#zere">Ze'rê</a>
+                <a href="#zivinge">Zivingê</a>
+                <a href="#" class="clear-link">Vala Bike (Clear Highlight)</a>
+            </div>
+            <div class="maps-column">
+                <div class="map-container">
+<img alt="Map of Bilbile" onerror="this.onerror=null; this.src='https://placehold.co/991x1019/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="ÇK Map 14.png"/>
+<div class="singele highlight-box"></div><div class="beke highlight-box"></div><div class="eli-kere highlight-box"></div><div class="heyama highlight-box"></div><div class="zere highlight-box"></div><div class="baliya highlight-box"></div><div class="xilalka highlight-box"></div><div class="bexce highlight-box"></div><div class="bilbile highlight-box"></div><div class="qurne highlight-box"></div><div class="topeli-mehmud highlight-box"></div><div class="kurdo highlight-box"></div><div class="ebudane highlight-box"></div><div class="elcara highlight-box"></div><div class="uga highlight-box"></div><div class="qestele-xidiriya highlight-box"></div><div class="xidiriya highlight-box"></div><div class="kurzele highlight-box"></div><div class="berkase highlight-box"></div><div class="serqiya highlight-box"></div><div class="qestele-miqded highlight-box"></div><div class="sexorze highlight-box"></div><div class="bibaka highlight-box"></div><div class="qurta highlight-box"></div><div class="qasa highlight-box"></div><div class="kela highlight-box"></div><div class="kere highlight-box"></div><div class="qota highlight-box"></div><div class="kotana highlight-box"></div><div class="upila highlight-box"></div><div class="xelilaka highlight-box"></div><div class="esune highlight-box"></div><div class="zivinge highlight-box"></div><div class="qirigole highlight-box"></div><div class="qizilbasa highlight-box"></div><div class="bele highlight-box"></div><div class="hesendera highlight-box"></div>
+</div>
+            </div>
+        </div>
+    </div>
+    <div class="nahiya-section" id="Cindires">
+        <h2>Cindires</h2>
+        <div class="content-wrapper">
+            <div class="village-list-column">
+                <a href="#ebukebe">Abû Ke'bê Xerbî</a>
+                <a href="#aske-serqi">Aşkê Şerqî</a>
+                <a href="#aske-xerbi">Aşkê Xerbî</a>
+                <a href="#axcele">Axcelê</a>
+                <a href="#baflor">Baflor</a>
+                <a href="#bircike">Bircikê</a>
+                <a href="#celeme">Celemê</a>
+                <a href="#cindires">Cindirês</a>
+                <a href="#cobana">Çobana</a>
+                <a href="#colaqa-1">Çolaqa (North)</a>
+                <a href="#colaqa-2">Çolaqa (South)</a>
+                <a href="#derbelute">Dêrbelûtê</a>
+                <a href="#dewe-jerin">Dêwê Jêrin</a>
+                <a href="#dewe-jorin">Dêwê Jorin</a>
+                <a href="#feqira">Feqîra</a>
+                <a href="#fireriye">Firêriyê</a>
+                <a href="#gewrika">Gewrika</a>
+                <a href="#gorda">Gorda</a>
+                <a href="#hechesna">Ĥec Ĥesna</a>
+                <a href="#heciskendere">Ĥec Îskenderê</a>
+                <a href="#hecilere">Ĥecîler</a>
+                <a href="#hekice">Hêkiçê</a>
+                <a href="#hemame">Ĥemamê</a>
+                <a href="#hemelke">Ĥemêlkê</a>
+                <a href="#kefersefre">Kefersefrê</a>
+                <a href="#kora">Kora</a>
+                <a href="#medaya">Medaya</a>
+                <a href="#mehmediye">Mehmediyê Xerbî</a>
+                <a href="#merwane-jerin">Merwanê Jerin</a>
+                <a href="#merwane-jorin">Merwanê Jorin</a>
+                <a href="#miske-jerin">Miske Jerin</a>
+                <a href="#miske-jorin">Miskê Jorin</a>
+                <a href="#qile">Qîlê</a>
+                <a href="#qujuma">Qujûma</a>
+                <a href="#qurbe">Qurbê</a>
+                <a href="#remadiye">Remadiyê</a>
+                <a href="#remedena">Remedena</a>
+                <a href="#sex-ebdirehmen">Şêx Ebdirehmên</a>
+                <a href="#sifiye">Sifriyê</a>
+                <a href="#sindiyanke">Sindiyankê</a>
+                <a href="#tetera">Tetera</a>
+                <a href="#tilhemo">Til Ĥemo</a>
+                <a href="#tilsilore">Tilsilorê</a>
+                <a href="#xerza">Xerza</a>
+                <a href="#yalanqoze">Yalanqozê</a>
+                <a href="#" class="clear-link">Vala Bike (Clear Highlight)</a>
+            </div>
+            <div class="maps-column">
+                <div class="map-container">
+<img alt="Map of Cindaris" onerror="this.onerror=null; this.src='https://placehold.co/991x998/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="ÇK Map 16.png"/>
+<div class="remadiye highlight-box"></div><div class="hechesna highlight-box"></div><div class="xalta highlight-box"></div><div class="colaqa-1 highlight-box"></div><div class="gewrika highlight-box"></div><div class="gorda highlight-box"></div><div class="xerza highlight-box"></div><div class="tetera highlight-box"></div><div class="cobana highlight-box"></div><div class="miske-jorin highlight-box"></div><div class="miske-jerin highlight-box"></div><div class="colaqa-2 highlight-box"></div><div class="aske-serqi highlight-box"></div><div class="feqira highlight-box"></div><div class="sex-ebdirehmen highlight-box"></div><div class="qujuma highlight-box"></div><div class="bircike highlight-box"></div><div class="kora highlight-box"></div><div class="kefersefre highlight-box"></div><div class="hekice highlight-box"></div><div class="merwane-jerin highlight-box"></div><div class="merwane-jorin highlight-box"></div><div class="aske-xerbi highlight-box"></div><div class="baflor highlight-box"></div><div class="yalanqoze highlight-box"></div><div class="sindiyanke highlight-box"></div><div class="qurbe highlight-box"></div><div class="qile highlight-box"></div><div class="tilhemo highlight-box"></div><div class="hemame highlight-box"></div><div class="heciskendere highlight-box"></div><div class="axcele highlight-box"></div><div class="cindires highlight-box"></div><div class="hemelke highlight-box"></div><div class="remedena highlight-box"></div><div class="fireriye highlight-box"></div><div class="hecilere highlight-box"></div><div class="ebukebe highlight-box"></div><div class="zelaqe highlight-box"></div><div class="sifiye highlight-box"></div><div class="mila-xelila highlight-box"></div><div class="mehmediye highlight-box"></div><div class="derbelute highlight-box"></div><div class="medaya highlight-box"></div><div class="dewe-jerin highlight-box"></div><div class="dewe-jorin highlight-box"></div><div class="tilsilore highlight-box"></div><div class="celeme highlight-box"></div>
+</div>
+            </div>
+        </div>
+    </div>
+    <div class="nahiya-section" id="Efrîn">
+        <h2>Efrîn</h2>
+        <div class="content-wrapper">
+            <div class="village-list-column">
+                <a href="#aqibe">Aqîbê</a>
+                <a href="#aster">Astêr</a>
+                <a href="#bablite">Bablîtê</a>
+                <a href="#basemre">Başemrê</a>
+                <a href="#basile">Basilê</a>
+                <a href="#basufane">Basûfanê</a>
+                <a href="#basute">Basûtê</a>
+                <a href="#bene">Bênê</a>
+                <a href="#berade">Beradê</a>
+                <a href="#biiye">Bi'îyê</a>
+                <a href="#birc-hedar">Birc Ĥêderê</a>
+                <a href="#birce">Bircê</a>
+                <a href="#bircilqase">Bircilqazê</a>
+                <a href="#cidede">Cidêdê</a>
+                <a href="#cilbire">Cilbirê</a>
+                <a href="#coqe">Coqê</a>
+                <a href="#cumqe">Cûmkê</a>
+                <a href="#efrin">Efrîn</a>
+                <a href="#farfirtine">Fafirtîn</a>
+                <a href="#gaze">Gazê</a>
+                <a href="#gunde-mezin">Gundê Mezin - above Ma'rata</a>
+                <a href="#gundi-mezin">Gundê Mezin - Shirawa area</a>
+                <a href="#inabke">Inabkê</a>
+                <a href="#iska">Îska</a>
+                <a href="#kefirbetre">Keferbetrê</a>
+                <a href="#keferdele-jerin">Keferdelê Jêrîn</a>
+                <a href="#keferdele-jorin">Keferdelê Jorin</a>
+                <a href="#kefermize">Kefermizê</a>
+                <a href="#kefer-nabo">Kefernebo</a>
+                <a href="#kefersile">Keferşîlê</a>
+                <a href="#keferzite">Keferzîtê</a>
+                <a href="#kersane">Kersanê</a>
+                <a href="#kibesine">Kîbêşînê</a>
+                <a href="#kifere">Kifêrê</a>
+                <a href="#kimare">Kîmarê</a>
+                <a href="#kokebe">Kokebê</a>
+                <a href="#marate">Maratê</a>
+                <a href="#meremine">Mêremînê</a>
+                <a href="#meriske">Me'riskê</a>
+                <a href="#meyase">Meyasê</a>
+                <a href="#pitete">Pitêtê</a>
+                <a href="#qibare">Qîbar</a>
+                <a href="#sadere">Şadêrê</a>
+                <a href="#soxaneke">Soĝanekê</a>
+                <a href="#tilfe">Tilifê</a>
+                <a href="#tirtewile">Tirtewîlê</a>
+                <a href="#turinde">Turindê</a>
+                <a href="#xalta">Xalta</a>
+                <a href="#xelnare">Xelnêrê</a>
+                <a href="#xeziwe">Xezîwê</a>
+                <a href="#xurebke">Xurêbkê</a>
+                <a href="#zarete">Zaretê</a>
+                <a href="#" class="clear-link">Vala Bike (Clear Highlight)</a>
+            </div>
+            <div class="maps-column">
+                <div class="map-container">
+<img alt="Map Image 11" onerror="this.onerror=null; this.src='https://placehold.co/973x1284/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="ÇK Map 11.png"/>
+<div class="aster highlight-box"></div><div class="coqe highlight-box"></div><div class="cumqe highlight-box"></div><div class="meriske highlight-box"></div><div class="kefermize highlight-box"></div><div class="sewarxa highlight-box"></div><div class="tirtewile highlight-box"></div><div class="qibare highlight-box"></div><div class="efrin highlight-box"></div><div class="gaze highlight-box"></div><div class="gunde-mezin highlight-box"></div><div class="xelnare highlight-box"></div><div class="kefersile highlight-box"></div><div class="marate highlight-box"></div><div class="keferdele-jorin highlight-box"></div><div class="keferdele-jerin highlight-box"></div><div class="bablite highlight-box"></div><div class="xalta highlight-box"></div><div class="meremine highlight-box"></div><div class="inabke highlight-box"></div><div class="cilbire highlight-box"></div><div class="bene highlight-box"></div><div class="basile highlight-box"></div><div class="kurzele highlight-box"></div><div class="turinde highlight-box"></div><div class="kersane highlight-box"></div><div class="pitete highlight-box"></div><div class="endare highlight-box"></div><div class="cidede highlight-box"></div><div class="kefirbetre highlight-box"></div><div class="kokebe highlight-box"></div><div class="tilfe highlight-box"></div><div class="keferzite highlight-box"></div><div class="kifere highlight-box"></div><div class="basute highlight-box"></div><div class="soxaneke highlight-box"></div><div class="aqibe highlight-box"></div><div class="xurebke highlight-box"></div><div class="zarete highlight-box"></div><div class="kimare highlight-box"></div><div class="birce highlight-box"></div><div class="xeziwe highlight-box"></div><div class="iska highlight-box"></div><div class="sadere highlight-box"></div><div class="berade highlight-box"></div><div class="meyase highlight-box"></div><div class="bircilqase highlight-box"></div><div class="biiye highlight-box"></div><div class="kefer-nabo highlight-box"></div><div class="basufane highlight-box"></div><div class="gundi-mezin highlight-box"></div><div class="birc-hedar highlight-box"></div><div class="kibesine highlight-box"></div><div class="farfirtine highlight-box"></div><div class="basemre highlight-box"></div>
+</div>
+            </div>
+        </div>
+    </div>
+    <div class="nahiya-section" id="Mabeta">
+        <h2>Mabeta</h2>
+        <div class="content-wrapper">
+            <div class="village-list-column">
+                <a href="#avraze">Avraz</a>
+                <a href="#birimce">Birîmce</a>
+                <a href="#comezna">Çomazna</a>
+                <a href="#dagire">Dargirê</a>
+                <a href="#dela">Dela</a>
+                <a href="#emara">Emara</a>
+                <a href="#enhecere">Ên' Ĥecer</a>
+                <a href="#erebsexo">Ereba</a>
+                <a href="#ereba">Ereba</a>
+                <a href="#gemruk">Gemrûkê</a>
+                <a href="#gobeke">Gulîka</a>
+                <a href="#hebo">Ĥebo</a>
+                <a href="#hecqasma">Ĥec Qasma</a>
+                <a href="#kaxre">Kaxrê</a>
+                <a href="#kelibo">Kêl Îbo</a>
+                <a href="#kokane">Kokanê Jorin</a>
+                <a href="#kurke-jerin">Kurkê Jêrin</a>
+                <a href="#kurke-jorin">Kurkê Jorin</a>
+                <a href="#mabete">Mabeta</a>
+                <a href="#merserke">Me'serkê</a>
+                <a href="#mirka">Mîrka</a>
+                <a href="#mistesura">Mist'eşûra</a>
+                <a href="#omo">Omo</a>
+                <a href="#qentere">Qenterê</a>
+                <a href="#qitraniye">Qitraniyê</a>
+                <a href="#reca">Reca</a>
+                <a href="#ruta">Rûta</a>
+                <a href="#sariya">Sariya</a>
+                <a href="#selo">Selo</a>
+                <a href="#semalka">Sêmalka</a>
+                <a href="#setana">Şêtana</a>
+                <a href="#sewiya">Sêwiya</a>
+                <a href="#sexkele">Şêx Kêlê</a>
+                <a href="#sexutka">Şêxûtka</a>
+                <a href="#sitka">Şîtka</a>
+                <a href="#sorbe">Şorbe</a>
+                <a href="#xazyane-jorin">Xaziyanê Jorin</a>
+                <a href="#xazyane-jerin">Xazyanê Jêrin</a>
+                <a href="#" class="clear-link">Vala Bike (Clear Highlight)</a>
+            </div>
+            <div class="maps-column">
+                <div class="map-container">
+<img alt="Map Image 13" onerror="this.onerror=null; this.src='https://placehold.co/984x1495/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="ÇK Map 13.png"/>
+<div class="sorbe highlight-box"></div><div class="gemruk highlight-box"></div><div class="semalka highlight-box"></div><div class="erebsexo highlight-box"></div><div class="sexutka highlight-box"></div><div class="emara highlight-box"></div><div class="avraze highlight-box"></div><div class="gobeke highlight-box"></div><div class="sexkele highlight-box"></div><div class="sewiya highlight-box"></div><div class="kelibo highlight-box"></div><div class="enhecere highlight-box"></div><div class="omo highlight-box"></div><div class="kokane highlight-box"></div><div class="qitraniye highlight-box"></div><div class="mabete highlight-box"></div><div class="dagire highlight-box"></div><div class="qentere highlight-box"></div><div class="ereba highlight-box"></div><div class="kurke-jerin highlight-box"></div><div class="kurke-jorin highlight-box"></div><div class="sariya highlight-box"></div><div class="hebo highlight-box"></div><div class="setana highlight-box"></div><div class="selo highlight-box"></div><div class="xazyane-jerin highlight-box"></div><div class="xazyane-jorin highlight-box"></div><div class="birimce highlight-box"></div><div class="mirka highlight-box"></div><div class="sitka highlight-box"></div><div class="comezna highlight-box"></div><div class="merserke highlight-box"></div><div class="elcara highlight-box"></div><div class="reca highlight-box"></div><div class="kaxre highlight-box"></div><div class="mistesura highlight-box"></div><div class="hecqasma highlight-box"></div><div class="dela highlight-box"></div><div class="ruta highlight-box"></div>
+</div>
+            </div>
+        </div>
+    </div>
+    <div class="nahiya-section" id="Reco">
+        <h2>Reco</h2>
+        <div class="content-wrapper">
+            <div class="village-list-column">
+                <a href="#banika">Banîkê</a>
+                <a href="#bedina">Be'dîna</a>
+                <a href="#berbene">Berbenê</a>
+                <a href="#bilelko">Bilêlko</a>
+                <a href="#ceinke">Çe'inka</a>
+                <a href="#cela">Cela</a>
+                <a href="#cenceliya">Çençeliya</a>
+                <a href="#ceqilme">Çêqilme</a>
+                <a href="#ceqmaqe-cucik">Çeqmaqê Çûçik</a>
+                <a href="#ceqmaqe-mezin">Çeqmaqê Mezin</a>
+                <a href="#cerxuta">Çerxûta</a>
+                <a href="#ciye">Çiyê</a>
+                <a href="#deewris">Dêwrîş</a>
+                <a href="#dodo">Dodo</a>
+                <a href="#dumiliya">Dumilya</a>
+                <a href="#edema">Edema</a>
+                <a href="#elbiske">Elbîskê</a>
+                <a href="#elendara">Elendara</a>
+                <a href="#heydar">Eltaniya</a>
+                <a href="#etmana">Etmana</a>
+                <a href="#firfirke-jerin">Firfirkê Jêrin</a>
+                <a href="#firfirke-jorin">Firfirkê Jorin</a>
+                <a href="#gewenda">Gewenda</a>
+                <a href="#goliye-jerin">Goliyê Jêrin</a>
+                <a href="#goliye-jorin">Goliyê Jorin</a>
+                <a href="#xecxelil">Ĥec Xelîl</a>
+                <a href="#hecika">Ĥêcîka Jorin</a>
+                <a href="#hesen">Ĥesen</a>
+                <a href="#holile">Holîlê</a>
+                <a href="#hopka">Hopka</a>
+                <a href="#kosa">Kosa</a>
+                <a href="#kumrese">Kum Reşê</a>
+                <a href="#kura">Kûra</a>
+                <a href="#kure">Kurê</a>
+                <a href="#maseka">Maseka</a>
+                <a href="#memala">Memala</a>
+                <a href="#memila">Me'mala</a>
+                <a href="#meydan-ekbez">Meydan Ekbez</a>
+                <a href="#muske">Mûskê</a>
+                <a href="#peynereke">Penêreka</a>
+                <a href="#qerebaba">Qere Baba</a>
+                <a href="#qesim">Qêsim</a>
+                <a href="#hemseleke">Qopê</a>
+                <a href="#qude">Qude</a>
+                <a href="#reco">Reco</a>
+                <a href="#sediya">Şediya</a>
+                <a href="#semala">Sêmala</a>
+                <a href="#sex">Şêx</a>
+                <a href="#sexbila">Şêx Bila</a>
+                <a href="#sexmihemed">Şêx Mihemed</a>
+                <a href="#sorka">Sorkê</a>
+                <a href="#umera">Umera</a>
+                <a href="#welikli">Welîklî</a>
+                <a href="#xerabi-silug">Xirabî Silûg</a>
+                <a href="#zerka">Zerka</a>
+                <a href="#" class="clear-link">Vala Bike (Clear Highlight)</a>
+            </div>
+            <div class="maps-column">
+                <div class="map-container">
+<img alt="Map of Reco Area" onerror="this.onerror=null; this.src='https://placehold.co/991x1332/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="ÇK Map 15.png"/>
+<!-- These divs are the actual highlight elements -->
+<div class="meydan-ekbez highlight-box"></div><div class="peynereke highlight-box"></div><div class="kosa highlight-box"></div><div class="gaze highlight-box"></div><div class="welikli highlight-box"></div><div class="dodo highlight-box"></div><div class="gewenda highlight-box"></div><div class="sexmihemed highlight-box"></div><div class="semala highlight-box"></div><div class="edema highlight-box"></div><div class="qerebaba highlight-box"></div><div class="elbiske highlight-box"></div><div class="bilelko highlight-box"></div><div class="xerabi-silug highlight-box"></div><div class="firfirke-jerin highlight-box"></div><div class="firfirke-jorin highlight-box"></div><div class="heydar highlight-box"></div><div class="ceinke highlight-box"></div><div class="cela highlight-box"></div><div class="ceqmaqe-mezin highlight-box"></div><div class="ceqmaqe-cucik highlight-box"></div><div class="elendara highlight-box"></div><div class="zerka highlight-box"></div><div class="memala highlight-box"></div><div class="cenceliya highlight-box"></div><div class="cobana highlight-box"></div><div class="holile highlight-box"></div><div class="cerxuta highlight-box"></div><div class="kura highlight-box"></div><div class="qesim highlight-box"></div><div class="dike highlight-box"></div><div class="maseka highlight-box"></div><div class="hopka highlight-box"></div><div class="sorka highlight-box"></div><div class="reco highlight-box"></div><div class="xecxelil highlight-box"></div><div class="ceqilme highlight-box"></div><div class="sex highlight-box"></div><div class="ciye highlight-box"></div><div class="banika highlight-box"></div><div class="etmana highlight-box"></div><div class="sexbila highlight-box"></div><div class="goliye-jerin highlight-box"></div><div class="goliye-jorin highlight-box"></div><div class="muske highlight-box"></div><div class="kure highlight-box"></div><div class="hecika highlight-box"></div><div class="sediya highlight-box"></div><div class="kumrese highlight-box"></div><div class="qude highlight-box"></div><div class="deewris highlight-box"></div><div class="hemseleke highlight-box"></div><div class="berbene highlight-box"></div><div class="bedina highlight-box"></div><div class="dumiliya highlight-box"></div><div class="umera highlight-box"></div><div class="memila highlight-box"></div><div class="hesen highlight-box"></div>
+</div>
+            </div>
+        </div>
+    </div>
+    <div class="nahiya-section" id="Şera">
+        <h2>Şera</h2>
+        <div class="content-wrapper">
+            <div class="village-list-column">
+                <a href="#alciya">Alciya</a>
+                <a href="#baflune">Baflûnê</a>
+                <a href="#berava">Be'rava</a>
+                <a href="#cema">Çema</a>
+                <a href="#nebi-huri">Cyrrhus</a>
+                <a href="#dewris">Dewrîş</a>
+                <a href="#dersiwane">Dêrsiwanê</a>
+                <a href="#dikmedase">Dîkmedaşê</a>
+                <a href="#diraqliya">Diraqliya</a>
+                <a href="#erebwerane">Ereb Wêranê</a>
+                <a href="#gabeleke">Gubelê</a>
+                <a href="#hilubiye">Ĥilûbiyê Mezin</a>
+                <a href="#ikidame">Îkîdamê</a>
+                <a href="#kerferome">Keferomê</a>
+                <a href="#kortike">Kortikê</a>
+                <a href="#mersewa">Mersewa</a>
+                <a href="#mesale">Meşalê</a>
+                <a href="#metina">Metîna</a>
+                <a href="#meydanke">Meydankê</a>
+                <a href="#naza">Naza</a>
+                <a href="#omer-simo">Omer Simo</a>
+                <a href="#omera">Omera</a>
+                <a href="#pelusanke">Pelûsankê</a>
+                <a href="#qeredepe">Qeredepe</a>
+                <a href="#qastele-eli-cindo">Qestela Cindo</a>
+                <a href="#qestele-kistik">Qestelê Kîşik</a>
+                <a href="#qetlebiye">Qetlebiyê</a>
+                <a href="#qerqina">Qetlebiyê</a>
+                <a href="#qitme">Qitmê</a>
+                <a href="#qurtqulaqe-cucik">Qurtqulaqê Çûçik</a>
+                <a href="#qurtqulaqe-mezin">Qurtqulaqê Mezin</a>
+                <a href="#sera">Şera</a>
+                <a href="#sere-kaniye">Serê Kaniyê</a>
+                <a href="#siltete">Şîlte'tê</a>
+                <a href="#sinka">Sînka</a>
+                <a href="#zeytuneke">Zêtûnekê</a>
+                <a href="#" class="clear-link">Vala Bike (Clear Highlight)</a>
+            </div>
+            <div class="maps-column">
+                <div class="map-container">
+<img alt="Map Image 12" onerror="this.onerror=null; this.src='https://placehold.co/991x1349/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="ÇK Map 12.png"/>
+<div class="nebi-huri highlight-box"></div><div class="mersewa highlight-box"></div><div class="siltete highlight-box"></div><div class="omer-simo highlight-box"></div><div class="siiriya highlight-box"></div><div class="zeytuneke highlight-box"></div><div class="ikidame highlight-box"></div><div class="dersiwane highlight-box"></div><div class="diraqliya highlight-box"></div><div class="pelusanke highlight-box"></div><div class="alciya highlight-box"></div><div class="qetlebiye highlight-box"></div><div class="dewris highlight-box"></div><div class="qerqina highlight-box"></div><div class="naza highlight-box"></div><div class="omera highlight-box"></div><div class="erebwerane highlight-box"></div><div class="dikmedase highlight-box"></div><div class="yazibaxe highlight-box"></div><div class="qastele-eli-cindo highlight-box"></div><div class="baflune highlight-box"></div><div class="ezaz highlight-box"></div><div class="qitme highlight-box"></div><div class="cema highlight-box"></div><div class="sinka highlight-box"></div><div class="berava highlight-box"></div><div class="sera highlight-box"></div><div class="gabeleke highlight-box"></div><div class="meydanke highlight-box"></div><div class="hilubiye highlight-box"></div><div class="kerferome highlight-box"></div><div class="qurtqulaqe-mezin highlight-box"></div><div class="qurtqulaqe-cucik highlight-box"></div><div class="xirabi-sera highlight-box"></div><div class="metina highlight-box"></div><div class="sere-kaniye highlight-box"></div><div class="mesale highlight-box"></div><div class="kortike highlight-box"></div><div class="qeredepe highlight-box"></div><div class="qestele-kistik highlight-box"></div><div class="cumke highlight-box"></div>
+</div>
+            </div>
+        </div>
+    </div>
+    <div class="nahiya-section" id="Şiyê">
+        <h2>Şiyê</h2>
+        <div class="content-wrapper">
+            <div class="village-list-column">
+                <a href="#alkana">Alkana</a>
+                <a href="#anqele">Anqelê</a>
+                <a href="#baziya">Baziya</a>
+                <a href="#ceqele-jerin">Çeqelê Jêrin</a>
+                <a href="#ceqele-jorin">Çeqelê Jorin</a>
+                <a href="#ceqele-orte">Çeqelê Ortê</a>
+                <a href="#erende">Erendê</a>
+                <a href="#hec-bilal">Ĥec Bilal</a>
+                <a href="#kela">Kela</a>
+                <a href="#mistika">Mistika</a>
+                <a href="#qermitliq">Qermîtliq</a>
+                <a href="#senare">Senarê</a>
+                <a href="#siketka">Şiketka</a>
+                <a href="#siye">Şiyê</a>
+                <a href="#tirmisho">Tirmûşa</a>
+                <a href="#xelil">Xelîl</a>
+                <a href="#" class="clear-link">Vala Bike (Clear Highlight)</a>
+            </div>
+            <div class="maps-column">
+                <div class="map-container">
+<img alt="Map" onerror="this.onerror=null; this.src='https://placehold.co/991x661/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="ÇK Map 17.png"/>
+<div class="tirmisho highlight-box"></div>
+<div class="kela highlight-box"></div>
+<div class="alkana highlight-box"></div>
+<div class="xelil highlight-box"></div>
+<div class="ceqele-jorin highlight-box"></div>
+<div class="ceqele-jerin highlight-box"></div>
+<div class="hec-bilal highlight-box"></div>
+<div class="ceqele-orte highlight-box"></div>
+<div class="mistika highlight-box"></div>
+<div class="siketka highlight-box"></div>
+<div class="erende highlight-box"></div>
+<div class="qermitliq highlight-box"></div>
+<div class="siye highlight-box"></div>
+<div class="senare highlight-box"></div>
+<div class="anqele highlight-box"></div>
+<div class="baziya highlight-box"></div>
+<div class="hekice highlight-box"></div>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function showHighlight() {
+        document.querySelectorAll('.highlight-box').forEach(box => {
+            box.style.display = 'none';
+        });
+
+        if (window.location.hash) {
+            try {
+                const activeLink = document.querySelector(`a[href="${window.location.hash}"]`);
+                if (activeLink) {
+                    const parentSection = activeLink.closest('.nahiya-section');
+                    if (parentSection) {
+                        const highlightClass = window.location.hash.substring(1);
+                        const highlightBox = parentSection.querySelector('.' + highlightClass);
+                        if (highlightBox) {
+                            highlightBox.style.display = 'block';
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error("Could not process hash:", window.location.hash, e);
+            }
+        }
+    }
+
+    function clearHighlights(event) {
+        event.preventDefault();
+        history.pushState("", document.title, window.location.pathname + window.location.search);
+        showHighlight();
+    }
+
+    window.addEventListener('hashchange', showHighlight);
+    window.addEventListener('DOMContentLoaded', showHighlight);
+    
+    document.querySelectorAll('.clear-link').forEach(link => {
+        link.addEventListener('click', clearHighlights);
+    });
+    </script>
+</body>
+</html>

@@ -3,26 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive | Be'dîna</title>
-    <!-- Tailwind CSS for styling -->
+    <title>Archive | Be&#x27;dîna</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- START: LEAFLET & PLUGIN CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
-    <!-- END: LEAFLET & PLUGIN CSS -->
-
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Light theme variables */
+        body { font-family: 'Inter', sans-serif; }
         :root {
             --bg-color: #f0f2e6;
             --text-color: #000000;
@@ -32,9 +23,8 @@
             --link-color: #2563eb;
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
-            --internal-link-color: #2563eb; /* This is the blue for light mode */
+            --internal-link-color: #2563eb;
         }
-        /* Dark theme variables from user image */
         .dark {
             --bg-color: #2d2d2d;
             --text-color: #f1f1f1;
@@ -44,86 +34,28 @@
             --link-color: #63b3ed;
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
-            --internal-link-color: #86efac; /* This is the light green from your image */
+            --internal-link-color: #86efac;
         }
-        /* Applying theme colors */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        h1, h2, h3, .prose {
-            color: var(--text-color);
-        }
-        .subtext {
-             color: var(--subtext-color);
-        }
-        .themed-border {
-            border-color: var(--border-color);
-        }
-        .internal-link {
-            text-decoration: none; /* This removes the underline */
-            cursor: pointer;
-            color: var(--internal-link-color); /* This uses a new dedicated color variable */
-        }
-        .external-link {
-            color: var(--link-color);
-        }
-        .button-style {
-             border: 1px solid var(--border-color);
-        }
-        .button-style:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-hover-text);
-        }
-        /* Details/Summary styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .prose strong {
-            font-weight: 600;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-        }
-        .prose ol, .prose ul {
-            margin-bottom: 1rem;
-        }
-        /* Inverted colors for the theme toggle button */
-        .toggle-button-colors {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* Custom styles for Leaflet popups and controls to match theme */
-        .leaflet-popup-content-wrapper, .leaflet-control-layers {
-            background-color: var(--card-bg-color) !important;
-            color: var(--text-color) !important;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg-color) !important;
-        }
-        .leaflet-popup-close-button {
-            color: var(--text-color) !important;
-        }
-        .leaflet-popup-content b {
-            font-weight: 600;
-        }
-        .leaflet-popup-content span {
-            color: var(--subtext-color);
-            text-transform: capitalize;
-        }
-        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
         .leaflet-control-layers-toggle {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
             background-size: 20px 20px !important;
@@ -131,57 +63,110 @@
         .dark .leaflet-control-layers-toggle {
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
         }
-        .leaflet-control-scale-line {
-            background: var(--card-bg-color);
-            border-color: var(--text-color);
-            color: var(--text-color);
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container */
+        #minimap-reco .map-container {
+            position: relative;
+        }
+        #minimap-reco .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Styling for the yellow highlight circles */
+        #minimap-reco .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            border: 3px solid var(--border-color);
-            border-radius: 8px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* --- COORDINATES FOR RECO MAP AREAS --- */
+        /* Each class corresponds to a location. The coordinates are calculated from the image map. */
+        #minimap-reco .meydan-ekbez { left: 45.71%; top: 5.63%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .peynereke { left: 61.65%; top: 6.23%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .kosa { left: 62.56%; top: 9.01%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .gaze { left: 52.37%; top: 11.79%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .welikli { left: 59.33%; top: 15.54%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .dodo { left: 62.26%; top: 16.37%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .gewenda { left: 66.19%; top: 18.69%; width: 9.49%; height: 7.06%; }
+        #minimap-reco .sexmihemed { left: 56.51%; top: 17.57%; width: 10.69%; height: 7.96%; }
+        #minimap-reco .semala { left: 53.08%; top: 18.17%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .edema { left: 39.46%; top: 22.89%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .qerebaba { left: 25.33%; top: 30.63%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .elbiske { left: 43.09%; top: 30.86%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .bilelko { left: 47.83%; top: 30.01%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .xerabi-silug { left: 40.97%; top: 34.01%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .firfirke-jerin { left: 36.53%; top: 32.58%; width: 8.88%; height: 6.61%; }
+        #minimap-reco .firfirke-jorin { left: 35.12%; top: 35.89%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .heydar { left: 38.04%; top: 39.26%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .ceinke { left: 44.60%; top: 35.51%; width: 11.70%; height: 8.71%; }
+        #minimap-reco .cela { left: 56.91%; top: 33.86%; width: 11.50%; height: 8.56%; }
+        #minimap-reco .ceqmaqe-mezin { left: 51.06%; top: 43.24%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .ceqmaqe-cucik { left: 59.03%; top: 45.35%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .elendara { left: 64.98%; top: 44.00%; width: 9.49%; height: 7.06%; }
+        #minimap-reco .zerka { left: 68.21%; top: 47.82%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .memala { left: 40.77%; top: 48.72%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .cenceliya { left: 54.89%; top: 47.60%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .cobana { left: 65.19%; top: 49.47%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .holile { left: 49.34%; top: 51.28%; width: 11.50%; height: 8.56%; }
+        #minimap-reco .cerxuta { left: 58.12%; top: 53.53%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .kura { left: 53.38%; top: 54.73%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .qesim { left: 69.43%; top: 54.28%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .dike { left: 79.11%; top: 54.20%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .maseka { left: 35.32%; top: 52.25%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .hopka { left: 29.77%; top: 58.03%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .sorka { left: 5.85%; top: 64.64%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .reco { left: 38.75%; top: 56.08%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .xecxelil { left: 44.90%; top: 56.68%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .ceqilme { left: 62.97%; top: 59.23%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .sex { left: 71.34%; top: 61.56%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .ciye { left: 80.12%; top: 65.54%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .banika { left: 35.42%; top: 62.16%; width: 9.28%; height: 6.91%; }
+        #minimap-reco .etmana { left: 35.12%; top: 63.36%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .sexbila { left: 59.03%; top: 63.06%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .goliye-jerin { left: 63.47%; top: 66.07%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .goliye-jorin { left: 58.73%; top: 67.34%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .muske { left: 42.89%; top: 65.77%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .kure { left: 20.79%; top: 68.70%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .hecika { left: 31.89%; top: 66.89%; width: 10.69%; height: 7.96%; }
+        #minimap-reco .sediya { left: 15.24%; top: 73.72%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .kumrese { left: 22.20%; top: 73.80%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .qude { left: 31.18%; top: 75.75%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .dewris { left: 39.76%; top: 71.02%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .hemseleke { left: 49.85%; top: 72.75%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .berbene { left: 56.61%; top: 71.40%; width: 10.69%; height: 7.96%; }
+        #minimap-reco .bedina { left: 47.23%; top: 76.58%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .dumiliya { left: 42.18%; top: 79.95%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .umera { left: 23.71%; top: 80.63%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .memila { left: 26.44%; top: 83.71%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .hesen { left: 25.63%; top: 72.07%; width: 9.69%; height: 7.21%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
     </style>
 </head>
 <body>
-
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
-        <!-- Header Section -->
         <header class="mb-8">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Be'dîna</h1>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Be&#x27;dîna</h1>
         </header>
 
         <main class="space-y-6">
-            <!-- Basic Information Card -->
             <div class="card p-6 rounded-xl">
                 <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
                     <h2 class="text-2xl font-semibold">General Information</h2>
-                    <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
                         <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
@@ -189,19 +174,43 @@
                         </svg>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                        <p class="text-lg">Rajo</p>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Reco</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Ba&#x27;dina, Ba&#x27;dinlî, Ba&#x27;dîna, Ba&#x27;dîno, Ba&#x27;dînê, Baadina, Badina, Badino, Badîna, Badînli, Badîno, Ba‘dîna, Ba’dîna, Be&#x27;dina, Be&#x27;dîna, Be&#x27;dîno, Bedîna, Bedîno, Behdîna, Behdînya, Beit Adeen, Bidinlî, Sheikh Rashid, بعدنلي, بيت عدين, بعدينو</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
-                        <p class="text-lg">Be'dina, Behdînya, Beit Adeen, بعدنلي, بيت عدين</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
+<img alt="Map of Reco Area" onerror="this.onerror=null; this.src='https://placehold.co/991x1332/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 15.png"/>
+<!-- These divs are the actual highlight elements -->
+<div class="meydan-ekbez highlight-box"></div><div class="peynereke highlight-box"></div><div class="kosa highlight-box"></div><div class="gaze highlight-box"></div><div class="welikli highlight-box"></div><div class="dodo highlight-box"></div><div class="gewenda highlight-box"></div><div class="sexmihemed highlight-box"></div><div class="semala highlight-box"></div><div class="edema highlight-box"></div><div class="qerebaba highlight-box"></div><div class="elbiske highlight-box"></div><div class="bilelko highlight-box"></div><div class="xerabi-silug highlight-box"></div><div class="firfirke-jerin highlight-box"></div><div class="firfirke-jorin highlight-box"></div><div class="heydar highlight-box"></div><div class="ceinke highlight-box"></div><div class="cela highlight-box"></div><div class="ceqmaqe-mezin highlight-box"></div><div class="ceqmaqe-cucik highlight-box"></div><div class="elendara highlight-box"></div><div class="zerka highlight-box"></div><div class="memala highlight-box"></div><div class="cenceliya highlight-box"></div><div class="cobana highlight-box"></div><div class="holile highlight-box"></div><div class="cerxuta highlight-box"></div><div class="kura highlight-box"></div><div class="qesim highlight-box"></div><div class="dike highlight-box"></div><div class="maseka highlight-box"></div><div class="hopka highlight-box"></div><div class="sorka highlight-box"></div><div class="reco highlight-box"></div><div class="xecxelil highlight-box"></div><div class="ceqilme highlight-box"></div><div class="sex highlight-box"></div><div class="ciye highlight-box"></div><div class="banika highlight-box"></div><div class="etmana highlight-box"></div><div class="sexbila highlight-box"></div><div class="goliye-jerin highlight-box"></div><div class="goliye-jorin highlight-box"></div><div class="muske highlight-box"></div><div class="kure highlight-box"></div><div class="hecika highlight-box"></div><div class="sediya highlight-box"></div><div class="kumrese highlight-box"></div><div class="qude highlight-box"></div><div class="dewris highlight-box"></div><div class="hemseleke highlight-box"></div><div class="berbene highlight-box"></div><div class="bedina highlight-box" style="display: block;"></div><div class="dumiliya highlight-box"></div><div class="umera highlight-box"></div><div class="memila highlight-box"></div><div class="hesen highlight-box"></div>
+</div></div>
                 </div>
             </div>
 
-            <!-- Map and Location Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
@@ -211,73 +220,101 @@
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
             
-            <!-- Photos Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/badeno.jpg" alt="Photo of badeno" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=badeno.jpg';"><img src="../village_photos/ezzat-khalil.jpg" alt="Photo of ezzat-khalil" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=ezzat-khalil.jpg';"><img src="../village_photos/trejafrin015.jpg" alt="Photo of trejafrin015" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=trejafrin015.jpg';"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/badeno.jpg" alt="Photo of Be&#x27;dîna" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=badeno.jpg';">
+<img src="../village_photos/ezzat-khalil.jpg" alt="Photo of Be&#x27;dîna" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=ezzat-khalil.jpg';">
+<img src="../village_photos/trejafrin015.jpg" alt="Photo of Be&#x27;dîna" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=trejafrin015.jpg';">
+</div>
             </div>
 
-            <!-- Summaries Card (I-IV) -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">According to the book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds (Afrin)</span>' Geographical Study:</p>
-<p style="margin-bottom: 1em;"><strong>Be'dîna, <span class="internal-link">بعدنلي</span>, <span class="internal-link">بيت عدين</span> /5246n - 906ha - 10km - 530m/:</strong></p>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Be&#x27;dîna (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin)</span>&#x27; Geographical Study:</p>
+<p><strong><span class="internal-link">Be&#x27;dîna</span>, <span class="internal-link">بعدنلي</span>, <span class="internal-link">بيت عدين</span> /5246n - 906ha - 10km - 530m/:</strong></p>
 <ul>
-<li><span class="internal-link">Be'dina</span> (بعدينا): It is believed that its origin is from the word "<span class="internal-link">Behdînan</span>" (بهدينان), which is the name of a well-known region in southern <span class="internal-link">Kurdistan</span>. There is no connection between the Arabized name "<span class="internal-link">Beit Adeen</span>" (بيت عدين) and the Kurdish designation.</li>
-<li>One of the large villages in the region, it has a municipality and health center. It is located on the southern slope of <span class="internal-link">Mount Pilingî</span> (<span class="internal-link">Çiyayê Piling</span> (جبل بلنك)). The <span class="internal-link">Aleppo</span>-<span class="internal-link">Meydan Ekbes</span> (حلب - ميدان أكبس) railway line passes 2km from its eastern side when entering <span class="internal-link">Nashab Valley</span> (وادي النشاب). A weekly market has been held there every Tuesday since <span class="internal-link">2008</span>.</li>
+<li>Be&#x27;dina (بعدينا): It is believed that its origin is from the word &quot;<span class="internal-link">Behdînan</span>&quot; (بهدينان), which is the name of a well-known region in southern <span class="internal-link">Kurdistan</span>. There is no connection between the Arabized name &quot;Beit Adeen&quot; (بيت عدين) and the Kurdish designation.</li>
+<li>One of the large villages in the region, it has a municipality and health center. It is located on the southern slope of <span class="internal-link">Mount Pilingî</span> (<span class="internal-link">Çiyayê Piling</span> (جبل بلنك)). The <span class="internal-link">Aleppo</span>-<span class="internal-link">Meydan Ekbes</span> (حلب - ميدان أكبس) railway line passes 2km from its eastern side when entering <span class="internal-link">Nashab Valley</span> (وادي النشاب). A weekly market has been held there every Tuesday since 2008.</li>
 </ul>
-<p style="margin-bottom: 1em;">According to the book '<span class="internal-link">عفرين .... نهرها وروابيها الخضراء</span>' '<span class="internal-link">Afrin City.... Its Rivers and Green Hills</span>':</p>
-<p style="margin-bottom: 1em;"><strong><span class="internal-link">بعدنلي</span></strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد) belonging to Rajo district (ناحية راجو), <span class="internal-link">Afrin City</span> region (منطقة عفرين), Aleppo governorate (محافظة حلب).</p>
-<p style="margin-bottom: 1em;">It is a large village located on the southern slope of the middle part of Mountain of the Kurds (الجبل المذكور). It is bounded to the north by a high and rugged mountain chain and <span class="internal-link">Darwish Oba Si</span> village (قرية درويش أوبه سي), to the south by a valley and plain planted with olive and grape trees and <span class="internal-link">Kurkan Tahtani</span> (كوركان تحتاني), <span class="internal-link">Kurkan Foqani</span> (كوركان فوقاني), and <span class="internal-link">Sari Oshaghi</span> (صاري أوشاغي) villages, to the west by a rugged mountain chain and <span class="internal-link">Dombllali</span> village (قرية دومبللي), and to the east by a valley and plain and the railway line and nearby <span class="internal-link">Hamshalk</span> village (قرية حمشلك).</p>
-<p style="margin-bottom: 1em;">The number of its houses reaches about 800 houses and its age is about 500 years. Its old dwellings are stone and clay with flat wooden roofs, while the modern ones are stone and concrete that spread east, south, and west. The village is divided into three sections: the western section is located on a highland, the middle section in a plain, and the eastern section is located on a graduated mountain slope.</p>
-<p style="margin-bottom: 1em;">It has an electricity network and drinking water from artesian wells or from cisterns dug in houses that store winter rainwater. It has elementary and preparatory schools, a telephone center, agricultural center, and a mosque in the village center with several commercial and service shops that connect with the district and region by two paved roads.</p>
-<p style="margin-bottom: 1em;">The residents work in cultivating olives, grains, grapes, and fruit trees, as well as raising sheep and goats. The village is considered one of the beautiful villages in terms of its excellent location and modern construction, and there are several luxurious villas in the village, especially in the western and southern areas. A modern municipality was recently established there.</p>
-<p style="margin-bottom: 1em;">Among the holders of higher degrees in the village: <span class="internal-link">Khalil Sabri Ahmed</span> (خليل صبري أحمد) / Doctorate in Ophthalmology / <span class="internal-link">Russia</span> - <span class="internal-link">Mustafa Hanan</span> (مصطفى حنان) / Doctorate in Agriculture / <span class="internal-link">Bulgaria</span> - <span class="internal-link">Yasser Hanan</span> (ياسر حنان) / Doctorate in Aviation / Russia.</p>
-<p style="margin-bottom: 1em;">Among the families present in the village: <span class="internal-link">Al Kor Ahmed</span> family (آل كور أحمد) (<span class="internal-link">Mistkah</span>, <span class="internal-link">Bari</span>, <span class="internal-link">Hastob</span>, <span class="internal-link">Habo</span>, <span class="internal-link">Mahmah Jah</span>, <span class="internal-link">Bako</span>...) - <span class="internal-link">Al Suntar</span> (آل سونتر) - <span class="internal-link">Al Alif</span> (آل عليف) - <span class="internal-link">Al Al Haji</span> (آل آل حجي) - <span class="internal-link">Al Jarji</span> (آل جرجي) - <span class="internal-link">Al Jalkhar</span> (آل جلخر)...</p>
-<p style="margin-bottom: 1em;">Among the social figures in the village is <span class="internal-link">Mr. Khalil Ezzat Ibn Ezzat</span> (السيد خليل عزت ابن عزت).</p>
-<p style="margin-bottom: 1em;">It is mentioned that the late <span class="internal-link">Fawzi Aref</span> (فوزي عارف), owner of <span class="internal-link">Middle East</span> recordings, was from the sons of this village.</p>
-<p style="margin-bottom: 1em;">Village mayor:</p>
-<p style="margin-bottom: 1em;"><strong>Information Sources:</strong></p>
-<p style="margin-bottom: 1em;">1 - Book <span class="internal-link">جبل الكرد</span> (<span class="internal-link">عفرين</span>) Geographical Study by <span class="internal-link">Dr. Mohammed Abdo Ali</span> (الدكتور محمد عبدو علي).</p>
-<p style="margin-bottom: 1em;">2 - Book: <span class="internal-link">عفرين .... نهرها وروابيها الخضراء</span> by <span class="internal-link">Abdulrahman Mohammed</span> from <span class="internal-link">Qatmah</span> village (عبدالرحمن محمد من قرية قطمه).</p>
-<p style="margin-bottom: 1em;">3 - Studies by <span class="internal-link">Tirej Soft Center</span> / <span class="internal-link">Abdulrahman Haji Othman</span> (مركز تيريج سوفت / عبدالرحمن حاجي عثمان).</p>
-<p style="margin-bottom: 1em;">4 - Some village residents.</p>
-<p style="margin-bottom: 1em;">Prepared and executed by: <span class="internal-link">Tirej Afrin</span> website manager: Abdulrahman Haji Othman</p>
-<p style="margin-bottom: 1em;">20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">The village of Behdînya was established four to five hundred years ago (00:58) by a few families originating from the Behdînan region in southern Kurdistan (01:02), which was a Kurdish emirate under the Ottoman Empire (04:09). These initial settlers were primarily livestock owners who made their homes near the Çayê Peleng (01:08, 01:11). Subsequently, other families from the surrounding Efrîn region also settled in the village (04:27). A significant development was the opening of a school in <span class="internal-link">1936</span> (01:30); one of its teachers was <span class="internal-link">Amîn Hafiz</span>, who would later become a president of Syria (01:34). The village mosque was also established in earlier times (07:47). A notable local spiritual figure, <span class="internal-link">Şêx Reşîd</span>, was active with his followers from 1936 (08:04), lived during the period of the French Mandate in Syria (16:55), and passed away approximately 19 years before the <span class="internal-link">2020</span> recording of this video (14:15). A vital water well for the community was constructed around <span class="internal-link">1955</span> (05:04). In its earlier history, the village was involved in trade (07:38). Later, the village became known for its battery-making industry, which was initiated by <span class="internal-link">Mistefa Brahîm</span> around <span class="internal-link">1968</span> (11:16), with others learning and joining the trade in the early <span class="internal-link">1970s</span> (11:12, 11:27). The village's history and daily life, including events, births, deaths, and celebrations, were meticulously documented for 34 years, starting in <span class="internal-link">1987</span>, by a village teacher named <span class="internal-link">Mihemed Hesenek</span> in a series of notebooks (24:08, 24:12, 26:19).</p></div></details><hr class="themed-border"></div>
-
-            <!-- Links Card (V) -->
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20badnle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20badnle.htm</a></li><li>Ax û Welat<br><a href="https://www.youtube.com/watch?v=VG67ardHoVM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VG67ardHoVM</a></li><li>Jawlat<br><a href="https://www.youtube.com/watch?v=_Hv0pQK01UM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_Hv0pQK01UM</a><br><a href="https://www.youtube.com/watch?v=iSSDdHl4gXg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=iSSDdHl4gXg</a></li><li>Drone<br><a href="https://www.youtube.com/watch?v=uMj47OTMk0I" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=uMj47OTMk0I</a><br><a href="https://www.youtube.com/watch?v=TO_E_hHUOyI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TO_E_hHUOyI</a></li><li>Video<br><a href="https://www.youtube.com/watch?v=wwNd-JMXUcw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=wwNd-JMXUcw</a><br><a href="https://www.youtube.com/watch?v=WRrjC-_FkhQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=WRrjC-_FkhQ</a><br><a href="https://www.youtube.com/watch?v=GP52WgbQ9Uc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=GP52WgbQ9Uc</a><br><a href="https://www.youtube.com/watch?v=3dEVv4M76oo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3dEVv4M76oo</a><br><a href="https://www.youtube.com/watch?v=QJsANwsbZ84" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=QJsANwsbZ84</a></li></ul>
+<p>According to the book <span class="internal-link">عفرين.... نهرها ورواييها الخضراء|Afrin.... Her River and Green Hills</span>:</p>
+<p><strong>بعدنلي</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), <span class="internal-link">Afrin Region</span> (منطقة عفرين), <span class="internal-link">Aleppo Governorate</span> (محافظة حلب).</p>
+<p>It is a large village located on the southern slope of the middle part of Mountain of the Kurds (الجبل المذكور). It is bounded to the north by a high and rugged mountain chain and <span class="internal-link">Darwish Oba Si</span> village (قرية درويش أوبه سي), to the south by a valley and plain planted with olive and grape trees and <span class="internal-link">Kurkan Tahtani</span> (كوركان تحتاني), <span class="internal-link">Kurkan Foqani</span> (كوركان فوقاني), and <span class="internal-link">Sari Oshaghi</span> (صاري أوشاغي) villages, to the west by a rugged mountain chain and <span class="internal-link">Dombllali</span> village (قرية دومبللي), and to the east by a valley and plain and the railway line and nearby <span class="internal-link">Hamshalk</span> village (قرية حمشلك).</p>
+<p>The number of its houses reaches about 800 houses and its age is about 500 years. Its old dwellings are stone and clay with flat wooden roofs, while the modern ones are stone and concrete that spread east, south, and west. The village is divided into three sections: the western section is located on a highland, the middle section in a plain, and the eastern section is located on a graduated mountain slope.</p>
+<p>It has an electricity network and drinking water from artesian wells or from cisterns dug in houses that store winter rainwater. It has elementary and preparatory schools, a telephone center, agricultural center, and a mosque in the village center with several commercial and service shops that connect with the district and region by two paved roads.</p>
+<p>The residents work in cultivating olives, grains, grapes, and fruit trees, as well as raising sheep and goats. The village is considered one of the beautiful villages in terms of its excellent location and modern construction, and there are several luxurious villas in the village, especially in the western and southern areas. A modern municipality was recently established there.</p>
+<p>Among the holders of higher degrees in the village: <span class="internal-link">Khalil Sabri Ahmed</span> (خليل صبري أحمد) / Doctorate in Ophthalmology / <span class="internal-link">Russia</span> - <span class="internal-link">Mustafa Hanan</span> (مصطفى حنان) / Doctorate in Agriculture / <span class="internal-link">Bulgaria</span> - <span class="internal-link">Yasser Hanan</span> (ياسر حنان) / Doctorate in Aviation / Russia.</p>
+<p>Among the families present in the village: <span class="internal-link">Al Kor Ahmed</span> family (آل كور أحمد) (<span class="internal-link">Mistkah</span>, <span class="internal-link">Bari</span>, <span class="internal-link">Hastob</span>, <span class="internal-link">Habo</span>, <span class="internal-link">Mahmah Jah</span>, <span class="internal-link">Bako</span>...) - <span class="internal-link">Al Suntar</span> (آل سونتر) - <span class="internal-link">Al Alif</span> (آل عليف) - <span class="internal-link">Al Al Haji</span> (آل آل حجي) - <span class="internal-link">Al Jarji</span> (آل جرجي) - <span class="internal-link">Al Jalkhar</span> (آل جلخر)...</p>
+<p>Among the social figures in the village is <span class="internal-link">Mr. Khalil Ezzat Ibn Ezzat</span> (السيد خليل عزت ابن عزت).</p>
+<p>It is mentioned that the late <span class="internal-link">Fawzi Aref</span> (فوزي عارف), owner of <span class="internal-link">Middle East</span> recordings, was from the sons of this village.</p>
+<p>Village mayor:</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Be&#x27;dîna</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>The village of Behdîna, located in the Mabeta district of Afrin canton, was founded approximately 400 to 500 years ago by a few shepherds from the <span class="internal-link">Sheikhan</span> tribe of the <span class="internal-link">Behdînan</span> region in Southern Kurdistan. These founders settled on <span class="internal-link">Çiyayê Pilengê</span> (Tiger Mountain) after discovering its natural caves and water sources, eventually growing the community to 650 households. The village&#x27;s history is marked by significant developments, including the opening of its first school in 1936, where one of its earliest teachers was Amin al-Hafiz, who would later become a president of Syria. The village is also known by the name of <span class="internal-link">Sheikh Rashid</span>, a revered religious figure whose real name was <span class="internal-link">Kişon</span>. According to local oral tradition, during the <span class="internal-link">French Mandate</span>, Sheikh Rashid miraculously started a stalled train, an event that so impressed a French officer that he ordered a shrine to be built in his honor. This shrine became a place of pilgrimage for those seeking healing and miracles, and Sheikh Rashid lived to the age of 95. The cultural heritage of Behdîna is also defined by its traditional crafts and cuisine; the village is renowned for making sucuk (a sweet made from grape molasses and nuts) and traditional dishes like &quot;Dankê Şîvê,&quot; preserving practices passed down through generations.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>III. Summary from other Channels&#x27; Transcripts of Be&#x27;dîna</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><h3 class="font-semibold text-xl mt-6 mb-3">A. Summary from Halil Sino Transcript of Be&#x27;dîna</h3>
+<p>In the village of Ba’dina, the tradition of boiling wheat (genim kelandin), a practice the elders also refer to by the Kurmanji term &quot;<span class="internal-link">yezmîş</span>,&quot; is a significant cultural heritage that has become increasingly rare. Historically, this was a common activity performed by individual households, but due to the extensive labor and costs involved—including firewood, water, and milling fees—it is now a specialized task carried on by only a few families, such as the one featured, whose elder has been practicing the craft for approximately fifty years, following in the footsteps of predecessors like Abu Rashid. The meticulous process begins with sifting and washing the wheat before it is boiled in a large cauldron over an open fire. The boiling time is critical and depends on the type of grain: red wheat (donê sor), used for bulgur, is boiled for three hours, while white wheat (donê spî), used for &#x27;dane&#x27; (cracked wheat), requires three and a half hours. After boiling, the wheat is spread on the roof to dry for three days, after which it is sacked and taken to a mill to be ground. The types of wheat used are specific, including a Syrian variety known as &#x27;<span class="internal-link">Qeysî</span>&#x27;, though another historical type, &#x27;<span class="internal-link">Dimashqî</span>&#x27;, is no longer available. This entire process stands as a testament to an ancestral tradition that connects the community to its agricultural past, a connection the elder emphasizes by sending greetings to the diaspora in Europe, Lebanon, and Turkey, and calling for them to return to their homeland.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">A. Summary from Halil Sino Transcript of Be&#x27;dîna 2</h3>
+<p>In the fields of Badînli, a village in the Afrin region, the seasonal harvesting of green chickpeas is a deeply rooted cultural tradition known as &quot;<span class="internal-link">Harmûn</span>.&quot; Described by elders as a practice from the &quot;old times&quot; (zemanê berê), it is an intergenerational activity passed down from ancestors to grandchildren. The methods of harvesting have evolved significantly over time; what was once done by hand or with a sickle (devîr) later progressed to the use of machines (makîne) and specialized harvesters (potos). This technological shift was accompanied by a major economic change. Historically, green chickpeas were prepared only for family consumption, while the main commercial product was inexpensive dry chickpeas. Today, however, the fresh green chickpeas have become a valuable commercial product (bazirganî) sold by the kilogram. The traditional process involves harvesting the entire chickpea plant, roasting it directly on an open fire until the pods are charred but the peas inside are steamed (kelandî), and then rubbing the plants by hand to release the cooked chickpeas. This meal is then shared and eaten communally in the field, a practice that underscores its importance as a social and cultural event during the harvest season, which for laborers involves working in shifts from early morning and again in the late afternoon.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">A. Summary from Halil Sino Transcript of Be&#x27;dîna 3</h3>
+<p>The village of Badîna has a long-standing cultural tradition of folkloric dance, with historical roots stretching back 400 years to an original village group that was eventually disbanded. In a modern effort to revive this ancestral heritage, the youth of the village have re-established a new group named &quot;<span class="internal-link">Koma JinBadino</span>,&quot; following a local tradition of naming such groups after their place of origin. This revival is placed within a broader regional history by the group&#x27;s instructor, Mamosta Azad, who notes that the first folkloric group in the Afrin region was the Koma Qermîlegê, established in 1952. The identity of Koma JinBadino is deeply connected to its Afrini roots, which is reflected in the symbolism of its uniform: the logo features olive branches, representing Afrin&#x27;s renowned olive trees and oil, and a sun, symbolizing the sunrise. The group&#x27;s name is written in the Kurmanji language, further cementing its cultural identity.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">A. Summary from Halil Sino Transcript of Be&#x27;dîna 4</h3>
+<p>The village of Ba&#x27;dina in Afrin holds a significant cultural tradition of celebrating Newroz, the Kurdish New Year, which speakers claim has been practiced by the village youth for 70 years. The preparations for this annual event are a major community effort, beginning a week to ten days before March 21st. The central activity involves the youth collecting hundreds of old car and tractor tires from the surrounding area and transporting them up a steep, rocky mountain overlooking the village, using both motorcycles and manual labor. On the evening of Newroz, these tires are set ablaze to create a massive bonfire, a celebration that also includes fireworks and music, to which all Kurdish people are openly invited. Alongside this major festival, the cultural life of the village&#x27;s children is highlighted by the tradition of celebrating Mother&#x27;s Day, where they pick wildflowers from the hillsides to give to their mothers, an act accompanied by the singing of traditional songs.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">A. Summary from Halil Sino Transcript of Be&#x27;dîna 5</h3>
+<p>Life in the village of Ba&#x27;dîno was once defined by a tradition of agricultural self-sufficiency and strong community bonds. In the past (&quot;berê&quot;), villagers plowed their fields with oxen (&quot;ga&quot;) and harvested wheat and olives using sickles (&quot;das&quot;), a difficult but rewarding life they considered better than the present. This self-reliance extended to their food, as they raised goats and sheep to produce their own cheese, yogurt, and butter. They also prepared traditional delicacies like &quot;Mîjo&quot; from figs mixed with sesame and pistachios, and &quot;Bastîq&quot; and &quot;Sucuk&quot; from grapes and walnuts, which were dried on rooftops and sold as far away as Aleppo. The social fabric was woven together by the custom of &quot;Zewar&quot; or &quot;hevkarî,&quot; where the community would work together on each other&#x27;s farms without payment. Celebrations, such as weddings, were grand, seven-day, seven-night affairs with traditional &quot;def û zirne&quot; music, &quot;govend&quot; dancing, and rituals like the bride&#x27;s arrival on a decorated horse. This way of life has been lost; the speakers lament that they were displaced from their homes, becoming poor and losing these cherished traditions, with modern weddings now being short events held in commercial halls.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">A. Summary from Halil Sino Transcript of Be&#x27;dîna 6</h3>
+<p>The village of Ba&#x27;dina was historically known as &quot;<span class="internal-link">Qureh Hafareh</span>&quot; (the dug-up village), a name derived from the fact that its original inhabitants dug their homes out of the ground rather than building them up. Its current name is said to have originated from the phrase &quot;ba&#x27;dina&quot; (after us), which was spoken to guests. In the past, the villagers were primarily shepherds who sustained themselves by selling their livestock, with some families possessing wealth in gold and silver while others had nothing. A significant period of hardship was a severe drought that caused people to perish and forced them to undertake long journeys for survival. One such journey recounted was a difficult 90-day trek on foot to <span class="internal-link">Jordan</span>, which included a visit to the <span class="internal-link">shrine of Sheikh Hassan</span>. Living conditions were basic, with houses constructed from mud and straw, a stark contrast to the present day where the community has modern amenities like electricity and water.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">A. Summary from Halil Sino Transcript of Be&#x27;dîna 7</h3>
+<p>The cultural and social life of the region is defined by a strong tradition of inter-ethnic coexistence, as articulated by a Kurmanj market-goer who declared that Kurds (Kurmanj), Arabs, and Turkmen are &quot;all one&quot; (&quot;em giya yek in&quot;) and that there is no place for division (&quot;tefrîqe&quot;) among them. This statement of unity was made within the context of a bustling, traditional open-air village bazaar, which serves as the central hub for commerce and community interaction. The market itself is situated in a large square adjacent to a mosque with a prominent, traditional minaret, and is set against a characteristic landscape of terraced hills densely planted with olive groves. The speaker also connected his Kurmanj identity to a cultural value of eating &quot;pak,&quot; or clean and pure, food, reinforcing the deep-seated traditions that inform daily life in the village.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">B. Summary from Afrin Flo Transcript of Be&#x27;dîna</h3>
+<p>The village of Ba&#x27;dîno is an old, historical settlement founded by three brothers named Ba&#x27;do, Hemo, and Şêxo, with the village&#x27;s name deriving from Ba&#x27;do. The entire social structure is based on kinship, with all local families, such as Mala Ba&#x27;do, Mala Hemo, and Mala Şêxo, tracing their lineage back to these founders. This tradition of oral history is demonstrated by one of the elders, Mustafa Ibîş (age 63), who identifies his lineage as the son of Ibîş, grandson of Khidr, and great-grandson of Hamo. According to the elders, life in the past, while materially harder, was considered &quot;sweeter&quot; and possessed more &quot;bereket&quot; (abundance/blessing). The traditional livelihood was farming, which was done with oxen, and the community was defined by strong neighborliness (cîrantî), frequent social visits, and a sense of contentment with little. Other common subsistence activities included shepherding and collecting natural resources like acorns and soil. This way of life has changed significantly in modern times, with the introduction of tractors and a societal shift towards a &quot;calculation of money&quot; that has diminished the old social bonds. A key concern shared by the elders, including Ebû Nûrî (Mihemed Şaban, age ~85), is that this oral history and knowledge of past traditions are now being lost, highlighting the importance of documenting these memories.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">B. Summary from Afrin Flo Transcript of Be&#x27;dîna 2</h3>
+<p>The hilltop above the village of Ba&#x27;dîno is a historic site that, according to local elders, has been a &quot;ziyaret&quot; (pilgrimage site) since the time of their grandfathers. A long-standing tradition, which ended approximately 50 years ago, involved the community gathering at this location every Tuesday to bring &quot;qurban&quot; (sacrifices), cook, and hold picnics that would last the entire day. Central to this old tradition was a specific stone known as the &quot;Kevirê Pîr&quot; (the Holy Stone), which was later stolen by outsiders. For the past eight to ten years, the youth of Ba&#x27;dîno and the nearby town of Bazarê have revived the site with a new tradition. In preparation for Newroz, they engage in the communal effort of carrying hundreds of old tires up the rocky mountain. This activity culminates on the evening of March 21st, when they light the tires to create a large bonfire, celebrating Newroz on this historically significant ground.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">B. Summary from Afrin Flo Transcript of Be&#x27;dîna 3</h3>
+<p>The oral history of Ba&#x27;dina village, passed down through generations, states that its inhabitants are descended from the <span class="internal-link">Bişêriyê</span> tribe who migrated from the <span class="internal-link">Botan</span> region. The original settlement was not at the current site but was located further down near a significant landmark known as &#x27;<span class="internal-link">Kevirê Şêr</span>&#x27; (The Lion&#x27;s Stone), a large stone with a lion carving that has since been taken. The name &#x27;Ba&#x27;dina&#x27; itself is believed to mean &#x27;strong wind&#x27;. The village&#x27;s identity is deeply rooted in its fame for olive cultivation, a heritage now symbolized by a large, historic olive press millstone that serves as a monument in the village. This cultural identity is further expressed through their understanding of the Kurdish flag, where the red represents the blood of martyrs, white signifies peace, green symbolizes the nature of Kurdistan, and the 21-rayed sun directly references the 21st of March. This date marks Newroz, which they celebrate as the day of freedom, commemorating the legendary victory of Kawa the Blacksmith over the tyrant king Dehak.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">B. Summary from Afrin Flo Transcript of Be&#x27;dîna 4</h3>
+<p>The village of Ba&#x27;dina is home to the <span class="internal-link">shrine of Sheikh Rashid</span>, a significant local religious figure whose oral history is central to the area&#x27;s cultural heritage. Originally named <span class="internal-link">Rashid Habash</span>, he was born in 1902 and is said to have passed away in either 1930 or 1995, according to the speaker&#x27;s conflicting accounts. Despite having no formal schooling, Sheikh Rashid became a man of great piety and religious knowledge through a miraculous event: after a 40-day fast, he drank from a specific spring, now named after him, and was divinely granted the ability to understand Arabic, recite the Quran, and perform dhikr. Other miracles attributed to him include emanating a visible light from the village at night and the ability to traverse long distances almost instantaneously, such as between Ba&#x27;dina and Afrin. Today, his shrine, located in the Turbê area of the village, remains a focal point for cultural and religious practices, most notably the making of vows (nezir). This tradition, performed by locals and on behalf of the diaspora community in places like Turkey and the village of Khustake, involves the ritual slaughter of a chicken, accompanied by prayers for acceptance and protection, with the meat intended for distribution to the poor.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">B. Summary from Afrin Flo Transcript of Be&#x27;dîna 5</h3>
+<p>The village of Ba&#x27;dîno is the location of the holy shrine (mazar) of <span class="internal-link">Sheikh Rashid Ba&#x27;dino</span>, a revered local figure whose original name was Rashid Habash. He lived from 1922 to 1963 and was known for his deep piety, engaging in religious practices such as zikir (remembrance of God), reciting hymns (neşîd), and offering prayers. According to the oral history of the community, Sheikh Rashid&#x27;s life was marked by miracles, the most prominent being his ability to read the Quran and recite the Mawlid despite being unlettered and never having attended school. The people of the village also tell stories of other supernatural events associated with him, including a divine light that would emerge from the east of the village, the local spring always being full of water in his presence, and his ability to miraculously shorten long distances, reportedly traveling to places like Afrin in just minutes.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">B. Summary from Afrin Flo Transcript of Be&#x27;dîna 6</h3>
+<p>The village of Ba&#x27;dînê, located in the Rajo region of Afrin, is described as an ancient settlement with a deep history. Its name is said to derive from the Aramaic/Syriac &quot;Bêt Dîna,&quot; meaning &quot;House of Religion,&quot; reflecting its historical significance as a place of faith. The village was once a large town that was home to a Christian (Feleh) population and a monastery (Dêra Felehan). The most prominent historical site in the village is the shrine (Ziyaret) of <span class="internal-link">Şêx Reşîd</span>, a revered revolutionary (şoreşger) who fought against the French colonial forces and was martyred in 1925. The shrine remains an active site of cultural and religious practice where visitors make vows (murad) by tying green cloth strips, leave offerings such as small toy soldiers, and seek blessings (teberuk) by taking pieces of the sacred cloth covering the tomb. The speakers, whose family has remained on this ancestral land, emphasize the importance of these traditions and the history of their village.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Be&#x27;dîna</h3>
+<p>The village of Ba&#x27;dina is home to the significant religious site, the <span class="internal-link">Shrine of Sheikh Rashid</span> (Ziyareta Şêx Reşîd), where local cultural and religious traditions are practiced. One such tradition is the <span class="internal-link">Qurban</span>, an animal sacrifice performed for the souls of the deceased. In this instance, a family sacrificed a ram, purchased at the nearby <span class="internal-link">Rajo</span> livestock market, in memory of three young men named Ibrahim, Salar, and Bilind. This ritual involves the charitable distribution of the meat to the poor people of the village and the blessing of children by dabbing the animal&#x27;s blood on their foreheads. Another practice observed at the shrine is the lighting of &quot;çûçik,&quot; small green wax candles, which are placed in the earthen floor either to make a personal wish or as an act of remembrance for the dead. The day&#x27;s activities were framed by a visit to the <span class="internal-link">Rajo market</span>, which operates on a weekly schedule with a busy main market on Saturdays and a much quieter, slower market on Tuesdays. The journey also passed the nearby village of <span class="internal-link">Kharabe Somoq</span>, which is now largely depopulated with only eight houses remaining.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Be&#x27;dîna 2</h3>
+<p>The village of Ba&#x27;dina is home to the tomb of <span class="internal-link">Sheikh Rashid</span> (<span class="internal-link">tirba Şêx Reşîd</span>), a significant site of local reverence and pilgrimage. According to the oral testimony of an elderly woman who cares for the site, Sheikh Rashid is held in such high esteem that she refers to him as &quot;my creator&quot; (xalidêkê min e). A central belief and tradition associated with the tomb is its miraculous power to answer prayers. The caretaker attests that any request she has made at the site has been granted, stating that her &quot;hands have not returned empty.&quot; This practice of visiting the tomb to make requests reinforces its cultural and religious importance within the community, with personal testimonies serving as the primary vehicle for transmitting the history and sanctity of the location.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Be&#x27;dîna 3</h3>
+<p>The video documents life in the <span class="internal-link">city of Afrin</span> (Efrîn) and the nearby village of Ba&#x27;dînê during the Eid holiday period, focusing on the local customs and preparations for the celebration. A tour of Afrin&#x27;s popular market, known as <span class="internal-link">Souq al-Sha&#x27;bi</span> or <span class="internal-link">Khan Khalil Bey</span>, reveals a bustling atmosphere where locals shop for affordable clothing, with a tracksuit costing 160 Turkish Lira and a set of trousers and a jacket priced at 240 TL. The speaker highlights a cultural preference for these traditional markets over modern supermarkets, valuing the community interaction they foster. Within the market, the important role of local craftsmen and artists is acknowledged for providing essential items for community celebrations like weddings (dawet) and folklore events (holîkor). The narrative then shifts to the village of Ba&#x27;dînê, showcasing a modern swimming pool built for the youth of the area, including those from the neighboring villages of <span class="internal-link">Dîmîlo</span>, <span class="internal-link">Berbenê</span>, and <span class="internal-link">Qerqolê</span>. The video concludes from the speaker&#x27;s home, where he is with his daughters and his neighbor&#x27;s children, offering a view of the village and reinforcing the central importance of family and community in their lives.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Be&#x27;dîna 4</h3>
+<p>The video documents a contemporary <span class="internal-link">Newroz</span> celebration held by the Kurdish community of Badina on the nearby Mount Sheikh Bero (<span class="internal-link">Çiyayê Şêx Bero</span>). The event involved community members, including the narrator, his brother Mustafa, and a local shepherd, purchasing food like roasted chicken and flatbread, which they then transported up the steep, rocky mountain. At the celebration site overlooking the village, the group prepared a communal meal, laying out individual portions for participants to share on the ground as they broke their fast. The celebration was a significant cultural and national expression, marked by the prominent display of numerous Kurdish flags, including one featuring a portrait of the historical leader <span class="internal-link">Qazi Muhammad</span>. A central part of the tradition was the lighting of a large bonfire, fueled by old car tires, around which children and adults gathered. The narrator explicitly framed the event as a celebration for all Kurdish people across the &quot;four parts of Kurdistan,&quot; underscoring the deep significance of the Newroz tradition.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Be&#x27;dîna 5</h3>
+<p>The video documents the celebration of <span class="internal-link">Newroz</span> in the village of Badîna, located in the Afrin region of Western Kurdistan (Rojava). The celebration is held at a site of deep religious and historical importance to the community. According to an elder, this location is known as the &quot;place of the grandfather of the prophets&quot; and is specifically identified as the site where the Prophet Abraham (<span class="internal-link">Îbrahîmê Xelîl</span>) was called upon by God. The site is also associated with a figure named Khidr Ali (<span class="internal-link">Xidir Elî Selam</span>). The Newroz festivities are framed as a celebration for all Kurdish people across the &quot;four parts of Kurdistan,&quot; and the speaker offers a prayer for the community&#x27;s deliverance from a contemporary situation of &quot;hardship, oppression, and force.&quot;</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Be&#x27;dîna 6</h3>
+<p>The village of Badîno is divided into two sections, a lower part (Gundê Jêr) and an upper part (Gundê Jor). Its history is physically represented in the village square by a large, ancient stone millstone (<span class="internal-link">Berê Zeytûnê</span>) that was traditionally used for pressing olives to extract oil. According to the narrator, this artifact is a preserved piece from the &quot;old village,&quot; and there is a local belief that the village&#x27;s name is connected to this historical process. Nearby, there is a significant archaeological site known as &quot;<span class="internal-link">Berî</span>,&quot; a name which locals understand to mean &quot;from the past.&quot; Oral tradition holds multiple theories about the site&#x27;s original purpose, suggesting it may have been a temple (mabed), a place of worship (cihê perestinê), a castle (kela), or a royal residence (cihê şahnişînî) before it fell into its current state of ruin.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Be&#x27;dîna 7</h3>
+<p>In the village of Baadina, a conscious effort is being made to preserve and pass down traditional games and customs (&quot;<span class="internal-link">edet û teqalîdên kevn</span>&quot;) to the younger generation. According to the village elders, these games are part of a cultural heritage (&quot;tûras&quot;) that has existed for over 100 years and was actively played by adults in the community 50 to 60 years ago. The demonstrations are motivated by the fact that modern children are no longer familiar with this heritage, and there is a desire to prevent it from being lost. Among the games documented is a stone-stacking and tag game where one team topples a stack of flat stones and then tries to hit the opposing team members as they attempt to rebuild it. Another traditional game, &quot;<span class="internal-link">Qêlê</span>,&quot; is a game of skill involving a long stick called a &quot;çûk&quot; used to strike a smaller, sharpened stick called a &quot;qêl,&quot; first to make it airborne and then to bat it for distance. The children also play a circle game called &quot;<span class="internal-link">Teq Teqî</span>,&quot; which uses a traditional counting-out rhyme to select players.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Be&#x27;dîna 8</h3>
+<p>The village of Ba&#x27;dina (Gundê Ba&#x27;dînê) in the Afrin region is a place with deep historical and cultural roots, centered significantly around its large cemetery (<span class="internal-link">Tirbê Ba&#x27;dînê</span>). This cemetery serves as a historical record for the community, holding the graves of many ancestors, some of whom are no longer known by name to the current generation. The gravestones themselves document the village&#x27;s more recent history, such as those of Birem Silo (1962-2016) and Jafar bin Hanan Silo (1953-2017). Within this cemetery lies the culturally significant Shrine of Sheikh Rashid (<span class="internal-link">Mezarê Şêx Reşîd</span>), a stone building that has been the focus of local traditions for generations. In the past, villagers would visit the shrine to make material offerings of their property and possessions. A more recent or ongoing tradition involves a specific votive practice where individuals who are sick, in pain, or have a personal wish make a vow by tying a piece of cloth to a small wooden stick and leaving it at the shrine as a physical prayer for divine intervention.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Be&#x27;dîna 9</h3>
+<p>The village of Ba&#x27;dîna is situated in the Afrin region (Herêma Efrînê) on the slopes of the &quot;Mountain of the Kurds&quot; (Çiyayê Kurmênc), a landscape marked by prominent features such as the mountains <span class="internal-link">Bano Reş</span> and <span class="internal-link">Bano Qeder</span>, and a landmark known as <span class="internal-link">Kevirê Qîmrî</span> (The Crimson Rock). The oral history shared during a picnic at this traditional spot reveals significant environmental and social changes over time. A specific location on the mountain, named <span class="internal-link">Kanî Hefto</span> (Hefto&#x27;s Spring), derives its name from seven springs that existed there in the past but have since dried up. This environmental shift is further detailed by an elder who recalls a time when the mountains were abundant with partridges and other wild animals, which are now scarce, and notes that rainfall has become less frequent. The most profound event discussed is the recent scattering and displacement of the local population, with the speaker stating that &quot;Our people of Afrin... they have all been scattered.&quot; Despite these hardships, the speakers express a deep connection to their homeland and a strong desire to remain and protect it, continuing cultural practices like preparing Sarma and drinking coffee over an open fire in the mountains. This connection is also evident in their knowledge of local resources, such as the water from the &quot;<span class="internal-link">cernê qelek</span>&quot; (the big spring), which is considered healthy and beneficial for the stomach.</p></div></details></div>
             </div>
 
-            <!-- Additional Information Card (VI-X) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20badnle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20badnle.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=VG67ardHoVM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VG67ardHoVM</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=_Hv0pQK01UM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_Hv0pQK01UM</a><br><a href="https://www.youtube.com/watch?v=iSSDdHl4gXg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=iSSDdHl4gXg</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=uMj47OTMk0I" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=uMj47OTMk0I</a><br><a href="https://www.youtube.com/watch?v=TO_E_hHUOyI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TO_E_hHUOyI</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=wwNd-JMXUcw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=wwNd-JMXUcw</a><br><a href="https://www.youtube.com/watch?v=WRrjC-_FkhQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=WRrjC-_FkhQ</a><br><a href="https://www.youtube.com/watch?v=GP52WgbQ9Uc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=GP52WgbQ9Uc</a><br><a href="https://www.youtube.com/watch?v=3dEVv4M76oo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3dEVv4M76oo</a><br><a href="https://www.youtube.com/watch?v=QJsANwsbZ84" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=QJsANwsbZ84</a></li></ul>
+            </div>
+
             
 
-            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
             
 
         </main>
 
-        <!-- Footer -->
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Generated for archive purposes.</p>
+            <p class="text-sm subtext">Page Updated on September 15, 2025</p>
         </footer>
     </div>
 
-    <!-- START: LIGHTBOX HTML -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <!-- END: LIGHTBOX HTML -->
-
-    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
-
     <script>
-        // Theme toggle script (unchanged)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -310,35 +347,22 @@
             }
         });
 
-        // Main script runs after the page content has loaded
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LIGHTBOX SCRIPT ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxClose = document.getElementById('lightbox-close');
             const imageTriggers = document.querySelectorAll('.lightbox-trigger');
-
             imageTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     lightboxImage.src = trigger.src;
                     lightbox.classList.remove('hidden');
                 });
             });
-
-            function closeLightbox() {
-                lightbox.classList.add('hidden');
-            }
-
+            function closeLightbox() { lightbox.classList.add('hidden'); }
             lightbox.addEventListener('click', closeLightbox);
             lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
 
-            // --- MAP SCRIPT ---
             const iconConfig = {
                 shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
                 landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
@@ -349,7 +373,6 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-
             function createCustomIcon(type, isMain) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
@@ -357,7 +380,6 @@
                 const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-
                 const html = `
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
@@ -367,79 +389,38 @@
                             ${config.svg}
                         </svg>
                     </div>`;
-
-                return L.divIcon({
-                    html: html,
-                    className: '',
-                    iconSize: iconSize,
-                    iconAnchor: iconAnchor,
-                    popupAnchor: popupAnchor
-                });
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
-
-            const mainVillageName = "Be'dîna";
+            const mainVillageName = "Be&#x27;dîna";
             const villageLat = 36.622426;
             const villageLng = 36.688554;
             const initialZoom = 14;
-
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-
-            // --- Define all the map layers ---
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri'
-            });
-
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
             const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
                 maxZoom: 22
             });
-
-            // --- Set up the layer control ---
-            const baseMaps = {
-                "Satellite": esriImagery,
-                "Street": osmStreet,
-                "Terrain": thunderforestTerrain
-            };
-            
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
             L.control.layers(baseMaps).addTo(map);
             esriImagery.addTo(map);
-
-            // --- ADD MAP CONTROLS ---
-            // 1. Static Scale Bar
             L.control.scale({ imperial: false }).addTo(map);
-
-            // --- Fetch data and add markers ---
             fetch('afrin_locations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
                 .then(locations => {
                     locations.forEach(location => {
                         const isMainVillage = location.name === mainVillageName;
                         const customIcon = createCustomIcon(location.type, isMainVillage);
-                        
-                        const marker = L.marker([location.lat, location.lng], { 
-                            icon: customIcon,
-                            zIndexOffset: isMainVillage ? 1000 : 0
-                        }).addTo(map);
-                        
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
                         marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-
-                        if (isMainVillage) {
-                            marker.openPopup();
-                        }
+                        if (isMainVillage) { marker.openPopup(); }
                     });
                 })
-                .catch(error => {
-                    console.error('Error loading location data:', error);
-                    const mapDiv = document.getElementById('map');
-                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
     </script>

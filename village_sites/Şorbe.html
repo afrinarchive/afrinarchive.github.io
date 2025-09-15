@@ -4,25 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive | Şorbe</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- START: LEAFLET & PLUGIN CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
-    <!-- END: LEAFLET & PLUGIN CSS -->
-
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Light theme variables */
+        body { font-family: 'Inter', sans-serif; }
         :root {
             --bg-color: #f0f2e6;
             --text-color: #000000;
@@ -32,9 +23,8 @@
             --link-color: #2563eb;
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
-            --internal-link-color: #2563eb; /* This is the blue for light mode */
+            --internal-link-color: #2563eb;
         }
-        /* Dark theme variables from user image */
         .dark {
             --bg-color: #2d2d2d;
             --text-color: #f1f1f1;
@@ -44,86 +34,28 @@
             --link-color: #63b3ed;
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
-            --internal-link-color: #86efac; /* This is the light green from your image */
+            --internal-link-color: #86efac;
         }
-        /* Applying theme colors */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        h1, h2, h3, .prose {
-            color: var(--text-color);
-        }
-        .subtext {
-             color: var(--subtext-color);
-        }
-        .themed-border {
-            border-color: var(--border-color);
-        }
-        .internal-link {
-            text-decoration: none; /* This removes the underline */
-            cursor: pointer;
-            color: var(--internal-link-color); /* This uses a new dedicated color variable */
-        }
-        .external-link {
-            color: var(--link-color);
-        }
-        .button-style {
-             border: 1px solid var(--border-color);
-        }
-        .button-style:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-hover-text);
-        }
-        /* Details/Summary styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .prose strong {
-            font-weight: 600;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-        }
-        .prose ol, .prose ul {
-            margin-bottom: 1rem;
-        }
-        /* Inverted colors for the theme toggle button */
-        .toggle-button-colors {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* Custom styles for Leaflet popups and controls to match theme */
-        .leaflet-popup-content-wrapper, .leaflet-control-layers {
-            background-color: var(--card-bg-color) !important;
-            color: var(--text-color) !important;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg-color) !important;
-        }
-        .leaflet-popup-close-button {
-            color: var(--text-color) !important;
-        }
-        .leaflet-popup-content b {
-            font-weight: 600;
-        }
-        .leaflet-popup-content span {
-            color: var(--subtext-color);
-            text-transform: capitalize;
-        }
-        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
         .leaflet-control-layers-toggle {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
             background-size: 20px 20px !important;
@@ -131,57 +63,92 @@
         .dark .leaflet-control-layers-toggle {
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
         }
-        .leaflet-control-scale-line {
-            background: var(--card-bg-color);
-            border-color: var(--text-color);
-            color: var(--text-color);
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-mabeta .map-container {
+            position: relative;
+        }
+        #minimap-mabeta .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-mabeta .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            border: 3px solid var(--border-color);
-            border-radius: 8px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* --- COORDINATES FOR ÇK Map 13 --- 
+         Recalculated for original image dimensions of 984x1495 pixels.
+        */
+        #minimap-mabeta .sorbe { left: 46.85%; top: 9.70%; width: 8.54%; height: 5.62%; }
+        #minimap-mabeta .gemruk { left: 56.20%; top: 13.11%; width: 8.54%; height: 5.62%; }
+        #minimap-mabeta .semalka { left: 42.78%; top: 14.25%; width: 9.35%; height: 6.15%; }
+        #minimap-mabeta .erebsexo { left: 58.33%; top: 16.45%; width: 9.35%; height: 6.15%; }
+        #minimap-mabeta .sexutka { left: 53.15%; top: 19.46%; width: 8.94%; height: 5.89%; }
+        #minimap-mabeta .emara { left: 51.83%; top: 23.95%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .avraze { left: 26.22%; top: 27.96%; width: 8.74%; height: 5.75%; }
+        #minimap-mabeta .gobeke { left: 22.36%; top: 30.70%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .sexkele { left: 27.44%; top: 32.37%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .sewiya { left: 13.62%; top: 36.59%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .kelibo { left: 18.50%; top: 40.94%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .enhecere { left: 71.65%; top: 29.83%; width: 10.57%; height: 6.96%; }
+        #minimap-mabeta .omo { left: 64.94%; top: 34.38%; width: 10.57%; height: 6.96%; }
+        #minimap-mabeta .kokane { left: 64.53%; top: 44.35%; width: 10.37%; height: 6.82%; }
+        #minimap-mabeta .qitraniye { left: 39.84%; top: 45.95%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .mabete { left: 43.60%; top: 51.97%; width: 10.77%; height: 7.09%; }
+        #minimap-mabeta .dagire { left: 61.28%; top: 51.04%; width: 10.57%; height: 6.96%; }
+        #minimap-mabeta .qentere { left: 41.77%; top: 54.45%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .ereba { left: 29.47%; top: 55.72%; width: 9.55%; height: 6.29%; }
+        #minimap-mabeta .kurke-jerin { left: 13.31%; top: 54.78%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .kurke-jorin { left: 10.06%; top: 55.65%; width: 9.35%; height: 6.15%; }
+        #minimap-mabeta .sariya { left: 10.98%; top: 58.19%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .hebo { left: 11.89%; top: 62.27%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .setana { left: 15.14%; top: 59.93%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .selo { left: 29.37%; top: 59.46%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .xazyane-jerin { left: 21.44%; top: 64.82%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .xazyane-jorin { left: 21.85%; top: 64.95%; width: 9.76%; height: 6.42%; } /* Note: Very close coords */
+        #minimap-mabeta .birimce { left: 39.43%; top: 64.15%; width: 9.96%; height: 6.56%; }
+        #minimap-mabeta .mirka { left: 48.48%; top: 64.08%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .sitka { left: 50.91%; top: 67.36%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .comezna { left: 33.74%; top: 68.63%; width: 10.37%; height: 6.82%; }
+        #minimap-mabeta .merserke { left: 27.03%; top: 71.91%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .elcara { left: 32.93%; top: 71.71%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .reca { left: 36.08%; top: 71.97%; width: 9.96%; height: 6.56%; }
+        #minimap-mabeta .kaxre { left: 53.15%; top: 73.18%; width: 9.55%; height: 6.29%; }
+        #minimap-mabeta .mistesura { left: 41.67%; top: 77.86%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .hecqasma { left: 40.85%; top: 79.73%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .dela { left: 43.40%; top: 85.35%; width: 9.96%; height: 6.56%; }
+        #minimap-mabeta .ruta { left: 51.32%; top: 83.01%; width: 9.55%; height: 6.29%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
     </style>
 </head>
 <body>
-
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
-        <!-- Header Section -->
         <header class="mb-8">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Şorbe</h1>
         </header>
 
         <main class="space-y-6">
-            <!-- Basic Information Card -->
             <div class="card p-6 rounded-xl">
                 <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
                     <h2 class="text-2xl font-semibold">General Information</h2>
-                    <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
                         <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
@@ -189,19 +156,42 @@
                         </svg>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                        <p class="text-lg">Ma'batli</p>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Mabeta</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Al-Shorba, Shorba Oghli, Şorbe, Şûrbe, Şûrbê, Šorbe, الشوربة, شوربه  اوغلي, شوربه اوغلي</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
-                        <p class="text-lg">Al-Shorba, Shorba Oghli, Šorbe, الشوربة, شوربه  اوغلي, شوربه اوغلي</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
+<img alt="Map Image 13" onerror="this.onerror=null; this.src='https://placehold.co/984x1495/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 13.png"/>
+<div class="sorbe highlight-box" style="display: block;"></div><div class="gemruk highlight-box"></div><div class="semalka highlight-box"></div><div class="erebsexo highlight-box"></div><div class="sexutka highlight-box"></div><div class="emara highlight-box"></div><div class="avraze highlight-box"></div><div class="gobeke highlight-box"></div><div class="sexkele highlight-box"></div><div class="sewiya highlight-box"></div><div class="kelibo highlight-box"></div><div class="enhecere highlight-box"></div><div class="omo highlight-box"></div><div class="kokane highlight-box"></div><div class="qitraniye highlight-box"></div><div class="mabete highlight-box"></div><div class="dagire highlight-box"></div><div class="qentere highlight-box"></div><div class="ereba highlight-box"></div><div class="kurke-jerin highlight-box"></div><div class="kurke-jorin highlight-box"></div><div class="sariya highlight-box"></div><div class="hebo highlight-box"></div><div class="setana highlight-box"></div><div class="selo highlight-box"></div><div class="xazyane-jerin highlight-box"></div><div class="xazyane-jorin highlight-box"></div><div class="birimce highlight-box"></div><div class="mirka highlight-box"></div><div class="sitka highlight-box"></div><div class="comezna highlight-box"></div><div class="merserke highlight-box"></div><div class="elcara highlight-box"></div><div class="reca highlight-box"></div><div class="kaxre highlight-box"></div><div class="mistesura highlight-box"></div><div class="hecqasma highlight-box"></div><div class="dela highlight-box"></div><div class="ruta highlight-box"></div>
+</div></div>
                 </div>
             </div>
 
-            <!-- Map and Location Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
@@ -211,60 +201,56 @@
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
             
-            <!-- Photos Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/sorbe.jpg" alt="Photo of sorbe" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=sorbe.jpg';"><img src="../village_photos/avdah shareh.jpg" alt="Photo of avdah shareh" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=avdah+shareh.jpg';"><img src="../village_photos/shorba.jpg" alt="Photo of shorba" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=shorba.jpg';"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/sorbe.jpg" alt="Photo of Şorbe" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=sorbe.jpg';">
+<img src="../village_photos/avdah shareh.jpg" alt="Photo of Şorbe" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=avdah+shareh.jpg';">
+<img src="../village_photos/shorba.jpg" alt="Photo of Şorbe" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=shorba.jpg';">
+</div>
             </div>
 
-            <!-- Summaries Card (I-IV) -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">According to the book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds</span>' (<span class="internal-link">عفرين</span>) Geographic Study by <span class="internal-link">Dr. Mohammed Abdo Ali</span>:</p>
-<p style="margin-bottom: 1em;"><strong><span class="internal-link">Gundî Šorbe</span> (شوربه أوغلو), <span class="internal-link">Shorba Oghlu</span> (شوربه أوغلو), <span class="internal-link">Al-Shorba</span> (الشوربة)</strong> /1151n - 300ha - 17km - 520m/:</p>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Şorbe (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (<span class="internal-link">عفرين</span>) Geographic Study by <span class="internal-link">Dr. Mohammed Abdo Ali</span>:</p>
+<p><strong><span class="internal-link">Gundî Šorbe</span> (شوربه أوغلو), <span class="internal-link">Shorba Oghlu</span> (شوربه أوغلو), <span class="internal-link">Al-Shorba</span> (الشوربة)</strong> /1151n - 300ha - 17km - 520m/:</p>
 <ul>
-<li>The name is taken from the soup dish, and it is said that about two centuries ago, there was a famine in the region, so the women of the village would cook soup and distribute it to the people of the village and passersby, so the village was named <span class="internal-link">Shorba</span> (شوربه). As for the old name of the village site, it was "<span class="internal-link">Marisha</span>" (مريشا) without knowing its meaning.</li>
-<li>This small village is located on a hilltop, sloping from its northwestern side toward <span class="internal-link">Ziravkê valley</span> (وادي زِراڤكه). From it originally comes <span class="internal-link">Agha Aslan</span> (آغا أصلان), one of the resistance leaders against the French Mandate, and the well-known lawyer <span class="internal-link">Ismat Omar al-Shuyui</span> (عصمت عمر الشيوعي) and former member of the People's Assembly.</li>
+<li>The name is taken from the soup dish, and it is said that about two centuries ago, there was a famine in the region, so the women of the village would cook soup and distribute it to the people of the village and passersby, so the village was named <span class="internal-link">Shorba</span> (شوربه). As for the old name of the village site, it was &quot;<span class="internal-link">Marisha</span>&quot; (مريشا) without knowing its meaning.</li>
+<li>This small village is located on a hilltop, sloping from its northwestern side toward <span class="internal-link">Ziravkê valley</span> (وادي زِراڤكه). From it originally comes <span class="internal-link">Agha Aslan</span> (آغا أصلان), one of the resistance leaders against the French Mandate, and the well-known lawyer <span class="internal-link">Ismat Omar al-Shuyui</span> (عصمت عمر الشيوعي) and former member of the People&#x27;s Assembly.</li>
 </ul>
-<p style="margin-bottom: 1em;">According to the book: <span class="internal-link">Afrin</span>... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmah village</span> (قرية قطمه):</p>
-<p style="margin-bottom: 1em;"><strong><span class="internal-link">Shorba Oghli</span> (شوربه اوغلي)</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد), belonging to <span class="internal-link">Mabetli District</span> (ناحية المعبطلي), <span class="internal-link">Afrin City</span> region (منطقة عفرين), <span class="internal-link">Aleppo Governorate</span> (محافظة حلب).</p>
-<p style="margin-bottom: 1em;">It is a small village in the central part of the mentioned mountain, on the top of a limestone hill that slopes steeply toward the northwest in the direction of <span class="internal-link">Zirafka valley</span> (وادي زرافكة). It is crossed by water streams flowing southward and eastward to end in <span class="internal-link">Afrin City</span> river valley. It is 17km away from <span class="internal-link">Mabetli</span> town toward the northeast. Its soil is fertile clay. It is bounded to the north by a slope and ravine and <span class="internal-link">Sili valley</span> (وادي سيلي) and a high mountain chain of <span class="internal-link">Hawari mountain</span> (جيل هواري) and <span class="internal-link">Hassan Dirli village</span> (قرية حسن ديرلي) and <span class="internal-link">Tag Oba Si village</span> (قرية طاغ أوبه سي), and to the south by a slope and <span class="internal-link">Sili valley</span> (وادي سيلي) planted with olive trees and <span class="internal-link">Kamruk village</span> (قرية كمروك), and to the west by a slope and <span class="internal-link">Sili valley</span> (وادي سيلي) planted with olive trees and <span class="internal-link">Semalka village</span> (قرية سيمالك), and to the east by a slope and <span class="internal-link">Sili valley</span> (وادي سيلي) and mountain elevations planted with olive trees and <span class="internal-link">17 April Dam</span> (سد 17نيسان) and <span class="internal-link">Medanki village</span> (قرية ميدانكي). The number of its houses is about 65 houses and its population is about 450 people. Its old dwellings are stone-clay with flat wooden roofs, and all the old houses in the center of the village have been demolished and replaced by modern cement stone houses, extending toward the south and west. It has an electricity network and water network connected to artesian wells located at the bottom of the village from the southern side. It has an elementary school and is connected by a paved road to the district center and neighboring villages. The residents work in rain-fed agriculture on an area of 300 hectares with grains, olive trees, and vines, in addition to raising sheep and goats. Among its most important families is the family of <span class="internal-link">Aslan Agha Shorba</span> (أصلان آغا شوربه), the first to inhabit the village since ancient times and he is the founder of the village. <span class="internal-link">Aslan Agha</span> (أصلان آغا) was among the fighters against the French occupation with revolutionaries such as: <span class="internal-link">Ahmed Ruto</span> (أحمد روطو), <span class="internal-link">Sheikh Rashid Ibo</span> (شيخ رشيد إيبو), and others.</p>
-<p style="margin-bottom: 1em;">Among the holders of higher degrees in the village: <span class="internal-link">Anas Mansour</span> (أنس منصور) / Doctorate in Agriculture / France</p>
-<p style="margin-bottom: 1em;">Village mayor: <span class="internal-link">Rashid Muslim Omar</span> (رشيد مسلم عمر)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">The village of Şorbe's history dates back approximately 400-500 years (03:15, 42:03), with an old meeting room (oda) also from this period, built by <span class="internal-link">Emîn Şorbê</span> (42:00-42:03, 42:41); its upper floor was added about 100 years ago (42:46-42:53). The village's name, Şorbe (formerly Marîşah - 11:49), reportedly originated from a prominent family providing soup (şorbe) during a famine, possibly 400 years ago (03:21-03:41) or more specifically a famine in <span class="internal-link">1850</span> (11:51). Around 300 years ago, <span class="internal-link">Kêtikî</span> families from Kobanê settled in the area (05:48-05:59). The region has ancient sites like a Roman well (06:19-06:22, 19:10) and Hewarê Castle (19:38). Şorbe was destroyed twice: first in <span class="internal-link">1832</span> (one villager account says <span class="internal-link">1735</span> - 33:42) by <span class="internal-link">Ibrahim Ali Pasha</span>'s forces, after which survivors <span class="internal-link">Emîn</span> and <span class="internal-link">Eslan</span> rebuilt it (29:52, 34:19-35:21); second in <span class="internal-link">1921</span> by the French due to local anti-French resistance (29:53), an event recalled by an elderly eyewitness (38:31-39:24). Leaders like <span class="internal-link">Eslan Axa</span> of Şorbê (from the Omka tribe) fought the French, notably in Gelî Tîra, with resistance continuing until <span class="internal-link">1936</span> (30:05, 30:16, 36:14-36:24). <span class="internal-link">Eslan Axa</span> was sentenced to death in <span class="internal-link">1925</span> but received amnesty in <span class="internal-link">1935</span> (36:36-36:45). More recently, a local well was closed by authorities in <span class="internal-link">2002</span> (09:00).</p></div></details><hr class="themed-border"></div>
-
-            <!-- Links Card (V) -->
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20shorba.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20shorba.htm</a></li><li>Ax û Welat<br><a href="https://www.youtube.com/watch?v=EdGtumwn2qQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=EdGtumwn2qQ</a></li><li>Videos<br><a href="https://www.youtube.com/watch?v=hYdv_KzyxyQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=hYdv_KzyxyQ</a><br><a href="https://www.youtube.com/watch?v=YBVlO9ulYh8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=YBVlO9ulYh8</a><br><a href="https://www.youtube.com/watch?v=EdGtumwn2qQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=EdGtumwn2qQ</a></li></ul>
+<p>According to the book: <span class="internal-link">Afrin</span>... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmah village</span> (قرية قطمه):</p>
+<p><strong><span class="internal-link">Shorba Oghli</span> (شوربه اوغلي)</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد), belonging to <span class="internal-link">Mabetli District</span> (ناحية المعبطلي), <span class="internal-link">Afrin City</span> region (منطقة عفرين), <span class="internal-link">Aleppo Governorate</span> (محافظة حلب).</p>
+<p>It is a small village in the central part of the mentioned mountain, on the top of a limestone hill that slopes steeply toward the northwest in the direction of <span class="internal-link">Zirafka valley</span> (وادي زرافكة). It is crossed by water streams flowing southward and eastward to end in <span class="internal-link">Afrin City</span> river valley. It is 17km away from <span class="internal-link">Mabetli</span> town toward the northeast. Its soil is fertile clay. It is bounded to the north by a slope and ravine and <span class="internal-link">Sili valley</span> (وادي سيلي) and a high mountain chain of <span class="internal-link">Hawari mountain</span> (جيل هواري) and <span class="internal-link">Hassan Dirli village</span> (قرية حسن ديرلي) and <span class="internal-link">Tag Oba Si village</span> (قرية طاغ أوبه سي), and to the south by a slope and <span class="internal-link">Sili valley</span> (وادي سيلي) planted with olive trees and <span class="internal-link">Kamruk village</span> (قرية كمروك), and to the west by a slope and <span class="internal-link">Sili valley</span> (وادي سيلي) planted with olive trees and <span class="internal-link">Semalka village</span> (قرية سيمالك), and to the east by a slope and <span class="internal-link">Sili valley</span> (وادي سيلي) and mountain elevations planted with olive trees and <span class="internal-link">17 April Dam</span> (سد 17نيسان) and <span class="internal-link">Medanki village</span> (قرية ميدانكي). The number of its houses is about 65 houses and its population is about 450 people. Its old dwellings are stone-clay with flat wooden roofs, and all the old houses in the center of the village have been demolished and replaced by modern cement stone houses, extending toward the south and west. It has an electricity network and water network connected to artesian wells located at the bottom of the village from the southern side. It has an elementary school and is connected by a paved road to the district center and neighboring villages. The residents work in rain-fed agriculture on an area of 300 hectares with grains, olive trees, and vines, in addition to raising sheep and goats. Among its most important families is the family of <span class="internal-link">Aslan Agha Shorba</span> (أصلان آغا شوربه), the first to inhabit the village since ancient times and he is the founder of the village. <span class="internal-link">Aslan Agha</span> (أصلان آغا) was among the fighters against the French occupation with revolutionaries such as: <span class="internal-link">Ahmed Ruto</span> (أحمد روطو), <span class="internal-link">Sheikh Rashid Ibo</span> (شيخ رشيد إيبو), and others.</p>
+<p>Among the holders of higher degrees in the village: <span class="internal-link">Anas Mansour</span> (أنس منصور) / Doctorate in Agriculture / France</p>
+<p>Village mayor: <span class="internal-link">Rashid Muslim Omar</span> (رشيد مسلم عمر)</p>
+<p>Prepared and implemented by: <span class="internal-link">Tire Afrin website manager</span>: <span class="internal-link">Abdul Rahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
+<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Şorbe</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>The village of Şûrbe in Afrin derives its name from a traditional yogurt-based soup, <span class="internal-link">Şûrbe Donî</span>, a dish that has been prepared by the community since the time of their &quot;fathers and grandfathers.&quot; This ancestral recipe consists of yogurt or ayran (dew), wheat grains (dan), and chickpeas (nok), and is cooked over an open fire. This dish is part of a broader culinary heritage that, in the past (&quot;berê&quot;), included a variety of foods prepared for communal celebrations like weddings (dawet), such as kofte (kibbeh), sermîsok, dolma, şîşperek, and qewrandî. A resident originally from Baalbek, Lebanon, who has lived in the region for over thirty years, highlighted several distinct Afrini Kurdish traditions she observed. In local weddings, it is customary to publicly display the bride&#x27;s trousseau (cîhaz) for everyone to see, and for the bride&#x27;s family to provide a wedding ring for the groom, practices different from her own Lebanese background. She also noted learning to cook specific Afrini dishes like Boronîye and Donik, which were previously unknown to her.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Şorbe 2</h3>
+<p>The village of Şûrbe, located in the Mabeta district and belonging to the <span class="internal-link">Omkan</span> tribe, has a rich history rooted in both charity and conflict. According to oral tradition passed down through generations, the village&#x27;s name originates from an event approximately 400 years ago when a great famine struck the region. During this time, the founding <span class="internal-link">Şûrbe</span> family famously provided soup (şorbe) to all travelers and hungry people, cementing the village&#x27;s identity. This history of resilience was tested through significant hardship; the village was destroyed on two separate occasions for resisting occupying forces. In 1750, during a revolution against the <span class="internal-link">Ottomans</span>, six men from the Şûrbe family were executed on a nearby mound called <span class="internal-link">Tel Dêrî</span>. Later, in 1921, the village was again destroyed by <span class="internal-link">French</span> forces using cannons and aircraft. The social and political life of the community was centered in the &quot;<span class="internal-link">Oda</span>,&quot; a main house built over 300 years ago by <span class="internal-link">Emîn Şûrbe</span>, which served as a guesthouse and a place where tribal leaders like <span class="internal-link">Aslan Axa</span> would resolve disputes. Alongside this history, the village maintains a strong cultural heritage, including a 400-year-old tradition of traditional bonesetting (Jebarcî), a craft still practiced by local healers today.</p></div></details></div>
             </div>
 
-            <!-- Additional Information Card (VI-X) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20shorba.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20shorba.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=EdGtumwn2qQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=EdGtumwn2qQ</a></li><li>Videos:<br><a href="https://www.youtube.com/watch?v=hYdv_KzyxyQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=hYdv_KzyxyQ</a><br><a href="https://www.youtube.com/watch?v=YBVlO9ulYh8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=YBVlO9ulYh8</a><br><a href="https://www.youtube.com/watch?v=EdGtumwn2qQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=EdGtumwn2qQ</a></li></ul>
+            </div>
+
             
 
-            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
             
 
         </main>
 
-        <!-- Footer -->
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Generated for archive purposes.</p>
+            <p class="text-sm subtext">Page Updated on September 15, 2025</p>
         </footer>
     </div>
 
-    <!-- START: LIGHTBOX HTML -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <!-- END: LIGHTBOX HTML -->
-
-    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
-
     <script>
-        // Theme toggle script (unchanged)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -297,35 +283,22 @@
             }
         });
 
-        // Main script runs after the page content has loaded
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LIGHTBOX SCRIPT ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxClose = document.getElementById('lightbox-close');
             const imageTriggers = document.querySelectorAll('.lightbox-trigger');
-
             imageTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     lightboxImage.src = trigger.src;
                     lightbox.classList.remove('hidden');
                 });
             });
-
-            function closeLightbox() {
-                lightbox.classList.add('hidden');
-            }
-
+            function closeLightbox() { lightbox.classList.add('hidden'); }
             lightbox.addEventListener('click', closeLightbox);
             lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
 
-            // --- MAP SCRIPT ---
             const iconConfig = {
                 shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
                 landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
@@ -336,7 +309,6 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-
             function createCustomIcon(type, isMain) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
@@ -344,7 +316,6 @@
                 const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-
                 const html = `
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
@@ -354,79 +325,38 @@
                             ${config.svg}
                         </svg>
                     </div>`;
-
-                return L.divIcon({
-                    html: html,
-                    className: '',
-                    iconSize: iconSize,
-                    iconAnchor: iconAnchor,
-                    popupAnchor: popupAnchor
-                });
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
-
             const mainVillageName = "Şorbe";
             const villageLat = 36.63798;
             const villageLng = 36.831532;
             const initialZoom = 14;
-
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-
-            // --- Define all the map layers ---
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri'
-            });
-
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
             const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
                 maxZoom: 22
             });
-
-            // --- Set up the layer control ---
-            const baseMaps = {
-                "Satellite": esriImagery,
-                "Street": osmStreet,
-                "Terrain": thunderforestTerrain
-            };
-            
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
             L.control.layers(baseMaps).addTo(map);
             esriImagery.addTo(map);
-
-            // --- ADD MAP CONTROLS ---
-            // 1. Static Scale Bar
             L.control.scale({ imperial: false }).addTo(map);
-
-            // --- Fetch data and add markers ---
             fetch('afrin_locations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
                 .then(locations => {
                     locations.forEach(location => {
                         const isMainVillage = location.name === mainVillageName;
                         const customIcon = createCustomIcon(location.type, isMainVillage);
-                        
-                        const marker = L.marker([location.lat, location.lng], { 
-                            icon: customIcon,
-                            zIndexOffset: isMainVillage ? 1000 : 0
-                        }).addTo(map);
-                        
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
                         marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-
-                        if (isMainVillage) {
-                            marker.openPopup();
-                        }
+                        if (isMainVillage) { marker.openPopup(); }
                     });
                 })
-                .catch(error => {
-                    console.error('Error loading location data:', error);
-                    const mapDiv = document.getElementById('map');
-                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
     </script>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reco Interactive Map</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Basic setup for the map container */
+        .map-container {
+            position: relative;
+        }
+        .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Styling for the yellow highlight circles */
+        .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR RECO MAP AREAS --- */
+        /* Each class corresponds to a location. The coordinates are calculated from the image map. */
+        .meydan-ekbez { left: 45.71%; top: 5.63%; width: 10.49%; height: 7.81%; }
+        .peynereke { left: 61.65%; top: 6.23%; width: 9.69%; height: 7.21%; }
+        .kosa { left: 62.56%; top: 9.01%; width: 9.89%; height: 7.36%; }
+        .gaze { left: 52.37%; top: 11.79%; width: 11.30%; height: 8.41%; }
+        .welikli { left: 59.33%; top: 15.54%; width: 10.09%; height: 7.51%; }
+        .dodo { left: 62.26%; top: 16.37%; width: 9.69%; height: 7.21%; }
+        .gewenda { left: 66.19%; top: 18.69%; width: 9.49%; height: 7.06%; }
+        .sexmihemed { left: 56.51%; top: 17.57%; width: 10.69%; height: 7.96%; }
+        .semala { left: 53.08%; top: 18.17%; width: 10.89%; height: 8.11%; }
+        .edema { left: 39.46%; top: 22.89%; width: 11.10%; height: 8.26%; }
+        .qerebaba { left: 25.33%; top: 30.63%; width: 11.10%; height: 8.26%; }
+        .elbiske { left: 43.09%; top: 30.86%; width: 11.30%; height: 8.41%; }
+        .bilelko { left: 47.83%; top: 30.01%; width: 11.10%; height: 8.26%; }
+        .xerabi-silug { left: 40.97%; top: 34.01%; width: 11.10%; height: 8.26%; }
+        .firfirke-jerin { left: 36.53%; top: 32.58%; width: 8.88%; height: 6.61%; }
+        .firfirke-jorin { left: 35.12%; top: 35.89%; width: 11.10%; height: 8.26%; }
+        .heydar { left: 38.04%; top: 39.26%; width: 10.89%; height: 8.11%; }
+        .ceinke { left: 44.60%; top: 35.51%; width: 11.70%; height: 8.71%; }
+        .cela { left: 56.91%; top: 33.86%; width: 11.50%; height: 8.56%; }
+        .ceqmaqe-mezin { left: 51.06%; top: 43.24%; width: 11.10%; height: 8.26%; }
+        .ceqmaqe-cucik { left: 59.03%; top: 45.35%; width: 9.89%; height: 7.36%; }
+        .elendara { left: 64.98%; top: 44.00%; width: 9.49%; height: 7.06%; }
+        .zerka { left: 68.21%; top: 47.82%; width: 10.29%; height: 7.66%; }
+        .memala { left: 40.77%; top: 48.72%; width: 10.29%; height: 7.66%; }
+        .cenceliya { left: 54.89%; top: 47.60%; width: 10.89%; height: 8.11%; }
+        .cobana { left: 65.19%; top: 49.47%; width: 11.30%; height: 8.41%; }
+        .holile { left: 49.34%; top: 51.28%; width: 11.50%; height: 8.56%; }
+        .cerxuta { left: 58.12%; top: 53.53%; width: 9.69%; height: 7.21%; }
+        .kura { left: 53.38%; top: 54.73%; width: 11.10%; height: 8.26%; }
+        .qesim { left: 69.43%; top: 54.28%; width: 10.49%; height: 7.81%; }
+        .dike { left: 79.11%; top: 54.20%; width: 10.89%; height: 8.11%; }
+        .maseka { left: 35.32%; top: 52.25%; width: 10.09%; height: 7.51%; }
+        .hopka { left: 29.77%; top: 58.03%; width: 10.49%; height: 7.81%; }
+        .sorka { left: 5.85%; top: 64.64%; width: 9.89%; height: 7.36%; }
+        .reco { left: 38.75%; top: 56.08%; width: 10.89%; height: 8.11%; }
+        .xecxelil { left: 44.90%; top: 56.68%; width: 11.10%; height: 8.26%; }
+        .ceqilme { left: 62.97%; top: 59.23%; width: 10.29%; height: 7.66%; }
+        .sex { left: 71.34%; top: 61.56%; width: 10.09%; height: 7.51%; }
+        .ciye { left: 80.12%; top: 65.54%; width: 10.09%; height: 7.51%; }
+        .banika { left: 35.42%; top: 62.16%; width: 9.28%; height: 6.91%; }
+        .etmana { left: 35.12%; top: 63.36%; width: 9.89%; height: 7.36%; }
+        .sexbila { left: 59.03%; top: 63.06%; width: 10.49%; height: 7.81%; }
+        .goliye-jerin { left: 63.47%; top: 66.07%; width: 10.49%; height: 7.81%; }
+        .goliye-jorin { left: 58.73%; top: 67.34%; width: 10.29%; height: 7.66%; }
+        .muske { left: 42.89%; top: 65.77%; width: 11.10%; height: 8.26%; }
+        .kure { left: 20.79%; top: 68.70%; width: 11.30%; height: 8.41%; }
+        .hecika { left: 31.89%; top: 66.89%; width: 10.69%; height: 7.96%; }
+        .sediya { left: 15.24%; top: 73.72%; width: 10.29%; height: 7.66%; }
+        .kumrese { left: 22.20%; top: 73.80%; width: 9.69%; height: 7.21%; }
+        .qude { left: 31.18%; top: 75.75%; width: 10.89%; height: 8.11%; }
+        .dewris { left: 39.76%; top: 71.02%; width: 10.49%; height: 7.81%; }
+        .hemseleke { left: 49.85%; top: 72.75%; width: 11.10%; height: 8.26%; }
+        .berbene { left: 56.61%; top: 71.40%; width: 10.69%; height: 7.96%; }
+        .bedina { left: 47.23%; top: 76.58%; width: 10.49%; height: 7.81%; }
+        .dumiliya { left: 42.18%; top: 79.95%; width: 10.49%; height: 7.81%; }
+        .umera { left: 23.71%; top: 80.63%; width: 9.89%; height: 7.36%; }
+        .memila { left: 26.44%; top: 83.71%; width: 10.29%; height: 7.66%; }
+        .hesen { left: 25.63%; top: 72.07%; width: 9.69%; height: 7.21%; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans p-4 sm:p-8">
+
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-3xl font-bold mb-4 text-center">Reco Area Map</h1>
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6 text-center">
+            <p class="text-lg">
+                Click to highlight:
+                <!-- These links correspond to the highlight areas -->
+                <a href="#meydan-ekbez" class="text-blue-600 hover:underline">Meydan Ekbez</a> |
+                <a href="#peynereke" class="text-blue-600 hover:underline">Peynereke</a> |
+                <a href="#kosa" class="text-blue-600 hover:underline">Kosa</a> |
+                <a href="#gaze" class="text-blue-600 hover:underline">Gaze</a> |
+                <a href="#welikli" class="text-blue-600 hover:underline">Welikli</a> |
+                <a href="#dodo" class="text-blue-600 hover:underline">Dodo</a> |
+                <a href="#gewenda" class="text-blue-600 hover:underline">Gewenda</a> |
+                <a href="#sexmihemed" class="text-blue-600 hover:underline">Şêx Mihemed</a> |
+                <a href="#semala" class="text-blue-600 hover:underline">Semala</a> |
+                <a href="#edema" class="text-blue-600 hover:underline">Edema</a> |
+                <a href="#qerebaba" class="text-blue-600 hover:underline">Qerebaba</a> |
+                <a href="#elbiske" class="text-blue-600 hover:underline">Elbiske</a> |
+                <a href="#bilelko" class="text-blue-600 hover:underline">Bilelko</a> |
+                <a href="#xerabi-silug" class="text-blue-600 hover:underline">Xerabi Silug</a> |
+                <a href="#firfirke-jerin" class="text-blue-600 hover:underline">Firfirke Jerin</a> |
+                <a href="#firfirke-jorin" class="text-blue-600 hover:underline">Firfirke Jorin</a> |
+                <a href="#heydar" class="text-blue-600 hover:underline">Heydar</a> |
+                <a href="#ceinke" class="text-blue-600 hover:underline">Ceinke</a> |
+                <a href="#cela" class="text-blue-600 hover:underline">Cela</a> |
+                <a href="#ceqmaqe-mezin" class="text-blue-600 hover:underline">Ceqmaqe Mezin</a> |
+                <a href="#ceqmaqe-cucik" class="text-blue-600 hover:underline">Ceqmaqe Cucik</a> |
+                <a href="#elendara" class="text-blue-600 hover:underline">Elendara</a> |
+                <a href="#zerka" class="text-blue-600 hover:underline">Zerka</a> |
+                <a href="#memala" class="text-blue-600 hover:underline">Memala</a> |
+                <a href="#cenceliya" class="text-blue-600 hover:underline">Cenceliya</a> |
+                <a href="#cobana" class="text-blue-600 hover:underline">Cobana</a> |
+                <a href="#holile" class="text-blue-600 hover:underline">Holile</a> |
+                <a href="#cerxuta" class="text-blue-600 hover:underline">Cerxuta</a> |
+                <a href="#kura" class="text-blue-600 hover:underline">Kura</a> |
+                <a href="#qesim" class="text-blue-600 hover:underline">Qesim</a> |
+                <a href="#dike" class="text-blue-600 hover:underline">Dike</a> |
+                <a href="#maseka" class="text-blue-600 hover:underline">Maseka</a> |
+                <a href="#hopka" class="text-blue-600 hover:underline">Hopka</a> |
+                <a href="#sorka" class="text-blue-600 hover:underline">Sorka</a> |
+                <a href="#reco" class="text-blue-600 hover:underline">Reco</a> |
+                <a href="#xecxelil" class="text-blue-600 hover:underline">Xecxelil</a> |
+                <a href="#ceqilme" class="text-blue-600 hover:underline">Ceqilme</a> |
+                <a href="#sex" class="text-blue-600 hover:underline">Sex</a> |
+                <a href="#ciye" class="text-blue-600 hover:underline">Ciye</a> |
+                <a href="#banika" class="text-blue-600 hover:underline">Banika</a> |
+                <a href="#etmana" class="text-blue-600 hover:underline">Etmana</a> |
+                <a href="#sexbila" class="text-blue-600 hover:underline">Sexbila</a> |
+                <a href="#goliye-jerin" class="text-blue-600 hover:underline">Goliye Jerin</a> |
+                <a href="#goliye-jorin" class="text-blue-600 hover:underline">Goliye Jorin</a> |
+                <a href="#muske" class="text-blue-600 hover:underline">Muske</a> |
+                <a href="#kure" class="text-blue-600 hover:underline">Kurê</a> |
+                <a href="#hecika" class="text-blue-600 hover:underline">Hecika</a> |
+                <a href="#sediya" class="text-blue-600 hover:underline">Sediya</a> |
+                <a href="#kumrese" class="text-blue-600 hover:underline">Kumrese</a> |
+                <a href="#qude" class="text-blue-600 hover:underline">Qude</a> |
+                <a href="#dewris" class="text-blue-600 hover:underline">Dewris</a> |
+                <a href="#hemseleke" class="text-blue-600 hover:underline">Hemseleke</a> |
+                <a href="#berbene" class="text-blue-600 hover:underline">Berbene</a> |
+                <a href="#bedina" class="text-blue-600 hover:underline">Bedina</a> |
+                <a href="#dumiliya" class="text-blue-600 hover:underline">Dumiliya</a> |
+                <a href="#umera" class="text-blue-600 hover:underline">Umera</a> |
+                <a href="#memila" class="text-blue-600 hover:underline">Memila</a> |
+                <a href="#hesen" class="text-blue-600 hover:underline">Hesen</a> |
+                <a href="#" id="clear-link" class="text-red-600 hover:underline">Clear Highlights</a>
+            </p>
+        </div>
+
+        <!-- Map displayed at its original width -->
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 991px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">991px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 15.png" alt="Map of Reco Area" onerror="this.onerror=null; this.src='https://placehold.co/991x1332/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <!-- These divs are the actual highlight elements -->
+                <div class="meydan-ekbez highlight-box"></div><div class="peynereke highlight-box"></div><div class="kosa highlight-box"></div><div class="gaze highlight-box"></div><div class="welikli highlight-box"></div><div class="dodo highlight-box"></div><div class="gewenda highlight-box"></div><div class="sexmihemed highlight-box"></div><div class="semala highlight-box"></div><div class="edema highlight-box"></div><div class="qerebaba highlight-box"></div><div class="elbiske highlight-box"></div><div class="bilelko highlight-box"></div><div class="xerabi-silug highlight-box"></div><div class="firfirke-jerin highlight-box"></div><div class="firfirke-jorin highlight-box"></div><div class="heydar highlight-box"></div><div class="ceinke highlight-box"></div><div class="cela highlight-box"></div><div class="ceqmaqe-mezin highlight-box"></div><div class="ceqmaqe-cucik highlight-box"></div><div class="elendara highlight-box"></div><div class="zerka highlight-box"></div><div class="memala highlight-box"></div><div class="cenceliya highlight-box"></div><div class="cobana highlight-box"></div><div class="holile highlight-box"></div><div class="cerxuta highlight-box"></div><div class="kura highlight-box"></div><div class="qesim highlight-box"></div><div class="dike highlight-box"></div><div class="maseka highlight-box"></div><div class="hopka highlight-box"></div><div class="sorka highlight-box"></div><div class="reco highlight-box"></div><div class="xecxelil highlight-box"></div><div class="ceqilme highlight-box"></div><div class="sex highlight-box"></div><div class="ciye highlight-box"></div><div class="banika highlight-box"></div><div class="etmana highlight-box"></div><div class="sexbila highlight-box"></div><div class="goliye-jerin highlight-box"></div><div class="goliye-jorin highlight-box"></div><div class="muske highlight-box"></div><div class="kure highlight-box"></div><div class="hecika highlight-box"></div><div class="sediya highlight-box"></div><div class="kumrese highlight-box"></div><div class="qude highlight-box"></div><div class="dewris highlight-box"></div><div class="hemseleke highlight-box"></div><div class="berbene highlight-box"></div><div class="bedina highlight-box"></div><div class="dumiliya highlight-box"></div><div class="umera highlight-box"></div><div class="memila highlight-box"></div><div class="hesen highlight-box"></div>
+            </div>
+        </div>
+        
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 800px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">800px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 15.png" alt="Map of Reco Area" onerror="this.onerror=null; this.src='https://placehold.co/800x1073/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="meydan-ekbez highlight-box"></div><div class="peynereke highlight-box"></div><div class="kosa highlight-box"></div><div class="gaze highlight-box"></div><div class="welikli highlight-box"></div><div class="dodo highlight-box"></div><div class="gewenda highlight-box"></div><div class="sexmihemed highlight-box"></div><div class="semala highlight-box"></div><div class="edema highlight-box"></div><div class="qerebaba highlight-box"></div><div class="elbiske highlight-box"></div><div class="bilelko highlight-box"></div><div class="xerabi-silug highlight-box"></div><div class="firfirke-jerin highlight-box"></div><div class="firfirke-jorin highlight-box"></div><div class="heydar highlight-box"></div><div class="ceinke highlight-box"></div><div class="cela highlight-box"></div><div class="ceqmaqe-mezin highlight-box"></div><div class="ceqmaqe-cucik highlight-box"></div><div class="elendara highlight-box"></div><div class="zerka highlight-box"></div><div class="memala highlight-box"></div><div class="cenceliya highlight-box"></div><div class="cobana highlight-box"></div><div class="holile highlight-box"></div><div class="cerxuta highlight-box"></div><div class="kura highlight-box"></div><div class="qesim highlight-box"></div><div class="dike highlight-box"></div><div class="maseka highlight-box"></div><div class="hopka highlight-box"></div><div class="sorka highlight-box"></div><div class="reco highlight-box"></div><div class="xecxelil highlight-box"></div><div class="ceqilme highlight-box"></div><div class="sex highlight-box"></div><div class="ciye highlight-box"></div><div class="banika highlight-box"></div><div class="etmana highlight-box"></div><div class="sexbila highlight-box"></div><div class="goliye-jerin highlight-box"></div><div class="goliye-jorin highlight-box"></div><div class="muske highlight-box"></div><div class="kure highlight-box"></div><div class="hecika highlight-box"></div><div class="sediya highlight-box"></div><div class="kumrese highlight-box"></div><div class="qude highlight-box"></div><div class="dewris highlight-box"></div><div class="hemseleke highlight-box"></div><div class="berbene highlight-box"></div><div class="bedina highlight-box"></div><div class="dumiliya highlight-box"></div><div class="umera highlight-box"></div><div class="memila highlight-box"></div><div class="hesen highlight-box"></div>
+            </div>
+        </div>
+
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 600px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">600px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 15.png" alt="Map of Reco Area" onerror="this.onerror=null; this.src='https://placehold.co/600x806/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="meydan-ekbez highlight-box"></div><div class="peynereke highlight-box"></div><div class="kosa highlight-box"></div><div class="gaze highlight-box"></div><div class="welikli highlight-box"></div><div class="dodo highlight-box"></div><div class="gewenda highlight-box"></div><div class="sexmihemed highlight-box"></div><div class="semala highlight-box"></div><div class="edema highlight-box"></div><div class="qerebaba highlight-box"></div><div class="elbiske highlight-box"></div><div class="bilelko highlight-box"></div><div class="xerabi-silug highlight-box"></div><div class="firfirke-jerin highlight-box"></div><div class="firfirke-jorin highlight-box"></div><div class="heydar highlight-box"></div><div class="ceinke highlight-box"></div><div class="cela highlight-box"></div><div class="ceqmaqe-mezin highlight-box"></div><div class="ceqmaqe-cucik highlight-box"></div><div class="elendara highlight-box"></div><div class="zerka highlight-box"></div><div class="memala highlight-box"></div><div class="cenceliya highlight-box"></div><div class="cobana highlight-box"></div><div class="holile highlight-box"></div><div class="cerxuta highlight-box"></div><div class="kura highlight-box"></div><div class="qesim highlight-box"></div><div class="dike highlight-box"></div><div class="maseka highlight-box"></div><div class="hopka highlight-box"></div><div class="sorka highlight-box"></div><div class="reco highlight-box"></div><div class="xecxelil highlight-box"></div><div class="ceqilme highlight-box"></div><div class="sex highlight-box"></div><div class="ciye highlight-box"></div><div class="banika highlight-box"></div><div class="etmana highlight-box"></div><div class="sexbila highlight-box"></div><div class="goliye-jerin highlight-box"></div><div class="goliye-jorin highlight-box"></div><div class="muske highlight-box"></div><div class="kure highlight-box"></div><div class="hecika highlight-box"></div><div class="sediya highlight-box"></div><div class="kumrese highlight-box"></div><div class="qude highlight-box"></div><div class="dewris highlight-box"></div><div class="hemseleke highlight-box"></div><div class="berbene highlight-box"></div><div class="bedina highlight-box"></div><div class="dumiliya highlight-box"></div><div class="umera highlight-box"></div><div class="memila highlight-box"></div><div class="hesen highlight-box"></div>
+            </div>
+        </div>
+
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 400px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">400px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 15.png" alt="Map of Reco Area" onerror="this.onerror=null; this.src='https://placehold.co/400x537/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="meydan-ekbez highlight-box"></div><div class="peynereke highlight-box"></div><div class="kosa highlight-box"></div><div class="gaze highlight-box"></div><div class="welikli highlight-box"></div><div class="dodo highlight-box"></div><div class="gewenda highlight-box"></div><div class="sexmihemed highlight-box"></div><div class="semala highlight-box"></div><div class="edema highlight-box"></div><div class="qerebaba highlight-box"></div><div class="elbiske highlight-box"></div><div class="bilelko highlight-box"></div><div class="xerabi-silug highlight-box"></div><div class="firfirke-jerin highlight-box"></div><div class="firfirke-jorin highlight-box"></div><div class="heydar highlight-box"></div><div class="ceinke highlight-box"></div><div class="cela highlight-box"></div><div class="ceqmaqe-mezin highlight-box"></div><div class="ceqmaqe-cucik highlight-box"></div><div class="elendara highlight-box"></div><div class="zerka highlight-box"></div><div class="memala highlight-box"></div><div class="cenceliya highlight-box"></div><div class="cobana highlight-box"></div><div class="holile highlight-box"></div><div class="cerxuta highlight-box"></div><div class="kura highlight-box"></div><div class="qesim highlight-box"></div><div class="dike highlight-box"></div><div class="maseka highlight-box"></div><div class="hopka highlight-box"></div><div class="sorka highlight-box"></div><div class="reco highlight-box"></div><div class="xecxelil highlight-box"></div><div class="ceqilme highlight-box"></div><div class="sex highlight-box"></div><div class="ciye highlight-box"></div><div class="banika highlight-box"></div><div class="etmana highlight-box"></div><div class="sexbila highlight-box"></div><div class="goliye-jerin highlight-box"></div><div class="goliye-jorin highlight-box"></div><div class="muske highlight-box"></div><div class="kure highlight-box"></div><div class="hecika highlight-box"></div><div class="sediya highlight-box"></div><div class="kumrese highlight-box"></div><div class="qude highlight-box"></div><div class="dewris highlight-box"></div><div class="hemseleke highlight-box"></div><div class="berbene highlight-box"></div><div class="bedina highlight-box"></div><div class="dumiliya highlight-box"></div><div class="umera highlight-box"></div><div class="memila highlight-box"></div><div class="hesen highlight-box"></div>
+            </div>
+        </div>
+
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 250px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">250px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 15.png" alt="Map of Reco Area" onerror="this.onerror=null; this.src='https://placehold.co/250x336/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="meydan-ekbez highlight-box"></div><div class="peynereke highlight-box"></div><div class="kosa highlight-box"></div><div class="gaze highlight-box"></div><div class="welikli highlight-box"></div><div class="dodo highlight-box"></div><div class="gewenda highlight-box"></div><div class="sexmihemed highlight-box"></div><div class="semala highlight-box"></div><div class="edema highlight-box"></div><div class="qerebaba highlight-box"></div><div class="elbiske highlight-box"></div><div class="bilelko highlight-box"></div><div class="xerabi-silug highlight-box"></div><div class="firfirke-jerin highlight-box"></div><div class="firfirke-jorin highlight-box"></div><div class="heydar highlight-box"></div><div class="ceinke highlight-box"></div><div class="cela highlight-box"></div><div class="ceqmaqe-mezin highlight-box"></div><div class="ceqmaqe-cucik highlight-box"></div><div class="elendara highlight-box"></div><div class="zerka highlight-box"></div><div class="memala highlight-box"></div><div class="cenceliya highlight-box"></div><div class="cobana highlight-box"></div><div class="holile highlight-box"></div><div class="cerxuta highlight-box"></div><div class="kura highlight-box"></div><div class="qesim highlight-box"></div><div class="dike highlight-box"></div><div class="maseka highlight-box"></div><div class="hopka highlight-box"></div><div class="sorka highlight-box"></div><div class="reco highlight-box"></div><div class="xecxelil highlight-box"></div><div class="ceqilme highlight-box"></div><div class="sex highlight-box"></div><div class="ciye highlight-box"></div><div class="banika highlight-box"></div><div class="etmana highlight-box"></div><div class="sexbila highlight-box"></div><div class="goliye-jerin highlight-box"></div><div class="goliye-jorin highlight-box"></div><div class="muske highlight-box"></div><div class="kure highlight-box"></div><div class="hecika highlight-box"></div><div class="sediya highlight-box"></div><div class="kumrese highlight-box"></div><div class="qude highlight-box"></div><div class="dewris highlight-box"></div><div class="hemseleke highlight-box"></div><div class="berbene highlight-box"></div><div class="bedina highlight-box"></div><div class="dumiliya highlight-box"></div><div class="umera highlight-box"></div><div class="memila highlight-box"></div><div class="hesen highlight-box"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // This function shows the correct highlight based on the URL hash
+        function showHighlight() {
+            // First, hide all highlight boxes
+            document.querySelectorAll('.highlight-box').forEach(box => {
+                box.style.display = 'none';
+            });
+
+            // Check if there is a hash in the URL (e.g., #reco)
+            if (window.location.hash) {
+                // Get the class name from the hash by removing the #
+                const highlightClass = window.location.hash.substring(1);
+
+                // Find all elements with that class and display them
+                document.querySelectorAll('.' + highlightClass).forEach(element => {
+                    element.style.display = 'block';
+                });
+            }
+        }
+
+        // This function clears the highlight by removing the hash from the URL
+        function clearHighlights(event) {
+            event.preventDefault(); // Prevents the link from jumping
+            // Update the URL without reloading the page
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+            showHighlight(); // Run showHighlight again to hide all boxes
+        }
+
+        // Run the function when the page loads and when the URL hash changes
+        window.addEventListener('DOMContentLoaded', showHighlight);
+        window.addEventListener('hashchange', showHighlight);
+        
+        // Add a click listener to the "Clear Highlights" link
+        document.getElementById('clear-link').addEventListener('click', clearHighlights);
+    </script>
+
+</body>
+</html>

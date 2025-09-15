@@ -4,25 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive | Basûtê</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- START: LEAFLET & PLUGIN CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
-    <!-- END: LEAFLET & PLUGIN CSS -->
-
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Light theme variables */
+        body { font-family: 'Inter', sans-serif; }
         :root {
             --bg-color: #f0f2e6;
             --text-color: #000000;
@@ -32,9 +23,8 @@
             --link-color: #2563eb;
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
-            --internal-link-color: #2563eb; /* This is the blue for light mode */
+            --internal-link-color: #2563eb;
         }
-        /* Dark theme variables from user image */
         .dark {
             --bg-color: #2d2d2d;
             --text-color: #f1f1f1;
@@ -44,86 +34,28 @@
             --link-color: #63b3ed;
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
-            --internal-link-color: #86efac; /* This is the light green from your image */
+            --internal-link-color: #86efac;
         }
-        /* Applying theme colors */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        h1, h2, h3, .prose {
-            color: var(--text-color);
-        }
-        .subtext {
-             color: var(--subtext-color);
-        }
-        .themed-border {
-            border-color: var(--border-color);
-        }
-        .internal-link {
-            text-decoration: none; /* This removes the underline */
-            cursor: pointer;
-            color: var(--internal-link-color); /* This uses a new dedicated color variable */
-        }
-        .external-link {
-            color: var(--link-color);
-        }
-        .button-style {
-             border: 1px solid var(--border-color);
-        }
-        .button-style:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-hover-text);
-        }
-        /* Details/Summary styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .prose strong {
-            font-weight: 600;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-        }
-        .prose ol, .prose ul {
-            margin-bottom: 1rem;
-        }
-        /* Inverted colors for the theme toggle button */
-        .toggle-button-colors {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* Custom styles for Leaflet popups and controls to match theme */
-        .leaflet-popup-content-wrapper, .leaflet-control-layers {
-            background-color: var(--card-bg-color) !important;
-            color: var(--text-color) !important;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg-color) !important;
-        }
-        .leaflet-popup-close-button {
-            color: var(--text-color) !important;
-        }
-        .leaflet-popup-content b {
-            font-weight: 600;
-        }
-        .leaflet-popup-content span {
-            color: var(--subtext-color);
-            text-transform: capitalize;
-        }
-        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
         .leaflet-control-layers-toggle {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
             background-size: 20px 20px !important;
@@ -131,57 +63,108 @@
         .dark .leaflet-control-layers-toggle {
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
         }
-        .leaflet-control-scale-line {
-            background: var(--card-bg-color);
-            border-color: var(--text-color);
-            color: var(--text-color);
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-efr-n .map-container {
+            position: relative;
+        }
+        #minimap-efr-n .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-efr-n .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            border: 3px solid var(--border-color);
-            border-radius: 8px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* --- COORDINATES FOR ÇK Map 11 --- 
+         Recalculated for original image dimensions of 973x1284 pixels.
+        */
+        #minimap-efr-n .aster { left: 34.84%; top: 6.93%; width: 11.92%; height: 9.03%; }
+        #minimap-efr-n .coqe { left: 16.85%; top: 13.55%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .cumqe { left: 40.70%; top: 13.94%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .meriske { left: 65.67%; top: 4.21%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kefermize { left: 59.92%; top: 7.16%; width: 11.31%; height: 8.57%; }
+        #minimap-efr-n .sewarxa { left: 66.60%; top: 8.02%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .tirtewile { left: 35.25%; top: 17.60%; width: 10.48%; height: 7.94%; }
+        #minimap-efr-n .qibare { left: 50.87%; top: 18.46%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .efrin { left: 37.82%; top: 22.04%; width: 10.69%; height: 8.10%; }
+        #minimap-efr-n .gaze { left: 7.50%; top: 22.82%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .gunde-mezin { left: 13.16%; top: 19.00%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .xelnare { left: 19.01%; top: 18.69%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .kefersile { left: 23.54%; top: 22.90%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .marate { left: 16.03%; top: 24.30%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .keferdele-jorin { left: 5.76%; top: 24.77%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .keferdele-jerin { left: 10.59%; top: 32.48%; width: 8.02%; height: 6.07%; }
+        #minimap-efr-n .bablite { left: 25.69%; top: 30.61%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xalta { left: 55.19%; top: 24.14%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .meremine { left: 63.62%; top: 18.30%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .inabke { left: 63.72%; top: 20.64%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .cilbire { left: 68.86%; top: 31.00%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .bene { left: 76.46%; top: 35.75%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .basile { left: 63.00%; top: 37.62%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kurzele { left: 43.58%; top: 34.66%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .turinde { left: 41.11%; top: 26.32%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .kersane { left: 34.84%; top: 25.70%; width: 10.69%; height: 8.10%; }
+        #minimap-efr-n .pitete { left: 30.22%; top: 33.41%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .endare { left: 36.99%; top: 34.74%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .cidede { left: 34.74%; top: 28.50%; width: 10.90%; height: 8.26%; }
+        #minimap-efr-n .kefirbetre { left: 20.97%; top: 36.37%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kokebe { left: 26.72%; top: 38.94%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .tilfe { left: 16.65%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .keferzite { left: 19.22%; top: 50.08%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kifere { left: 34.12%; top: 47.98%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .basute { left: 38.54%; top: 44.39%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .soxaneke { left: 54.78%; top: 42.68%; width: 10.48%; height: 7.94%; }
+        #minimap-efr-n .aqibe { left: 68.35%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xurebke { left: 81.09%; top: 45.95%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .zarete { left: 78.73%; top: 49.30%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kimare { left: 45.43%; top: 47.66%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .birce { left: 36.48%; top: 51.95%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xeziwe { left: 28.57%; top: 61.37%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .iska { left: 17.37%; top: 68.07%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .sadere { left: 23.54%; top: 64.56%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .berade { left: 45.63%; top: 58.33%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .meyase { left: 61.46%; top: 56.23%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .bircilqase { left: 59.30%; top: 64.72%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .biiye { left: 36.28%; top: 66.98%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kefer-nabo { left: 49.54%; top: 66.51%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .basufane { left: 38.34%; top: 71.96%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .gundi-mezin { left: 62.90%; top: 72.35%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .birc-hedar { left: 47.48%; top: 71.57%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .kibesine { left: 50.77%; top: 75.16%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .farfirtine { left: 47.58%; top: 77.57%; width: 9.87%; height: 7.48%; }
+        #minimap-efr-n .basemre { left: 66.80%; top: 80.76%; width: 9.87%; height: 7.48%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
     </style>
 </head>
 <body>
-
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
-        <!-- Header Section -->
         <header class="mb-8">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Basûtê</h1>
         </header>
 
         <main class="space-y-6">
-            <!-- Basic Information Card -->
             <div class="card p-6 rounded-xl">
                 <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
                     <h2 class="text-2xl font-semibold">General Information</h2>
-                    <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
                         <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
@@ -189,19 +172,42 @@
                         </svg>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                        <p class="text-lg">Markaz</p>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Efrîn</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Basuta, Basutah, Basûta, Basûte, Basûtê, الباسوطة, باسوطه</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
-                        <p class="text-lg">Basuta, Basutah, الباسوطة, باسوطه</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
+<img alt="Map Image 11" onerror="this.onerror=null; this.src='https://placehold.co/973x1284/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 11.png"/>
+<div class="aster highlight-box"></div><div class="coqe highlight-box"></div><div class="cumqe highlight-box"></div><div class="meriske highlight-box"></div><div class="kefermize highlight-box"></div><div class="sewarxa highlight-box"></div><div class="tirtewile highlight-box"></div><div class="qibare highlight-box"></div><div class="efrin highlight-box"></div><div class="gaze highlight-box"></div><div class="gunde-mezin highlight-box"></div><div class="xelnare highlight-box"></div><div class="kefersile highlight-box"></div><div class="marate highlight-box"></div><div class="keferdele-jorin highlight-box"></div><div class="keferdele-jerin highlight-box"></div><div class="bablite highlight-box"></div><div class="xalta highlight-box"></div><div class="meremine highlight-box"></div><div class="inabke highlight-box"></div><div class="cilbire highlight-box"></div><div class="bene highlight-box"></div><div class="basile highlight-box"></div><div class="kurzele highlight-box"></div><div class="turinde highlight-box"></div><div class="kersane highlight-box"></div><div class="pitete highlight-box"></div><div class="endare highlight-box"></div><div class="cidede highlight-box"></div><div class="kefirbetre highlight-box"></div><div class="kokebe highlight-box"></div><div class="tilfe highlight-box"></div><div class="keferzite highlight-box"></div><div class="kifere highlight-box"></div><div class="basute highlight-box" style="display: block;"></div><div class="soxaneke highlight-box"></div><div class="aqibe highlight-box"></div><div class="xurebke highlight-box"></div><div class="zarete highlight-box"></div><div class="kimare highlight-box"></div><div class="birce highlight-box"></div><div class="xeziwe highlight-box"></div><div class="iska highlight-box"></div><div class="sadere highlight-box"></div><div class="berade highlight-box"></div><div class="meyase highlight-box"></div><div class="bircilqase highlight-box"></div><div class="biiye highlight-box"></div><div class="kefer-nabo highlight-box"></div><div class="basufane highlight-box"></div><div class="gundi-mezin highlight-box"></div><div class="birc-hedar highlight-box"></div><div class="kibesine highlight-box"></div><div class="farfirtine highlight-box"></div><div class="basemre highlight-box"></div>
+</div></div>
                 </div>
             </div>
 
-            <!-- Map and Location Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
@@ -211,66 +217,64 @@
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
             
-            <!-- Photos Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/basuta.jpg" alt="Photo of basuta" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=basuta.jpg';"><img src="../village_photos/raman basota.jpg" alt="Photo of raman basota" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=raman+basota.jpg';"><img src="../village_photos/p1.jpg" alt="Photo of p1" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=p1.jpg';"><img src="../village_photos/mhd-karaan-ali.jpg" alt="Photo of mhd-karaan-ali" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=mhd-karaan-ali.jpg';"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/basuta.jpg" alt="Photo of Basûtê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=basuta.jpg';">
+<img src="../village_photos/raman basota.jpg" alt="Photo of Basûtê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=raman+basota.jpg';">
+<img src="../village_photos/p1.jpg" alt="Photo of Basûtê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=p1.jpg';">
+<img src="../village_photos/mhd-karaan-ali.jpg" alt="Photo of Basûtê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=mhd-karaan-ali.jpg';">
+</div>
             </div>
 
-            <!-- Summaries Card (I-IV) -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">According to the book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds (Afrin)</span>' geographical study by <span class="internal-link">Dr. Mohammed Abdo Ali</span>:</p>
-<p style="margin-bottom: 1em;"><strong>Basûte, باسوطه</strong> /4160N - 650H - 9km - 240m/:</p>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Basûtê (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin)</span>&#x27; geographical study by <span class="internal-link">Dr. Mohammed Abdo Ali</span>:</p>
+<p><strong>Basûte, باسوطه</strong> /4160N - 650H - 9km - 240m/:</p>
 <ul>
-<li>I believe the word is Kurdish in origin, where Ba = wind, and Sût = sharp or burning, and the location of <span class="internal-link">Basutah</span> village in the plain next to the narrow mountainous strait, exposes it to the cold northern winds in winter, and sometimes causes sharp damage to fruit orchards. As for <span class="internal-link">Khairaldin al-Asadi</span>, he says about the name quoting <span class="internal-link">Father Shelhatʼ</span>: that it is from Aramaic "<span class="internal-link">Fshuta</span>" and means the plateau or shade, and from it the name might mean "house of shade" /<span class="internal-link">Comparative Aleppo Encyclopedia</span>, vol. 2, p. 32/. But I believe this interpretation is not successful.</li>
+<li>I believe the word is Kurdish in origin, where Ba = wind, and Sût = sharp or burning, and the location of <span class="internal-link">Basutah</span> village in the plain next to the narrow mountainous strait, exposes it to the cold northern winds in winter, and sometimes causes sharp damage to fruit orchards. As for <span class="internal-link">Khairaldin al-Asadi</span>, he says about the name quoting <span class="internal-link">Father Shelhatʼ</span>: that it is from Aramaic &quot;<span class="internal-link">Fshuta</span>&quot; and means the plateau or shade, and from it the name might mean &quot;house of shade&quot; /<span class="internal-link">Comparative Aleppo Encyclopedia</span>, vol. 2, p. 32/. But I believe this interpretation is not successful.</li>
 <li><span class="internal-link">Basutah</span> is a large village, surrounded by <span class="internal-link">Afrin River</span> from the west and south. A spring rises in its center - Basutah Spring with abundance of 15 l/sec. Its modern houses have extended northward and eastward ascending the slope of <span class="internal-link">Leiloun Mountain</span>. It has a small factory for manufacturing some plastic requirements. It is a beautiful tourist village located in the middle of vast fields of fruit tree orchards. Some urban services are available including health center, telephone and municipality, and fuel station. It is one of the known summer resorts in northern <span class="internal-link">Aleppo</span>, and famous for its delicious pomegranates. Basutah has an eventful history, as its castle was a center for the hero <span class="internal-link">Agha Kaj</span> in the early nineteenth century during their rule of <span class="internal-link">Kurdish Mountain</span> sub-districts and northern Aleppo villages.</li>
 </ul>
-<p style="margin-bottom: 1em;">And according to the book: <span class="internal-link">Afrin</span>.... its river and green hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmah</span> village:</p>
-<p style="margin-bottom: 1em;"><strong>باسوطه</strong>: A village in <span class="internal-link">Afrin Valley</span>, belonging to the central sub-district of Afrin, Afrin region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p style="margin-bottom: 1em;">It is a large village located south of <span class="internal-link">Afrin</span> city about 9 km, on flat and fertile agricultural land surrounded by orchards and fruit and pomegranate trees from all directions, and it is flourishing and beautiful. It is bordered to the north by a vast plain and fertile agricultural land planted with pomegranate, apple and almond trees and other things, and <span class="internal-link">Ayn Darah</span> village and the archaeological <span class="internal-link">Tell Ayn Darah</span>. To the south by a rough mountainous chain of <span class="internal-link">Leiloun</span> and <span class="internal-link">Simaan</span> mountains and <span class="internal-link">Birj Abdul Wa</span> village. To the east by a Leiloun and Simaan mountainous chain and <span class="internal-link">Kimar</span> village. To the west by a vast plain and the course of <span class="internal-link">Afrin River</span> valley and <span class="internal-link">Bozikeh Mountain</span> and <span class="internal-link">Kafir</span> village. The number of its houses is about 400 houses, and its age is about 500 years according to the narration of one of the village's elderly inhabitants. Its old houses are stone and clay with wooden roofs, while the modern ones - the village has expanded eastward, westward and southward next to its main road coming from Afrin towards <span class="internal-link">Ghazawiyah</span> village and <span class="internal-link">Birj Abdalo</span> and <span class="internal-link">Iskan</span> village. It has electricity network and drinking water taken from the water spring flowing from the bottom of <span class="internal-link">Leiloun Mountain</span>, and next to this spring is a beautiful tourist café, and from artesian wells drilled within the houses and nearby orchards. It has elementary and preparatory school and post and telephone center and mosque in the center of the village. A municipality was established in it in <span class="internal-link">1991</span> and built in an elevation in the center of the village on the summit of <span class="internal-link">Basutah Castle</span>.</p>
-<p style="margin-bottom: 1em;">The village municipality serves the village and its affiliated villages such as <span class="internal-link">Birj Abdalo</span> village and <span class="internal-link">Ayn Darah</span> village and <span class="internal-link">Kimar</span> with several paved streets. <span class="internal-link">Afrin River</span> passes a few meters to the west of the village, to cross a narrow strait confined between <span class="internal-link">Leiloun Mountain</span> from the east and <span class="internal-link">Bozkiyah Mountain</span> in the west. A regulatory dam was built on the valley at the end of the narrow strait excavated next to <span class="internal-link">Birj Abdalo</span> village. To the north and west of the village there is a flat fertile and vast plain connecting between Basutah and Ayn Darah and <span class="internal-link">Qarzihil</span> villages, as well as several modern houses on both sides of the road east of the village. Most of its inhabitants work in agriculture such as grain and legume cultivation rainfed, as it is famous for fruit and pomegranate, almond and summer vegetable cultivation and cotton and sugar beet cultivation irrigated from Afrin River and artesian wells drilled within the orchards, in addition to raising sheep and goats and other things. There are several restaurants and tourist cafés, the most important being <span class="internal-link">Ras al-Nabaa</span> next to <span class="internal-link">Basutah Spring</span>. Basutah is considered one of the most important tourist areas in Aleppo governorate.</p>
-<p style="margin-bottom: 1em;">Among its most important families is the family of hero <span class="internal-link">Agha</span> and currently his grandson <span class="internal-link">Zaki Agha</span>.</p>
-<p style="margin-bottom: 1em;"><strong>باسوطه Spring</strong>: A spring in <span class="internal-link">Afrin Valley</span>, belonging to the central sub-district, <span class="internal-link">Afrin</span> region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p style="margin-bottom: 1em;">The spring waters flow from the bottom of <span class="internal-link">Leiloun Mountain</span> and <span class="internal-link">Simaan Mountain</span> on the northern and western slopes of the two mentioned mountains.</p>
-<p style="margin-bottom: 1em;">The spring forms a lake at the bottom of the valley then branches into two branches, the first heads north through the orchards and is used for irrigating the orchards, and the second continues its course westward then ends in <span class="internal-link">Afrin River</span> southwest of the village.</p>
-<p style="margin-bottom: 1em;">The village inhabitants benefit from the spring waters for drinking and daily use and irrigating the orchards around the village since ancient times.</p>
-<p style="margin-bottom: 1em;">On the northern side, Ras al-Nabaa restaurant was established in Basutah which is visited every Friday and Sunday during spring and summer seasons by thousands of visitors from Aleppo city and its countryside. The spring and its village are considered among the tourist areas in Aleppo governorate.</p>
-<p style="margin-bottom: 1em;">Village headman: <span class="internal-link">Mohammed Omar</span> / <span class="internal-link">Abu Abdo</span> / <span class="internal-link">Adham Omar</span></p></div></details><hr class="themed-border"></div>
-
-            <!-- Links Card (V) -->
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-basuta.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-basuta.htm</a></li><li>Ax û Welat<br><a href="https://www.youtube.com/watch?v=MqARaujqHz8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=MqARaujqHz8</a></li><li>Jawlat (post-2018)<br><a href="https://www.youtube.com/watch?v=03M25dhjkl0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=03M25dhjkl0</a></li><li>Gundên Me (post-2018)<br><a href="https://www.youtube.com/watch?v=r3nJQQ9itWk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=r3nJQQ9itWk</a></li><li>Drone video<br><a href="https://www.youtube.com/watch?v=Xy95Zbe-Zx4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Xy95Zbe-Zx4</a><br><a href="https://www.youtube.com/watch?v=lbum2m_GKCE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lbum2m_GKCE</a><br><a href="https://www.youtube.com/watch?v=D8joPgXGC1g" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=D8joPgXGC1g</a><br><a href="https://www.youtube.com/watch?v=yq3k0_olwrg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=yq3k0_olwrg</a><br><a href="https://www.youtube.com/watch?v=MgAFl0FGxZk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=MgAFl0FGxZk</a><br><a href="https://www.youtube.com/watch?v=R-BtUDOzdbQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=R-BtUDOzdbQ</a></li><li>Video<br><a href="https://www.youtube.com/watch?v=sDqwTb2vrt0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sDqwTb2vrt0</a><br><a href="https://www.youtube.com/watch?v=MwWhatrZBO4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=MwWhatrZBO4</a><br><a href="https://www.youtube.com/watch?v=tjh7XlmZUlA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tjh7XlmZUlA</a><br><a href="https://www.youtube.com/watch?v=I4vR0HypUh4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=I4vR0HypUh4</a><br><a href="https://www.youtube.com/watch?v=zVON76AlOYE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zVON76AlOYE</a><br><a href="https://www.youtube.com/watch?v=OxOA8CVRnNE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=OxOA8CVRnNE</a><br><a href="https://www.youtube.com/watch?v=a42gmNaAnfA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=a42gmNaAnfA</a><br><a href="https://www.youtube.com/watch?v=gb0QJ0yIhTw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=gb0QJ0yIhTw</a><br><a href="https://www.youtube.com/watch?v=54uONzlTKic" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=54uONzlTKic</a></li></ul>
+<p>And according to the book <span class="internal-link">عفرين.... نهرها ورواييها الخضراء|Afrin.... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmah</span> village:</p>
+<p><strong>باسوطه</strong>: A village in <span class="internal-link">Afrin Valley</span>, belonging to the <span class="internal-link">Central District</span> of <span class="internal-link">Afrin Region</span>, <span class="internal-link">Aleppo Governorate</span>.</p>
+<p>It is a large village located south of <span class="internal-link">Afrin City</span> about 9 km, on flat and fertile agricultural land surrounded by orchards and fruit and pomegranate trees from all directions, and it is flourishing and beautiful. It is bordered to the north by a vast plain and fertile agricultural land planted with pomegranate, apple and almond trees and other things, and <span class="internal-link">Ayn Darah</span> village and the archaeological <span class="internal-link">Tell Ayn Darah</span>. To the south by a rough mountainous chain of <span class="internal-link">Leiloun</span> and <span class="internal-link">Simaan</span> mountains and <span class="internal-link">Birj Abdul Wa</span> village. To the east by a Leiloun and Simaan mountainous chain and <span class="internal-link">Kimar</span> village. To the west by a vast plain and the course of Afrin River valley and <span class="internal-link">Bozikeh Mountain</span> and <span class="internal-link">Kafir</span> village. The number of its houses is about 400 houses, and its age is about 500 years according to the narration of one of the village&#x27;s elderly inhabitants. Its old houses are stone and clay with wooden roofs, while the modern ones - the village has expanded eastward, westward and southward next to its main road coming from Afrin City towards <span class="internal-link">Ghazawiyah</span> village and <span class="internal-link">Birj Abdalo</span> and <span class="internal-link">Iskan</span> village. It has electricity network and drinking water taken from the water spring flowing from the bottom of Leiloun Mountain, and next to this spring is a beautiful tourist café, and from artesian wells drilled within the houses and nearby orchards. It has elementary and preparatory school and post and telephone center and mosque in the center of the village. A municipality was established in it in <span class="internal-link">1991</span> and built in an elevation in the center of the village on the summit of <span class="internal-link">Basutah Castle</span>.</p>
+<p>The village municipality serves the village and its affiliated villages such as <span class="internal-link">Birj Abdalo</span> village and <span class="internal-link">Ayn Darah</span> village and <span class="internal-link">Kimar</span> with several paved streets. <span class="internal-link">Afrin River</span> passes a few meters to the west of the village, to cross a narrow strait confined between <span class="internal-link">Leiloun Mountain</span> from the east and <span class="internal-link">Bozkiyah Mountain</span> in the west. A regulatory dam was built on the valley at the end of the narrow strait excavated next to <span class="internal-link">Birj Abdalo</span> village. To the north and west of the village there is a flat fertile and vast plain connecting between Basutah and Ayn Darah and <span class="internal-link">Qarzihil</span> villages, as well as several modern houses on both sides of the road east of the village. Most of its inhabitants work in agriculture such as grain and legume cultivation rainfed, as it is famous for fruit and pomegranate, almond and summer vegetable cultivation and cotton and sugar beet cultivation irrigated from Afrin River and artesian wells drilled within the orchards, in addition to raising sheep and goats and other things. There are several restaurants and tourist cafés, the most important being <span class="internal-link">Ras al-Nabaa</span> next to <span class="internal-link">Basutah Spring</span>. Basutah is considered one of the most important tourist areas in Aleppo governorate.</p>
+<p>Among its most important families is the family of hero <span class="internal-link">Agha</span> and currently his grandson <span class="internal-link">Zaki Agha</span>.</p>
+<p><strong>باسوطه Spring</strong>: A spring in Afrin Valley, belonging to the Central District, Afrin Region, Aleppo Governorate.</p>
+<p>The spring waters flow from the bottom of <span class="internal-link">Leiloun Mountain</span> and <span class="internal-link">Simaan Mountain</span> on the northern and western slopes of the two mentioned mountains.</p>
+<p>The spring forms a lake at the bottom of the valley then branches into two branches, the first heads north through the orchards and is used for irrigating the orchards, and the second continues its course westward then ends in <span class="internal-link">Afrin River</span> southwest of the village.</p>
+<p>The village inhabitants benefit from the spring waters for drinking and daily use and irrigating the orchards around the village since ancient times.</p>
+<p>On the northern side, Ras al-Nabaa restaurant was established in Basutah which is visited every Friday and Sunday during spring and summer seasons by thousands of visitors from Aleppo city and its countryside. The spring and its village are considered among the tourist areas in Aleppo governorate.</p>
+<p>Village headman: <span class="internal-link">Mohammed Omar</span> / <span class="internal-link">Abu Abdo</span> / <span class="internal-link">Adham Omar</span></p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Basûtê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>The village of Basûte is described as a paradise-like location, renowned for its extensive agriculture and abundant fruit trees. Within the village lies a significant historical site, <span class="internal-link">Kela Basûtê</span> (the Castle of Basûte), which is characterized as being ancient and thousands of years old. This deep-rooted history is contrasted with a modern historical condition of displacement, expressed through a song whose lyrics convey the pain and misery of being a refugee (penaber). The song speaks of losing a good life and a profound, sorrowful longing for the homeland (welat), reflecting a contemporary experience of exile and loss connected to the region.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Basûtê 2</h3>
+<p>The village of Basûtê, located nine kilometers south of Afrin city in the foothills of <span class="internal-link">Mount Lêlûn</span>, is a site of deep historical and cultural significance. Its name is believed to be of <span class="internal-link">Aramaic</span> origin, meaning &quot;House of Goodness,&quot; reflecting its natural abundance of water springs and fruit orchards, for which it has been known since the time of its forefathers. The area&#x27;s history is exceptionally long, with local accounts claiming the presence of <span class="internal-link">Stone Age</span> artifacts, such as flint stone tools, dating back 10,000-12,000 years BCE. Over millennia, the region has been inhabited by a succession of peoples including the <span class="internal-link">Aramaeans</span>, <span class="internal-link">Assyrians</span>, <span class="internal-link">Medes</span>, <span class="internal-link">Persians</span>, <span class="internal-link">Romans</span>, <span class="internal-link">Arabs</span>, <span class="internal-link">Seljuks</span>, and <span class="internal-link">Ayyubids</span>. Central to its history is the <span class="internal-link">Kela Battalê Battîl</span> (Castle of Battal), which was taken during the <span class="internal-link">Ayyubid</span> period (c. 1100-1300 AD). After falling into ruin during a 400-600 year rule by the <span class="internal-link">Mand</span> tribe, the castle was restored in 1600 by the Kurdish <span class="internal-link">Robarî</span> tribe. In 1740, the <span class="internal-link">Ottomans</span> appointed<span class="internal-link"> Battal Axa</span> of the <span class="internal-link">Genc</span> tribe as its ruler, and the castle was subsequently named after him. Today, Basûtê is most famous for its pomegranates, a crop tied to ancestral traditions, including the unique method of storing the fruit under straw for winter and the communal practice of making pomegranate molasses (dims) from the sour varieties.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>III. Summary from other Channels&#x27; Transcripts of Basûtê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Basûtê</h3>
+<p>The village of Basûta is historically renowned for its natural abundance, particularly its trees, fruits, vegetables, and a unique spring whose water is described as being warm in winter and cold in summer, considered a source of blessing and bounty for the local agriculture. This traditional way of life is embodied by a 90-year-old elder named Ali, who recounts a lifetime spent in the village engaged in farming, agriculture, and raising sheep and cattle. A significant part of the village&#x27;s cultural heritage is preserved through oral traditions like the Dengbêjî song performed by Ali. This lament expresses a deep sense of Kurdish identity and historical struggle, referencing the pain of a divided Kurdistan across Turkey, Iran, Iraq, and Syria. The song honors key figures like <span class="internal-link">Mela Mistefa Barzanî</span> and the resistance of the Pêşmerge against a &quot;cruel enemy&quot; over many decades, while also emphasizing a profound connection to the homeland of Afrin and the importance of preserving the &quot;sweet Kurdish language.&quot;</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">D. Summary from Afrin Zeyton Transcript of Basûtê</h3>
+<p>The village of Basuta, located 9 km from <span class="internal-link">Afrin city</span>, is described as an ancient and historically significant place. Its most prominent landmark is the famous <span class="internal-link">Basuta Castle</span>, which served as the center of rule for <span class="internal-link">Battal Agha Kanj</span> in the early 19th century over the region known as Jabal al-Akrad (Mountain of the Kurds). The village&#x27;s identity is deeply tied to its natural abundance; unlike most Afrin villages known for olives, Basuta is celebrated for its diverse fruit orchards, including apricot, apple, peach, and almond trees. It is particularly famous for its pomegranates, with an estimated 20,000 trees of both sweet and sour varieties, and may have been the first village in the region to cultivate them, a fact celebrated in local songs and stories. This agricultural prosperity was historically sustained by its numerous springs, such as the ancient Seri Kaniye, which once irrigated fields of cotton. An elder recalls that in the past, the community would gather to clean the springs, but the introduction of dam water led to a shift where the spring&#x27;s water was redirected to a reservoir for drinking. This natural beauty also established Basuta as a tourist destination, with a well-known restaurant built by the Seri Kaniye spring 45 years ago that attracted visitors from around the world. The village&#x27;s long cultural and artistic history is exemplified by the local music group, Koma Raperîn, which was formed by the village youth in 2005 but was largely dispersed after the conflict in Afrin.</p></div></details></div>
             </div>
 
-            <!-- Additional Information Card (VI-X) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-basuta.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-basuta.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=MqARaujqHz8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=MqARaujqHz8</a></li><li>Jawlat (post-2018):<br><a href="https://www.youtube.com/watch?v=03M25dhjkl0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=03M25dhjkl0</a></li><li>Gundên Me (post-2018):<br><a href="https://www.youtube.com/watch?v=r3nJQQ9itWk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=r3nJQQ9itWk</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=Xy95Zbe-Zx4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Xy95Zbe-Zx4</a><br><a href="https://www.youtube.com/watch?v=lbum2m_GKCE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lbum2m_GKCE</a><br><a href="https://www.youtube.com/watch?v=D8joPgXGC1g" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=D8joPgXGC1g</a><br><a href="https://www.youtube.com/watch?v=yq3k0_olwrg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=yq3k0_olwrg</a><br><a href="https://www.youtube.com/watch?v=MgAFl0FGxZk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=MgAFl0FGxZk</a><br><a href="https://www.youtube.com/watch?v=R-BtUDOzdbQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=R-BtUDOzdbQ</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=sDqwTb2vrt0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sDqwTb2vrt0</a><br><a href="https://www.youtube.com/watch?v=MwWhatrZBO4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=MwWhatrZBO4</a><br><a href="https://www.youtube.com/watch?v=tjh7XlmZUlA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tjh7XlmZUlA</a><br><a href="https://www.youtube.com/watch?v=I4vR0HypUh4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=I4vR0HypUh4</a><br><a href="https://www.youtube.com/watch?v=zVON76AlOYE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zVON76AlOYE</a><br><a href="https://www.youtube.com/watch?v=OxOA8CVRnNE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=OxOA8CVRnNE</a><br><a href="https://www.youtube.com/watch?v=a42gmNaAnfA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=a42gmNaAnfA</a><br><a href="https://www.youtube.com/watch?v=gb0QJ0yIhTw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=gb0QJ0yIhTw</a><br><a href="https://www.youtube.com/watch?v=54uONzlTKic" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=54uONzlTKic</a></li></ul>
+            </div>
+
             
 
-            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
             
 
         </main>
 
-        <!-- Footer -->
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Generated for archive purposes.</p>
+            <p class="text-sm subtext">Page Updated on September 15, 2025</p>
         </footer>
     </div>
 
-    <!-- START: LIGHTBOX HTML -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <!-- END: LIGHTBOX HTML -->
-
-    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
-
     <script>
-        // Theme toggle script (unchanged)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -303,35 +307,22 @@
             }
         });
 
-        // Main script runs after the page content has loaded
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LIGHTBOX SCRIPT ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxClose = document.getElementById('lightbox-close');
             const imageTriggers = document.querySelectorAll('.lightbox-trigger');
-
             imageTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     lightboxImage.src = trigger.src;
                     lightbox.classList.remove('hidden');
                 });
             });
-
-            function closeLightbox() {
-                lightbox.classList.add('hidden');
-            }
-
+            function closeLightbox() { lightbox.classList.add('hidden'); }
             lightbox.addEventListener('click', closeLightbox);
             lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
 
-            // --- MAP SCRIPT ---
             const iconConfig = {
                 shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
                 landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
@@ -342,7 +333,6 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-
             function createCustomIcon(type, isMain) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
@@ -350,7 +340,6 @@
                 const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-
                 const html = `
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
@@ -360,79 +349,38 @@
                             ${config.svg}
                         </svg>
                     </div>`;
-
-                return L.divIcon({
-                    html: html,
-                    className: '',
-                    iconSize: iconSize,
-                    iconAnchor: iconAnchor,
-                    popupAnchor: popupAnchor
-                });
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
-
             const mainVillageName = "Basûtê";
             const villageLat = 36.434876;
             const villageLng = 36.875366;
             const initialZoom = 14;
-
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-
-            // --- Define all the map layers ---
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri'
-            });
-
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
             const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
                 maxZoom: 22
             });
-
-            // --- Set up the layer control ---
-            const baseMaps = {
-                "Satellite": esriImagery,
-                "Street": osmStreet,
-                "Terrain": thunderforestTerrain
-            };
-            
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
             L.control.layers(baseMaps).addTo(map);
             esriImagery.addTo(map);
-
-            // --- ADD MAP CONTROLS ---
-            // 1. Static Scale Bar
             L.control.scale({ imperial: false }).addTo(map);
-
-            // --- Fetch data and add markers ---
             fetch('afrin_locations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
                 .then(locations => {
                     locations.forEach(location => {
                         const isMainVillage = location.name === mainVillageName;
                         const customIcon = createCustomIcon(location.type, isMainVillage);
-                        
-                        const marker = L.marker([location.lat, location.lng], { 
-                            icon: customIcon,
-                            zIndexOffset: isMainVillage ? 1000 : 0
-                        }).addTo(map);
-                        
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
                         marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-
-                        if (isMainVillage) {
-                            marker.openPopup();
-                        }
+                        if (isMainVillage) { marker.openPopup(); }
                     });
                 })
-                .catch(error => {
-                    console.error('Error loading location data:', error);
-                    const mapDiv = document.getElementById('map');
-                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
     </script>

@@ -4,25 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive | Tilsilorê</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- START: LEAFLET & PLUGIN CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
-    <!-- END: LEAFLET & PLUGIN CSS -->
-
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Light theme variables */
+        body { font-family: 'Inter', sans-serif; }
         :root {
             --bg-color: #f0f2e6;
             --text-color: #000000;
@@ -32,9 +23,8 @@
             --link-color: #2563eb;
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
-            --internal-link-color: #2563eb; /* This is the blue for light mode */
+            --internal-link-color: #2563eb;
         }
-        /* Dark theme variables from user image */
         .dark {
             --bg-color: #2d2d2d;
             --text-color: #f1f1f1;
@@ -44,86 +34,28 @@
             --link-color: #63b3ed;
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
-            --internal-link-color: #86efac; /* This is the light green from your image */
+            --internal-link-color: #86efac;
         }
-        /* Applying theme colors */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        h1, h2, h3, .prose {
-            color: var(--text-color);
-        }
-        .subtext {
-             color: var(--subtext-color);
-        }
-        .themed-border {
-            border-color: var(--border-color);
-        }
-        .internal-link {
-            text-decoration: none; /* This removes the underline */
-            cursor: pointer;
-            color: var(--internal-link-color); /* This uses a new dedicated color variable */
-        }
-        .external-link {
-            color: var(--link-color);
-        }
-        .button-style {
-             border: 1px solid var(--border-color);
-        }
-        .button-style:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-hover-text);
-        }
-        /* Details/Summary styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .prose strong {
-            font-weight: 600;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-        }
-        .prose ol, .prose ul {
-            margin-bottom: 1rem;
-        }
-        /* Inverted colors for the theme toggle button */
-        .toggle-button-colors {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* Custom styles for Leaflet popups and controls to match theme */
-        .leaflet-popup-content-wrapper, .leaflet-control-layers {
-            background-color: var(--card-bg-color) !important;
-            color: var(--text-color) !important;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg-color) !important;
-        }
-        .leaflet-popup-close-button {
-            color: var(--text-color) !important;
-        }
-        .leaflet-popup-content b {
-            font-weight: 600;
-        }
-        .leaflet-popup-content span {
-            color: var(--subtext-color);
-            text-transform: capitalize;
-        }
-        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
         .leaflet-control-layers-toggle {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
             background-size: 20px 20px !important;
@@ -131,57 +63,101 @@
         .dark .leaflet-control-layers-toggle {
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
         }
-        .leaflet-control-scale-line {
-            background: var(--card-bg-color);
-            border-color: var(--text-color);
-            color: var(--text-color);
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-cindires .map-container {
+            position: relative;
+        }
+        #minimap-cindires .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-cindires .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            border: 3px solid var(--border-color);
-            border-radius: 8px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* --- COORDINATES FOR CINDARIS AREAS --- 
+         Recalculated for original image dimensions of 991x998 pixels.
+        */
+        #minimap-cindires .remadiye { left: 36.63%; top: 3.61%; width: 8.88%; height: 8.82%; }
+        #minimap-cindires .hechesna { left: 34.21%; top: 10.02%; width: 8.88%; height: 8.82%; }
+        #minimap-cindires .xalta { left: 53.78%; top: 12.22%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .colaqa-1 { left: 66.50%; top: 15.63%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .gewrika { left: 72.45%; top: 12.53%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .gorda { left: 41.57%; top: 15.63%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .xerza { left: 63.47%; top: 16.93%; width: 10.09%; height: 10.02%; }
+        #minimap-cindires .tetera { left: 34.21%; top: 18.44%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .cobana { left: 43.99%; top: 23.65%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .miske-jorin { left: 47.93%; top: 22.55%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .miske-jerin { left: 49.45%; top: 27.56%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .colaqa-2 { left: 55.09%; top: 23.85%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .aske-serqi { left: 56.41%; top: 18.84%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .feqira { left: 71.24%; top: 17.94%; width: 9.08%; height: 9.02%; }
+        #minimap-cindires .sex-ebdirehmen { left: 73.16%; top: 32.67%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .qujuma { left: 63.37%; top: 30.96%; width: 10.29%; height: 10.22%; }
+        #minimap-cindires .bircike { left: 53.08%; top: 34.67%; width: 10.49%; height: 10.42%; }
+        #minimap-cindires .kora { left: 40.56%; top: 29.06%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .kefersefre { left: 34.91%; top: 33.87%; width: 10.29%; height: 10.22%; }
+        #minimap-cindires .hekice { left: 17.96%; top: 32.26%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .merwane-jerin { left: 11.91%; top: 35.87%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .merwane-jorin { left: 17.15%; top: 37.88%; width: 8.68%; height: 8.62%; }
+        #minimap-cindires .aske-xerbi { left: 25.23%; top: 45.19%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .baflor { left: 35.92%; top: 44.79%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .yalanqoze { left: 43.09%; top: 45.29%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .sindiyanke { left: 47.02%; top: 38.78%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .qurbe { left: 55.30%; top: 39.68%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .qile { left: 63.07%; top: 39.28%; width: 9.08%; height: 9.02%; }
+        #minimap-cindires .tilhemo { left: 73.86%; top: 40.78%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .hemame { left: 14.43%; top: 58.42%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .heciskendere { left: 25.23%; top: 55.51%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .axcele { left: 35.02%; top: 56.51%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .cindires { left: 43.79%; top: 50.40%; width: 11.50%; height: 11.42%; }
+        #minimap-cindires .hemelke { left: 56.41%; top: 48.00%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .remedena { left: 63.57%; top: 48.10%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .fireriye { left: 73.56%; top: 48.80%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .hecilere { left: 54.69%; top: 53.21%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .ebukebe { left: 64.18%; top: 54.21%; width: 11.10%; height: 11.02%; }
+        #minimap-cindires .zelaqe { left: 80.22%; top: 52.51%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .sifiye { left: 18.47%; top: 71.54%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .mila-xelila { left: 26.54%; top: 70.94%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .mehmediye { left: 40.36%; top: 69.04%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .derbelute { left: 41.17%; top: 75.15%; width: 8.68%; height: 8.62%; }
+        #minimap-cindires .medaya { left: 47.63%; top: 66.33%; width: 9.08%; height: 9.02%; }
+        #minimap-cindires .dewe-jerin { left: 54.09%; top: 65.63%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .dewe-jorin { left: 50.96%; top: 74.25%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .tilsilore { left: 56.31%; top: 62.22%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .celeme { left: 71.24%; top: 67.43%; width: 10.09%; height: 10.02%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
     </style>
 </head>
 <body>
-
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
-        <!-- Header Section -->
         <header class="mb-8">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Tilsilorê</h1>
         </header>
 
         <main class="space-y-6">
-            <!-- Basic Information Card -->
             <div class="card p-6 rounded-xl">
                 <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
                     <h2 class="text-2xl font-semibold">General Information</h2>
-                    <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
                         <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
@@ -189,19 +165,42 @@
                         </svg>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                        <p class="text-lg">Jindires</p>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Cindires</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Tel Silur, Til silorê, Tilsilor, Tislor, تل سلور, تسلور</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
-                        <p class="text-lg">Tel Silur, Til silorê, Tilsilor, Tislor, تل سلور</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
+<img alt="Map of Cindaris" onerror="this.onerror=null; this.src='https://placehold.co/991x998/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 16.png"/>
+<div class="remadiye highlight-box"></div><div class="hechesna highlight-box"></div><div class="xalta highlight-box"></div><div class="colaqa-1 highlight-box"></div><div class="gewrika highlight-box"></div><div class="gorda highlight-box"></div><div class="xerza highlight-box"></div><div class="tetera highlight-box"></div><div class="cobana highlight-box"></div><div class="miske-jorin highlight-box"></div><div class="miske-jerin highlight-box"></div><div class="colaqa-2 highlight-box"></div><div class="aske-serqi highlight-box"></div><div class="feqira highlight-box"></div><div class="sex-ebdirehmen highlight-box"></div><div class="qujuma highlight-box"></div><div class="bircike highlight-box"></div><div class="kora highlight-box"></div><div class="kefersefre highlight-box"></div><div class="hekice highlight-box"></div><div class="merwane-jerin highlight-box"></div><div class="merwane-jorin highlight-box"></div><div class="aske-xerbi highlight-box"></div><div class="baflor highlight-box"></div><div class="yalanqoze highlight-box"></div><div class="sindiyanke highlight-box"></div><div class="qurbe highlight-box"></div><div class="qile highlight-box"></div><div class="tilhemo highlight-box"></div><div class="hemame highlight-box"></div><div class="heciskendere highlight-box"></div><div class="axcele highlight-box"></div><div class="cindires highlight-box"></div><div class="hemelke highlight-box"></div><div class="remedena highlight-box"></div><div class="fireriye highlight-box"></div><div class="hecilere highlight-box"></div><div class="ebukebe highlight-box"></div><div class="zelaqe highlight-box"></div><div class="sifiye highlight-box"></div><div class="mila-xelila highlight-box"></div><div class="mehmediye highlight-box"></div><div class="derbelute highlight-box"></div><div class="medaya highlight-box"></div><div class="dewe-jerin highlight-box"></div><div class="dewe-jorin highlight-box"></div><div class="tilsilore highlight-box" style="display: block;"></div><div class="celeme highlight-box"></div>
+</div></div>
                 </div>
             </div>
 
-            <!-- Map and Location Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
@@ -211,61 +210,53 @@
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
             
-            <!-- Photos Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/jind2.jpg" alt="Photo of jind2" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=jind2.jpg';"><img src="../village_photos/tal slor.jpg" alt="Photo of tal slor" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=tal+slor.jpg';"><img src="../village_photos/tal sallor.jpg" alt="Photo of tal sallor" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=tal+sallor.jpg';"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/jind2.jpg" alt="Photo of Tilsilorê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=jind2.jpg';">
+<img src="../village_photos/tal slor.jpg" alt="Photo of Tilsilorê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=tal+slor.jpg';">
+<img src="../village_photos/tal sallor.jpg" alt="Photo of Tilsilorê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=tal+sallor.jpg';">
+</div>
             </div>
 
-            <!-- Summaries Card (I-IV) -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">According to the book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds</span>' (<span class="internal-link">Afrin City</span>) geographical study by <span class="internal-link">Dr. Mohammed Abdo Ali</span>:</p>
-<p style="margin-bottom: 1em;"><strong>Tilsilor, تل سلور</strong> /735n - 160m/:</p>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Tilsilorê (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (<span class="internal-link">Afrin City</span>) geographical study by <span class="internal-link">Dr. Mohammed Abdo Ali</span>:</p>
+<p><strong>Tilsilor, تل سلور</strong> /735n - 160m/:</p>
 <ul>
-<li>About the name "<span class="internal-link">سلور</span>" <span class="internal-link">Yaqut al-Hamawi</span> says it comes from the <span class="internal-link">سلور</span> fish "the black fish" /Part 1, p. 137/, and it used to live abundantly in the <span class="internal-link">Afrin</span> river and the lakes and springs that feed it. As for <span class="internal-link">Abdullah al-Hilu</span> in his book /Historical Investigations p. 105/, he says there is disagreement about the origin of the Syrian or Greek village name, but it is not Arabic in the sense of <span class="internal-link">سلور</span> fish. As for <span class="internal-link">Tel</span>: it is a well-known Arabic word.</li>
+<li>About the name &quot;<span class="internal-link">سلور</span>&quot; <span class="internal-link">Yaqut al-Hamawi</span> says it comes from the <span class="internal-link">سلور</span> fish &quot;the black fish&quot; /Part 1, p. 137/, and it used to live abundantly in the <span class="internal-link">Afrin</span> river and the lakes and springs that feed it. As for <span class="internal-link">Abdullah al-Hilu</span> in his book /Historical Investigations p. 105/, he says there is disagreement about the origin of the Syrian or Greek village name, but it is not Arabic in the sense of <span class="internal-link">سلور</span> fish. As for <span class="internal-link">Tel</span>: it is a well-known Arabic word.</li>
 <li>A medium-sized village resting on the southern bank of the <span class="internal-link">Afrin</span> river. Its old dwellings are surrounded by the archaeological <span class="internal-link">Tel Silur</span>. In the village vicinity, especially to its east, are traces of an old settlement evidenced by caves and carved building stones that appear in it. It is a beautiful resort village.</li>
 </ul>
-<p style="margin-bottom: 1em;">According to the book: <span class="internal-link">Afrin</span>.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatma</span> village</p>
-<p style="margin-bottom: 1em;"><strong>تل سلور</strong>: A village in the <span class="internal-link">Afrin</span> valley, belonging to <span class="internal-link">Cindires</span> district, <span class="internal-link">Afrin</span> region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p style="margin-bottom: 1em;">It is small, located on the left bank of the <span class="internal-link">Afrin</span> river in plain land connecting to the northwestern slopes of <span class="internal-link">Simaan Mountain</span>, sloping toward the <span class="internal-link">Afrin</span> river, covered with fertile loamy soil. It is 4km southeast of <span class="internal-link">Cindires</span> town. To its north is <span class="internal-link">Tel Tarabi</span>, an archaeological tell with scattered pottery fragments indicating its ancient settlement. It is bordered to the north at 50m distance by the valley and course of the <span class="internal-link">Afrin</span> river and the eastern <span class="internal-link">Cindires</span> plain and <span class="internal-link">Hajiler</span> village, to the south by fertile agricultural plain and the northwestern chain of <span class="internal-link">Simaan Mountain</span> and <span class="internal-link">Alush</span> ruins and <span class="internal-link">Filak</span> farm, to the west by <span class="internal-link">Tel Silur</span> bridge and the <span class="internal-link">Afrin</span> river valley and <span class="internal-link">Madaya</span> village, and to the east by fertile plain planted with grains, cotton, and pomegranate orchards and <span class="internal-link">Jalama</span> village. The number of its houses reaches about 80 houses and its age is about 400 years. Its houses are made of clay and stones with wooden roofs forming the village core, with modern houses spreading around it extending mostly toward the southwest along the paved road that connects it to <span class="internal-link">Cindires</span>, and extending on the southern slope of the archaeological tell in the village's northern direction. It has an electricity network, a primary school, a mosque, a telephone, and an archaeological tell. The village drinks from a water network connected to a well north of <span class="internal-link">Al-Ghazawiya</span> village. A bridge was built near it to the west connecting it to neighboring villages and <span class="internal-link">Cindires</span> town by a paved road. It is followed by <span class="internal-link">Filak</span> farm. Its residents work in rain-fed agriculture on an area of 410 hectares rain-fed producing grains and olives, and 80 hectares irrigated by pumping from the <span class="internal-link">Afrin</span> river and from artesian wells like cotton, sugar beets, pomegranates, and tobacco. A water spring gushes in its agricultural lands forming with other waters a group of springs and a lake whose water is used for irrigating crops around the village, in addition to raising sheep and cattle.</p>
-<p style="margin-bottom: 1em;">Village mayor: <span class="internal-link">Nafi Mohammed Ali</span></p>
-<p style="margin-bottom: 1em;">Prepared and implemented by: Site Manager of <span class="internal-link">Tirej Afrin</span>: <span class="internal-link">Abdul Rahman Haji Othman</span></p>
-<p style="margin-bottom: 1em;">20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">The village of <span class="internal-link">Tislor</span>, formerly known as <span class="internal-link">Til Silor</span> (11:14), was established approximately 450 years ago near the Afrin River and a distinctive hill (01:41, 03:04). Its founder is identified as <span class="internal-link">Mele Mehmed Elî</span>, who, with his brother(s), were the initial inhabitants (03:00-03:08). Early settlers initially lived in caves before building houses (03:33-03:36), and their livelihood was primarily based on raising livestock (07:27-07:35). About 70-80 years ago, Arab families and tribes also began to settle in the village (04:19-04:22; a narrator also mentions about 60 years ago at 01:53). The nearby <span class="internal-link">Gulbehir</span> spring is believed to be of Roman origin, with an underground tunnel reportedly built during Roman times to channel its water (20:36-20:40, 23:51-23:57); early villagers settled near this spring and used it for essential tasks like washing wool and wheat (20:53-20:57). North of the village lies an ancient cave considered a historical site (10:07-10:13), where historical drowning incidents occurred (15:26-15:35). Older residents recall a time, roughly 45-50 years prior to the recording, before a bridge was built, when crossing the often-swollen Afrin River to reach <span class="internal-link">Cindirês</span> was a significant challenge, particularly for schoolchildren (05:17-05:56). They also describe the past hardships of daily life, such as fetching water from distant sources on their heads (28:17-28:27, 35:42-36:00), and how all household tasks, including making clothes and trousseaus for daughters, were done by hand (34:09-34:42). One resident shared a handmade item created about 30-34 years ago (38:00-38:07) for a martyred young woman named <span class="internal-link">Kurdistan</span> (38:34-38:44).</p></div></details><hr class="themed-border"></div>
-
-            <!-- Links Card (V) -->
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20til%20silore.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20til%20silore.htm</a></li><li>Ax û Welat<br><a href="https://www.youtube.com/watch?v=h380LO5IWPY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=h380LO5IWPY</a></li><li>Jawlat<br><a href="https://www.youtube.com/watch?v=vJH3NzWDdlw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=vJH3NzWDdlw</a></li><li>Local FB page<br><a href="https://www.facebook.com/profile.php?id=100069122567268" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100069122567268</a><br><a href="https://www.youtube.com/watch?v=oaZe291U_5Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=oaZe291U_5Y</a></li></ul>
+<p>According to the book: <span class="internal-link">Afrin</span>.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatma</span> village</p>
+<p><strong>تل سلور</strong>: A village in the <span class="internal-link">Afrin</span> valley, belonging to <span class="internal-link">Cindires</span> district, <span class="internal-link">Afrin</span> region, <span class="internal-link">Aleppo</span> governorate.</p>
+<p>It is small, located on the left bank of the <span class="internal-link">Afrin</span> river in plain land connecting to the northwestern slopes of <span class="internal-link">Simaan Mountain</span>, sloping toward the <span class="internal-link">Afrin</span> river, covered with fertile loamy soil. It is 4km southeast of <span class="internal-link">Cindires</span> town. To its north is <span class="internal-link">Tel Tarabi</span>, an archaeological tell with scattered pottery fragments indicating its ancient settlement. It is bordered to the north at 50m distance by the valley and course of the <span class="internal-link">Afrin</span> river and the eastern <span class="internal-link">Cindires</span> plain and <span class="internal-link">Hajiler</span> village, to the south by fertile agricultural plain and the northwestern chain of <span class="internal-link">Simaan Mountain</span> and <span class="internal-link">Alush</span> ruins and <span class="internal-link">Filak</span> farm, to the west by <span class="internal-link">Tel Silur</span> bridge and the <span class="internal-link">Afrin</span> river valley and <span class="internal-link">Madaya</span> village, and to the east by fertile plain planted with grains, cotton, and pomegranate orchards and <span class="internal-link">Jalama</span> village. The number of its houses reaches about 80 houses and its age is about 400 years. Its houses are made of clay and stones with wooden roofs forming the village core, with modern houses spreading around it extending mostly toward the southwest along the paved road that connects it to <span class="internal-link">Cindires</span>, and extending on the southern slope of the archaeological tell in the village&#x27;s northern direction. It has an electricity network, a primary school, a mosque, a telephone, and an archaeological tell. The village drinks from a water network connected to a well north of <span class="internal-link">Al-Ghazawiya</span> village. A bridge was built near it to the west connecting it to neighboring villages and <span class="internal-link">Cindires</span> town by a paved road. It is followed by <span class="internal-link">Filak</span> farm. Its residents work in rain-fed agriculture on an area of 410 hectares rain-fed producing grains and olives, and 80 hectares irrigated by pumping from the <span class="internal-link">Afrin</span> river and from artesian wells like cotton, sugar beets, pomegranates, and tobacco. A water spring gushes in its agricultural lands forming with other waters a group of springs and a lake whose water is used for irrigating crops around the village, in addition to raising sheep and cattle.</p>
+<p>Village mayor: <span class="internal-link">Nafi Mohammed Ali</span></p>
+<p>Prepared and implemented by: Site Manager of <span class="internal-link">Tirej Afrin</span>: <span class="internal-link">Abdul Rahman Haji Othman</span></p>
+<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Tilsilorê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>Located in the Jume plain four kilometers south of Jindires in the Afrin region, the village of Tilsilor has a history stretching back approximately 450 years. Its name is derived from the Kurdish words for a local hill (&#x27;Til&#x27;) and a specific type of fish (&#x27;Silor&#x27;) that was once abundant in the adjacent Afrin River. According to local accounts, the village was founded by the family of <span class="internal-link">Mihemed Elî</span>, who were first drawn to the area by the river and a large, deep cave that provided shelter. The community later expanded through the intermarriage of the founder&#x27;s daughters with the <span class="internal-link">Xelîl Silo</span> and <span class="internal-link">Umo</span> families. While the population is predominantly Kurdish, an Arab community settled in the village approximately 60 to 80 years ago, and residents describe a shared life of coexistence between the two groups. Historically, the <span class="internal-link">Afrin River</span> was much larger, requiring rafts to cross, and fishing was a central part of life, attracting people from as far as <span class="internal-link">Aleppo</span>. The cultural heritage of Tilsilor includes traditional foods like Shishbarak (dumplings boiled in sheep&#x27;s yogurt) and handmade breads. The historical role of women involved significant physical labor, such as fetching water, washing clothes by hand, and carrying heavy loads of yogurt up to 30 kilograms to sell in <span class="internal-link">Jindires</span>. Women also practiced traditional handicrafts like embroidery, with some pieces holding personal and political significance, such as an item made by a martyr&#x27;s daughter named Kurdistan and another bearing the inscription &#x27;BIJÎ SEROK APO&#x27;.</p></div></details></div>
             </div>
 
-            <!-- Additional Information Card (VI-X) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20til%20silore.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20til%20silore.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=h380LO5IWPY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=h380LO5IWPY</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=vJH3NzWDdlw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=vJH3NzWDdlw</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100069122567268" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100069122567268</a><br><a href="https://www.youtube.com/watch?v=oaZe291U_5Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=oaZe291U_5Y</a></li></ul>
+            </div>
+
             
 
-            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
             
 
         </main>
 
-        <!-- Footer -->
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Generated for archive purposes.</p>
+            <p class="text-sm subtext">Page Updated on September 15, 2025</p>
         </footer>
     </div>
 
-    <!-- START: LIGHTBOX HTML -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <!-- END: LIGHTBOX HTML -->
-
-    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
-
     <script>
-        // Theme toggle script (unchanged)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -298,35 +289,22 @@
             }
         });
 
-        // Main script runs after the page content has loaded
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LIGHTBOX SCRIPT ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxClose = document.getElementById('lightbox-close');
             const imageTriggers = document.querySelectorAll('.lightbox-trigger');
-
             imageTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     lightboxImage.src = trigger.src;
                     lightbox.classList.remove('hidden');
                 });
             });
-
-            function closeLightbox() {
-                lightbox.classList.add('hidden');
-            }
-
+            function closeLightbox() { lightbox.classList.add('hidden'); }
             lightbox.addEventListener('click', closeLightbox);
             lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
 
-            // --- MAP SCRIPT ---
             const iconConfig = {
                 shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
                 landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
@@ -337,7 +315,6 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-
             function createCustomIcon(type, isMain) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
@@ -345,7 +322,6 @@
                 const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-
                 const html = `
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
@@ -355,79 +331,38 @@
                             ${config.svg}
                         </svg>
                     </div>`;
-
-                return L.divIcon({
-                    html: html,
-                    className: '',
-                    iconSize: iconSize,
-                    iconAnchor: iconAnchor,
-                    popupAnchor: popupAnchor
-                });
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
-
             const mainVillageName = "Tilsilorê";
             const villageLat = 36.364406;
             const villageLng = 36.721929;
             const initialZoom = 14;
-
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-
-            // --- Define all the map layers ---
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri'
-            });
-
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
             const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
                 maxZoom: 22
             });
-
-            // --- Set up the layer control ---
-            const baseMaps = {
-                "Satellite": esriImagery,
-                "Street": osmStreet,
-                "Terrain": thunderforestTerrain
-            };
-            
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
             L.control.layers(baseMaps).addTo(map);
             esriImagery.addTo(map);
-
-            // --- ADD MAP CONTROLS ---
-            // 1. Static Scale Bar
             L.control.scale({ imperial: false }).addTo(map);
-
-            // --- Fetch data and add markers ---
             fetch('afrin_locations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
                 .then(locations => {
                     locations.forEach(location => {
                         const isMainVillage = location.name === mainVillageName;
                         const customIcon = createCustomIcon(location.type, isMainVillage);
-                        
-                        const marker = L.marker([location.lat, location.lng], { 
-                            icon: customIcon,
-                            zIndexOffset: isMainVillage ? 1000 : 0
-                        }).addTo(map);
-                        
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
                         marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-
-                        if (isMainVillage) {
-                            marker.openPopup();
-                        }
+                        if (isMainVillage) { marker.openPopup(); }
                     });
                 })
-                .catch(error => {
-                    console.error('Error loading location data:', error);
-                    const mapDiv = document.getElementById('map');
-                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
     </script>

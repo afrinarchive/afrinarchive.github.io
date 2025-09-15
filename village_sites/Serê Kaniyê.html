@@ -4,25 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive | Serê Kaniyê</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- START: LEAFLET & PLUGIN CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
-    <!-- END: LEAFLET & PLUGIN CSS -->
-
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Light theme variables */
+        body { font-family: 'Inter', sans-serif; }
         :root {
             --bg-color: #f0f2e6;
             --text-color: #000000;
@@ -32,9 +23,8 @@
             --link-color: #2563eb;
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
-            --internal-link-color: #2563eb; /* This is the blue for light mode */
+            --internal-link-color: #2563eb;
         }
-        /* Dark theme variables from user image */
         .dark {
             --bg-color: #2d2d2d;
             --text-color: #f1f1f1;
@@ -44,86 +34,28 @@
             --link-color: #63b3ed;
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
-            --internal-link-color: #86efac; /* This is the light green from your image */
+            --internal-link-color: #86efac;
         }
-        /* Applying theme colors */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        h1, h2, h3, .prose {
-            color: var(--text-color);
-        }
-        .subtext {
-             color: var(--subtext-color);
-        }
-        .themed-border {
-            border-color: var(--border-color);
-        }
-        .internal-link {
-            text-decoration: none; /* This removes the underline */
-            cursor: pointer;
-            color: var(--internal-link-color); /* This uses a new dedicated color variable */
-        }
-        .external-link {
-            color: var(--link-color);
-        }
-        .button-style {
-             border: 1px solid var(--border-color);
-        }
-        .button-style:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-hover-text);
-        }
-        /* Details/Summary styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .prose strong {
-            font-weight: 600;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-        }
-        .prose ol, .prose ul {
-            margin-bottom: 1rem;
-        }
-        /* Inverted colors for the theme toggle button */
-        .toggle-button-colors {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* Custom styles for Leaflet popups and controls to match theme */
-        .leaflet-popup-content-wrapper, .leaflet-control-layers {
-            background-color: var(--card-bg-color) !important;
-            color: var(--text-color) !important;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg-color) !important;
-        }
-        .leaflet-popup-close-button {
-            color: var(--text-color) !important;
-        }
-        .leaflet-popup-content b {
-            font-weight: 600;
-        }
-        .leaflet-popup-content span {
-            color: var(--subtext-color);
-            text-transform: capitalize;
-        }
-        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
         .leaflet-control-layers-toggle {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
             background-size: 20px 20px !important;
@@ -131,57 +63,94 @@
         .dark .leaflet-control-layers-toggle {
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
         }
-        .leaflet-control-scale-line {
-            background: var(--card-bg-color);
-            border-color: var(--text-color);
-            color: var(--text-color);
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap--era .map-container {
+            position: relative;
+        }
+        #minimap--era .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap--era .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            border: 3px solid var(--border-color);
-            border-radius: 8px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* --- COORDINATES FOR ÇK Map 12 --- 
+         Recalculated for original image dimensions of 991x1349 pixels.
+        */
+        #minimap--era .nebi-huri { left: 34.51%; top: 3.04%; width: 9.89%; height: 7.26%; }
+        #minimap--era .mersewa { left: 45.41%; top: 9.34%; width: 9.89%; height: 7.26%; }
+        #minimap--era .siltete { left: 59.84%; top: 11.05%; width: 9.28%; height: 6.82%; }
+        #minimap--era .omer-simo { left: 38.85%; top: 14.75%; width: 8.88%; height: 6.52%; }
+        #minimap--era .siiriya { left: 31.08%; top: 20.83%; width: 9.69%; height: 7.12%; }
+        #minimap--era .zeytuneke { left: 42.89%; top: 21.05%; width: 9.69%; height: 7.12%; }
+        #minimap--era .ikidame { left: 74.97%; top: 19.87%; width: 9.69%; height: 7.12%; }
+        #minimap--era .dersiwane { left: 63.17%; top: 24.76%; width: 10.69%; height: 7.86%; }
+        #minimap--era .diraqliya { left: 30.88%; top: 28.17%; width: 9.28%; height: 6.82%; }
+        #minimap--era .pelusanke { left: 44.40%; top: 31.06%; width: 9.49%; height: 6.97%; }
+        #minimap--era .alciya { left: 36.23%; top: 36.70%; width: 8.88%; height: 6.52%; }
+        #minimap--era .qetlebiye { left: 47.73%; top: 37.73%; width: 9.28%; height: 6.82%; }
+        #minimap--era .dewris { left: 28.15%; top: 38.77%; width: 8.88%; height: 6.52%; }
+        #minimap--era .qerqina { left: 36.93%; top: 43.81%; width: 8.68%; height: 6.37%; }
+        #minimap--era .naza { left: 21.09%; top: 41.88%; width: 9.69%; height: 7.12%; }
+        #minimap--era .omera { left: 47.83%; top: 44.11%; width: 9.08%; height: 6.67%; }
+        #minimap--era .erebwerane { left: 62.46%; top: 36.92%; width: 9.49%; height: 6.97%; }
+        #minimap--era .dikmedase { left: 69.93%; top: 42.18%; width: 9.08%; height: 6.67%; }
+        #minimap--era .yazibaxe { left: 80.93%; top: 44.85%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qastele-eli-cindo { left: 71.44%; top: 52.78%; width: 9.49%; height: 6.97%; }
+        #minimap--era .baflune { left: 57.72%; top: 59.38%; width: 9.49%; height: 6.97%; }
+        #minimap--era .ezaz { left: 79.21%; top: 67.16%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qitme { left: 51.16%; top: 65.68%; width: 9.28%; height: 6.82%; }
+        #minimap--era .cema { left: 42.38%; top: 47.44%; width: 9.49%; height: 6.97%; }
+        #minimap--era .sinka { left: 46.92%; top: 55.23%; width: 9.28%; height: 6.82%; }
+        #minimap--era .berava { left: 35.72%; top: 46.55%; width: 8.48%; height: 6.23%; }
+        #minimap--era .sera { left: 41.27%; top: 55.67%; width: 9.28%; height: 6.82%; }
+        #minimap--era .gabeleke { left: 31.28%; top: 54.26%; width: 9.49%; height: 6.97%; }
+        #minimap--era .meydanke { left: 20.99%; top: 50.04%; width: 9.49%; height: 6.97%; }
+        #minimap--era .hilubiye { left: 23.11%; top: 63.53%; width: 9.69%; height: 7.12%; }
+        #minimap--era .kerferome { left: 13.72%; top: 67.38%; width: 9.08%; height: 6.67%; }
+        #minimap--era .qurtqulaqe-mezin { left: 22.50%; top: 70.05%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qurtqulaqe-cucik { left: 22.10%; top: 73.17%; width: 9.49%; height: 6.97%; }
+        #minimap--era .xirabi-sera { left: 41.07%; top: 57.45%; width: 9.69%; height: 7.12%; }
+        #minimap--era .metina { left: 41.37%; top: 63.90%; width: 9.49%; height: 6.97%; }
+        #minimap--era .sere-kaniye { left: 46.42%; top: 67.61%; width: 9.49%; height: 6.97%; }
+        #minimap--era .mesale { left: 39.15%; top: 69.46%; width: 10.09%; height: 7.41%; }
+        #minimap--era .kortike { left: 30.98%; top: 73.17%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qeredepe { left: 26.74%; top: 78.28%; width: 10.09%; height: 7.41%; }
+        #minimap--era .qestele-kistik { left: 20.38%; top: 80.73%; width: 8.88%; height: 6.52%; }
+        #minimap--era .cumke { left: 20.69%; top: 84.58%; width: 8.68%; height: 6.37%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
     </style>
 </head>
 <body>
-
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
-        <!-- Header Section -->
         <header class="mb-8">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Serê Kaniyê</h1>
         </header>
 
         <main class="space-y-6">
-            <!-- Basic Information Card -->
             <div class="card p-6 rounded-xl">
                 <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
                     <h2 class="text-2xl font-semibold">General Information</h2>
-                    <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
                         <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
@@ -189,19 +158,42 @@
                         </svg>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                        <p class="text-lg">Sharran</p>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Şera</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Kafar Jannah, Kefir Cenê, Serê Kaniyê, كفرجنة, كفرجنه</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
-                        <p class="text-lg">Kafar Jannah, Kefir Cenê, كفرجنة, كفرجنه</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
+<img alt="Map Image 12" onerror="this.onerror=null; this.src='https://placehold.co/991x1349/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 12.png"/>
+<div class="nebi-huri highlight-box"></div><div class="mersewa highlight-box"></div><div class="siltete highlight-box"></div><div class="omer-simo highlight-box"></div><div class="siiriya highlight-box"></div><div class="zeytuneke highlight-box"></div><div class="ikidame highlight-box"></div><div class="dersiwane highlight-box"></div><div class="diraqliya highlight-box"></div><div class="pelusanke highlight-box"></div><div class="alciya highlight-box"></div><div class="qetlebiye highlight-box"></div><div class="dewris highlight-box"></div><div class="qerqina highlight-box"></div><div class="naza highlight-box"></div><div class="omera highlight-box"></div><div class="erebwerane highlight-box"></div><div class="dikmedase highlight-box"></div><div class="yazibaxe highlight-box"></div><div class="qastele-eli-cindo highlight-box"></div><div class="baflune highlight-box"></div><div class="ezaz highlight-box"></div><div class="qitme highlight-box"></div><div class="cema highlight-box"></div><div class="sinka highlight-box"></div><div class="berava highlight-box"></div><div class="sera highlight-box"></div><div class="gabeleke highlight-box"></div><div class="meydanke highlight-box"></div><div class="hilubiye highlight-box"></div><div class="kerferome highlight-box"></div><div class="qurtqulaqe-mezin highlight-box"></div><div class="qurtqulaqe-cucik highlight-box"></div><div class="xirabi-sera highlight-box"></div><div class="metina highlight-box"></div><div class="sere-kaniye highlight-box" style="display: block;"></div><div class="mesale highlight-box"></div><div class="kortike highlight-box"></div><div class="qeredepe highlight-box"></div><div class="qestele-kistik highlight-box"></div><div class="cumke highlight-box"></div>
+</div></div>
                 </div>
             </div>
 
-            <!-- Map and Location Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
@@ -211,72 +203,55 @@
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
             
-            <!-- Photos Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/Sere Kanye.jpg" alt="Photo of Sere Kanye" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Sere+Kanye.jpg';"><img src="../village_photos/zarx12.jpg" alt="Photo of zarx12" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=zarx12.jpg';"><img src="../village_photos/kafrjanh.jpg" alt="Photo of kafrjanh" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=kafrjanh.jpg';"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/Sere Kanye.jpg" alt="Photo of Serê Kaniyê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Sere+Kanye.jpg';">
+<img src="../village_photos/zarx12.jpg" alt="Photo of Serê Kaniyê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=zarx12.jpg';">
+<img src="../village_photos/kafrjanh.jpg" alt="Photo of Serê Kaniyê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=kafrjanh.jpg';">
+</div>
             </div>
 
-            <!-- Summaries Card (I-IV) -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">According to the book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds</span>' / <span class="internal-link">عفرين</span> / Geographic Study:</p>
-<p style="margin-bottom: 1em;"><strong>Serê Kaniyê, <span class="internal-link">كفرجنه</span> (كفرجنه)</strong> /771n - 180h - 7km - 560m/:</p>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Serê Kaniyê (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / <span class="internal-link">عفرين</span> / Geographic Study:</p>
+<p><strong>Serê Kaniyê, <span class="internal-link">كفرجنه</span> (كفرجنه)</strong> /771n - 180h - 7km - 560m/:</p>
 <ul>
-<li>The popular name is Serê Kaniyê "head of the spring" and it is a Kurdish name, and the local residents only call it by this name. As for the name <span class="internal-link">Kafar Jannah</span> (كفرجنه), <span class="internal-link">Al-Asadi</span> (الأسدي) says /Part Six, page 374/ quoting <span class="internal-link">Father Shalhat</span> (الأب شلحت), that it is an Aramaic name from "<span class="internal-link">Kafar Jinta</span>" (كفر جنتا) meaning village of the garden.</li>
+<li>The popular name is Serê Kaniyê &quot;head of the spring&quot; and it is a Kurdish name, and the local residents only call it by this name. As for the name <span class="internal-link">Kafar Jannah</span> (كفرجنه), <span class="internal-link">Al-Asadi</span> (الأسدي) says /Part Six, page 374/ quoting <span class="internal-link">Father Shalhat</span> (الأب شلحت), that it is an Aramaic name from &quot;<span class="internal-link">Kafar Jinta</span>&quot; (كفر جنتا) meaning village of the garden.</li>
 </ul>
-<p style="margin-bottom: 1em;">A small village located at the bottom of the southern slope of a plateau called <span class="internal-link">Mount Manan</span> (جبل منان). Near it springs the <span class="internal-link">Kafar Jannah water source</span> (عين ماء كفرجنة) which supplies part of <span class="internal-link">Afrin City</span> (مدينة عفرين) with drinking water, with a flow rate of 300 l/sec. The railway line passes nearby. It is a major transportation hub leading to <span class="internal-link">Sheran</span> (شران) and <span class="internal-link">Bulbul</span> (بلبل) districts toward the Turkish border, so a small market arose beside it, and a number of industrial workshops for maintaining agricultural machinery and vehicles, and two fuel stations, and cafeterias frequented by picnickers. It has a camp for <span class="internal-link">Baath Party</span> (حزب البعث) pioneers in <span class="internal-link">Aleppo governorate</span> (محافظة حلب), and a health center. The village's location is beautifully tourist. The distance between <span class="internal-link">Qatma</span> (قطمة) and <span class="internal-link">Kafar Jannah</span> (كفرجنة) villages, about 2km long, has been transformed into a residential tourist area, and a branch of a private university has been opened in it.</p>
-<p style="margin-bottom: 1em;">According to the book '<span class="internal-link">عفرين .... نهرها ورواببيها الخضراء</span>' '<span class="internal-link">Afrin.... Its River and Green Hills</span>':</p>
-<p style="margin-bottom: 1em;"><strong><span class="internal-link">كفرجنه</span> (كفرجنه)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Sheran district</span> (ناحية شران), <span class="internal-link">Afrin region</span> (منطقة عفرين), <span class="internal-link">Aleppo governorate</span> (محافظة حلب).</p>
-<p style="margin-bottom: 1em;">It is a small village located between two mountains: the western one is called <span class="internal-link">Mount Manan</span> (جبل منان) in relation to <span class="internal-link">Manan shrine</span> (مزار منان) at the top of the mountain, while the eastern one is called <span class="internal-link">Mount Hamodah and Sadiq</span> (جبل حمودة وصادق) in relation to <span class="internal-link">Sadiq shrine</span> (مزار صادق) at the top east of the mountain. It is located at the bottom of the southern slope of a limestone plateau crossed by seasonal watercourses and overlooks a collapsing valley. It is bordered to the north by <span class="internal-link">Khirbet Sheran</span> (خربة شران) and <span class="internal-link">Matinli</span> (ماتينلي). To the south are fertile agricultural slopes and the railway line <span class="internal-link">Aleppo Istanbul</span> (حلب استانبول) and <span class="internal-link">Ma'rasat al-Khatib village</span> (قرية معرسة الخطيب). To the east are a mountain elevation and the elevated nearby <span class="internal-link">Qatma village</span> (قرية قاطمة المرتفعة). To the west are mountain chains and the <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة) and a camp for pioneers and <span class="internal-link">Mash'ala village</span> (قرية مشعلة).</p>
-<p style="margin-bottom: 1em;">The number of its houses is about 50 houses and the village's age is about 100 years. Its old houses are of clay and stone with wooden roofs, and the modern ones are of stone and reinforced cement spread on the hills to the <span class="internal-link">Aleppo-Afrin road</span> (طريق حلب-عفرين). It has an electrical network and drinking water from the <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة) since <span class="internal-link">1971</span>, an elementary school, a health center, guidance unit, and telephone center. It belongs to <span class="internal-link">Qatma municipality</span> (بلدية قاطمة).</p>
-<p style="margin-bottom: 1em;">The village has several paved streets, especially the main street extending from the railway beginning to the village center. The village residents work in grain, olive, vineyard, and almond cultivation and irrigated agriculture from vegetables, pomegranates, apricots, walnuts. Those that were irrigated from the <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة), but currently after the water reached <span class="internal-link">Afrin City</span> (عفرين) through channels, these orchards suffer from drought. In the northern part of the village, the state has established a forest area planted with pine trees. In the southern part there are several orchards and a water spring. Cafeterias and coffee shops frequented by residents of <span class="internal-link">Aleppo</span> (حلب) and neighboring areas are spread in it. The existing kiosk within the pine forest has been converted into a permanent center for the pioneer camp in <span class="internal-link">Aleppo governorate</span> (محافظة حلب).</p>
-<p style="margin-bottom: 1em;">The village connects to neighboring areas through the main road coming from <span class="internal-link">Aleppo</span> (حلب). The number of its population according to the civil registry dated <span class="internal-link">31/12/2004</span> is (750 n) and the first to inhabit since the village's establishment was the <span class="internal-link">Hamdoush family</span> (عائلة حمدوش) (<span class="internal-link">Othman</span> (عثمان) - <span class="internal-link">Osk</span> (اوسك) - <span class="internal-link">Hasik</span> (حاسك) - <span class="internal-link">Shabab</span> (شباب) - <span class="internal-link">Aybesh</span> (ايبش) - <span class="internal-link">Tobo</span> (توبو) - <span class="internal-link">Omar</span> (عمر) - ......)</p>
-<p style="margin-bottom: 1em;">Among the holders of higher degrees in the village: <span class="internal-link">Mustafa Othman</span> (مصطفى عثمان) / Doctorate in Arabic Literature / <span class="internal-link">Russia</span> (روسيا), and among the literary figures the poetess <span class="internal-link">Akhin Walat</span> (آخين ولات) (<span class="internal-link">Samira Shabab</span> (سميرة شباب)) - and among the artistic figures the artist <span class="internal-link">Na'im Shabab</span> (نعيم شباب)</p>
-<p style="margin-bottom: 1em;">Village mayor: <span class="internal-link">Anwar Othman</span> (أنور عثمان)</p>
-<p style="margin-bottom: 1em;"><strong>Information Sources:</strong></p>
-<ol style="list-style-type: decimal; margin-left: 2em;">
-<li>Book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds</span>' (<span class="internal-link">عفرين</span> <span class="internal-link">Afrin</span>) Geographic Study by <span class="internal-link">Dr. Mohammed Abdo Ali</span> (الدكتور محمد عبدو علي).</li>
-<li>Book: '<span class="internal-link">عفرين .... نهرها ورواببيها الخضراء</span>' '<span class="internal-link">Afrin.... Its River and Green Hills</span>' by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatma village</span> (قرية قطمه).</li>
-<li>Studies by <span class="internal-link">Tirej Soft Center</span> (مركز تيريج سوفت) / <span class="internal-link">Abdul Rahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</li>
-<li>Some village residents.</li>
-</ol>
-<p style="margin-bottom: 1em;">Prepared and executed by: Director of <span class="internal-link">Tirej Afrin website</span> (موقع تيريج عفرين): <span class="internal-link">Abdul Rahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p style="margin-bottom: 1em;">20/12/2013</p></div></details><hr class="themed-border"></div>
-
-            <!-- Links Card (V) -->
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafrjanh.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafrjanh.htm</a></li><li>Video<br><a href="https://www.youtube.com/watch?v=jBFnRK8Et-k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=jBFnRK8Et-k</a><br><a href="https://www.youtube.com/watch?v=FI4jzdfZz2g" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FI4jzdfZz2g</a><br><a href="https://www.youtube.com/watch?v=StrpOjsX580" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=StrpOjsX580</a><br><a href="https://www.youtube.com/watch?v=V9PYijW7wCk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=V9PYijW7wCk</a></li></ul>
+<p>A small village located at the bottom of the southern slope of a plateau called <span class="internal-link">Mount Manan</span> (جبل منان). Near it springs the <span class="internal-link">Kafar Jannah water source</span> (عين ماء كفرجنة) which supplies part of <span class="internal-link">Afrin City</span> (مدينة عفرين) with drinking water, with a flow rate of 300 l/sec. The railway line passes nearby. It is a major transportation hub leading to <span class="internal-link">Sheran</span> (شران) and <span class="internal-link">Bulbul</span> (بلبل) districts toward the Turkish border, so a small market arose beside it, and a number of industrial workshops for maintaining agricultural machinery and vehicles, and two fuel stations, and cafeterias frequented by picnickers. It has a camp for <span class="internal-link">Baath Party</span> (حزب البعث) pioneers in <span class="internal-link">Aleppo governorate</span> (محافظة حلب), and a health center. The village&#x27;s location is beautifully tourist. The distance between <span class="internal-link">Qatma</span> (قطمة) and <span class="internal-link">Kafar Jannah</span> (كفرجنة) villages, about 2km long, has been transformed into a residential tourist area, and a branch of a private university has been opened in it.</p>
+<p>According to the book &#x27;<span class="internal-link">عفرين .... نهرها ورواببيها الخضراء</span>&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
+<p><strong><span class="internal-link">كفرجنه</span> (كفرجنه)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Sheran district</span> (ناحية شران), <span class="internal-link">Afrin region</span> (منطقة عفرين), <span class="internal-link">Aleppo governorate</span> (محافظة حلب).</p>
+<p>It is a small village located between two mountains: the western one is called <span class="internal-link">Mount Manan</span> (جبل منان) in relation to <span class="internal-link">Manan shrine</span> (مزار منان) at the top of the mountain, while the eastern one is called <span class="internal-link">Mount Hamodah and Sadiq</span> (جبل حمودة وصادق) in relation to <span class="internal-link">Sadiq shrine</span> (مزار صادق) at the top east of the mountain. It is located at the bottom of the southern slope of a limestone plateau crossed by seasonal watercourses and overlooks a collapsing valley. It is bordered to the north by <span class="internal-link">Khirbet Sheran</span> (خربة شران) and <span class="internal-link">Matinli</span> (ماتينلي). To the south are fertile agricultural slopes and the railway line <span class="internal-link">Aleppo Istanbul</span> (حلب استانبول) and <span class="internal-link">Ma&#x27;rasat al-Khatib village</span> (قرية معرسة الخطيب). To the east are a mountain elevation and the elevated nearby <span class="internal-link">Qatma village</span> (قرية قاطمة المرتفعة). To the west are mountain chains and the <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة) and a camp for pioneers and <span class="internal-link">Mash&#x27;ala village</span> (قرية مشعلة).</p>
+<p>The number of its houses is about 50 houses and the village&#x27;s age is about 100 years. Its old houses are of clay and stone with wooden roofs, and the modern ones are of stone and reinforced cement spread on the hills to the <span class="internal-link">Aleppo-Afrin road</span> (طريق حلب-عفرين). It has an electrical network and drinking water from the <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة) since <span class="internal-link">1971</span>, an elementary school, a health center, guidance unit, and telephone center. It belongs to <span class="internal-link">Qatma municipality</span> (بلدية قاطمة).</p>
+<p>The village has several paved streets, especially the main street extending from the railway beginning to the village center. The village residents work in grain, olive, vineyard, and almond cultivation and irrigated agriculture from vegetables, pomegranates, apricots, walnuts. Those that were irrigated from the <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة), but currently after the water reached <span class="internal-link">Afrin City</span> (عفرين) through channels, these orchards suffer from drought. In the northern part of the village, the state has established a forest area planted with pine trees. In the southern part there are several orchards and a water spring. Cafeterias and coffee shops frequented by residents of <span class="internal-link">Aleppo</span> (حلب) and neighboring areas are spread in it. The existing kiosk within the pine forest has been converted into a permanent center for the pioneer camp in <span class="internal-link">Aleppo governorate</span> (محافظة حلب).</p>
+<p>The village connects to neighboring areas through the main road coming from <span class="internal-link">Aleppo</span> (حلب). The number of its population according to the civil registry dated <span class="internal-link">31/12/2004</span> is (750 n) and the first to inhabit since the village&#x27;s establishment was the <span class="internal-link">Hamdoush family</span> (عائلة حمدوش) (<span class="internal-link">Othman</span> (عثمان) - <span class="internal-link">Osk</span> (اوسك) - <span class="internal-link">Hasik</span> (حاسك) - <span class="internal-link">Shabab</span> (شباب) - <span class="internal-link">Aybesh</span> (ايبش) - <span class="internal-link">Tobo</span> (توبو) - <span class="internal-link">Omar</span> (عمر) - ......)</p>
+<p>Among the holders of higher degrees in the village: <span class="internal-link">Mustafa Othman</span> (مصطفى عثمان) / Doctorate in Arabic Literature / <span class="internal-link">Russia</span> (روسيا), and among the literary figures the poetess <span class="internal-link">Akhin Walat</span> (آخين ولات) (<span class="internal-link">Samira Shabab</span> (سميرة شباب)) - and among the artistic figures the artist <span class="internal-link">Na&#x27;im Shabab</span> (نعيم شباب)</p>
+<p>Village mayor: <span class="internal-link">Anwar Othman</span> (أنور عثمان)</p></div></details></div>
             </div>
 
-            <!-- Additional Information Card (VI-X) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafrjanh.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafrjanh.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=jBFnRK8Et-k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=jBFnRK8Et-k</a><br><a href="https://www.youtube.com/watch?v=FI4jzdfZz2g" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FI4jzdfZz2g</a><br><a href="https://www.youtube.com/watch?v=StrpOjsX580" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=StrpOjsX580</a><br><a href="https://www.youtube.com/watch?v=V9PYijW7wCk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=V9PYijW7wCk</a></li></ul>
+            </div>
+
             
 
-            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
             
 
         </main>
 
-        <!-- Footer -->
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Generated for archive purposes.</p>
+            <p class="text-sm subtext">Page Updated on September 15, 2025</p>
         </footer>
     </div>
 
-    <!-- START: LIGHTBOX HTML -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <!-- END: LIGHTBOX HTML -->
-
-    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
-
     <script>
-        // Theme toggle script (unchanged)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -309,35 +284,22 @@
             }
         });
 
-        // Main script runs after the page content has loaded
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LIGHTBOX SCRIPT ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxClose = document.getElementById('lightbox-close');
             const imageTriggers = document.querySelectorAll('.lightbox-trigger');
-
             imageTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     lightboxImage.src = trigger.src;
                     lightbox.classList.remove('hidden');
                 });
             });
-
-            function closeLightbox() {
-                lightbox.classList.add('hidden');
-            }
-
+            function closeLightbox() { lightbox.classList.add('hidden'); }
             lightbox.addEventListener('click', closeLightbox);
             lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
 
-            // --- MAP SCRIPT ---
             const iconConfig = {
                 shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
                 landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
@@ -348,7 +310,6 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-
             function createCustomIcon(type, isMain) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
@@ -356,7 +317,6 @@
                 const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-
                 const html = `
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
@@ -366,79 +326,38 @@
                             ${config.svg}
                         </svg>
                     </div>`;
-
-                return L.divIcon({
-                    html: html,
-                    className: '',
-                    iconSize: iconSize,
-                    iconAnchor: iconAnchor,
-                    popupAnchor: popupAnchor
-                });
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
-
             const mainVillageName = "Serê Kaniyê";
             const villageLat = 36.587112;
             const villageLng = 36.950538;
             const initialZoom = 14;
-
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-
-            // --- Define all the map layers ---
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri'
-            });
-
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
             const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
                 maxZoom: 22
             });
-
-            // --- Set up the layer control ---
-            const baseMaps = {
-                "Satellite": esriImagery,
-                "Street": osmStreet,
-                "Terrain": thunderforestTerrain
-            };
-            
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
             L.control.layers(baseMaps).addTo(map);
             esriImagery.addTo(map);
-
-            // --- ADD MAP CONTROLS ---
-            // 1. Static Scale Bar
             L.control.scale({ imperial: false }).addTo(map);
-
-            // --- Fetch data and add markers ---
             fetch('afrin_locations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
                 .then(locations => {
                     locations.forEach(location => {
                         const isMainVillage = location.name === mainVillageName;
                         const customIcon = createCustomIcon(location.type, isMainVillage);
-                        
-                        const marker = L.marker([location.lat, location.lng], { 
-                            icon: customIcon,
-                            zIndexOffset: isMainVillage ? 1000 : 0
-                        }).addTo(map);
-                        
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
                         marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-
-                        if (isMainVillage) {
-                            marker.openPopup();
-                        }
+                        if (isMainVillage) { marker.openPopup(); }
                     });
                 })
-                .catch(error => {
-                    console.error('Error loading location data:', error);
-                    const mapDiv = document.getElementById('map');
-                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
     </script>

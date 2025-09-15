@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map - ÇK Map 13</title>
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
+    <style>
+        /* Basic setup for the map container and image */
+        .map-container {
+            position: relative;
+        }
+        .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR ÇK Map 13 --- 
+         Recalculated for original image dimensions of 984x1495 pixels.
+        */
+        .sorbe { left: 46.85%; top: 9.70%; width: 8.54%; height: 5.62%; }
+        .gemruk { left: 56.20%; top: 13.11%; width: 8.54%; height: 5.62%; }
+        .semalka { left: 42.78%; top: 14.25%; width: 9.35%; height: 6.15%; }
+        .erebsexo { left: 58.33%; top: 16.45%; width: 9.35%; height: 6.15%; }
+        .sexutka { left: 53.15%; top: 19.46%; width: 8.94%; height: 5.89%; }
+        .emara { left: 51.83%; top: 23.95%; width: 9.15%; height: 6.02%; }
+        .avraze { left: 26.22%; top: 27.96%; width: 8.74%; height: 5.75%; }
+        .gobeke { left: 22.36%; top: 30.70%; width: 9.15%; height: 6.02%; }
+        .sexkele { left: 27.44%; top: 32.37%; width: 9.15%; height: 6.02%; }
+        .sewiya { left: 13.62%; top: 36.59%; width: 9.15%; height: 6.02%; }
+        .kelibo { left: 18.50%; top: 40.94%; width: 9.15%; height: 6.02%; }
+        .enhecere { left: 71.65%; top: 29.83%; width: 10.57%; height: 6.96%; }
+        .omo { left: 64.94%; top: 34.38%; width: 10.57%; height: 6.96%; }
+        .kokane { left: 64.53%; top: 44.35%; width: 10.37%; height: 6.82%; }
+        .qitraniye { left: 39.84%; top: 45.95%; width: 10.16%; height: 6.69%; }
+        .mabete { left: 43.60%; top: 51.97%; width: 10.77%; height: 7.09%; }
+        .dagire { left: 61.28%; top: 51.04%; width: 10.57%; height: 6.96%; }
+        .qentere { left: 41.77%; top: 54.45%; width: 9.76%; height: 6.42%; }
+        .ereba { left: 29.47%; top: 55.72%; width: 9.55%; height: 6.29%; }
+        .kurke-jerin { left: 13.31%; top: 54.78%; width: 9.76%; height: 6.42%; }
+        .kurke-jorin { left: 10.06%; top: 55.65%; width: 9.35%; height: 6.15%; }
+        .sariya { left: 10.98%; top: 58.19%; width: 10.16%; height: 6.69%; }
+        .hebo { left: 11.89%; top: 62.27%; width: 10.16%; height: 6.69%; }
+        .setana { left: 15.14%; top: 59.93%; width: 10.16%; height: 6.69%; }
+        .selo { left: 29.37%; top: 59.46%; width: 10.16%; height: 6.69%; }
+        .xazyane-jerin { left: 21.44%; top: 64.82%; width: 9.76%; height: 6.42%; }
+        .xazyane-jorin { left: 21.85%; top: 64.95%; width: 9.76%; height: 6.42%; } /* Note: Very close coords */
+        .birimce { left: 39.43%; top: 64.15%; width: 9.96%; height: 6.56%; }
+        .mirka { left: 48.48%; top: 64.08%; width: 9.76%; height: 6.42%; }
+        .sitka { left: 50.91%; top: 67.36%; width: 9.76%; height: 6.42%; }
+        .comezna { left: 33.74%; top: 68.63%; width: 10.37%; height: 6.82%; }
+        .merserke { left: 27.03%; top: 71.91%; width: 10.16%; height: 6.69%; }
+        .elcara { left: 32.93%; top: 71.71%; width: 10.16%; height: 6.69%; }
+        .reca { left: 36.08%; top: 71.97%; width: 9.96%; height: 6.56%; }
+        .kaxre { left: 53.15%; top: 73.18%; width: 9.55%; height: 6.29%; }
+        .mistesura { left: 41.67%; top: 77.86%; width: 9.15%; height: 6.02%; }
+        .hecqasma { left: 40.85%; top: 79.73%; width: 9.76%; height: 6.42%; }
+        .dela { left: 43.40%; top: 85.35%; width: 9.96%; height: 6.56%; }
+        .ruta { left: 51.32%; top: 83.01%; width: 9.55%; height: 6.29%; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans p-4 sm:p-8">
+
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-3xl font-bold mb-4 text-center">Interactive Map - ÇK Map 13</h1>
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6 text-center">
+            <p class="text-lg">
+                <!-- Links to highlight each area -->
+                Click to highlight:
+                <a href="#sorbe" class="text-blue-600 hover:underline">Sorbe</a> |
+                <a href="#gemruk" class="text-blue-600 hover:underline">Gemruk</a> |
+                <a href="#semalka" class="text-blue-600 hover:underline">Semalka</a> |
+                <a href="#erebsexo" class="text-blue-600 hover:underline">Erebsexo</a> |
+                <a href="#sexutka" class="text-blue-600 hover:underline">Sexutka</a> |
+                <a href="#emara" class="text-blue-600 hover:underline">Emara</a> |
+                <a href="#avraze" class="text-blue-600 hover:underline">Avraze</a> |
+                <a href="#gobeke" class="text-blue-600 hover:underline">Gobeke</a> |
+                <a href="#sexkele" class="text-blue-600 hover:underline">Sexkele</a> |
+                <a href="#sewiya" class="text-blue-600 hover:underline">Sewiya</a> |
+                <a href="#kelibo" class="text-blue-600 hover:underline">Kelibo</a> |
+                <a href="#enhecere" class="text-blue-600 hover:underline">Enhecere</a> |
+                <a href="#omo" class="text-blue-600 hover:underline">Omo</a> |
+                <a href="#kokane" class="text-blue-600 hover:underline">Kokane</a> |
+                <a href="#qitraniye" class="text-blue-600 hover:underline">Qitraniye</a> |
+                <a href="#mabete" class="text-blue-600 hover:underline">Mabete</a> |
+                <a href="#dagire" class="text-blue-600 hover:underline">Dagire</a> |
+                <a href="#qentere" class="text-blue-600 hover:underline">Qentere</a> |
+                <a href="#ereba" class="text-blue-600 hover:underline">Ereba</a> |
+                <a href="#kurke-jerin" class="text-blue-600 hover:underline">Kurke Jerin</a> |
+                <a href="#kurke-jorin" class="text-blue-600 hover:underline">Kurke Jorin</a> |
+                <a href="#sariya" class="text-blue-600 hover:underline">Sariya</a> |
+                <a href="#hebo" class="text-blue-600 hover:underline">Hebo</a> |
+                <a href="#setana" class="text-blue-600 hover:underline">Setana</a> |
+                <a href="#selo" class="text-blue-600 hover:underline">Selo</a> |
+                <a href="#xazyane-jerin" class="text-blue-600 hover:underline">Xazyane Jerin</a> |
+                <a href="#xazyane-jorin" class="text-blue-600 hover:underline">Xazyane Jorin</a> |
+                <a href="#birimce" class="text-blue-600 hover:underline">Birimce</a> |
+                <a href="#mirka" class="text-blue-600 hover:underline">Mirka</a> |
+                <a href="#sitka" class="text-blue-600 hover:underline">Sitka</a> |
+                <a href="#comezna" class="text-blue-600 hover:underline">Comezna</a> |
+                <a href="#merserke" class="text-blue-600 hover:underline">Merserke</a> |
+                <a href="#elcara" class="text-blue-600 hover:underline">Elcara</a> |
+                <a href="#reca" class="text-blue-600 hover:underline">Reca</a> |
+                <a href="#kaxre" class="text-blue-600 hover:underline">Kaxre</a> |
+                <a href="#mistesura" class="text-blue-600 hover:underline">Mistesura</a> |
+                <a href="#hecqasma" class="text-blue-600 hover:underline">Hecqasma</a> |
+                <a href="#dela" class="text-blue-600 hover:underline">Dela</a> |
+                <a href="#ruta" class="text-blue-600 hover:underline">Ruta</a> |
+                <a href="#" id="clear-link" class="text-red-600 hover:underline ml-4">Clear Highlights</a>
+            </p>
+        </div>
+
+        <!-- Map displayed at 984px wide -->
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 984px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">984px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 13.png" alt="Map Image 13" onerror="this.onerror=null; this.src='https://placehold.co/984x1495/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="sorbe highlight-box"></div><div class="gemruk highlight-box"></div><div class="semalka highlight-box"></div><div class="erebsexo highlight-box"></div><div class="sexutka highlight-box"></div><div class="emara highlight-box"></div><div class="avraze highlight-box"></div><div class="gobeke highlight-box"></div><div class="sexkele highlight-box"></div><div class="sewiya highlight-box"></div><div class="kelibo highlight-box"></div><div class="enhecere highlight-box"></div><div class="omo highlight-box"></div><div class="kokane highlight-box"></div><div class="qitraniye highlight-box"></div><div class="mabete highlight-box"></div><div class="dagire highlight-box"></div><div class="qentere highlight-box"></div><div class="ereba highlight-box"></div><div class="kurke-jerin highlight-box"></div><div class="kurke-jorin highlight-box"></div><div class="sariya highlight-box"></div><div class="hebo highlight-box"></div><div class="setana highlight-box"></div><div class="selo highlight-box"></div><div class="xazyane-jerin highlight-box"></div><div class="xazyane-jorin highlight-box"></div><div class="birimce highlight-box"></div><div class="mirka highlight-box"></div><div class="sitka highlight-box"></div><div class="comezna highlight-box"></div><div class="merserke highlight-box"></div><div class="elcara highlight-box"></div><div class="reca highlight-box"></div><div class="kaxre highlight-box"></div><div class="mistesura highlight-box"></div><div class="hecqasma highlight-box"></div><div class="dela highlight-box"></div><div class="ruta highlight-box"></div>
+            </div>
+        </div>
+
+        <!-- Map displayed at 800px wide -->
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 800px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">800px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 13.png" alt="Map Image 13" onerror="this.onerror=null; this.src='https://placehold.co/800x1215/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="sorbe highlight-box"></div><div class="gemruk highlight-box"></div><div class="semalka highlight-box"></div><div class="erebsexo highlight-box"></div><div class="sexutka highlight-box"></div><div class="emara highlight-box"></div><div class="avraze highlight-box"></div><div class="gobeke highlight-box"></div><div class="sexkele highlight-box"></div><div class="sewiya highlight-box"></div><div class="kelibo highlight-box"></div><div class="enhecere highlight-box"></div><div class="omo highlight-box"></div><div class="kokane highlight-box"></div><div class="qitraniye highlight-box"></div><div class="mabete highlight-box"></div><div class="dagire highlight-box"></div><div class="qentere highlight-box"></div><div class="ereba highlight-box"></div><div class="kurke-jerin highlight-box"></div><div class="kurke-jorin highlight-box"></div><div class="sariya highlight-box"></div><div class="hebo highlight-box"></div><div class="setana highlight-box"></div><div class="selo highlight-box"></div><div class="xazyane-jerin highlight-box"></div><div class="xazyane-jorin highlight-box"></div><div class="birimce highlight-box"></div><div class="mirka highlight-box"></div><div class="sitka highlight-box"></div><div class="comezna highlight-box"></div><div class="merserke highlight-box"></div><div class="elcara highlight-box"></div><div class="reca highlight-box"></div><div class="kaxre highlight-box"></div><div class="mistesura highlight-box"></div><div class="hecqasma highlight-box"></div><div class="dela highlight-box"></div><div class="ruta highlight-box"></div>
+            </div>
+        </div>
+
+        <!-- Map displayed at 600px wide -->
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 600px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">600px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 13.png" alt="Map Image 13" onerror="this.onerror=null; this.src='https://placehold.co/600x911/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="sorbe highlight-box"></div><div class="gemruk highlight-box"></div><div class="semalka highlight-box"></div><div class="erebsexo highlight-box"></div><div class="sexutka highlight-box"></div><div class="emara highlight-box"></div><div class="avraze highlight-box"></div><div class="gobeke highlight-box"></div><div class="sexkele highlight-box"></div><div class="sewiya highlight-box"></div><div class="kelibo highlight-box"></div><div class="enhecere highlight-box"></div><div class="omo highlight-box"></div><div class="kokane highlight-box"></div><div class="qitraniye highlight-box"></div><div class="mabete highlight-box"></div><div class="dagire highlight-box"></div><div class="qentere highlight-box"></div><div class="ereba highlight-box"></div><div class="kurke-jerin highlight-box"></div><div class="kurke-jorin highlight-box"></div><div class="sariya highlight-box"></div><div class="hebo highlight-box"></div><div class="setana highlight-box"></div><div class="selo highlight-box"></div><div class="xazyane-jerin highlight-box"></div><div class="xazyane-jorin highlight-box"></div><div class="birimce highlight-box"></div><div class="mirka highlight-box"></div><div class="sitka highlight-box"></div><div class="comezna highlight-box"></div><div class="merserke highlight-box"></div><div class="elcara highlight-box"></div><div class="reca highlight-box"></div><div class="kaxre highlight-box"></div><div class="mistesura highlight-box"></div><div class="hecqasma highlight-box"></div><div class="dela highlight-box"></div><div class="ruta highlight-box"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This function shows the highlight for the area specified in the URL hash
+        function showHighlight() {
+            // Hide all highlight boxes first
+            document.querySelectorAll('.highlight-box').forEach(box => {
+                box.style.display = 'none';
+            });
+
+            // Check if there is a hash in the URL (e.g. #sorbe)
+            if (window.location.hash) {
+                // Get the class name from the hash by removing the #
+                const highlightClass = window.location.hash.substring(1);
+
+                // Find all elements with that class and show them
+                document.querySelectorAll('.' + highlightClass).forEach(element => {
+                    element.style.display = 'block';
+                });
+            }
+        }
+
+        // This function clears the highlight by removing the hash from the URL
+        function clearHighlights(event) {
+            event.preventDefault();
+            // Use history.pushState to clean the URL without reloading the page
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+            // Run showHighlight again to process the now-empty hash
+            showHighlight();
+        }
+
+        // Run the highlight function on page load and when the hash changes
+        window.addEventListener('DOMContentLoaded', showHighlight);
+        window.addEventListener('hashchange', showHighlight);
+        // Add a click listener to the "Clear Highlights" link
+        document.getElementById('clear-link').addEventListener('click', clearHighlights);
+    </script>
+
+</body>
+</html>
+

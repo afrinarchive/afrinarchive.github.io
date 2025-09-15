@@ -4,25 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive | Şêxorz</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- START: LEAFLET & PLUGIN CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
-    <!-- END: LEAFLET & PLUGIN CSS -->
-
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Light theme variables */
+        body { font-family: 'Inter', sans-serif; }
         :root {
             --bg-color: #f0f2e6;
             --text-color: #000000;
@@ -32,9 +23,8 @@
             --link-color: #2563eb;
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
-            --internal-link-color: #2563eb; /* This is the blue for light mode */
+            --internal-link-color: #2563eb;
         }
-        /* Dark theme variables from user image */
         .dark {
             --bg-color: #2d2d2d;
             --text-color: #f1f1f1;
@@ -44,86 +34,28 @@
             --link-color: #63b3ed;
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
-            --internal-link-color: #86efac; /* This is the light green from your image */
+            --internal-link-color: #86efac;
         }
-        /* Applying theme colors */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        h1, h2, h3, .prose {
-            color: var(--text-color);
-        }
-        .subtext {
-             color: var(--subtext-color);
-        }
-        .themed-border {
-            border-color: var(--border-color);
-        }
-        .internal-link {
-            text-decoration: none; /* This removes the underline */
-            cursor: pointer;
-            color: var(--internal-link-color); /* This uses a new dedicated color variable */
-        }
-        .external-link {
-            color: var(--link-color);
-        }
-        .button-style {
-             border: 1px solid var(--border-color);
-        }
-        .button-style:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-hover-text);
-        }
-        /* Details/Summary styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .prose strong {
-            font-weight: 600;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-        }
-        .prose ol, .prose ul {
-            margin-bottom: 1rem;
-        }
-        /* Inverted colors for the theme toggle button */
-        .toggle-button-colors {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* Custom styles for Leaflet popups and controls to match theme */
-        .leaflet-popup-content-wrapper, .leaflet-control-layers {
-            background-color: var(--card-bg-color) !important;
-            color: var(--text-color) !important;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg-color) !important;
-        }
-        .leaflet-popup-close-button {
-            color: var(--text-color) !important;
-        }
-        .leaflet-popup-content b {
-            font-weight: 600;
-        }
-        .leaflet-popup-content span {
-            color: var(--subtext-color);
-            text-transform: capitalize;
-        }
-        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
         .leaflet-control-layers-toggle {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
             background-size: 20px 20px !important;
@@ -131,57 +63,90 @@
         .dark .leaflet-control-layers-toggle {
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
         }
-        .leaflet-control-scale-line {
-            background: var(--card-bg-color);
-            border-color: var(--text-color);
-            color: var(--text-color);
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-bilbil- .map-container {
+            position: relative;
+        }
+        #minimap-bilbil- .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-bilbil- .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            border: 3px solid var(--border-color);
-            border-radius: 8px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* --- COORDINATES FOR BILBILE AREAS --- 
+         Recalculated for original image dimensions of 991x1019 pixels.
+        */
+        #minimap-bilbil- .singele { left: 12.71%; top: 6.48%; width: 8.48%; height: 8.24%; }
+        #minimap-bilbil- .beke { left: 21.60%; top: 13.05%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .eli-kere { left: 28.96%; top: 17.76%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .heyama { left: 30.07%; top: 21.59%; width: 8.07%; height: 7.85%; }
+        #minimap-bilbil- .zere { left: 38.24%; top: 21.98%; width: 8.07%; height: 7.85%; }
+        #minimap-bilbil- .baliya { left: 48.94%; top: 19.14%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .xilalka { left: 9.59%; top: 32.58%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .bexce { left: 22.60%; top: 29.73%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .bilbile { left: 41.37%; top: 26.40%; width: 10.09%; height: 9.81%; }
+        #minimap-bilbil- .qurne { left: 51.46%; top: 25.32%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .topeli-mehmud { left: 60.24%; top: 27.58%; width: 8.48%; height: 8.24%; }
+        #minimap-bilbil- .kurdo { left: 70.64%; top: 28.16%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .ebudane { left: 84.76%; top: 34.15%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .elcara { left: 58.63%; top: 38.96%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .uga { left: 51.66%; top: 39.16%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .qestele-xidiriya { left: 26.03%; top: 33.66%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .xidiriya { left: 32.09%; top: 36.02%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .kurzele { left: 18.37%; top: 46.42%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .berkase { left: 33.20%; top: 47.79%; width: 9.08%; height: 8.83%; }
+        #minimap-bilbil- .serqiya { left: 44.20%; top: 44.16%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .qestele-miqded { left: 56.81%; top: 45.24%; width: 9.69%; height: 9.42%; }
+        #minimap-bilbil- .sexorze { left: 64.38%; top: 45.34%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .bibaka { left: 41.07%; top: 51.52%; width: 8.48%; height: 8.24%; }
+        #minimap-bilbil- .qurta { left: 51.66%; top: 50.15%; width: 9.49%; height: 9.22%; }
+        #minimap-bilbil- .qasa { left: 48.33%; top: 52.11%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .kela { left: 18.47%; top: 55.05%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .kere { left: 24.52%; top: 57.41%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .qota { left: 33.80%; top: 53.09%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .kotana { left: 54.49%; top: 60.06%; width: 10.29%; height: 10.01%; }
+        #minimap-bilbil- .upila { left: 50.05%; top: 61.73%; width: 9.49%; height: 9.22%; }
+        #minimap-bilbil- .xelilaka { left: 33.90%; top: 62.71%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .esune { left: 26.64%; top: 60.75%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .zivinge { left: 28.76%; top: 69.28%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .qirigole { left: 45.41%; top: 64.97%; width: 9.89%; height: 9.62%; }
+        #minimap-bilbil- .qizilbasa { left: 61.96%; top: 65.85%; width: 9.49%; height: 9.22%; }
+        #minimap-bilbil- .bele { left: 58.22%; top: 69.48%; width: 10.09%; height: 9.81%; }
+        #minimap-bilbil- .hesendera { left: 48.23%; top: 77.13%; width: 9.69%; height: 9.42%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
     </style>
 </head>
 <body>
-
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
-        <!-- Header Section -->
         <header class="mb-8">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Şêxorz</h1>
         </header>
 
         <main class="space-y-6">
-            <!-- Basic Information Card -->
             <div class="card p-6 rounded-xl">
                 <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
                     <h2 class="text-2xl font-semibold">General Information</h2>
-                    <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
                         <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
@@ -189,19 +154,42 @@
                         </svg>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                        <p class="text-lg"></p>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Bilbilê</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Şexorze, Şêxorz, شيخ خروز, شيخ خوروس, خراب الشمس, شيخورزه جيرن, شيخورزه اورتي, شيخورزه جورن</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
-                        <p class="text-lg">Şêxorz</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-bilbil-">
+<img alt="Map of Bilbile" onerror="this.onerror=null; this.src='https://placehold.co/991x1019/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 14.png"/>
+<div class="singele highlight-box"></div><div class="beke highlight-box"></div><div class="eli-kere highlight-box"></div><div class="heyama highlight-box"></div><div class="zere highlight-box"></div><div class="baliya highlight-box"></div><div class="xilalka highlight-box"></div><div class="bexce highlight-box"></div><div class="bilbile highlight-box"></div><div class="qurne highlight-box"></div><div class="topeli-mehmud highlight-box"></div><div class="kurdo highlight-box"></div><div class="ebudane highlight-box"></div><div class="elcara highlight-box"></div><div class="uga highlight-box"></div><div class="qestele-xidiriya highlight-box"></div><div class="xidiriya highlight-box"></div><div class="kurzele highlight-box"></div><div class="berkase highlight-box"></div><div class="serqiya highlight-box"></div><div class="qestele-miqded highlight-box"></div><div class="sexorze highlight-box" style="display: block;"></div><div class="bibaka highlight-box"></div><div class="qurta highlight-box"></div><div class="qasa highlight-box"></div><div class="kela highlight-box"></div><div class="kere highlight-box"></div><div class="qota highlight-box"></div><div class="kotana highlight-box"></div><div class="upila highlight-box"></div><div class="xelilaka highlight-box"></div><div class="esune highlight-box"></div><div class="zivinge highlight-box"></div><div class="qirigole highlight-box"></div><div class="qizilbasa highlight-box"></div><div class="bele highlight-box"></div><div class="hesendera highlight-box"></div>
+</div></div>
                 </div>
             </div>
 
-            <!-- Map and Location Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
@@ -211,75 +199,56 @@
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
             
-            <!-- Photos Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/sexorze.jpg" alt="Photo of sexorze" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=sexorze.jpg';"><img src="../village_photos/shex xors.jpg" alt="Photo of shex xors" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=shex+xors.jpg';"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/sexorze.jpg" alt="Photo of Şêxorz" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=sexorze.jpg';">
+<img src="../village_photos/shex xors.jpg" alt="Photo of Şêxorz" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=shex+xors.jpg';">
+</div>
             </div>
 
-            <!-- Summaries Card (I-IV) -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;"># Şêxorz (شيخ خورز)</p>
-<p style="margin-bottom: 1em;">Villages of <span class="internal-link">Bilbile</span> District / bilbile</p>
-<p style="margin-bottom: 1em;"><span class="internal-link">Sheikh Khorws</span> (شيخ خوروس) - Şêxorz</p>
-<p style="margin-bottom: 1em;">===</p>
-<p style="margin-bottom: 1em;">According to the book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds</span>' / <span class="internal-link">Afrin City</span> / Geographical Study:</p>
-<p style="margin-bottom: 1em;"><strong>Şêxorz, <span class="internal-link">Sheikh Khorz</span> (شيخ خورز), <span class="internal-link">Sheikh Khroz</span> (شيخ خروز)</strong> /2770n - 1180ha - 5km - 640m/:</p>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Şêxorz (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of <span class="internal-link">Bilbilê</span> District / bilbile</p>
+<p>Sheikh Khorws (شيخ خوروس) - Şêxorz</p>
+<p>===</p>
+<p>According to the book &#x27;<span class="internal-link">Mountain of the Kurds (Afrin)</span>&#x27; Geographical Study:</p>
+<p><strong>Şêxorz, Sheikh Khorz (شيخ خورز), Sheikh Khroz (شيخ خروز)</strong> /2770n - 1180ha - <span class="internal-link">5</span>km - 640m/:</p>
 <ul>
-<li>A compound name consisting of Sheikh: a religious title given to a tomb at the bottom of the old Roman tower south of <span class="internal-link">Cyrus</span> city "<span class="internal-link">Nabi Huri</span>" (نبي هوري), and historical sources mention that it belongs to a Roman commander. When the city was ruined, the inhabitants preserved the sanctity of the tomb and tower site, then over time and through generations, it became a shrine then a mosque, and was given the title Sheikh. <span class="internal-link">Khorz</span>: One of the names by which <span class="internal-link">Cyrus</span> city was known in different periods, such as: <span class="internal-link">Korsh</span>, <span class="internal-link">Korosh</span>, <span class="internal-link">Qorsh</span>, <span class="internal-link">Qors</span>, <span class="internal-link">Khorws</span>, <span class="internal-link">Nabi Huri</span> and finally "<span class="internal-link">Khorz</span>". In Kurdish language rules, two silent similar consonants do not meet in one word. Therefore, when the two words, Sheikh and Khorz, were merged, it became <span class="internal-link">Sheikhz</span>. Since the current <span class="internal-link">Sheikhz</span> village is the closest to that blessed archaeological site, the village became known by that name.</li>
+<li>A compound name consisting of Sheikh: a religious title given to a tomb at the bottom of the old <span class="internal-link">Roman</span> tower south of <span class="internal-link">Cyrrhus</span> city &quot;<span class="internal-link">Nabi Huri</span>&quot; (نبي هوري), and historical sources mention that it belongs to a Roman commander. When the city was ruined, the inhabitants preserved the sanctity of the tomb and tower site, then over time and through generations, it became a shrine then a mosque, and was given the title Sheikh. Khorz: One of the names by which Cyrrhus city was known in different periods, such as: <span class="internal-link">Korsh</span>, <span class="internal-link">Korosh</span>, <span class="internal-link">Qorsh</span>, <span class="internal-link">Qors</span>, <span class="internal-link">Khorws</span>, Nabi Huri and finally &quot;Khorz&quot;. In <span class="internal-link">Kurdish</span> language rules, two silent similar consonants do not meet in one word. Therefore, when the two words, Sheikh and Khorz, were merged, it became Sheikhz. Since the current Sheikhz village is the closest to that blessed archaeological site, the village became known by that name.</li>
 </ul>
-<p style="margin-bottom: 1em;">Thus, the name is definitely not from the name <span class="internal-link">Khorouz</span>: meaning rooster in Turkish, as the village and its name predate the arrival of the Turks to this region by much.</p>
+<p>Thus, the name is definitely not from the name <span class="internal-link">Khorouz</span>: meaning rooster in <span class="internal-link">Turkish</span>, as the village and its name predate the arrival of the <span class="internal-link">Turks</span> to this region by much.</p>
 <ul>
-<li>A large village consisting of three parts, western, central and eastern. It is distributed on the northern slope of a mountain chain called by its name. The village was built on three mountain protrusions extending over more than 1km. It was an important center for the <span class="internal-link">Muridi</span> movement in the thirties of the last century. It is located near the famous <span class="internal-link">Cyrus</span> "<span class="internal-link">Nabi Huri</span>" city in history.</li>
+<li>A large village consisting of three parts, western, central and eastern. It is distributed on the northern slope of a mountain chain called by its name. The village was built on three mountain protrusions extending over more than <span class="internal-link">1</span>km. It was an important center for the <span class="internal-link">Muridi</span> movement in the <span class="internal-link">1930s</span>. It is located near the famous Cyrrhus &quot;Nabi Huri&quot; city in history.</li>
 </ul>
-<p style="margin-bottom: 1em;">According to the book '<span class="internal-link">عفرين .... نهرها ورواببها الخضراء</span>' '<span class="internal-link">Afrin.... Its River and Green Hills</span>':</p>
-<p style="margin-bottom: 1em;"><strong><span class="internal-link">Sheikh Khorz</span></strong> (شيخ خورز): A village in the <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Bilbile</span> district, <span class="internal-link">Afrin City</span> region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p style="margin-bottom: 1em;">It is a medium-sized village built on a rocky plateau on the southeastern slope of a limestone mountain located in the middle of the central-northern part of the mentioned mountain massif. It is surrounded by streams that feed <span class="internal-link">Jarqa</span> valley to its south. It is 20km from <span class="internal-link">Bilbile</span> town in the southwestern direction. It overlooks from the southwest and west its agricultural lands with clay soil. It is bordered to the north by a rugged mountain chain of rocks and oak trees and <span class="internal-link">Kurzil</span> village, to the south by a slope and the <span class="internal-link">Rajo</span> - <span class="internal-link">Kotanli</span> road and <span class="internal-link">Ashuna</span> village nearby at 500m distance, to the west by a stream valley and a mountain chain and <span class="internal-link">Kilanli</span> village, and to the east by a rugged mountain chain and <span class="internal-link">Qotanli</span> village. The number of its houses is 50 houses and its age is about 300 years. Its old dwellings are stone-clay with flat wooden roofs, and the modern ones are cement that extended toward the southeast and are increasing. It has an electricity network and an elementary school and a modern olive press. The village drinks from artesian wells and from cistern water that collects rainwater. Most of its inhabitants work in cultivating olives, grains and vineyards in dry farming on an area of 200 hectares, in addition to raising sheep and goats. It connects to <span class="internal-link">Bilbile</span> town by a paved road and a road passes near it to <span class="internal-link">Rajo</span> town.</p>
-<p style="margin-bottom: 1em;">Village mayor: <span class="internal-link">Ayoub Hassan Horik</span> (أيوب حسن هوريك)</p>
-<p style="margin-bottom: 1em;"><strong>Information Sources:</strong></p>
-<ol style="list-style-type: decimal; margin-left: 2em;">
-<li>Book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds</span>' (<span class="internal-link">Afrin City</span>) Geographical Study by <span class="internal-link">Dr. Mohammed Abdo Ali</span> (د. محمد عبدو علي).</li>
-<li>Book: '<span class="internal-link">عفرين .... نهرها ورواببها الخضراء</span>' '<span class="internal-link">Afrin.... Its River and Green Hills</span>' by writer <span class="internal-link">Abdulrahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatma</span> village (قرية قطمه).</li>
-<li>Studies by <span class="internal-link">Tireej Soft Center</span> / <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان).</li>
-<li>Some village residents.</li>
-</ol>
-<p style="margin-bottom: 1em;">Prepared and implemented by: <span class="internal-link">Tireej Afrin</span> website director: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p style="margin-bottom: 1em;"><span class="internal-link">20</span>/<span class="internal-link">12</span>/<span class="internal-link">2013</span></p></div></details><hr class="themed-border"></div>
-
-            <!-- Links Card (V) -->
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20shx%20xorz.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20shx%20xorz.htm</a></li><li>Ax û Welat<br><a href="https://www.youtube.com/watch?v=I8vcVSuMH0Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=I8vcVSuMH0Y</a></li><li>Video<br><a href="https://www.youtube.com/watch?v=0TLoia6AiRQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=0TLoia6AiRQ</a></li></ul>
+<p>According to the book &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
+<p><strong>Sheikh Khorz (شيخ خورز)</strong>: A village in the <span class="internal-link">Jabal al-Akrad</span> (جبل الكرد) belonging to Bilbilê district, <span class="internal-link">Afrin</span> region, <span class="internal-link">Aleppo Governorate</span>.</p>
+<p>It is a medium-sized village built on a rocky plateau on the southeastern slope of a limestone mountain located in the middle of the central-northern part of the mentioned mountain massif. It is surrounded by streams that feed <span class="internal-link">Cirqa</span> valley to its south. It is <span class="internal-link">20</span>km from Bilbilê town in the southwestern direction. It overlooks from the southwest and west its agricultural lands with clay soil. It is bordered to the north by a rugged mountain chain of rocks and oak trees and <span class="internal-link">Kurzêl</span> village, to the south by a slope and the <span class="internal-link">Reco</span> - <span class="internal-link">Kotana</span> road and <span class="internal-link">Ģazira</span> village nearby at <span class="internal-link">500</span>m distance, to the west by a stream valley and a mountain chain and <span class="internal-link">Kela</span> village, and to the east by a rugged mountain chain and Kotana village. The number of its houses is <span class="internal-link">50</span> houses and its age is about <span class="internal-link">300</span> years. Its old dwellings are stone-clay with flat wooden roofs, and the modern ones are cement that extended toward the southeast and are increasing. It has an electricity network and an elementary school and a modern olive press. The village drinks from artesian wells and from cistern water that collects rainwater. Most of its inhabitants work in cultivating olives, grains and vineyards in dry farming on an area of <span class="internal-link">200</span> hectares, in addition to raising sheep and goats. It connects to Bilbilê town by a paved road and a road passes near it to Reco town.</p>
+<p>Village mayor: <span class="internal-link">Ayoub Hassan Horik</span> (أيوب حسن هوريك)</p></div></details></div>
             </div>
 
-            <!-- Additional Information Card (VI-X) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20shx%20xorz.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20shx%20xorz.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=I8vcVSuMH0Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=I8vcVSuMH0Y</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=0TLoia6AiRQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=0TLoia6AiRQ</a></li></ul>
+            </div>
+
             
 
-            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
             
 
         </main>
 
-        <!-- Footer -->
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Generated for archive purposes.</p>
+            <p class="text-sm subtext">Page Updated on September 15, 2025</p>
         </footer>
     </div>
 
-    <!-- START: LIGHTBOX HTML -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <!-- END: LIGHTBOX HTML -->
-
-    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
-
     <script>
-        // Theme toggle script (unchanged)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -312,35 +281,22 @@
             }
         });
 
-        // Main script runs after the page content has loaded
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LIGHTBOX SCRIPT ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxClose = document.getElementById('lightbox-close');
             const imageTriggers = document.querySelectorAll('.lightbox-trigger');
-
             imageTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     lightboxImage.src = trigger.src;
                     lightbox.classList.remove('hidden');
                 });
             });
-
-            function closeLightbox() {
-                lightbox.classList.add('hidden');
-            }
-
+            function closeLightbox() { lightbox.classList.add('hidden'); }
             lightbox.addEventListener('click', closeLightbox);
             lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
 
-            // --- MAP SCRIPT ---
             const iconConfig = {
                 shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
                 landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
@@ -351,7 +307,6 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-
             function createCustomIcon(type, isMain) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
@@ -359,7 +314,6 @@
                 const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-
                 const html = `
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
@@ -369,79 +323,38 @@
                             ${config.svg}
                         </svg>
                     </div>`;
-
-                return L.divIcon({
-                    html: html,
-                    className: '',
-                    iconSize: iconSize,
-                    iconAnchor: iconAnchor,
-                    popupAnchor: popupAnchor
-                });
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
-
             const mainVillageName = "Şêxorz";
             const villageLat = 36.733197;
             const villageLng = 36.888446;
             const initialZoom = 14;
-
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-
-            // --- Define all the map layers ---
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri'
-            });
-
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
             const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
                 maxZoom: 22
             });
-
-            // --- Set up the layer control ---
-            const baseMaps = {
-                "Satellite": esriImagery,
-                "Street": osmStreet,
-                "Terrain": thunderforestTerrain
-            };
-            
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
             L.control.layers(baseMaps).addTo(map);
             esriImagery.addTo(map);
-
-            // --- ADD MAP CONTROLS ---
-            // 1. Static Scale Bar
             L.control.scale({ imperial: false }).addTo(map);
-
-            // --- Fetch data and add markers ---
             fetch('afrin_locations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
                 .then(locations => {
                     locations.forEach(location => {
                         const isMainVillage = location.name === mainVillageName;
                         const customIcon = createCustomIcon(location.type, isMainVillage);
-                        
-                        const marker = L.marker([location.lat, location.lng], { 
-                            icon: customIcon,
-                            zIndexOffset: isMainVillage ? 1000 : 0
-                        }).addTo(map);
-                        
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
                         marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-
-                        if (isMainVillage) {
-                            marker.openPopup();
-                        }
+                        if (isMainVillage) { marker.openPopup(); }
                     });
                 })
-                .catch(error => {
-                    console.error('Error loading location data:', error);
-                    const mapDiv = document.getElementById('map');
-                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
     </script>

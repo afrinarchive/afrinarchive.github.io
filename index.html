@@ -8,6 +8,22 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <style>
+
+/* Bounce animation for the arrow */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
         /* Importing a unique, historical font for each language */
         @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Cinzel&family=EB+Garamond&family=Forum&family=GFS+Didot&family=Inter:wght@400;500;700&family=Lateef&family=Marck+Script&family=Noto+Naskh+Arabic&family=Noto+Sans+Armenian&family=Noto+Sans+Cuneiform&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Syriac+Eastern&family=Noto+Serif+Armenian&family=Scheherazade+New:wght@400;700&family=UnifrakturMaguntia&family=Unna&family=Vollkorn&display=swap');
 
@@ -498,7 +514,12 @@
     </style>
 </head>
 <body>
-    <button class="floating-scroll-arrow" onclick="document.querySelector('.sections-container').scrollIntoView({behavior: 'smooth'})">↓</button>
+    <!-- The button now contains the SVG arrow and an ID -->
+<button id="scroll-arrow" class="floating-scroll-arrow" onclick="scrollToSections()">
+    <svg class="animate-bounce" style="width: 40px; height: 40px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+    </svg>
+</button>
     
     <div class="main-section">
         <div class="layout-container">
@@ -979,4 +1000,27 @@
         }
     </script>
 </body>
+
+<script>
+    // Get the arrow button element
+    const scrollArrow = document.getElementById('scroll-arrow');
+
+    // This function scrolls to the target section and then hides the arrow
+    function scrollToSections() {
+        document.querySelector('.sections-container').scrollIntoView({ behavior: 'smooth' });
+        scrollArrow.style.display = 'none';
+    }
+
+    // Add an event listener to check scroll position
+    window.addEventListener('scroll', () => {
+        // If the user has scrolled more than 50 pixels down, hide the arrow
+        if (window.scrollY > 50) {
+            scrollArrow.style.display = 'none';
+        } else {
+            // Otherwise, show it
+            scrollArrow.style.display = 'flex';
+        }
+    });
+</script>
+
 </html>

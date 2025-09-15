@@ -4,25 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive | Omera</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- START: LEAFLET & PLUGIN CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
-    <!-- END: LEAFLET & PLUGIN CSS -->
-
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Light theme variables */
+        body { font-family: 'Inter', sans-serif; }
         :root {
             --bg-color: #f0f2e6;
             --text-color: #000000;
@@ -32,9 +23,8 @@
             --link-color: #2563eb;
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
-            --internal-link-color: #2563eb; /* This is the blue for light mode */
+            --internal-link-color: #2563eb;
         }
-        /* Dark theme variables from user image */
         .dark {
             --bg-color: #2d2d2d;
             --text-color: #f1f1f1;
@@ -44,86 +34,28 @@
             --link-color: #63b3ed;
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
-            --internal-link-color: #86efac; /* This is the light green from your image */
+            --internal-link-color: #86efac;
         }
-        /* Applying theme colors */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        h1, h2, h3, .prose {
-            color: var(--text-color);
-        }
-        .subtext {
-             color: var(--subtext-color);
-        }
-        .themed-border {
-            border-color: var(--border-color);
-        }
-        .internal-link {
-            text-decoration: none; /* This removes the underline */
-            cursor: pointer;
-            color: var(--internal-link-color); /* This uses a new dedicated color variable */
-        }
-        .external-link {
-            color: var(--link-color);
-        }
-        .button-style {
-             border: 1px solid var(--border-color);
-        }
-        .button-style:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-hover-text);
-        }
-        /* Details/Summary styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .prose strong {
-            font-weight: 600;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-        }
-        .prose ol, .prose ul {
-            margin-bottom: 1rem;
-        }
-        /* Inverted colors for the theme toggle button */
-        .toggle-button-colors {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* Custom styles for Leaflet popups and controls to match theme */
-        .leaflet-popup-content-wrapper, .leaflet-control-layers {
-            background-color: var(--card-bg-color) !important;
-            color: var(--text-color) !important;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg-color) !important;
-        }
-        .leaflet-popup-close-button {
-            color: var(--text-color) !important;
-        }
-        .leaflet-popup-content b {
-            font-weight: 600;
-        }
-        .leaflet-popup-content span {
-            color: var(--subtext-color);
-            text-transform: capitalize;
-        }
-        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
         .leaflet-control-layers-toggle {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
             background-size: 20px 20px !important;
@@ -131,57 +63,94 @@
         .dark .leaflet-control-layers-toggle {
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
         }
-        .leaflet-control-scale-line {
-            background: var(--card-bg-color);
-            border-color: var(--text-color);
-            color: var(--text-color);
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap--era .map-container {
+            position: relative;
+        }
+        #minimap--era .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap--era .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            border: 3px solid var(--border-color);
-            border-radius: 8px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* --- COORDINATES FOR ÇK Map 12 --- 
+         Recalculated for original image dimensions of 991x1349 pixels.
+        */
+        #minimap--era .nebi-huri { left: 34.51%; top: 3.04%; width: 9.89%; height: 7.26%; }
+        #minimap--era .mersewa { left: 45.41%; top: 9.34%; width: 9.89%; height: 7.26%; }
+        #minimap--era .siltete { left: 59.84%; top: 11.05%; width: 9.28%; height: 6.82%; }
+        #minimap--era .omer-simo { left: 38.85%; top: 14.75%; width: 8.88%; height: 6.52%; }
+        #minimap--era .siiriya { left: 31.08%; top: 20.83%; width: 9.69%; height: 7.12%; }
+        #minimap--era .zeytuneke { left: 42.89%; top: 21.05%; width: 9.69%; height: 7.12%; }
+        #minimap--era .ikidame { left: 74.97%; top: 19.87%; width: 9.69%; height: 7.12%; }
+        #minimap--era .dersiwane { left: 63.17%; top: 24.76%; width: 10.69%; height: 7.86%; }
+        #minimap--era .diraqliya { left: 30.88%; top: 28.17%; width: 9.28%; height: 6.82%; }
+        #minimap--era .pelusanke { left: 44.40%; top: 31.06%; width: 9.49%; height: 6.97%; }
+        #minimap--era .alciya { left: 36.23%; top: 36.70%; width: 8.88%; height: 6.52%; }
+        #minimap--era .qetlebiye { left: 47.73%; top: 37.73%; width: 9.28%; height: 6.82%; }
+        #minimap--era .dewris { left: 28.15%; top: 38.77%; width: 8.88%; height: 6.52%; }
+        #minimap--era .qerqina { left: 36.93%; top: 43.81%; width: 8.68%; height: 6.37%; }
+        #minimap--era .naza { left: 21.09%; top: 41.88%; width: 9.69%; height: 7.12%; }
+        #minimap--era .omera { left: 47.83%; top: 44.11%; width: 9.08%; height: 6.67%; }
+        #minimap--era .erebwerane { left: 62.46%; top: 36.92%; width: 9.49%; height: 6.97%; }
+        #minimap--era .dikmedase { left: 69.93%; top: 42.18%; width: 9.08%; height: 6.67%; }
+        #minimap--era .yazibaxe { left: 80.93%; top: 44.85%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qastele-eli-cindo { left: 71.44%; top: 52.78%; width: 9.49%; height: 6.97%; }
+        #minimap--era .baflune { left: 57.72%; top: 59.38%; width: 9.49%; height: 6.97%; }
+        #minimap--era .ezaz { left: 79.21%; top: 67.16%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qitme { left: 51.16%; top: 65.68%; width: 9.28%; height: 6.82%; }
+        #minimap--era .cema { left: 42.38%; top: 47.44%; width: 9.49%; height: 6.97%; }
+        #minimap--era .sinka { left: 46.92%; top: 55.23%; width: 9.28%; height: 6.82%; }
+        #minimap--era .berava { left: 35.72%; top: 46.55%; width: 8.48%; height: 6.23%; }
+        #minimap--era .sera { left: 41.27%; top: 55.67%; width: 9.28%; height: 6.82%; }
+        #minimap--era .gabeleke { left: 31.28%; top: 54.26%; width: 9.49%; height: 6.97%; }
+        #minimap--era .meydanke { left: 20.99%; top: 50.04%; width: 9.49%; height: 6.97%; }
+        #minimap--era .hilubiye { left: 23.11%; top: 63.53%; width: 9.69%; height: 7.12%; }
+        #minimap--era .kerferome { left: 13.72%; top: 67.38%; width: 9.08%; height: 6.67%; }
+        #minimap--era .qurtqulaqe-mezin { left: 22.50%; top: 70.05%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qurtqulaqe-cucik { left: 22.10%; top: 73.17%; width: 9.49%; height: 6.97%; }
+        #minimap--era .xirabi-sera { left: 41.07%; top: 57.45%; width: 9.69%; height: 7.12%; }
+        #minimap--era .metina { left: 41.37%; top: 63.90%; width: 9.49%; height: 6.97%; }
+        #minimap--era .sere-kaniye { left: 46.42%; top: 67.61%; width: 9.49%; height: 6.97%; }
+        #minimap--era .mesale { left: 39.15%; top: 69.46%; width: 10.09%; height: 7.41%; }
+        #minimap--era .kortike { left: 30.98%; top: 73.17%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qeredepe { left: 26.74%; top: 78.28%; width: 10.09%; height: 7.41%; }
+        #minimap--era .qestele-kistik { left: 20.38%; top: 80.73%; width: 8.88%; height: 6.52%; }
+        #minimap--era .cumke { left: 20.69%; top: 84.58%; width: 8.68%; height: 6.37%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
     </style>
 </head>
 <body>
-
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
-        <!-- Header Section -->
         <header class="mb-8">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Omera</h1>
         </header>
 
         <main class="space-y-6">
-            <!-- Basic Information Card -->
             <div class="card p-6 rounded-xl">
                 <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
                     <h2 class="text-2xl font-semibold">General Information</h2>
-                    <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
                         <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
@@ -189,19 +158,42 @@
                         </svg>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                        <p class="text-lg">Sharran</p>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Şera</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Al-Umriya, Amara, Geliyê Şîlo, Omara, Omera, Omeran, Omero, Omerê, Omranli, Umeran, العمرية, عمرانلي, اوماره</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
-                        <p class="text-lg">Al-Umriya, Omranli, العمرية, عمرانلي</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
+<img alt="Map Image 12" onerror="this.onerror=null; this.src='https://placehold.co/991x1349/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 12.png"/>
+<div class="nebi-huri highlight-box"></div><div class="mersewa highlight-box"></div><div class="siltete highlight-box"></div><div class="omer-simo highlight-box"></div><div class="siiriya highlight-box"></div><div class="zeytuneke highlight-box"></div><div class="ikidame highlight-box"></div><div class="dersiwane highlight-box"></div><div class="diraqliya highlight-box"></div><div class="pelusanke highlight-box"></div><div class="alciya highlight-box"></div><div class="qetlebiye highlight-box"></div><div class="dewris highlight-box"></div><div class="qerqina highlight-box"></div><div class="naza highlight-box"></div><div class="omera highlight-box" style="display: block;"></div><div class="erebwerane highlight-box"></div><div class="dikmedase highlight-box"></div><div class="yazibaxe highlight-box"></div><div class="qastele-eli-cindo highlight-box"></div><div class="baflune highlight-box"></div><div class="ezaz highlight-box"></div><div class="qitme highlight-box"></div><div class="cema highlight-box"></div><div class="sinka highlight-box"></div><div class="berava highlight-box"></div><div class="sera highlight-box"></div><div class="gabeleke highlight-box"></div><div class="meydanke highlight-box"></div><div class="hilubiye highlight-box"></div><div class="kerferome highlight-box"></div><div class="qurtqulaqe-mezin highlight-box"></div><div class="qurtqulaqe-cucik highlight-box"></div><div class="xirabi-sera highlight-box"></div><div class="metina highlight-box"></div><div class="sere-kaniye highlight-box"></div><div class="mesale highlight-box"></div><div class="kortike highlight-box"></div><div class="qeredepe highlight-box"></div><div class="qestele-kistik highlight-box"></div><div class="cumke highlight-box"></div>
+</div></div>
                 </div>
             </div>
 
-            <!-- Map and Location Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
@@ -211,73 +203,67 @@
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
             
-            <!-- Photos Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/Omero.jpg" alt="Photo of Omero" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Omero.jpg';"><img src="../village_photos/zarxtirej904.jpg" alt="Photo of zarxtirej904" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=zarxtirej904.jpg';"><img src="../village_photos/umaranle.jpg" alt="Photo of umaranle" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=umaranle.jpg';"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/Omero.jpg" alt="Photo of Omera" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Omero.jpg';">
+<img src="../village_photos/zarxtirej904.jpg" alt="Photo of Omera" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=zarxtirej904.jpg';">
+<img src="../village_photos/umaranle.jpg" alt="Photo of Omera" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=umaranle.jpg';">
+</div>
             </div>
 
-            <!-- Summaries Card (I-IV) -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">According to the book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds</span>' / <span class="internal-link">عفرين</span> / Geographic Study:</p>
-<p style="margin-bottom: 1em;"><strong>Omera, <span class="internal-link">عمرانلي</span> (عمرانلي), <span class="internal-link">Al-Umriya</span> (العمرية)</strong> /935n - 1008h - 4km - 570m/:</p>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Omera (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / <span class="internal-link">عفرين</span> / Geographic Study:</p>
+<p><strong>Omera, <span class="internal-link">عمرانلي</span> (عمرانلي), <span class="internal-link">Al-Umriya</span> (العمرية)</strong> /935n - 1008h - 4km - 570m/:</p>
 <ul>
-<li><span class="internal-link">Omera</span> (أوميرا): A Kurdish proper name derived from "Omar". It is also the name of a clan from the <span class="internal-link">Milli tribe</span> (قبيلة ملّي) of <span class="internal-link">Qara Jah Dagh Mountain</span> (جبل قره جه داغ), and its inhabitants are west of <span class="internal-link">Qirishahir</span> (قيرشهر), /Zaki, J1, p.414/.</li>
+<li><span class="internal-link">Omera</span> (أوميرا): A Kurdish proper name derived from &quot;Omar&quot;. It is also the name of a clan from the <span class="internal-link">Milli tribe</span> (قبيلة ملّي) of <span class="internal-link">Qara Jah Dagh Mountain</span> (جبل قره جه داغ), and its inhabitants are west of <span class="internal-link">Qirishahir</span> (قيرشهر), /Zaki, J1, p.414/.</li>
 </ul>
 <ul>
 <li>A medium-sized village located on a plateau crossed by streams flowing west toward the <span class="internal-link">Afrin River</span> (نهر عفرين) valley, the most important of which is <span class="internal-link">Siman valley</span> (وادي سيمان) with its springs and large plane trees existing in its course. The area located southwest of the village has been deforested.</li>
 </ul>
-<p style="margin-bottom: 1em;">According to the book '<span class="internal-link">عفرين .... نهرها ورواببيها الخضراء</span>' '<span class="internal-link">Afrin.... Its River and Green Hills</span>':</p>
-<p style="margin-bottom: 1em;"><strong><span class="internal-link">عمرانلي</span> (عمرانلي)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Sheran district</span> (ناحية شران) in <span class="internal-link">Afrin region</span> (منطقة عفرين), <span class="internal-link">Aleppo governorate</span> (محافظة حلب), (897 n).</p>
-<p style="margin-bottom: 1em;">It is a large village located in the northeastern part of <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) on an elevated limestone ridge crossed by streams flowing west toward the <span class="internal-link">Afrin River</span> (نهر عفرين) valley. It is connected by fertile vegetation and is 4km away from <span class="internal-link">Sheran town</span> (بلدة شران) in the northeastern direction. It is bordered to the north by fertile agricultural plains and mountain chains with rough terrain and cultivated hills including <span class="internal-link">Tilillaq</span> (تليلاق) and <span class="internal-link">Qozli Bikar</span> (قوزلي بيكار) /<span class="internal-link">Ayn al-Joz</span> (عين الجوز)/, and to the south by a deep valley and mountain chains planted with forest trees, olives, and vineyards, and some slopes and <span class="internal-link">Bafliyun village</span> (قرية بافليون). To the east lie valleys and forest trees and mountain chains and valleys and <span class="internal-link">Qastal Jindo village</span> (قرية قسطل جندو) and <span class="internal-link">Arab</span> (عرب) and <span class="internal-link">Yiran</span> (يران), and to the west a deep valley and a water spring from the western side at the bottom of the valley and mountain chains and <span class="internal-link">Jamanli village</span> (قرية جمانلي).</p>
-<p style="margin-bottom: 1em;">The number of its houses is about 100 houses and its age is about 350 years. Its dwellings are stone-clay with wooden roofs, and the modern ones are of stone and cement extending east and west on both sides of the road passing through the middle of the village. It has an electrical network and drinking water from the water network taken from artesian wells on the southern side of the village. It has an elementary school and a modern mosque in the center of the village. It connects to the district center and the region <span class="internal-link">Sheran</span> (شران) and <span class="internal-link">Afrin City</span> (عفرين) by a paved road connecting its center to several neighboring villages.</p>
-<p style="margin-bottom: 1em;"><span class="internal-link">Omranli village</span> (قرية عمرانلي) is one of the beautiful villages in the region due to its good location and its elegant and beautiful houses and the trees surrounding it from all directions. Its inhabitants work in olive, vineyard, walnut, pomegranate, and almond cultivation and sheep raising, and it is close to the <span class="internal-link">Afrin River</span> (نهر عفرين) course.</p>
-<p style="margin-bottom: 1em;">It is mentioned that the artist and buzuq player <span class="internal-link">Mohammed Haj Walo</span> (محمد حج ولو) is one of the sons of this village.</p>
-<p style="margin-bottom: 1em;">Village mayor: <span class="internal-link">Rashid Walo</span> (رشيد ولو)</p>
-<p style="margin-bottom: 1em;"><strong>Information Sources:</strong></p>
-<ol style="list-style-type: decimal; margin-left: 2em;">
-<li>Book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds</span>' (<span class="internal-link">عفرين</span> <span class="internal-link">Afrin</span>) Geographic Study by <span class="internal-link">Dr. Mohammed Abdo Ali</span> (الدكتور محمد عبدو علي).</li>
-<li>Book: '<span class="internal-link">عفرين .... نهرها ورواببيها الخضراء</span>' '<span class="internal-link">Afrin.... Its River and Green Hills</span>' by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatma village</span> (قرية قطمه).</li>
-<li>Studies by <span class="internal-link">Tirej Soft Center</span> (مركز تيريج سوفت) / <span class="internal-link">Abdul Rahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</li>
-<li>Some village residents.</li>
-</ol>
-<p style="margin-bottom: 1em;">Prepared and executed by: Director of <span class="internal-link">Tirej Afrin website</span> (موقع تيريج عفرين): <span class="internal-link">Abdul Rahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p style="margin-bottom: 1em;">20/12/2013</p></div></details><hr class="themed-border"></div>
-
-            <!-- Links Card (V) -->
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Omera.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Omera.htm</a></li><li>Video<br><a href="https://www.youtube.com/watch?v=8Iiwvqr1F88" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8Iiwvqr1F88</a><br><a href="https://www.youtube.com/watch?v=dSy4L4MpWWU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=dSy4L4MpWWU</a></li></ul>
+<p>According to the book &#x27;<span class="internal-link">عفرين .... نهرها ورواببيها الخضراء</span>&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
+<p><strong><span class="internal-link">عمرانلي</span> (عمرانلي)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Sheran district</span> (ناحية شران) in <span class="internal-link">Afrin region</span> (منطقة عفرين), <span class="internal-link">Aleppo governorate</span> (محافظة حلب), (897 n).</p>
+<p>It is a large village located in the northeastern part of <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) on an elevated limestone ridge crossed by streams flowing west toward the <span class="internal-link">Afrin River</span> (نهر عفرين) valley. It is connected by fertile vegetation and is 4km away from <span class="internal-link">Sheran town</span> (بلدة شران) in the northeastern direction. It is bordered to the north by fertile agricultural plains and mountain chains with rough terrain and cultivated hills including <span class="internal-link">Tilillaq</span> (تليلاق) and <span class="internal-link">Qozli Bikar</span> (قوزلي بيكار) /<span class="internal-link">Ayn al-Joz</span> (عين الجوز)/, and to the south by a deep valley and mountain chains planted with forest trees, olives, and vineyards, and some slopes and <span class="internal-link">Bafliyun village</span> (قرية بافليون). To the east lie valleys and forest trees and mountain chains and valleys and <span class="internal-link">Qastal Jindo village</span> (قرية قسطل جندو) and <span class="internal-link">Arab</span> (عرب) and <span class="internal-link">Yiran</span> (يران), and to the west a deep valley and a water spring from the western side at the bottom of the valley and mountain chains and <span class="internal-link">Jamanli village</span> (قرية جمانلي).</p>
+<p>The number of its houses is about 100 houses and its age is about 350 years. Its dwellings are stone-clay with wooden roofs, and the modern ones are of stone and cement extending east and west on both sides of the road passing through the middle of the village. It has an electrical network and drinking water from the water network taken from artesian wells on the southern side of the village. It has an elementary school and a modern mosque in the center of the village. It connects to the district center and the region <span class="internal-link">Sheran</span> (شران) and <span class="internal-link">Afrin City</span> (عفرين) by a paved road connecting its center to several neighboring villages.</p>
+<p><span class="internal-link">Omranli village</span> (قرية عمرانلي) is one of the beautiful villages in the region due to its good location and its elegant and beautiful houses and the trees surrounding it from all directions. Its inhabitants work in olive, vineyard, walnut, pomegranate, and almond cultivation and sheep raising, and it is close to the <span class="internal-link">Afrin River</span> (نهر عفرين) course.</p>
+<p>It is mentioned that the artist and buzuq player <span class="internal-link">Mohammed Haj Walo</span> (محمد حج ولو) is one of the sons of this village.</p>
+<p>Village mayor: <span class="internal-link">Rashid Walo</span> (رشيد ولو)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Omera</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>Life in the village of Omerê, as recalled by its elders, was a self-sufficient and laborious agrarian existence rooted in the land. The community&#x27;s life revolved around farming (cotkarî), from plowing and planting to harvesting grain, which was then threshed (şuxrat) and taken to the local mill, specifically identified as the Mill of Hesen Teyar (Aşê Hesen Teyar), to be ground into flour. Women played a central role in the domestic economy, functioning as weavers (terzî) and tailors (xeyat). They used spindles (teşî) to spin wool and were responsible for creating all the family&#x27;s clothing, including specialized garments like the groom&#x27;s wedding attire (cilê mîrî). Winter provisions were secured through traditional preservation methods, such as making various products from local grape varieties like Mawnî and Hasirûn. These included molasses (dims), fruit leather (bastiq), and sweets (kêsme), often clarified using a specific white soil (axê kelkê). Other preparations included melon jam made from the local harvest and date-and-nut sweets known as Heşî. Communal life was also evident in daily activities, such as washing clothes at the local spring in the Valley of Simane (Geliyê Sîmanê). Despite the immense physical hardship (cefa) of this past era, which lacked modern amenities, the speaker reflects that life was fundamentally good, underscoring a deep connection to their traditional way of life.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Omera 2</h3>
+<p>The traditional process of making grape molasses (dems) in the region involved a significant evolution in technology and craft, as remembered by local practitioner Dawûd. Historically, the grape presses (ma&#x27;serêd) were constructed from natural materials like white clay (ta&#x27;toç) and wood, and the process was a laborious, week-long affair where grapes were stomped by foot—a method now considered unhygienic. Dawûd recalls his father using baskets (şelîf) and a donkey to transport grapes to their family&#x27;s old press at a specific site named <span class="internal-link">Gûnê Kolî</span>. This tradition was once common in other villages like <span class="internal-link">Dîdonê</span>, near the Turkish border, but has since been replaced by modern, piston-driven metal presses. The craft extends to a deep knowledge of agriculture; the Dûkelgonê kevin grape is prized for producing the best thick, dark molasses, while the white Fransî grape is reserved for syrup. A key step in the process involves using a special white clarifying soil known as hûle or qat&#x27;ondin. The final stage involves boiling the juice for nine to twelve hours over a fire fueled by cift (olive pomace), collecting the foam to create a secondary product called solanê, and critically, allowing the molasses to cool completely before tinning to prevent spoilage and rust.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Omera 3</h3>
+<p>In the village of Omaro, the tradition of tanbur playing is embodied by Mihemed Hajwalo, a 62-year-old musician who has dedicated 35 years to the art. His musical journey began under the influence of his late father, Hajwalo, a respected player who ceased his music after performing the Hajj pilgrimage and passed away in 1988. Mihemed learned by secretly playing his father&#x27;s instrument, continuing a legacy that was part of a wider musical community in the Afrin region. During his father&#x27;s time, other notable tanbur players included his cousin in their village, as well as Azadê Meyrê and Menanê Cafo in Shera, Reşîdê Mihemed in Jinderes, and Porxort and Husî Xal in Mabata. For Mihemed, this older style of music represents the authentic core of Kurdish culture, a form of dengbêjî (epic storytelling) that serves as the primary vessel for unwritten Kurdish history. He identifies specific historical epics, such as &quot;Dersimê Xaracho,&quot; &quot;Kulka Silêman,&quot; &quot;Goraşa Merzel Begê,&quot; and the stories of &quot;Adulê û Emer Begê&quot; and &quot;Şerîf Begê,&quot; not merely as songs but as the foundational historical records of the Kurdish people. A central theme of his account is a deep regret that this vital oral history has never been systematically recorded or preserved. Despite this, his dedication to the tradition has been recognized, notably in 2009 with an award in Afrin and another from an arts festival in Aleppo, which included a statue named &quot;Ornina,&quot; representing an ancient queen and musical figure from Kurdish history.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Omera 4</h3>
+<p>The village of Omero, located in the Shara district of Afrin, traces its origins to its first settler, a man named <span class="internal-link">Omer</span> from the <span class="internal-link">Shekakan</span> tribe, with kinship ties extending to nearby villages like <span class="internal-link">Durakliya</span> and <span class="internal-link">Shiltah</span>. Historically, the community&#x27;s livelihood was deeply rooted in pastoral and agricultural traditions; ancestors were nomadic shepherds (koçer) who once managed flocks of over 10,000 sheep, and farming was a laborious, self-sufficient process involving harvesting with sickles, threshing with animals on a &quot;curn,&quot; and grinding grain at watermills. Daily life was difficult, lacking modern amenities and requiring villagers to carry water in jugs from local springs. Due to the poor quality of the local land, many residents historically migrated for work to Aleppo, Lebanon, and Turkey. This has evolved into a modern economy based more on local crafts and industries, particularly the production of traditional foods. A central part of this heritage is the processing of grapes—using varieties like Zeynebî and Zehlewî—into a range of products including molasses (dibs), raisins (meyîj), and fruit leather (bastîq). The traditional method for making molasses involves clarifying the grape juice with a special white soil called &quot;axê heware&quot; from the village of Kefer Cenê before boiling it for hours. Other traditional foods include dried figs stuffed with walnuts and sesame, and &quot;Telme,&quot; a fresh cheese-like dish made by curdling goat&#x27;s milk with fig sap. Alongside these culinary traditions, the village has a strong heritage of oral history, preserved and transmitted through the tanbur. As recounted by the musician Mihemed Hec Welo, who comes from a multi-generational family of players, the tanbur was the primary vehicle for narrating Kurdish history, stories, and ancient epics like &quot;<span class="internal-link">Dewrêşê Evdî</span>&quot; and &quot;<span class="internal-link">Mem û Zîn</span>&quot; long before the advent of modern recording technology.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Omera 5</h3>
+<p>The village of Omero, located in the Shara district, is a community where Kurds and <span class="internal-link">Arabs</span> have historically lived together. The village&#x27;s name originates from its first settler, a man named Omar from the <span class="internal-link">Mîlî</span> tribe, whose son was named Kêma. The region is predominantly inhabited by the <span class="internal-link">Sheikhan</span> tribe. The Kurdish population of Omero is composed of five related families—the House of <span class="internal-link">Welîkê Laronê</span>, the House of <span class="internal-link">Çomênê</span>, the House of <span class="internal-link">Hewrênê</span>, the House of <span class="internal-link">Qorêşê</span>, and the House of <span class="internal-link">Hecî Huseyn</span>—who all trace their origins to a place called <span class="internal-link">Kevenda</span> or <span class="internal-link">Pînbûg</span>. The Arab population includes three households: two from the <span class="internal-link">Bu Sultan</span> tribe (the houses of Huseyn and <span class="internal-link">Aliwi</span>) and one from the <span class="internal-link">Na&#x27;imi</span> tribe (the house of Sheikh Yusuf), who migrated to the village from <span class="internal-link">Kevenda</span> approximately 300 years ago.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>III. Summary from other Channels&#x27; Transcripts of Omera</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><h3 class="font-semibold text-xl mt-6 mb-3">A. Summary from Halil Sino Transcript of Omera</h3>
+<p>The village of Omara (Gundê Omara), located in the Afrin region, holds a rich history that its elders trace back at least 300 to 400 years. According to oral tradition shared by resident Muhammad Haji Walo, the village was named after its original settler, Omar. The area also carries an even more ancient name, <span class="internal-link">Geliyê Şîlo</span> (Shilo Valley), a name of such historical significance that it was said even <span class="internal-link">Alexander the Great</span> could not change it. In the past, Omara was considered a &quot;village of villages,&quot; suggesting a central and self-sufficient community where life was deeply connected to the land. This heritage is preserved through traditional paintings, one of which is dated to 1930, depicting rural farming activities, and through the collection of historical artifacts like old tools and lanterns. Beekeeping has been a significant local practice for generations, with some families involved since at least 1986, producing pure, guaranteed honey from the surrounding pastures. In modern times, the village is undergoing reconstruction, with residents clearing rubble from old and damaged houses. The community also reflects the broader trend of emigration, with some of its members now living in Europe. The village cemetery serves as a testament to its long history, containing the graves of its people, such as that of Ahmed Murad, who lived from 1961 to 2019.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Omera</h3>
+<p>The village of Amara, estimated to be 300-400 years old, derives its name from its founder, a Kurd named <span class="internal-link">Amar</span> who migrated from the plains of <span class="internal-link">Bi Sibil</span>. He established the settlement by building a small room (maq&#x27;ad) and a stable (darav), and the location became known as &quot;Amar&#x27;s Village.&quot; The village&#x27;s foundation is rooted in two primary tribes, the <span class="internal-link">Mûsî</span> and the <span class="internal-link">Bilêlî</span>, from which later tribes like the <span class="internal-link">Reşik</span> and another Amar group emerged; the speaker himself identifies his lineage as <span class="internal-link">Mala Nasûr</span> and <span class="internal-link">Hawar Bilêlê</span>, and can recall seven generations of his ancestors. Near the village stands a cave-like structure called <span class="internal-link">Bana Qewal</span>, which is associated with the <span class="internal-link">Qewal Kurds</span> from the <span class="internal-link">Zardasht</span> region. According to the village elder, life in the past was a thousand times better, characterized by a strong sense of trust (sîqe), security (eman), mutual help (alîkarî), and general abundance (xêr û bêr). This social fabric, where people frequently visited one another, has since been lost, leading to a present-day life that the speaker describes as conflicted and lacking the communal support of the past.</p></div></details></div>
             </div>
 
-            <!-- Additional Information Card (VI-X) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Omera.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Omera.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=8Iiwvqr1F88" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8Iiwvqr1F88</a><br><a href="https://www.youtube.com/watch?v=dSy4L4MpWWU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=dSy4L4MpWWU</a></li></ul>
+            </div>
+
             
 
-            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
             
 
         </main>
 
-        <!-- Footer -->
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Generated for archive purposes.</p>
+            <p class="text-sm subtext">Page Updated on September 15, 2025</p>
         </footer>
     </div>
 
-    <!-- START: LIGHTBOX HTML -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <!-- END: LIGHTBOX HTML -->
-
-    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
-
     <script>
-        // Theme toggle script (unchanged)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -310,35 +296,22 @@
             }
         });
 
-        // Main script runs after the page content has loaded
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LIGHTBOX SCRIPT ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxClose = document.getElementById('lightbox-close');
             const imageTriggers = document.querySelectorAll('.lightbox-trigger');
-
             imageTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     lightboxImage.src = trigger.src;
                     lightbox.classList.remove('hidden');
                 });
             });
-
-            function closeLightbox() {
-                lightbox.classList.add('hidden');
-            }
-
+            function closeLightbox() { lightbox.classList.add('hidden'); }
             lightbox.addEventListener('click', closeLightbox);
             lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
 
-            // --- MAP SCRIPT ---
             const iconConfig = {
                 shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
                 landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
@@ -349,7 +322,6 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-
             function createCustomIcon(type, isMain) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
@@ -357,7 +329,6 @@
                 const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-
                 const html = `
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
@@ -367,79 +338,38 @@
                             ${config.svg}
                         </svg>
                     </div>`;
-
-                return L.divIcon({
-                    html: html,
-                    className: '',
-                    iconSize: iconSize,
-                    iconAnchor: iconAnchor,
-                    popupAnchor: popupAnchor
-                });
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
-
             const mainVillageName = "Omera";
             const villageLat = 36.659296;
             const villageLng = 36.95706;
             const initialZoom = 14;
-
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-
-            // --- Define all the map layers ---
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri'
-            });
-
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
             const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
                 maxZoom: 22
             });
-
-            // --- Set up the layer control ---
-            const baseMaps = {
-                "Satellite": esriImagery,
-                "Street": osmStreet,
-                "Terrain": thunderforestTerrain
-            };
-            
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
             L.control.layers(baseMaps).addTo(map);
             esriImagery.addTo(map);
-
-            // --- ADD MAP CONTROLS ---
-            // 1. Static Scale Bar
             L.control.scale({ imperial: false }).addTo(map);
-
-            // --- Fetch data and add markers ---
             fetch('afrin_locations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
                 .then(locations => {
                     locations.forEach(location => {
                         const isMainVillage = location.name === mainVillageName;
                         const customIcon = createCustomIcon(location.type, isMainVillage);
-                        
-                        const marker = L.marker([location.lat, location.lng], { 
-                            icon: customIcon,
-                            zIndexOffset: isMainVillage ? 1000 : 0
-                        }).addTo(map);
-                        
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
                         marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-
-                        if (isMainVillage) {
-                            marker.openPopup();
-                        }
+                        if (isMainVillage) { marker.openPopup(); }
                     });
                 })
-                .catch(error => {
-                    console.error('Error loading location data:', error);
-                    const mapDiv = document.getElementById('map');
-                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
     </script>

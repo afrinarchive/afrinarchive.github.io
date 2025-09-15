@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Sharafname Timeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #2a211c; /* Dark Sepia */
+            color: #e8e0d4; /* Parchment Text */
+        }
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #3e2e22; /* Darker Brown */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7a5f49; /* Muted Brown */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9d7a5c; /* Lighter Muted Brown */
+        }
+        .character-link {
+            cursor: pointer;
+            color: #d4af37; /* Gold */
+            font-weight: 500;
+        }
+        .character-link:hover {
+            text-decoration: underline;
+            color: #f0c975; /* Lighter Gold */
+        }
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 300ms, transform 300ms;
+        }
+        .modal-leave {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .modal-leave-active {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 300ms, transform 300ms;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div id="app" class="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">Interactive Sharafname Timeline</h1>
+            <p class="mt-3 text-lg text-[#c2b4a3]">Explore the rich (albeit incomplete) Kurdish history in the Sharafname</p>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Timeline Section -->
+            <div id="timeline-container-wrapper" class="lg:col-span-2 bg-[#3e2e22]/60 backdrop-blur-sm p-6 rounded-lg shadow-lg flex flex-col" style="max-height: 80vh;">
+                
+                <div id="timeline-scroll-content" class="overflow-y-auto flex-grow">
+                     <!-- Loading State -->
+                    <div id="timeline-loader" class="text-center p-8">
+                        <svg class="mx-auto h-12 w-12 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h3 class="mt-2 text-sm font-medium text-amber-200">Loading Timeline...</h3>
+                    </div>
+                    <!-- Timeline will be injected here by JS -->
+                </div>
+            </div>
+
+            <!-- Characters Section -->
+            <aside id="characters-container" class="bg-[#3e2e22]/60 backdrop-blur-sm p-6 rounded-lg shadow-lg flex flex-col" style="max-height: 80vh;">
+                <h2 class="text-2xl font-bold text-white mb-4">Cast of Characters</h2>
+                <div class="relative mb-4">
+                    <input type="text" id="character-search" placeholder="Search characters..." class="w-full bg-[#5a4433] border border-[#7a5f49] text-white rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-amber-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+                <div id="character-list" class="overflow-y-auto flex-grow">
+                    <!-- Character list will be injected here by JS -->
+                     <div id="character-loader" class="text-center p-8">
+                        <svg class="mx-auto h-12 w-12 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                          <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-3-5.197M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <h3 class="mt-2 text-sm font-medium text-amber-200">Loading Characters...</h3>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-black bg-opacity-75 z-40 hidden"></div>
+    <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div id="modal-content" class="bg-[#3e2e22] rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col modal-enter">
+            <div class="flex items-center justify-between p-4 border-b border-[#5a4433]">
+                <h3 id="modal-title" class="text-xl font-semibold text-white"></h3>
+                <button id="modal-close" class="text-[#c2b4a3] hover:text-white">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div id="modal-body" class="p-6 overflow-y-auto">
+                <!-- Modal content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- The user's provided markdown data -->
+    <script id="sharafnama-data" type="text/markdown">
+        Timeline and Figures of the Sharafname
+
+        Pre-942 AD:
+
+            Mythical Past: Accounts connect the origins of Kurds to figures like Dahhak of Serpents (fifth Peshdadi king), who ruled Persia and Central Asia after Jamshid and was known for his cruelty. Folk stories also relate the Kurdish nation's origin to demons marrying humans, or to genies sent by Solomon settling in mountains with beautiful maidens.
+            Sasanian Era (c. 488-531 AD): Sasanian emperor Cabades/Qubad (r. AD 488-531) is mentioned as a claimed ancestor for several Kurdish princely houses, including the Rozhikis and Ardalans, through his son Jamasp (or brother, in some accounts).
+            588 AD: General Bahram Chobin wins a crushing victory for the Sasanians against Turkic khaqanates. He later rebels, dethroning Hormazd IV and briefly usurping the throne from Chosroes II Aparvez.
+            591 AD: Bahram Chobin is defeated and flees eastward, seeking refuge in Turkistan and Khurasan.
+            591-628 AD: Reign of Sasanian king Chosroes II Aparvez, known for the legend of Farhad and Shirin.
+            Early Islamic Period (7th Century AD): The city of Fustat, an old Roman outpost near Memphis, is taken over by Muslim armies and becomes the capital of Egypt.
+            622 AD (July 16): The Prophet Muhammad's flight from Mecca to Medina (Yathrib) marks the beginning of the Muslim calendar. Medina becomes known as Madina al-Nabi.
+            624 AD (February 11): Mecca becomes the second Qibla in Islam.
+            649 AD (AH 27): During the caliphate of Umar, Iyaz bin Ghanm is tasked with conquering Diyarbekir and Armenia. The ruler of Akhlat is a "kafir" named Yustinyus, and the ruler of Bitlis is Servend bin Yunus. Senasir rules Mush and Sasun.
+            966 AD: Cairo grows out of Fustat's suburbs.
+            970 AD: Al-Az'har University is established by the Fatimids for Shiite learning.
+
+        942 AD - 1096 AD: Hasanwayhids and Marwanids:
+
+            942-969 AD: Husayn the Barzini rules as the first of the Hasanwayhid dynasty.
+            963-969 AD: Emperor Nicephorus Phocas leads Byzantine forces to break through the Taurus line, reoccupying lands lost to Muslims and systematically deporting or slaughtering non-Christian populations (Kurds and Arabs) from newly conquered areas, replacing them with Christians.
+            969-970 AD (AH 359): Hasanwayh b. Husayn rebels against the Daylamite Rukn al-Dawla b. Buwayh, but his vizier, Abu'l-Fadl Ibn 'Amid, peacefully turns back the army sent against him.
+            978 AD: Husayn, also known as Badh/Baz, begins his rule as the founder of the Dostakid/Badhid dynasty, which branched off to give rise to the Marwanids.
+            979 AD (September 28, Rabi' I 369): Hasanwayh b. Husayn passes away.
+            979-1014 AD: Badir b. Hasanwayh succeeds his father. His power and wealth grow significantly, and he receives the title Nasir al-Dawla (later corrected to Nasir al-Din wa’l-Dawla) from the Baghdad chancery in 998 AD.
+            983-1085 AD: Marwanid dynasty rules.
+            991 AD: Abu'l-Fath Muhammad b. 'Ayyar begins his 20-year rule from Hilwan, marking the beginning of the independent 'Ayyarid dynasty.
+            991-997 AD: Hasan b. Marwan rules as the founder of the Marwanid dynasty.
+            997-1011 AD: Mumahhid al-Dawla Sa'id b. Marwan succeeds Hasan b. Marwan.
+            998 AD: Badir ibn Hasanwayh is granted the title "Nasir al-Din wa'l-Dawla" by the Abbasid Caliph, a watershed moment for honorific titles in the Islamic world.
+            998-1030 AD: King Mahmud of Afghanistan reigns, with Kurdish troops found in his Ghaznavid armies.
+            1004-1005 AD (AH 395): Two thousand Kurdish troops from Shahjan (Shadhanjan?) are part of the regular army of Ziyarid king Qabus b. Wishamgir of Jurjan.
+            1008 AD (AH 399): The impressive masonry bridge of Alishtar in central Luristan, a work of Kurdish architect Minis, is finished during Badir's reign.
+            1010-1011 AD (AH 401): Abu'l-Fath Muhammad b. 'Ayyar passes away.
+            1011-1046 AD: Abu'l-Shawk b. Muhammad b. 'Ayyar, with the title Hisam al-Dawla, rules.
+            1011-1061 AD: Nasr al-Dawla Ahmad b. Marwan (the third Marwanid king) rules Diyarbakir and Jazira for 52 years, receiving the title from Abbasid Caliph al-Qadir. He sends envoys and gifts to Seljuq Toghril Beg.
+            1011 AD: Surkhadb b. Muhammad begins his rule from Mahki.
+            1015 AD (Dhi'l-hajja 405): Hilal b. Badir is killed in a fierce battle against Shams al-Dawla.
+            1015-1016 AD (AH 406): Tahir b. Hilal, imprisoned by Shams al-Dawla, is released but then killed by Abu'l-Shawk in a clash.
+            1023-1024 AD (AH 415): Abu'l-Qasim Isfahani, Ahmad's first great vizier, dies in office.
+            1030 AD (AH 421): Abu'l-Shawk takes over the rule of Hilwan.
+            1031-1041 AD: King Mas'ud of Afghanistan reigns, with Kurdish troops found in his Ghaznavid armies.
+            1040 AD: Muhalhil arrives from Shahrazur to take Dinawar from Abu'l-Shawk. Abu'l-Shawk's son, Abu'l-Fath, is defeated and imprisoned.
+            1045 AD (AH 437): Seljuqs take Kirmanshah from the 'Ayyarids for the first time.
+            1046 AD (AH 438): Badir b. Zahir b. Hilal becomes the independent ruler of Qirmashin and Dinawar by a decree from Ibrahim Yinal.
+            1046 AD (September): Sa'di b. Abu'l-Shawk declares Ibrahim Yinal king at the Friday prayer sermon in Hilwan.
+            1047 AD (AH 439): Surkhab b. Muhammad is arrested and taken to Ibrahim Yinal, who blinds him. Badir II’s reign ends as he is chased out by Muhalhil.
+            1053 AD: Sa'di captures his uncle Muhalhil after a clash at Nu'maniyya, misreporting it as a revolt against the Seljuqs.
+            1053 AD (May): Badr al-Din Mas'ud, accompanied by Hulegu Khan, is sent back to Persia by Grand Khan Mengu.
+            1056 AD (November 30): Seljuq Sultan Toghril Beg conquers Baghdad.
+            1061 AD (November 15, AH 453): Nasr al-Dawla Ahmad b. Marwan dies.
+            1061-1063 AD: Sa'id b. Nasr al-Dawla Ahmad rules, exhibiting concern for the poor.
+            1061-1080 AD: Nasr b. Nasr al-Dawla Ahmad takes charge of the state after his father's death, ruling for 21 years with the counsel of Vizier Ibn Jahr.
+            1063 AD (AH 465, but should be 485): Sa'id b. Nasr al-Dawla Ahmad dies.
+            1080 AD (May-June, Dhi'l-hajja 472): Nasr b. Nasr al-Dawla Ahmad dies.
+            1080-1096 AD: Mansir b. Nasr b. Nasr al-Dawla Ahmad succeeds his father.
+            1086 AD: Mansir is defeated in a campaign against Vizier Ibn Jahr Fakhr al-Dawla.
+            1087 AD: Badr al-Jamali provides Cairo with a strong defensive wall.
+            1088 AD: Seljuq Sultan Malikshah annexes Amid (Diyarbakir) from the Marwanids, commissioning the superstructure of the city's surrounding wall.
+            1096 AD (January, Muharram 489): Mansir dies in prison in Jazira city, ending the Marwanid dynasty's main line after 91 years of rule by four monarchs.
+
+        1095 AD - 1424 AD: Fadilwayhids / Atabegs of Greater Lur:
+
+            1095-1138 AD: 'Ali b. Abu'l-Hasan rules for 43 years.
+            1106-1107 AD (AH 500): Approximately 400 Kurdish households from Mt. Simeon in the Levant, having a dispute with their elder, migrate to Luristan and settle with the progeny of Muhammad Khurshid.
+            1112-1113 AD (AH 557): The fortress of Mahki falls from Caliphate jurisdiction to "Kurds and Turcomans."
+            1134-1152 AD: Ghiyath al-Din Mas'ud reigns as the fourth king of a branch of the Seljuqs.
+            c. 1134 AD: Muhammad, son of 'Ali, joins the service of the Salghurids and becomes prominent due to his valor.
+            1138-1148 AD: Muhammad rules for 10 years.
+            1148 AD: The Salghurid line of independent atabegs begins.
+            1155-1156 AD (AH 550): Abu-Tahir conquers Luristan and rebels against Atabeg Sonqur, ruling independently for a while before dying. He leaves five sons: Hazarasp, Bahman, 'Imad al-Din Pahlawan, Nusrat al-Din Ilvakosh, and Qizil.
+            1159-1161 AD (AH 544-556): Sulaymanshah I succeeds his uncle as chief of the House of Seljuq and becomes Sultan of the Two Ighars.
+            1174 AD (570 AH): Hisam al-Din Shumili dies. Shuja' al-Din Khurshid becomes independent ruler of Lesser Lur, gradually taking the country from Surkhab 'Ayyarid.
+            1176 AD: Saladin begins construction of a formidable castle to the south of Cairo, outside Fustat and Cairo.
+            1180 AD (July 1, AH 576): Shams al-Dawla (Tiranshah) b. Najm al-Din Ayyub, conqueror of Yemen, dies in Alexandria. His body is transported to Syria and buried in the madrassa built by his sister in Damascus.
+            1183 AD (June 17, Safar 579): Taj al-Mulik Abi-Sa'id Bori dies.
+            1184 AD: The first stage of construction of Saladin's fortress in Cairo (a 32-acre fortress within walls) is completed.
+            1186-1196 AD: Al-Malik al-Afdal Nur al-Din 'Ali, Saladin's eldest son, rules Damascus.
+            1188 AD (July): Saladin conquers Tortosa by force.
+            1188 AD (July 29): Saladin takes Saone.
+            1188 AD (August 23): Saladin takes Bourzey.
+            1188 AD (September 26): Saladin makes a peace settlement with Antioch.
+            1189 AD (May, second week): Prince Raynald of Chatillon is released from captivity by Saladin.
+            1190 AD (Rajab): Saladin re-captures the fortress of Shaqif Arnun (Beaufort) from the Crusaders.
+            1191 AD (July 12): Acre surrenders after a two-year siege.
+            1191 AD (September 7): Saladin suffers a defeat at the Battle of Arsuf.
+            1192 AD (August 1): Richard the Lionhearted challenges Muslims to single combat at Jaffa; Saladin sends him a worthy steed.
+            1192 AD (September 2): A three-year peace treaty is signed between Saladin and Richard the Lionhearted, allowing Christians access to Jerusalem.
+            1193 AD (February 20, Safar 589): Sultan Saladin rides to welcome Hajj pilgrims.
+            1193 AD (March 4, Safar 589): Sultan Saladin dies of a burning fever at age 55. His treasury contains only 47 dirhams.
+            1193-1198 AD: Abu'l-Fath 'Uthman b. Saladin Yusif, with the throne name Malik 'Aziz, rules Egypt.
+            1195 AD: Shaykh Abi-'Umar 'Uthman b. 'Abd'l-Rahman dies in Cairo, where he taught at Saladin's college.
+            1198 AD (December 31): Malik 'Aziz 'Uthman dies in Egypt. His brother, Al-Malik al-Afdal Nur al-Din 'Ali, takes the throne in Egypt for some days until Malik 'Adil (Saphadin) arrives. Malik Afdal is then given Samsat.
+            c. 1200-1228 AD: Nusrat al-Din Hazarasp I rules.
+            1200-1218 AD: Malik 'Adil (Saphadin) b. Najm al-Din Ayyub reigns as Sultan.
+            1202-1214 AD: Al-Malik al-Nasir Ayyub reigns in Yemen.
+            1203-1228 AD: Hazarasp I becomes Atabeg by his father's testament. Many clans from Mt. Simeon join him, and he expands his rule, eventually bringing all of Luristan under his occupation.
+            1203-1231 AD: Atabeg 'Izz al-Din Sa'd I reigns.
+            1207-1212 AD: Al-Malik al-Awhad Najm al-Din Ayyub rules Akhlat.
+            1212-1213 AD (AH 609): Malik Awhad Ayyub b. Malik 'Adil dies. Rule is given to his brother, Malik Ashraf.
+            1212 AD (August): Malik Ashraf's rule is extended over Akhlat.
+            1215 AD (AH 612): Malik Adil (Saphadin) bestows the reign of Yemen on his grandson, Malik Mas'ud b. Malik Kamil.
+            1215-1229 AD: Al-Malik al-Mas'ud Abi-Muzaffar Salah al-Din Yusif Atsiz rules Yemen.
+            1218 AD (AH 615): Malik 'Adil (Saphadin) dies. His son, Malik Kamil, becomes sovereign of Egypt.
+            1218-1227 AD: Al-Malik al-Mu'azzam Sharaf al-Din 'Isa rules Damascus.
+            1218-1238 AD: Al-Malik al-Kamil Muhammad reigns.
+            1220 AD: Mongol invasion of Islamic lands commences.
+            c. 1220 AD: Poet Abu'l-Ghana'im Muslim b. Mahmud b. Ni'mat b. Arslan of Shaizar is alive and dies in this year or soon after.
+            1222-1252 AD (approximate): 'Imad al-Din Pahlawan, son of Hazarasp, rules.
+            1223 AD (late): The last Khwarazmshah escapes through the southern Zagros mountains.
+            1224 AD: Shuja' al-Din Khurshid dies at over 100 years old. His grave becomes a venerated shrine for the Lurs.
+            1224 AD: Sulaymanshah Iva marries another sister of Jalal al-Din Mangiibirti.
+            1224-???? AD: Sayf al-Din Rustam b. Nur al-Din Muhammad rules Lesser Lur independently.
+            1228 AD: Hazarasp I dies.
+            1229 AD: Malik Mu'azzam Sharaf al-Din 'Isa dies. His son, Malik Nasir Dawud, succeeds him.
+            1229 AD (AH 626): Malik Kamil sets out from Egypt to conquer Damascus. Malik Ashraf assists him. Malik Nasir sues for peace and is granted rule over Crac des Moabites, Crac de Montreal, and Neapolis (Nablus).
+            1230 AD: Ibn Athir (Kamil, XI.286) notes that the fortress of Mahki has remained under the jurisdiction of "Kurds and Turcomans" since 557/1112-13.
+            1231 AD: Atabeg 'Izz al-Din Sa'd I dies.
+            1231-1260 AD: Atabeg Abi-Bakr Qutlugh Khan reigns.
+            1232 AD: 'Izz al-Din Abu'l-Hasan 'Ali b. Abu'l-Karam Muhammad (historian Ibn Athir) dies.
+            1234 AD (November 3): Malik Zahir Ghazi, ruler of Aleppo and Bira, dies.
+            1235 AD (late June): Shaykh Abi-'Umar 'Uthman b. 'Abd'l-Rahman (Ibn Salah) dies in Damascus.
+            1237 AD (AH 635): Malik Ashraf (Musa) dies in Damascus. His brother, Malik Salih Isma'il, succeeds him. Malik Kamil sieges Damascus, makes peace, then falls ill and dies.
+            1238 AD: Al-Malih al-Salih Ayyub carries an expedition upon Damascus, deposing Isma'il.
+            1238 AD (early summer of 638 AH): Isma'il, king of Damascus, cedes the fortress of Beaufort to the Crusaders due to internal disputes.
+            1239 AD: Diya' al-Din Abu'l-Fat'h Nasrallah b. Abu'l-Karam Muhammad (chancellor Ibn Athir) dies.
+            1240 AD (early summer): Isma'il, king of Damascus, proposes a defensive alliance with Crusader king Tibald, ceding Beaufort and Safed. His subjects are shocked.
+            1241-1243 AD: Hisam al-Din Khalil b. Badir b. Shuja' al-Din Khurshid rules Luristan, naming 'Izz al-Din Garshasp his heir apparent. He later has Garshasp killed.
+            1242-1243 AD (AH 640): Events surrounding Khalil's rule, including his death at the hands of Sulaymanshah's "demons," take place.
+            1244-1260 AD: Badr al-Din Mas'ud b. Badir b. Shuja' al-Din Khurshid rules.
+            1248 AD (February 9): Al-Malik al-Salih Isma'il dies in prison at the citadel of Cairo.
+            1249 AD (June 6): Frankish king Louis IX captures Damietta.
+            1249-1252 AD: Nusrat al-Din Ilvaqosh b. Hazarasp I reigns.
+            1250 AD (February): Fakhr al-Din Qataya dies defending Mansourah against Crusaders.
+            1250 AD (May 2): 'Izz al-Din Aibek leads a coup d'etat, leading to the downfall of the Ayyubid Empire.
+            1250 AD (July 19): Malik Nasir (ruler of Crac des Moabites) captures Damascus.
+            1250 AD: Malik al-Mu'azzam Turanshah II is murdered by his father's mamelukes.
+            1251 AD (AH 649): Malik al-Nasir's party is defeated by the Mamelukes, and Shams al-Din Law'law', Nasir's lieutenant, is captured and slaughtered.
+            1251-1257 AD: Mongke (Mengu) reigns as the fourth Grand Khan of the Mongols.
+            1252-1258 AD: Atabeg Tekele b. Hazarasp rules, initially facing vexations and expeditions from the Salghurid Atabeg Sa'd.
+            1254 AD (AH 652): 'Izz al-Din (Aibek) the Turcoman is elevated to reign in Egypt, becoming Malik Mu'izz, ending Ayyubid rule over that realm.
+            1256 AD (November 20): Mongol khan Hulagu destroys the fortress of Alamit.
+            1256-1265 AD: Hulagu Khan reigns as the first Ilkhanid Mongol king of Persia.
+            1257 AD (AH 655): Hulagu Khan heads for Baghdad. Tekele pays homage and is assigned to Kit-Buqa Noyin's battle division.
+            1258 AD (February 10): Baghdad is conquered.
+            1258 AD (September 15): Tekele is executed by Hulagu Khan after being accused of mourning the caliph's death. His body is secretly buried in Dortu.
+            1258-c. 1273 AD: Atabeg Shams al-Din Alp-Arghun rules Luristan for 15 years, improving it through justice.
+            1260 AD: Badr al-Din Mas'ud dies after 16 years of rule. His sons are executed by order of Abaqa Khan.
+            1260 AD (September 3): Kit-Buqa Noyin is defeated and executed by Mameluke sultan Qotoz at the Battle of 'Ayn Jalut.
+            1260-1277 AD: Rukn al-Din Baibars reigns as Mameluke sultan.
+            1264 AD (AH 662): Ayyubid rule ends in Egypt and Syria.
+            1265-1282 AD: Abaqa Khan reigns as the second Ilkhanid Mongol king of Persia.
+            1278 AD: Luristan is divided, with two rival princes appointed to rule its fragments.
+            1281-1282 AD (AH 680): Yusifshah is ordered to return to Luristan.
+            1282-1284 AD: Ahmad Tegiider (Mahmud) reigns as the third Ilkhanid Mongol king of Persia, and the first to convert to Islam among the Ilkhanids.
+            1282-1284 AD: Atabeg Yusifshah b. Alp-Arghun begins his reign, serving Abaqa Khan and later Ahmad Khan. He receives Khuzistan, Kuhgiluyeh, Firuzan, and Cerbadqan.
+            1283 AD (AH 681): Abaqa Khan dies.
+            1286 AD (AH 684): Yusifshah dies, leaving two sons, Afrasiyab and Ahmad.
+            1286-1296 AD: Afrasiyab I takes power, presuming himself an independent monarch. He sends an army to occupy lands in Persian Iraq.
+            1288 AD: Qizil and Salghur-Shah revolt, kill security chief Baydu, and have the khutba read in Afrasiyab's name.
+            1291-1295 AD: Gaykhatu reigns as the fifth Ilkhanid Mongol king of Persia.
+            1293 AD (AH 692): 'Izz al-Din Muhammad and Husam al-Din 'Umar, known for their justice and accord, both die.
+            1294 AD (AH 693): Hisam al-Din Khalil's line is truncated when he is ambushed and killed near Khurramabad.
+            1294-1295 AD: Hisam al-Din 'Umar Beg fraudulently takes rule of Luristan, but is opposed by Samsam al-Din Mahmud and 'Izz al-Din Muhammad.
+            1295-1304 AD: Mahmud Ghazan Khan reigns as the seventh Ilkhanid Mongol king of Persia, and the first to embrace and stay true to Islam.
+            1296 AD (October 19): Afrasiyab I is executed by Gaykhatu.
+            1296-1304 AD: Nusrat al-Din Ahmad (Ahmad I) rules.
+            1304-1317 AD: Sultan Muhammad Kharbanda Oljeytu reigns as Ilkhanid Mongol king of Persia.
+            1329-1330 AD (AH 730): Mustawfi finishes his account in the Guzida, ending during the reign of Queen Dawlat-Khatun.
+            c. 1330-1344 AD: 'Izz al-Din Husayn (brother of Dawlat-Khatun) rules Luristan.
+            1333 AD: Nusrat al-Din Ahmad (Ahmad I) dies.
+            1333-1339 AD: Atabeg Rukn al-Din Yusifshah b. Ahmad (Yusifshah II) rules Luristan for six years.
+            1339 AD (November 9, Jumada I 740): Yusifshah II dies and is buried in a madrasa known as Ruknabad.
+            1339-1355 AD: Muzaffar al-Din Afrasiyab b. Yusifshah b. Ahmad (Afrasiyab II) reigns.
+            c. 1344-1349/50 AD: Shuja al-Din Mahmud (son of 'Izz al-Din Husayn) rules but is killed by the populace.
+            1349 AD (AH 750): Shuja al-Din Mahmud is killed by the populace.
+            c. 1349-1386 AD (and 1389-1403): Malik 'Izz al-Din b. Shuja al-Din Mahmud reigns.
+            1370-1405 AD: Emir Temiir Kuragan (Tamerlane) reigns as founder of the Timurid empire.
+            1388 AD (AH 790): Tamerlane extracts Malik 'Izz al-Din from Wamiyan fortress and sends him to Sultania.
+            1403 AD: Malik 'Izz al-Din dies.
+            1413 AD: Mu'in al-Din Natanzi reads a clan name as Likki in Muntakhab al-tawarikh.
+            1417-1418 AD (AH 820): Abi-Sa'id b. Pishang (Shah-Husayn's father) dies.
+            1422 AD (AH 824): Malik Muhammad b. Malik 'Izz al-Din and Emir Shamseddin are received by Mirza Shahrukh, son of Timur Gurgan, who renews their decree to rule their provinces.
+            1424 AD: Shah-Husayn (son of Abi-Sa'id) is killed by Ghiyath al-Din b. Kaos b. Hoshang b. Pashang. The Timurids extinguish the main branch of the Fadilwayhid dynasty.
+            1451-1469 AD: Abi-Sa'id reigns as the seventh Timurid emperor. His army is destroyed by Uzun Hasan.
+
+        15th - 16th Centuries: Ottoman-Safavid Rivalry and Kurdish Principalities:
+
+            1501-1524 AD: Isma'il I reigns as the founder of the Safavid dynasty.
+            1507 AD (AH 912): Shah Ismail spends winter in Hoy, sending his Shamlu tribe to fight Sarim Bey.
+            1520s: Melik Halil reigns over Hisn Keyfa. He marries Shah Ismail's sister, holding great celebrations when Shah Ismail visits him.
+            1520s: Sheikh Ahmad Bey, a descendant of Isa Bey of the Dunbili tribe, reaches high ranks under the Akkoyunlus and is given the governorship of Bay and other conquered territories.
+            1521 AD (AH 928): Melik Halil dies, leaving two sons, Melek Bey and Seyyid Muhammad Bey. The Diyarbekir and Akhlat regions are under Ottoman control.
+            1521 AD (AH 928): Prince Pir Hüseyin's three younger sons (Keyhusrev Bey, Keykavus Bey, Perviz Bey) agree to seek their rights at the Sublime Porte.
+            1521 AD (AH 928): Pir Hüseyin's wife takes their eldest son, Keyhusrev Bey, to Istanbul and appeals to Sultan Murad Khan, who grants Keyhusrev his father's position.
+            1520s (approximate): Lala Kasım, with the help of Sultan Selim Khan after the Battle of Chaldiran, reclaims Egil and returns to his inherited post. He later takes the fortress of Amed from the Qizilbash using a trick.
+            1534-1539 AD: Abu'l-Ghazi 'Ubaydallah reigns as the sixth Shaybanid Uzbek king.
+            1536 AD: Oghur receives news of the imperial army's return from Khurasan and gathers Luristan's "rabble and scoundrels" in Nihawand.
+            1543 AD (July 20, Dhu'l-hijja 949): Sharaf al-Din Bitlisi, the author, is born in the town of Kerherud (belonging to Qum in Iraq).
+            1549 AD (AH 956): Dede Bey, a Rojkan guard, is martyred in Georgia.
+            1550s: Sayf al-Din, a Mukri leader, collects men from the Baban and other Kurdish tribes to take control of Deryas, then Dulbarik, then Ekhtachi, Il-Temür, and Seldüz regions.
+            1563-1564 AD (AH 971): Muhammadi is imprisoned in Alamit fortress for disputing with Shah-Rustam.
+            1566-1567 AD (AH 974): King Tahmasp orders Amir-Khan Mosullu, governor of Hamadan, to gather Muhammadi's sons and secure horses/sheep for his release and rule over Luristan.
+            1570 AD: Sultan Selim Han's decree reconfirms the rule of Xizan on Emir Ahmed for his sons.
+            1574-1595 AD: Sultan Murat III reigns.
+            1576-1578 AD: Isma'il II reigns as Safavid king.
+            1578 AD (AH 985): Papal decree orders that Ali Bey's rule be taken from him and given to Evliya Bey.
+            1578-1588 AD: Muhammad Khudabanda reigns as the fourth Safavid king.
+            1579 AD (AH 986): Muhammad Bey b. Duman Bey (Zirkan) takes rule at age 15 after his father's martyrdom.
+            c. 1583-1598 AD: Shahvirdi b. Muhammadi occupies the throne of Luristan with the help of nobles.
+            1590 AD (March 21): Armistice is signed by Abbas I, temporarily transferring almost all of Kurdistan to the Ottomans.
+            1591-1592 AD (AH 999): Emir Sheref (Zirkan) abdicates, and his son Duman Bey rules for two years.
+            1593 AD (AH 1001): Abdülmumin Khan, son of Uzbek Abdullah Khan, attacks Budak Bey with a large army to conquer the Qochan fortress.
+            1595-1603 AD: Ottoman Sultan Mehmet III reigns.
+            1596 AD (late Shaban 1004): A large force is sent to Hazzo to support Ahmed Bey against Muhammed Bey.
+            1597 AD (April 20, 3 Ramadan 1005): One of the latest dates appearing in Sharafnama (III.iv.30).
+            1597 AD (May 5, 18 Ramadan 1005): One of the latest dates appearing in Sharafnama (III.i.5).
+            1597 AD (August 4, 30 Dhu'l-hajja 1005): Sharaf al-Din Bitlisi finishes at least the first edition of "The Sharafnama." Shahvirdi is ruling Luristan.
+            1597 AD: Evliya Bey is ruling Somay without conflict.
+            1598 AD (August, Muharram 1007): A concluding statement in one of the Sharafnama manuscripts indicates the work's writing, editing, and correcting was finished at this time in Bitlis.
+
+        Later Events / Translations / Scholarly Works:
+
+            1836: Khanikoff's copy of the Sharafnama is made from an alleged 1598 manuscript.
+            1858-1859: Mahmiid Bayazidi produces the first authenticated translation of the Sharafnama into an eastern variety of North Kurmanji dialect. He titles it "Tawarikha qadima Kurdistan" (Old Histories of Kurdistan).
+            1860: Alexander Jaba publishes "Recueil de Notices et Récits kourdes" (Kurdish and French translation of Mahmiid Bayazidi's work on Kurdish morals and manners).
+            1860-1862: Zernof publishes the first printing of the Persian text of the Sharafnama in St. Petersburg.
+            1868-1875: Francois B. Charmoy produces a two-volume, four-tome French translation and commentary of the Sharafnama.
+            1925 (after): Turkification hysteria in the Republic of Turkey leads to renaming of nearly all Kurdish place names.
+            1958-1962: Muhammad Ali Awni's Arabic translation of the Sharafnama is published posthumously.
+            1971: Mehmet Emin Bozarslan publishes a modern Turkish translation of the Sharafnama in Istanbul, based on Awni's Arabic translation. This translation faces legal challenges but is eventually affirmed as a scientific and historical work.
+            1981: 'Abd al-Rahman Sharafkandi Hazhar publishes a translation of the Sharafnama into the eastern variety of South Kurmanji (Sorani) Kurdish in Teheran.
+            1986: Bayazidi's Kurdish translation is finally published as photostats in two volumes in Moscow.
+
+        Cast of Characters
+
+        Historical Figures & Dynastic Founders:
+
+            Sharaf al-Din Bitlisi (Prince Sharaf Khan al-Bidlisi / Mir Sharaf): (b. 1543 AD) The author of "The Sharafnama," a monumental historical work completed in 1597 AD. He preferred the title emir (prince) over khan. He claims his dynasty (Rozhiki) is connected to Sasanian emperors through the Badhid/Dustakid dynasty and the Marwanids, ruling Bitlis for over 450 years prior to his writing. He was born in Kerherud and raised in the Safavid court, later serving the Ottoman Sultan.
+            Dahhak of Serpents (Bivrasb): A mythological (or possibly historical, according to some historians) fifth Peshdadi king of Persia and Central Asia, known for his extreme cruelty and the two serpent-like veins on his shoulders that required human brains as remedy.
+            Jamshid: An ancient king of Persia, who ruled before Dahhak.
+            Solomon: The biblical king, believed in folk stories to have ruled over mankind, beasts, and genies, and whose genies are said to be the ancestors of the Kurds.
+            Cabades/Qubad: (r. AD 488-531) A Sasanian emperor of Persia, claimed ancestor of several Kurdish princely houses.
+            Jamasp: Son (or brother) of Cabades/Qubad, through whom the Sasanian lineage is claimed by Kurdish dynasties.
+            Bahram Chobin ("Mars's Javelin"): (fl. 588-591 AD) A renowned Sasanian general and hero who defeated Turkic khaqanates, then rebelled against Hormazd IV and briefly usurped the throne. He fled to Turkistan and Khurasan after his defeat.
+            Chosroes II Aparvez (Khusraw Parviz): (r. 591-628 AD) Sasanian king, known for the tragic romance of Farhad and Shirin.
+            Muhammad (Prophet Mohammed): (b. c. 570 AD) The founder of Islam, to whom blessings are given in the foreword of "The Sharafnama." His flight to Medina in 622 marks the beginning of the Muslim calendar.
+            'Umar (Second Muslim Caliph): One of the two 'Umars mentioned as models of piety and justice.
+            'Umar al-'Aziz (Umayyad Caliph): The other 'Umar mentioned as a model of piety and justice.
+            Alexander the Great (Dhu 'l-Qarnayn): A historical figure of immense influence, referred to in the Koran as "Diceros" ("of two horns").
+            Baghdawz: A mythical (or possibly historical) hideous-looking Kurdish nobleman, sent as an envoy by Oghuz Khan to the Prophet Muhammad, who purportedly cursed the Kurds with disunity.
+            Shaykh 'Adi b. Musafir: A revered figure for the Yezidis, whose shrine is in Lalish. Yezidis are described as followers of his teachings.
+            Rustam son of Zal (Rustam the Kurd / Rustam of Zabul): A legendary hero from the Iranian epic "Shahnameh," identified by Bitlisi as being of Kurdish origin and born in Sistan, living during the time of Kay Qubad.
+            Gurgin Milad (Mithridates the Great): A Parthian king and hero of the "Shahnameh," whose lineage is connected to Bahram Chobin.
+            Oghuz Khan: A mythical (or possibly historical) grand sultan of Turkistan, who sent Baghdawz as an envoy to the Prophet Muhammad.
+            Husayn the Barzini: (r. 942-969 AD) The founder of the Hasanwayhid dynasty.
+            Hasanwayh b. Husayn: (r. 969-979 AD) Hasanwayhid ruler, contemporary of Rukn al-Dawla b. Buwayh, who rebelled but later sought peace.
+            Badir b. Hasanwayh: (r. 979-1014 AD) Hasanwayhid ruler, son of Hasanwayh, who gained immense power and wealth and received the title Nasir al-Din wa’l-Dawla from the Caliph.
+            Hilal b. Badir: (d. 1015 AD) Son of Badir, captured and imprisoned by his father, later killed in battle.
+            Tahir b. Hilal: (d. 1016 AD) Grandson of Badir, captured by Shams al-Dawla, released, and then killed by Abu'l-Shawk.
+            Badir b. Zahir b. Hilal (Badir II): (r. 1046-1047 AD) Ruler of Qirmashin and Dinawar, appointed by Ibrahim Yinal.
+            Abu'l-Fath Muhammad b. 'Ayyar: (r. c. 991-1011 AD) The founder of the 'Ayyarid dynasty, ruling from Hilwan. Not a descendant of Hasanwayh.
+            Abu'l-Shawk b. Muhammad b. 'Ayyar (Hisam al-Dawla): (r. 1011-1046 AD) 'Ayyarid ruler, son of Abu'l-Fath Muhammad.
+            Surkhab b. Muhammad: (r. 1011-after 1050 AD) 'Ayyarid ruler, blinded by Ibrahim Yinal.
+            Sa'di b. Abu'l-Shawk: (r. 1046-after 1054 AD) 'Ayyarid ruler, declared Ibrahim Yinal king, later captured his uncle Muhalhil.
+            Marwan: Legendary "miller" and purported namesake of the Marwanid dynasty, related to Badh through marriage.
+            Husayn "ibn" Dostak (Badh/Baz): (r. 978-991 AD) Founder of the Dostakid/Badhid dynasty, purportedly related to Marwan.
+            Ahmad b. Marwan (Nasr al-Dawla Ahmad the Great): (r. 1011-1061 AD) The third and most famous Marwanid king, ruling Diyarbakir and Jazira.
+            Nasr b. Nasr al-Dawla Ahmad (Nizam al-Dawla Abu'l-Qasim Nasr): (r. 1061-1080 AD) Marwanid king, son of Ahmad, who ruled Diyarbakir.
+            Sa'id b. Nasr al-Dawla Ahmad: (r. 1061-1063 AD) Marwanid governor of Amid, known for his concern for the poor.
+            Mansir b. Nasr b. Nasr al-Dawla Ahmad (Nasir al-Dawla Mansir): (r. 1080-1096 AD) The last Marwanid king, defeated by Ibn Jahr and imprisoned.
+            Fat'h al-Din Fadilwayh: Patriarchal figure of the Fadilwayhids.
+            Abu'l-Hasan: Early Fadilwayhid, who purportedly "brought the Kurds to Luristan."
+            'Ali b. Abu'l-Hasan: (r. c. 1095-1138 AD) Early Fadilwayhid ruler.
+            Muhammad b. 'Ali: (r. 1138-1148 AD) Fadilwayhid ruler.
+            Abi-Tahir b. Muhammad: (r. c. 1148-1155/56 AD) Fadilwayhid ruler, known for his valor, who joined the service of Salghurid Atabeg Sonqur and later rebelled.
+            Nusrat al-Din Hazarasp I: (r. c. 1203-1228 AD) Fadilwayhid Atabeg, son of Abi-Tahir, under whom many clans joined, and Luristan greatly prospered.
+            'Imad al-Din Pahlawan: (r. 1229-1249 AD) Fadilwayhid Atabeg, son of Hazarasp I.
+            Nusrat al-Din Ilvaqosh: (r. 1249-1252 AD) Fadilwayhid Atabeg, son of Hazarasp I.
+            Atabeg Tekele b. Hazarasp (or son of 'Imad al-Din Pahlawan): (r. 1252-1258 AD) Fadilwayhid Atabeg, executed by Hulagu Khan.
+            Atabeg Shams al-Din Alp-Arghun: (r. 1258-c. 1273 AD) Fadilwayhid Atabeg, brother of Tekele, ruled Luristan with justice for 15 years.
+            Atabeg Yusifshah b. Alp-Arghun (Yusifshah I): (r. 1273-1286 AD) Fadilwayhid Atabeg, son of Alp-Arghun, who served Ilkhanid kings Abaqa Khan and Ahmad Khan.
+            Atabeg Afrasiyab I: (r. 1286-1296 AD) Fadilwayhid Atabeg, son of Yusifshah I, who briefly presumed himself an independent monarch before being executed.
+            Nusrat al-Din Ahmad (Ahmad I): (r. 1296-1333 AD) Fadilwayhid Atabeg, son of Yusifshah I, known for his just rule.
+            Queen Dawlat-Khatun: (r. c. 1329-1330 AD) Ruler of Luristan, whose reign marked a period of troubled administration.
+            'Izz al-Din Husayn: (r. c. 1330-1344 AD) Fadilwayhid ruler, brother of Dawlat-Khatun, under whom Luristan prospered.
+            Shuja al-Din Mahmud: (r. c. 1344-1349/50 AD) Fadilwayhid ruler, son of 'Izz al-Din Husayn, known for his tyranny and was killed by the populace.
+            Malik 'Izz al-Din b. Shuja al-Din Mahmud: (r. c. 1349-1386, and 1389-1403 AD) Fadilwayhid ruler, captured by Tamerlane.
+            Muzaffar al-Din Afrasiyab b. Yusifshah b. Ahmad (Afrasiyab II): (r. 1339-1355 AD) Fadilwayhid ruler during Tamerlane's invasion.
+            Abi-Sa'id b. Pashang: (d. 1417-1418 AD) Fadilwayhid ruler, father of Shah-Husayn.
+            Shah-Husayn: (d. 1424 AD) The last Fadilwayhid ruler of the main branch, killed by Ghiyath al-Din.
+            Ghiyath al-Din b. Kaos b. Hoshang b. Pashang: (r. 1424 AD) Fadilwayhid ruler who killed Shah-Husayn.
+            Shuja' al-Din Khurshid b. Abi-Bakr: (d. 1224 AD) Chinginid ruler of Lesser Lur, known for his long life and just rule.
+            Sayf al-Din Rustam b. Nur al-Din Muhammad: (r. 1224-???? AD) Chinginid ruler of Lesser Lur, known for his strict justice.
+            Sharaf al-Din Abi-Bakr b. Nur al-Din Muhammad: Chinginid ruler, brother of Sayf al-Din Rustam, who conspired to kill him.
+            Hisam al-Din Khalil b. Badir b. Shuja' al-Din Khurshid: (r. 1241-1243 AD) Chinginid ruler of Lesser Lur, who became embroiled in conflict with Sulaymanshah and was eventually killed.
+            Badr al-Din Mas'ud b. Badir b. Shuja' al-Din Khurshid: (r. 1244-1260 AD) Chinginid ruler, who sought aid from the Mongol Grand Khan Mengu.
+            Taj al-Din-Shah: (r. 1260-???? AD) Chinginid ruler appointed by Abaqa Khan after the execution of Badr al-Din Mas'ud's sons.
+            'Izz al-Din Muhammad: Chinginid ruler, son of Shuja' al-Din Khurshid.
+            Shams al-Din Lu'ri: (d. 1293 AD) Chinginid ruler, brother of 'Izz al-Din Muhammad.
+            Hisam al-Din 'Umar Beg: (r. 1294-1295 AD) Chinginid ruler who fraudulently took power.
+            Samsam al-Din Mahmud: Chinginid prince who opposed Hisam al-Din 'Umar Beg.
+            Shams al-Din Law'law': Chinginid prince who allied with Samsam al-Din Mahmud.
+            Shibab al-Din Ilyas: Chinginid prince who allied with Samsam al-Din Mahmud.
+            Abu'l-Qasim b. Khurshid (or Kakawayh): Chinginid prince, whose grandson later appealed to Ghazan Khan.
+            Shuja al-Din Mahmud: (r. c. 1344-1349/50 AD) Chinginid ruler.
+            Malik 'Izz al-Din b. Shuja al-Din Mahmud: (r. c. 1349-1386, and 1389-1403 AD) Chinginid ruler.
+            Muhammad Khudabanda (Malik Muhammad Khudabanda): (r. 1578-1588 AD) The fourth Safavid king.
+            Shah-Rustam: (r. c. 1530s-1566/67 AD) Chinginid ruler of Lesser Lur, imprisoned by Muhammadi, later allied with the Ottomans.
+            Muhammadi b. Jahangir: (d. c. 1583 AD) Chinginid ruler, brother of Shah-Rustam, imprisoned in Alamit, later ruled Lesser Lur.
+            Oghur: Chinginid prince, father of Shahparwar, engaged in rebellion in Nihawand.
+            Shahparwar: Daughter of Oghur, wife of Shah-Rustam, who gathered forces to oppose Muhammadi.
+            Shahvirdi b. Muhammadi: (r. c. 1583-1598 AD) Chinginid ruler of Lesser Lur, son of Muhammadi, who fought against Safavid appointees and later sought Ottoman suzerainty.
+            Saladin (Salah al-Din Yusif b. Ayyub): (r. 1174-1193 AD) The founder of the Ayyubid Empire, a Kurdish general who conquered Egypt and the Levant, liberated Jerusalem, and was renowned for justice and valor.
+            Najm al-Din Ayyub: Father of Saladin, who served Imad al-Din Zangi and was entrusted with the governorship of Ba'lebek.
+            Asad al-Din Shirko: Uncle of Saladin, a brave general who led expeditions to Egypt for Nur al-Din.
+            Nur al-Din Mahmud: (d. 1174 AD) Zangid ruler, Saladin's patron, who had Saladin's father and uncle in his service.
+            Al-Adid: Isma'ilite (Fatimid) ruler of Egypt, who resorted to Nur al-Din for help against the Crusaders.
+            Abu'l-Fath 'Uthman (Malik 'Aziz): (r. 1193-1198 AD) Saladin's eldest son, who ruled Egypt.
+            Al-Malik al-Afdal Nur al-Din 'Ali: (r. 1186-1196 AD) Saladin's son, who ruled Damascus and was later displaced by his brother and uncle.
+            Malik 'Adil Sayf al-Din Abi-Bakr (Saphadin): (r. 1200-1218 AD) Saladin's brother, who became Sultan after Saladin's death and consolidated power within his own branch of the family.
+            Malik Mu'azzam Sharaf al-Din 'Isa: (r. 1218-1227 AD) Son of Saphadin, who ruled Damascus.
+            Malik Ashraf: Son of Saphadin, who ruled Jazira and Akhlat.
+            Malik Awhad Najm al-Din Ayyub: (r. 1207-1212 AD) Son of Saphadin, who ruled Akhlat.
+            Malik Kamil Muhammad: (r. 1218-1238 AD) Son of Saphadin, who became Sultan of Egypt and later conquered Hejaz, Yemen, and the Levant.
+            Malik Mas'ud b. Malik Kamil (Al-Malik al-Mas'ud Abi-Muzaffar Salah al-Din Yusif Atsiz): (r. 1215-1229 AD) Grandson of Saphadin, who ruled Yemen.
+            Malik Nasir Dawud b. Malik Mu'azzam: (r. 1218-1227 AD, later Crac des Moabites) Son of Malik Mu'azzam, who succeeded his father in Damascus and later became a powerful ruler in the Levant.
+            Malik Salih Isma'il b. Nur al-Din Mahmud (the Zangid): Ruler of Aleppo, later became Malik Salih Isma'il, who succeeded Malik Ashraf in Damascus.
+            Al-Malik al-Salih Ayyub: (r. 1239-1249 AD) Ayyubid Sultan, son of Malik Kamil.
+            Fakhr al-Din Qataya: A Mameluke general who fought against the Crusaders at Mansourah.
+            Al-Malik al-Mu'azzam Tiranshah II: (r. 1239-1249 AD) Ayyubid ruler of Jazira & Kurdistan, murdered by his mamelukes.
+            Malik Nasir II Salah al-Din Yusif: (r. 1250 AD) Great-grandson of Saladin, ruler of Crac des Moabites, who captured Damascus and briefly entered Cairo.
+            'Izz al-Din Aibek: (r. 1250-1257 AD) A Mameluke general, later the first Mameluke Sultan of Egypt, who played a key role in the downfall of the Ayyubids.
+            Shams al-Din Law'law': A lieutenant of Malik Nasir, captured and slaughtered by Mamelukes.
+            Malik Mu'izz: (r. 1254-1257 AD) Throne name of 'Izz al-Din Aibek.
+            Rukn al-Din Baibars: (r. 1260-1277 AD) Mameluke sultan.
+            Mervan (Ass-Mervan): The last Umayyad Caliph, whose lineage is claimed by the Silemani beys.
+
+        Other Key Individuals:
+
+            Mehrdad R. Izady: English translator and commentator of "The Sharafnama."
+            Fraus-Dolus: Commented on literal translation.
+            Mahmud b. 'Abdallah Katib Chalabi (Haji Khalifa): Author of the biographical dictionary, "Kashf al-zunun," which mentions Sharaf Khan al-Bidlisi.
+            Ibn Azraq al-Fariqi: Historian whose work provides information on the Marwanids.
+            Hamdallah Mustawfi Qazvini: Persian-language historian, author of "Guzida," a primary source for Bitlisi's work.
+            Qadi Ahmad Ghaffari Qazvini: Persian-language historian, author of "Jahanara," a primary source for Bitlisi's work.
+            Ibn Athir: Author of the Arabic work "Kamil," praised by Bitlisi as a source.
+            Ibn Khallikan: Author of the Arabic work "Wafayyat," praised by Bitlisi as a source.
+            Yafi'i: Author of the Arabic work "Mir'at," referenced by Bitlisi as a source for Ayyubid history.
+            Jamal al-Din Abu'l-Qasim Kashi: Historian credited with producing "Tarikh-i Oljeytu."
+            Rashid al-Din Fadlallah: Credited (and accused by Kashi of stealing credit for) the "Jami' al-tawarikh."
+            Mahmiid Bayazidi: (fl. 1858-59) Kurd who made the first authenticated Kurdish translation of "The Sharafnama."
+            Alexander Jaba: Russian Orientalist and General Consul in Ottoman Erzurum, collaborated with Bayazidi.
+            Francois B. Charmoy: (fl. 1868-75) Produced a French translation and commentary of "The Sharafnama."
+            Muhammad Ali Awni: (d. c. 1958-62) Produced a much-used Arabic translation of "The Sharafnama."
+            Mehmet Emin Bozarslan: (fl. 1971) Kurdish scholar who produced a modern Turkish translation of "The Sharafnama."
+            'Abd al-Rahman Sharafkandi Hazhar: (fl. 1981) Kurdish folklorist and linguist who translated "The Sharafnama" into Sorani Kurdish.
+            Abu'l-Fadl Ibn 'Amid: Vizier of Rukn al-Dawla b. Buwayh, sent to confront Hasanwayh.
+            Muhammad Khurshid: Vizier of Nasir al-Din Muhammad b. Hilal b. Badir.
+            Atabeg Sonqur: Patron of Abi-Tahir, against whom Abi-Tahir rebelled.
+            Mirza Sultan-Ibrahim: Son of Shahrukh, who confirmed Ghiyath al-Din's rule in Luristan.
+            Emir Temiir Kuragan (Tamerlane): (r. 1370-1405 AD) Founder of the Timurid empire, who invaded Greater Lur.
+            Shahrukh Mirza: Son of Tamerlane, who affirmed the rule of Malik Muhammad and Emir Shamseddin.
+            Sultan Selim Han: Ottoman Sultan, whose support helped Lala Kasım regain Egil.
+            Mehmed Paşa (Beylerbeyi): Ottoman governor to whom Lala Kasım gave the fortress of Amed.
+            Imad al-Din Zangi: Emir of Mosul, who welcomed Saladin's father and uncle.
+            Kit-Buqa Noyin: Mongol general under Hulagu Khan.
+            Ahmad Tegiider (Ahmad Khan): (r. 1282-1284 AD) Third Ilkhanid Mongol king of Persia.
+            Arghun Khan: Ilkhanid Mongol king, who succeeded Ahmad Khan.
+            Qizil: Paternal cousin of Afrasiyab I, who revolted with Salghur-Shah.
+            Jalal al-Din b. Tekele: Son of Atabeg Tekele, sent as a scout by Afrasiyab I.
+            Gaykhatu: (r. 1291-1295 AD) Fifth Ilkhanid Mongol king of Persia, who executed Afrasiyab I.
+            Mahmud Ghazan Khan: (r. 1295-1304 AD) Ilkhanid Mongol king, to whom a grandson of Shaykh Kakawayh appealed.
+            Sultan Muhammad Khudabanda Oljeytu: (r. 1304-1317 AD) Ilkhanid king, who confirmed the division of Luristan.
+            Malika-Khatun: Wife of Hisam al-Din Khalil, who opposed his decision to meet 'Izz al-Din Garshasp.
+            Sayf al-Din Toghril: Commander of Sulaymanshah's vanguard.
+            Mengu (Mongke) Khan: (r. 1251-1257 AD) Fourth Grand Khan of the Mongols, to whom Badr al-Din Mas'ud appealed for troops.
+            Amir-Khan Mosullu: Maternal grandfather of Sharaf al-Din Bitlisi, governor of Hamadan, involved in Safavid politics regarding Muhammadi.
+            Shah Ismail-i Safavi: (r. 1501-1524 AD) The founder of the Safavid dynasty, who had a complex relationship with Kurdish rulers.
+            Shah Tahmasp: (r. 1524-1576 AD) Safavid king, who ordered the release of Muhammadi and later had Bayezid killed.
+            Husayn Beg Stajlu: Entrusted with Muhammadi's care by King Tahmasp.
+            Sultan Murat Khan: (r. 1574-1595 AD) Ottoman Sultan, mentioned by Bitlisi as "the late" in 1597.
+            King 'Abbas: (r. 1588-1629 AD) Safavid king, who consolidated power and intervened in Luristan.
+            Qaradash: A mameluke of Saladin, sent to conquer parts of the Maghrib.
+            Malik al-Mu'azzam Fakhr al-Din Shams al-Dawla Tiranshah: Brother of Saladin, who conquered Yemen.
+            Al-Malik al-Kamil Nasir al-Din Muhammad Saphadin: Ayyubid ruler.
+            Sayf al-Islam Zahir al-Din Toghtegin: Son of Saladin's brother, who ruled in Yemen.
+            Richard the Lionhearted: (r. 1189-1199 AD) King of England, a prominent Crusader who fought against Saladin.
+            Shaykh Sadiq: A pious Kurd from Arbil, chosen by Malik Kamil to shroud and bury him with unblemished funds.
+            Izz al-Din 'Abd al-Salam: Ayyubid scholar/official in Damascus who opposed Isma'il's alliance with Crusaders.
+            Abu-'Umar b. al-Hajib: Ayyubid scholar/official in Damascus who opposed Isma'il's alliance with Crusaders.
+            'Izz al-Din Aibek (Malik Mu'izz): (r. 1250-1257 AD) First Mameluke king of Egypt.
+            Shams al-Din Muhammad: Ayyubid ruler of Hisn Keyfa.
+            Mehmed III: (r. 1595-1603 AD) Ottoman Sultan, praised by Bitlisi in the foreword.
+            Murad Khan (Murad I): (r. c. 1359-1389) Early Ottoman Sultan.
+            Mawlana Taj al-Din (Khayr al-Din Pasha): (fl. 14th century) A Kurd who became Grand Vizier of Orkhan.
+            Orkhan: (r. c. 1324-1360) Second Ottoman ruler.
+            Mirza Shahrukh: (r. 1405-1447 AD) Timurid ruler, son of Tamerlane.
+            Kara Yusuf: (r. 1388-1420 AD) Qara Qoyunlu leader, rival of Tamerlane, exiled in Egypt.
+            Sultan Ferah: Mameluke ruler of Egypt, who imprisoned Kara Yusuf and Sultan Ahmed El-Celayeri.
+            Sultan Ahmed El-Celayeri: Ex-governor of Baghdad, imprisoned with Kara Yusuf.
+            Uzun Hasan: (r. 1453-1478 AD) Akkoyunlu king, who destroyed Abi-Sa'id's army.
+            Süleyman Bey Bijenoğlu: Ottoman commander sent by Uzun Hasan to invade Bitlis.
+            Mehmed Şalvi: Turkmen leader whose forces clashed with Emir Shamseddin near Bitlis.
+            Hasan Ali and Hüseyin Ali: Two princes from the Bitlis ruling family, taken by Muhammad Ağa Kelhoki to Hakkari.
+            Kalender Ağa: Opponent of Ibrahim Bey in Bitlis.
+            Dede Bey Qewalisi: Allied with Kalender Ağa against the Bey of Bitlis Liva.
+            Muhammad Şahneman Qewalisi: Bitlisi's tutor and guide, related stories about Emir Sheref.
+            Ulame: An ambitious and deceptive figure, initially an enemy of Sheref Khan, who manipulated Ottoman-Safavid relations.
+            Fil Yakub Paşa: Ottoman Pasha, who advised Sheref Khan against trusting the Ottomans.
+            Khusrev Paşa: Ottoman Beylerbey of Van, responsible for building charitable institutions in Bitlis.
+            Muhammad Bey: Son of Saruhan Bey (Hazzo), who succeeded his father after his death in battle against the Qizilbash.
+            Ahmed Bey: Hazzo ruler, who came to power with the help of the Ottomans.
+            Duman Bey: (d. 1591/92 AD) Zirkan ruler, son of Emir Sheref, killed in battle against the Qizilbash.
+            Muhammed Bey b. Duman Bey: (r. 1579-???? AD) Zirkan ruler, son of Duman Bey.
+            Haydar Bey: Mukri ruler.
+            Mir Nazar: Mukri ruler.
+            Mir Hıdır: Mukri ruler.
+            Emire Bey (Paşa): Mukri ruler, who had to pay large sums to the Tabriz treasury.
+            Seyfeddin: Mukri ruler known for his intelligence and cunning, who gathered support to expand his control.
+            Sarim Bey: Mukri ruler who successfully fought against the Qizilbash for a long period.
+            Sultan Hüseyin: Imadiye ruler, who was ordered to march on Mukri rulers.
+            Zeynel Bey: Hakkari ruler, who was ordered to march on Mukri rulers.
+            İbrahim Bey: Ottoman governor of Amurk, Kelhok, and Poğnad, appointed on Ulame's recommendation.
+            Cafer Bey: Dunbili ruler, mentioned in a story about a khutba.
+            Nazar Bey: Dunbili ruler, who sought Ottoman support and engaged in conflict with the Mahmudiyan tribe.
+            Emir İskender: Kalhur ruler, who served Shah Tahmasp and Shah Ismail.
+            Qubad Bey bin Ömer Bey: Kalhur ruler, known for his courage and just administration.
+            Bıdağ Bey: Chigini leader, given high command by the Ottoman Beylerbeyi of Erzurum.
+            Üveys Bey: Pazuki ruler, who suppressed Rafizi and impious traditions among his people.
+            Kılıç Bey: Pazuki ruler, whose son served Shah Abbas.
+            İbrahim Bey (Okçu-oğlu): Pazuki ruler, appointed by Ottoman Serdar Ferhad Paşa, later removed.
+            Yustinyus: "Kafir" ruler of Akhlat in 649 AD.
+            Servend bin Yunus: Ruler of Bitlis in 649 AD, who made peace with the Muslims.
+            Senasır: "Kafir" King and Patriarch of Mush and Sasun in 649 AD.
+            Taron: Son of Yustinyus, who killed his father and surrendered Akhlat to Muslims.
+            Mevlana İdris: A scholar from Bitlis, known for his sharp wit and opposition to Safavid Shi'ism.
+            Mevlana Kemaleddin Tabib: A scholar from Shiraz, ordered by Shah Ismail to investigate Mevlana İdris.
+            Emir Şeref: Bitlis ruler.
+            Muhammed Ağa Kelhoki: A Rojkan leader, who persuaded Hasan Ali and Hüseyin Ali to go to Hakkari.
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DATA PARSING ---
+            function parseSharafname(text) {
+                const lines = text.split('\n').filter(line => line.trim() !== '');
+                const data = {
+                    timeline: [],
+                    characters: {},
+                    characterFlatList: []
+                };
+
+                let mode = 'timeline';
+                let currentTimelineSection = null;
+                let currentCharacterSection = null;
+
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i].trim();
+
+                    if (line === 'Timeline and Figures of the Sharafname') continue;
+
+                    if (line === 'Cast of Characters') {
+                        mode = 'characters';
+                        continue;
+                    }
+                    
+                    if (mode === 'timeline') {
+                        if (!line.startsWith('    ') && line.endsWith(':')) {
+                            currentTimelineSection = {
+                                title: line.slice(0, -1),
+                                events: []
+                            };
+                            data.timeline.push(currentTimelineSection);
+                        } else if (currentTimelineSection) {
+                            const parts = line.split(':');
+                            const date = parts.shift().trim();
+                            const description = parts.join(':').trim();
+                            if (date && description) {
+                                currentTimelineSection.events.push({ id: `event-${i}`, date, description });
+                            }
+                        }
+                    } else if (mode === 'characters') {
+                         if (!line.startsWith('    ') && line.endsWith(':')) {
+                            currentCharacterSection = line.slice(0, -1);
+                            data.characters[currentCharacterSection] = [];
+                        } else if (currentCharacterSection) {
+                            const parts = line.split(':');
+                            const nameWithAliases = parts.shift().trim();
+                            const description = parts.join(':').trim();
+                            
+                            const name = nameWithAliases.split('(')[0].trim();
+                            const aliases = (nameWithAliases.match(/\((.*?)\)/g) || []).map(a => a.slice(1, -1));
+
+                            if (name && description) {
+                                const character = { id: `char-${i}`, name, nameWithAliases, description, aliases };
+                                data.characters[currentCharacterSection].push(character);
+                                data.characterFlatList.push(character);
+                            }
+                        }
+                    }
+                }
+                data.characterFlatList.sort((a, b) => a.name.localeCompare(b.name));
+                return data;
+            }
+
+            function extractYear(dateString) {
+                const match = dateString.match(/\d{3,4}/);
+                if (match) return match[0];
+                if (dateString.toLowerCase().includes('mythical')) return 'Myth';
+                if (dateString.toLowerCase().includes('pre-')) return 'Pre';
+                return 'N/A';
+            }
+
+            // --- RENDER FUNCTIONS ---
+            function renderTimeline(data, container) {
+                container.innerHTML = ''; // Clear loader
+                data.timeline.forEach(section => {
+                    const sectionEl = document.createElement('div');
+                    sectionEl.className = 'mb-12';
+                    // The h2 header for each section, used for scroll detection
+                    sectionEl.innerHTML = `<h2 class="text-3xl font-bold text-white mb-6 section-header" data-section-title="${section.title}">${section.title}</h2>`;
+                    
+                    const listEl = document.createElement('div');
+                    section.events.forEach((event, index) => {
+                        const isLast = index === section.events.length - 1;
+                        const itemEl = document.createElement('div');
+                        itemEl.className = 'flex';
+                        itemEl.innerHTML = `
+                            <!-- Year and Dot -->
+                            <div class="flex flex-col items-center mr-6">
+                                <div>
+                                    <div class="flex h-16 w-16 items-center justify-center rounded-full bg-[#5a4433] border-2 border-[#7a5f49]">
+                                       <span class="text-amber-300 font-bold text-lg">${extractYear(event.date)}</span>
+                                    </div>
+                                </div>
+                                ${!isLast ? '<div class="h-full w-0.5 bg-[#7a5f49]"></div>' : ''}
+                            </div>
+                            <!-- Content -->
+                            <div class="pb-10 flex-1">
+                                <div class="bg-[#2a211c] p-4 rounded-lg shadow-md hover:bg-[#5a4433] transition-colors duration-200 cursor-pointer group" data-event-id="${event.id}">
+                                    <h3 class="font-semibold text-white group-hover:text-amber-200 mb-1">${event.date}</h3>
+                                    <p class="text-[#c2b4a3]">${event.description}</p>
+                                </div>
+                            </div>
+                        `;
+                        itemEl.querySelector('.group').addEventListener('click', () => showEventDetails(event));
+                        listEl.appendChild(itemEl);
+                    });
+                    
+                    sectionEl.appendChild(listEl);
+                    container.appendChild(sectionEl);
+                });
+            }
+
+            function renderCharacters(characterList) {
+                const container = document.getElementById('character-list');
+                const loader = document.getElementById('character-loader');
+                if (loader) loader.remove();
+                container.innerHTML = ''; 
+                 if (characterList.length === 0) {
+                    container.innerHTML = `<p class="text-[#c2b4a3] text-center">No characters found.</p>`;
+                    return;
+                }
+                
+                Object.entries(parsedData.characters).forEach(([category, chars]) => {
+                     const visibleChars = chars.filter(c => characterList.some(cl => cl.id === c.id));
+                     visibleChars.sort((a, b) => a.name.localeCompare(b.name));
+
+                     if(visibleChars.length > 0) {
+                        const categoryEl = document.createElement('div');
+                        categoryEl.className = 'mb-4';
+                        categoryEl.innerHTML = `<h3 class="text-lg font-semibold text-amber-300 mb-2">${category}</h3>`;
+                        
+                        visibleChars.forEach(char => {
+                            const charEl = document.createElement('div');
+                            charEl.className = 'text-[#e8e0d4] hover:bg-[#5a4433] p-2 rounded-md cursor-pointer';
+                            charEl.textContent = char.name;
+                            charEl.dataset.charId = char.id;
+                            charEl.addEventListener('click', () => showCharacterDetails(char));
+                            categoryEl.appendChild(charEl);
+                        });
+                        container.appendChild(categoryEl);
+                     }
+                });
+            }
+            
+            // --- MODAL & INTERACTIVITY ---
+            const modal = document.getElementById('modal');
+            const modalBackdrop = document.getElementById('modal-backdrop');
+            const modalContent = document.getElementById('modal-content');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            const modalClose = document.getElementById('modal-close');
+
+            function showModal() {
+                modal.classList.remove('hidden');
+                modalBackdrop.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    modalContent.classList.remove('modal-enter');
+                    modalContent.classList.add('modal-enter-active');
+                });
+            }
+
+            function hideModal() {
+                modalContent.classList.remove('modal-enter-active');
+                modalContent.classList.add('modal-leave-active');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modalBackdrop.classList.add('hidden');
+                    modalContent.classList.remove('modal-leave-active');
+                    modalContent.classList.add('modal-enter');
+                }, 300);
+            }
+
+            modalClose.addEventListener('click', hideModal);
+            modalBackdrop.addEventListener('click', hideModal);
+
+            function showEventDetails(event) {
+                modalTitle.textContent = `Event: ${event.date}`;
+                let descriptionHtml = event.description;
+
+                // Highlight character names in description
+                parsedData.characterFlatList.forEach(char => {
+                    const allNames = [char.name, ...char.aliases];
+                    allNames.forEach(name => {
+                        const regex = new RegExp(`\\b(${name.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})\\b`, 'gi');
+                        descriptionHtml = descriptionHtml.replace(regex, `<span class="character-link" data-char-id="${char.id}">$1</span>`);
+                    });
+                });
+                
+                modalBody.innerHTML = `<p class="text-lg text-[#e8e0d4]">${descriptionHtml}</p>`;
+                
+                modalBody.querySelectorAll('.character-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        const charId = e.target.dataset.charId;
+                        const character = parsedData.characterFlatList.find(c => c.id === charId);
+                        if (character) showCharacterDetails(character);
+                    });
+                });
+
+                showModal();
+            }
+
+            function showCharacterDetails(character) {
+                modalTitle.textContent = `Character: ${character.nameWithAliases}`;
+                
+                let bodyHtml = `<p class="text-lg text-[#e8e0d4] mb-6">${character.description}</p>`;
+                
+                // Find related events
+                const relatedEvents = [];
+                const allNames = [character.name, ...character.aliases];
+                
+                parsedData.timeline.forEach(section => {
+                    section.events.forEach(event => {
+                       let found = allNames.some(name => {
+                           const regex = new RegExp(`\\b${name.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'i');
+                           return regex.test(event.description);
+                       });
+                       if (found) {
+                           relatedEvents.push(event);
+                       }
+                    });
+                });
+                
+                if (relatedEvents.length > 0) {
+                    bodyHtml += `<h4 class="text-xl font-semibold text-white mb-3">Related Events</h4>`;
+                    bodyHtml += `<ul class="list-disc list-inside space-y-2 text-[#e8e0d4]">`;
+                    relatedEvents.forEach(event => {
+                        bodyHtml += `<li><span class="font-medium text-amber-300">${event.date}:</span> ${event.description.substring(0,100)}...</li>`;
+                    });
+                    bodyHtml += `</ul>`;
+                } else {
+                    bodyHtml += `<p class="text-[#c2b4a3] italic">No timeline events found mentioning this character.</p>`;
+                }
+
+                modalBody.innerHTML = bodyHtml;
+                showModal();
+            }
+            
+            // --- SEARCH FUNCTIONALITY ---
+            const searchInput = document.getElementById('character-search');
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                if (searchTerm.length < 2) {
+                    renderCharacters(parsedData.characterFlatList);
+                    return;
+                }
+                const filtered = parsedData.characterFlatList.filter(char => 
+                    char.name.toLowerCase().includes(searchTerm) ||
+                    char.aliases.some(a => a.toLowerCase().includes(searchTerm))
+                );
+                renderCharacters(filtered);
+            });
+
+
+            // --- INITIALIZATION & DYNAMIC HEADER LOGIC (INTERSECTION OBSERVER) ---
+            const markdownText = document.getElementById('sharafnama-data').textContent;
+            const parsedData = parseSharafname(markdownText);
+            
+            const scrollContent = document.getElementById('timeline-scroll-content');
+            const stickyHeader = document.getElementById('timeline-sticky-header');
+            
+            renderTimeline(parsedData, scrollContent);
+            renderCharacters(parsedData.characterFlatList);
+
+            // Setup IntersectionObserver
+            const sectionHeaders = scrollContent.querySelectorAll('.section-header');
+            let lastIntersectingHeader = null;
+
+            const observerCallback = (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        lastIntersectingHeader = entry.target;
+                    }
+                });
+
+                // Update header only with the last known intersecting element when scrolling
+                if (lastIntersectingHeader) {
+                    stickyHeader.textContent = lastIntersectingHeader.dataset.sectionTitle;
+                }
+            };
+            
+            const observerOptions = {
+              root: scrollContent,
+              rootMargin: "0px 0px -100% 0px", // Triggers when element is at the very top
+              threshold: 0
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            if (sectionHeaders.length > 0) {
+                // Initialize header with the first section title
+                stickyHeader.textContent = sectionHeaders[0].dataset.sectionTitle;
+                
+                // This is a list of headers that are currently visible at the top
+                let visibleHeaders = [];
+
+                const scrollObserverCallback = (entries) => {
+                    entries.forEach(entry => {
+                        const title = entry.target.dataset.sectionTitle;
+                        if (entry.isIntersecting) {
+                            // Add to list if not already there
+                            if (!visibleHeaders.includes(title)) {
+                                visibleHeaders.push(title);
+                            }
+                        } else {
+                            // Remove from list
+                            visibleHeaders = visibleHeaders.filter(h => h !== title);
+                        }
+                    });
+
+                    // Update the header to the last element in the visible list
+                    if (visibleHeaders.length > 0) {
+                        stickyHeader.textContent = visibleHeaders[visibleHeaders.length - 1];
+                    } else if (sectionHeaders.length > 0) {
+                        // Fallback if no headers are visible (scrolled to top)
+                        stickyHeader.textContent = sectionHeaders[0].dataset.sectionTitle;
+                    }
+                };
+                
+                const scrollObserver = new IntersectionObserver(scrollObserverCallback, {
+                    root: scrollContent,
+                    // The negative top margin means the element's top edge must pass 
+                    // this many pixels *above* the container's top edge to be "intersecting"
+                    rootMargin: `0px 0px -${scrollContent.clientHeight - 30}px 0px`,
+                    threshold: 0
+                });
+
+                sectionHeaders.forEach(header => scrollObserver.observe(header));
+
+            } else {
+                 document.getElementById('timeline-loader').remove();
+                 stickyHeader.textContent = 'Timeline';
+            }
+        });
+    </script>
+</body>
+</html>
+

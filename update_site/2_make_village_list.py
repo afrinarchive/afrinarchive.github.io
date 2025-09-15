@@ -54,7 +54,7 @@ def create_markdown_file(villages, output_path):
             file.write(f"{village['village_name']}\t{village['nahiya']}\t{village['filename']}\n")
 
 def main():
-    folder_path = r"C:\Users\Zachar\Desktop\temp_afrin_archive\village_sites"
+    folder_path = r"C:\Users\Zachar\Desktop\Afrin_Archive\village_sites"
     output_file = os.path.join(folder_path, "00_names_nahiyas.md")
     
     villages = extract_village_data(folder_path)

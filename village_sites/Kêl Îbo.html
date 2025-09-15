@@ -4,25 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive | Kêl Îbo</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- START: LEAFLET & PLUGIN CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
-    <!-- END: LEAFLET & PLUGIN CSS -->
-
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Light theme variables */
+        body { font-family: 'Inter', sans-serif; }
         :root {
             --bg-color: #f0f2e6;
             --text-color: #000000;
@@ -32,9 +23,8 @@
             --link-color: #2563eb;
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
-            --internal-link-color: #2563eb; /* This is the blue for light mode */
+            --internal-link-color: #2563eb;
         }
-        /* Dark theme variables from user image */
         .dark {
             --bg-color: #2d2d2d;
             --text-color: #f1f1f1;
@@ -44,86 +34,28 @@
             --link-color: #63b3ed;
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
-            --internal-link-color: #86efac; /* This is the light green from your image */
+            --internal-link-color: #86efac;
         }
-        /* Applying theme colors */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        h1, h2, h3, .prose {
-            color: var(--text-color);
-        }
-        .subtext {
-             color: var(--subtext-color);
-        }
-        .themed-border {
-            border-color: var(--border-color);
-        }
-        .internal-link {
-            text-decoration: none; /* This removes the underline */
-            cursor: pointer;
-            color: var(--internal-link-color); /* This uses a new dedicated color variable */
-        }
-        .external-link {
-            color: var(--link-color);
-        }
-        .button-style {
-             border: 1px solid var(--border-color);
-        }
-        .button-style:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-hover-text);
-        }
-        /* Details/Summary styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .prose strong {
-            font-weight: 600;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-        }
-        .prose ol, .prose ul {
-            margin-bottom: 1rem;
-        }
-        /* Inverted colors for the theme toggle button */
-        .toggle-button-colors {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* Custom styles for Leaflet popups and controls to match theme */
-        .leaflet-popup-content-wrapper, .leaflet-control-layers {
-            background-color: var(--card-bg-color) !important;
-            color: var(--text-color) !important;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg-color) !important;
-        }
-        .leaflet-popup-close-button {
-            color: var(--text-color) !important;
-        }
-        .leaflet-popup-content b {
-            font-weight: 600;
-        }
-        .leaflet-popup-content span {
-            color: var(--subtext-color);
-            text-transform: capitalize;
-        }
-        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
         .leaflet-control-layers-toggle {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
             background-size: 20px 20px !important;
@@ -131,57 +63,92 @@
         .dark .leaflet-control-layers-toggle {
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
         }
-        .leaflet-control-scale-line {
-            background: var(--card-bg-color);
-            border-color: var(--text-color);
-            color: var(--text-color);
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-mabeta .map-container {
+            position: relative;
+        }
+        #minimap-mabeta .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-mabeta .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            border: 3px solid var(--border-color);
-            border-radius: 8px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* --- COORDINATES FOR ÇK Map 13 --- 
+         Recalculated for original image dimensions of 984x1495 pixels.
+        */
+        #minimap-mabeta .sorbe { left: 46.85%; top: 9.70%; width: 8.54%; height: 5.62%; }
+        #minimap-mabeta .gemruk { left: 56.20%; top: 13.11%; width: 8.54%; height: 5.62%; }
+        #minimap-mabeta .semalka { left: 42.78%; top: 14.25%; width: 9.35%; height: 6.15%; }
+        #minimap-mabeta .erebsexo { left: 58.33%; top: 16.45%; width: 9.35%; height: 6.15%; }
+        #minimap-mabeta .sexutka { left: 53.15%; top: 19.46%; width: 8.94%; height: 5.89%; }
+        #minimap-mabeta .emara { left: 51.83%; top: 23.95%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .avraze { left: 26.22%; top: 27.96%; width: 8.74%; height: 5.75%; }
+        #minimap-mabeta .gobeke { left: 22.36%; top: 30.70%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .sexkele { left: 27.44%; top: 32.37%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .sewiya { left: 13.62%; top: 36.59%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .kelibo { left: 18.50%; top: 40.94%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .enhecere { left: 71.65%; top: 29.83%; width: 10.57%; height: 6.96%; }
+        #minimap-mabeta .omo { left: 64.94%; top: 34.38%; width: 10.57%; height: 6.96%; }
+        #minimap-mabeta .kokane { left: 64.53%; top: 44.35%; width: 10.37%; height: 6.82%; }
+        #minimap-mabeta .qitraniye { left: 39.84%; top: 45.95%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .mabete { left: 43.60%; top: 51.97%; width: 10.77%; height: 7.09%; }
+        #minimap-mabeta .dagire { left: 61.28%; top: 51.04%; width: 10.57%; height: 6.96%; }
+        #minimap-mabeta .qentere { left: 41.77%; top: 54.45%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .ereba { left: 29.47%; top: 55.72%; width: 9.55%; height: 6.29%; }
+        #minimap-mabeta .kurke-jerin { left: 13.31%; top: 54.78%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .kurke-jorin { left: 10.06%; top: 55.65%; width: 9.35%; height: 6.15%; }
+        #minimap-mabeta .sariya { left: 10.98%; top: 58.19%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .hebo { left: 11.89%; top: 62.27%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .setana { left: 15.14%; top: 59.93%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .selo { left: 29.37%; top: 59.46%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .xazyane-jerin { left: 21.44%; top: 64.82%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .xazyane-jorin { left: 21.85%; top: 64.95%; width: 9.76%; height: 6.42%; } /* Note: Very close coords */
+        #minimap-mabeta .birimce { left: 39.43%; top: 64.15%; width: 9.96%; height: 6.56%; }
+        #minimap-mabeta .mirka { left: 48.48%; top: 64.08%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .sitka { left: 50.91%; top: 67.36%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .comezna { left: 33.74%; top: 68.63%; width: 10.37%; height: 6.82%; }
+        #minimap-mabeta .merserke { left: 27.03%; top: 71.91%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .elcara { left: 32.93%; top: 71.71%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .reca { left: 36.08%; top: 71.97%; width: 9.96%; height: 6.56%; }
+        #minimap-mabeta .kaxre { left: 53.15%; top: 73.18%; width: 9.55%; height: 6.29%; }
+        #minimap-mabeta .mistesura { left: 41.67%; top: 77.86%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .hecqasma { left: 40.85%; top: 79.73%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .dela { left: 43.40%; top: 85.35%; width: 9.96%; height: 6.56%; }
+        #minimap-mabeta .ruta { left: 51.32%; top: 83.01%; width: 9.55%; height: 6.29%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
     </style>
 </head>
 <body>
-
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
-        <!-- Header Section -->
         <header class="mb-8">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Kêl Îbo</h1>
         </header>
 
         <main class="space-y-6">
-            <!-- Basic Information Card -->
             <div class="card p-6 rounded-xl">
                 <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
                     <h2 class="text-2xl font-semibold">General Information</h2>
-                    <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
                         <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
@@ -189,19 +156,42 @@
                         </svg>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                        <p class="text-lg">Ma'batli</p>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Mabeta</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Al-Aqra, Ibrahîm el-Eqre&#x27;, Kelo, Kulêbo, Kêl Îbo, Kêlîbo, الأقرع, كيل ايبو</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
-                        <p class="text-lg">Al-Aqra, الأقرع, كيل ايبو</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
+<img alt="Map Image 13" onerror="this.onerror=null; this.src='https://placehold.co/984x1495/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 13.png"/>
+<div class="sorbe highlight-box"></div><div class="gemruk highlight-box"></div><div class="semalka highlight-box"></div><div class="erebsexo highlight-box"></div><div class="sexutka highlight-box"></div><div class="emara highlight-box"></div><div class="avraze highlight-box"></div><div class="gobeke highlight-box"></div><div class="sexkele highlight-box"></div><div class="sewiya highlight-box"></div><div class="kelibo highlight-box" style="display: block;"></div><div class="enhecere highlight-box"></div><div class="omo highlight-box"></div><div class="kokane highlight-box"></div><div class="qitraniye highlight-box"></div><div class="mabete highlight-box"></div><div class="dagire highlight-box"></div><div class="qentere highlight-box"></div><div class="ereba highlight-box"></div><div class="kurke-jerin highlight-box"></div><div class="kurke-jorin highlight-box"></div><div class="sariya highlight-box"></div><div class="hebo highlight-box"></div><div class="setana highlight-box"></div><div class="selo highlight-box"></div><div class="xazyane-jerin highlight-box"></div><div class="xazyane-jorin highlight-box"></div><div class="birimce highlight-box"></div><div class="mirka highlight-box"></div><div class="sitka highlight-box"></div><div class="comezna highlight-box"></div><div class="merserke highlight-box"></div><div class="elcara highlight-box"></div><div class="reca highlight-box"></div><div class="kaxre highlight-box"></div><div class="mistesura highlight-box"></div><div class="hecqasma highlight-box"></div><div class="dela highlight-box"></div><div class="ruta highlight-box"></div>
+</div></div>
                 </div>
             </div>
 
-            <!-- Map and Location Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
@@ -211,69 +201,62 @@
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
             
-            <!-- Photos Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/Kel Ebo2.jpg" alt="Photo of Kel Ebo2" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Kel+Ebo2.jpg';"><img src="../village_photos/kel ebo.jpg" alt="Photo of kel ebo" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=kel+ebo.jpg';"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/Kel Ebo2.jpg" alt="Photo of Kêl Îbo" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Kel+Ebo2.jpg';">
+<img src="../village_photos/kel ebo.jpg" alt="Photo of Kêl Îbo" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=kel+ebo.jpg';">
+</div>
             </div>
 
-            <!-- Summaries Card (I-IV) -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;"># Kêl Îbo (كيل ايبو)</p>
-<p style="margin-bottom: 1em;">Villages of <span class="internal-link">Mabetli District</span> (المعبطلي) / Mabeta</p>
-<p style="margin-bottom: 1em;"><span class="internal-link">Kêl Îbo</span> (كيل ايبو) - <span class="internal-link">Kêl Îbo</span></p>
-<p style="margin-bottom: 1em;">===</p>
-<p style="margin-bottom: 1em;">According to the book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds</span>' (<span class="internal-link">Afrin City</span>) Geographic Study by <span class="internal-link">Dr. Mohammed Abdo Ali</span>:</p>
-<p style="margin-bottom: 1em;"><strong><span class="internal-link">Kêl Îbo</span> (كيل إيبو), <span class="internal-link">Al-Aqra</span> (الأقرع)</strong> /338N - 1145H - 11km - 520m/:</p>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Kêl Îbo (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of <span class="internal-link">Mabetli District</span> (المعبطلي) / Mabeta</p>
+<p><span class="internal-link">Kêl Îbo</span> (كيل ايبو) - <span class="internal-link">Kêl Îbo</span></p>
+<p>===</p>
+<p>According to the book &#x27;<span class="internal-link">جبل الكرد</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (<span class="internal-link">Afrin City</span>) Geographic Study by <span class="internal-link">Dr. Mohammed Abdo Ali</span>:</p>
+<p><strong><span class="internal-link">Kêl Îbo</span> (كيل إيبو), <span class="internal-link">Al-Aqra</span> (الأقرع)</strong> /338N - 1145H - 11km - 520m/:</p>
 <ul>
-<li><span class="internal-link">Kêl Îbo</span> (كيل إيبو): From the name of the scholar <span class="internal-link">Ibrahim</span> (إبراهيم) and his nickname "<span class="internal-link">Al-Aqra</span>" (الأقرع). He was one of the first inhabitants of the village, and <span class="internal-link">Îbo</span> (إيبو) was a skilled player of the tambourine instrument.</li>
+<li><span class="internal-link">Kêl Îbo</span> (كيل إيبو): From the name of the scholar <span class="internal-link">Ibrahim</span> (إبراهيم) and his nickname &quot;<span class="internal-link">Al-Aqra</span>&quot; (الأقرع). He was one of the first inhabitants of the village, and <span class="internal-link">Îbo</span> (إيبو) was a skilled player of the tambourine instrument.</li>
 <li>A small village located on the far southwestern slope of <span class="internal-link">Hawar Mountain</span> (جبل هاوار).</li>
 </ul>
-<p style="margin-bottom: 1em;">According to the book: '<span class="internal-link">عفرين.... نهرها وروابيها الخضراء</span>' '<span class="internal-link">Afrin City.... Its River and Green Hills</span>' by writer <span class="internal-link">Abdulrahman Mohammed</span> from <span class="internal-link">Qitma village</span> (قطمه):</p>
-<p style="margin-bottom: 1em;"><strong><span class="internal-link">Kêl Îbo</span> (كيل ايبو)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Mabetli District</span> (ناحية المعبطلي), <span class="internal-link">Afrin City region</span> (منطقة عفرين), <span class="internal-link">Aleppo Governorate</span> (محافظة حلب).</p>
-<p style="margin-bottom: 1em;">It is a small village located in the central part of the mentioned mountain on the southern slope of <span class="internal-link">Hawari Mountain</span> (جبل هواري) on a mountain elevation and steep slope. Its soil is clay, 12km away from <span class="internal-link">Mabetli town</span> (بلدة المعبطلي) toward the northwest.</p>
-<p style="margin-bottom: 1em;">It is bordered to the north by a high mountain elevation and <span class="internal-link">Uksuzli village</span> (قرية أوكسوزلي), to the south by a slope and the fertile <span class="internal-link">Al-Katkh plain</span> (سهل الكتخ) and the <span class="internal-link">Afrin City - Rajo</span> road (طريق عفرين _ راجو) and the railway line and <span class="internal-link">Qitranli village</span> (قرية قطرانلي) and <span class="internal-link">Arab Oshaghi</span> (عرب أوشاغي), to the west by a slope and <span class="internal-link">Al-Tira valley</span> (وادي الطيرة) and railway and <span class="internal-link">Hamshalk village</span> (قرية حمشلك) and <span class="internal-link">Be'dinli</span> (بعدنلي), and to the east by a slope and plain and <span class="internal-link">Hayat village</span> (قرية حياة).</p>
-<p style="margin-bottom: 1em;">The number of houses is about 25, and its age is about 150 years. Its old dwellings are stone and clay with wooden roofs, and the modern ones are concrete spreading east and south except for the northern side which is high mountainous. It has electricity network and water network connected to a well south of the mentioned village.</p>
-<p style="margin-bottom: 1em;">Its inhabitants work in rain-fed agriculture on 250 hectares (grains, olives, vineyards, almonds) and irrigation from artesian wells with summer vegetables and fruit trees (walnuts, almonds, apricots, cherries). The village is surrounded by trees from all sides, and in front of it is the exposed plain overlooking the <span class="internal-link">Al-Katkh fertile plain</span> (سهل كتخ الخصب).</p>
-<p style="margin-bottom: 1em;">Among its most important families is the <span class="internal-link">Kilo family</span> (عائلة كيلو) (they were the first to inhabit the village).</p>
-<p style="margin-bottom: 1em;">Village mayor: <span class="internal-link">Farouk Hussein Minan</span> (فاروق حسين منان)</p>
-<p style="margin-bottom: 1em;">Prepared and implemented by: Site manager of <span class="internal-link">Afrin City Heritage</span>: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p style="margin-bottom: 1em;">20/12/2013</p></div></details><hr class="themed-border"></div>
-
-            <!-- Links Card (V) -->
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kel%20ibo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kel%20ibo.htm</a></li></ul>
+<p>According to the book: &#x27;<span class="internal-link">عفرين.... نهرها وروابيها الخضراء</span>&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27; by writer <span class="internal-link">Abdulrahman Mohammed</span> from <span class="internal-link">Qitma village</span> (قطمه):</p>
+<p><strong><span class="internal-link">Kêl Îbo</span> (كيل ايبو)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Mabetli District</span> (ناحية المعبطلي), <span class="internal-link">Afrin City region</span> (منطقة عفرين), <span class="internal-link">Aleppo Governorate</span> (محافظة حلب).</p>
+<p>It is a small village located in the central part of the mentioned mountain on the southern slope of <span class="internal-link">Hawari Mountain</span> (جبل هواري) on a mountain elevation and steep slope. Its soil is clay, 12km away from <span class="internal-link">Mabetli town</span> (بلدة المعبطلي) toward the northwest.</p>
+<p>It is bordered to the north by a high mountain elevation and <span class="internal-link">Uksuzli village</span> (قرية أوكسوزلي), to the south by a slope and the fertile <span class="internal-link">Al-Katkh plain</span> (سهل الكتخ) and the <span class="internal-link">Afrin City - Rajo</span> road (طريق عفرين _ راجو) and the railway line and <span class="internal-link">Qitranli village</span> (قرية قطرانلي) and <span class="internal-link">Arab Oshaghi</span> (عرب أوشاغي), to the west by a slope and <span class="internal-link">Al-Tira valley</span> (وادي الطيرة) and railway and <span class="internal-link">Hamshalk village</span> (قرية حمشلك) and <span class="internal-link">Be&#x27;dinli</span> (بعدنلي), and to the east by a slope and plain and <span class="internal-link">Hayat village</span> (قرية حياة).</p>
+<p>The number of houses is about 25, and its age is about 150 years. Its old dwellings are stone and clay with wooden roofs, and the modern ones are concrete spreading east and south except for the northern side which is high mountainous. It has electricity network and water network connected to a well south of the mentioned village.</p>
+<p>Its inhabitants work in rain-fed agriculture on 250 hectares (grains, olives, vineyards, almonds) and irrigation from artesian wells with summer vegetables and fruit trees (walnuts, almonds, apricots, cherries). The village is surrounded by trees from all sides, and in front of it is the exposed plain overlooking the <span class="internal-link">Al-Katkh fertile plain</span> (سهل كتخ الخصب).</p>
+<p>Among its most important families is the <span class="internal-link">Kilo family</span> (عائلة كيلو) (they were the first to inhabit the village).</p>
+<p>Village mayor: <span class="internal-link">Farouk Hussein Minan</span> (فاروق حسين منان)</p>
+<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin City Heritage</span>: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
+<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>III. Summary from other Channels&#x27; Transcripts of Kêl Îbo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><h3 class="font-semibold text-xl mt-6 mb-3">A. Summary from Halil Sino Transcript of Kêl Îbo</h3>
+<p>The village of Kêlîbo, historically known as <span class="internal-link">Ibrahîm el-Eqre&#x27;</span>, derives its Kurmanji name from the ancestral oral tradition of &quot;Kêlê Îbo&quot; (Ibo&#x27;s Tombstone), a name linked to the prophet Ibrahim. For generations, the village served as a crucial water source for seven neighboring communities, including <span class="internal-link">Seyo</span>, <span class="internal-link">Heyotê</span>, and <span class="internal-link">Gûbekê</span>, with a significant communal well being constructed by the villagers in 1974. The traditional life of its inhabitants, as recounted by 98-year-old resident Hesen Sîno, was centered on farming, where the land was plowed with oxen and worked by hand with tools like shovels and pickaxes. This agricultural lifestyle included practices such as digging caves known as &quot;nikenî&quot; to shelter livestock, with one such cave having been hand-dug by Hesen Sîno approximately 50 years ago. This past contrasts with the modern reality of family separation, a recurring theme among the elders. Residents like 76-year-old Meryem Mihemed Xelîl express deep sorrow over their children and relatives having moved to distant cities like Aleppo or migrated to European countries such as Germany, Holland, and Sweden, with some family members not having seen each other for over five years.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Kêl Îbo</h3>
+<p>Near the village of Kêlîbo stands the historic <span class="internal-link">Ketex iron railway bridge</span>, known locally as &quot;<span class="internal-link">Qunoq</span>,&quot; which was the site of a former train station. According to local accounts, the bridge and railway were constructed by the <span class="internal-link">French</span> as part of a major line connecting Turkey to cities like <span class="internal-link">Rajo</span>, <span class="internal-link">Afrin</span>, <span class="internal-link">Aleppo</span>, and <span class="internal-link">Damascus</span>. The construction date is marked on the iron sleepers as &quot;UNION 1911,&quot; with the project being completed in 1912. Beyond its function as transport infrastructure, the area under the bridge held significant cultural importance for the local people. During the 1970s and 1980s, it was a popular recreational and picnic destination for the entire region, centered around a spring that provided drinking water and a place to cool off. This spring, once surrounded by poplar and willow trees, has since dried up due to a lack of rain. The historical presence of the railway is also marked by the eucalyptus trees lining the nearby road, which are said to be over 100 years old, dating back to the time of the railway&#x27;s construction.</p></div></details></div>
             </div>
 
-            <!-- Additional Information Card (VI-X) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kel%20ibo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kel%20ibo.htm</a></li></ul>
+            </div>
+
             
 
-            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
             
 
         </main>
 
-        <!-- Footer -->
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Generated for archive purposes.</p>
+            <p class="text-sm subtext">Page Updated on September 15, 2025</p>
         </footer>
     </div>
 
-    <!-- START: LIGHTBOX HTML -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <!-- END: LIGHTBOX HTML -->
-
-    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
-
     <script>
-        // Theme toggle script (unchanged)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -306,35 +289,22 @@
             }
         });
 
-        // Main script runs after the page content has loaded
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LIGHTBOX SCRIPT ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxClose = document.getElementById('lightbox-close');
             const imageTriggers = document.querySelectorAll('.lightbox-trigger');
-
             imageTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     lightboxImage.src = trigger.src;
                     lightbox.classList.remove('hidden');
                 });
             });
-
-            function closeLightbox() {
-                lightbox.classList.add('hidden');
-            }
-
+            function closeLightbox() { lightbox.classList.add('hidden'); }
             lightbox.addEventListener('click', closeLightbox);
             lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
 
-            // --- MAP SCRIPT ---
             const iconConfig = {
                 shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
                 landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
@@ -345,7 +315,6 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-
             function createCustomIcon(type, isMain) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
@@ -353,7 +322,6 @@
                 const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-
                 const html = `
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
@@ -363,79 +331,38 @@
                             ${config.svg}
                         </svg>
                     </div>`;
-
-                return L.divIcon({
-                    html: html,
-                    className: '',
-                    iconSize: iconSize,
-                    iconAnchor: iconAnchor,
-                    popupAnchor: popupAnchor
-                });
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
-
             const mainVillageName = "Kêl Îbo";
             const villageLat = 36.615915;
             const villageLng = 36.722895;
             const initialZoom = 14;
-
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-
-            // --- Define all the map layers ---
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri'
-            });
-
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
             const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
                 maxZoom: 22
             });
-
-            // --- Set up the layer control ---
-            const baseMaps = {
-                "Satellite": esriImagery,
-                "Street": osmStreet,
-                "Terrain": thunderforestTerrain
-            };
-            
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
             L.control.layers(baseMaps).addTo(map);
             esriImagery.addTo(map);
-
-            // --- ADD MAP CONTROLS ---
-            // 1. Static Scale Bar
             L.control.scale({ imperial: false }).addTo(map);
-
-            // --- Fetch data and add markers ---
             fetch('afrin_locations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
                 .then(locations => {
                     locations.forEach(location => {
                         const isMainVillage = location.name === mainVillageName;
                         const customIcon = createCustomIcon(location.type, isMainVillage);
-                        
-                        const marker = L.marker([location.lat, location.lng], { 
-                            icon: customIcon,
-                            zIndexOffset: isMainVillage ? 1000 : 0
-                        }).addTo(map);
-                        
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
                         marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-
-                        if (isMainVillage) {
-                            marker.openPopup();
-                        }
+                        if (isMainVillage) { marker.openPopup(); }
                     });
                 })
-                .catch(error => {
-                    console.error('Error loading location data:', error);
-                    const mapDiv = document.getElementById('map');
-                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
     </script>

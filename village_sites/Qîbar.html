@@ -4,25 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive | Qîbar</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- START: LEAFLET & PLUGIN CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
-    <!-- END: LEAFLET & PLUGIN CSS -->
-
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Light theme variables */
+        body { font-family: 'Inter', sans-serif; }
         :root {
             --bg-color: #f0f2e6;
             --text-color: #000000;
@@ -32,9 +23,8 @@
             --link-color: #2563eb;
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
-            --internal-link-color: #2563eb; /* This is the blue for light mode */
+            --internal-link-color: #2563eb;
         }
-        /* Dark theme variables from user image */
         .dark {
             --bg-color: #2d2d2d;
             --text-color: #f1f1f1;
@@ -44,86 +34,28 @@
             --link-color: #63b3ed;
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
-            --internal-link-color: #86efac; /* This is the light green from your image */
+            --internal-link-color: #86efac;
         }
-        /* Applying theme colors */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        h1, h2, h3, .prose {
-            color: var(--text-color);
-        }
-        .subtext {
-             color: var(--subtext-color);
-        }
-        .themed-border {
-            border-color: var(--border-color);
-        }
-        .internal-link {
-            text-decoration: none; /* This removes the underline */
-            cursor: pointer;
-            color: var(--internal-link-color); /* This uses a new dedicated color variable */
-        }
-        .external-link {
-            color: var(--link-color);
-        }
-        .button-style {
-             border: 1px solid var(--border-color);
-        }
-        .button-style:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-hover-text);
-        }
-        /* Details/Summary styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .prose strong {
-            font-weight: 600;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-        }
-        .prose ol, .prose ul {
-            margin-bottom: 1rem;
-        }
-        /* Inverted colors for the theme toggle button */
-        .toggle-button-colors {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* Custom styles for Leaflet popups and controls to match theme */
-        .leaflet-popup-content-wrapper, .leaflet-control-layers {
-            background-color: var(--card-bg-color) !important;
-            color: var(--text-color) !important;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg-color) !important;
-        }
-        .leaflet-popup-close-button {
-            color: var(--text-color) !important;
-        }
-        .leaflet-popup-content b {
-            font-weight: 600;
-        }
-        .leaflet-popup-content span {
-            color: var(--subtext-color);
-            text-transform: capitalize;
-        }
-        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
         .leaflet-control-layers-toggle {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
             background-size: 20px 20px !important;
@@ -131,57 +63,108 @@
         .dark .leaflet-control-layers-toggle {
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
         }
-        .leaflet-control-scale-line {
-            background: var(--card-bg-color);
-            border-color: var(--text-color);
-            color: var(--text-color);
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-efr-n .map-container {
+            position: relative;
+        }
+        #minimap-efr-n .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-efr-n .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            border: 3px solid var(--border-color);
-            border-radius: 8px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* --- COORDINATES FOR ÇK Map 11 --- 
+         Recalculated for original image dimensions of 973x1284 pixels.
+        */
+        #minimap-efr-n .aster { left: 34.84%; top: 6.93%; width: 11.92%; height: 9.03%; }
+        #minimap-efr-n .coqe { left: 16.85%; top: 13.55%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .cumqe { left: 40.70%; top: 13.94%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .meriske { left: 65.67%; top: 4.21%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kefermize { left: 59.92%; top: 7.16%; width: 11.31%; height: 8.57%; }
+        #minimap-efr-n .sewarxa { left: 66.60%; top: 8.02%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .tirtewile { left: 35.25%; top: 17.60%; width: 10.48%; height: 7.94%; }
+        #minimap-efr-n .qibare { left: 50.87%; top: 18.46%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .efrin { left: 37.82%; top: 22.04%; width: 10.69%; height: 8.10%; }
+        #minimap-efr-n .gaze { left: 7.50%; top: 22.82%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .gunde-mezin { left: 13.16%; top: 19.00%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .xelnare { left: 19.01%; top: 18.69%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .kefersile { left: 23.54%; top: 22.90%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .marate { left: 16.03%; top: 24.30%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .keferdele-jorin { left: 5.76%; top: 24.77%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .keferdele-jerin { left: 10.59%; top: 32.48%; width: 8.02%; height: 6.07%; }
+        #minimap-efr-n .bablite { left: 25.69%; top: 30.61%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xalta { left: 55.19%; top: 24.14%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .meremine { left: 63.62%; top: 18.30%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .inabke { left: 63.72%; top: 20.64%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .cilbire { left: 68.86%; top: 31.00%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .bene { left: 76.46%; top: 35.75%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .basile { left: 63.00%; top: 37.62%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kurzele { left: 43.58%; top: 34.66%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .turinde { left: 41.11%; top: 26.32%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .kersane { left: 34.84%; top: 25.70%; width: 10.69%; height: 8.10%; }
+        #minimap-efr-n .pitete { left: 30.22%; top: 33.41%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .endare { left: 36.99%; top: 34.74%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .cidede { left: 34.74%; top: 28.50%; width: 10.90%; height: 8.26%; }
+        #minimap-efr-n .kefirbetre { left: 20.97%; top: 36.37%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kokebe { left: 26.72%; top: 38.94%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .tilfe { left: 16.65%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .keferzite { left: 19.22%; top: 50.08%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kifere { left: 34.12%; top: 47.98%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .basute { left: 38.54%; top: 44.39%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .soxaneke { left: 54.78%; top: 42.68%; width: 10.48%; height: 7.94%; }
+        #minimap-efr-n .aqibe { left: 68.35%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xurebke { left: 81.09%; top: 45.95%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .zarete { left: 78.73%; top: 49.30%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kimare { left: 45.43%; top: 47.66%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .birce { left: 36.48%; top: 51.95%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xeziwe { left: 28.57%; top: 61.37%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .iska { left: 17.37%; top: 68.07%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .sadere { left: 23.54%; top: 64.56%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .berade { left: 45.63%; top: 58.33%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .meyase { left: 61.46%; top: 56.23%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .bircilqase { left: 59.30%; top: 64.72%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .biiye { left: 36.28%; top: 66.98%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kefer-nabo { left: 49.54%; top: 66.51%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .basufane { left: 38.34%; top: 71.96%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .gundi-mezin { left: 62.90%; top: 72.35%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .birc-hedar { left: 47.48%; top: 71.57%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .kibesine { left: 50.77%; top: 75.16%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .farfirtine { left: 47.58%; top: 77.57%; width: 9.87%; height: 7.48%; }
+        #minimap-efr-n .basemre { left: 66.80%; top: 80.76%; width: 9.87%; height: 7.48%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
     </style>
 </head>
 <body>
-
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
-        <!-- Header Section -->
         <header class="mb-8">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Qîbar</h1>
         </header>
 
         <main class="space-y-6">
-            <!-- Basic Information Card -->
             <div class="card p-6 rounded-xl">
                 <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
                     <h2 class="text-2xl font-semibold">General Information</h2>
-                    <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
                         <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
@@ -189,19 +172,42 @@
                         </svg>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                        <p class="text-lg">Markaz</p>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Efrîn</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">&quot;&#x27;Erşqîbar&quot;, Al-Hawa, Arshqibar, Erşqîbar, Qibarê, Qîbar, Qîbarê, الهوى, عرشقيبار, قيباريه</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
-                        <p class="text-lg">Erşqîbar, Al-Hawa, Arshqibar, Erşqîbar, Qibarê, Qîebarê, الهوى, عرشقيبار</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
+<img alt="Map Image 11" onerror="this.onerror=null; this.src='https://placehold.co/973x1284/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 11.png"/>
+<div class="aster highlight-box"></div><div class="coqe highlight-box"></div><div class="cumqe highlight-box"></div><div class="meriske highlight-box"></div><div class="kefermize highlight-box"></div><div class="sewarxa highlight-box"></div><div class="tirtewile highlight-box"></div><div class="qibare highlight-box" style="display: block;"></div><div class="efrin highlight-box"></div><div class="gaze highlight-box"></div><div class="gunde-mezin highlight-box"></div><div class="xelnare highlight-box"></div><div class="kefersile highlight-box"></div><div class="marate highlight-box"></div><div class="keferdele-jorin highlight-box"></div><div class="keferdele-jerin highlight-box"></div><div class="bablite highlight-box"></div><div class="xalta highlight-box"></div><div class="meremine highlight-box"></div><div class="inabke highlight-box"></div><div class="cilbire highlight-box"></div><div class="bene highlight-box"></div><div class="basile highlight-box"></div><div class="kurzele highlight-box"></div><div class="turinde highlight-box"></div><div class="kersane highlight-box"></div><div class="pitete highlight-box"></div><div class="endare highlight-box"></div><div class="cidede highlight-box"></div><div class="kefirbetre highlight-box"></div><div class="kokebe highlight-box"></div><div class="tilfe highlight-box"></div><div class="keferzite highlight-box"></div><div class="kifere highlight-box"></div><div class="basute highlight-box"></div><div class="soxaneke highlight-box"></div><div class="aqibe highlight-box"></div><div class="xurebke highlight-box"></div><div class="zarete highlight-box"></div><div class="kimare highlight-box"></div><div class="birce highlight-box"></div><div class="xeziwe highlight-box"></div><div class="iska highlight-box"></div><div class="sadere highlight-box"></div><div class="berade highlight-box"></div><div class="meyase highlight-box"></div><div class="bircilqase highlight-box"></div><div class="biiye highlight-box"></div><div class="kefer-nabo highlight-box"></div><div class="basufane highlight-box"></div><div class="gundi-mezin highlight-box"></div><div class="birc-hedar highlight-box"></div><div class="kibesine highlight-box"></div><div class="farfirtine highlight-box"></div><div class="basemre highlight-box"></div>
+</div></div>
                 </div>
             </div>
 
-            <!-- Map and Location Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
@@ -211,65 +217,59 @@
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
             
-            <!-- Photos Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/qibare.jpg" alt="Photo of qibare" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=qibare.jpg';"><img src="../village_photos/trejafrin012.jpg" alt="Photo of trejafrin012" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=trejafrin012.jpg';"><img src="../village_photos/qebar.jpg" alt="Photo of qebar" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=qebar.jpg';"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/qibare.jpg" alt="Photo of Qîbar" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=qibare.jpg';">
+<img src="../village_photos/trejafrin012.jpg" alt="Photo of Qîbar" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=trejafrin012.jpg';">
+<img src="../village_photos/qebar.jpg" alt="Photo of Qîbar" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=qebar.jpg';">
+</div>
             </div>
 
-            <!-- Summaries Card (I-IV) -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">Villages of Central District / City of <span class="internal-link">Afrin</span> / Efrîn</p>
-<p style="margin-bottom: 1em;">Qîbarê عرشقيبار /</p>
-<p style="margin-bottom: 1em;">===</p>
-<p style="margin-bottom: 1em;">According to the book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds</span>' (<span class="internal-link">Afrin</span>) Geographic Study by <span class="internal-link">Dr. Mohammed Abdo Ali</span>:</p>
-<p style="margin-bottom: 1em;"><strong>Qîbar – 'Erşqîbar, Arshqibar, Al-Hawa</strong> /6144 inhabitants - 335 hectares - 3km - 360m/:</p>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Qîbar (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of Central District / City of <span class="internal-link">Afrin</span> / Efrîn</p>
+<p>Qîbarê عرشقيبار /</p>
+<p>===</p>
+<p>According to the book &#x27;<span class="internal-link">جبل الكرد</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (<span class="internal-link">Afrin</span>) Geographic Study by <span class="internal-link">Dr. Mohammed Abdo Ali</span>:</p>
+<p><strong>Qîbar – &#x27;Erşqîbar, Arshqibar, Al-Hawa</strong> /6144 inhabitants - 335 hectares - 3km - 360m/:</p>
 <ul>
-<li>The popular name and pre-Arabization is composed of two words, Arsh: which is the southern section of the village, and Qibar: the northern section of it. This name has been mentioned since the Middle Ages, when someone called <span class="internal-link">Ali Qibar</span> was ruler of "<span class="internal-link">Qibar fortress</span>" located west of the village. As for Qibar or "Qîçar", in Kurdish it means the fruit of an "artichoke plant" / Kurdish dictionary/, and it used to grow densely in the southern plain of the village. The Arabizers initially believed that its name was "Love of the Great" so they used it, then it was called after Arabization "Al-Hawa" believing that its popular pronunciation in the form "Ashqibar" means "Love and Passion!".</li>
-<li>One of the old, beautiful and large villages in <span class="internal-link">Jumeh plain</span>. At the beginning of the twentieth century it was a center for <span class="internal-link">Yezidi</span> leadership in this region, and still about half of its inhabitants are <span class="internal-link">Yezidi Kurds</span>. It is divided into two sections separated by a valley. Its northern section with the attached plain is called "<span class="internal-link">Qibar</span>", and its southern section with the wide attached plain is called <span class="internal-link">Arshi</span> 'Erşê. There are caves and wide caverns in the southern vicinity of the "<span class="internal-link">Arshi</span>" section at the village's threshing floors. Excavation work near them reveals massive masonry for archaeological buildings indicating ancient habitation predating the Islamic era. The ruins of <span class="internal-link">Qibar fortress</span> also exist west of the village.</li>
+<li>The popular name and pre-Arabization is composed of two words, Arsh: which is the southern section of the village, and Qibar: the northern section of it. This name has been mentioned since the Middle Ages, when someone called <span class="internal-link">Ali Qibar</span> was ruler of &quot;<span class="internal-link">Qibar fortress</span>&quot; located west of the village. As for Qibar or &quot;Qîçar&quot;, in Kurdish it means the fruit of an &quot;artichoke plant&quot; / Kurdish dictionary/, and it used to grow densely in the southern plain of the village. The Arabizers initially believed that its name was &quot;Love of the Great&quot; so they used it, then it was called after Arabization &quot;Al-Hawa&quot; believing that its popular pronunciation in the form &quot;Ashqibar&quot; means &quot;Love and Passion!&quot;.</li>
+<li>One of the old, beautiful and large villages in <span class="internal-link">Jumeh plain</span>. At the beginning of the twentieth century it was a center for <span class="internal-link">Yezidi</span> leadership in this region, and still about half of its inhabitants are <span class="internal-link">Yezidi Kurds</span>. It is divided into two sections separated by a valley. Its northern section with the attached plain is called &quot;<span class="internal-link">Qibar</span>&quot;, and its southern section with the wide attached plain is called <span class="internal-link">Arshi</span> &#x27;Erşê. There are caves and wide caverns in the southern vicinity of the &quot;<span class="internal-link">Arshi</span>&quot; section at the village&#x27;s threshing floors. Excavation work near them reveals massive masonry for archaeological buildings indicating ancient habitation predating the Islamic era. The ruins of <span class="internal-link">Qibar fortress</span> also exist west of the village.</li>
 </ul>
-<p style="margin-bottom: 1em;">And according to the book: <span class="internal-link">Afrin</span>.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmeh village</span></p>
-<p style="margin-bottom: 1em;"><strong>Arshqibar</strong>: A village in <span class="internal-link">Mount of the Kurds</span>, belonging to the central villages district of <span class="internal-link">Afrin</span> region, <span class="internal-link">Aleppo</span> Governorate.</p>
-<p style="margin-bottom: 1em;">It is a large village located on the western slope of western <span class="internal-link">Mount Liloun</span> and <span class="internal-link">Mount Samaan</span>, bounded to the north by a plain cultivated with olive trees and a mountain chain and <span class="internal-link">Kafr Mez village</span> and <span class="internal-link">Qareh Taba village</span>, to the south by a wide plain and mountain plateau and <span class="internal-link">Tur Nadeh village</span> and <span class="internal-link">Qarzihel village</span>, to the west by an agricultural plain and <span class="internal-link">Tel Qibar</span> archaeological site and the <span class="internal-link">Aleppo-Afrin</span> road and <span class="internal-link">Jumkah village</span>, and to the east by the northern <span class="internal-link">Mount Samaan</span> chain and western <span class="internal-link">Mount Liloun</span> chain and <span class="internal-link">Mreymen village</span> and <span class="internal-link">Al-Khalidiya</span> and <span class="internal-link">Anab</span> and a very high mountain chain. The number of its houses reaches about 250 houses and the village's age is about 500 years. It is one of the very ancient villages in the region. Its old houses are of stone and clay with wooden roofs, while the modern ones are of stone and reinforced concrete. There is an electricity network and drinking water taken from <span class="internal-link">Kafr Jannah spring</span>. It has an elementary school and telephone and connects with the region center and neighboring villages by paved road. A municipal council was established in the village in <span class="internal-link">2002</span>. The village residents work in cultivating grains and vegetables and growing olives and fruit trees. Its lands are agriculturally fertile due to the passage of the <span class="internal-link">Kafr Jannah spring</span> stream and artesian wells, and <span class="internal-link">Tel Qibar</span> is archaeological with evidence of the existence of Roman and Byzantine archaeological remains. Among its most important families is the <span class="internal-link">Darwish Shamo family</span>, who were the first to inhabit the village since its establishment, and there is the <span class="internal-link">Al-Namar</span> tourist site west of the village beside the <span class="internal-link">Aleppo-Afrin</span> road.</p>
-<p style="margin-bottom: 1em;">It is mentioned that the plastic artist <span class="internal-link">Lutfi Jaafar</span> is from the sons of this village.</p>
-<p style="margin-bottom: 1em;">Village Mukhtar: Lawyer <span class="internal-link">Bassam Bakko</span></p>
-<p style="margin-bottom: 1em;">Preparation and implementation: <span class="internal-link">Tirij Afrin</span> website director: <span class="internal-link">Abdul Rahman Haji Othman</span></p>
-<p style="margin-bottom: 1em;">20 / 12 / 2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">The history of the village of <span class="internal-link">Qibarê</span> dates back to the pre-Christian <span class="internal-link">Keyaniyan</span> empire (01:24). The village is said to be named after the king <span class="internal-link">Eşqibar</span> (also known as <span class="internal-link">Eşkîbar</span> or <span class="internal-link">Kîbar</span>), and the ruins of his throne and castle are mentioned as having been visible until recently (01:33-01:57). An alternative theory suggests the name derives from the goddess <span class="internal-link">Kîban</span> (02:11). One resident states the current village settlement is about 350 years old, with people originally living in caves near the fortress of <span class="internal-link">Malakodî</span> before gathering in one place (02:33, 03:01). Before the current village was built a few hundred years ago, its inhabitants lived in caves behind the <span class="internal-link">Çilxanê</span> shrine (08:00). This site was named <span class="internal-link">Çilxanê</span> because forty Yazidi families lived there (08:10). The historical site of <span class="internal-link">Diyarê Bîra</span> is identified as the pre-village home of the <span class="internal-link">Bota Kelêşa</span> family (09:18-09:31). A cross symbol found there is attributed to the <span class="internal-link">Mitanî</span> and <span class="internal-link">Hawêrî</span> peoples and dated to over 1,500 years before Christ (09:45-10:05). The full name of the village is given as <span class="internal-link">Erş Qibarê</span>, meaning the fortress of <span class="internal-link">Qibarê</span>, which is linked to the <span class="internal-link">Keyaniya</span> kingdom (10:13-11:12). An ancient royal tomb, believed to belong to a king, his wife, and two sons, is shown (12:05). An ancestor of the <span class="internal-link">Kelêşa</span> family is said to have hosted the <span class="internal-link">Ottomans</span> when they entered the region in <span class="internal-link">1516</span>, indicating a long-standing Kurdish and Yazidi presence (13:40-14:04). The tradition of the "Taçhilav" is said to date back to the time of <span class="internal-link">Îbrahîm Xelîl</span> (Abraham) (36:17). The "Sor" (Red) in the name of the <span class="internal-link">Çarşema Sor</span> festival is explained as a symbol for the blood shed by Kurds over thousands of years to protect their land (41:35). A man traces his lineage back eleven generations from <span class="internal-link">Henan</span> to <span class="internal-link">Qasim</span> (45:12).</p></div></details><hr class="themed-border"></div>
-
-            <!-- Links Card (V) -->
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-qibara.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-qibara.htm</a><br><a href="https://www.esyria.sy/2013/11/%D8%B9%D8%B1%D8%B4%D9%82%D9%8A%D8%A8%D8%A7%D8%B1-%D9%82%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%88%D8%A7%D8%AF%D9%8A-%D9%88%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.esyria.sy/2013/11/%D8%B9%D8%B1%D8%B4%D9%82%D9%8A%D8%A8%D8%A7%D8%B1-%D9%82%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%88%D8%A7%D8%AF%D9%8A-%D9%88%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB</a></li><li>Ax û Welat<br><a href="https://www.youtube.com/watch?v=T8am1JvEiC4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T8am1JvEiC4</a></li><li>Local FB page<br><a href="https://www.facebook.com/xalilmahoGundeQibare" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/xalilmahoGundeQibare</a><br><a href="https://www.facebook.com/profile.php?id=100064477758493" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100064477758493</a></li><li>Video<br><a href="https://www.youtube.com/watch?v=fUDPwMklSEs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=fUDPwMklSEs</a><br><a href="https://www.youtube.com/watch?v=OWoFk798Fmw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=OWoFk798Fmw</a><br><a href="https://www.youtube.com/watch?v=T8am1JvEiC4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T8am1JvEiC4</a></li></ul>
+<p>And according to the book: <span class="internal-link">Afrin</span>.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmeh village</span></p>
+<p><strong>Arshqibar</strong>: A village in <span class="internal-link">Mount of the Kurds</span>, belonging to the central villages district of <span class="internal-link">Afrin</span> region, <span class="internal-link">Aleppo</span> Governorate.</p>
+<p>It is a large village located on the western slope of western <span class="internal-link">Mount Liloun</span> and <span class="internal-link">Mount Samaan</span>, bounded to the north by a plain cultivated with olive trees and a mountain chain and <span class="internal-link">Kafr Mez village</span> and <span class="internal-link">Qareh Taba village</span>, to the south by a wide plain and mountain plateau and <span class="internal-link">Tur Nadeh village</span> and <span class="internal-link">Qarzihel village</span>, to the west by an agricultural plain and <span class="internal-link">Tel Qibar</span> archaeological site and the <span class="internal-link">Aleppo-Afrin</span> road and <span class="internal-link">Jumkah village</span>, and to the east by the northern <span class="internal-link">Mount Samaan</span> chain and western <span class="internal-link">Mount Liloun</span> chain and <span class="internal-link">Mreymen village</span> and <span class="internal-link">Al-Khalidiya</span> and <span class="internal-link">Anab</span> and a very high mountain chain. The number of its houses reaches about 250 houses and the village&#x27;s age is about 500 years. It is one of the very ancient villages in the region. Its old houses are of stone and clay with wooden roofs, while the modern ones are of stone and reinforced concrete. There is an electricity network and drinking water taken from <span class="internal-link">Kafr Jannah spring</span>. It has an elementary school and telephone and connects with the region center and neighboring villages by paved road. A municipal council was established in the village in <span class="internal-link">2002</span>. The village residents work in cultivating grains and vegetables and growing olives and fruit trees. Its lands are agriculturally fertile due to the passage of the <span class="internal-link">Kafr Jannah spring</span> stream and artesian wells, and <span class="internal-link">Tel Qibar</span> is archaeological with evidence of the existence of Roman and Byzantine archaeological remains. Among its most important families is the <span class="internal-link">Darwish Shamo family</span>, who were the first to inhabit the village since its establishment, and there is the <span class="internal-link">Al-Namar</span> tourist site west of the village beside the <span class="internal-link">Aleppo-Afrin</span> road.</p>
+<p>It is mentioned that the plastic artist <span class="internal-link">Lutfi Jaafar</span> is from the sons of this village.</p>
+<p>Village Mukhtar: Lawyer <span class="internal-link">Bassam Bakko</span></p>
+<p>Preparation and implementation: <span class="internal-link">Tirij Afrin</span> website director: <span class="internal-link">Abdul Rahman Haji Othman</span></p>
+<p>20 / 12 / 2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Qîbar</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>The village of Qibarê, connected to the center of Afrin, is a site of ancient history and significant cultural heritage, with its origins tracing back to the pre-Roman <span class="internal-link">Kheyaniyan Empire</span>. According to local history, the village&#x27;s name is derived from the Kheyaniyan king <span class="internal-link">Kîbar</span>, meaning &quot;the great one of the people,&quot; or the queen <span class="internal-link">Eşqîbar</span>, whose throne was located south of the village, while the ruins of the king&#x27;s castle are still visible to the north. Oral tradition states that the current settlement was founded 300-500 years ago by people who gathered from nearby caves and plains. Qibarê is notable for its long-standing peaceful coexistence between its <span class="internal-link">Muslim</span>, <span class="internal-link">Yazidi</span>, and <span class="internal-link">Arab</span> populations. The village is a vital center for the Yazidi faith, hosting several holy sites, including the prominent <span class="internal-link">Çilxane shrine</span>. This cave is a place of pilgrimage where believers light candles, make wishes at the &quot;<span class="internal-link">Dara Mirazan</span>&quot; (Tree of Wishes), and use sacred water dripping from the ceiling for healing. Another important location is the <span class="internal-link">Hecera Şêx Hisên</span>, a shrine with a <span class="internal-link">Roman</span>-era dome where it is believed angels and Melek Tawus descend before sunrise. The village is a focal point for the celebration of <span class="internal-link">Çarşema Sor</span> (Red Wednesday), the Yazidi New Year, which is observed with unique local customs and rituals.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Qîbar 2</h3>
+<p>In this location, there is a significant spiritual and cultural site known as a &quot;çilxane,&quot; a type of cave used for spiritual retreat. This site contains a natural spring (&quot;kanî&quot;) whose water is considered sacred by the local community. The water is specifically referred to as &quot;ava miraza,&quot; which translates to &quot;water of wishes&quot; or &quot;water of miracles.&quot; According to local tradition, this water is believed to possess special properties, bringing good health (&quot;seat xweş e&quot;) and having the power to help fulfill the wishes of those who drink it. The practice of offering this water to visitors is a living tradition, serving as an important act of blessing and hospitality.</p></div></details></div>
             </div>
 
-            <!-- Additional Information Card (VI-X) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-qibara.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-qibara.htm</a><br><a href="https://www.esyria.sy/2013/11/%D8%B9%D8%B1%D8%B4%D9%82%D9%8A%D8%A8%D8%A7%D8%B1-%D9%82%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%88%D8%A7%D8%AF%D9%8A-%D9%88%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.esyria.sy/2013/11/%D8%B9%D8%B1%D8%B4%D9%82%D9%8A%D8%A8%D8%A7%D8%B1-%D9%82%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%88%D8%A7%D8%AF%D9%8A-%D9%88%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=T8am1JvEiC4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T8am1JvEiC4</a></li><li>Local FB page:<br><a href="https://www.facebook.com/xalilmahoGundeQibare" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/xalilmahoGundeQibare</a><br><a href="https://www.facebook.com/profile.php?id=100064477758493" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100064477758493</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=fUDPwMklSEs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=fUDPwMklSEs</a><br><a href="https://www.youtube.com/watch?v=OWoFk798Fmw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=OWoFk798Fmw</a><br><a href="https://www.youtube.com/watch?v=T8am1JvEiC4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T8am1JvEiC4</a></li></ul>
+            </div>
+
             
 
-            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
             
 
         </main>
 
-        <!-- Footer -->
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Generated for archive purposes.</p>
+            <p class="text-sm subtext">Page Updated on September 15, 2025</p>
         </footer>
     </div>
 
-    <!-- START: LIGHTBOX HTML -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <!-- END: LIGHTBOX HTML -->
-
-    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
-
     <script>
-        // Theme toggle script (unchanged)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -302,35 +302,22 @@
             }
         });
 
-        // Main script runs after the page content has loaded
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LIGHTBOX SCRIPT ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxClose = document.getElementById('lightbox-close');
             const imageTriggers = document.querySelectorAll('.lightbox-trigger');
-
             imageTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     lightboxImage.src = trigger.src;
                     lightbox.classList.remove('hidden');
                 });
             });
-
-            function closeLightbox() {
-                lightbox.classList.add('hidden');
-            }
-
+            function closeLightbox() { lightbox.classList.add('hidden'); }
             lightbox.addEventListener('click', closeLightbox);
             lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
 
-            // --- MAP SCRIPT ---
             const iconConfig = {
                 shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
                 landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
@@ -341,7 +328,6 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-
             function createCustomIcon(type, isMain) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
@@ -349,7 +335,6 @@
                 const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-
                 const html = `
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
@@ -359,79 +344,38 @@
                             ${config.svg}
                         </svg>
                     </div>`;
-
-                return L.divIcon({
-                    html: html,
-                    className: '',
-                    iconSize: iconSize,
-                    iconAnchor: iconAnchor,
-                    popupAnchor: popupAnchor
-                });
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
-
             const mainVillageName = "Qîbar";
             const villageLat = 36.525575;
             const villageLng = 36.910759;
             const initialZoom = 14;
-
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-
-            // --- Define all the map layers ---
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri'
-            });
-
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
             const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
                 maxZoom: 22
             });
-
-            // --- Set up the layer control ---
-            const baseMaps = {
-                "Satellite": esriImagery,
-                "Street": osmStreet,
-                "Terrain": thunderforestTerrain
-            };
-            
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
             L.control.layers(baseMaps).addTo(map);
             esriImagery.addTo(map);
-
-            // --- ADD MAP CONTROLS ---
-            // 1. Static Scale Bar
             L.control.scale({ imperial: false }).addTo(map);
-
-            // --- Fetch data and add markers ---
             fetch('afrin_locations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
                 .then(locations => {
                     locations.forEach(location => {
                         const isMainVillage = location.name === mainVillageName;
                         const customIcon = createCustomIcon(location.type, isMainVillage);
-                        
-                        const marker = L.marker([location.lat, location.lng], { 
-                            icon: customIcon,
-                            zIndexOffset: isMainVillage ? 1000 : 0
-                        }).addTo(map);
-                        
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
                         marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-
-                        if (isMainVillage) {
-                            marker.openPopup();
-                        }
+                        if (isMainVillage) { marker.openPopup(); }
                     });
                 })
-                .catch(error => {
-                    console.error('Error loading location data:', error);
-                    const mapDiv = document.getElementById('map');
-                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
     </script>

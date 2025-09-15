@@ -4,25 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive | Maratê</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- START: LEAFLET & PLUGIN CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
-    <!-- END: LEAFLET & PLUGIN CSS -->
-
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Light theme variables */
+        body { font-family: 'Inter', sans-serif; }
         :root {
             --bg-color: #f0f2e6;
             --text-color: #000000;
@@ -32,9 +23,8 @@
             --link-color: #2563eb;
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
-            --internal-link-color: #2563eb; /* This is the blue for light mode */
+            --internal-link-color: #2563eb;
         }
-        /* Dark theme variables from user image */
         .dark {
             --bg-color: #2d2d2d;
             --text-color: #f1f1f1;
@@ -44,86 +34,28 @@
             --link-color: #63b3ed;
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
-            --internal-link-color: #86efac; /* This is the light green from your image */
+            --internal-link-color: #86efac;
         }
-        /* Applying theme colors */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        h1, h2, h3, .prose {
-            color: var(--text-color);
-        }
-        .subtext {
-             color: var(--subtext-color);
-        }
-        .themed-border {
-            border-color: var(--border-color);
-        }
-        .internal-link {
-            text-decoration: none; /* This removes the underline */
-            cursor: pointer;
-            color: var(--internal-link-color); /* This uses a new dedicated color variable */
-        }
-        .external-link {
-            color: var(--link-color);
-        }
-        .button-style {
-             border: 1px solid var(--border-color);
-        }
-        .button-style:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-hover-text);
-        }
-        /* Details/Summary styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .prose strong {
-            font-weight: 600;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-        }
-        .prose ol, .prose ul {
-            margin-bottom: 1rem;
-        }
-        /* Inverted colors for the theme toggle button */
-        .toggle-button-colors {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* Custom styles for Leaflet popups and controls to match theme */
-        .leaflet-popup-content-wrapper, .leaflet-control-layers {
-            background-color: var(--card-bg-color) !important;
-            color: var(--text-color) !important;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg-color) !important;
-        }
-        .leaflet-popup-close-button {
-            color: var(--text-color) !important;
-        }
-        .leaflet-popup-content b {
-            font-weight: 600;
-        }
-        .leaflet-popup-content span {
-            color: var(--subtext-color);
-            text-transform: capitalize;
-        }
-        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
         .leaflet-control-layers-toggle {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
             background-size: 20px 20px !important;
@@ -131,57 +63,108 @@
         .dark .leaflet-control-layers-toggle {
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
         }
-        .leaflet-control-scale-line {
-            background: var(--card-bg-color);
-            border-color: var(--text-color);
-            color: var(--text-color);
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-efr-n .map-container {
+            position: relative;
+        }
+        #minimap-efr-n .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-efr-n .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            border: 3px solid var(--border-color);
-            border-radius: 8px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* --- COORDINATES FOR ÇK Map 11 --- 
+         Recalculated for original image dimensions of 973x1284 pixels.
+        */
+        #minimap-efr-n .aster { left: 34.84%; top: 6.93%; width: 11.92%; height: 9.03%; }
+        #minimap-efr-n .coqe { left: 16.85%; top: 13.55%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .cumqe { left: 40.70%; top: 13.94%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .meriske { left: 65.67%; top: 4.21%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kefermize { left: 59.92%; top: 7.16%; width: 11.31%; height: 8.57%; }
+        #minimap-efr-n .sewarxa { left: 66.60%; top: 8.02%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .tirtewile { left: 35.25%; top: 17.60%; width: 10.48%; height: 7.94%; }
+        #minimap-efr-n .qibare { left: 50.87%; top: 18.46%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .efrin { left: 37.82%; top: 22.04%; width: 10.69%; height: 8.10%; }
+        #minimap-efr-n .gaze { left: 7.50%; top: 22.82%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .gunde-mezin { left: 13.16%; top: 19.00%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .xelnare { left: 19.01%; top: 18.69%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .kefersile { left: 23.54%; top: 22.90%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .marate { left: 16.03%; top: 24.30%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .keferdele-jorin { left: 5.76%; top: 24.77%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .keferdele-jerin { left: 10.59%; top: 32.48%; width: 8.02%; height: 6.07%; }
+        #minimap-efr-n .bablite { left: 25.69%; top: 30.61%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xalta { left: 55.19%; top: 24.14%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .meremine { left: 63.62%; top: 18.30%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .inabke { left: 63.72%; top: 20.64%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .cilbire { left: 68.86%; top: 31.00%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .bene { left: 76.46%; top: 35.75%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .basile { left: 63.00%; top: 37.62%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kurzele { left: 43.58%; top: 34.66%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .turinde { left: 41.11%; top: 26.32%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .kersane { left: 34.84%; top: 25.70%; width: 10.69%; height: 8.10%; }
+        #minimap-efr-n .pitete { left: 30.22%; top: 33.41%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .endare { left: 36.99%; top: 34.74%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .cidede { left: 34.74%; top: 28.50%; width: 10.90%; height: 8.26%; }
+        #minimap-efr-n .kefirbetre { left: 20.97%; top: 36.37%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kokebe { left: 26.72%; top: 38.94%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .tilfe { left: 16.65%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .keferzite { left: 19.22%; top: 50.08%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kifere { left: 34.12%; top: 47.98%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .basute { left: 38.54%; top: 44.39%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .soxaneke { left: 54.78%; top: 42.68%; width: 10.48%; height: 7.94%; }
+        #minimap-efr-n .aqibe { left: 68.35%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xurebke { left: 81.09%; top: 45.95%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .zarete { left: 78.73%; top: 49.30%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kimare { left: 45.43%; top: 47.66%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .birce { left: 36.48%; top: 51.95%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xeziwe { left: 28.57%; top: 61.37%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .iska { left: 17.37%; top: 68.07%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .sadere { left: 23.54%; top: 64.56%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .berade { left: 45.63%; top: 58.33%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .meyase { left: 61.46%; top: 56.23%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .bircilqase { left: 59.30%; top: 64.72%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .biiye { left: 36.28%; top: 66.98%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kefer-nabo { left: 49.54%; top: 66.51%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .basufane { left: 38.34%; top: 71.96%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .gundi-mezin { left: 62.90%; top: 72.35%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .birc-hedar { left: 47.48%; top: 71.57%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .kibesine { left: 50.77%; top: 75.16%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .farfirtine { left: 47.58%; top: 77.57%; width: 9.87%; height: 7.48%; }
+        #minimap-efr-n .basemre { left: 66.80%; top: 80.76%; width: 9.87%; height: 7.48%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
     </style>
 </head>
 <body>
-
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
-        <!-- Header Section -->
         <header class="mb-8">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Maratê</h1>
         </header>
 
         <main class="space-y-6">
-            <!-- Basic Information Card -->
             <div class="card p-6 rounded-xl">
                 <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
                     <h2 class="text-2xl font-semibold">General Information</h2>
-                    <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
                         <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
@@ -189,19 +172,42 @@
                         </svg>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                        <p class="text-lg">Markaz</p>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Efrîn</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Ma&#x27;retê, Maratê, Me&#x27;erta, Me&#x27;ratê, معراته</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
-                        <p class="text-lg">معراته</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
+<img alt="Map Image 11" onerror="this.onerror=null; this.src='https://placehold.co/973x1284/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 11.png"/>
+<div class="aster highlight-box"></div><div class="coqe highlight-box"></div><div class="cumqe highlight-box"></div><div class="meriske highlight-box"></div><div class="kefermize highlight-box"></div><div class="sewarxa highlight-box"></div><div class="tirtewile highlight-box"></div><div class="qibare highlight-box"></div><div class="efrin highlight-box"></div><div class="gaze highlight-box"></div><div class="gunde-mezin highlight-box"></div><div class="xelnare highlight-box"></div><div class="kefersile highlight-box"></div><div class="marate highlight-box" style="display: block;"></div><div class="keferdele-jorin highlight-box"></div><div class="keferdele-jerin highlight-box"></div><div class="bablite highlight-box"></div><div class="xalta highlight-box"></div><div class="meremine highlight-box"></div><div class="inabke highlight-box"></div><div class="cilbire highlight-box"></div><div class="bene highlight-box"></div><div class="basile highlight-box"></div><div class="kurzele highlight-box"></div><div class="turinde highlight-box"></div><div class="kersane highlight-box"></div><div class="pitete highlight-box"></div><div class="endare highlight-box"></div><div class="cidede highlight-box"></div><div class="kefirbetre highlight-box"></div><div class="kokebe highlight-box"></div><div class="tilfe highlight-box"></div><div class="keferzite highlight-box"></div><div class="kifere highlight-box"></div><div class="basute highlight-box"></div><div class="soxaneke highlight-box"></div><div class="aqibe highlight-box"></div><div class="xurebke highlight-box"></div><div class="zarete highlight-box"></div><div class="kimare highlight-box"></div><div class="birce highlight-box"></div><div class="xeziwe highlight-box"></div><div class="iska highlight-box"></div><div class="sadere highlight-box"></div><div class="berade highlight-box"></div><div class="meyase highlight-box"></div><div class="bircilqase highlight-box"></div><div class="biiye highlight-box"></div><div class="kefer-nabo highlight-box"></div><div class="basufane highlight-box"></div><div class="gundi-mezin highlight-box"></div><div class="birc-hedar highlight-box"></div><div class="kibesine highlight-box"></div><div class="farfirtine highlight-box"></div><div class="basemre highlight-box"></div>
+</div></div>
                 </div>
             </div>
 
-            <!-- Map and Location Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
@@ -211,65 +217,61 @@
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
             
-            <!-- Photos Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/marate.jpg" alt="Photo of marate" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=marate.jpg';"><img src="../village_photos/marath.jpg" alt="Photo of marath" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=marath.jpg';"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/marate.jpg" alt="Photo of Maratê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=marate.jpg';">
+<img src="../village_photos/marath.jpg" alt="Photo of Maratê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=marath.jpg';">
+</div>
             </div>
 
-            <!-- Summaries Card (I-IV) -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">According to the book '<span class="internal-link">جبل الكرد</span>' '<span class="internal-link">Mountain of the Kurds</span>' geographical study by <span class="internal-link">Dr. Mohammed Abdo Ali</span> (الدكتور محمد عبدو علي):</p>
-<p style="margin-bottom: 1em;"><strong>Maratê, معراته</strong> /4671n - 995ha - 5km - 380m/:</p>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Maratê (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; geographical study by <span class="internal-link">Dr. Mohammed Abdo Ali</span> (الدكتور محمد عبدو علي):</p>
+<p><strong>Maratê, معراته</strong> /4671n - 995ha - 5km - 380m/:</p>
 <ul>
-<li><span class="internal-link">Al-Asadi</span> (الأسدي) mentioned from <span class="internal-link">Father Armila</span> (الأب أرملة) that the name is from Aramaic: Ma'rasat: the vineyard cave.</li>
+<li><span class="internal-link">Al-Asadi</span> (الأسدي) mentioned from <span class="internal-link">Father Armila</span> (الأب أرملة) that the name is from Aramaic: Ma&#x27;rasat: the vineyard cave.</li>
 <li>A large village located on the lower slope of a mountain elevation, surrounded from the west, north and south, and <span class="internal-link">Marateh valley</span> (وادي معراته) passes through it from west to east. The village spring is located in its northwestern corner, and its water is distributed to most of its houses. It is a center for the family of <span class="internal-link">Omar Safouna</span> (عمر سفونا), known in <span class="internal-link">Jabal al-Kurd</span> (ج.الكرد).</li>
 </ul>
-<p style="margin-bottom: 1em;">According to the book: <span class="internal-link">Afrin.... Its River and Green Hills</span> (عفرين .... نهرها وروابيها الخضراء) by writer <span class="internal-link">Abdulrahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmah village</span> (قرية قطمه)</p>
-<p style="margin-bottom: 1em;"><strong>Ma'rateh</strong> (معراته): A village in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد), belonging to the <span class="internal-link">central villages</span> (قرى مركز) and <span class="internal-link">Afrin region</span> (منطقة عفرين), <span class="internal-link">Aleppo Governorate</span> (محافظة حلب).</p>
-<p style="margin-bottom: 1em;">It is a very large village located on the lower slope of a calcareous mountain (hijri), crossed by <span class="internal-link">Ma'ratah valley</span> (وادي معراتة) from northwest to southeast which feeds <span class="internal-link">al-Sayl valley</span> (وادي السيل) heading east toward <span class="internal-link">Afrin river</span> (نهر عفرين).</p>
-<p style="margin-bottom: 1em;">It is bordered to the north by a mountain elevation planted with olive trees and <span class="internal-link">Khalnir village</span> (قرية خلنير). To the south by a valley planted with olive and walnut trees and <span class="internal-link">Bablit village</span> (قرية بابليت). To the east by a wide fertile plain and directly <span class="internal-link">Afrin City</span> (مدينة عفرين). To the west by a high mountainous chain planted with olive and grape trees: <span class="internal-link">Buyuk Oba</span> (بيوك أدبه), <span class="internal-link">Tal Ghazi</span> (تل غازي) and <span class="internal-link">Kafardallah</span> (كفردلة).</p>
-<p style="margin-bottom: 1em;">Its lands are mountainous, plain and agricultural. The number of its houses is approximately 600 houses and its age is 700 years. Its dwellings are stone and clay with wooden roofs, and currently modern cement stone houses have been added and are spreading from the eastern side. Electricity network and drinking water from wells and springs located in the village are available. It has elementary and preparatory schools, a modern municipal building, telephone center, and modern mosque. A paved road to the village center and <span class="internal-link">Afrin City</span> (مدينة عفرين) is available.</p>
-<p style="margin-bottom: 1em;">Its people work in rainfed agriculture on an area of 965 hectares (grains, legumes, olive and walnut trees and pomegranates) in intensive irrigation from artesian wells. They also cultivate summer vegetables and raise sheep and goats. There are three modern olive oil presses in the village. It is one of the old villages in the area.</p>
-<p style="margin-bottom: 1em;">Among the holders of higher degrees in the village: <span class="internal-link">Jalal Bakdash</span> (جلال بكداش) / PhD in Archaeology / Germany - <span class="internal-link">Idris Khalil Mohammed</span> (ادريس خليل محمد) / PhD in Food Industries / under study / Germany</p>
-<p style="margin-bottom: 1em;">Village Mukhtar: <span class="internal-link">Ali Jawish Mohammed</span> (علي جاويش محمد)</p>
-<p style="margin-bottom: 1em;">Prepared and implemented by: Site manager of <span class="internal-link">Afrin Heritage</span>: <span class="internal-link">Abdulrahman Haji Osman</span> (عبدالرحمن حاجي عثمان)</p>
-<p style="margin-bottom: 1em;">20/12/2013</p></div></details><hr class="themed-border"></div>
-
-            <!-- Links Card (V) -->
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Marate.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Marate.htm</a></li><li>Ax û Welat<br><a href="https://www.youtube.com/watch?v=TnKcW8LAymA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TnKcW8LAymA</a></li><li>Jawlat<br><a href="https://www.youtube.com/watch?v=Aso1PlCPYB4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Aso1PlCPYB4</a><br><a href="https://www.youtube.com/watch?v=BF-Uxyamr-A" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=BF-Uxyamr-A</a></li><li>Local FB page<br><a href="https://www.facebook.com/gundemarate" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/gundemarate</a></li><li>Drone video<br><a href="https://www.youtube.com/watch?v=DsMBmMRbBsA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=DsMBmMRbBsA</a><br><a href="https://www.youtube.com/watch?v=w8nPOg-0EVw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=w8nPOg-0EVw</a><br><a href="https://www.youtube.com/watch?v=ZTGPFr3WXcc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZTGPFr3WXcc</a></li><li>Video<br><a href="https://www.youtube.com/watch?v=LYNa4o020RI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=LYNa4o020RI</a><br><a href="https://www.youtube.com/watch?v=Yw4xTc7eZIk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Yw4xTc7eZIk</a><br><a href="https://www.youtube.com/watch?v=zQl5BrV-hPA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zQl5BrV-hPA</a><br><a href="https://www.youtube.com/watch?v=wi5kdO0tsCo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=wi5kdO0tsCo</a><br><a href="https://www.youtube.com/watch?v=PmHEl1KwLKE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=PmHEl1KwLKE</a><br><a href="https://www.youtube.com/watch?v=djObbmK4QCE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=djObbmK4QCE</a><br><a href="https://www.youtube.com/watch?v=TXQR1PFGnYQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TXQR1PFGnYQ</a><br><a href="https://www.youtube.com/watch?v=bGwKQPsk4W4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=bGwKQPsk4W4</a><br><a href="https://www.youtube.com/watch?v=tQBy3RZtYWc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tQBy3RZtYWc</a><br><a href="https://www.youtube.com/watch?v=T1nE9gaLzdU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T1nE9gaLzdU</a><br><a href="https://www.youtube.com/watch?v=aJPmEhqfkNQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=aJPmEhqfkNQ</a></li></ul>
+<p>According to the book: <span class="internal-link">Afrin.... Its River and Green Hills</span> (عفرين .... نهرها وروابيها الخضراء) by writer <span class="internal-link">Abdulrahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmah village</span> (قرية قطمه)</p>
+<p><strong>Ma&#x27;rateh</strong> (معراته): A village in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد), belonging to the <span class="internal-link">central villages</span> (قرى مركز) and <span class="internal-link">Afrin region</span> (منطقة عفرين), <span class="internal-link">Aleppo Governorate</span> (محافظة حلب).</p>
+<p>It is a very large village located on the lower slope of a calcareous mountain (hijri), crossed by <span class="internal-link">Ma&#x27;ratah valley</span> (وادي معراتة) from northwest to southeast which feeds <span class="internal-link">al-Sayl valley</span> (وادي السيل) heading east toward <span class="internal-link">Afrin river</span> (نهر عفرين).</p>
+<p>It is bordered to the north by a mountain elevation planted with olive trees and <span class="internal-link">Khalnir village</span> (قرية خلنير). To the south by a valley planted with olive and walnut trees and <span class="internal-link">Bablit village</span> (قرية بابليت). To the east by a wide fertile plain and directly <span class="internal-link">Afrin City</span> (مدينة عفرين). To the west by a high mountainous chain planted with olive and grape trees: <span class="internal-link">Buyuk Oba</span> (بيوك أدبه), <span class="internal-link">Tal Ghazi</span> (تل غازي) and <span class="internal-link">Kafardallah</span> (كفردلة).</p>
+<p>Its lands are mountainous, plain and agricultural. The number of its houses is approximately 600 houses and its age is 700 years. Its dwellings are stone and clay with wooden roofs, and currently modern cement stone houses have been added and are spreading from the eastern side. Electricity network and drinking water from wells and springs located in the village are available. It has elementary and preparatory schools, a modern municipal building, telephone center, and modern mosque. A paved road to the village center and <span class="internal-link">Afrin City</span> (مدينة عفرين) is available.</p>
+<p>Its people work in rainfed agriculture on an area of 965 hectares (grains, legumes, olive and walnut trees and pomegranates) in intensive irrigation from artesian wells. They also cultivate summer vegetables and raise sheep and goats. There are three modern olive oil presses in the village. It is one of the old villages in the area.</p>
+<p>Among the holders of higher degrees in the village: <span class="internal-link">Jalal Bakdash</span> (جلال بكداش) / PhD in Archaeology / Germany - <span class="internal-link">Idris Khalil Mohammed</span> (ادريس خليل محمد) / PhD in Food Industries / under study / Germany</p>
+<p>Village Mukhtar: <span class="internal-link">Ali Jawish Mohammed</span> (علي جاويش محمد)</p>
+<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin Heritage</span>: <span class="internal-link">Abdulrahman Haji Osman</span> (عبدالرحمن حاجي عثمان)</p>
+<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Maratê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>The village of Maratê, located 5 kilometers from Afrin, has a rich history dating back approximately 875 to 915 years. Originally known as <span class="internal-link">Mîrîtiyan</span> because local rulers governed from its network of roughly 100 caves, the village was first settled by seven <span class="internal-link">Yazidi</span> families who lived within these natural shelters. One prominent cave, <span class="internal-link">Şikefta Tîngê</span>, is named for the echoing sound produced when grain was traditionally pounded inside. The village&#x27;s pre-Islamic heritage is evident in the ancient Yazidi and <span class="internal-link">Zoroastrian</span> shrine of <span class="internal-link">Xidir Balî</span>, a figure identified with the prophet <span class="internal-link">Elijah</span>, and in the local legend of <span class="internal-link">Çiyayê Çil Mêran</span> (Mountain of Forty Men), where forty Kurdish Yazidi heroes once took refuge. Over a long period, the population gradually converted to Islam, a history that was once recorded on an inscribed stone reportedly taken by the <span class="internal-link">French</span>. This deep-rooted heritage is preserved through traditional crafts and practices. The communal process of making bulgur, using an inherited stone mortar (sûqî) and wooden pestle (timoqe), was a significant activity for the women of the village. This heritage is also kept alive by local craftsmen like Mihemed, who learned woodworking from his father and now creates miniature models of traditional tools such as plows, sickles, and butter churns from local woods like olive and apricot.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>III. Summary from other Channels&#x27; Transcripts of Maratê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><h3 class="font-semibold text-xl mt-6 mb-3">A. Summary from Halil Sino Transcript of Maratê</h3>
+<p>The village of Maratê, whose name is believed to derive from the Kurdish word for inheritance, &quot;Mîratê,&quot; has a history deeply rooted in its landscape and traditions. According to local accounts, the village originated around two caves, starting as a small settlement of just fourteen houses that has since grown to over one hundred and sixty. For generations, particularly from the 1930s through the 1960s, life was defined by hardship and seasonal labor. Villagers would travel on foot to distant regions like the Jazira and Lebanon&#x27;s Biqa&#x27; valley to harvest wheat, chickpeas, and lentils with sickles. Instead of monetary payment, they received a one-tenth share of the crops, which they transported back home on mules. Historically, the community depended on natural springs for water, but these have dried up in recent years due to a lack of rain. Before the springs failed, the ancestors of the current inhabitants had also dug deep wells by hand, some reaching 50 to 100 meters, using pickaxes, tin buckets, and animal-powered systems to draw water. This traditional way of life is now preserved through the hobby of local craftsmen who create miniature replicas of historical tools like threshing sledges, butter churns, and olive oil lamps, ensuring the memory of their cultural heritage endures.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Maratê</h3>
+<p>The video documents the observance of <span class="internal-link">Eid al-Adha</span> (Cejna Erefatê) in 2024, focusing on the local custom (edetên xwe) of visiting the village cemetery on Eid morning. This tradition is a communal event where villagers gather at the graves of their deceased relatives to pray for mercy and remember them, an act intended to be preserved as a memory (bîranîn) for future generations. The observance also carries a broader political and national dimension, as one villager extends Eid greetings to the &quot;four parts of Kurdistan&quot; and expresses reverence for the Peshmerga and other fighters. The tombstones themselves serve as a local historical record, documenting the lives of past residents such as <span class="internal-link">Abdo Jaafar</span> (1939-2024), <span class="internal-link">Muhammad Hanan Sini</span> (1941-2022), <span class="internal-link">Ezzat Bayram Sino</span> (1954-2019), and <span class="internal-link">Hanifa Ahmed Rashid</span> (1941-2015).</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">D. Summary from Afrin Zeyton Transcript of Maratê</h3>
+<p>The village of Ma&#x27;retê, whose name is believed to be either <span class="internal-link">Syriac</span> for &quot;The Cave&quot; or derived from the <span class="internal-link">Roman</span> ruler <span class="internal-link">Miritian</span>, has a history documented to over 720 years ago, once evidenced by a now-lost stone tablet from the <span class="internal-link">Şikefta Êreb</span> (Arabs&#x27; Cave). Oral traditions among its people, who descend from founding families like <span class="internal-link">Malê Hanan Elî</span> and <span class="internal-link">Malê Beyt Xidir</span>, place its age between 200 and 500 years. Historically, the village played a significant role in the <span class="internal-link">Great Syrian Revolution</span>, hosting <span class="internal-link">Ibrahim Hanano</span> who came to coordinate with local Afrin rebels. The village was renowned for its agriculture and its powerful spring, which in the past produced enough water to flow to Afrin city for irrigating gardens. This rich history is preserved not only in its archaeological ties to surrounding villages but also through its vibrant cultural heritage. Ma&#x27;retê was home to numerous artists, including Buzuq players like <span class="internal-link">Ali Ramzi</span>, <span class="internal-link">Mohamad Ramzi</span>, and <span class="internal-link">Khalid Buzuk</span>, and folklore singers such as <span class="internal-link">Abdulraouf</span> and <span class="internal-link">Mohamad Jawish Hawiya</span>, with musical traditions passed down from elders like <span class="internal-link">Adnan Dilbirîn</span>. The <span class="internal-link">Rashid Ribi</span> family is noted for its dancing skills. This heritage is actively being preserved by residents like Ahmed Abdulrahman Abu Shiyar, who, after retiring, began crafting miniature replicas of traditional agricultural tools—such as hand mills, plows, and threshing boards—from olive wood to ensure the memory of his ancestors&#x27; way of life is not lost.</p></div></details></div>
             </div>
 
-            <!-- Additional Information Card (VI-X) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Marate.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Marate.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=TnKcW8LAymA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TnKcW8LAymA</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=Aso1PlCPYB4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Aso1PlCPYB4</a><br><a href="https://www.youtube.com/watch?v=BF-Uxyamr-A" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=BF-Uxyamr-A</a></li><li>Local FB page:<br><a href="https://www.facebook.com/gundemarate" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/gundemarate</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=DsMBmMRbBsA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=DsMBmMRbBsA</a><br><a href="https://www.youtube.com/watch?v=w8nPOg-0EVw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=w8nPOg-0EVw</a><br><a href="https://www.youtube.com/watch?v=ZTGPFr3WXcc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZTGPFr3WXcc</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=LYNa4o020RI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=LYNa4o020RI</a><br><a href="https://www.youtube.com/watch?v=Yw4xTc7eZIk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Yw4xTc7eZIk</a><br><a href="https://www.youtube.com/watch?v=zQl5BrV-hPA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zQl5BrV-hPA</a><br><a href="https://www.youtube.com/watch?v=wi5kdO0tsCo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=wi5kdO0tsCo</a><br><a href="https://www.youtube.com/watch?v=PmHEl1KwLKE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=PmHEl1KwLKE</a><br><a href="https://www.youtube.com/watch?v=djObbmK4QCE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=djObbmK4QCE</a><br><a href="https://www.youtube.com/watch?v=TXQR1PFGnYQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TXQR1PFGnYQ</a><br><a href="https://www.youtube.com/watch?v=bGwKQPsk4W4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=bGwKQPsk4W4</a><br><a href="https://www.youtube.com/watch?v=tQBy3RZtYWc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tQBy3RZtYWc</a><br><a href="https://www.youtube.com/watch?v=T1nE9gaLzdU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T1nE9gaLzdU</a><br><a href="https://www.youtube.com/watch?v=aJPmEhqfkNQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=aJPmEhqfkNQ</a></li></ul>
+            </div>
+
             
 
-            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
             
 
         </main>
 
-        <!-- Footer -->
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Generated for archive purposes.</p>
+            <p class="text-sm subtext">Page Updated on September 15, 2025</p>
         </footer>
     </div>
 
-    <!-- START: LIGHTBOX HTML -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <!-- END: LIGHTBOX HTML -->
-
-    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
-
     <script>
-        // Theme toggle script (unchanged)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -302,35 +304,22 @@
             }
         });
 
-        // Main script runs after the page content has loaded
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LIGHTBOX SCRIPT ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxClose = document.getElementById('lightbox-close');
             const imageTriggers = document.querySelectorAll('.lightbox-trigger');
-
             imageTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     lightboxImage.src = trigger.src;
                     lightbox.classList.remove('hidden');
                 });
             });
-
-            function closeLightbox() {
-                lightbox.classList.add('hidden');
-            }
-
+            function closeLightbox() { lightbox.classList.add('hidden'); }
             lightbox.addEventListener('click', closeLightbox);
             lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
 
-            // --- MAP SCRIPT ---
             const iconConfig = {
                 shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
                 landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
@@ -341,7 +330,6 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-
             function createCustomIcon(type, isMain) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
@@ -349,7 +337,6 @@
                 const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-
                 const html = `
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
@@ -359,79 +346,38 @@
                             ${config.svg}
                         </svg>
                     </div>`;
-
-                return L.divIcon({
-                    html: html,
-                    className: '',
-                    iconSize: iconSize,
-                    iconAnchor: iconAnchor,
-                    popupAnchor: popupAnchor
-                });
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
-
             const mainVillageName = "Maratê";
             const villageLat = 36.498329;
             const villageLng = 36.800063;
             const initialZoom = 14;
-
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-
-            // --- Define all the map layers ---
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri'
-            });
-
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
             const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
                 maxZoom: 22
             });
-
-            // --- Set up the layer control ---
-            const baseMaps = {
-                "Satellite": esriImagery,
-                "Street": osmStreet,
-                "Terrain": thunderforestTerrain
-            };
-            
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
             L.control.layers(baseMaps).addTo(map);
             esriImagery.addTo(map);
-
-            // --- ADD MAP CONTROLS ---
-            // 1. Static Scale Bar
             L.control.scale({ imperial: false }).addTo(map);
-
-            // --- Fetch data and add markers ---
             fetch('afrin_locations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
                 .then(locations => {
                     locations.forEach(location => {
                         const isMainVillage = location.name === mainVillageName;
                         const customIcon = createCustomIcon(location.type, isMainVillage);
-                        
-                        const marker = L.marker([location.lat, location.lng], { 
-                            icon: customIcon,
-                            zIndexOffset: isMainVillage ? 1000 : 0
-                        }).addTo(map);
-                        
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
                         marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-
-                        if (isMainVillage) {
-                            marker.openPopup();
-                        }
+                        if (isMainVillage) { marker.openPopup(); }
                     });
                 })
-                .catch(error => {
-                    console.error('Error loading location data:', error);
-                    const mapDiv = document.getElementById('map');
-                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
     </script>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Map Test (Restored)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .map-container {
+            position: relative;
+        }
+        .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .highlight-box {
+            display: none;
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* --- COORDINATES FOR YOUR AREAS --- */
+        .tirmisho {
+            left: 66.2%;
+            top: 37.0%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        .kela {
+            left: 59.1%;
+            top: 27.0%;
+            width: 6.7%;
+            height: 4.4%;
+        }
+        .alkana {
+            left: 57.0%;
+            top: 15.1%;
+            width: 7.7%;
+            height: 5.1%;
+        }
+        .xelil {
+            left: 64.5%;
+            top: 13.9%;
+            width: 7.7%;
+            height: 5.1%;
+        }
+        .ceqele-jorin {
+            left: 45.2%;
+            top: 18.1%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        .ceqele-jerin {
+            left: 36.7%;
+            top: 23.2%;
+            width: 9.9%;
+            height: 6.5%;
+        }
+        .hec-bilal {
+            left: 54.7%;
+            top: 18.8%;
+            width: 8.3%;
+            height: 5.5%;
+        }
+        .ceqele-orte {
+            left: 44.1%;
+            top: 22.5%;
+            width: 9.3%;
+            height: 6.1%;
+        }
+        .mistika {
+            left: 44.1%;
+            top: 27.1%;
+            width: 9.5%;
+            height: 6.3%;
+        }
+        .siketka {
+            left: 70.7%;
+            top: 34.5%;
+            width: 8.5%;
+            height: 5.6%;
+        }
+        .erende {
+            left: 47.9%;
+            top: 35.0%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        .qermitliq {
+            left: 18.1%;
+            top: 36.3%;
+            width: 10.9%;
+            height: 7.2%;
+        }
+        .siye {
+            left: 28.4%;
+            top: 44.3%;
+            width: 17.8%;
+            height: 11.7%;
+        }
+        .senare {
+            left: 31.1%;
+            top: 60.4%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+        .anqele {
+            left: 31.0%;
+            top: 64.4%;
+            width: 8.9%;
+            height: 5.9%;
+        }
+        .baziya {
+            left: 52.0%;
+            top: 65.7%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+        .hekice {
+            left: 38.8%;
+            top: 76.8%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans p-4 sm:p-8">
+
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-3xl font-bold mb-4 text-center">Test Links</h1>
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6 text-center">
+            <p class="text-lg">
+                Click to highlight:
+                <a href="#tirmisho" class="text-blue-600 hover:underline">Tirmûşa</a> |
+                <a href="#kela" class="text-blue-600 hover:underline">Kela</a> |
+                <a href="#alkana" class="text-blue-600 hover:underline">Alkana</a> |
+                <a href="#xelil" class="text-blue-600 hover:underline">Xelîl</a> |
+                <a href="#ceqele-jorin" class="text-blue-600 hover:underline">Çeqelê Jorin</a> |
+                <a href="#ceqele-jerin" class="text-blue-600 hover:underline">Çeqelê Jêrin</a> |
+                <a href="#hec-bilal" class="text-blue-600 hover:underline">Ĥec Bilal</a> |
+                <a href="#ceqele-orte" class="text-blue-600 hover:underline">Çeqelê Ortê</a> |
+                <a href="#mistika" class="text-blue-600 hover:underline">Mistika</a> |
+                <a href="#siketka" class="text-blue-600 hover:underline">Şiketka</a> |
+                <a href="#erende" class="text-blue-600 hover:underline">Erendê</a> |
+                <a href="#qermitliq" class="text-blue-600 hover:underline">Qermîtliq</a> |
+                <a href="#siye" class="text-blue-600 hover:underline">Şiyê</a> |
+                <a href="#senare" class="text-blue-600 hover:underline">Senarê</a> |
+                <a href="#anqele" class="text-blue-600 hover:underline">Anqelê</a> |
+                <a href="#baziya" class="text-blue-600 hover:underline">Baziya</a> |
+                <a href="#hekice" class="text-blue-600 hover:underline">Hêkiçê</a> |
+                <a href="#" id="clear-link" class="text-red-600 hover:underline">Clear Highlights</a>
+            </p>
+        </div>
+
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 991px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">991px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 17.png" alt="Map" onerror="this.onerror=null; this.src='https://placehold.co/991x661/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="tirmisho highlight-box"></div>
+                <div class="kela highlight-box"></div>
+                <div class="alkana highlight-box"></div>
+                <div class="xelil highlight-box"></div>
+                <div class="ceqele-jorin highlight-box"></div>
+                <div class="ceqele-jerin highlight-box"></div>
+                <div class="hec-bilal highlight-box"></div>
+                <div class="ceqele-orte highlight-box"></div>
+                <div class="mistika highlight-box"></div>
+                <div class="siketka highlight-box"></div>
+                <div class="erende highlight-box"></div>
+                <div class="qermitliq highlight-box"></div>
+                <div class="siye highlight-box"></div>
+                <div class="senare highlight-box"></div>
+                <div class="anqele highlight-box"></div>
+                <div class="baziya highlight-box"></div>
+                <div class="hekice highlight-box"></div>
+            </div>
+        </div>
+
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 800px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">800px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 17.png" alt="Map" onerror="this.onerror=null; this.src='https://placehold.co/800x533/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="tirmisho highlight-box"></div>
+                <div class="kela highlight-box"></div>
+                <div class="alkana highlight-box"></div>
+                <div class="xelil highlight-box"></div>
+                <div class="ceqele-jorin highlight-box"></div>
+                <div class="ceqele-jerin highlight-box"></div>
+                <div class="hec-bilal highlight-box"></div>
+                <div class="ceqele-orte highlight-box"></div>
+                <div class="mistika highlight-box"></div>
+                <div class="siketka highlight-box"></div>
+                <div class="erende highlight-box"></div>
+                <div class="qermitliq highlight-box"></div>
+                <div class="siye highlight-box"></div>
+                <div class="senare highlight-box"></div>
+                <div class="anqele highlight-box"></div>
+                <div class="baziya highlight-box"></div>
+                <div class="hekice highlight-box"></div>
+            </div>
+        </div>
+
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 600px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">600px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 17.png" alt="Map" onerror="this.onerror=null; this.src='https://placehold.co/600x400/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="tirmisho highlight-box"></div>
+                <div class="kela highlight-box"></div>
+                <div class="alkana highlight-box"></div>
+                <div class="xelil highlight-box"></div>
+                <div class="ceqele-jorin highlight-box"></div>
+                <div class="ceqele-jerin highlight-box"></div>
+                <div class="hec-bilal highlight-box"></div>
+                <div class="ceqele-orte highlight-box"></div>
+                <div class="mistika highlight-box"></div>
+                <div class="siketka highlight-box"></div>
+                <div class="erende highlight-box"></div>
+                <div class="qermitliq highlight-box"></div>
+                <div class="siye highlight-box"></div>
+                <div class="senare highlight-box"></div>
+                <div class="anqele highlight-box"></div>
+                <div class="baziya highlight-box"></div>
+                <div class="hekice highlight-box"></div>
+            </div>
+        </div>
+
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 400px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">400px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 17.png" alt="Map" onerror="this.onerror=null; this.src='https://placehold.co/400x267/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="tirmisho highlight-box"></div>
+                <div class="kela highlight-box"></div>
+                <div class="alkana highlight-box"></div>
+                <div class="xelil highlight-box"></div>
+                <div class="ceqele-jorin highlight-box"></div>
+                <div class="ceqele-jerin highlight-box"></div>
+                <div class="hec-bilal highlight-box"></div>
+                <div class="ceqele-orte highlight-box"></div>
+                <div class="mistika highlight-box"></div>
+                <div class="siketka highlight-box"></div>
+                <div class="erende highlight-box"></div>
+                <div class="qermitliq highlight-box"></div>
+                <div class="siye highlight-box"></div>
+                <div class="senare highlight-box"></div>
+                <div class="anqele highlight-box"></div>
+                <div class="baziya highlight-box"></div>
+                <div class="hekice highlight-box"></div>
+            </div>
+        </div>
+
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 250px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">250px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 17.png" alt="Map" onerror="this.onerror=null; this.src='https://placehold.co/250x167/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="tirmisho highlight-box"></div>
+                <div class="kela highlight-box"></div>
+                <div class="alkana highlight-box"></div>
+                <div class="xelil highlight-box"></div>
+                <div class="ceqele-jorin highlight-box"></div>
+                <div class="ceqele-jerin highlight-box"></div>
+                <div class="hec-bilal highlight-box"></div>
+                <div class="ceqele-orte highlight-box"></div>
+                <div class="mistika highlight-box"></div>
+                <div class="siketka highlight-box"></div>
+                <div class="erende highlight-box"></div>
+                <div class="qermitliq highlight-box"></div>
+                <div class="siye highlight-box"></div>
+                <div class="senare highlight-box"></div>
+                <div class="anqele highlight-box"></div>
+                <div class="baziya highlight-box"></div>
+                <div class="hekice highlight-box"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showHighlight() {
+            // Hide all highlight boxes first
+            document.querySelectorAll('.highlight-box').forEach(box => {
+                box.style.display = 'none';
+            });
+
+            // Check if there is a hash in the URL (e.g. #tirmisho)
+            if (window.location.hash) {
+                // Get the class name from the hash by removing the #
+                const highlightClass = window.location.hash.substring(1);
+
+                // Find all elements with that class and show them
+                document.querySelectorAll('.' + highlightClass).forEach(element => {
+                    element.style.display = 'block';
+                });
+            }
+        }
+
+        function clearHighlights(event) {
+            event.preventDefault();
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+            showHighlight();
+        }
+
+        // Run the function on page load and when the hash changes
+        window.addEventListener('DOMContentLoaded', showHighlight);
+        window.addEventListener('hashchange', showHighlight);
+        document.getElementById('clear-link').addEventListener('click', clearHighlights);
+    </script>
+
+</body>
+</html>

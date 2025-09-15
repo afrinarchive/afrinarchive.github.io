@@ -4,25 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive | Kurkê Jêrin</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- START: LEAFLET & PLUGIN CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
-    <!-- END: LEAFLET & PLUGIN CSS -->
-
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Light theme variables */
+        body { font-family: 'Inter', sans-serif; }
         :root {
             --bg-color: #f0f2e6;
             --text-color: #000000;
@@ -32,9 +23,8 @@
             --link-color: #2563eb;
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
-            --internal-link-color: #2563eb; /* This is the blue for light mode */
+            --internal-link-color: #2563eb;
         }
-        /* Dark theme variables from user image */
         .dark {
             --bg-color: #2d2d2d;
             --text-color: #f1f1f1;
@@ -44,86 +34,28 @@
             --link-color: #63b3ed;
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
-            --internal-link-color: #86efac; /* This is the light green from your image */
+            --internal-link-color: #86efac;
         }
-        /* Applying theme colors */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        h1, h2, h3, .prose {
-            color: var(--text-color);
-        }
-        .subtext {
-             color: var(--subtext-color);
-        }
-        .themed-border {
-            border-color: var(--border-color);
-        }
-        .internal-link {
-            text-decoration: none; /* This removes the underline */
-            cursor: pointer;
-            color: var(--internal-link-color); /* This uses a new dedicated color variable */
-        }
-        .external-link {
-            color: var(--link-color);
-        }
-        .button-style {
-             border: 1px solid var(--border-color);
-        }
-        .button-style:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-hover-text);
-        }
-        /* Details/Summary styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .prose strong {
-            font-weight: 600;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-        }
-        .prose ol, .prose ul {
-            margin-bottom: 1rem;
-        }
-        /* Inverted colors for the theme toggle button */
-        .toggle-button-colors {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* Custom styles for Leaflet popups and controls to match theme */
-        .leaflet-popup-content-wrapper, .leaflet-control-layers {
-            background-color: var(--card-bg-color) !important;
-            color: var(--text-color) !important;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg-color) !important;
-        }
-        .leaflet-popup-close-button {
-            color: var(--text-color) !important;
-        }
-        .leaflet-popup-content b {
-            font-weight: 600;
-        }
-        .leaflet-popup-content span {
-            color: var(--subtext-color);
-            text-transform: capitalize;
-        }
-        /* FIXED: CSS errors resolved by URL-encoding the SVG data */
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
         .leaflet-control-layers-toggle {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
             background-size: 20px 20px !important;
@@ -131,57 +63,92 @@
         .dark .leaflet-control-layers-toggle {
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
         }
-        .leaflet-control-scale-line {
-            background: var(--card-bg-color);
-            border-color: var(--text-color);
-            color: var(--text-color);
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-mabeta .map-container {
+            position: relative;
+        }
+        #minimap-mabeta .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-mabeta .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            border: 3px solid var(--border-color);
-            border-radius: 8px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* --- COORDINATES FOR ÇK Map 13 --- 
+         Recalculated for original image dimensions of 984x1495 pixels.
+        */
+        #minimap-mabeta .sorbe { left: 46.85%; top: 9.70%; width: 8.54%; height: 5.62%; }
+        #minimap-mabeta .gemruk { left: 56.20%; top: 13.11%; width: 8.54%; height: 5.62%; }
+        #minimap-mabeta .semalka { left: 42.78%; top: 14.25%; width: 9.35%; height: 6.15%; }
+        #minimap-mabeta .erebsexo { left: 58.33%; top: 16.45%; width: 9.35%; height: 6.15%; }
+        #minimap-mabeta .sexutka { left: 53.15%; top: 19.46%; width: 8.94%; height: 5.89%; }
+        #minimap-mabeta .emara { left: 51.83%; top: 23.95%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .avraze { left: 26.22%; top: 27.96%; width: 8.74%; height: 5.75%; }
+        #minimap-mabeta .gobeke { left: 22.36%; top: 30.70%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .sexkele { left: 27.44%; top: 32.37%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .sewiya { left: 13.62%; top: 36.59%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .kelibo { left: 18.50%; top: 40.94%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .enhecere { left: 71.65%; top: 29.83%; width: 10.57%; height: 6.96%; }
+        #minimap-mabeta .omo { left: 64.94%; top: 34.38%; width: 10.57%; height: 6.96%; }
+        #minimap-mabeta .kokane { left: 64.53%; top: 44.35%; width: 10.37%; height: 6.82%; }
+        #minimap-mabeta .qitraniye { left: 39.84%; top: 45.95%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .mabete { left: 43.60%; top: 51.97%; width: 10.77%; height: 7.09%; }
+        #minimap-mabeta .dagire { left: 61.28%; top: 51.04%; width: 10.57%; height: 6.96%; }
+        #minimap-mabeta .qentere { left: 41.77%; top: 54.45%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .ereba { left: 29.47%; top: 55.72%; width: 9.55%; height: 6.29%; }
+        #minimap-mabeta .kurke-jerin { left: 13.31%; top: 54.78%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .kurke-jorin { left: 10.06%; top: 55.65%; width: 9.35%; height: 6.15%; }
+        #minimap-mabeta .sariya { left: 10.98%; top: 58.19%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .hebo { left: 11.89%; top: 62.27%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .setana { left: 15.14%; top: 59.93%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .selo { left: 29.37%; top: 59.46%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .xazyane-jerin { left: 21.44%; top: 64.82%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .xazyane-jorin { left: 21.85%; top: 64.95%; width: 9.76%; height: 6.42%; } /* Note: Very close coords */
+        #minimap-mabeta .birimce { left: 39.43%; top: 64.15%; width: 9.96%; height: 6.56%; }
+        #minimap-mabeta .mirka { left: 48.48%; top: 64.08%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .sitka { left: 50.91%; top: 67.36%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .comezna { left: 33.74%; top: 68.63%; width: 10.37%; height: 6.82%; }
+        #minimap-mabeta .merserke { left: 27.03%; top: 71.91%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .elcara { left: 32.93%; top: 71.71%; width: 10.16%; height: 6.69%; }
+        #minimap-mabeta .reca { left: 36.08%; top: 71.97%; width: 9.96%; height: 6.56%; }
+        #minimap-mabeta .kaxre { left: 53.15%; top: 73.18%; width: 9.55%; height: 6.29%; }
+        #minimap-mabeta .mistesura { left: 41.67%; top: 77.86%; width: 9.15%; height: 6.02%; }
+        #minimap-mabeta .hecqasma { left: 40.85%; top: 79.73%; width: 9.76%; height: 6.42%; }
+        #minimap-mabeta .dela { left: 43.40%; top: 85.35%; width: 9.96%; height: 6.56%; }
+        #minimap-mabeta .ruta { left: 51.32%; top: 83.01%; width: 9.55%; height: 6.29%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
     </style>
 </head>
 <body>
-
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
-        <!-- Header Section -->
         <header class="mb-8">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Kurkê Jêrin</h1>
         </header>
 
         <main class="space-y-6">
-            <!-- Basic Information Card -->
             <div class="card p-6 rounded-xl">
                 <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
                     <h2 class="text-2xl font-semibold">General Information</h2>
-                    <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
                         <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
@@ -189,19 +156,42 @@
                         </svg>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                        <p class="text-lg">Ma'batli</p>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Mabeta</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Al-Zahirah al-Tahtaniyah, Korke Jêr, Kurka Jêrin, Kurka Jêrîn, Kurkan Tahtani, Kurkê Jêrin, الظاهرة التحتانية, كوركان تحتاني, كوركه جيرن</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-medium subtext">Alternative Spellings</h3>
-                        <p class="text-lg">Al-Zahirah al-Tahtaniyah, Kurka Jêrin, Kurkan Tahtani, الظاهرة التحتانية, كوركان تحتاني</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
+<img alt="Map Image 13" onerror="this.onerror=null; this.src='https://placehold.co/984x1495/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 13.png"/>
+<div class="sorbe highlight-box"></div><div class="gemruk highlight-box"></div><div class="semalka highlight-box"></div><div class="erebsexo highlight-box"></div><div class="sexutka highlight-box"></div><div class="emara highlight-box"></div><div class="avraze highlight-box"></div><div class="gobeke highlight-box"></div><div class="sexkele highlight-box"></div><div class="sewiya highlight-box"></div><div class="kelibo highlight-box"></div><div class="enhecere highlight-box"></div><div class="omo highlight-box"></div><div class="kokane highlight-box"></div><div class="qitraniye highlight-box"></div><div class="mabete highlight-box"></div><div class="dagire highlight-box"></div><div class="qentere highlight-box"></div><div class="ereba highlight-box"></div><div class="kurke-jerin highlight-box" style="display: block;"></div><div class="kurke-jorin highlight-box"></div><div class="sariya highlight-box"></div><div class="hebo highlight-box"></div><div class="setana highlight-box"></div><div class="selo highlight-box"></div><div class="xazyane-jerin highlight-box"></div><div class="xazyane-jorin highlight-box"></div><div class="birimce highlight-box"></div><div class="mirka highlight-box"></div><div class="sitka highlight-box"></div><div class="comezna highlight-box"></div><div class="merserke highlight-box"></div><div class="elcara highlight-box"></div><div class="reca highlight-box"></div><div class="kaxre highlight-box"></div><div class="mistesura highlight-box"></div><div class="hecqasma highlight-box"></div><div class="dela highlight-box"></div><div class="ruta highlight-box"></div>
+</div></div>
                 </div>
             </div>
 
-            <!-- Map and Location Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
@@ -211,61 +201,52 @@
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
             
-            <!-- Photos Card -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><img src="../village_photos/Kurke Jerin.jpg" alt="Photo of Kurke Jerin" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Kurke+Jerin.jpg';"><img src="../village_photos/gawrkan th.jpg" alt="Photo of gawrkan th" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=gawrkan+th.jpg';"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/Kurke Jerin.jpg" alt="Photo of Kurkê Jêrin" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Kurke+Jerin.jpg';">
+<img src="../village_photos/gawrkan th.jpg" alt="Photo of Kurkê Jêrin" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=gawrkan+th.jpg';">
+</div>
             </div>
 
-            <!-- Summaries Card (I-IV) -->
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;"># Kurkê Jêrin</p>
-<p style="margin-bottom: 1em;">According to the book '<span class="internal-link">جبل الكرد (عفرين)</span>' '<span class="internal-link">Mountain of the Kurds (Afrin City)</span>' geographical study by <span class="internal-link">Dr. Mohammed Abdo Ali</span> (محمد عبدو علي):</p>
-<p style="margin-bottom: 1em;"><strong><span class="internal-link">Kurka</span> (كوركان):</strong></p>
-<p style="margin-bottom: 1em;">The abstract name <span class="internal-link">Kurk</span> means the brooding hen. If pronounced as <span class="internal-link">Kurik</span>, it means small boys or young men whose beards have not yet grown. If its root is <span class="internal-link">Kur</span>, it means the small bare hill or elevation, and this latter is the origin of the name, as the two villages are located on two small hills that were formerly bare of trees. The Arab speakers relied on this and translated the name to "<span class="internal-link">al-Zahirah</span>" (الظاهرة).</p>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Kurkê Jêrin (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد (عفرين)</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin City)</span>&#x27; geographical study by <span class="internal-link">Dr. Mohammed Abdo Ali</span> (محمد عبدو علي):</p>
+<p><strong><span class="internal-link">Kurka</span> (كوركان):</strong></p>
+<p>The abstract name <span class="internal-link">Kurk</span> means the brooding hen. If pronounced as <span class="internal-link">Kurik</span>, it means small boys or young men whose beards have not yet grown. If its root is <span class="internal-link">Kur</span>, it means the small bare hill or elevation, and this latter is the origin of the name, as the two villages are located on two small hills that were formerly bare of trees. The Arab speakers relied on this and translated the name to &quot;<span class="internal-link">al-Zahirah</span>&quot; (الظاهرة).</p>
 <ul>
 <li>They are two villages: <span class="internal-link">Kurkan Foqani</span> <span class="internal-link">Kurkê jorin</span> and <span class="internal-link">Kurkan Tahtani</span> <span class="internal-link">Kurkê Jêrin</span>:</li>
 </ul>
-<p style="margin-bottom: 1em;"><strong><span class="internal-link">Kurkê Jêrin</span> (كوركان تحتاني), <span class="internal-link">الظاهرة التحتانية</span></strong> /932n - 134ha - 14km - 550m/: A small village located on the northern slope of a calcareous elevation.</p>
-<p style="margin-bottom: 1em;">According to the book: '<span class="internal-link">عفرين.... نهرها ورواbiها الخضراء</span>' '<span class="internal-link">Afrin City.... Its River and Green Hills</span>' by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p style="margin-bottom: 1em;"><strong><span class="internal-link">Kurkan Tahtani</span></strong> (كوركان تحتاني): A village in <span class="internal-link">Kurd Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Mabetli District</span> (ناحية معبطلي), <span class="internal-link">Afrin City Region</span> (منطقة عفرين), <span class="internal-link">Aleppo Governorate</span> (محافظة حلب).</p>
-<p style="margin-bottom: 1em;">It is a small village located in the central section of the mentioned mountain, on the northern slope of <span class="internal-link">Hamo calcareous mountain</span> (جبل حمو الكلسي). It overlooks the agricultural plains of <span class="internal-link">Katkh plain</span> (سهل كتخ) to the east, to the northwest of <span class="internal-link">Mabetli town</span> (بلدة معبطلي) at a distance of 14km. To the north it is bordered by a slope and stream valley and <span class="internal-link">Donbllali village</span> (قرية دونبلللي), to the south by a mountain elevation and the nearby <span class="internal-link">Sari Oshaghi village</span> (قرية صاري أوشاغي), to the west by a stream valley and mountain elevations planted with olive trees and <span class="internal-link">Ma'mal Oshaghi village</span> (قرية معمل أوشاغي), and to the east by a stream valley and <span class="internal-link">Katkh plains</span> (سهول كتخ) and <span class="internal-link">Kul Ibo village</span> (قرية كل إيبو) and <span class="internal-link">Kurkan Foqani</span> (كوركان فوقاني). It contains approximately 35 houses (بيتاً) and is about 350 years old (عاماً). Its old houses are stone and clay with wooden roofs, and modern cement buildings spread in the south and west. It has an electricity network and a drinking water network connected to an artesian well in the west of the village. It has a primary school and an olive press. It is connected to the district center by a paved mountain road. Its inhabitants cultivate rain-fed crops on an area of 134ha of grains and olive trees, especially on the mountain slopes in the west and north of the village, alongside raising sheep and goats. Among its most important families: <span class="internal-link">Hamo Bazrkah family</span> (عائلة حمو بزركة) - <span class="internal-link">Al Khalil Haji Masto</span> (آل خليل حجي مستو) - <span class="internal-link">Al Shukri Hamid Kilo</span> (آل شكري حميد كيلو).</p>
-<p style="margin-bottom: 1em;">Village headman: <span class="internal-link">Zamriya Othman</span> (زمريا عثمان)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p style="margin-bottom: 1em;">The village name Kurka derives from two brothers who settled <span class="internal-link">Kurka Jêrin</span> (Lower Kurka, the older village) and <span class="internal-link">Kurka Jorin</span> (Upper Kurka) (02:01-04:12, 12:24-12:32). <span class="internal-link">Kurka Jêrin</span> is part of the historically recognized region of <span class="internal-link">Kurka Leqê</span>, which included nine villages (03:19-03:49, 12:11-12:23). The village is claimed to be over 600 years old (04:30-04:35). It was reportedly founded by nine families, with the first being <span class="internal-link">Mala Hemîdê</span>, who later left tragically (04:53-05:50, 12:36-12:50). Subsequent settling families included <span class="internal-link">Mala Hemçûçê</span> (from <span class="internal-link">Deşta Hemqê</span>), <span class="internal-link">Mala Kor Ehmed</span> (from <span class="internal-link">Bedîna</span>), <span class="internal-link">Mala Orkîta</span> (from near <span class="internal-link">Dumilo</span>), <span class="internal-link">Mala Ebdîkê</span> (from Kobanê), <span class="internal-link">Mala Têwê</span> (from <span class="internal-link">Deşta Hemqê</span>), and <span class="internal-link">Mala Elî Şêrvan</span> (from Kobanê) (05:52-07:28). A conflict led to the dispersal of <span class="internal-link">Mala Elî Şêrvan</span> and <span class="internal-link">Mala Eynê</span> to other villages (07:23-07:43). Around <span class="internal-link">1865</span>, an olive press was established by <span class="internal-link">Mihemed Axa</span> (<span class="internal-link">Kêlo</span>), and two related Axas settled in the Kurka villages (08:14-08:40). After <span class="internal-link">1915</span>, Armenian refugees from Turkey settled nearby for 10-15 years, establishing a blacksmith workshop (<span class="internal-link">Xerabê Damercîyo</span>) and integrating to some extent before moving on, mainly to Aleppo (10:50-11:04, 23:53-24:08, 25:08-27:56). There is an old shrine site called <span class="internal-link">Zîreta Mîrada</span> (11:05-11:08, 23:32). Historically, the village had no mosque (23:41).</p></div></details><hr class="themed-border"></div>
-
-            <!-- Links Card (V) -->
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kurke%20jerin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kurke%20jerin.htm</a></li><li>Ax û Welat<br><a href="https://www.youtube.com/watch?v=8YsZP3s5Gg4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8YsZP3s5Gg4</a><br><a href="https://www.youtube.com/watch?v=ikTuzI6TJgY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ikTuzI6TJgY</a></li></ul>
+<p><strong><span class="internal-link">Kurkê Jêrin</span> (كوركان تحتاني), <span class="internal-link">الظاهرة التحتانية</span></strong> /932n - 134ha - 14km - 550m/: A small village located on the northern slope of a calcareous elevation.</p>
+<p>According to the book: &#x27;<span class="internal-link">عفرين.... نهرها ورواbiها الخضراء</span>&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27; by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
+<p><strong><span class="internal-link">Kurkan Tahtani</span></strong> (كوركان تحتاني): A village in <span class="internal-link">Kurd Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Mabetli District</span> (ناحية معبطلي), <span class="internal-link">Afrin City Region</span> (منطقة عفرين), <span class="internal-link">Aleppo Governorate</span> (محافظة حلب).</p>
+<p>It is a small village located in the central section of the mentioned mountain, on the northern slope of <span class="internal-link">Hamo calcareous mountain</span> (جبل حمو الكلسي). It overlooks the agricultural plains of <span class="internal-link">Katkh plain</span> (سهل كتخ) to the east, to the northwest of <span class="internal-link">Mabetli town</span> (بلدة معبطلي) at a distance of 14km. To the north it is bordered by a slope and stream valley and <span class="internal-link">Donbllali village</span> (قرية دونبلللي), to the south by a mountain elevation and the nearby <span class="internal-link">Sari Oshaghi village</span> (قرية صاري أوشاغي), to the west by a stream valley and mountain elevations planted with olive trees and <span class="internal-link">Ma&#x27;mal Oshaghi village</span> (قرية معمل أوشاغي), and to the east by a stream valley and <span class="internal-link">Katkh plains</span> (سهول كتخ) and <span class="internal-link">Kul Ibo village</span> (قرية كل إيبو) and <span class="internal-link">Kurkan Foqani</span> (كوركان فوقاني). It contains approximately 35 houses (بيتاً) and is about 350 years old (عاماً). Its old houses are stone and clay with wooden roofs, and modern cement buildings spread in the south and west. It has an electricity network and a drinking water network connected to an artesian well in the west of the village. It has a primary school and an olive press. It is connected to the district center by a paved mountain road. Its inhabitants cultivate rain-fed crops on an area of 134ha of grains and olive trees, especially on the mountain slopes in the west and north of the village, alongside raising sheep and goats. Among its most important families: <span class="internal-link">Hamo Bazrkah family</span> (عائلة حمو بزركة) - <span class="internal-link">Al Khalil Haji Masto</span> (آل خليل حجي مستو) - <span class="internal-link">Al Shukri Hamid Kilo</span> (آل شكري حميد كيلو).</p>
+<p>Village headman: <span class="internal-link">Zamriya Othman</span> (زمريا عثمان)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Kurkê Jêrin</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>Located in the Ma&#x27;bata district of Afrin, the village of Kurka Jêrîn is one of two sister villages whose name, according to oral tradition, originates from the Kurdish word for &quot;blind&quot; (&quot;kor&quot;), referencing two blind brothers who founded them in ancient times. The village is part of a historical nine-village region known as <span class="internal-link">Herêma Kurkanlqê</span>, which also includes the villages of <span class="internal-link">Qopê</span>, <span class="internal-link">Badîno</span>, <span class="internal-link">Dêmîlo</span>, <span class="internal-link">Sariya</span>, <span class="internal-link">Şeytano</span>, and <span class="internal-link">Hebo</span>. The area&#x27;s history predates its current inhabitants, with the nearby ruins of <span class="internal-link">Dêrmerc</span> identified as a former <span class="internal-link">Armenian</span> village. These Armenian residents were known as blacksmiths who crafted tools like ploughs and sickles before fleeing Turkish oppression in 1915 and migrating to Aleppo; they also built a local mill, <span class="internal-link">Curnê Kolê</span>, which was later used by the Kurdish settlers. The current village was established by several founding families from diverse origins, including the <span class="internal-link">Elîtan</span> and <span class="internal-link">Têlo</span> families from the plains, the <span class="internal-link">Kor Ehmed</span> and <span class="internal-link">Orgitê</span> families from <span class="internal-link">Badîna</span> and North Kurdistan, and the <span class="internal-link">Ebdikê</span> family from the <span class="internal-link">Ne&#x27;îmî</span> tribe of <span class="internal-link">Kobanî</span>. An internal conflict later caused the <span class="internal-link">Elî Şêrvîn</span> and <span class="internal-link">Eynê</span> families to disperse to other villages. In its modern history, the village has been deeply affected by the Kurdish freedom movement, honoring two local martyrs, Şehîd Dilşêr and Şehîd Cîhad, by naming its school and commune after them. This connection to heritage is actively preserved through agricultural traditions like fig grafting (&quot;Aşlêkirin&quot;) and the formation of a youth theater group dedicated to reviving the Kurdish language and history.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>III. Summary from other Channels&#x27; Transcripts of Kurkê Jêrin</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><h3 class="font-semibold text-xl mt-6 mb-3">A. Summary from Halil Sino Transcript of Kurkê Jêrin</h3>
+<p>The village of Korke Jêr, along with its counterpart <span class="internal-link">Korke Jor</span>, derives its name from an ancient story (&quot;ji tarîxê kevn&quot;) about two boys (&quot;koriko&quot;), a history passed down from old ancestors. The village contains several ancient sites, including a 200-year-old bakery known as &quot;<span class="internal-link">Meqbeze Celko</span>,&quot; which was historically owned by the Şikrî Heyder and Çewo families and served a previous settlement in the area. The village also has an ancient cemetery adjacent to the shrine (&quot;ziyaret&quot;) of <span class="internal-link">Sheikh Hassan</span>, a significant local figure who originated from Korke Jor. Elders recall a past life (&quot;wextê berê&quot;) defined by self-sufficiency and greater social value (&quot;qedr û qîmet&quot;), where agricultural work was done with horses, oxen, and sickles before the arrival of tractors. Families produced their own staples like bulgur (&quot;savar&quot;), and this traditional way of life is remembered as having more &quot;bereket&quot; (blessing) than the modern era. This deep connection to the land is also reflected in traditional medicinal knowledge; the area is home to a wild plant called &quot;<span class="internal-link">Zelaton</span>&quot; (or &quot;Tolqoda&quot; in Arabic), a root harvested in the spring that is dried, powdered, and encapsulated as a traditional remedy for cancer, which one local resident has successfully used for five years to treat his own stage 3 illness.</p></div></details></div>
             </div>
 
-            <!-- Additional Information Card (VI-X) -->
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kurke%20jerin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kurke%20jerin.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=8YsZP3s5Gg4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8YsZP3s5Gg4</a><br><a href="https://www.youtube.com/watch?v=ikTuzI6TJgY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ikTuzI6TJgY</a></li></ul>
+            </div>
+
             
 
-            <!-- Additional Summaries and Transcripts Card (XI-XVII) -->
             
 
         </main>
 
-        <!-- Footer -->
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Generated for archive purposes.</p>
+            <p class="text-sm subtext">Page Updated on September 15, 2025</p>
         </footer>
     </div>
 
-    <!-- START: LIGHTBOX HTML -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <!-- END: LIGHTBOX HTML -->
-
-    <!-- START: LEAFLET & PLUGIN JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- END: LEAFLET & PLUGIN JAVASCRIPT -->
-
     <script>
-        // Theme toggle script (unchanged)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -298,35 +279,22 @@
             }
         });
 
-        // Main script runs after the page content has loaded
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LIGHTBOX SCRIPT ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxClose = document.getElementById('lightbox-close');
             const imageTriggers = document.querySelectorAll('.lightbox-trigger');
-
             imageTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     lightboxImage.src = trigger.src;
                     lightbox.classList.remove('hidden');
                 });
             });
-
-            function closeLightbox() {
-                lightbox.classList.add('hidden');
-            }
-
+            function closeLightbox() { lightbox.classList.add('hidden'); }
             lightbox.addEventListener('click', closeLightbox);
             lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
 
-            // --- MAP SCRIPT ---
             const iconConfig = {
                 shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
                 landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
@@ -337,7 +305,6 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-
             function createCustomIcon(type, isMain) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
@@ -345,7 +312,6 @@
                 const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-
                 const html = `
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
@@ -355,79 +321,38 @@
                             ${config.svg}
                         </svg>
                     </div>`;
-
-                return L.divIcon({
-                    html: html,
-                    className: '',
-                    iconSize: iconSize,
-                    iconAnchor: iconAnchor,
-                    popupAnchor: popupAnchor
-                });
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
-
             const mainVillageName = "Kurkê Jêrin";
             const villageLat = 36.596938;
             const villageLng = 36.680025;
             const initialZoom = 14;
-
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-
-            // --- Define all the map layers ---
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: 'Tiles &copy; Esri'
-            });
-
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
             const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36', 
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
                 maxZoom: 22
             });
-
-            // --- Set up the layer control ---
-            const baseMaps = {
-                "Satellite": esriImagery,
-                "Street": osmStreet,
-                "Terrain": thunderforestTerrain
-            };
-            
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
             L.control.layers(baseMaps).addTo(map);
             esriImagery.addTo(map);
-
-            // --- ADD MAP CONTROLS ---
-            // 1. Static Scale Bar
             L.control.scale({ imperial: false }).addTo(map);
-
-            // --- Fetch data and add markers ---
             fetch('afrin_locations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
                 .then(locations => {
                     locations.forEach(location => {
                         const isMainVillage = location.name === mainVillageName;
                         const customIcon = createCustomIcon(location.type, isMainVillage);
-                        
-                        const marker = L.marker([location.lat, location.lng], { 
-                            icon: customIcon,
-                            zIndexOffset: isMainVillage ? 1000 : 0
-                        }).addTo(map);
-                        
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
                         marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-
-                        if (isMainVillage) {
-                            marker.openPopup();
-                        }
+                        if (isMainVillage) { marker.openPopup(); }
                     });
                 })
-                .catch(error => {
-                    console.error('Error loading location data:', error);
-                    const mapDiv = document.getElementById('map');
-                    mapDiv.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
     </script>
