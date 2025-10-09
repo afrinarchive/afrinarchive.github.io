@@ -18,7 +18,6 @@ from datetime import datetime
 import re
 import html
 from bs4 import BeautifulSoup
-import yaml  # PyYAML library is now used for frontmatter parsing
 
 INPUT_PATH  = r"H:\\My Drive\\Zachar\\1 - PhD\\Villages"
 OUTPUT_DIR  = r"C:\\Users\\Zachar\\Desktop\\Afrin_Archive\\village_sites"
@@ -116,21 +115,38 @@ def read_text(p: Path) -> str:
 def ensure_dir(p: Path):
     p.mkdir(parents=True, exist_ok=True)
 
-def parse_yaml_frontmatter(md_content: str) -> dict:
-    """
-    Parses the YAML frontmatter from a markdown file using PyYAML.
-    Returns an empty dictionary if no frontmatter is found or on error.
-    """
-    match = re.search(r'---\s*\n(.*?)\n---', md_content, re.DOTALL)
-    if match:
-        yaml_str = match.group(1)
-        try:
-            data = yaml.safe_load(yaml_str)
-            if isinstance(data, dict):
-                return data
-        except yaml.YAMLError as e:
-            print(f"  [YAML ERROR] Could not parse frontmatter: {e}")
-    return {}
+def md_find_yaml_aliases(md: str) -> list:
+    aliases = []
+    m = re.search(r'(?s)^---\s*(.*?)\s*---', md)
+    if not m:
+        return aliases
+    fm = m.group(1)
+    m2 = re.search(r'(?mi)^\s*aliases\s*:\s*(.+)?$', fm)
+    if not m2:
+        return aliases
+    rest = m2.group(1) or ""
+    inline = re.search(r'\[(.*?)\]', rest)
+    if inline:
+        items = [x.strip() for x in inline.group(1).split(",")]
+        return [x for x in items if x]
+    lines = fm.splitlines()
+    start = None
+    for i, line in enumerate(lines):
+        if re.match(r'^\s*aliases\s*:', line):
+            start = i + 1
+            break
+    if start is None:
+        return aliases
+    for j in range(start, len(lines)):
+        line = lines[j]
+        if re.match(r'^\s*[A-Za-z_]+\s*:', line):
+            break
+        mli = re.match(r'^\s*-\s*(.+)$', line)
+        if mli:
+            aliases.append(mli.group(1).strip())
+    return aliases
+
+
 
 def extract_minimap(village_name: str, maps_dir: Path, master_lookup: dict):
     """
@@ -195,8 +211,17 @@ def extract_minimap(village_name: str, maps_dir: Path, master_lookup: dict):
         print(f"  [ERROR] Failed to process minimap for {village_name} from {correct_nahiya}.html: {e}")
         return None, None
 
-def md_find_nahiya_in_body(md: str) -> str:
-    """Fallback to find nahiya in the markdown body if not in YAML."""
+def md_find_nahiya(md: str) -> str:
+    # Try finding it in the YAML frontmatter first
+    m_fm = re.search(r'(?s)^---\s*(.*?)\s*---', md)
+    if m_fm:
+        fm = m_fm.group(1)
+        # Regex to find 'nahiyah:' followed by a list item '- value'
+        m_nahiya = re.search(r'(?mi)^\s*nahiyah\s*:\s*\n\s*-\s*(.+)$', fm)
+        if m_nahiya:
+            return m_nahiya.group(1).strip()
+
+    # Fallback to the old method (searching for ## Nahiya)
     for line in md.splitlines():
         if line.strip().lower().startswith("## nahiya"):
             m = re.search(r'\[\[(.*?)\]\]', line)
@@ -272,12 +297,10 @@ def convert_md_to_html_basic(md_text: str) -> str:
         html_lines = []
         in_ul = False
         in_ol = False
-        in_blockquote = False
-        def close_all_blocks():
-            nonlocal in_ul, in_ol, in_blockquote
+        def close_lists():
+            nonlocal in_ul, in_ol
             if in_ul: html_lines.append('</ul>'); in_ul = False
             if in_ol: html_lines.append('</ol>'); in_ol = False
-            if in_blockquote: html_lines.append('</blockquote>'); in_blockquote = False
 
         for line in lines:
             s = line.strip()
@@ -286,37 +309,25 @@ def convert_md_to_html_basic(md_text: str) -> str:
             s_esc = re.sub(r'\[\[(.+?)\]\]', r'<span class="internal-link">\1</span>', s_esc)
             
             if s == '---' or not s:
-                close_all_blocks()
+                close_lists()
                 continue
-            
-            if re.match(r'^\s*>\s+', s):
-                if in_ul or in_ol: close_all_blocks()
-                if not in_blockquote: html_lines.append('<blockquote>'); in_blockquote = True
-                item_content = re.sub(r'^\s*>\s+', '', s, count=1)
-                item_content_esc = html.escape(item_content)
-                item_content_esc = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', item_content_esc)
-                item_content_esc = re.sub(r'\[\[(.+?)\]\]', r'<span class="internal-link">\1</span>', item_content_esc)
-                html_lines.append(f'<p>{item_content_esc}</p>')
-                continue
-            
             if re.match(r'^[-\*]\s+', s):
-                if in_ol or in_blockquote: close_all_blocks()
+                if in_ol: close_lists()
                 if not in_ul: html_lines.append('<ul>'); in_ul = True
                 item_content = re.sub(r'^[-\*]\s+', '', s_esc, count=1)
                 html_lines.append(f'<li>{item_content}</li>')
                 continue
-
             if re.match(r'^\d+\.\s+', s):
-                if in_ul or in_blockquote: close_all_blocks()
+                if in_ul: close_lists()
                 if not in_ol: html_lines.append('<ol>'); in_ol = True
                 item_content = re.sub(r'^\d+\.\s+', '', s_esc, count=1)
                 html_lines.append(f'<li>{item_content}</li>')
                 continue
             
-            close_all_blocks()
+            close_lists()
             html_lines.append(f'<p>{s_esc}</p>')
 
-        close_all_blocks()
+        close_lists()
         return "\n".join(html_lines)
 
     # Process any text that came before the first heading
@@ -380,21 +391,6 @@ def section_or_placeholder_plain(title: str, body_md: str, open_details=True) ->
     open_attr = " open" if open_details else ""
     return f'<details class="group"{open_attr}><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>{html.escape(title)}</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4">{content}</div></details>'
 
-def build_simple_section_html(title: str, body_md: str, name: str) -> str:
-    """Creates a non-collapsible section with a title and prose content."""
-    if not has_meaningful_content(body_md):
-        return ""
-    
-    # Replace the village name placeholder in the title
-    title = title.replace("__NAME__", name)
-    content = convert_md_to_html_basic(body_md)
-    
-    return f"""<div class="border-b themed-border pb-3 mb-4">
-        <h2 class="text-2xl font-semibold">{html.escape(title)}</h2>
-    </div>
-    <div class="p-4 prose max-w-none">{content}</div>"""
-
-
 def photos_grid_html(name: str, photos: list) -> str:
     if not photos:
         return '<div class="italic subtext">No photos available.</div>'
@@ -410,13 +406,13 @@ def build_html_page(name, nahiya, aliases, lat, lng,
                     summaries_I, summaries_II, summaries_III, summaries_IV,
                     links_md,
                     vi_history, vii_families, viii_culture, ix_dengbej, x_connections,
-                    foundation_origin_md, name_meaning_md,
                     xi_ar_tirej, xii_axw_en, xiii_halil_en, xiv_flo_en, xv_afr366_en, xvi_zeyton_en, xvii_other_en,
                     xviii_axw_ku, xix_halil_ku, xx_flo_ku, xxi_afr366_ku, xxii_zeyton_ku, xxiii_other_ku,
                     photos,
                     foundation_txt, size_txt, tribes_txt, families_txt,
                     minimap_html, minimap_css):
     today = datetime.now().strftime("%B %d, %Y")
+    aliases_txt = ", ".join([a for a in aliases if a]) if aliases else ""
     nahiya_disp = nahiya if nahiya else "unknown"
 
     html_template = """<!DOCTYPE html>
@@ -445,7 +441,6 @@ def build_html_page(name, nahiya, aliases, lat, lng,
             --button-hover-bg: #000000;
             --button-hover-text: #f0f2e6;
             --internal-link-color: #2563eb;
-            --blockquote-border-color: #16a34a;
         }
         .dark {
             --bg-color: #2d2d2d;
@@ -457,7 +452,6 @@ def build_html_page(name, nahiya, aliases, lat, lng,
             --button-hover-bg: #f1f1f1;
             --button-hover-text: #2d2d2d;
             --internal-link-color: #86efac;
-            --blockquote-border-color: #4ade80;
         }
         body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
         .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
@@ -473,8 +467,6 @@ def build_html_page(name, nahiya, aliases, lat, lng,
         .prose strong { font-weight: 600; }
         .prose p { margin-bottom: 1rem; }
         .prose ol, .prose ul { margin-bottom: 1rem; }
-        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
-        .prose blockquote p { color: var(--text-color); }
         .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
         .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
         .leaflet-popup-tip { background: var(--card-bg-color) !important; }
@@ -565,8 +557,6 @@ def build_html_page(name, nahiya, aliases, lat, lng,
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
                 __PHOTOS__
             </div>
-
-            __FOUNDATION_CARD__
 
             __SUMMARIES_CARD__
 
@@ -706,16 +696,6 @@ def build_html_page(name, nahiya, aliases, lat, lng,
     if minimap_html:
         minimap_column_html = f'<div class="flex-1 min-w-0">{minimap_html}</div>'
 
-    # Foundation and Meaning Card
-    foundation_html = build_simple_section_html("Foundation/Origin Information of __NAME__", foundation_origin_md, name)
-    meaning_html = build_simple_section_html("Possible Village Name Meaning of __NAME__", name_meaning_md, name)
-    foundation_card_html = ""
-    if foundation_html or meaning_html:
-        foundation_card_html = f'''<div class="card p-6 rounded-xl space-y-6">
-                {foundation_html}
-                {meaning_html}
-            </div>'''
-            
     # Summaries Card
     sum_i   = section_or_placeholder(f"I. Summary from TirejAfrin Site of {name} (English)", summaries_I, open_details=True)
     sum_ii  = section_or_placeholder_plain(f"II. Summary from Ax û Walat Transcript of {name}", summaries_II)
@@ -779,7 +759,7 @@ def build_html_page(name, nahiya, aliases, lat, lng,
     out = (html_template
            .replace("__NAME__", html.escape(name))
            .replace("__NAHIYA__", html.escape(nahiya_disp))
-           .replace("__ALIASES__", html.escape(aliases))
+           .replace("__ALIASES__", html.escape(aliases_txt))
            .replace("__TRIBES__", html.escape(tribes_txt))
            .replace("__FAMILIES__", html.escape(families_txt))
            .replace("__FOUNDATION__", html.escape(foundation_txt or ""))
@@ -789,7 +769,6 @@ def build_html_page(name, nahiya, aliases, lat, lng,
            .replace("__LAT_JS__", "null" if lat is None else str(lat))
            .replace("__LNG_JS__", "null" if lng is None else str(lng))
            .replace("__PHOTOS__", photos_html)
-           .replace("__FOUNDATION_CARD__", foundation_card_html)
            .replace("__SUMMARIES_CARD__", summaries_card_html)
            .replace("__LINKS_CARD__", links_card_html)
            .replace("__ADDITIONAL_INFO_CARD__", add_info_card_html)
@@ -799,6 +778,16 @@ def build_html_page(name, nahiya, aliases, lat, lng,
            .replace("__MINIMAP_COLUMN__", minimap_column_html)
           )
     return out
+
+def parse_foundation_and_size(md: str):
+    foundation = ""
+    size = ""
+    for line in md.splitlines():
+        m1 = re.match(r'(?i)^\s*Foundation\s*Date\s*:\s*(.+)$', line.strip())
+        if m1: foundation = m1.group(1).strip()
+        m2 = re.match(r'(?i)^\s*Size\s*:\s*(.+)$', line.strip())
+        if m2: size = m2.group(1).strip()
+    return foundation, size
 
 def normalize_section_title(t: str) -> str:
     return re.sub(r'\s+', ' ', t.strip().lower())
@@ -811,14 +800,6 @@ def extract_expected_sections(md: str) -> dict:
             if k_norm.startswith(f"{num_roman.lower()}.") and keyword in k_norm:
                 return v
         return ""
-    
-    # NEW HELPER to find sections by keyword
-    def find_by_keyword(keyword):
-        for k_norm, v in lookup.items():
-            if keyword in k_norm:
-                return v
-        return ""
-        
     out = {}
     out["I"]   = find_by_prefix("I","tirej") or lookup.get("i. summary from tirejafrin site (english)", "")
     out["II"]  = find_by_prefix("II","ax")   or lookup.get("ii. summary from ax û walat transcript", "")
@@ -843,56 +824,44 @@ def extract_expected_sections(md: str) -> dict:
     out["XXI"] = lookup.get("xxi. afrin 366 transcript (kumancî)", "") or lookup.get("xxi. afrin 366 transcript (kurmancî)", "")
     out["XXII"]= lookup.get("xxii. afrin zeyton transcript (kumancî)", "") or lookup.get("xxii. afrin zeyton transcript (kurmancî)", "")
     out["XXIII"]= lookup.get("xxiii. other transcripts (kumancî)", "") or lookup.get("xxiii. other transcripts (kurmancî)", "")
-
-    out["foundation_origin"] = find_by_keyword("foundation/origin information")
-    out["name_meaning"] = find_by_keyword("possible village name meaning")
-    
     return out
 
-def format_yaml_value(value):
-    """Formats a value from YAML into a clean, comma-separated string."""
-    if value is None:
-        return ""
-    if isinstance(value, list):
-        return ", ".join(str(v) for v in value)
-    return str(value)
+def md_find_yaml_list(md: str, key: str) -> list:
+    items = []
+    m = re.search(r'(?s)^---\s*(.*?)\s*---', md)
+    if not m:
+        return items
+    fm = m.group(1)
+
+    # Regex to find the key and capture the subsequent list items
+    pattern = re.compile(rf'^\s*{re.escape(key)}\s*:\s*\n((?:\s*-\s*.+\n?)+)', re.MULTILINE | re.IGNORECASE)
+    match = pattern.search(fm)
+
+    if match:
+        list_block = match.group(1)
+        items = [item.strip() for item in re.findall(r'^\s*-\s*(.+)$', list_block, re.MULTILINE)]
+    
+    return items
 
 def process_one(md_path: Path, out_dir: Path, master_lookup: dict):
-    name = md_path.stem
-    out_file = out_dir / f"{name}.html"
-
-    # Modification time check: only process if MD is newer or HTML doesn't exist.
-    if out_file.exists():
-        md_mtime = md_path.stat().st_mtime
-        html_mtime = out_file.stat().st_mtime
-        if md_mtime <= html_mtime:
-            return  # Silently skip up-to-date files
-
     md = read_text(md_path)
-    
-    # --- New Robust YAML Parsing ---
-    fm_data = parse_yaml_frontmatter(md)
-
-    aliases = format_yaml_value(fm_data.get('aliases'))
-    tribes_txt = format_yaml_value(fm_data.get('tribes'))
-    families_txt = format_yaml_value(fm_data.get('families, clans, etc'))
-    foundation_txt = format_yaml_value(fm_data.get('foundation'))
-    size_txt = format_yaml_value(fm_data.get('size'))
-
-    # Handle nahiya: it's special, we only want the first item if it's a list.
-    nahiya_val = fm_data.get('nahiyah')
-    if isinstance(nahiya_val, list) and nahiya_val:
-        nahiya = str(nahiya_val[0])
-    elif nahiya_val:
-        nahiya = str(nahiya_val)
-    else:
-        nahiya = md_find_nahiya_in_body(md)
-    # --------------------------------
-
+    name = md_path.stem
+    aliases = md_find_yaml_aliases(md)
+    nahiya = md_find_nahiya(md) or "unknown"
     lat, lng = md_find_coords(md)
     photos = md_find_photos(md)
+    foundation, size = parse_foundation_and_size(md)
 
+    # Use the new, simple map extraction method
     minimap_html, minimap_css = extract_minimap(name, Path(NAHIYA_MAPS_DIR), master_lookup)
+
+    # Extract families/tribes from YAML
+    tribes_list = md_find_yaml_list(md, "tribes")
+    families_list = md_find_yaml_list(md, "families, clans, etc")
+    
+    # Convert lists to simple text, just like aliases
+    tribes_txt = ", ".join(tribes_list)
+    families_txt = ", ".join(families_list)
 
     sec = extract_expected_sections(md)
     vii_data = sec["VII"]
@@ -902,18 +871,16 @@ def process_one(md_path: Path, out_dir: Path, master_lookup: dict):
         summaries_I=sec["I"], summaries_II=sec["II"], summaries_III=sec["III"], summaries_IV=sec["IV"],
         links_md=sec["V_links"],
         vi_history=sec["VI"], vii_families=vii_data, viii_culture=sec["VIII"], ix_dengbej=sec["IX"], x_connections=sec["X"],
-        foundation_origin_md=sec["foundation_origin"],
-        name_meaning_md=sec["name_meaning"],
         xi_ar_tirej=sec["XI"], xii_axw_en=sec["XII"], xiii_halil_en=sec["XIII"], xiv_flo_en=sec["XIV"], xv_afr366_en=sec["XV"], xvi_zeyton_en=sec["XVI"], xvii_other_en=sec["XVII"],
         xviii_axw_ku=sec["XVIII"], xix_halil_ku=sec["XIX"], xx_flo_ku=sec["XX"], xxi_afr366_ku=sec["XXI"], xxii_zeyton_ku=sec["XXII"], xxiii_other_ku=sec["XXIII"],
-        photos=photos,
-        foundation_txt=foundation_txt, size_txt=size_txt,
+        photos=photos, foundation_txt=foundation, size_txt=size,
         tribes_txt=tribes_txt, families_txt=families_txt,
         minimap_html=minimap_html, minimap_css=minimap_css
     )
     ensure_dir(out_dir)
+    out_file = out_dir / f"{name}.html"
     out_file.write_text(html_text, encoding="utf-8")
-    print(f"✓ Generated: {out_file}")
+    print(f"✓ Wrote: {out_file}")
 
 def main():
     in_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(INPUT_PATH)
