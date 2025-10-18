@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Serîncekê</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Serîncekê</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Şera</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Al-Sa&#x27;r, Sa&#x27;ranjak, Sa&#x27;rkanli, Sarincikê, Sarînçakê, Serincekê, Serîncekê, Sêrîncek, السعر, سعرنجك, سعرنجكة</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg">Mala Lîko, Mala Omer, Mala Qemer Oxlî, Mala Reşê Ereb</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg">1600, 1700</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.726189, 36.911906</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/Serencik.jpg" alt="Photo of Serîncekê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Serencik.jpg';">
+<img src="../village_photos/horo1.jpg" alt="Photo of Serîncekê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=horo1.jpg';">
+<img src="../village_photos/sarnjak.jpg" alt="Photo of Serîncekê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=sarnjak.jpg';">
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Foundation/Origin Information of Serîncekê</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>No information provided in this source.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>Nomadic families, owners of sheep and cattle, settled in the plains at a site whose ruins are now called Sêmal ka. The founding families—including Malê Lîko, Malê Reşê Ereb, Malê Omer, and Malê Qemer Axa—dug small wells (sêrincek). Over time, the community grew as other families arrived from Turkey and the nearby village of Belîlko.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p></div>
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Possible Village Name Meaning of Serîncekê</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>Se&#x27;rîncek means &quot;underground water tank&quot; with the addition of the Kurdish diminutive suffix ek to the name. The Arabization of the name is arbitrary.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>The village&#x27;s name itself means &quot;place of small springs,&quot; derived from the sêrincek (small wells) that the founding families dug.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Serîncekê (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
+<p><strong>Se&#x27;rîncek, <span class="internal-link">Sa&#x27;ranjak</span></strong> (سعرنجك) – <span class="internal-link">Sa&#x27;rkanli</span> (سعركانلي), <span class="internal-link">Al-Sa&#x27;r</span> (السعر) /752n - 840h - 15km - 600m/:</p>
+<ul>
+<li>Se&#x27;rîncek: Means &quot;underground water tank&quot; with the addition of the Kurdish diminutive suffix ek to the name. The Arabization of the name is arbitrary, as there is no meaning for &quot;sa&#x27;r&quot; in Arabic either.</li>
+<li>A small village located on the western bank of the <span class="internal-link">Afrin River</span> (عفرين) about 3km away, facing <span class="internal-link">Mount Sheikhurz</span> (شيخورز) to the north.</li>
+</ul>
+<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
+<p><strong><span class="internal-link">Sa&#x27;ranjak</span></strong> (سعرنجك): A village in <span class="internal-link">Jabal al-Akrad</span> (جبل الكرد) belonging to <span class="internal-link">Sheran District</span> (شران), Afrin (عفرين) region, Aleppo Governorate (حلب), (734 people).</p>
+<p>It is a small village located on an elevation and limestone plateau that slopes toward the south and a mountainous slope. It is connected by a plain, 27km from the town of <span class="internal-link">Sheran</span> (شران), and is located on the <span class="internal-link">Sheikh Khurzus Mountain</span> (الشيخ خوروز) chain. It is bordered to the north by a high and rugged mountainous chain planted with oak trees and the village of <span class="internal-link">Sheikh Khurzus</span> (الشيخ خوروز), to the south by a slope and plain planted with olive trees with two streams starting from the north and ending in the south at the <span class="internal-link">Afrin River</span> (عفرين) valley and the village of <span class="internal-link">Ballursank</span> (بللورسنك), to the west by a valley and high mountainous chain and the villages of <span class="internal-link">Qazeh Bash</span> (قزه باش) and <span class="internal-link">Bilan Kuyi</span> (بيلان كوي), and to the east by a valley and the village of <span class="internal-link">Omar Simo</span> (عمر سيمو). It has about 65 houses and is approximately 300 years old. Its old houses are stone and clay with wooden roofs, and the modern ones are stone and cement. It is one of the old villages in <span class="internal-link">Sheran District</span> (شران). It has an electricity network and drinking water from an artesian well. It has an elementary school and a paved road in the village center that connects to <span class="internal-link">Prophet Houri</span> (النبي هوري) and the road connecting to the village is a mountainous dirt road. There are also three modern villas on the western side of the village and a modern technical olive press. Its residents work in olive and grape cultivation alongside raising sheep and goats.</p>
+<p>It is noted that the artist <span class="internal-link">Jamil Horo</span> (جميل هورو) is from the sons of this village.</p>
+<p>Village mayor: <span class="internal-link">Horik Hanan</span> (هوريك حنان)</p>
+<p>Sources of Information:</p>
+<p>1 - Book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (محمد عبدو علي).</p>
+<p>2 - Book: &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27; by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatma Village</span> (قطمه).</p>
+<p>3 - Studies by <span class="internal-link">Tereij Soft Center</span> (تيريج سوفت) / <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
+<p>4 - Some village residents.</p>
+<p>Prepared and executed by: Director of <span class="internal-link">Tereij Afrin Website</span> (تيريج عفرين): <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
+<p>20 / 12 / 2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Serîncekê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>Located in the Shera (Şera) district, the village of Serincekê traces its origins back approximately 400 years when nomadic families, owners of sheep and cattle, settled in the plains at a site whose ruins are now called<span class="internal-link"> Sêmal ka</span>. The village&#x27;s name itself means &quot;place of small springs,&quot; derived from the sêrincek (small wells) that the founding families—including <span class="internal-link">Malê Lîko</span>, <span class="internal-link">Malê Reşê Ereb</span>, <span class="internal-link">Malê Omer</span>, and <span class="internal-link">Malê Qemer Axa</span>—dug to solve the area&#x27;s water scarcity. Over time, the community grew as other families arrived from <span class="internal-link">Turkey</span> and the nearby village of <span class="internal-link">Belîlko</span>, all living together harmoniously. Historically, the Malê Lîko family served as the village elders (rûspî) and maintained a communal guest house (oda), a center for social life and dispute resolution. The village is also remembered as the home of the renowned singer <span class="internal-link">Cemîl Horo</span> and for its significant resistance against the <span class="internal-link">French Mandate</span>, led by figures such as <span class="internal-link">Şêx Henîf</span> and <span class="internal-link">Qurt Elî</span>. This resistance, which organized a force stretching to <span class="internal-link">Meydan</span>, was met with French aerial bombardment that killed local heroes, including <span class="internal-link">Mistefa Çolax</span> and <span class="internal-link">Ehmedê Rûtê</span>. A tangible link to this past is a large stone mortar (sokî), estimated to be 300-400 years old, which was brought from the Şikefta Bîra Tûyê cave and used communally for pounding grain to the rhythmic chant of &quot;deh, dûh.&quot; This tool, along with a now-ruined mill (dêlib), was central to village life before modern machinery. Traditional wedding customs were also rich, involving a ceremony called gawirîn where families would formally agree to the marriage, followed by the exchange of gifts known as xelat and berdanî. A notable past tradition involved the bride riding a horse to her new home with a young boy seated behind her, a symbolic wish for her to bear sons.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Serîncekê 2</h3>
+<p>The village of Serîncekê, located in the Shera district, derives its name from the Kurdish word for &quot;small spring&quot; (&quot;serîncek&quot;), a reference to the wells its nomadic, pastoralist founders dug for their livestock upon settling the area. The original settlement was situated about two kilometers away in the plains at a site now known as <span class="internal-link">Xirabê Sê Mal</span> (The Ruins of Three Houses), which contained landmarks like <span class="internal-link">Bîra Şadiya</span> (Şadiya&#x27;s Well) and <span class="internal-link">Bîra Tûyê</span> (The Mulberry Well). The village was established by five principal families—<span class="internal-link">Mala Lîko</span>, <span class="internal-link">Mala Reşê Ereb</span>, <span class="internal-link">Mala Omer</span>, and <span class="internal-link">Mala Qemer Oxlî</span>—and later grew with the arrival of families from <span class="internal-link">Turkey</span> and the village of <span class="internal-link">Belîlko</span>. A significant part of the village&#x27;s oral history involves the resistance against the <span class="internal-link">French Mandate</span>, led by local figures such as <span class="internal-link">Şêx Henîf</span> and <span class="internal-link">Qurt Elî</span>, which culminated in an aerial bombardment of the village by French forces. A central cultural site is <span class="internal-link">Keleha Şêr</span> (Lion&#x27;s Castle), whose name originates from the tradition of women bringing milk (&quot;şîr&quot;) to the location, which also featured a court and a &quot;Rumbling Rock&quot; (<span class="internal-link">Kevirê Gumgumê</span>) that was a source of water. Traditional practices remain part of village life, including the communal pounding of grain in a large stone mortar (&quot;sûq&quot;) to a rhythmic chant of &quot;deh&quot; and &quot;dûh,&quot; and vibrant wedding celebrations that feature traditional music, line dancing, and wrestling.</p></div></details></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sarenjak.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sarenjak.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=d1i1LMwxcZ8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=d1i1LMwxcZ8</a></li><li>Local FB page:<br><a href="https://www.facebook.com/gunde.sarinjake" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/gunde.sarinjake</a><br><a href="https://www.youtube.com/watch?v=rnxXMPsgEFw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=rnxXMPsgEFw</a><br><a href="https://www.youtube.com/watch?v=sQLGj8k5gAg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sQLGj8k5gAg</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on October 09, 2025</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Serîncekê";
+            const villageLat = 36.726189;
+            const villageLng = 36.911906;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

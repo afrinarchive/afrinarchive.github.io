@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Bilbilê</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-bilbil- .map-container {
+            position: relative;
+        }
+        #minimap-bilbil- .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-bilbil- .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR BILBILE AREAS --- 
+         Recalculated for original image dimensions of 991x1019 pixels.
+        */
+        #minimap-bilbil- .singele { left: 12.71%; top: 6.48%; width: 8.48%; height: 8.24%; }
+        #minimap-bilbil- .beke { left: 21.60%; top: 13.05%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .eli-kere { left: 28.96%; top: 17.76%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .heyama { left: 30.07%; top: 21.59%; width: 8.07%; height: 7.85%; }
+        #minimap-bilbil- .zere { left: 38.24%; top: 21.98%; width: 8.07%; height: 7.85%; }
+        #minimap-bilbil- .baliya { left: 48.94%; top: 19.14%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .xilalka { left: 9.59%; top: 32.58%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .bexce { left: 22.60%; top: 29.73%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .bilbile { left: 41.37%; top: 26.40%; width: 10.09%; height: 9.81%; }
+        #minimap-bilbil- .qurne { left: 51.46%; top: 25.32%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .topeli-mehmud { left: 60.24%; top: 27.58%; width: 8.48%; height: 8.24%; }
+        #minimap-bilbil- .kurdo { left: 70.64%; top: 28.16%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .ebudane { left: 84.76%; top: 34.15%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .elcara { left: 58.63%; top: 38.96%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .uga { left: 51.66%; top: 39.16%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .qestele-xidiriya { left: 26.03%; top: 33.66%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .xidiriya { left: 32.09%; top: 36.02%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .kurzele { left: 18.37%; top: 46.42%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .berkase { left: 33.20%; top: 47.79%; width: 9.08%; height: 8.83%; }
+        #minimap-bilbil- .serqiya { left: 44.20%; top: 44.16%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .qestele-miqded { left: 56.81%; top: 45.24%; width: 9.69%; height: 9.42%; }
+        #minimap-bilbil- .sexorze { left: 64.38%; top: 45.34%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .bibaka { left: 41.07%; top: 51.52%; width: 8.48%; height: 8.24%; }
+        #minimap-bilbil- .qurta { left: 51.66%; top: 50.15%; width: 9.49%; height: 9.22%; }
+        #minimap-bilbil- .qasa { left: 48.33%; top: 52.11%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .kela { left: 18.47%; top: 55.05%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .kere { left: 24.52%; top: 57.41%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .qota { left: 33.80%; top: 53.09%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .kotana { left: 54.49%; top: 60.06%; width: 10.29%; height: 10.01%; }
+        #minimap-bilbil- .upila { left: 50.05%; top: 61.73%; width: 9.49%; height: 9.22%; }
+        #minimap-bilbil- .xelilaka { left: 33.90%; top: 62.71%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .esune { left: 26.64%; top: 60.75%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .zivinge { left: 28.76%; top: 69.28%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .qirigole { left: 45.41%; top: 64.97%; width: 9.89%; height: 9.62%; }
+        #minimap-bilbil- .qizilbasa { left: 61.96%; top: 65.85%; width: 9.49%; height: 9.22%; }
+        #minimap-bilbil- .bele { left: 58.22%; top: 69.48%; width: 10.09%; height: 9.81%; }
+        #minimap-bilbil- .hesendera { left: 48.23%; top: 77.13%; width: 9.69%; height: 9.42%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Bilbilê</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Bilbilê</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Bilbil, Bilbilê, Ezê, بلبل</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg">Mala Cibqo, Mala Dedo, Mala Dêlî Hesen, Mala Hecî Şêx Xelîl, Mala Qedîr Elî, Mala Xûro</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg">1300</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-bilbil-">
+<img alt="Map of Bilbile" onerror="this.onerror=null; this.src='https://placehold.co/991x1019/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 14.png"/>
+<div class="singele highlight-box"></div><div class="beke highlight-box"></div><div class="eli-kere highlight-box"></div><div class="heyama highlight-box"></div><div class="zere highlight-box"></div><div class="baliya highlight-box"></div><div class="xilalka highlight-box"></div><div class="bexce highlight-box"></div><div class="bilbile highlight-box" style="display: block;"></div><div class="qurne highlight-box"></div><div class="topeli-mehmud highlight-box"></div><div class="kurdo highlight-box"></div><div class="ebudane highlight-box"></div><div class="elcara highlight-box"></div><div class="uga highlight-box"></div><div class="qestele-xidiriya highlight-box"></div><div class="xidiriya highlight-box"></div><div class="kurzele highlight-box"></div><div class="berkase highlight-box"></div><div class="serqiya highlight-box"></div><div class="qestele-miqded highlight-box"></div><div class="sexorze highlight-box"></div><div class="bibaka highlight-box"></div><div class="qurta highlight-box"></div><div class="qasa highlight-box"></div><div class="kela highlight-box"></div><div class="kere highlight-box"></div><div class="qota highlight-box"></div><div class="kotana highlight-box"></div><div class="upila highlight-box"></div><div class="xelilaka highlight-box"></div><div class="esune highlight-box"></div><div class="zivinge highlight-box"></div><div class="qirigole highlight-box"></div><div class="qizilbasa highlight-box"></div><div class="bele highlight-box"></div><div class="hesendera highlight-box"></div>
+</div></div>
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.770721, 36.818945</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/Bilbile.jpg" alt="Photo of Bilbilê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Bilbile.jpg';">
+<img src="../village_photos/blbol.jpg" alt="Photo of Bilbilê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=blbol.jpg';">
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Foundation/Origin Information of Bilbilê</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>It was the center of the Sheikh Ismail Zadeh family, and the town is located in the middle of the &quot;Diban&quot; tribal region.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p></div>
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Possible Village Name Meaning of Bilbilê</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>Bilbil: A bird name (nightingale) that is abundant in the mountain forests around the village. Its name during the Ottoman period was &#x27;Ezê&#x27; (Eh Zî), possibly derived from the name Izz al-Din.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Bilbilê (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin)</span>&#x27; Geographic Study:</p>
+<p><span class="internal-link">Bilbil District</span> (ناحية بلبل) consists of 48 administrative divisions and population centers, with <span class="internal-link">Bilbil</span> (بلبل) town as its center. Its boundaries: from the east <span class="internal-link">Sheran District</span> (ناحية شران), from the west <span class="internal-link">Rajo District</span> (ناحية راجو), from the south Mabetli District (ناحية معبطلي), and from the north the Turkish borders.</p>
+<p><strong><span class="internal-link">Bilbilê</span> (بلبل), Bilbil (بلبل)</strong> /4683N – 640m/:</p>
+<ul>
+<li><strong>Bilbil (بلبل)</strong>: A bird name that is abundant in the mountain forests around the village. Its name during the Ottoman period was &#x27;<span class="internal-link">Ezê</span>&#x27; &quot;عه زي&quot; (Eh Zî), possibly derived from the name <span class="internal-link">Izz al-Din</span> (عزالدين).</li>
+</ul>
+<ul>
+<li>Bilbil (بلبل) town is located at the end of the southern slope of the highest mountain in Aleppo Governorate (محافظة حلب), which is <span class="internal-link">Girê Mezin</span> (گرێ مەزن) with an elevation of 1269m. The town&#x27;s elevation above sea level is 690m. Bilbil (بلبل) is about 50km from Afrin City (مدينة عفرين) and about 90km from <span class="internal-link">Aleppo</span> (حلب) - in the northwest direction. It is a small town, closer to being a large village, and has been a district center since the Ottoman period. It was the center of the <span class="internal-link">Sheikh Ismail Zadeh</span> (الشيخ إسماعيل زاده) family, and the town is located in the middle of the &quot;<span class="internal-link">Diban</span>&quot; (ديبان) tribal region. Its residents work in agriculture, especially olives, and some in livestock raising. It has some handicrafts such as agricultural machinery repair workshops, blacksmithing, some building materials, and some olive presses.</li>
+</ul>
+<p>The site of <span class="internal-link">Nabi Hori</span> (نبي هوري) &quot;the ancient city of <span class="internal-link">Cyrus</span>&quot; (مدينة سيروس القديمة) is located about 12km to its east, which is a large and important archaeological site and a beautiful tourist location on the banks of the Afrin (عفرين) and <span class="internal-link">Saboun</span> (صابون) rivers.</p>
+<p>In rainy years, dozens of springs explode around Bilbil (بلبل) town and its villages, turning them into lush gardens. The mountain elevations in <span class="internal-link">Bilbil District</span> (ناحية بلبل) contain iron and copper ore, and there are deposits of colored marble.</p>
+<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span>:</p>
+<p><strong>Bilbil (بلبل)</strong>: A town in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), the center of a district, belonging to Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
+<p>It is located northwest of Afrin City (مدينة عفرين) on the lower southern slope with slight inclination of <span class="internal-link">Mount Damarik</span> (جبل داميريك), where the town overlooks the highest peak in Aleppo Governorate (محافظة حلب) (1269m). The mountain rocks are limestone and Cretaceous covered in most of their parts with green rocks and basalt. Its slopes with volcanic soil are suitable for agriculture and grazing due to the availability of water from springs or wells.</p>
+<p>It is bordered to the north by a high mountain called Mount Damarik (جبل داميريك) (<span class="internal-link">Girê Kabir</span> گرێ کبیر) and <span class="internal-link">Bali Koy</span> (بالي كوي) and <span class="internal-link">Za&#x27;reh</span> (زعره) villages and the Turkish border directly, to the south by slopes and several stream paths and a high mountain chain and <span class="internal-link">Ukanli</span> (عوكانلي) village, to the west by mountain elevation and several stream paths and <span class="internal-link">Heyamli</span> (هياملي) and <span class="internal-link">Baqjah Qonaq</span> (باقجة قوناق) and <span class="internal-link">Sa&#x27;riyanli</span> (سعريانلي) villages, and to the east by mountain elevation planted with olive trees and <span class="internal-link">Qurnah</span> (قورنة) and <span class="internal-link">Mahmoud Oba Si</span> (محمود أوبه سي) villages.</p>
+<p>A valley descends from the top of the mountain and passes through the center of the village heading south to <span class="internal-link">Ukan Valley</span> (وادي عوكان). The village has approximately 600 houses and is more than 700 years old. The old houses are stone and mud with flat wooden roofs, while the modern cement ones have intermixed with the old construction and extended southward, eastward, and westward. It has an electricity network, government departments, health center, telephone center, cultural center, and several elementary, preparatory, and secondary schools, police station, municipality building, district directorate building, bakery, and several shops for repairing agricultural machinery, blacksmithing, building materials, and some old and modern olive presses, pharmacies, and doctors.</p>
+<p>The town depends on rainfed agriculture on 790 hectares for producing olives, grains, legumes, and vineyards, in addition to raising sheep and goats. Handicraft industries were also established, the most important being carpet making and building materials for consumption. The town drinks from an artesian well belonging to the state located south of the town. Roads to Bilbil (بلبل) villages and the region center are paved.</p>
+<p>The town&#x27;s name is new, and its old name from the Ottoman period was /<span class="internal-link">Eh Zi</span>/ (عه زي). Bilbil (بلبل) town was the center of the <span class="internal-link">Sheikh Ismail Zadeh</span> (الشيخ إسماعيل زاده) family and is located in the middle of the <span class="internal-link">Diban</span> (ديبان) tribal district. South of the town at 12km distance is the <span class="internal-link">Nabi Hori</span> (نبي هوري) archaeological site, formerly called &quot;<span class="internal-link">Cyrus</span>&quot; (سيروس) city, which is an archaeological, tourist, and beautiful site on the bank of Afrin (عفرين) and <span class="internal-link">Saboun</span> (صابون) rivers. Among its most important old families is the Sheikh Ismail Zadeh (الشيخ إسماعيل زاده) family, the first to settle there hundreds of years ago.</p>
+<p><strong>Bilbil (بلبل)</strong>: A town in Kurdish Mountain (جبل الكرد), belonging to Bilbil District (ناحية بلبل), Afrin Region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
+<p>It has been the district center since 1922, comprising 30 villages and 13 farms with a total area of 229.95 km2. It is bordered directly by the Turkish border to the north, by <span class="internal-link">Sheran</span> (شران) and <span class="internal-link">Mabetli</span> (معبطلي) districts to the south and east, and by Rajo (راجو) district to the west. Its elevation is 665m above sea level and it is about 50km from Afrin City (مدينة عفرين) and 90km from Aleppo (حلب) city. It is connected to its surroundings by main paved roads to Aleppo (حلب) and Afrin (عفرين) cities and neighboring villages. <span class="internal-link">Bilbil District</span> (ناحية بلبل) was established in 1922.</p>
+<p>Village Head: <span class="internal-link">Mohammed Colin Sido</span> (محمد كولين سيدو)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Bilbilê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>The village of Bilbilê, located in the Afrin region, holds a rich oral history regarding its origins and culture. Originally situated on a mountain known as <span class="internal-link">Çiyayê Gir</span>, which stands 1200 meters above sea level, the village was so secluded by dense forests that <span class="internal-link">Ottoman</span> tax collectors could not find it. According to local elders like Apê Hûrîk, the Ottomans were eventually guided to the location by the sound of a nightingale (bilbil), which led to the village being renamed &quot;Bilbilê&quot; and its inhabitants relocating to the mountain&#x27;s base. The community was established by six founding families: <span class="internal-link">Mala Cibqo</span> (who were the first to settle), <span class="internal-link">Mala Xûro</span>, <span class="internal-link">Mala Dêlî Hesen</span>, <span class="internal-link">Mala Dedo</span>, <span class="internal-link">Mala Qedîr Elî</span>, and <span class="internal-link">Mala Hecî Şêx Xelîl</span>. Central to the village&#x27;s life was the Qestel, a spring house with seven springs named after prominent figures like <span class="internal-link">Esed</span>, <span class="internal-link">Otman</span>, and <span class="internal-link">Hecî Şêx Xelîl</span>, whose waters irrigated the nearby <span class="internal-link">Baxçê Bîstûnê</span> (Garden of Bîstûn). The cultural life of Bilbilê is deeply rooted in communal activities, such as the preparation of traditional foods like Şişperik (dumplings in yogurt soup), Kutilk (kibbeh), and Qetmer (flatbread), often accompanied by the traditional art of Dengbêjî, with songs evoking pastoral life and historical pride, such as one referencing the significant landmark of Çiyayê Metîna (Metîna Mountain).</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Bilbilê 2</h3>
+<p>The village of Bilbilê, part of a district in the Afrin region comprising 45 villages, holds a rich oral history and vibrant cultural traditions. According to a local elder named Hûrîk, the community was originally settled on a mountain known as Çiyayê Gêr by six large families from the Mazgînî tribe who had fled the Ottomans. These founding families were the Mala Jobko, Xurû, Del Hemlêro, Mala Dedo, Mala Hecî Şêx Xelîl, and Mala Qedîr Axa. The area was named Bilbilê because bulbul birds frequented its famous springs, particularly a site called Qestel, which featured seven springs that provided water for the entire village and its gardens. The community later relocated from the mountain to its present location following a conflict with an Agha from the nearby village of Bêkê, which resulted in the death of Hesikê Xurû of the Jobko clan. The cultural life of the village is demonstrated through the communal preparation of traditional foods, including Shishbarak (dumplings with meat and onion boiled in a yogurt sauce), Kutilk (kibbeh), Kitayî, and Nanê bi şîrînî (a sweet bread). This heritage is further preserved through the performance of traditional songs (&quot;stranê kevin&quot;) by local musicians like Mihemed and Kemal, who sing of their love for the region&#x27;s mountains accompanied by the saz.</p></div></details></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20bilbile.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20bilbile.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=rf5ESvgSEYQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=rf5ESvgSEYQ</a></li><li>Local FB page:<br><a href="https://www.facebook.com/efrin.blble" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/efrin.blble</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on October 09, 2025</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Bilbilê";
+            const villageLat = 36.770721;
+            const villageLng = 36.818945;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

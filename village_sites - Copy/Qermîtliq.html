@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Qermîtliq</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        #minimap--iy- .map-container {
+            position: relative;
+        }
+        #minimap--iy- .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        #minimap--iy- .highlight-box {
+            display: none;
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* --- COORDINATES FOR YOUR AREAS --- */
+        #minimap--iy- .tirmisho {
+            left: 66.2%;
+            top: 37.0%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        #minimap--iy- .kela {
+            left: 59.1%;
+            top: 27.0%;
+            width: 6.7%;
+            height: 4.4%;
+        }
+        #minimap--iy- .alkana {
+            left: 57.0%;
+            top: 15.1%;
+            width: 7.7%;
+            height: 5.1%;
+        }
+        #minimap--iy- .xelil {
+            left: 64.5%;
+            top: 13.9%;
+            width: 7.7%;
+            height: 5.1%;
+        }
+        #minimap--iy- .ceqele-jorin {
+            left: 45.2%;
+            top: 18.1%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        #minimap--iy- .ceqele-jerin {
+            left: 36.7%;
+            top: 23.2%;
+            width: 9.9%;
+            height: 6.5%;
+        }
+        #minimap--iy- .hec-bilal {
+            left: 54.7%;
+            top: 18.8%;
+            width: 8.3%;
+            height: 5.5%;
+        }
+        #minimap--iy- .ceqele-orte {
+            left: 44.1%;
+            top: 22.5%;
+            width: 9.3%;
+            height: 6.1%;
+        }
+        #minimap--iy- .mistika {
+            left: 44.1%;
+            top: 27.1%;
+            width: 9.5%;
+            height: 6.3%;
+        }
+        #minimap--iy- .siketka {
+            left: 70.7%;
+            top: 34.5%;
+            width: 8.5%;
+            height: 5.6%;
+        }
+        #minimap--iy- .erende {
+            left: 47.9%;
+            top: 35.0%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        #minimap--iy- .qermitliq {
+            left: 18.1%;
+            top: 36.3%;
+            width: 10.9%;
+            height: 7.2%;
+        }
+        #minimap--iy- .siye {
+            left: 28.4%;
+            top: 44.3%;
+            width: 17.8%;
+            height: 11.7%;
+        }
+        #minimap--iy- .senare {
+            left: 31.1%;
+            top: 60.4%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+        #minimap--iy- .anqele {
+            left: 31.0%;
+            top: 64.4%;
+            width: 8.9%;
+            height: 5.9%;
+        }
+        #minimap--iy- .baziya {
+            left: 52.0%;
+            top: 65.7%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+        #minimap--iy- .hekice {
+            left: 38.8%;
+            top: 76.8%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Qermîtliq</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Şiyê</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Kermêtliq, Qara Matlaq, Qermilqê, Qermitlîq, Qermtalqê, Qermîliq, Qermîltiq, Qermîltiqê, Qermîtiq, Qermîtlaq, Qermîtlaqê, Qermîtliq, Qermîtlêq, al-Khazfiya, الخزفية (al-Khazfiyah), قرمتلق, قره متلق</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg">Biyan, Jûma Shîhî, Şikakî</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg">Hesen Hesen</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg">1500, 1600</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap--iy-">
+<img alt="Map" onerror="this.onerror=null; this.src='https://placehold.co/991x661/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 17.png"/>
+<div class="tirmisho highlight-box"></div>
+<div class="kela highlight-box"></div>
+<div class="alkana highlight-box"></div>
+<div class="xelil highlight-box"></div>
+<div class="ceqele-jorin highlight-box"></div>
+<div class="ceqele-jerin highlight-box"></div>
+<div class="hec-bilal highlight-box"></div>
+<div class="ceqele-orte highlight-box"></div>
+<div class="mistika highlight-box"></div>
+<div class="siketka highlight-box"></div>
+<div class="erende highlight-box"></div>
+<div class="qermitliq highlight-box" style="display: block;"></div>
+<div class="siye highlight-box"></div>
+<div class="senare highlight-box"></div>
+<div class="anqele highlight-box"></div>
+<div class="baziya highlight-box"></div>
+<div class="hekice highlight-box"></div>
+</div></div>
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.523183, 36.570825</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/qermitliq.jpg" alt="Photo of Qermîtliq" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=qermitliq.jpg';">
+<img src="../village_photos/t.sh.afrin26.jpg" alt="Photo of Qermîtliq" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=t.sh.afrin26.jpg';">
+<img src="../village_photos/qrmatlq.jpg" alt="Photo of Qermîtliq" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=qrmatlq.jpg';">
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Foundation/Origin Information of Qermîtliq</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>Among the families are Haj Ibrahim (Qartal) and Mahmoud Darwish, who were founders of the Qarmatlaq folk heritage troupe.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>Originally established as a khan for caravans on the Silk Road. The village was founded by four or five families who migrated from Zorava for sheep grazing, settling near the ruins of the old khan.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p></div>
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Possible Village Name Meaning of Qermîtliq</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>&#x27;Qarmit&#x27; means pottery in Kurdish. The Arabic name is a translation.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>Its name is derived from the Kurdish word for bricks/tiles (&#x27;qermîd&#x27;), as it was a production center for these materials.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Qermîtliq (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &quot;<span class="internal-link">Mountain of the Kurds</span>&quot; (جبل الكرد) (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
+<p><strong>Qermîtliq, <span class="internal-link">Qara Matlaq</span>, <span class="internal-link">al-Khazfiya</span></strong> (الخزفية) /2718n, 3km - 230m/:</p>
+<ul>
+<li>&quot;Qarmit&quot; (قرميت) means pottery in Kurdish. The Arabic name is a translation of its Kurdish name.</li>
+<li>A large village located west of <span class="internal-link">Sheikh al-Hadid</span> town adjacent to the Turkish borders, surrounded by barbed wire from the west. The first troupe for Kurdish folk arts was established there in the sixties of the twentieth century. Beside it was a camp for <span class="internal-link">Ibrahim Pasha</span> (<span class="internal-link">إبراهيم باشا]) son of [[Mohammed Ali Pasha</span> (محمد علي باشا) during his campaigns on <span class="internal-link">Syria</span> in the nineteenth century.</li>
+</ul>
+<p>According to the book: &quot;<span class="internal-link">Afrin.... Its River and Green Hills</span>&quot; (عفرين .... نهرها وروابيها الخضراء) by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatma village</span> (قرية قطمه):</p>
+<p><strong><span class="internal-link">Qarmatlaq</span></strong> (قرمتلق): A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد), belonging to <span class="internal-link">Sheikh al-Hadid</span> sub-district (ناحية شيخ الحديد), Afrin City region (منطقة عفرين), <span class="internal-link">Aleppo</span> governorate (محافظة حلب).</p>
+<p>It is a large village located at the end of the western slope of the middle part of the mentioned mountain, in a fertile plain with volcanic soil and its lands gently slope west until they adjoin the edges of <span class="internal-link">Alexandretta</span> district (لواء اسكندرونة), 7km north-west of <span class="internal-link">Sheikh al-Hadid</span>. It is bordered to the north by fertile plain planted with olive trees and <span class="internal-link">Sheikh Jiqallalli village</span> (قرية شيخ جقاللي), to the south by <span class="internal-link">Alexandretta</span> district plain and Turkish borders, to the east by fertile plain planted with olive trees and <span class="internal-link">Sheikh al-Hadid</span> town, and to the west directly by the border strip and <span class="internal-link">al-Amq</span> plain (سهل العمق).</p>
+<p>The number of its houses reaches about 150 houses and its age is 400 years. Its old dwellings are stone-clay with flat wooden roofs and the modern ones are concrete except the southern ones adjacent to Turkish lands. The region&#x27;s settlement is very ancient as evidenced by the presence of remaining decorated pottery and tanks built of basalt and limestone stones. Its roofs are arch-shaped and the columns are basalt with crowns.</p>
+<p>Electricity network, telephone, elementary and preparatory school and mosque in its center are available. The inhabitants work in olive, grain and legume cultivation rainfed and irrigated from artesian wells including vegetables, pomegranates, apricots, almonds, lemons in addition to raising livestock. The residents drink water from tanks and reservoirs filled with rainwater. It is an old village since the Ottoman era, and the border strip passes 500m west. It connects with the sub-district by paved road.</p>
+<p>Among the families in <span class="internal-link">Qarmatlaq village</span> (قرية قرمتلق) are <span class="internal-link">Haj Ibrahim</span> (حاج ابراهيم) (Qartal, one of the founders of <span class="internal-link">Qarmatlaq</span> folk heritage troupe) – <span class="internal-link">Baklru</span> (بكلرو) – <span class="internal-link">Darwish</span> (درويش) (<span class="internal-link">Mahmoud Darwish</span> (محمود درويش), one of the founders of <span class="internal-link">Qarmatlaq</span> folk heritage troupe) – <span class="internal-link">Dawud</span> (داوود) (Kurdish Hanif), in addition to many holders of university degrees and institute certificates.</p>
+<p><strong>Village Mayor:</strong> <span class="internal-link">Zakariya Haji Ibrahim</span> (زكريا حاجي ابراهيم)</p>
+<p><strong>Prepared and executed by: Site manager of Tireij Afrin: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</strong></p>
+<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Qermîtliq</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>The region of Afrin, as described by Mihemed Welîd, is a historical center for the preservation of Kurdish oral traditions and Dengbêjî, a legacy attributed to its relative historical peace. This rich heritage is exemplified by folk songs such as &quot;<span class="internal-link">Eyşe Îbê</span>,&quot; &quot;<span class="internal-link">Zeynebê</span>,&quot; and the well-known tale of &quot;<span class="internal-link">Ferhad û Şîrîn</span>,&quot; which the speaker personally adapted from a local story into a formal song and poem. The village of Qermîliq serves as a key historical site, being the setting for the events behind two significant Dengbêjî songs: &quot;Xema Zalim,&quot; which recounts a fatal land dispute between two cousins of the Kosa tribe, and &quot;Ûsivê Şer,&quot; which tells of a battle between the local <span class="internal-link">Şikakî</span> tribe and the <span class="internal-link">Ottoman</span> state. The speaker, a member of the Şikakî tribe, notes that his tribe historically occupied 44 villages in the Shera and Sherawa districts, alongside other tribes like the <span class="internal-link">Jûma Shîhî</span> and Biyan. This cultural identity is also expressed through communal traditions, such as the famous &quot;Meryemê&quot; song, which is accompanied by a specific dance (dîlan) style known as &quot;Qertal&quot; led by a &quot;sergovend.&quot; This deep-rooted heritage continues to inform the identity of the people of Afrin, who, after being displaced to the Shahba region, find a sense of their &quot;colorful Afrin&quot; in the culturally similar Jazira region and actively preserve their memories through artistic expressions like an annual exhibition in Qamishlo and a 550-meter-long painting created by over 10,000 displaced children.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Qermîtliq 2</h3>
+<p>The village of Qermitlîq, located in the Shiye district of Afrin, holds a history stretching back approximately 500 years. It was originally established as a rest stop, or khan, for commercial caravans traveling the <span class="internal-link">Silk Road</span> between <span class="internal-link">Aleppo</span> and <span class="internal-link">Istanbul</span>. Its name is derived from the Kurdish word for bricks/tiles (&quot;qermîd&quot;), as it was a known production center for these materials, which were traded by the caravans. The village was founded by four or five families who migrated from <span class="internal-link">Zorava</span> for sheep grazing, settling near the ruins of the old khan and its 100-150 ancient wells. A significant turning point in its history occurred in 1938 with the establishment of the Syria-Turkey border, which cut the village off from all of its agricultural lands, placing them in Northern Kurdistan. While villagers could cross with permits for a time, this was completely forbidden after 1967-68 when the border was physically fortified. The community&#x27;s cultural life is marked by several key institutions and traditions. The village mosque was initiated in 1344 Hijri (c. 1925) by <span class="internal-link">Şêx Hemo</span> and completed by the community after his death. In 1958, Qermitliq became home to the first folklore troupe in the Afrin region, &quot;<span class="internal-link">Koma Çiyayê Kurmênc</span>,&quot; which performed widely until a planned trip to Egypt was cancelled due to the dissolution of the United Arab Republic. The village also maintains ancient traditions, such as visiting the 500-year-old &quot;<span class="internal-link">Dara Merazê</span>&quot; (Tree of Wishes) on Wednesdays to make vows, a practice believed to date back to <span class="internal-link">Zoroastrian</span> times. Additionally, the villagers prepare a special ancestral dish called &quot;<span class="internal-link">Ketoye</span>,&quot; made from pounded wheat, for both weddings and funerals.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>III. Summary from other Channels&#x27; Transcripts of Qermîtliq</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Qermîtliq</h3>
+<p>The village of Qermtalqê, also referred to as <span class="internal-link">Qermilqê</span>, is a community of approximately 300 houses located in a hilly, olive-growing region of Afrin near the Turkish border. It is part of a network of interconnected villages that includes <span class="internal-link">Kerke Jorîn</span>, <span class="internal-link">Kerke Jêr</span>, <span class="internal-link">Şiyê</span>, <span class="internal-link">Gundê Xelîl</span>, <span class="internal-link">Dêrmîş</span>, <span class="internal-link">Ondecî</span>, <span class="internal-link">Badîna</span>, and <span class="internal-link">Kêlakê</span>, whose residents consider each other neighbors, highlighting the strong social ties in the area. The cultural life of the village is marked by deep-rooted traditions of hospitality, where guests are welcomed with blessings of prosperity and the phrase &quot;on our heads, on our eyes.&quot; An elder from the community offered a traditional blessing for the village&#x27;s protection from &quot;calamities and troubles.&quot; The architecture includes notable modern stone houses, such as the ornate home of the <span class="internal-link">Hesen Hesen</span> family, which features a large, landscaped courtyard with decorative tile inlays. The widespread use of solar panels on rooftops indicates the integration of modern technology into the village&#x27;s infrastructure.</p></div></details></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20qermitliq.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20qermitliq.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=3Y23OLieugk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3Y23OLieugk</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100063528979131" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100063528979131</a><br><a href="https://www.youtube.com/watch?v=uBeELpdDr44" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=uBeELpdDr44</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on October 09, 2025</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Qermîtliq";
+            const villageLat = 36.523183;
+            const villageLng = 36.570825;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Alkana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        #minimap--iy- .map-container {
+            position: relative;
+        }
+        #minimap--iy- .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        #minimap--iy- .highlight-box {
+            display: none;
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* --- COORDINATES FOR YOUR AREAS --- */
+        #minimap--iy- .tirmisho {
+            left: 66.2%;
+            top: 37.0%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        #minimap--iy- .kela {
+            left: 59.1%;
+            top: 27.0%;
+            width: 6.7%;
+            height: 4.4%;
+        }
+        #minimap--iy- .alkana {
+            left: 57.0%;
+            top: 15.1%;
+            width: 7.7%;
+            height: 5.1%;
+        }
+        #minimap--iy- .xelil {
+            left: 64.5%;
+            top: 13.9%;
+            width: 7.7%;
+            height: 5.1%;
+        }
+        #minimap--iy- .ceqele-jorin {
+            left: 45.2%;
+            top: 18.1%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        #minimap--iy- .ceqele-jerin {
+            left: 36.7%;
+            top: 23.2%;
+            width: 9.9%;
+            height: 6.5%;
+        }
+        #minimap--iy- .hec-bilal {
+            left: 54.7%;
+            top: 18.8%;
+            width: 8.3%;
+            height: 5.5%;
+        }
+        #minimap--iy- .ceqele-orte {
+            left: 44.1%;
+            top: 22.5%;
+            width: 9.3%;
+            height: 6.1%;
+        }
+        #minimap--iy- .mistika {
+            left: 44.1%;
+            top: 27.1%;
+            width: 9.5%;
+            height: 6.3%;
+        }
+        #minimap--iy- .siketka {
+            left: 70.7%;
+            top: 34.5%;
+            width: 8.5%;
+            height: 5.6%;
+        }
+        #minimap--iy- .erende {
+            left: 47.9%;
+            top: 35.0%;
+            width: 9.1%;
+            height: 6.0%;
+        }
+        #minimap--iy- .qermitliq {
+            left: 18.1%;
+            top: 36.3%;
+            width: 10.9%;
+            height: 7.2%;
+        }
+        #minimap--iy- .siye {
+            left: 28.4%;
+            top: 44.3%;
+            width: 17.8%;
+            height: 11.7%;
+        }
+        #minimap--iy- .senare {
+            left: 31.1%;
+            top: 60.4%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+        #minimap--iy- .anqele {
+            left: 31.0%;
+            top: 64.4%;
+            width: 8.9%;
+            height: 5.9%;
+        }
+        #minimap--iy- .baziya {
+            left: 52.0%;
+            top: 65.7%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+        #minimap--iy- .hekice {
+            left: 38.8%;
+            top: 76.8%;
+            width: 10.1%;
+            height: 6.7%;
+        }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Alkana</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Şiyê</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Al-Sati, Alkana, Alkêna, Olkana, Sati Oshaghi, ألكانا, الصاتي, صاتي أوشاغي, صاتي اوشاغي, اولكونه</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg">Şêxan</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg">1100, 1200, 1500, 1650, 1700</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg">55 houses</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap--iy-">
+<img alt="Map" onerror="this.onerror=null; this.src='https://placehold.co/991x661/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 17.png"/>
+<div class="tirmisho highlight-box"></div>
+<div class="kela highlight-box"></div>
+<div class="alkana highlight-box" style="display: block;"></div>
+<div class="xelil highlight-box"></div>
+<div class="ceqele-jorin highlight-box"></div>
+<div class="ceqele-jerin highlight-box"></div>
+<div class="hec-bilal highlight-box"></div>
+<div class="ceqele-orte highlight-box"></div>
+<div class="mistika highlight-box"></div>
+<div class="siketka highlight-box"></div>
+<div class="erende highlight-box"></div>
+<div class="qermitliq highlight-box"></div>
+<div class="siye highlight-box"></div>
+<div class="senare highlight-box"></div>
+<div class="anqele highlight-box"></div>
+<div class="baziya highlight-box"></div>
+<div class="hekice highlight-box"></div>
+</div></div>
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.57665, 36.635583</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/t.sh.afrin31.jpg" alt="Photo of Alkana" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=t.sh.afrin31.jpg';">
+<img src="../village_photos/t.sh.afrin51.jpg" alt="Photo of Alkana" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=t.sh.afrin51.jpg';">
+<img src="../village_photos/satyan.jpg" alt="Photo of Alkana" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=satyan.jpg';">
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Foundation/Origin Information of Alkana</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>This village is considered one of the old villages in the region and neighboring villages.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>It was settled by the Sheikhi (Şêxî) tribe approximately seven generations ago. The community faced significant disruption during the Sheikh Said rebellion in the early 20th century, an event that caused the villagers to become refugees and is remembered in their oral history through figures like Emerê Hebeş.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p>
+<blockquote>
+<p>A particularly significant historical house was identified as having been built by Armenians, bearing an Armenian inscription with the date 1325 (likely Hijri, c. 1907 AD), though a resident also stated its age as 325 years.</p>
+</blockquote>
+<p><strong>Source:</strong> Afrin 366 Transcript</p></div>
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Possible Village Name Meaning of Alkana</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>Alkana (آلكانا): Name of a Kurdish tribe found in Hakkari. The Arabized name &quot;Sati&quot; (صاتي) has no meaning.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>Its name is believed to derive from words meaning &quot;bulls&quot; and &quot;spring.&quot;</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Alkana (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin) geographical study</span>&#x27; by Dr. Mohammed Abdo Ali:</p>
+<p><strong><span class="internal-link">Alkana</span> (الكانا), <span class="internal-link">Sati Oshaghi</span> (صاتي أوشاغي), <span class="internal-link">Al-Sati</span> (الصاتي)</strong> /1357n - 560m/:</p>
+<ul>
+<li>Alkana (آلكانا): Name of a Kurdish tribe found in <span class="internal-link">Hakkari</span> (Lerkh, p.46). The Arabized name &quot;Sati&quot; (صاتي) has no meaning.</li>
+<li>A small village located on the western side of a water stream with steep southern decline toward <span class="internal-link">Alkana Valley</span>, its location is level and small in area, with compact houses.</li>
+</ul>
+<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from Qatma village:</p>
+<p><strong>Sati Oshaghi</strong> (صاتي اوشاغي): A village in Kurdish Mountain (جبل الكرد), belonging to <span class="internal-link">Sheikh al-Hadid District</span> (ناحية شيخ الحديد), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
+<p>It is a small village located in the western-central part of the mentioned mountain on a rocky plateau between two streams bordering it east and west and descending south, with thin white soil. It is located 14km northeast of Sheikh al-Hadid town. It is bordered to the north by a high mountain chain and television broadcasting station at the highest mountain peak and Ma&#x27;mal Oshaghi village, to the south by a deep stream and high mountain chain and Haj Bilal village, to the west by a mountain chain and Sa&#x27;uljik and Omar Oshaghi villages, and to the east by a deep valley separating Khalil Kolko and Sati Oshaghi villages. The number of houses is approximately 55 houses and its age is around 350 years. Its old dwellings are stone and clay with wooden roofs, overlaid by modern cement buildings that spread north and south. It has electricity network and the village drinks from a water network connected to the irrigation network of Sheikh al-Hadid District villages. Previously they used to drink from a spring at the bottom of the valley next to the old ruined mill. It has primary and preparatory schools shared with Khalil Kolko village. The inhabitants work in rain-fed agriculture (olives, vines, figs, walnuts, almonds) alongside sheep and goat herding. It has a modern olive press. It is connected to the district center by a paved road passing from the western and northern sides of the village. The Haj Bilal farm is affiliated with it. This village is considered one of the old villages in the region and neighboring villages.</p>
+<p>Village mayor: Mohammed Khayru Jamil (محمد خيرو جميل)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Alkana</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>Gundê Alkana, a village in the Şiyê district surrounded by mountains, has a history stretching back 800 to 900 years. It was settled by the Sheikhi (<span class="internal-link">Şêxî</span>) tribe approximately seven generations ago and currently consists of around 100 households, though many families have migrated to Aleppo due to economic hardship. The community faced significant disruption during the <span class="internal-link">Sheikh Said rebellion</span> in the early 20th century, an event that caused the villagers to become refugees and is remembered in their oral history through figures like <span class="internal-link">Emerê Hebeş</span>. Traditional life was centered on agriculture, with villagers using a historic, animal-powered millstone (dalîb) over 150 years old, repurposed from an even older olive press, to grind wheat for local dishes like bulgur and the traditional food &quot;Kitoye.&quot; The village is notable for its three water springs, and its name is believed to derive from words meaning &quot;bulls&quot; and &quot;spring.&quot; A unique cultural practice is dowsing for water using a forked pomegranate stick, a skill passed down from an engineer in Aleppo. The main spring, <span class="internal-link">Kaniya Alkana</span>, is so central to village life that it is featured in local folk songs and dances. The spiritual life of the community also includes a holy shrine, <span class="internal-link">Ziyareta Şêxîdê</span>, located on a village hill where residents make offerings.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>III. Summary from other Channels&#x27; Transcripts of Alkana</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><h3 class="font-semibold text-xl mt-6 mb-3">B. Summary from Afrin Flo Transcript of Alkana</h3>
+<p>The village of Alkana is an ancient settlement in the Shiyeh district, with its history dating back to the time of the Pasha. Its name, &quot;Olkana,&quot; is derived from &quot;<span class="internal-link">Kaniya Alê</span>,&quot; meaning &quot;Spring of the Flag.&quot; The village&#x27;s heritage is marked by several key historical sites. Most prominent was the &quot;<span class="internal-link">Qestel</span>,&quot; a large stone house built during the &quot;time of the Germans&quot; that served as a communal &quot;meclis&quot; (council) and had a defensive role, featuring lower towers and &quot;Signs of <span class="internal-link">Hawar</span>&quot; on its roof; it is now in ruins. For generations, the community relied on a communal millstone, the &quot;Dalîb,&quot; which is approximately 125 years old and was used by the entire village to make bulgur. In the &quot;<span class="internal-link">Geliyê Gundî</span>&quot; (Village Valley), there were once three or four water mills (&quot;Aş&quot;) for grinding grain; the last remaining machinery was installed in 1985 but fell out of use with the advent of motorized mills. The village also shared a communal water well (&quot;Bîr&quot;), dating from the &quot;time of our fathers and grandfathers,&quot; which was used for livestock and personal needs but has since dried up. Historically, Alkana has a close relationship with the neighboring village of Xelîl, and both, along with the village of Hec Bîlal, share a single, ancient cemetery. The primary agricultural activity of the village has traditionally been the cultivation of olives.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Alkana</h3>
+<p>Gundê Alkana, also known as Şeytana, is a village located in the Mabata district of Afrin, near the villages of Habo and Sûriyo. Its cultural heritage is defined by its old (&quot;kevnar&quot;) stone houses, which feature traditional architectural elements like arched ceilings (&quot;qenter&quot;), wall niches (&quot;taq&quot;) for storage, and fireplaces (&quot;ocax&quot;). Historically, the village possessed its own olive press (&quot;darîbek&quot;), a common feature for villages of that era. The ruins of one ancient house, estimated to be 300 to 500 years old, were reportedly destroyed by an earthquake (&quot;erdhej&quot;). Near these ruins is a village cistern (&quot;sahrînc&quot;) with a basin (&quot;kendir&quot;) carved from a single piece of stone. A particularly significant historical house was identified as having been built by Armenians, bearing an <span class="internal-link">Armenian</span> inscription with the date 1325 (likely Hijri, c. 1907 AD), though a resident also stated its age as 325 years. The video also captures traditional practices such as picking black mulberries (&quot;tîyê reş&quot;) and the multi-stage process of preparing sumac (&quot;Sumaq&quot;), which involves drying the flowers until they turn red and then grinding them for culinary use.</p></div></details></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20alkana.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20alkana.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=XDxXmaPWPvY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=XDxXmaPWPvY</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100052679717662" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100052679717662</a><br><a href="https://www.youtube.com/watch?v=Nly07uiriXE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Nly07uiriXE</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on October 09, 2025</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Alkana";
+            const villageLat = 36.57665;
+            const villageLng = 36.635583;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

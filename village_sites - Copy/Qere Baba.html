@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Qere Baba</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container */
+        #minimap-reco .map-container {
+            position: relative;
+        }
+        #minimap-reco .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Styling for the yellow highlight circles */
+        #minimap-reco .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR RECO MAP AREAS --- */
+        /* Each class corresponds to a location. The coordinates are calculated from the image map. */
+        #minimap-reco .meydan-ekbez { left: 45.71%; top: 5.63%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .peynereke { left: 61.65%; top: 6.23%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .kosa { left: 62.56%; top: 9.01%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .gaze { left: 52.37%; top: 11.79%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .welikli { left: 59.33%; top: 15.54%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .dodo { left: 62.26%; top: 16.37%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .gewenda { left: 66.19%; top: 18.69%; width: 9.49%; height: 7.06%; }
+        #minimap-reco .sexmihemed { left: 56.51%; top: 17.57%; width: 10.69%; height: 7.96%; }
+        #minimap-reco .semala { left: 53.08%; top: 18.17%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .edema { left: 39.46%; top: 22.89%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .qerebaba { left: 25.33%; top: 30.63%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .elbiske { left: 43.09%; top: 30.86%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .bilelko { left: 47.83%; top: 30.01%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .xerabi-silug { left: 40.97%; top: 34.01%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .firfirke-jerin { left: 36.53%; top: 32.58%; width: 8.88%; height: 6.61%; }
+        #minimap-reco .firfirke-jorin { left: 35.12%; top: 35.89%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .heydar { left: 38.04%; top: 39.26%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .ceinke { left: 44.60%; top: 35.51%; width: 11.70%; height: 8.71%; }
+        #minimap-reco .cela { left: 56.91%; top: 33.86%; width: 11.50%; height: 8.56%; }
+        #minimap-reco .ceqmaqe-mezin { left: 51.06%; top: 43.24%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .ceqmaqe-cucik { left: 59.03%; top: 45.35%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .elendara { left: 64.98%; top: 44.00%; width: 9.49%; height: 7.06%; }
+        #minimap-reco .zerka { left: 68.21%; top: 47.82%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .memala { left: 40.77%; top: 48.72%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .cenceliya { left: 54.89%; top: 47.60%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .cobana { left: 65.19%; top: 49.47%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .holile { left: 49.34%; top: 51.28%; width: 11.50%; height: 8.56%; }
+        #minimap-reco .cerxuta { left: 58.12%; top: 53.53%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .kura { left: 53.38%; top: 54.73%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .qesim { left: 69.43%; top: 54.28%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .dike { left: 79.11%; top: 54.20%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .maseka { left: 35.32%; top: 52.25%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .hopka { left: 29.77%; top: 58.03%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .sorka { left: 5.85%; top: 64.64%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .reco { left: 38.75%; top: 56.08%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .xecxelil { left: 44.90%; top: 56.68%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .ceqilme { left: 62.97%; top: 59.23%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .sex { left: 71.34%; top: 61.56%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .ciye { left: 80.12%; top: 65.54%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .banika { left: 35.42%; top: 62.16%; width: 9.28%; height: 6.91%; }
+        #minimap-reco .etmana { left: 35.12%; top: 63.36%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .sexbila { left: 59.03%; top: 63.06%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .goliye-jerin { left: 63.47%; top: 66.07%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .goliye-jorin { left: 58.73%; top: 67.34%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .muske { left: 42.89%; top: 65.77%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .kure { left: 20.79%; top: 68.70%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .hecika { left: 31.89%; top: 66.89%; width: 10.69%; height: 7.96%; }
+        #minimap-reco .sediya { left: 15.24%; top: 73.72%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .kumrese { left: 22.20%; top: 73.80%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .qude { left: 31.18%; top: 75.75%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .dewris { left: 39.76%; top: 71.02%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .hemseleke { left: 49.85%; top: 72.75%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .berbene { left: 56.61%; top: 71.40%; width: 10.69%; height: 7.96%; }
+        #minimap-reco .bedina { left: 47.23%; top: 76.58%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .dumiliya { left: 42.18%; top: 79.95%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .umera { left: 23.71%; top: 80.63%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .memila { left: 26.44%; top: 83.71%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .hesen { left: 25.63%; top: 72.07%; width: 9.69%; height: 7.21%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Qere Baba</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Reco</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Al-Sawda, Qere Baba, Qerebaba, السوده, قره بابا, قربابا</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg">Malbata Elî Gulemê, Malbata Mela Mextêd, Dada</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg">1500, 1650</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
+<img alt="Map of Reco Area" onerror="this.onerror=null; this.src='https://placehold.co/991x1332/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 15.png"/>
+<!-- These divs are the actual highlight elements -->
+<div class="meydan-ekbez highlight-box"></div><div class="peynereke highlight-box"></div><div class="kosa highlight-box"></div><div class="gaze highlight-box"></div><div class="welikli highlight-box"></div><div class="dodo highlight-box"></div><div class="gewenda highlight-box"></div><div class="sexmihemed highlight-box"></div><div class="semala highlight-box"></div><div class="edema highlight-box"></div><div class="qerebaba highlight-box" style="display: block;"></div><div class="elbiske highlight-box"></div><div class="bilelko highlight-box"></div><div class="xerabi-silug highlight-box"></div><div class="firfirke-jerin highlight-box"></div><div class="firfirke-jorin highlight-box"></div><div class="heydar highlight-box"></div><div class="ceinke highlight-box"></div><div class="cela highlight-box"></div><div class="ceqmaqe-mezin highlight-box"></div><div class="ceqmaqe-cucik highlight-box"></div><div class="elendara highlight-box"></div><div class="zerka highlight-box"></div><div class="memala highlight-box"></div><div class="cenceliya highlight-box"></div><div class="cobana highlight-box"></div><div class="holile highlight-box"></div><div class="cerxuta highlight-box"></div><div class="kura highlight-box"></div><div class="qesim highlight-box"></div><div class="dike highlight-box"></div><div class="maseka highlight-box"></div><div class="hopka highlight-box"></div><div class="sorka highlight-box"></div><div class="reco highlight-box"></div><div class="xecxelil highlight-box"></div><div class="ceqilme highlight-box"></div><div class="sex highlight-box"></div><div class="ciye highlight-box"></div><div class="banika highlight-box"></div><div class="etmana highlight-box"></div><div class="sexbila highlight-box"></div><div class="goliye-jerin highlight-box"></div><div class="goliye-jorin highlight-box"></div><div class="muske highlight-box"></div><div class="kure highlight-box"></div><div class="hecika highlight-box"></div><div class="sediya highlight-box"></div><div class="kumrese highlight-box"></div><div class="qude highlight-box"></div><div class="dewris highlight-box"></div><div class="hemseleke highlight-box"></div><div class="berbene highlight-box"></div><div class="bedina highlight-box"></div><div class="dumiliya highlight-box"></div><div class="umera highlight-box"></div><div class="memila highlight-box"></div><div class="hesen highlight-box"></div>
+</div></div>
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.747264, 36.627029</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/Qara Baba2.jpg" alt="Photo of Qere Baba" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Qara+Baba2.jpg';">
+<img src="../village_photos/t.sh.afrin37.jpg" alt="Photo of Qere Baba" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=t.sh.afrin37.jpg';">
+<img src="../village_photos/qara baba.jpg" alt="Photo of Qere Baba" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=qara+baba.jpg';">
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Foundation/Origin Information of Qere Baba</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>The Bakr Agha Family are the original owners of the village.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>The settlement was founded by two primary families, Malbata Elî Gulemê and Malbata Mela Mextêd.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p></div>
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Possible Village Name Meaning of Qere Baba</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>Originally a Turkish name meaning &#x27;the black father&#x27;. The Arabic name, Al-Sawda, is an incomplete translation.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>Its name originates from a pre-existing shrine, &#x27;Ziyareta Qerebaba,&#x27; which itself bears a Turkish name from the Ottoman presence.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p>
+<blockquote>
+<p>Its identity and name are derived from the shrine (Ziyareta Qerebaba) of a revered figure from the Ottoman era. The original Turkish name was officially changed to the Arabic &#x27;Al-Sawda&#x27; by the Syrian government.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Qere Baba (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin / Geographic Study:</p>
+<p><strong><span class="internal-link">Qerebaba</span> (قره بابا), <span class="internal-link">Al-Sawda</span> (السوده)</strong> /942N - 430H - 11km - 480m/:</p>
+<ul>
+<li><span class="internal-link">Qere Baba</span> (قره بابا): Originally a Turkish name meaning &quot;the black father&quot;. The Arabic name is an incomplete translation of the Turkish naming.</li>
+</ul>
+<ul>
+<li>This medium-sized village is located on an elevated summit that slopes toward the <span class="internal-link">Black River</span> (النهر الأسود) course to the west. It is 1 km from the <span class="internal-link">Turkish border</span> (الحدود التركية).</li>
+</ul>
+<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin .... Its Rivers and Green Hills</span>&#x27;:</p>
+<p><strong><span class="internal-link">Qere Baba</span> (قره بابا)</strong>: A village in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
+<p>It is a small village located on the elevation of the western slope of <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) near the <span class="internal-link">Turkish border</span> (حدود تركيا) from the northwestern direction of Afrin City region on a fertile mountainous slope with olive trees around it. To the north, a slope planted with forest and olive trees with <span class="internal-link">Medan Ikbas Town</span> (بلدة ميدان إكبس). To the south, a deep slope and plain with the <span class="internal-link">Black River</span> (النهر الأسود) course and direct <span class="internal-link">Turkish border</span> (حدود تركيا). To the west, a slope and the <span class="internal-link">Black River</span> (النهر الأسود) and <span class="internal-link">Turkish border</span> (حدود تركيا) 500m away. To the east, a fertile plain with the public road (Rajo (راجو) - <span class="internal-link">Medan Ikbas</span> (ميدان إكبس)) and <span class="internal-link">Firfirik Tahtani Village</span> (قرية فرفريك تحتاني) and <span class="internal-link">Saluk Village</span> (قرية سلوك).</p>
+<p>It has approximately 40 houses and is about 350 years old according to the village head. Its old dwellings are stone and clay with flat wooden roofs, and recently cement houses have spread to the east and south. It has an electrical network and drinking water from an artesian well and an elementary school. It connects to the main road by a paved dirt road.</p>
+<p>Residents work in rain-fed agriculture (olives, grapes, grains) and irrigation from the <span class="internal-link">Black River</span> (النهر الأسود) (summer vegetables, cotton, watermelon, sunflowers, apples, walnuts, cherries, etc.). Among its most important families: <span class="internal-link">Bakr Agha Family</span> (عائلة بكر آغا) who are the original owners of the village. Its fertile soil is due to its proximity to the <span class="internal-link">Black River</span> (النهر الأسود).</p>
+<p>Village Head: <span class="internal-link">Mahmoud Muhammad Hanan</span> (محمود محمد حنان)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Qere Baba</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>The village of Qerebaba, located in the Rajo region on the Turkish-Syrian border, has a history stretching back over 500 years. According to local elders, the settlement was founded by two primary families, <span class="internal-link">Malbata Elî Gulemê</span> and <span class="internal-link">Malbata Mela Mextêd</span>, and its name originates from a pre-existing shrine, &quot;<span class="internal-link">Ziyareta Qerebaba</span>,&quot; which itself bears a Turkish name from the long Ottoman presence in the area. The village&#x27;s life and location have been dictated by its water sources; it was originally established on an ancient spring of the &quot;<span class="internal-link">Ava Reş</span>&quot; (Black Water), and when the spring&#x27;s flow diminished around the year 2000, the community relied on the nearby Ava Reş river, which flows from Kurmanc Mountain, for irrigating their olive groves and gardens. A significant historical event occurred in 1939 when, according to an eyewitness, French and Turkish authorities established the border, physically cutting Qerebaba off from its sister village, <span class="internal-link">Çeqela</span>, in Northern Kurdistan and resulting in the seizure of villagers&#x27; agricultural lands on the other side. This border also separated the community from historical structures like the <span class="internal-link">Pira Heşarkê</span> (Bridge of Heşarkê), built during the French Mandate. The village maintained strong communal traditions, such as the Eid celebration held at the historic house of <span class="internal-link">Mela Bekir Axa</span>, where each family would bring food to share. More recently, the Syrian government officially changed the village&#x27;s name to &quot;<span class="internal-link">Al-Sawda</span>&quot; as part of an Arabization policy.</p>
+<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Qere Baba 2</h3>
+<p>The village of Qerebaba, located in the Rajo district of Afrin, is an ancient settlement estimated to be over 500 years old, its identity and name derived from the shrine (<span class="internal-link">Ziyareta Qerebaba</span>) of a revered figure remembered in oral tradition as a martyr or dervish from the <span class="internal-link">Ottoman</span> era. The village&#x27;s history and daily life have been profoundly shaped by its location on the border between West (Rojava) and North (Bakur) Kurdistan, a division formalized in 1931 by <span class="internal-link">French</span> and <span class="internal-link">Turkish</span> authorities. This border cut Qerebaba off from neighboring villages like <span class="internal-link">Çeqela</span>, separating families who were once relatives and depriving them of their agricultural lands on the other side, which were seized by the state. The community&#x27;s social life traditionally centered around a historic spring (kanî), which originates from a cave (şkeft) and was developed from a well by a villager named Heyderê Mixtêr, and a large, ancient terebinth tree where villagers held evening gatherings (şevbêrk) for storytelling. This tradition declined with the advent of electricity and television. The village also contains a mosque, built by the community 20-30 years ago on the site of an old stone courtyard, which houses historical books. Reflecting the political pressures of the region, the village&#x27;s original Turkish name was officially changed to the Arabic &quot;<span class="internal-link">Al-Sawda</span>&quot; by the Syrian government approximately two decades before this documentary was filmed.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>III. Summary from other Channels&#x27; Transcripts of Qere Baba</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Qere Baba</h3>
+<p>The village of Qere Baba, situated in a high, elevated location, holds an oral history of being founded by four ancestors: <span class="internal-link">Qere</span>, who was said to be Turkish; <span class="internal-link">Reşo</span>, who was Kurdish; <span class="internal-link">Dada</span>, the grandfather of a current resident&#x27;s mother-in-law; and a fourth unnamed founder. Key landmarks include the village crossroads, a shrine (<span class="internal-link">Ziyareta Qere Baba</span>) for the deceased, a mosque named <span class="internal-link">Masjid Khatun</span>, and an ancient spring (kaniya) that has existed since the time of the ancestors and never runs dry. This spring, which once overflowed into a nearby river during rainy seasons, was a central social hub with walnut trees and canopies. The village also contains old stone houses, with at least one being built in 1952 by a man named <span class="internal-link">Tîmorê Rewanî</span>. However, the village has faced significant hardship in modern times. Many of the old houses have been damaged by an earthquake, and the community has suffered from depopulation due to war. This decline is reflected at the spring, which is no longer a social gathering place but is now used primarily for drinking water for the few remaining residents and their animals.</p></div></details></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qere%20Baba.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qere%20Baba.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=lDQnk-ICujM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lDQnk-ICujM</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=b2krctZNu70" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=b2krctZNu70</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on October 09, 2025</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Qere Baba";
+            const villageLat = 36.747264;
+            const villageLng = 36.627029;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

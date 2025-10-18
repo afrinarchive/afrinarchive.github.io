@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Kefernebo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-efr-n .map-container {
+            position: relative;
+        }
+        #minimap-efr-n .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-efr-n .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR ÇK Map 11 --- 
+         Recalculated for original image dimensions of 973x1284 pixels.
+        */
+        #minimap-efr-n .aster { left: 34.84%; top: 6.93%; width: 11.92%; height: 9.03%; }
+        #minimap-efr-n .coqe { left: 16.85%; top: 13.55%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .cumqe { left: 40.70%; top: 13.94%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .meriske { left: 65.67%; top: 4.21%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kefermize { left: 59.92%; top: 7.16%; width: 11.31%; height: 8.57%; }
+        #minimap-efr-n .sewarxa { left: 66.60%; top: 8.02%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .tirtewile { left: 35.25%; top: 17.60%; width: 10.48%; height: 7.94%; }
+        #minimap-efr-n .qibare { left: 50.87%; top: 18.46%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .efrin { left: 37.82%; top: 22.04%; width: 10.69%; height: 8.10%; }
+        #minimap-efr-n .gaze { left: 7.50%; top: 22.82%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .gunde-mezin { left: 13.16%; top: 19.00%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .xelnare { left: 19.01%; top: 18.69%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .kefersile { left: 23.54%; top: 22.90%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .marate { left: 16.03%; top: 24.30%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .keferdele-jorin { left: 5.76%; top: 24.77%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .keferdele-jerin { left: 10.59%; top: 32.48%; width: 8.02%; height: 6.07%; }
+        #minimap-efr-n .bablite { left: 25.69%; top: 30.61%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xalta { left: 55.19%; top: 24.14%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .meremine { left: 63.62%; top: 18.30%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .inabke { left: 63.72%; top: 20.64%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .cilbire { left: 68.86%; top: 31.00%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .bene { left: 76.46%; top: 35.75%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .basile { left: 63.00%; top: 37.62%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kurzele { left: 43.58%; top: 34.66%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .turinde { left: 41.11%; top: 26.32%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .kersane { left: 34.84%; top: 25.70%; width: 10.69%; height: 8.10%; }
+        #minimap-efr-n .pitete { left: 30.22%; top: 33.41%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .endare { left: 36.99%; top: 34.74%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .cidede { left: 34.74%; top: 28.50%; width: 10.90%; height: 8.26%; }
+        #minimap-efr-n .kefirbetre { left: 20.97%; top: 36.37%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kokebe { left: 26.72%; top: 38.94%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .tilfe { left: 16.65%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .keferzite { left: 19.22%; top: 50.08%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kifere { left: 34.12%; top: 47.98%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .basute { left: 38.54%; top: 44.39%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .soxaneke { left: 54.78%; top: 42.68%; width: 10.48%; height: 7.94%; }
+        #minimap-efr-n .aqibe { left: 68.35%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xurebke { left: 81.09%; top: 45.95%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .zarete { left: 78.73%; top: 49.30%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kimare { left: 45.43%; top: 47.66%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .birce { left: 36.48%; top: 51.95%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xeziwe { left: 28.57%; top: 61.37%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .iska { left: 17.37%; top: 68.07%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .sadere { left: 23.54%; top: 64.56%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .berade { left: 45.63%; top: 58.33%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .meyase { left: 61.46%; top: 56.23%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .bircilqase { left: 59.30%; top: 64.72%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .biiye { left: 36.28%; top: 66.98%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kefer-nabo { left: 49.54%; top: 66.51%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .basufane { left: 38.34%; top: 71.96%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .gundi-mezin { left: 62.90%; top: 72.35%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .birc-hedar { left: 47.48%; top: 71.57%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .kibesine { left: 50.77%; top: 75.16%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .farfirtine { left: 47.58%; top: 77.57%; width: 9.87%; height: 7.48%; }
+        #minimap-efr-n .basemre { left: 66.80%; top: 80.76%; width: 9.87%; height: 7.48%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Kefernebo</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Efrîn</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Kefer Nebo, Kefernebo, كفر نبو</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg">1500</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
+<img alt="Map Image 11" onerror="this.onerror=null; this.src='https://placehold.co/973x1284/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 11.png"/>
+<div class="aster highlight-box"></div><div class="coqe highlight-box"></div><div class="cumqe highlight-box"></div><div class="meriske highlight-box"></div><div class="kefermize highlight-box"></div><div class="sewarxa highlight-box"></div><div class="tirtewile highlight-box"></div><div class="qibare highlight-box"></div><div class="efrin highlight-box"></div><div class="gaze highlight-box"></div><div class="gunde-mezin highlight-box"></div><div class="xelnare highlight-box"></div><div class="kefersile highlight-box"></div><div class="marate highlight-box"></div><div class="keferdele-jorin highlight-box"></div><div class="keferdele-jerin highlight-box"></div><div class="bablite highlight-box"></div><div class="xalta highlight-box"></div><div class="meremine highlight-box"></div><div class="inabke highlight-box"></div><div class="cilbire highlight-box"></div><div class="bene highlight-box"></div><div class="basile highlight-box"></div><div class="kurzele highlight-box"></div><div class="turinde highlight-box"></div><div class="kersane highlight-box"></div><div class="pitete highlight-box"></div><div class="endare highlight-box"></div><div class="cidede highlight-box"></div><div class="kefirbetre highlight-box"></div><div class="kokebe highlight-box"></div><div class="tilfe highlight-box"></div><div class="keferzite highlight-box"></div><div class="kifere highlight-box"></div><div class="basute highlight-box"></div><div class="soxaneke highlight-box"></div><div class="aqibe highlight-box"></div><div class="xurebke highlight-box"></div><div class="zarete highlight-box"></div><div class="kimare highlight-box"></div><div class="birce highlight-box"></div><div class="xeziwe highlight-box"></div><div class="iska highlight-box"></div><div class="sadere highlight-box"></div><div class="berade highlight-box"></div><div class="meyase highlight-box"></div><div class="bircilqase highlight-box"></div><div class="biiye highlight-box"></div><div class="kefer-nabo highlight-box" style="display: block;"></div><div class="basufane highlight-box"></div><div class="gundi-mezin highlight-box"></div><div class="birc-hedar highlight-box"></div><div class="kibesine highlight-box"></div><div class="farfirtine highlight-box"></div><div class="basemre highlight-box"></div>
+</div></div>
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.360983, 36.907193</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/kafar nabo.jpg" alt="Photo of Kefernebo" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=kafar+nabo.jpg';">
+<img src="../village_photos/kafr nabo.jpg" alt="Photo of Kefernebo" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=kafr+nabo.jpg';">
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Possible Village Name Meaning of Kefernebo</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>Nebo was a god from Mesopotamia. &quot;Kefer&quot; means farm, so &quot;farm of Nebo.&quot; Another opinion is from Aramaic: &quot;village of wolves.&quot;</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Kefernebo (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin) geographical study by Dr. Mohammed Abdo Ali:</p>
+<p><strong><span class="internal-link">Kefer Nebo</span>, كفرنبو</strong> /140N - 35km - 575m/:</p>
+<ul>
+<li><span class="internal-link">Nebo</span>: Name of a god from <span class="internal-link">Mesopotamia</span>, who was worshipped in <span class="internal-link">Lilon</span> mountain during pagan times and early Christian period, and had a large temple near the village site. And كفر: meaning farm or similar. <span class="internal-link">Al-Asadi</span> mentioned about its name, quoting from <span class="internal-link">Father Shelhat</span>, that it is from Aramaic because it is from: كفردابا, meaning: village of wolves.</li>
+</ul>
+<p>And according to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmah</span> village:</p>
+<p><strong>كفرنبو</strong>: A village in Lilon mountain, belonging to the central district villages and Afrin, Aleppo Governorate.</p>
+<p>A small village located on the middle slopes of eastern Lilon and <span class="internal-link">Sam&#x27;an</span> mountains on a mountainous and rugged elevation. It is bordered to the north by the rough Lilon mountain chain composed of rocks and <span class="internal-link">Barad</span> village. To the south by a slope and deep valley and mountain chain and <span class="internal-link">Birj Haidar</span> village, to the east by a mountain chain and rough elevation composed of rocks and <span class="internal-link">Birj Al-Qas</span> village, and to the west by a mountain chain and rough elevation of rocks and <span class="internal-link">Basufan</span> and <span class="internal-link">Ba&#x27;i</span> villages. The number of houses is about 10 houses and the current village age is 500 years. The settlement of the area is ancient, evidenced by remains of several churches, towers and houses for monks and dwellings for ancient residence. As for the village site, it is an ancient site deep in antiquity dating to the Roman and Byzantine periods, evidenced by massive ruins from the eastern, southern and western sides of this site including arches, towers and remains of churches - the first in the southern slope and the other in the village center. The church that centers the village is a massive church with several doors, a courtyard and wells carved in rock. Kafr Nabo village is considered the second largest archaeological village in northern <span class="internal-link">Syria</span> and Aleppo city in terms of archaeological remains present in it. It has a modern electricity network and the road leading to it is paved earth. Village residents work in grain cultivation and sheep herding. There are also some old stone tombs and five houses of stone and cement.</p></div></details></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kefernebo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kefernebo.htm</a></li><li>Photos:<br><a href="https://images.hollis.harvard.edu/primo-explore/fulldisplay?vid=HVD_IMAGES&amp;docid=HVD_VIA8001625962&amp;sortby=rank&amp;q=any,contains,kidner%20syria&amp;searchString=kidner%20syria&amp;offset=0&amp;tab=default_tab&amp;search_scope=HVD_DDO_IMG" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://images.hollis.harvard.edu/primo-explore/fulldisplay?vid=HVD_IMAGES&amp;docid=HVD_VIA8001625962&amp;sortby=rank&amp;q=any,contains,kidner%20syria&amp;searchString=kidner%20syria&amp;offset=0&amp;tab=default_tab&amp;search_scope=HVD_DDO_IMG</a><br><a href="https://images.hollis.harvard.edu/primo-explore/fulldisplay?vid=HVD_IMAGES&amp;docid=HVD_VIA8001626039&amp;sortby=rank&amp;q=any,contains,kidner%20syria&amp;searchString=kidner%20syria&amp;offset=0&amp;tab=default_tab&amp;search_scope=HVD_DDO_IMG" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://images.hollis.harvard.edu/primo-explore/fulldisplay?vid=HVD_IMAGES&amp;docid=HVD_VIA8001626039&amp;sortby=rank&amp;q=any,contains,kidner%20syria&amp;searchString=kidner%20syria&amp;offset=0&amp;tab=default_tab&amp;search_scope=HVD_DDO_IMG</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on October 09, 2025</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Kefernebo";
+            const villageLat = 36.360983;
+            const villageLng = 36.907193;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

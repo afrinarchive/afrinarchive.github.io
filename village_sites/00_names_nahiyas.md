@@ -1,7 +1,6 @@
 Baliya	Bilbilê	Baliya.html
 Baxaşê	Bilbilê	Baxaşê.html
 Berkaşê	Bilbilê	Berkaşê.html
-Berko	Bilbilê	Berko.html
 Bilbilê	Bilbilê	Bilbilê.html
 Bêkê	Bilbilê	Bêkê.html
 Bêlê	Bilbilê	Bêlê.html
@@ -12,7 +11,6 @@ Dupîra	Bilbilê	Dupîra.html
 Dîkê	Bilbilê	Dîkê.html
 Ebûdanê	Bilbilê	Ebûdanê.html
 Elcara	Bilbilê	Elcara.html
-Eli Bako	Bilbilê	Eli Bako.html
 Eli Kera	Bilbilê	Eli Kera.html
 Elî Bego	Bilbilê	Elî Bego.html
 Eşûnê	Bilbilê	Eşûnê.html
@@ -23,27 +21,21 @@ Kurdo	Bilbilê	Kurdo.html
 Kurzêl	Bilbilê	Kurzêl.html
 Kêla	Bilbilê	Kêla.html
 Qarşiqa	Bilbilê	Qarşiqa.html
-Qaziya Jêrê	Bilbilê	Qaziya Jêrê.html
 Qaşa	Bilbilê	Qaşa.html
 Qestelê Miqdêd	Bilbilê	Qestelê Miqdêd.html
+Qestelê Xidiriya	Bilbilê	Qestelê Xidiriya.html
 Qiri Golê	Bilbilê	Qiri Golê.html
 Qizilbaşa	Bilbilê	Qizilbaşa.html
 Qornê	Bilbilê	Qornê.html
-Qorta	Bilbilê	Qorta.html
 Qota	Bilbilê	Qota.html
 Si'iriya	Bilbilê	Si'iriya.html
-Sornî	Bilbilê	Sornî.html
-Tebakoy	Bilbilê	Tebakoy.html
-Tembale	Bilbilê	Tembale.html
 Topel Meĥmûd	Bilbilê	Topel Meĥmûd.html
 Uga	Bilbilê	Uga.html
-Upila	Bilbilê	Upila.html
 Xelîlaka	Bilbilê	Xelîlaka.html
 Xidiriya	Bilbilê	Xidiriya.html
 Xilalka	Bilbilê	Xilalka.html
 Ze'rê	Bilbilê	Ze'rê.html
 Zivingê	Bilbilê	Zivingê.html
-Çobane Çiya	Bilbilê	Çobane Çiya.html
 Ĥazira	Bilbilê	Ĥazira.html
 Ĥeftêr	Bilbilê	Ĥeftêr.html
 Ĥesen Dêra	Bilbilê	Ĥesen Dêra.html
@@ -52,6 +44,7 @@ Zivingê	Bilbilê	Zivingê.html
 Şêxorz	Bilbilê	Şêxorz.html
 Abû Ke'bê Xerbî	Cindires	Abû Ke'bê Xerbî.html
 Abû Ke'bê Şerqî	Cindires	Abû Ke'bê Şerqî.html
+Andariya	Cindires	Andariya.html
 Axcelê	Cindires	Axcelê.html
 Aşkê Xerbî	Cindires	Aşkê Xerbî.html
 Aşkê Şerqî	Cindires	Aşkê Şerqî.html
@@ -62,14 +55,13 @@ Cindirês	Cindires	Cindirês.html
 Dêrbelûtê	Cindires	Dêrbelûtê.html
 Dêwê Jorin	Cindires	Dêwê Jorin.html
 Dêwê Jêrin	Cindires	Dêwê Jêrin.html
-Enderiyê	Cindires	Enderiyê.html
 Feqîra	Cindires	Feqîra.html
 Firêriyê	Cindires	Firêriyê.html
 Gewrika	Cindires	Gewrika.html
 Gorda	Cindires	Gorda.html
 Gorkê	Cindires	Gorkê.html
 Hêkiçê	Cindires	Hêkiçê.html
-Jamiliyah	Cindires	Jamiliyah.html
+Kanî Gewrkê	Cindires	Kanî Gewrkê.html
 Kefersefrê	Cindires	Kefersefrê.html
 Kora	Cindires	Kora.html
 Medaya	Cindires	Medaya.html
@@ -79,6 +71,7 @@ Merwanê Jerin	Cindires	Merwanê Jerin.html
 Merwanê Jorin	Cindires	Merwanê Jorin.html
 Miske Jerin	Cindires	Miske Jerin.html
 Miskê Jorin	Cindires	Miskê Jorin.html
+Mîla Xelîla	Cindires	Mîla Xelîla.html
 Nisriyê	Cindires	Nisriyê.html
 Qujûma	Cindires	Qujûma.html
 Qulkê	Cindires	Qulkê.html
@@ -92,11 +85,11 @@ Sindiyankê	Cindires	Sindiyankê.html
 Tetera	Cindires	Tetera.html
 Til Ĥemo	Cindires	Til Ĥemo.html
 Tilsilorê	Cindires	Tilsilorê.html
-Ubaydanah	Cindires	Ubaydanah.html
 Xeltê Xerbî	Cindires	Xeltê Xerbî.html
 Xeltê Şerqî	Cindires	Xeltê Şerqî.html
 Xerza	Cindires	Xerza.html
 Yalanqozê	Cindires	Yalanqozê.html
+Çamlî Bêl	Cindires	Çamlî Bêl.html
 Çeqelê Cûmê	Cindires	Çeqelê Cûmê.html
 Çobana	Cindires	Çobana.html
 Çolaqa	Cindires	Çolaqa.html
@@ -107,8 +100,8 @@ Yalanqozê	Cindires	Yalanqozê.html
 Ĥemêlkê	Cindires	Ĥemêlkê.html
 Ĥesîrkê	Cindires	Ĥesîrkê.html
 Şêx Ebdirehmên	Cindires	Şêx Ebdirehmên.html
-Astêr	Efrîn	Astêr.html
 Aqîbê	Efrîn	Aqîbê.html
+Astêr	Efrîn	Astêr.html
 Bablîtê	Efrîn	Bablîtê.html
 Basilê	Efrîn	Basilê.html
 Basûfanê	Efrîn	Basûfanê.html
@@ -128,6 +121,7 @@ Duderiyah Cave	Efrîn	Duderiyah Cave.html
 Dêrmişmiş	Efrîn	Dêrmişmiş.html
 Efrîn	Efrîn	Efrîn.html
 Ein Majnoun	Efrîn	Ein Majnoun.html
+Endarê	Efrîn	Endarê.html
 Endîbê'	Efrîn	Endîbê'.html
 Fafirtîn	Efrîn	Fafirtîn.html
 Gazê	Efrîn	Gazê.html
@@ -176,6 +170,7 @@ Zêdiyê	Efrîn	Zêdiyê.html
 Îska	Efrîn	Îska.html
 Şadêrê	Efrîn	Şadêrê.html
 Şehrenlî	Efrîn	Şehrenlî.html
+Şewarxa Arze	Efrîn	Şewarxa Arze.html
 Şewarxa	Efrîn	Şewarxa.html
 Şêx Seydo	Efrîn	Şêx Seydo.html
 Yazi Baĝ	Ezaz	Yazi Baĝ.html
@@ -185,6 +180,7 @@ Birîmce	Mabeta	Birîmce.html
 Dargirê	Mabeta	Dargirê.html
 Dela	Mabeta	Dela.html
 Emara	Mabeta	Emara.html
+Ereb Şêxo	Mabeta	Ereb Şêxo.html
 Ereba	Mabeta	Ereba.html
 Gemrûkê	Mabeta	Gemrûkê.html
 Gulîka	Mabeta	Gulîka.html
@@ -195,21 +191,18 @@ Kurkê Jorin	Mabeta	Kurkê Jorin.html
 Kurkê Jêrin	Mabeta	Kurkê Jêrin.html
 Kêl Îbo	Mabeta	Kêl Îbo.html
 Mabeta	Mabeta	Mabeta.html
+Mala Xelî Pîrê	Mabeta	Mala Xelî Pîrê.html
 Me'serkê	Mabeta	Me'serkê.html
 Mist'eşûra	Mabeta	Mist'eşûra.html
 Mîrka	Mabeta	Mîrka.html
 Omo	Mabeta	Omo.html
 Qenterê	Mabeta	Qenterê.html
 Qitraniyê	Mabeta	Qitraniyê.html
-Quto	Mabeta	Quto.html
+Qushla	Mabeta	Qushla.html
 Reca	Mabeta	Reca.html
 Rûta	Mabeta	Rûta.html
 Sariya	Mabeta	Sariya.html
-Satiya	Mabeta	Satiya.html
 Selo	Mabeta	Selo.html
-Sheikh Ehmo	Mabeta	Sheikh Ehmo.html
-Sotiya	Mabeta	Sotiya.html
-Surqaniya	Mabeta	Surqaniya.html
 Sêmalka	Mabeta	Sêmalka.html
 Sêwiya	Mabeta	Sêwiya.html
 Xaziyanê Jorin	Mabeta	Xaziyanê Jorin.html
@@ -231,7 +224,6 @@ Kilotê	Nubl	Kilotê.html
 Meyasê	Nubl	Meyasê.html
 Xirabî Şêx 'Eqîl	Nubl	Xirabî Şêx 'Eqîl.html
 Zirenîtê	Nubl	Zirenîtê.html
-Atmoniyo	Reco	Atmoniyo.html
 Banîkê	Reco	Banîkê.html
 Be'dîna	Reco	Be'dîna.html
 Berbenê	Reco	Berbenê.html
@@ -262,7 +254,6 @@ Me'mala	Reco	Me'mala.html
 Memala	Reco	Memala.html
 Meydan Ekbez	Reco	Meydan Ekbez.html
 Mûskê	Reco	Mûskê.html
-Panerako	Reco	Panerako.html
 Penêreka	Reco	Penêreka.html
 Qere Baba	Reco	Qere Baba.html
 Qestela	Reco	Qestela.html
@@ -296,21 +287,18 @@ Zerka	Reco	Zerka.html
 Şêx Bila	Reco	Şêx Bila.html
 Şêx Mihemed	Reco	Şêx Mihemed.html
 Şêx	Reco	Şêx.html
+Qorta	unknown	Qorta.html
+Satiya	unknown	Satiya.html
+Upila	unknown	Upila.html
 Alciya	Şera	Alciya.html
-Azri	Şera	Azri.html
 Baflûnê	Şera	Baflûnê.html
-Baniyya	Şera	Baniyya.html
 Be'rava	Şera	Be'rava.html
 Cyrrhus	Şera	Cyrrhus.html
-Dalo	Şera	Dalo.html
-Demhat	Şera	Demhat.html
 Dewrîş	Şera	Dewrîş.html
 Diraqliya	Şera	Diraqliya.html
 Dêrsiwanê	Şera	Dêrsiwanê.html
-Dîbe	Şera	Dîbe.html
 Dîkmedaşê	Şera	Dîkmedaşê.html
 Ereb Wêranê	Şera	Ereb Wêranê.html
-Gozê	Şera	Gozê.html
 Gubelê	Şera	Gubelê.html
 Keferomê	Şera	Keferomê.html
 Keştearê	Şera	Keştearê.html
@@ -324,9 +312,10 @@ Omer Simo	Şera	Omer Simo.html
 Omera	Şera	Omera.html
 Pelûsankê	Şera	Pelûsankê.html
 Qeredepe	Şera	Qeredepe.html
+Qerqîna	Şera	Qerqîna.html
 Qestela Cindo	Şera	Qestela Cindo.html
 Qestelê Kîşik	Şera	Qestelê Kîşik.html
-Qetlebiyê	Şera	Qetlebiyê.html
+Qetlebiye	Şera	Qetlebiye.html
 Qitmê	Şera	Qitmê.html
 Qurtqulaqê Mezin	Şera	Qurtqulaqê Mezin.html
 Qurtqulaqê Çûçik	Şera	Qurtqulaqê Çûçik.html
@@ -335,6 +324,7 @@ Serîncekê	Şera	Serîncekê.html
 Sînka	Şera	Sînka.html
 Tilîlaqê	Şera	Tilîlaqê.html
 Wêreganê	Şera	Wêreganê.html
+Xirabî Şera	Şera	Xirabî Şera.html
 Zêtûnekê	Şera	Zêtûnekê.html
 Çema	Şera	Çema.html
 Îkîdamê	Şera	Îkîdamê.html
@@ -342,20 +332,13 @@ Zêtûnekê	Şera	Zêtûnekê.html
 Ĥilûbiyê Çuçik	Şera	Ĥilûbiyê Çuçik.html
 Şera	Şera	Şera.html
 Şîlte'tê	Şera	Şîlte'tê.html
-Ablo	Şiyê	Ablo.html
 Alkana	Şiyê	Alkana.html
-Amaro o Shaghi	Şiyê	Amaro o Shaghi.html
 Anqelê	Şiyê	Anqelê.html
 Baziya	Şiyê	Baziya.html
 Erendê	Şiyê	Erendê.html
-Haj Hasano Jorin	Şiyê	Haj Hasano Jorin.html
-Haj Hasano Jêrin	Şiyê	Haj Hasano Jêrin.html
-Kalo	Şiyê	Kalo.html
 Kela	Şiyê	Kela.html
 Mistika	Şiyê	Mistika.html
 Qermîtliq	Şiyê	Qermîtliq.html
-Qorsho	Şiyê	Qorsho.html
-Sandra	Şiyê	Sandra.html
 Senarê	Şiyê	Senarê.html
 Tirmûşa	Şiyê	Tirmûşa.html
 Xelîl	Şiyê	Xelîl.html

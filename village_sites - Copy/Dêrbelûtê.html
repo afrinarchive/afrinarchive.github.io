@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Dêrbelûtê</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-cindires .map-container {
+            position: relative;
+        }
+        #minimap-cindires .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-cindires .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR CINDARIS AREAS --- 
+         Recalculated for original image dimensions of 991x998 pixels.
+        */
+        #minimap-cindires .remadiye { left: 36.63%; top: 3.61%; width: 8.88%; height: 8.82%; }
+        #minimap-cindires .hechesna { left: 34.21%; top: 10.02%; width: 8.88%; height: 8.82%; }
+        #minimap-cindires .xalta { left: 53.78%; top: 12.22%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .colaqa-1 { left: 66.50%; top: 15.63%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .gewrika { left: 72.45%; top: 12.53%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .gorda { left: 41.57%; top: 15.63%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .xerza { left: 63.47%; top: 16.93%; width: 10.09%; height: 10.02%; }
+        #minimap-cindires .tetera { left: 34.21%; top: 18.44%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .cobana { left: 43.99%; top: 23.65%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .miske-jorin { left: 47.93%; top: 22.55%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .miske-jerin { left: 49.45%; top: 27.56%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .colaqa-2 { left: 55.09%; top: 23.85%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .aske-serqi { left: 56.41%; top: 18.84%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .feqira { left: 71.24%; top: 17.94%; width: 9.08%; height: 9.02%; }
+        #minimap-cindires .sex-ebdirehmen { left: 73.16%; top: 32.67%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .qujuma { left: 63.37%; top: 30.96%; width: 10.29%; height: 10.22%; }
+        #minimap-cindires .bircike { left: 53.08%; top: 34.67%; width: 10.49%; height: 10.42%; }
+        #minimap-cindires .kora { left: 40.56%; top: 29.06%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .kefersefre { left: 34.91%; top: 33.87%; width: 10.29%; height: 10.22%; }
+        #minimap-cindires .hekice { left: 17.96%; top: 32.26%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .merwane-jerin { left: 11.91%; top: 35.87%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .merwane-jorin { left: 17.15%; top: 37.88%; width: 8.68%; height: 8.62%; }
+        #minimap-cindires .aske-xerbi { left: 25.23%; top: 45.19%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .baflor { left: 35.92%; top: 44.79%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .yalanqoze { left: 43.09%; top: 45.29%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .sindiyanke { left: 47.02%; top: 38.78%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .qurbe { left: 55.30%; top: 39.68%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .qile { left: 63.07%; top: 39.28%; width: 9.08%; height: 9.02%; }
+        #minimap-cindires .tilhemo { left: 73.86%; top: 40.78%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .hemame { left: 14.43%; top: 58.42%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .heciskendere { left: 25.23%; top: 55.51%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .axcele { left: 35.02%; top: 56.51%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .cindires { left: 43.79%; top: 50.40%; width: 11.50%; height: 11.42%; }
+        #minimap-cindires .hemelke { left: 56.41%; top: 48.00%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .remedena { left: 63.57%; top: 48.10%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .fireriye { left: 73.56%; top: 48.80%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .hecilere { left: 54.69%; top: 53.21%; width: 9.89%; height: 9.82%; }
+        #minimap-cindires .ebukebe { left: 64.18%; top: 54.21%; width: 11.10%; height: 11.02%; }
+        #minimap-cindires .zelaqe { left: 80.22%; top: 52.51%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .sifiye { left: 18.47%; top: 71.54%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .mila-xelila { left: 26.54%; top: 70.94%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .mehmediye { left: 40.36%; top: 69.04%; width: 9.69%; height: 9.62%; }
+        #minimap-cindires .derbelute { left: 41.17%; top: 75.15%; width: 8.68%; height: 8.62%; }
+        #minimap-cindires .medaya { left: 47.63%; top: 66.33%; width: 9.08%; height: 9.02%; }
+        #minimap-cindires .dewe-jerin { left: 54.09%; top: 65.63%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .dewe-jorin { left: 50.96%; top: 74.25%; width: 9.28%; height: 9.22%; }
+        #minimap-cindires .tilsilore { left: 56.31%; top: 62.22%; width: 9.49%; height: 9.42%; }
+        #minimap-cindires .celeme { left: 71.24%; top: 67.43%; width: 10.09%; height: 10.02%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Dêrbelûtê</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Cindires</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Deir Balut, Dêr Belûtê, Dêrbelûtê, دير بلوط</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg">1910</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
+<img alt="Map of Cindaris" onerror="this.onerror=null; this.src='https://placehold.co/991x998/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 16.png"/>
+<div class="remadiye highlight-box"></div><div class="hechesna highlight-box"></div><div class="xalta highlight-box"></div><div class="colaqa-1 highlight-box"></div><div class="gewrika highlight-box"></div><div class="gorda highlight-box"></div><div class="xerza highlight-box"></div><div class="tetera highlight-box"></div><div class="cobana highlight-box"></div><div class="miske-jorin highlight-box"></div><div class="miske-jerin highlight-box"></div><div class="colaqa-2 highlight-box"></div><div class="aske-serqi highlight-box"></div><div class="feqira highlight-box"></div><div class="sex-ebdirehmen highlight-box"></div><div class="qujuma highlight-box"></div><div class="bircike highlight-box"></div><div class="kora highlight-box"></div><div class="kefersefre highlight-box"></div><div class="hekice highlight-box"></div><div class="merwane-jerin highlight-box"></div><div class="merwane-jorin highlight-box"></div><div class="aske-xerbi highlight-box"></div><div class="baflor highlight-box"></div><div class="yalanqoze highlight-box"></div><div class="sindiyanke highlight-box"></div><div class="qurbe highlight-box"></div><div class="qile highlight-box"></div><div class="tilhemo highlight-box"></div><div class="hemame highlight-box"></div><div class="heciskendere highlight-box"></div><div class="axcele highlight-box"></div><div class="cindires highlight-box"></div><div class="hemelke highlight-box"></div><div class="remedena highlight-box"></div><div class="fireriye highlight-box"></div><div class="hecilere highlight-box"></div><div class="ebukebe highlight-box"></div><div class="zelaqe highlight-box"></div><div class="sifiye highlight-box"></div><div class="mila-xelila highlight-box"></div><div class="mehmediye highlight-box"></div><div class="derbelute highlight-box" style="display: block;"></div><div class="medaya highlight-box"></div><div class="dewe-jerin highlight-box"></div><div class="dewe-jorin highlight-box"></div><div class="tilsilore highlight-box"></div><div class="celeme highlight-box"></div>
+</div></div>
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.339849, 36.664875</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/Derbelute.jpg" alt="Photo of Dêrbelûtê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Derbelute.jpg';">
+<img src="../village_photos/der balot.jpg" alt="Photo of Dêrbelûtê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=der+balot.jpg';">
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Foundation/Origin Information of Dêrbelûtê</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>It was previously a farm belonging to Mala Khalil village and now has become a completely independent village.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p></div>
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Possible Village Name Meaning of Dêrbelûtê</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>The name is composed of: Deir + Balut. Balut is a Kurdish name for the oak tree and its fruit. Al-Khouri Barsoum says the name is Aramaic, meaning: monastery of salvation and deliverance.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Dêrbelûtê (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds (Afrin)</span> Geographic Study by Dr. Mohammed Abdo Ali:</p>
+<p><strong>Dêrbelûtê, <span class="internal-link">Deir Balut</span> (دير بلوط)</strong> /756n - 12km - 160m/:</p>
+<ul>
+<li>The name is composed of: <span class="internal-link">Deir</span> + <span class="internal-link">Balut</span> (دير + بلوط). <span class="internal-link">Balut</span> is a Kurdish name for the oak tree and its fruit. However, <span class="internal-link">Al-Khouri Barsoum</span> (الخوري برصوم) says that the name is <span class="internal-link">Aramaic</span>, meaning: escaped, was saved, delivered, so the meaning would be: monastery of salvation and deliverance (/p187/), and I believe this is a linguistic interpretation that does not express the truth.</li>
+<li>A medium village located on the southern bank of the <span class="internal-link">Afrin River</span> (نهر عفرين) and about 1 km from the <span class="internal-link">Turkish</span> border. To its south is the shrine of the famous <span class="internal-link">Sheikh Karas</span> (مزار شيخ كراس). The paved road leading to <span class="internal-link">Harem</span> district (ناحية حارم) in <span class="internal-link">Idlib</span> governorate (محافظة ادلب) passes through it.</li>
+</ul>
+<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from Qatmeh village:</p>
+<p><strong>Deir Balut</strong>: A village in the Afrin Valley (وادي عفرين), belonging to Sheikh Khalil village (قرية شيخ خليل), Jindires District (ناحية جندريس), Afrin Region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
+<p>It is a medium village located at the end of the northwestern slope of <span class="internal-link">Karaj al-Roj Mountain</span> (جبل كراج الروج) and at the beginning of the plain located south of the <span class="internal-link">Afrin River</span> (نهر عفرين), which descends with its alluvial fertile soil in a gentle slope toward the river course. It is 2 km east of <span class="internal-link">Sheikh Khalil</span> village (قرية الشيخ خليل) and 7 km southwest of <span class="internal-link">Cindires</span> town. It is bordered to the north by the Afrin River valley course (مجرى وادي نهر عفرين) 500m away and an ancient archaeological hill and Ajallali village (قرية أغجللي) beyond the river bank to the north, and to the south by mountainous heights planted with olive and pomegranate trees and a rugged mountainous chain and the Turkish border and Atmah village (قرية أطمة) belonging to Idlib governorate (محافظة إدلب), and to the west by a fertile plain planted with pomegranate and olive trees and Mala Khalil village (قرية ملاخليل), and to the east by a plain planted with pomegranate trees and Diwan Foqani village (قرية ديوان فوقاني). The number of its houses is about 70 houses and its age is about 100 years. It was previously a farm belonging to Mala Khalil village (قرية ملاخليل) and now has become a completely independent village. Its modern houses are concrete spread along the main road west, south, and east. It has electricity network and elementary school and a small mosque in the village center. The village drinks from a water network connected to wells drilled in the neighboring Nasriya village (قرية النسرية) or from artesian wells dug beside the houses. The road from it to Mala Khalil (ملا خليل) is paved.</p>
+<p>Village mayor: <span class="internal-link">Omar Abdo Naasan</span> (عمر عبدو نعسان)</p>
+<p><strong>Prepared and implemented by: Director of Tirej Afrin website: Abdulrahman Haji Othman</strong></p>
+<p>20/12/2013</p></div></details></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20derbelute.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20derbelute.htm</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on October 09, 2025</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Dêrbelûtê";
+            const villageLat = 36.339849;
+            const villageLng = 36.664875;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

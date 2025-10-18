@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Efrîn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-efr-n .map-container {
+            position: relative;
+        }
+        #minimap-efr-n .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-efr-n .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR ÇK Map 11 --- 
+         Recalculated for original image dimensions of 973x1284 pixels.
+        */
+        #minimap-efr-n .aster { left: 34.84%; top: 6.93%; width: 11.92%; height: 9.03%; }
+        #minimap-efr-n .coqe { left: 16.85%; top: 13.55%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .cumqe { left: 40.70%; top: 13.94%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .meriske { left: 65.67%; top: 4.21%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kefermize { left: 59.92%; top: 7.16%; width: 11.31%; height: 8.57%; }
+        #minimap-efr-n .sewarxa { left: 66.60%; top: 8.02%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .tirtewile { left: 35.25%; top: 17.60%; width: 10.48%; height: 7.94%; }
+        #minimap-efr-n .qibare { left: 50.87%; top: 18.46%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .efrin { left: 37.82%; top: 22.04%; width: 10.69%; height: 8.10%; }
+        #minimap-efr-n .gaze { left: 7.50%; top: 22.82%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .gunde-mezin { left: 13.16%; top: 19.00%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .xelnare { left: 19.01%; top: 18.69%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .kefersile { left: 23.54%; top: 22.90%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .marate { left: 16.03%; top: 24.30%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .keferdele-jorin { left: 5.76%; top: 24.77%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .keferdele-jerin { left: 10.59%; top: 32.48%; width: 8.02%; height: 6.07%; }
+        #minimap-efr-n .bablite { left: 25.69%; top: 30.61%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xalta { left: 55.19%; top: 24.14%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .meremine { left: 63.62%; top: 18.30%; width: 8.43%; height: 6.39%; }
+        #minimap-efr-n .inabke { left: 63.72%; top: 20.64%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .cilbire { left: 68.86%; top: 31.00%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .bene { left: 76.46%; top: 35.75%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .basile { left: 63.00%; top: 37.62%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kurzele { left: 43.58%; top: 34.66%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .turinde { left: 41.11%; top: 26.32%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .kersane { left: 34.84%; top: 25.70%; width: 10.69%; height: 8.10%; }
+        #minimap-efr-n .pitete { left: 30.22%; top: 33.41%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .endare { left: 36.99%; top: 34.74%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .cidede { left: 34.74%; top: 28.50%; width: 10.90%; height: 8.26%; }
+        #minimap-efr-n .kefirbetre { left: 20.97%; top: 36.37%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kokebe { left: 26.72%; top: 38.94%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .tilfe { left: 16.65%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .keferzite { left: 19.22%; top: 50.08%; width: 9.66%; height: 7.32%; }
+        #minimap-efr-n .kifere { left: 34.12%; top: 47.98%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .basute { left: 38.54%; top: 44.39%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .soxaneke { left: 54.78%; top: 42.68%; width: 10.48%; height: 7.94%; }
+        #minimap-efr-n .aqibe { left: 68.35%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xurebke { left: 81.09%; top: 45.95%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .zarete { left: 78.73%; top: 49.30%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kimare { left: 45.43%; top: 47.66%; width: 8.84%; height: 6.70%; }
+        #minimap-efr-n .birce { left: 36.48%; top: 51.95%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .xeziwe { left: 28.57%; top: 61.37%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .iska { left: 17.37%; top: 68.07%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .sadere { left: 23.54%; top: 64.56%; width: 10.28%; height: 7.79%; }
+        #minimap-efr-n .berade { left: 45.63%; top: 58.33%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .meyase { left: 61.46%; top: 56.23%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .bircilqase { left: 59.30%; top: 64.72%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .biiye { left: 36.28%; top: 66.98%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .kefer-nabo { left: 49.54%; top: 66.51%; width: 9.04%; height: 6.85%; }
+        #minimap-efr-n .basufane { left: 38.34%; top: 71.96%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .gundi-mezin { left: 62.90%; top: 72.35%; width: 10.07%; height: 7.63%; }
+        #minimap-efr-n .birc-hedar { left: 47.48%; top: 71.57%; width: 9.25%; height: 7.01%; }
+        #minimap-efr-n .kibesine { left: 50.77%; top: 75.16%; width: 9.46%; height: 7.16%; }
+        #minimap-efr-n .farfirtine { left: 47.58%; top: 77.57%; width: 9.87%; height: 7.48%; }
+        #minimap-efr-n .basemre { left: 66.80%; top: 80.76%; width: 9.87%; height: 7.48%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Efrîn</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Efrîn</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Afirîn, Afrin, Afrîn, Efrîn, Çiyayê Kurmênc, Çiyê Kurmênc, آفرين, عفرين</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg">1935</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
+<img alt="Map Image 11" onerror="this.onerror=null; this.src='https://placehold.co/973x1284/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 11.png"/>
+<div class="aster highlight-box"></div><div class="coqe highlight-box"></div><div class="cumqe highlight-box"></div><div class="meriske highlight-box"></div><div class="kefermize highlight-box"></div><div class="sewarxa highlight-box"></div><div class="tirtewile highlight-box"></div><div class="qibare highlight-box"></div><div class="efrin highlight-box" style="display: block;"></div><div class="gaze highlight-box"></div><div class="gunde-mezin highlight-box"></div><div class="xelnare highlight-box"></div><div class="kefersile highlight-box"></div><div class="marate highlight-box"></div><div class="keferdele-jorin highlight-box"></div><div class="keferdele-jerin highlight-box"></div><div class="bablite highlight-box"></div><div class="xalta highlight-box"></div><div class="meremine highlight-box"></div><div class="inabke highlight-box"></div><div class="cilbire highlight-box"></div><div class="bene highlight-box"></div><div class="basile highlight-box"></div><div class="kurzele highlight-box"></div><div class="turinde highlight-box"></div><div class="kersane highlight-box"></div><div class="pitete highlight-box"></div><div class="endare highlight-box"></div><div class="cidede highlight-box"></div><div class="kefirbetre highlight-box"></div><div class="kokebe highlight-box"></div><div class="tilfe highlight-box"></div><div class="keferzite highlight-box"></div><div class="kifere highlight-box"></div><div class="basute highlight-box"></div><div class="soxaneke highlight-box"></div><div class="aqibe highlight-box"></div><div class="xurebke highlight-box"></div><div class="zarete highlight-box"></div><div class="kimare highlight-box"></div><div class="birce highlight-box"></div><div class="xeziwe highlight-box"></div><div class="iska highlight-box"></div><div class="sadere highlight-box"></div><div class="berade highlight-box"></div><div class="meyase highlight-box"></div><div class="bircilqase highlight-box"></div><div class="biiye highlight-box"></div><div class="kefer-nabo highlight-box"></div><div class="basufane highlight-box"></div><div class="gundi-mezin highlight-box"></div><div class="birc-hedar highlight-box"></div><div class="kibesine highlight-box"></div><div class="farfirtine highlight-box"></div><div class="basemre highlight-box"></div>
+</div></div>
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.510325, 36.867917</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/afrin.jpg" alt="Photo of Efrîn" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=afrin.jpg';">
+<img src="../village_photos/afrin3.jpg" alt="Photo of Efrîn" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=afrin3.jpg';">
+<img src="../village_photos/afin1.jpg" alt="Photo of Efrîn" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=afin1.jpg';">
+<img src="../village_photos/zarxa6.jpg" alt="Photo of Efrîn" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=zarxa6.jpg';">
+<img src="../village_photos/afrin1.jpg" alt="Photo of Efrîn" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=afrin1.jpg';">
+<img src="../village_photos/sajasafrin.jpg" alt="Photo of Efrîn" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=sajasafrin.jpg';">
+<img src="../village_photos/zeton.jpg" alt="Photo of Efrîn" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=zeton.jpg';">
+<img src="../village_photos/adahe.jpg" alt="Photo of Efrîn" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=adahe.jpg';">
+<img src="../village_photos/shokri-al-quatli.jpg" alt="Photo of Efrîn" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=shokri-al-quatli.jpg';">
+<img src="../village_photos/map afrin 2012.jpg" alt="Photo of Efrîn" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=map+afrin+2012.jpg';">
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Foundation/Origin Information of Efrîn</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>The first inhabitants were Armenians who fled Turkish persecution. They were joined by regional leaders like Al Sido Mimi, Al Ghabari, Darwish Agha Shamo, and Ahmed Khalil.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p></div>
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Possible Village Name Meaning of Efrîn</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>Multiple theories: 1) From Arabic for &quot;dust&quot;. 2) From the ancient Lycian word &quot;Eple&quot; (via Assyrian/Greek &quot;Aprie&quot;), combining the root for &quot;water&quot; (Av) and the Kurdish word for &quot;red earthy color&quot; (riwîn), meaning &quot;red earthy water&quot;. 3) From the Kurdish word &quot;Afirîn,&quot; meaning &quot;creation and giving.&quot;</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Efrîn (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by the writer Abdulrahman Mohammed from the village of Qatmah</p>
+<p>Afrin: Located in the northwestern corner of <span class="internal-link">Syria</span>. Afrin took its name from the word &quot;Afro&quot;, which in <span class="internal-link">Aramaic</span> means fertile land and is located at the southern slope of <span class="internal-link">Mount Zawiya</span> at an elevation of 392 meters above sea level and on the elevated right bank of the <span class="internal-link">Afrin River</span>, which keeps it safe from river flooding. It is connected by a fertile civilization and is 60 km northwest of the city of <span class="internal-link">Aleppo</span>. It is bordered to the north by the highlands and farms of Mount Zawiya and the village of <span class="internal-link">Tell Tawil</span>. To the south by the plain and Afrin River and the village of <span class="internal-link">Karsan Tash</span>, and to the east by the Afrin River valley and the <span class="internal-link">Aleppo-Afrin</span> road and the village of <span class="internal-link">Arshqibar</span>.</p>
+<p>To the west lies the fertile agricultural plain and the villages of <span class="internal-link">Kafr Shiel</span> and <span class="internal-link">Maarata</span>. The history of Afrin dates back to the beginning of the twentieth century when in 1925 the site of <span class="internal-link">Arshqibar Bridge</span> was chosen to build a government house, which was the beginning of the establishment of Afrin city to become an administrative center for managing the region, as it organizationally attracted the surrounding areas and the administrative center was transferred from the village of <span class="internal-link">Maabatli</span> and Maarata to Afrin city to become the final administrative center for the region. Afrin was a place for commercial caravans to rest between Aleppo and <span class="internal-link">Alexandretta Province</span>. The city expanded after independence and incorporated some neighboring villages. Its old houses are made of stone and clay with flat wooden roofs. The city expanded during the correction era and regulatory plans were prepared to include 830 hectares. Modern concrete multi-story buildings began to spread around the old city core and on both sides of its modern streets, and new neighborhoods were established such as <span class="internal-link">Al-Ashrafiyya</span> neighborhood east of the city and <span class="internal-link">Al-Mahmoudiyya</span> neighborhood northwest of the city. Afrin city is considered one of the most beautiful small cities in the <span class="internal-link">Syrian Arab Republic</span> in terms of street organization since the <span class="internal-link">French era</span>. The inhabitants of this city work in agriculture, most importantly olives, grains, legumes, and vineyards. As for irrigated crops, they are watered from the Afrin River waters and artesian wells. The people also grow summer vegetables near the Afrin River, cotton, and sugar beet irrigated from the Afrin River. Most of its inhabitants depend, in addition to their agricultural resources, on what professional work, services, and commercial exchanges bring, and some of them work in state institutions. It has an electricity network and drinking water drawn from the <span class="internal-link">Kafr Jannah</span> spring northeast of Afrin about 7 km away and from artesian wells. It has several elementary, preparatory, and secondary schools, an industrial secondary school, and a Sharia preparatory school. Its population is about 47,108 thousand people, and the total population of the <span class="internal-link">Central District</span> is 136,873 people as of 1/1/2006. It has a cultural center, rural development center, health and veterinary centers, a post, telegraph and telephone center, a childhood care center, a guidance unit for carpet and rug making industry, in addition to official government departments. There are several mosques, the oldest being <span class="internal-link">Salah al-Din Mosque</span> near the government house. There are 11 sesame oil extraction factories, five olive oil presses, four small soap factories, and a tin plate factory. The <span class="internal-link">Afrin Market (Bazaar)</span> was also established during the era of <span class="internal-link">Jamil Ahmed Bafi Agha</span>, mayor of Afrin in 1935, where a bazaar is held every Wednesday in the city center. A city council was established in Afrin city in 1983 with ten members. Afrin is connected to Aleppo city by two paved roads: the first <span class="internal-link">Afrin-Deir al-Jamal-Aleppo</span> and the second <span class="internal-link">Afrin-Darat Azza-Aleppo</span>. Among the first inhabitants were the <span class="internal-link">Armenians</span> who fled from <span class="internal-link">Turkish</span> persecution and built their homes around the government buildings, and worked in blacksmithing and other trades that the <span class="internal-link">French forces</span> needed, especially in horse equipment preparation.</p>
+<p>Then some regional leaders joined in building residential houses, such as <span class="internal-link">Al Sido Mimi</span>, <span class="internal-link">Al Ghabari</span>, and the leader of the <span class="internal-link">Yazidis</span> at that time <span class="internal-link">Darwish Agha Shamo</span>, then <span class="internal-link">Ahmed Khalil</span> from <span class="internal-link">Oshaghli Factory</span> and others.</p>
+<p><strong>Afrin</strong></p>
+<p>An administrative region in <span class="internal-link">Mountain of the Kurds</span> belonging to Aleppo Governorate, extending eastward to <span class="internal-link">Mount Simaan</span>. It is bordered to the north by <span class="internal-link">Turkey</span>, to the east by <span class="internal-link">Azaz</span> city, to the south by <span class="internal-link">Mount Simaan</span> region and <span class="internal-link">Idlib Governorate</span>, and to the west by <span class="internal-link">Alexandretta Province</span>. It consists of Afrin city and seven districts: (<span class="internal-link">Central Afrin villages</span>, <span class="internal-link">Bulbul</span>, Jindires, Rajo, <span class="internal-link">Sharan</span>, <span class="internal-link">Sheikh al-Hadid</span>, <span class="internal-link">Maabatli</span>) and a total of 263 villages and 100 farms.</p>
+<p><strong><span class="internal-link">Afrin River</span></strong></p>
+<p>The <span class="internal-link">Afrin River</span> is located northwest of <span class="internal-link">Syria</span>, in the Afrin region of Aleppo Governorate. It originates from <span class="internal-link">Mount Lukkam</span> and the <span class="internal-link">Antab plateau</span> and passes through <span class="internal-link">Rondan</span>. The length of its course in Syrian territory is 85 km out of its total original length of 149 km from its source to its end in the <span class="internal-link">Amq Depression</span> in <span class="internal-link">Alexandretta Province</span>.</p>
+<p>It penetrates Syrian territory northeast of <span class="internal-link">Shaltah</span> village at an elevation of 360 m and passes near <span class="internal-link">Deir Sawan</span> village after <span class="internal-link">Shaltah</span>, crossing the <span class="internal-link">Roman bridges</span> erected on this river. It meets the <span class="internal-link">Saboun River</span> west of <span class="internal-link">Vira Kan</span> village and heads deep toward <span class="internal-link">Midanki</span> where the multiple hard rocks form waterfalls in its course in <span class="internal-link">Midanki</span> and <span class="internal-link">Kumruk</span>, penetrating the land with many bends until Afrin city. Several streams and small springs feed it and form many bends that descend to it from the heights of <span class="internal-link">Mount Simaan</span> and <span class="internal-link">Lilon</span> to the east and <span class="internal-link">Mount Akrad</span> to the west. With an average flow of 8.6 m³/sec, and in spring the flow reaches 15.6 m³/sec, sometimes causing destructive floods as happened in 1974 when the main bridge at the entrance to Afrin city completely collapsed and a replacement bridge was built. The river waters decrease and become scarce in summer, reaching a flow of 1.41 m³/sec. To regulate the river waters and benefit from its waters, the state was interested in building a dam on the river course called the <span class="internal-link">Seventeenth of April Dam</span>. The foundation stone was laid in 1980 by <span class="internal-link">Dr. Abdul Raouf Qasim</span>, former Prime Minister, to build a large dam on the river course north of Afrin city at the <span class="internal-link">Midanki</span> site. The dam lake extends eastward for about 12 km. This dam is located north of Afrin city at <span class="internal-link">Midanki</span> village and was inaugurated in 2004 by Prime Minister <span class="internal-link">Engineer Mohammed Naji Atri</span>. It will benefit from the river waters for irrigation and reclamation of an average number of hectares in the Afrin and Jindires plain up to the <span class="internal-link">Turkish borders</span>. Several bridges are also built on it west of <span class="internal-link">Midanki</span> near the <span class="internal-link">Kumruk waterfalls</span>. There are two bridges in Afrin city: the first at the site of the old collapsed bridge and the second 500 m south. There is also a third bridge at <span class="internal-link">Kafir</span> village and <span class="internal-link">Birj Abdul Walaw</span>, and a fourth bridge at <span class="internal-link">Tell Salur</span> village.</p>
+<p>The <span class="internal-link">Afrin River</span>, especially after the establishment of the <span class="internal-link">Seventeenth of April Dam</span>, is considered the vital and important artery of the region and forms a tourist outlet for <span class="internal-link">Aleppo</span> city. Its river waters are also drawn to irrigate Afrin and <span class="internal-link">Azaz</span> cities at present.</p>
+<p><strong><span class="internal-link">Afrin Municipality</span></strong></p>
+<p>In 1926, the administrative center of the region moved from <span class="internal-link">Maabatli</span> village, and until 1927 the new Afrin municipality was established where the number of its houses was limited.</p>
+<p>The first mayor of Afrin municipality from 1926 to 1930 was <span class="internal-link">Mr. Jamil Ahmed Agha Bafi</span> from <span class="internal-link">Qatmah</span> village (Afrin region), where the municipality developed with its limited capabilities. A house was built for the municipality next to the government house near the old Afrin bazaar until the sixties of this century. Due to the expansion of the city size, especially toward the north and west on the <span class="internal-link">Zaydiyya-Rajo</span> road and on the Jindires road <span class="internal-link">Alexandretta Province</span> street, and during the glorious correction era, the city area reached 830 hectares. A regulatory plan was then developed for it, including attention to irrigation and drainage networks, telephone, electricity, and water. A center for rural development, guidance unit, and health centers were also established. Several new neighborhoods were also created on the eastern side of Afrin city on the <span class="internal-link">Basuta</span> and <span class="internal-link">Aleppo</span> road such as <span class="internal-link">Al-Ashrafiyya</span> neighborhood and others.</p>
+<p>In 1983, the new Afrin City Council was established instead of Afrin municipality in response to organizing the local administration law. The number of members of this council reached 20 members.</p>
+<p>The city continues to grow and expand, followed by expansion in service centers such as fire departments, car garages, commercial centers, and government institutions.</p>
+<p>The Afrin City Council is considered one of the most important councils belonging to Aleppo Governorate due to its large size.</p>
+<p><strong><span class="internal-link">Afrin Market (Bazaar)</span></strong></p>
+<p>Commercial markets are considered among the most important areas where people gather to meet their needs and exchange commercial goods. In the Afrin region, before 1927, the people of the region used to visit the <span class="internal-link">Kilis</span> commercial market in the <span class="internal-link">Mountain of the Kurds</span> district for shopping. After the <span class="internal-link">French mandate</span> over <span class="internal-link">Syria</span> and the transfer of <span class="internal-link">Kilis</span> city to <span class="internal-link">Turkey</span>, the remaining region was left without a market. After forming the district center in Afrin city, those responsible for district administration felt the need to establish a bazaar where people would gather. Near the old river bridge near the government house from the eastern side, a weekly market was established every Wednesday. <span class="internal-link">Mr. Jamil Ahmed Agha</span>, the municipality president, called for celebrating the establishment of this weekly bazaar, where joy celebrations were held with drums and dancing expressing the importance of the occasion. Due to the city&#x27;s expansion and the inability to accommodate and the magnitude of commercial exchanges, the market was moved to another location near the official Afrin secondary school west of the city.</p>
+<p>This market is currently considered one of the most important commercial centers in the countryside of Aleppo Governorate, where agricultural products, especially olives, are displayed. Traders and people also visit it to meet their needs.</p>
+<p>In 2001, due to the abundance of agricultural products, the city council decided to establish the <span class="internal-link">Hal Market</span> on the <span class="internal-link">Basuta</span> road east of the city. There are also small bazaars in the district centers in Rajo, <span class="internal-link">Bulbul</span>, and <span class="internal-link">Al-Hammam</span> village.</p>
+<p>Among the holders of higher degrees in Afrin: <span class="internal-link">Ahmed al-Nasser</span> / Doctorate in Chemistry / <span class="internal-link">Britain</span> - <span class="internal-link">Hussein Habash</span> / Doctorate in Journalism / <span class="internal-link">Russia</span> - <span class="internal-link">Salah Manla Ali</span> / Doctorate in History / <span class="internal-link">Russia</span> - <span class="internal-link">Fawzi Rasoul</span> / Doctorate in Chemistry / <span class="internal-link">Germany</span> - <span class="internal-link">Fatih Baso</span> / Doctorate in Electrical Engineering / <span class="internal-link">Russia</span> - <span class="internal-link">Qader Arbo</span> / Doctorate in Meteorology / <span class="internal-link">Germany</span> - <span class="internal-link">Mohammed al-Khatib</span> / Doctorate in Agriculture / <span class="internal-link">Britain</span> - <span class="internal-link">Ahmed Sheikho</span> / Doctorate in General Surgery / <span class="internal-link">Romania</span></p>
+<p>Village heads of Afrin city: <span class="internal-link">Mr. Abdul Hanan Bellal</span> / Head of <span class="internal-link">Mislon</span> neighborhood - <span class="internal-link">Mr. Ghazi al-Hamid</span> / Head of <span class="internal-link">Tishrin</span> neighborhood - <span class="internal-link">Mr. Ahmed Mohammed</span> / Head of <span class="internal-link">Adar</span> neighborhood - <span class="internal-link">Mr. Mohammed Amin Aybo</span> / Head of <span class="internal-link">Progress</span> neighborhood - <span class="internal-link">Mr. Imad al-Din Sheikho</span> / Head of <span class="internal-link">Unity</span> neighborhood - <span class="internal-link">Mr. Mahmoud Hussein al-Khalil</span> / Head of <span class="internal-link">Fida</span> neighborhood - <span class="internal-link">Mr. Faiq Ali</span> / Head of <span class="internal-link">Revolution</span> neighborhood.</p>
+<p><strong>According to the book <span class="internal-link">Mountain of the Kurds (Afrin)</span> Geographic Study by Dr. Mohammed Abdo Ali:</strong></p>
+<ul>
+<li><strong>Afrin</strong>: It is the name of the <span class="internal-link">Afrin River</span>, given to the city after its establishment at the beginning of the twentieth century. We found the name &quot;Afrin&quot; in its current form in four historical sources from the <span class="internal-link">Islamic era</span>: <span class="internal-link">[History of Aleppo</span> – by <span class="internal-link">al-Uqaymi</span>, page of events of <span class="internal-link">478 AH</span>/<span class="internal-link">1085 AD</span>. And <span class="internal-link">Subh al-A&#x27;sha</span> by <span class="internal-link">al-Qalqashandi</span>, p.57. And <span class="internal-link">al-Durr al-Muntakhab</span> by <span class="internal-link">Ibn al-Shahna</span>, p.167. And <span class="internal-link">Dictionary of Countries</span> by <span class="internal-link">Yaqut al-Hamawi</span>, Part Two, p.180]. Thus, the oldest mention of the name &quot;Afrin&quot; in its current form dates back to <span class="internal-link">1085 AD</span>. However, none of those sources addressed the meaning and origin of the name &quot;Afrin&quot;. We will research here the origin and meaning of this name and mention most opinions regarding it:</li>
+</ul>
+<p>1- <strong>&quot;Afrin&quot; in Arabic dictionaries and sources:</strong></p>
+<p>According to &quot;<span class="internal-link">Al-Qamus al-Wasit</span>&quot;, that &#x27;afar and &#x27;affar: means mixed it with what contradicts its color, and i&#x27;tafar al-shay&#x27;: meaning mixed it with dust. In the dictionary &quot;<span class="internal-link">Lisan al-Arab</span>&quot;: &#x27;ifrīn means &quot;corrupted&quot;, and it was said it is corruption. It was said for everything strong: layth &#x27;ifrīn.</p>
+<p>As for <span class="internal-link">Khayr al-Din al-Asadi</span>, he says: the word Afrin means dust. He quotes from <span class="internal-link">Father Shalhat</span>: that it means dust, /Vol.5, p.413/, in <span class="internal-link">Abdullah al-Hulw</span>&#x27;s inquiries about this and he says: (Was the region distinguished by the abundance of its dust so it was named thus? The fact is that there is no other explanation, p.396). But it seems that <span class="internal-link">Mr. al-Hulw</span> does not know that the Afrin region is rich in water and forests, and dust is rarely stirred up in it.</p>
+<p>2- <strong>Afrin in <span class="internal-link">Assyrian</span> and <span class="internal-link">Greek</span> texts:</strong></p>
+<p>An <span class="internal-link">Assyrian</span> text dating to <span class="internal-link">876 BC</span> mentioned (that the <span class="internal-link">Aprie River</span> waters the <span class="internal-link">Patin</span> plain). The famous <span class="internal-link">Greek</span> historian &quot;<span class="internal-link">Strabo</span>&quot; also mentioned the name of the <span class="internal-link">Afrin River</span> in the same form &quot;<span class="internal-link">Aprie</span>&quot; in the first century <span class="internal-link">BC</span>.</p>
+<p>Historians have agreed that the origin of the word <span class="internal-link">Apre</span> is from the <span class="internal-link">Lycian language</span>, one of the ancient <span class="internal-link">Indo-European languages</span> in <span class="internal-link">Anatolia</span>, and the basic form of the word is: <span class="internal-link">Eple</span>. As we know, the root <span class="internal-link">Ap-</span> in ancient <span class="internal-link">Aryan languages</span> including <span class="internal-link">Kurdish</span> means water. The Kurds according to their dialects replace the letter <span class="internal-link">p</span> with <span class="internal-link">v</span> so it becomes <span class="internal-link">Av</span>. The word remained in the <span class="internal-link">Indian subcontinent</span> in its old form in terms of pronunciation and meaning, and did not change, meaning &quot;water&quot;, and is pronounced as <span class="internal-link">Ab</span> or <span class="internal-link">Ap</span>, such as the name &quot;<span class="internal-link">Punjab</span>&quot; which consists of two syllables: <span class="internal-link">Pênc</span> five, and <span class="internal-link">Ap</span> water. Due to the absence of the letter <span class="internal-link">P</span> in <span class="internal-link">Arabic</span>, it is replaced by the letter &quot;<span class="internal-link">f</span>&quot; just as the letter <span class="internal-link">alif</span> is replaced by &quot;<span class="internal-link">ayn</span>&quot;, and thus the first syllable of that word becomes &quot;<span class="internal-link">af</span>&quot; instead of <span class="internal-link">Ap-</span>.</p>
+<p>As for the syllable <span class="internal-link">re-</span>, it is the first syllable of the old <span class="internal-link">Kurdish</span> word &quot;<span class="internal-link">riwîn</span>&quot; <span class="internal-link">Riwîn</span> meaning &quot;the red earthy color&quot;. It is said <span class="internal-link">Bizina rwîn</span> &quot;the red earthy colored goat, or the one with red earthy ears&quot;, and it is also said <span class="internal-link">Ava riwîn</span> &quot;the red earthy colored water&quot;. By combining the two words: water <span class="internal-link">Av</span> and earthy color <span class="internal-link">Riwîn</span>, a new name is formed: <span class="internal-link">Avariwîn</span> or <span class="internal-link">Avriwîn</span> &quot;<span class="internal-link">Ava Riwîn</span> or <span class="internal-link">Afrwîn</span>&quot;, and as can be observed, it almost matches the form of the word &quot;Afrin&quot; in terms of structure, and means water with a red earthy color, which is a known characteristic of the <span class="internal-link">Afrin River</span> waters during its frequent floods. Elderly residents of the region in the northern villages still pronounce the name Afrin as &quot;<span class="internal-link">Afrân</span>&quot;, which is a word referring to the remains of grass, trees, and earthy-colored foam that float on the river surface during its flood.</p>
+<p>If we take the root <span class="internal-link">-rê</span> or <span class="internal-link">-lê</span> with its other <span class="internal-link">Kurdish</span> meaning, i.e., &quot;stream, creek, road&quot;, the complete name would mean &quot;water stream or water creek&quot;.</p>
+<p>3- **<span class="internal-link">Afirîn</span>: A <span class="internal-link">Kurdish</span> word meaning creation and giving. The <span class="internal-link">Afrin River</span>, with its flowing waters, was and still is a source of life and a spring of giving. Hundreds of prosperous villages spread along its banks, just as the ruins of dozens of cities, villages, and vanished fortresses lie along its banks. It is no wonder that the Kurds call the river the characteristic of &quot;life and fertility giver&quot; <span class="internal-link">Afirîn</span>, just as they call women &quot;<span class="internal-link">Afret</span>&quot; &quot;life creator&quot;.</p>
+<p>Thus, whatever the meaning and source of the name, the ancestors of the Kurds from the <span class="internal-link">Hurrians</span>, and after them the <span class="internal-link">Hittites</span> and <span class="internal-link">Medes</span>, had a permanent presence in the <span class="internal-link">Taurus</span> regions in the period before and after <span class="internal-link">Christ</span>. Hundreds of <span class="internal-link">Kurdish</span> prosperous villages currently spread from its source to its mouth along the banks of the <span class="internal-link">Afrin River</span>. The Kurds and their ancient ancestors were permanent inhabitants of the entire <span class="internal-link">Afrin River</span> basin, and the river was known by them whether its name was <span class="internal-link">Aprie</span> or Afrin or <span class="internal-link">Afirîn</span>. However, despite this, knowing the origin of some ancient names remains an extremely difficult matter.</p>
+<ul>
+<li>Sources indicate that during the <span class="internal-link">Roman era</span>, a <span class="internal-link">Roman</span> &quot;fast&quot; road passed through the site of Afrin city. Excavations on both sides of the Jindires road street revealed massive carved archaeological stones and large pottery jars, indicating ancient settlement at the site. There were also several caves and caverns north of the old electricity company building, which were used in the past by travelers, as evidenced by the old metal coins that appeared on their floors.</li>
+</ul>
+<p>History books also mention that in the <span class="internal-link">Middle Ages</span> - around the fourteenth century <span class="internal-link">AD</span> - there was a bridge named &quot;<span class="internal-link">Qibar</span>&quot; at the city site. In the late <span class="internal-link">Ottoman era</span>, there were several inns for housing caravans and travelers north of the current bridge.</p>
+<p>Afrin city currently consists of the following neighborhoods:</p>
+<p><strong>The Old Town:</strong> Work began on constructing government buildings and civil administration offices such as the police station, prison, and palace at the beginning of the <span class="internal-link">French era</span>, and their construction was completed between 1925 and 1930. During their construction, the Jindires road street was established, and shops, commercial stores, and two small hotels were built on both sides.</p>
+<p>The first inhabitants of the city were Kurds from <span class="internal-link">Karsan</span> village and some <span class="internal-link">Armenians</span> who sought refuge with the <span class="internal-link">French forces</span> to escape <span class="internal-link">Ottoman</span> persecution. Then some regional leaders joined in building residential houses, some regional wealthy families from <span class="internal-link">Al Ghabari</span>, <span class="internal-link">Sheikh Ismail</span>, <span class="internal-link">Sido Mimi</span>, <span class="internal-link">Ahmed Khalil Agha</span>, and <span class="internal-link">Darwish Agha</span>, leader of the <span class="internal-link">Yazidis</span>.</p>
+<p>Afrin remained a small town until the late sixties of the twentieth century, and its few houses spread harmoniously and beautifully on the lower mountainous slope, mostly mud-brick and roofed with wood and single-story.</p>
+<p>After that date, the town witnessed major urban expansion due to heavy local migration to it, and large new neighborhoods were formed, known popularly as follows:</p>
+<ul>
+<li><strong><span class="internal-link">Al-Mahmoudiyya</span> neighborhood:</strong> In the northwest of the city, named after <span class="internal-link">Mahmoud Qadib al-Ban</span> as the first to build a house for living in it in the early seventies of the twentieth century.</li>
+</ul>
+<ul>
+<li><strong><span class="internal-link">Al-Zaydiyya</span> neighborhood:</strong> In the north, which is the old <span class="internal-link">Zaydiyya</span>, inhabited by farmers and agents affiliated with some <span class="internal-link">Aleppine</span> <span class="internal-link">Christian</span> families who had placed their hands with the help of <span class="internal-link">European</span> and <span class="internal-link">French</span> consulates on the adjacent plain of Afrin city from the west. This neighborhood extended north until it currently reached the summit of the <span class="internal-link">Xemrevîn</span> highland. The residents of this neighborhood are a mixture of Kurds, some <span class="internal-link">Arabs</span>, and <span class="internal-link">Circassians</span>. The name is attributed to the shrine of &quot;<span class="internal-link">Sheikh Zaid</span>&quot; located inside the <span class="internal-link">Zaydiyya</span> cemetery on the hilltop.</li>
+</ul>
+<ul>
+<li><strong><span class="internal-link">Al-Ashrafiyya</span> neighborhood:</strong> In the east, a new neighborhood located east of the river on the volcanic <span class="internal-link">Empêlk</span> plateau parallel to the <span class="internal-link">Afrin River</span> course. This neighborhood was established in the late sixties of the twentieth century, and its first resident was <span class="internal-link">Wehîdê Aşvan</span> &quot;<span class="internal-link">Wahid al-Tahhan</span>&quot; from <span class="internal-link">Kafr Batera</span> village, who had built a mill operating with diesel and a house for living there. The current <span class="internal-link">Al-Ashrafiyya</span> is a large neighborhood whose modest houses spread over the entire western slope of the <span class="internal-link">Empêlkê</span> highland. It is inhabited especially by migrants from the region&#x27;s villages, and most of them work in agricultural labor, and this neighborhood is considered the poverty belt of Afrin city.</li>
+</ul>
+<ul>
+<li><strong><span class="internal-link">Qaraci Gênco</span> neighborhood <span class="internal-link">Taxa Qeracî Gênco</span>:</strong> Located south of the city on the southern part of the <span class="internal-link">Empêlk</span> plateau, the neighborhood is named after the landowner &quot;<span class="internal-link">Kanjo Fio</span>&quot;, and some currently call it &quot;<span class="internal-link">Tarnda Road</span> neighborhood&quot; for its location on the old <span class="internal-link">Tarnda</span> village road. The first to build a house for living there was the cook &quot;<span class="internal-link">Horik</span>&quot; around 1970.</li>
+</ul>
+<p>The houses of this neighborhood spread on the western slope facing the <span class="internal-link">Afrin River</span>, taking a north-south extension and reaching <span class="internal-link">Tarnda</span> village, which was also annexed to the administrative boundaries of Afrin city.</p>
+<ul>
+<li><strong><span class="internal-link">Al-Bobna</span> neighborhood:</strong> A small street adjacent to the western bank of the <span class="internal-link">Afrin River</span> upon its arrival to the city. Most of its residents are <span class="internal-link">Arab Bobna</span>, and its location was a livestock market.</li>
+</ul>
+<ul>
+<li><strong><span class="internal-link">Al-Autoestrad</span> neighborhood:</strong> Located west of the city, a modern neighborhood built in beautiful and modern floors.</li>
+</ul>
+<p>Afrin city is the capital of the <span class="internal-link">Mountain of the Kurds</span> and the main center for its economic, social, and administrative activity. It is a beautiful and quiet city with a distinguished geographical location and pleasant climate. The <span class="internal-link">Syrian Geographic Dictionary</span> says about it that it is the most beautiful small city in <span class="internal-link">Syria</span>.</p>
+<p>An important construction movement began in Afrin city in the last decade of the twentieth century, as multi-story buildings rose in it, and many good and diverse commercial stores were established. It currently has daily commercial markets for agricultural and animal products, in addition to the weekly Wednesday market and another livestock market.</p>
+<p>The city and its surrounding areas have olive presses, factories for manufacturing tahini and soap, others for building materials and some food products, and a soft drinks factory whose establishment dates back to 1927. There are many carpentry, blacksmithing, machinery and vehicle repair shops, and others. It also has dozens of doctors and pharmacies, in addition to four private hospitals. Due to the settlement of tens of thousands of the region&#x27;s sons in <span class="internal-link">Aleppo</span>, there is constant and heavy transportation movement to and from it.</p>
+<p>The population of Afrin city according to its municipality&#x27;s estimates in 2006 reached about 84,000 people.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>III. Summary from other Channels&#x27; Transcripts of Efrîn</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Efrîn</h3>
+<p>The journey documents a trip to the city of Afrin and its surrounding villages, passing through the village of <span class="internal-link">Katakh</span> and by landmarks such as the olive press of Khalil Hissy Elo (Maqsala Xelîlê Hêsê Elo) and a gas station belonging to Hasti Osu in the village of Kozê (Gundê Kozê). Upon entering Afrin city through the Mahmoudiyah neighborhood, a significant historical and cultural site discussed is the Newroz Roundabout, which was formerly known as Dawar Azadi, or Freedom Roundabout. In the past, this roundabout was the site of a statue of Kawa the Blacksmith (Kawayê Hesinkar), a pivotal figure in Kurdish culture. The speaker notes that this statue is now gone, and the video shows its empty pedestal. The statue has since been replaced by a new monument depicting a globe with a dove, and a Syrian flag is now flown on a prominent flagpole in the square. The area around the roundabout has also seen changes on a smaller scale, with a tobacco shop, Markaz Sheikh Khalil, now located where a chicken restaurant named Matbakh Afrin once stood.</p></div></details></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-afrin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-afrin.htm</a></li><li>Local FB page:<br><a href="https://www.facebook.com/AfrinCityNew/" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/AfrinCityNew/</a><br><a href="https://www.facebook.com/Afrinemin/" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Afrinemin/</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=LjZqInXe_zw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=LjZqInXe_zw</a><br><a href="https://www.youtube.com/watch?v=VJhCblNJjTI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VJhCblNJjTI</a><br><a href="https://www.youtube.com/watch?v=y23xHfuxb4s" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=y23xHfuxb4s</a><br><a href="https://www.youtube.com/watch?v=2uxYik8k5WM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=2uxYik8k5WM</a><br><a href="https://www.youtube.com/watch?v=xmLR0s1cCIY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=xmLR0s1cCIY</a><br><a href="https://www.youtube.com/watch?v=8q1Y5o3i710" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8q1Y5o3i710</a><br><a href="https://www.youtube.com/watch?v=kdsOme19q28" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=kdsOme19q28</a><br><a href="https://www.youtube.com/watch?v=05OPi8NI3gY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=05OPi8NI3gY</a></li><li>3d photography:<br><a href="https://www.facebook.com/photo/?fbid=170546286001181" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/photo/?fbid=170546286001181</a><br><a href="https://www.facebook.com/Abdul.rahman.krij/photos/pb.100075556642769.-2207520000./203540965351317/?type=3" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Abdul.rahman.krij/photos/pb.100075556642769.-2207520000./203540965351317/?type=3</a></li><li>video:<br><a href="https://www.youtube.com/watch?v=4xmBN1kRIAI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=4xmBN1kRIAI</a><br><a href="https://www.youtube.com/watch?v=k3bTM98TKUQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=k3bTM98TKUQ</a><br><a href="https://www.youtube.com/watch?v=m6pBuhEH3MU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=m6pBuhEH3MU</a><br><a href="https://www.youtube.com/watch?v=QxSDt6-qjkI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=QxSDt6-qjkI</a><br><a href="https://www.youtube.com/watch?v=tBwlBA185wA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tBwlBA185wA</a><br><a href="https://www.youtube.com/watch?v=LiPg7vUPHXE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=LiPg7vUPHXE</a><br><a href="https://www.youtube.com/watch?v=7__Ss_97Q_s" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=7__Ss_97Q_s</a><br><a href="https://www.youtube.com/watch?v=TnGby-kSFtM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TnGby-kSFtM</a><br><a href="https://www.youtube.com/watch?v=FbBzHZPQnn4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FbBzHZPQnn4</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on October 09, 2025</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Efrîn";
+            const villageLat = 36.510325;
+            const villageLng = 36.867917;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Şera</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap--era .map-container {
+            position: relative;
+        }
+        #minimap--era .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap--era .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR ÇK Map 12 --- 
+         Recalculated for original image dimensions of 991x1349 pixels.
+        */
+        #minimap--era .nebi-huri { left: 34.51%; top: 3.04%; width: 9.89%; height: 7.26%; }
+        #minimap--era .mersewa { left: 45.41%; top: 9.34%; width: 9.89%; height: 7.26%; }
+        #minimap--era .siltete { left: 59.84%; top: 11.05%; width: 9.28%; height: 6.82%; }
+        #minimap--era .omer-simo { left: 38.85%; top: 14.75%; width: 8.88%; height: 6.52%; }
+        #minimap--era .siiriya { left: 31.08%; top: 20.83%; width: 9.69%; height: 7.12%; }
+        #minimap--era .zeytuneke { left: 42.89%; top: 21.05%; width: 9.69%; height: 7.12%; }
+        #minimap--era .ikidame { left: 74.97%; top: 19.87%; width: 9.69%; height: 7.12%; }
+        #minimap--era .dersiwane { left: 63.17%; top: 24.76%; width: 10.69%; height: 7.86%; }
+        #minimap--era .diraqliya { left: 30.88%; top: 28.17%; width: 9.28%; height: 6.82%; }
+        #minimap--era .pelusanke { left: 44.40%; top: 31.06%; width: 9.49%; height: 6.97%; }
+        #minimap--era .alciya { left: 36.23%; top: 36.70%; width: 8.88%; height: 6.52%; }
+        #minimap--era .qetlebiye { left: 47.73%; top: 37.73%; width: 9.28%; height: 6.82%; }
+        #minimap--era .dewris { left: 28.15%; top: 38.77%; width: 8.88%; height: 6.52%; }
+        #minimap--era .qerqina { left: 36.93%; top: 43.81%; width: 8.68%; height: 6.37%; }
+        #minimap--era .naza { left: 21.09%; top: 41.88%; width: 9.69%; height: 7.12%; }
+        #minimap--era .omera { left: 47.83%; top: 44.11%; width: 9.08%; height: 6.67%; }
+        #minimap--era .erebwerane { left: 62.46%; top: 36.92%; width: 9.49%; height: 6.97%; }
+        #minimap--era .dikmedase { left: 69.93%; top: 42.18%; width: 9.08%; height: 6.67%; }
+        #minimap--era .yazibaxe { left: 80.93%; top: 44.85%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qastele-eli-cindo { left: 71.44%; top: 52.78%; width: 9.49%; height: 6.97%; }
+        #minimap--era .baflune { left: 57.72%; top: 59.38%; width: 9.49%; height: 6.97%; }
+        #minimap--era .ezaz { left: 79.21%; top: 67.16%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qitme { left: 51.16%; top: 65.68%; width: 9.28%; height: 6.82%; }
+        #minimap--era .cema { left: 42.38%; top: 47.44%; width: 9.49%; height: 6.97%; }
+        #minimap--era .sinka { left: 46.92%; top: 55.23%; width: 9.28%; height: 6.82%; }
+        #minimap--era .berava { left: 35.72%; top: 46.55%; width: 8.48%; height: 6.23%; }
+        #minimap--era .sera { left: 41.27%; top: 55.67%; width: 9.28%; height: 6.82%; }
+        #minimap--era .gabeleke { left: 31.28%; top: 54.26%; width: 9.49%; height: 6.97%; }
+        #minimap--era .meydanke { left: 20.99%; top: 50.04%; width: 9.49%; height: 6.97%; }
+        #minimap--era .hilubiye { left: 23.11%; top: 63.53%; width: 9.69%; height: 7.12%; }
+        #minimap--era .kerferome { left: 13.72%; top: 67.38%; width: 9.08%; height: 6.67%; }
+        #minimap--era .qurtqulaqe-mezin { left: 22.50%; top: 70.05%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qurtqulaqe-cucik { left: 22.10%; top: 73.17%; width: 9.49%; height: 6.97%; }
+        #minimap--era .xirabi-sera { left: 41.07%; top: 57.45%; width: 9.69%; height: 7.12%; }
+        #minimap--era .metina { left: 41.37%; top: 63.90%; width: 9.49%; height: 6.97%; }
+        #minimap--era .sere-kaniye { left: 46.42%; top: 67.61%; width: 9.49%; height: 6.97%; }
+        #minimap--era .mesale { left: 39.15%; top: 69.46%; width: 10.09%; height: 7.41%; }
+        #minimap--era .kortike { left: 30.98%; top: 73.17%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qeredepe { left: 26.74%; top: 78.28%; width: 10.09%; height: 7.41%; }
+        #minimap--era .qestele-kistik { left: 20.38%; top: 80.73%; width: 8.88%; height: 6.52%; }
+        #minimap--era .cumke { left: 20.69%; top: 84.58%; width: 8.68%; height: 6.37%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Şera</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
+                                <p class="text-lg">Şera</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
+                                <p class="text-lg">Sheran, Şera, شران</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Tribes</h3>
+                                <p class="text-lg">Şêxan</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
+                                <p class="text-lg">1500</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium subtext">Size</h3>
+                                <p class="text-lg"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
+<img alt="Map Image 12" onerror="this.onerror=null; this.src='https://placehold.co/991x1349/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 12.png"/>
+<div class="nebi-huri highlight-box"></div><div class="mersewa highlight-box"></div><div class="siltete highlight-box"></div><div class="omer-simo highlight-box"></div><div class="siiriya highlight-box"></div><div class="zeytuneke highlight-box"></div><div class="ikidame highlight-box"></div><div class="dersiwane highlight-box"></div><div class="diraqliya highlight-box"></div><div class="pelusanke highlight-box"></div><div class="alciya highlight-box"></div><div class="qetlebiye highlight-box"></div><div class="dewris highlight-box"></div><div class="qerqina highlight-box"></div><div class="naza highlight-box"></div><div class="omera highlight-box"></div><div class="erebwerane highlight-box"></div><div class="dikmedase highlight-box"></div><div class="yazibaxe highlight-box"></div><div class="qastele-eli-cindo highlight-box"></div><div class="baflune highlight-box"></div><div class="ezaz highlight-box"></div><div class="qitme highlight-box"></div><div class="cema highlight-box"></div><div class="sinka highlight-box"></div><div class="berava highlight-box"></div><div class="sera highlight-box" style="display: block;"></div><div class="gabeleke highlight-box"></div><div class="meydanke highlight-box"></div><div class="hilubiye highlight-box"></div><div class="kerferome highlight-box"></div><div class="qurtqulaqe-mezin highlight-box"></div><div class="qurtqulaqe-cucik highlight-box"></div><div class="xirabi-sera highlight-box"></div><div class="metina highlight-box"></div><div class="sere-kaniye highlight-box"></div><div class="mesale highlight-box"></div><div class="kortike highlight-box"></div><div class="qeredepe highlight-box"></div><div class="qestele-kistik highlight-box"></div><div class="cumke highlight-box"></div>
+</div></div>
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.614579, 36.937103</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<img src="../village_photos/sheran.jpg" alt="Photo of Şera" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=sheran.jpg';">
+<img src="../village_photos/zarx tirejafrin7.jpg" alt="Photo of Şera" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=zarx+tirejafrin7.jpg';">
+<img src="../village_photos/shran.jpg" alt="Photo of Şera" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=shran.jpg';">
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Foundation/Origin Information of Şera</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>The first to inhabit the village was the family of Manan Agha Jelosi.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p></div>
+                <div class="border-b themed-border pb-3 mb-4">
+        <h2 class="text-2xl font-semibold">Possible Village Name Meaning of Şera</h2>
+    </div>
+    <div class="p-4 prose max-w-none"><blockquote>
+<p>Şer means fighting in Kurdish. And Şarri in the ancient Hurrian language means king/leader of the people.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Şera (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
+<p><span class="internal-link">Sheran District</span> (شران) includes 44 administrative divisions for residential communities, four of which are names for abandoned locations. The district center is the town of <span class="internal-link">Sheran</span> (شران), bordered by: from the east the <span class="internal-link">A&#x27;zaz</span> (أعزاز) region, from the south the <span class="internal-link">Central District</span> (المركز), from the west the districts of <span class="internal-link">Maabatli</span> (معبطلي) and <span class="internal-link">Bulbul</span> (بلبل), and from the north the Turkish borders.</p>
+<p><strong>Şera, <span class="internal-link">Sheran</span></strong> (شران) /2381n - 480h/:</p>
+<ul>
+<li>Şer means fighting in Kurdish. And Şarri in the ancient Hurrian language means king/leader of the people, p.170/.</li>
+<li>The town of <span class="internal-link">Sheran</span> (شران) is located on the western slope of a limestone plateau. It is 13km from Afrin City (عفرين) in the northeastern direction. The region&#x27;s construction is ancient, evidenced by the presence of massive carved limestone masonry, graves, and wells carved in rock dating back to the Roman era. It neighbors the village of <span class="internal-link">Khirbet Sheran</span> (خربة شران) to the south, which is the old village, separated by <span class="internal-link">Wadi Entûz</span> (&#x27;Entûz) coming from the east.</li>
+</ul>
+<p>The residents work in agriculture as a primary source of livelihood, surrounded by olive groves and fruit orchards. It has commercial shops and small workshops for maintenance, blacksmithing, carpentry, building materials, and olive presses.</p>
+<p><span class="internal-link">Sheran</span> (شران) is a beautiful town, its houses sloping gently toward the west and south, and some modern buildings with elegant villas have begun to appear.</p>
+<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
+<p><strong><span class="internal-link">Sheran District</span></strong> (ناحية شران): It is the district center with an area of /331.35/ km2 and a population according to the civil registry dated 31/12/2004 of (50,897 people). It is bordered from the east by the <span class="internal-link">A&#x27;zaz</span> (أعزاز) region, from the south by villages of the <span class="internal-link">Central District</span> (المركز) /Afrin City/, from the west by the districts of <span class="internal-link">Maabatli</span> (معبطلي) and <span class="internal-link">Bulbul</span> (بلبل), and from the north by the Turkish borders and villages of <span class="internal-link">Bulbul District</span> (بلبل). It includes /37/ villages and /7/ farms. The district was established according to administrative divisions in 1975. <span class="internal-link">Tell al-Mikhfar</span> (تل المخفر) was an important center for French forces during the French mandate over Syria. We will discuss in detail each village separately belonging to the district.</p>
+<p><strong>Town of <span class="internal-link">Sheran</span></strong> (بلدة شران): A town in <span class="internal-link">Jabal al-Akrad</span> (جبل الكرد), it is the district center, belonging to the Afrin (عفرين) region, Aleppo Governorate (حلب).</p>
+<p>The town of <span class="internal-link">Sheran</span> (شران) is located in the northeastern part of <span class="internal-link">Jabal al-Akrad</span> (جبل الكرد), on the western slope of a limestone plateau at elevation /500/m. It is an old village that slopes gently toward the south and is fronted by a seasonal valley heading toward the <span class="internal-link">Afrin River</span> (عفرين) valley. It is connected by a fertile plain and is about /13/ km from Afrin City (عفرين) in the northeastern direction. The region&#x27;s construction is ancient, evidenced by the presence of massive carved limestone masonry, graves, and wells carved in rock dating back to the Roman era.</p>
+<p>It is bordered to the north by mountainous elevations planted with olive trees and the village of <span class="internal-link">Jamanli</span> (جمانلي), to the south by a slope and seasonal valley and the village of <span class="internal-link">Khirbet Sheran</span> (خربة شران) and <span class="internal-link">Matinli</span> (متينلي) at 1km distance, to the east by a slope and valley and fertile plain planted with olive, walnut, and pomegranate trees and the village of <span class="internal-link">Sinkarli</span> (سنكرلي) at 1km distance, and to the west by mountainous elevations planted with olive and forest trees and the village of <span class="internal-link">Kupalak</span> (كوبه لك). It has about /110/ houses and is approximately /500/ years old. Its old houses are stone and clay with wooden roofs, and the modern ones are stone and cement. Some modern buildings with elegant villas have begun to appear toward the western and northern sides and along both sides of the main street in the town center, starting from the south at the first town entrance near <span class="internal-link">Khirbet Sheran</span> (خربة شران) at the <span class="internal-link">Victory Arch</span> (قوس النصر), with several luxurious villas on both sides of the road.</p>
+<p>The town&#x27;s population at the end of 2004 reached about /2500/ people, and the total population in the district reached /50,897/ people. It has an electricity network, elementary and preparatory schools, a secondary school, an old mosque, a post and telephone center, a health center, a conscription branch, a party branch, an old police station, and a building for the district directorate and municipality. There is also one technical mill and several regular mills. It has commercial shops and small workshops for maintenance, blacksmithing, and building materials sales.</p>
+<p>The town&#x27;s residents work in rain-fed agriculture (olives and grains) and irrigation from artesian wells (walnuts, apples, cherries, and summer vegetables) alongside raising sheep and goats. The town drinks water from a water network connected to the artesian well south of the town at the bottom of the valley. There are also several paved streets. The town connects with the regional center by paved road and passes through its center to several neighboring villages. <span class="internal-link">Sheran</span> (شران) is a beautiful town with houses sloping gently toward the west. Among its most important families: the family of (<span class="internal-link">Manan Agha Jelosi</span> (مناان آغا جلوسي)) - they were the first to inhabit the village until today. Its population according to the civil registry dated 31/12/2004 is (2,332 people), and the first to assume management of <span class="internal-link">Sheran District</span> (شران) directorate was <span class="internal-link">Abdul Qader Khatib</span> (عبد القادر خطيب).</p>
+<p>Among the families present in the village: <span class="internal-link">Al Jelosi</span> (جلوسي) - <span class="internal-link">Al Ainalo</span> (اينالو) - <span class="internal-link">Al Aibsh</span> (ايبش) - <span class="internal-link">Al Qarhaman</span> (قره مان) - <span class="internal-link">Al Musalli</span> (مصللي) - <span class="internal-link">Al Ma&#x27;dan</span> (معدان) (Sha&#x27;bu)</p>
+<p>Village mayor: <span class="internal-link">Jamal Jabo</span> (جمال جابو)</p>
+<p>Sources of Information:</p>
+<p>1 - Book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (محمد عبدو علي).</p>
+<p>2 - Book: &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27; by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatma Village</span> (قطمه).</p>
+<p>3 - Studies by <span class="internal-link">Tereij Soft Center</span> (تيريج سوفت) / <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
+<p>4 - Some village residents.</p>
+<p>Prepared and executed by: Director of <span class="internal-link">Tereij Afrin Website</span> (تيريج عفرين): <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
+<p>20 / 12 / 2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Şera</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>The district of Şera is an ancient settlement whose name is believed to derive from the Kurdish word for &quot;city&quot; (şar), indicating the historical presence of a significant fortress or city in the area. Historically, the village was part of the territory of the major ancient center of <span class="internal-link">Kela Hûrî</span> (Cyrrhus), whose own history dates back 3,000 years before the Christian era. The region is known as the homeland of the <span class="internal-link">Şêxik</span> tribe and encompasses forty-three villages. Traditional life was marked by distinct customs, particularly surrounding weddings, which involved a multi-day process beginning with a henna ceremony at the bride&#x27;s home, followed by a procession where the bride was escorted on horseback. These celebrations were animated by renowned local bards (dengbêj) and dance leaders (sergovend) like <span class="internal-link">Hesen Nozî</span>, <span class="internal-link">Cemîl Horo</span>, and <span class="internal-link">Elî Çîlo</span>, who were central to the community&#x27;s cultural life in the mid-20th century. The community&#x27;s self-sufficiency is reflected in its food preservation traditions, where local fruits like figs and apricots are used to make a variety of winter provisions, including fruit leathers known as besteq and qemerdîn, and preserves like leçer. This deep-rooted cultural heritage also carries a sense of sorrow and resilience, as captured in a traditional song that blends themes of celebration with a lament for the homeland of Afrin and its people facing hardship and imprisonment.</p></div></details></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20sheran.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20sheran.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=VXIFN4UMLM4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VXIFN4UMLM4</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=N_0kF7Z6PAQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=N_0kF7Z6PAQ</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=3WEDp3h_-Go" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3WEDp3h_-Go</a><br><a href="https://www.youtube.com/watch?v=Zgbel9mNKIQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Zgbel9mNKIQ</a><br><a href="https://www.youtube.com/watch?v=FDWu0VqT7ro" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FDWu0VqT7ro</a><br><a href="https://www.youtube.com/watch?v=5s9WesQfOTc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=5s9WesQfOTc</a><br><a href="https://www.youtube.com/watch?v=e4PnRvkJyQI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=e4PnRvkJyQI</a></li><li>Local FB page:<br><a href="https://www.facebook.com/jxhfi" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/jxhfi</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on October 09, 2025</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Şera";
+            const villageLat = 36.614579;
+            const villageLng = 36.937103;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>
