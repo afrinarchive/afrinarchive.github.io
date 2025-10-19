@@ -431,6 +431,67 @@
         .see-more-button:hover {
             background-color: rgba(139, 115, 85, 0.2);
         }
+
+        /* --- Updates Slider --- */
+        .updates-slider-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 200px; /* Adjust height as needed */
+            margin-top: 10px;
+        }
+
+        .updates-slider {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .update-item {
+            min-width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .update-date {
+            font-weight: 700;
+            color: #ffcc00;
+        }
+        
+        /* Using the existing .section-text class for consistent styling */
+        .update-description {
+            font-size: 16px;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .updates-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+        }
+
+        .updates-nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .updates-nav-dot.active {
+            background-color: #ffcc00;
+        }
         
         /* --- Responsive Styles --- */
 
@@ -615,17 +676,19 @@
                 <p class="section-text">We are dedicated to preserving and documenting the rich cultural heritage, history, and stories of Afrin for future generations.</p>
             </div>
         </div>
-        <div class="section section-4" onclick="window.location.href = 'updates/updates.html'">
+        <div class="section section-4">
             <div class="section-content">
                 <div class="section-header">
-                    <div class="play-icon"></div>
                     <h3 class="secondary-title">Updates</h3>
                 </div>
-                <p class="section-text">October 18, 2025 - Added and consolidated villages to better reflect reality. There are now 350 distinct villages in the archive.</p>
-                <p class="section-text">October 9, 2025 - Added foundational data to hundreds of village files.</p>
-                <p class="section-text">October 9, 2025 - Added an Infographics section. Check it out on the left!</p>
-                <p class="section-text">September 15, 2025 - Massive Update of approximately 4x more data, and slight changes to the site.</p>
-                <p class="section-text">June 28, 2025 - The archive is now online. Welcome!</p>
+                <div class="updates-slider-wrapper">
+                    <div class="updates-slider">
+                        <!-- Update items will be loaded here -->
+                    </div>
+                </div>
+                <div class="updates-nav">
+                    <!-- Navigation dots will be added here -->
+                </div>
             </div>
         </div>
         <div class="section section-5" onclick="window.location.href = 'mailto:afrin.archive@gmail.com'">
@@ -746,6 +809,7 @@
             setTimeout(() => { loadingIndicator.style.display = 'none'; }, 1000);
 
             setupSearchUI();
+            setupUpdatesSlider();
         });
         
         function setupSearchUI() {
@@ -844,6 +908,70 @@
             if (!query) return escapeHtml(text);
             const regex = new RegExp(`(${escapeHtml(query)})`, 'gi');
             return escapeHtml(text).replace(regex, '<span class="match-highlight">$1</span>');
+        }
+        function setupUpdatesSlider() {
+            const sliderContainer = document.querySelector('.updates-slider');
+            const navContainer = document.querySelector('.updates-nav');
+            if (!sliderContainer || !navContainer) return;
+
+            fetch('updates.json')
+                .then(response => response.json())
+                .then(updates => {
+                    updates.forEach(update => {
+                        const slideHTML = `
+                            <div class="update-item">
+                                <div class="update-date">${escapeHtml(update.date)}</div>
+                                <p class="section-text update-description">${escapeHtml(update.description)}</p>
+                            </div>
+                        `;
+                        sliderContainer.insertAdjacentHTML('beforeend', slideHTML);
+                    });
+                    initializeSlider(updates);
+                })
+                .catch(error => {
+                    console.error('Error loading updates:', error);
+                    sliderContainer.innerHTML = `<div class="update-item"><p class="section-text">Could not load updates.</p></div>`;
+                });
+
+            function initializeSlider(updates) {
+                const slides = sliderContainer.children;
+                if (slides.length === 0) return;
+
+                let currentIndex = 0;
+                let slideInterval;
+
+                updates.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('updates-nav-dot');
+                    dot.addEventListener('click', () => {
+                        goToSlide(i);
+                        resetInterval();
+                    });
+                    navContainer.appendChild(dot);
+                });
+
+                const dots = navContainer.children;
+
+                const goToSlide = (index) => {
+                    sliderContainer.style.transform = `translateX(-${index * 100}%)`;
+                    Array.from(dots).forEach(d => d.classList.remove('active'));
+                    dots[index].classList.add('active');
+                    currentIndex = index;
+                };
+                
+                const nextSlide = () => {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    goToSlide(currentIndex);
+                };
+
+                const resetInterval = () => {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(nextSlide, 4000); // 4-second interval
+                };
+
+                goToSlide(0);
+                resetInterval();
+            }
         }
     </script>
 </body>
