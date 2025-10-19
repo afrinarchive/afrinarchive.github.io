@@ -151,6 +151,7 @@ Mosankî	Efrîn	Mosankî.html
 Mêremînê	Efrîn	Mêremînê.html
 Pitêtê	Efrîn	Pitêtê.html
 Qarsaq	Efrîn	Qarsaq.html
+Qîbar	Efrîn	Qîbar.html
 Rotenk	Efrîn	Rotenk.html
 Sheikh Barakat	Efrîn	Sheikh Barakat.html
 Soĝanekê	Efrîn	Soĝanekê.html
@@ -289,7 +290,6 @@ Zerka	Reco	Zerka.html
 Şêx Bila	Reco	Şêx Bila.html
 Şêx Mihemed	Reco	Şêx Mihemed.html
 Şêx	Reco	Şêx.html
-Qîbar	unknown	Qîbar.html
 Alciya	Şera	Alciya.html
 Baflûnê	Şera	Baflûnê.html
 Be'rava	Şera	Be'rava.html
