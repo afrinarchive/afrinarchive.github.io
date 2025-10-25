@@ -283,6 +283,7 @@ def convert_md_to_html_basic(md_text: str) -> str:
             s = line.strip()
             s_esc = html.escape(s)
             s_esc = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s_esc)
+            s_esc = re.sub(r'\*(.+?)\*', r'<em>\1</em>', s_esc)
             s_esc = re.sub(r'\[\[(.+?)\]\]', r'<span class="internal-link">\1</span>', s_esc)
             
             if s == '---' or not s:
@@ -411,6 +412,7 @@ def build_html_page(name, nahiya, aliases, lat, lng,
                     links_md,
                     vi_history, vii_families, viii_culture, ix_dengbej, x_connections,
                     foundation_origin_md, name_meaning_md,
+                    mountains_of_kurds_md,
                     xi_ar_tirej, xii_axw_en, xiii_halil_en, xiv_flo_en, xv_afr366_en, xvi_zeyton_en, xvii_other_en,
                     xviii_axw_ku, xix_halil_ku, xx_flo_ku, xxi_afr366_ku, xxii_zeyton_ku, xxiii_other_ku,
                     photos,
@@ -568,6 +570,8 @@ def build_html_page(name, nahiya, aliases, lat, lng,
 
             __FOUNDATION_CARD__
 
+            __MOUNTAINS_CARD__
+
             __SUMMARIES_CARD__
 
             __LINKS_CARD__
@@ -716,6 +720,15 @@ def build_html_page(name, nahiya, aliases, lat, lng,
                 {meaning_html}
             </div>'''
             
+    # Mountains of the Kurds Card
+    mountains_card_html = ""
+    if has_meaningful_content(mountains_of_kurds_md):
+        content = convert_md_to_html_basic(mountains_of_kurds_md)
+        mountains_card_html = f'''<div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">From "The Mountains of the Kurds (Afrin Region): a Comprehensive Geographical Study"</h2>
+                <div class="p-4 prose max-w-none">{content}</div>
+            </div>'''
+
     # Summaries Card
     sum_i   = section_or_placeholder(f"I. Summary from TirejAfrin Site of {name} (English)", summaries_I, open_details=True)
     sum_ii  = section_or_placeholder_plain(f"II. Summary from Ax û Walat Transcript of {name}", summaries_II)
@@ -790,6 +803,7 @@ def build_html_page(name, nahiya, aliases, lat, lng,
            .replace("__LNG_JS__", "null" if lng is None else str(lng))
            .replace("__PHOTOS__", photos_html)
            .replace("__FOUNDATION_CARD__", foundation_card_html)
+           .replace("__MOUNTAINS_CARD__", mountains_card_html)
            .replace("__SUMMARIES_CARD__", summaries_card_html)
            .replace("__LINKS_CARD__", links_card_html)
            .replace("__ADDITIONAL_INFO_CARD__", add_info_card_html)
@@ -847,6 +861,13 @@ def extract_expected_sections(md: str) -> dict:
     out["foundation_origin"] = find_by_keyword("foundation/origin information")
     out["name_meaning"] = find_by_keyword("possible village name meaning")
     
+    # Find and combine all "Mountains of the Kurds" sections
+    mountains_sections = []
+    for title, content in secs_raw.items():
+        if "mountains of the kurds" in title.lower():
+            mountains_sections.append(content)
+    out["mountains_of_kurds"] = "\n\n---\n\n".join(mountains_sections)
+
     return out
 
 def format_yaml_value(value):
@@ -904,6 +925,7 @@ def process_one(md_path: Path, out_dir: Path, master_lookup: dict):
         vi_history=sec["VI"], vii_families=vii_data, viii_culture=sec["VIII"], ix_dengbej=sec["IX"], x_connections=sec["X"],
         foundation_origin_md=sec["foundation_origin"],
         name_meaning_md=sec["name_meaning"],
+        mountains_of_kurds_md=sec["mountains_of_kurds"],
         xi_ar_tirej=sec["XI"], xii_axw_en=sec["XII"], xiii_halil_en=sec["XIII"], xiv_flo_en=sec["XIV"], xv_afr366_en=sec["XV"], xvi_zeyton_en=sec["XVI"], xvii_other_en=sec["XVII"],
         xviii_axw_ku=sec["XVIII"], xix_halil_ku=sec["XIX"], xx_flo_ku=sec["XX"], xxi_afr366_ku=sec["XXI"], xxii_zeyton_ku=sec["XXII"], xxiii_other_ku=sec["XXIII"],
         photos=photos,
@@ -919,6 +941,8 @@ def main():
     in_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(INPUT_PATH)
     out_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(OUTPUT_DIR)
     
+    failed_files = []
+
     # Build the master lookup index from the HTML file at the very beginning.
     master_lookup = build_master_lookup(Path(MASTER_MAP_PATH))
     if not master_lookup:
@@ -929,7 +953,11 @@ def main():
         if in_path.suffix.lower() != ".md":
             print(f"Skipping non-md file: {in_path}")
             return
-        process_one(in_path, out_dir, master_lookup)
+        try:
+            process_one(in_path, out_dir, master_lookup)
+        except Exception as e:
+            print(f"✗ ERROR processing {in_path.name}: {e}")
+            failed_files.append((in_path.name, e))
     else:
         md_files = sorted([p for p in in_path.glob("*.md") if p.is_file()])
         if not md_files:
@@ -942,7 +970,11 @@ def main():
 
         print(f"--- Processing first batch of {len(first_batch)} files ---")
         for p in first_batch:
-            process_one(p, out_dir, master_lookup)
+            try:
+                process_one(p, out_dir, master_lookup)
+            except Exception as e:
+                print(f"✗ ERROR processing {p.name}: {e}")
+                failed_files.append((p.name, e))
 
         if rest_batch:
             print("---")
@@ -951,11 +983,24 @@ def main():
                 if choice == 'y':
                     print(f"--- Processing remaining {len(rest_batch)} files ---")
                     for p in rest_batch:
-                        process_one(p, out_dir, master_lookup)
+                        try:
+                            process_one(p, out_dir, master_lookup)
+                        except Exception as e:
+                            print(f"✗ ERROR processing {p.name}: {e}")
+                            failed_files.append((p.name, e))
                 else:
                     print("Processing stopped by user.")
             except (KeyboardInterrupt, EOFError):
                 print("\nProcessing stopped by user.")
+
+    if failed_files:
+        print("\n" + "="*20 + " SUMMARY OF FAILURES " + "="*20)
+        print(f"Completed with {len(failed_files)} error(s). The following files could not be processed:")
+        for name, error in failed_files:
+            print(f"  - File: {name}\n    Reason: {error}")
+        print("="*62)
+    else:
+        print("\nProcessing completed successfully with no errors.")
 
 if __name__ == "__main__":
     main()
