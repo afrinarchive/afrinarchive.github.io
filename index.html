@@ -498,15 +498,13 @@
         /* For tablets and smaller desktops */
         @media (max-width: 1024px) {
             .layout-container {
-                flex-direction: column;
+                flex-direction: column; /* Stack vertically */
                 gap: 30px;
             }
-            .graph-column {
+            /* Override desktop sizing and set both columns to full width for mobile */
+            .graph-column, .content-column {
                 width: 100%;
-                height: 60vh;
-            }
-            .content-column {
-                width: 100%;
+                flex: none; 
             }
         }
 
@@ -741,15 +739,7 @@
 
             let nodesForSimulation = graph.nodes;
             let edgesForSimulation = graph.edges;
-            if (isMobile) {
-                const directNeighborIds = new Set([homeNodeId]);
-                graph.edges.forEach(edge => {
-                    if (edge.from === homeNodeId) { directNeighborIds.add(edge.to); }
-                    if (edge.to === homeNodeId) { directNeighborIds.add(edge.from); }
-                });
-                nodesForSimulation = graph.nodes.filter(node => directNeighborIds.has(node.id));
-                edgesForSimulation = graph.edges.filter(edge => directNeighborIds.has(edge.from) && directNeighborIds.has(edge.to));
-            }
+            
             const nodeById = new Map(graph.nodes.map(node => [node.id, node]));
             const homeNode = nodeById.get(homeNodeId);
             if (homeNode) { homeNode.fx = width / 2; homeNode.fy = height / 2; }
