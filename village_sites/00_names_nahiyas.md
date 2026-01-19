@@ -1,6 +1,5 @@
 Baliya	Bilbilê	Baliya.html
 Baxaşê	Bilbilê	Baxaşê.html
-Berkaşê	Bilbilê	Berkaşê.html
 Bilbilê	Bilbilê	Bilbilê.html
 Bêkê	Bilbilê	Bêkê.html
 Bêlê	Bilbilê	Bêlê.html
@@ -21,7 +20,6 @@ Kurdo	Bilbilê	Kurdo.html
 Kurzêl	Bilbilê	Kurzêl.html
 Kêla	Bilbilê	Kêla.html
 Miĥa	Bilbilê	Miĥa.html
-Qarşiqa	Bilbilê	Qarşiqa.html
 Qaşa	Bilbilê	Qaşa.html
 Qestelê Miqdêd	Bilbilê	Qestelê Miqdêd.html
 Qestelê Xidiriya	Bilbilê	Qestelê Xidiriya.html
@@ -46,6 +44,8 @@ Zivingê - Bilbilê	Bilbilê	Zivingê - Bilbilê.html
 Şingêl	Bilbilê	Şingêl.html
 Şêrqiya	Bilbilê	Şêrqiya.html
 Şêxorz	Bilbilê	Şêxorz.html
+Berkaşê	Bilbilê	Berkaşê.html
+Qarşiqa	Bilbilê	Qarşiqa.html
 Abû Ke'bê Xerbî	Cindires	Abû Ke'bê Xerbî.html
 Abû Ke'bê Şerqî	Cindires	Abû Ke'bê Şerqî.html
 Andariya	Cindires	Andariya.html
@@ -245,7 +245,6 @@ Dodo	Reco	Dodo.html
 Dumilya	Reco	Dumilya.html
 Dêwrîş	Reco	Dêwrîş.html
 Edema	Reco	Edema.html
-Elbîskê	Reco	Elbîskê.html
 Elendara	Reco	Elendara.html
 Eltaniya	Reco	Eltaniya.html
 Ereblî	Reco	Ereblî.html
@@ -293,7 +292,6 @@ Zerka	Reco	Zerka.html
 Çiyê	Reco	Çiyê.html
 Çobana - Reco	Reco	Çobana - Reco.html
 Çêqilme	Reco	Çêqilme.html
-Ĥec Xelîl	Reco	Ĥec Xelîl.html
 Ĥesen	Reco	Ĥesen.html
 Ĥucemala	Reco	Ĥucemala.html
 Ĥêcîka Jorin	Reco	Ĥêcîka Jorin.html
@@ -302,6 +300,8 @@ Zerka	Reco	Zerka.html
 Şêx - Mt Hawar	Reco	Şêx - Mt Hawar.html
 Şêx Bila	Reco	Şêx Bila.html
 Şêx Mihemed	Reco	Şêx Mihemed.html
+Elbîskê	Reco	Elbîskê.html
+Ĥec Xelîl	Reco	Ĥec Xelîl.html
 Alciya	Şera	Alciya.html
 Baflûnê	Şera	Baflûnê.html
 Be'rava	Şera	Be'rava.html
@@ -313,6 +313,7 @@ Dêrsiwanê	Şera	Dêrsiwanê.html
 Dîkmedaşê	Şera	Dîkmedaşê.html
 Elî Qîna	Şera	Elî Qîna.html
 Ereb Wêranê	Şera	Ereb Wêranê.html
+Gazê - Şera	Şera	Gazê - Şera.html
 Gubelê	Şera	Gubelê.html
 Keferomê	Şera	Keferomê.html
 Keştearê	Şera	Keştearê.html

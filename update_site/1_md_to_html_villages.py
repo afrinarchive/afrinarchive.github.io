@@ -2,15 +2,11 @@
 # -*- coding: utf-8 -*-
 """
 Standalone village Markdown -> HTML generator.
-
-It recreates the exact layout, colors, and scripts of your sample (00_sample.html)
-without loading that file. The entire HTML/CSS/JS is embedded and filled from
-the .md content.
-
-Usage:
-  python md_to_html_standalone.py "H:\\My Drive\\Zachar\\1 - PhD\\Villages" "C:\\Users\\Zachar\\Desktop\\Afrin_Archive\\village_sites"
-or:
-  python md_to_html_standalone.py "H:\\My Drive\\Zachar\\1 - PhD\\Villages\\Abu Keb.md" "C:\\Users\\Zachar\\Desktop\\Afrin_Archive\\village_sites"
+Updated to fix:
+1. Strict conditional rendering for ALL General Info fields (including Etymology).
+2. Remove redundant "Summary of..." lines.
+3. specific spacing after "Source:" lines.
+4. Increased global paragraph spacing.
 """
 import sys
 from pathlib import Path
@@ -18,7 +14,7 @@ from datetime import datetime
 import re
 import html
 from bs4 import BeautifulSoup
-import yaml  # PyYAML library is now used for frontmatter parsing
+import yaml
 
 INPUT_PATH  = r"H:\\My Drive\\Zachar\\1 - PhD\\Villages"
 OUTPUT_DIR  = r"C:\\Users\\Zachar\\Desktop\\Afrin_Archive\\village_sites"
@@ -26,87 +22,52 @@ NAHIYA_MAPS_DIR = r"C:\\Users\\Zachar\\Desktop\\Afrin_Archive\\nahiyas"
 MASTER_MAP_PATH = r"C:\Users\Zachar\Desktop\Afrin_Archive\nahiyas\All_Nahiyas_Clickable_Maps.html"
 
 def has_meaningful_content(md_block: str) -> bool:
-    """
-    Checks if a markdown block has content beyond any known template placeholders.
-    This version correctly identifies both simple and complex (dynamic) templates.
-    """
     if not md_block:
         return False
-
     for line in md_block.splitlines():
         stripped = line.strip()
-
-        # Rule 1: Ignore empty lines and dividers.
         if not stripped or stripped == '---':
             continue
-
-        # Rule 2: Check for complex, dynamic template patterns first.
-        # These are patterns that change based on the village name.
-        
-        # This pattern matches headings like "### A. Summary from... Transcript of..."
         if re.match(r'^#+\s*[A-Z]\.\s+Summary\s+from', stripped):
             continue
-        
-        # This pattern matches channel headings like "#### HalabTodayTV"
         if re.match(r'^#+\s*[A-Za-z]+TV\s*$', stripped, re.IGNORECASE):
             continue
-
-        # Rule 3: Check for simple, static template patterns.
-        # This requires cleaning the line of markdown characters first.
         content_only = stripped.lstrip('#').strip().strip('*').rstrip(':').strip()
-        
-        # If after cleaning, the line is empty, it's not content.
         if not content_only:
             continue
-            
         SIMPLE_TEMPLATE_WORDS = {
             'source', 'history within time periods', 'general history',
             'oral history / stories', 'historic families/people',
             'cultural aspects', 'food', 'handiwork', 'professions',
             'dengbêj/çirok', 'dengbej/cirok'
         }
-        
         if content_only.lower() in SIMPLE_TEMPLATE_WORDS:
             continue
-
-        # If a line survives all of the template checks, it's real content.
         return True
-
-    # If every single line was identified as a template or empty, the block has no content.
     return False
 
 def build_master_lookup(master_html_path: Path):
-    """
-    Parses the master HTML file to create a lookup dictionary.
-    KEY: lowercase village name (link text)
-    VALUE: {'href': '#dot-1', 'nahiya': 'Reco'}
-    """
     if not master_html_path.is_file():
         print(f"[FATAL ERROR] Master map file not found at: {master_html_path}")
         return None
-
     print(f"Building lookup index from {master_html_path.name}...")
     lookup = {}
     with open(master_html_path, 'r', encoding='utf-8') as f:
         soup = BeautifulSoup(f, 'html.parser')
-    
     nahiya_sections = soup.find_all('div', class_='nahiya-section')
     for section in nahiya_sections:
         nahiya_name_tag = section.find('h2')
         if not nahiya_name_tag:
             continue
         nahiya_name = nahiya_name_tag.get_text(strip=True)
-        
         links = section.find_all('a', href=lambda href: href and href.startswith('#'))
         for link in links:
             village_text = link.get_text(strip=True)
             href = link.get('href')
-            # The official name from the link is the key
             lookup[village_text.lower()] = {
                 'href': href,
                 'nahiya': nahiya_name
             }
-            
     print(f"--> Index built successfully with {len(lookup)} entries.")
     return lookup
 
@@ -117,63 +78,42 @@ def ensure_dir(p: Path):
     p.mkdir(parents=True, exist_ok=True)
 
 def parse_yaml_frontmatter(md_content: str) -> dict:
-    """
-    Parses the YAML frontmatter from a markdown file using PyYAML.
-    Returns an empty dictionary if no frontmatter is found or on error.
-    """
     match = re.search(r'---\s*\n(.*?)\n---', md_content, re.DOTALL)
     if match:
         yaml_str = match.group(1)
-        try:
-            data = yaml.safe_load(yaml_str)
-            if isinstance(data, dict):
-                return data
-        except yaml.YAMLError as e:
-            print(f"  [YAML ERROR] Could not parse frontmatter: {e}")
+        # We deliberately do NOT catch YAMLError here.
+        # It should propagate to process_one -> main loop,
+        # so the file is marked as failed and the user sees the error count.
+        data = yaml.safe_load(yaml_str)
+        if isinstance(data, dict):
+            return data
     return {}
 
 def extract_minimap(village_name: str, maps_dir: Path, master_lookup: dict):
-    """
-    Finds and extracts a village's minimap using the pre-built master lookup index.
-    """
-    # Step 1: Look up the village in our master index.
     village_info = master_lookup.get(village_name.lower())
-    
     if not village_info:
-        # This village doesn't exist in the master map file.
         return None, None
-
     correct_nahiya = village_info['nahiya']
     href = village_info['href']
     highlight_class = href.lstrip('#')
-
-    # Step 2: Open the correct individual nahiya map file.
     map_file = maps_dir / f"{correct_nahiya}.html"
     if not map_file.is_file():
-        print(f"  [MAP_ERROR] Index points to '{correct_nahiya}.html', but file not found.")
         return None, None
-
     try:
         with open(map_file, 'r', encoding='utf-8') as f:
             soup = BeautifulSoup(f, 'html.parser')
-
-        # Step 3: Extract the map container and activate the highlight.
         map_container = soup.find('div', class_='map-container')
         if not map_container:
             return None, None
-            
         img_tag = map_container.find('img')
         if img_tag and img_tag.get('src'):
             original_image_name = img_tag['src']
             img_tag['src'] = f"../nahiyas/{original_image_name}"
-        
         highlight_box = map_container.find('div', class_=highlight_class)
         if highlight_box:
             highlight_box['style'] = 'display: block;'
-
         style_tag = soup.find('style')
         css_text = style_tag.string if style_tag else ""
-        
         map_id = f"minimap-{re.sub(r'[^a-zA-Z0-9]', '-', correct_nahiya.lower())}"
         scoped_css_lines = []
         if css_text:
@@ -185,18 +125,14 @@ def extract_minimap(village_name: str, maps_dir: Path, master_lookup: dict):
                     scoped_css_lines.append(scoped_line)
                 else:
                     scoped_css_lines.append(line)
-        
         map_container['id'] = map_id
         map_container['class'] = 'map-container'
-
         return str(map_container), "\n".join(scoped_css_lines)
-
     except Exception as e:
-        print(f"  [ERROR] Failed to process minimap for {village_name} from {correct_nahiya}.html: {e}")
+        print(f"  [ERROR] Failed to process minimap: {e}")
         return None, None
 
 def md_find_nahiya_in_body(md: str) -> str:
-    """Fallback to find nahiya in the markdown body if not in YAML."""
     for line in md.splitlines():
         if line.strip().lower().startswith("## nahiya"):
             m = re.search(r'\[\[(.*?)\]\]', line)
@@ -246,50 +182,79 @@ def md_find_photos(md: str) -> list:
         if key.strip().lower().startswith("photos"):
             photos_block = secs[key]
             break
+    
     out = []
-    for m in re.finditer(r'!\[\[\s*([^\]\|]+?)(?:\|.*?)?\s*\]\]', photos_block):
-        out.append(m.group(1).strip())
+    lines = photos_block.splitlines()
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        m = re.search(r'!\[\[\s*([^\]\|]+?)(?:\|.*?)?\s*\]\]', line)
+        if m:
+            fname = m.group(1).strip()
+            caption = ""
+            if i + 1 < len(lines):
+                next_line = lines[i+1].strip()
+                if next_line and not next_line.startswith('![') and not next_line.startswith('---'):
+                    caption = next_line.lstrip('*').strip()
+            out.append((fname, caption))
+        i += 1
     return out
 
+def md_extract_basic_info_section(md: str) -> str:
+    """Extract the entire 'Basic Information about ...' section as raw markdown."""
+    secs = md_sections(md)
+    for key in secs.keys():
+        if "basic information" in key.lower():
+            return secs[key]
+    return ""
+
 def convert_md_to_html_basic(md_text: str) -> str:
-    # This new version processes content in blocks to hide empty headings.
-
-    # First, strip the unwanted '==' highlight markers from the raw text
     md_text = re.sub(r'==(.+?)==', r'\1', md_text)
-
-    # Split the entire text into chunks based on ### or #### headings.
-    # The regex keeps the headings as part of the list.
-    blocks = re.split(r'(^\s*####?.*\n?)', md_text, flags=re.MULTILINE)
-    
+    # Updated regex to also capture ##### headers
+    blocks = re.split(r'(^\s*#{3,5}.*\n?)', md_text, flags=re.MULTILINE)
     final_html_parts = []
 
-    # Helper function to convert a simple block of text (no headings) to HTML
     def _convert_simple_block_to_html(block_text):
         lines = block_text.strip().splitlines()
-        if not lines:
-            return ""
-
+        if not lines: return ""
         html_lines = []
-        in_ul = False
-        in_ol = False
-        in_blockquote = False
+        in_ul = False; in_ol = False; in_blockquote = False
         def close_all_blocks():
             nonlocal in_ul, in_ol, in_blockquote
             if in_ul: html_lines.append('</ul>'); in_ul = False
             if in_ol: html_lines.append('</ol>'); in_ol = False
             if in_blockquote: html_lines.append('</blockquote>'); in_blockquote = False
 
-        for line in lines:
+        i = 0
+        while i < len(lines):
+            line = lines[i]
             s = line.strip()
+            
+            # --- SKIP "Summary of..." lines ---
+            if re.match(r'^Summary\s+of', s, re.IGNORECASE):
+                i += 1
+                continue
+            
             s_esc = html.escape(s)
+            s_esc = re.sub(r'(https?://[^\s<]+)', r'<a href="\1" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">\1</a>', s_esc)
             s_esc = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s_esc)
             s_esc = re.sub(r'\*(.+?)\*', r'<em>\1</em>', s_esc)
             s_esc = re.sub(r'\[\[(.+?)\]\]', r'<span class="internal-link">\1</span>', s_esc)
             
             if s == '---' or not s:
-                close_all_blocks()
+                close_all_blocks(); 
+                i += 1
                 continue
             
+            # --- START FIX: Source Line Styling ---
+            if re.match(r'^Source:', s, re.IGNORECASE):
+                close_all_blocks()
+                # Apply mb-6 to create the "empty space" requested
+                html_lines.append(f'<p class="mb-6 font-semibold">{s_esc}</p>')
+                i += 1
+                continue
+            # --------------------------------------
+
             if re.match(r'^\s*>\s+', s):
                 if in_ul or in_ol: close_all_blocks()
                 if not in_blockquote: html_lines.append('<blockquote>'); in_blockquote = True
@@ -298,52 +263,52 @@ def convert_md_to_html_basic(md_text: str) -> str:
                 item_content_esc = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', item_content_esc)
                 item_content_esc = re.sub(r'\[\[(.+?)\]\]', r'<span class="internal-link">\1</span>', item_content_esc)
                 html_lines.append(f'<p>{item_content_esc}</p>')
+                i += 1
                 continue
-            
             if re.match(r'^[-\*]\s+', s):
                 if in_ol or in_blockquote: close_all_blocks()
                 if not in_ul: html_lines.append('<ul>'); in_ul = True
-                item_content = re.sub(r'^[-\*]\s+', '', s_esc, count=1)
-                html_lines.append(f'<li>{item_content}</li>')
+                item = re.sub(r'^[-\*]\s+', '', s_esc, count=1)
+                html_lines.append(f'<li>{item}</li>'); 
+                i += 1
                 continue
-
             if re.match(r'^\d+\.\s+', s):
                 if in_ul or in_blockquote: close_all_blocks()
                 if not in_ol: html_lines.append('<ol>'); in_ol = True
-                item_content = re.sub(r'^\d+\.\s+', '', s_esc, count=1)
-                html_lines.append(f'<li>{item_content}</li>')
+                item = re.sub(r'^\d+\.\s+', '', s_esc, count=1)
+                html_lines.append(f'<li>{item}</li>'); 
+                i += 1
                 continue
             
             close_all_blocks()
             html_lines.append(f'<p>{s_esc}</p>')
-
+            i += 1
+            
         close_all_blocks()
         return "\n".join(html_lines)
 
-    # Process any text that came before the first heading
     initial_content = blocks[0]
     if has_meaningful_content(initial_content):
         final_html_parts.append(_convert_simple_block_to_html(initial_content))
-
-    # Process the remaining blocks in pairs of (heading, content)
     for i in range(1, len(blocks), 2):
-        heading_line = blocks[i].strip()
-        content_block = blocks[i+1] if (i + 1) < len(blocks) else ""
-
-        # The critical check: only proceed if the content block is not empty.
-        if has_meaningful_content(content_block):
-            # Add the heading's HTML
-            m_h4 = re.match(r'^\s*####\s*(.*)', heading_line)
+        heading = blocks[i].strip()
+        content = blocks[i+1] if (i + 1) < len(blocks) else ""
+        if has_meaningful_content(content):
+            # Handle ##### headers (h5) for source sub-sections
+            m_h5 = re.match(r'^\s*#####\s*(.*)', heading)
+            if m_h5:
+                final_html_parts.append(f'<h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">{html.escape(m_h5.group(1).strip())}</h5>')
+                final_html_parts.append(_convert_simple_block_to_html(content))
+                continue
+            m_h4 = re.match(r'^\s*####\s*(.*)', heading)
             if m_h4:
                 final_html_parts.append(f'<h4 class="font-semibold text-lg mt-4 mb-2">{html.escape(m_h4.group(1).strip())}</h4>')
-            else:
-                m_h3 = re.match(r'^\s*###\s*(.*)', heading_line)
-                if m_h3:
-                    final_html_parts.append(f'<h3 class="font-semibold text-xl mt-6 mb-3">{html.escape(m_h3.group(1).strip())}</h3>')
-            
-            # Add the content's HTML
-            final_html_parts.append(_convert_simple_block_to_html(content_block))
-            
+                final_html_parts.append(_convert_simple_block_to_html(content))
+                continue
+            m_h3 = re.match(r'^\s*###\s*(.*)', heading)
+            if m_h3:
+                final_html_parts.append(f'<h3 class="font-semibold text-xl mt-6 mb-3">{html.escape(m_h3.group(1).strip())}</h3>')
+            final_html_parts.append(_convert_simple_block_to_html(content))
     return "\n".join(part for part in final_html_parts if part)
 
 def build_links_html(links_md: str) -> str:
@@ -365,50 +330,55 @@ def build_links_html(links_md: str) -> str:
         return '<div class="p-4 italic subtext">No data provided.</div>'
     return '<ul class="list-disc list-inside space-y-2 p-4">' + "".join(items) + "</ul>"
 
-def section_or_placeholder(title: str, body_md: str, open_details=True) -> str:
-    if not has_meaningful_content(body_md):
+def build_transcripts_list_html(transcripts_md: str) -> str:
+    if not has_meaningful_content(transcripts_md):
         return ""
-    
+    links = re.findall(r'\[\[(.*?)\]\]', transcripts_md)
+    if not links:
+        return ""
+    items = []
+    for link_text in links:
+        safe_link = f"../village_transcripts/{link_text.strip()}.html" 
+        items.append(f'<li><a href="{html.escape(safe_link)}" target="_blank" rel="noopener noreferrer" class="internal-link hover:underline">{html.escape(link_text)}</a></li>')
+    return f'<div class="card p-6 rounded-xl"><h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcripts</h2><ul class="list-disc list-inside space-y-2 p-4">{"".join(items)}</ul></div>'
+
+
+def section_or_placeholder(title: str, body_md: str, open_details=True) -> str:
+    if not has_meaningful_content(body_md): return ""
     content = convert_md_to_html_basic(body_md)
     open_attr = " open" if open_details else ""
     return f'<details class="group"{open_attr}><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>{html.escape(title)}</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none">{content}</div></details>'
 
 def section_or_placeholder_plain(title: str, body_md: str, open_details=True) -> str:
-    if not has_meaningful_content(body_md):
-        return ""
-        
+    if not has_meaningful_content(body_md): return ""
     content = convert_md_to_html_basic(body_md)
     open_attr = " open" if open_details else ""
-    return f'<details class="group"{open_attr}><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>{html.escape(title)}</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4">{content}</div></details>'
+    # Fixed: Added 'prose max-w-none' class so paragraph spacing CSS applies
+    return f'<details class="group"{open_attr}><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>{html.escape(title)}</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none">{content}</div></details>'
 
 def build_simple_section_html(title: str, body_md: str, name: str) -> str:
-    """Creates a non-collapsible section with a title and prose content."""
-    if not has_meaningful_content(body_md):
-        return ""
-    
-    # Replace the village name placeholder in the title
+    if not has_meaningful_content(body_md): return ""
     title = title.replace("__NAME__", name)
     content = convert_md_to_html_basic(body_md)
-    
-    return f"""<div class="border-b themed-border pb-3 mb-4">
-        <h2 class="text-2xl font-semibold">{html.escape(title)}</h2>
-    </div>
-    <div class="p-4 prose max-w-none">{content}</div>"""
-
+    return f"""<div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">{html.escape(title)}</h2></div><div class="p-4 prose max-w-none">{content}</div>"""
 
 def photos_grid_html(name: str, photos: list) -> str:
     if not photos:
         return '<div class="italic subtext">No photos available.</div>'
     tiles = []
-    for fn in photos:
+    for fn, caption in photos:
         src = f"../village_photos/{fn}"
         alt = f"Photo of {name}"
         placeholder = 'https://placehold.co/600x400/e2e8f0/4a5568?text=' + html.escape(fn).replace(' ', '+')
-        tiles.append(f'<img src="{html.escape(src)}" alt="{html.escape(alt)}" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src=\'{placeholder}\';">')
+        caption_html = ""
+        if caption:
+            caption_html = f'<p class="mt-2 text-sm subtext">{html.escape(caption)}</p>'
+        tiles.append(f'<div><img src="{html.escape(src)}" alt="{html.escape(alt)}" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src=\'{placeholder}\';">{caption_html}</div>')
     return '<div class="grid grid-cols-1 md:grid-cols-2 gap-4">\n' + "\n".join(tiles) + '\n</div>'
 
 def build_html_page(name, nahiya, aliases, lat, lng,
-                    summaries_I, summaries_II, summaries_III, summaries_IV,
+                    summaries_I, summaries_II, summaries_III, summaries_IV, summ_afrin366,
+                    transcripts_md,
                     links_md,
                     vi_history, vii_families, viii_culture, ix_dengbej, x_connections,
                     foundation_origin_md, name_meaning_md,
@@ -417,9 +387,29 @@ def build_html_page(name, nahiya, aliases, lat, lng,
                     xviii_axw_ku, xix_halil_ku, xx_flo_ku, xxi_afr366_ku, xxii_zeyton_ku, xxiii_other_ku,
                     photos,
                     foundation_txt, size_txt, tribes_txt, families_txt,
+                    basic_info_md,
                     minimap_html, minimap_css):
     today = datetime.now().strftime("%B %d, %Y")
     nahiya_disp = nahiya if nahiya else "unknown"
+
+    # --- Build info rows conditionally with STRIP() ---
+    info_rows = []
+    if nahiya_disp and nahiya_disp.strip():
+        info_rows.append(f'<div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">{html.escape(nahiya_disp)}</p></div>')
+    if aliases and aliases.strip():
+        info_rows.append(f'<div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">{html.escape(aliases)}</p></div>')
+    if tribes_txt and tribes_txt.strip():
+        info_rows.append(f'<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">{html.escape(tribes_txt)}</p></div>')
+    if families_txt and families_txt.strip():
+        info_rows.append(f'<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">{html.escape(families_txt)}</p></div>')
+    if foundation_txt and foundation_txt.strip():
+        info_rows.append(f'<div><h3 class="text-sm font-medium subtext">Foundation Date</h3><p class="text-lg">{html.escape(foundation_txt)}</p></div>')
+    if size_txt and size_txt.strip():
+        info_rows.append(f'<div><h3 class="text-sm font-medium subtext">Size</h3><p class="text-lg">{html.escape(size_txt)}</p></div>')
+    
+    # No longer adding geo_info items - they now go in the separate Basic Information card
+    general_info_block = "\n".join(info_rows)
+    # ------------------------------------------------
 
     html_template = """<!DOCTYPE html>
 <html lang="en" class="">
@@ -473,7 +463,8 @@ def build_html_page(name, nahiya, aliases, lat, lng,
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
         .prose strong { font-weight: 600; }
-        .prose p { margin-bottom: 1rem; }
+        .prose p { margin-bottom: 1.5rem; } /* Increased Paragraph Spacing */
+        .prose-compact p { margin-bottom: 0.5rem; } /* Compact spacing for Basic Info */
         .prose ol, .prose ul { margin-bottom: 1rem; }
         .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
         .prose blockquote p { color: var(--text-color); }
@@ -524,30 +515,7 @@ def build_html_page(name, nahiya, aliases, lat, lng,
                 <div class="flex flex-col md:flex-row gap-6 md:gap-8">
                     <div class="flex-1">
                         <div class="grid grid-cols-1 gap-4">
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                                <p class="text-lg">__NAHIYA__</p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
-                                <p class="text-lg">__ALIASES__</p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Tribes</h3>
-                                <p class="text-lg">__TRIBES__</p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
-                                <p class="text-lg">__FAMILIES__</p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
-                                <p class="text-lg">__FOUNDATION__</p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Size</h3>
-                                <p class="text-lg">__SIZE__</p>
-                            </div>
+                            __GENERAL_INFO_BLOCK__
                         </div>
                     </div>
                     __MINIMAP_COLUMN__
@@ -568,11 +536,15 @@ def build_html_page(name, nahiya, aliases, lat, lng,
                 __PHOTOS__
             </div>
 
-            __FOUNDATION_CARD__
+            __BASIC_INFO_CARD__
 
             __MOUNTAINS_CARD__
 
             __SUMMARIES_CARD__
+
+            __TRANSCRIPTS_CARD__
+
+            __FOUNDATION_CARD__
 
             __LINKS_CARD__
 
@@ -710,6 +682,15 @@ def build_html_page(name, nahiya, aliases, lat, lng,
     if minimap_html:
         minimap_column_html = f'<div class="flex-1 min-w-0">{minimap_html}</div>'
 
+    # Basic Information Card (preserves Source sub-sections)
+    basic_info_card_html = ""
+    if has_meaningful_content(basic_info_md):
+        basic_info_content = convert_md_to_html_basic(basic_info_md)
+        basic_info_card_html = f'''<div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about {html.escape(name)}</h2>
+                <div class="p-4 prose-compact max-w-none">{basic_info_content}</div>
+            </div>'''
+
     # Foundation and Meaning Card
     foundation_html = build_simple_section_html("Foundation/Origin Information of __NAME__", foundation_origin_md, name)
     meaning_html = build_simple_section_html("Possible Village Name Meaning of __NAME__", name_meaning_md, name)
@@ -732,9 +713,12 @@ def build_html_page(name, nahiya, aliases, lat, lng,
     # Summaries Card
     sum_i   = section_or_placeholder(f"I. Summary from TirejAfrin Site of {name} (English)", summaries_I, open_details=True)
     sum_ii  = section_or_placeholder_plain(f"II. Summary from Ax û Walat Transcript of {name}", summaries_II)
+    sum_afrin = section_or_placeholder_plain(f"Summary from Afrin 366 Transcript of {name}", summ_afrin366)
+    
     sum_iii = section_or_placeholder_plain(f"III. Summary from other Channels' Transcripts of {name}", summaries_III) if has_meaningful_content(summaries_III) else ""
     sum_iv  = section_or_placeholder_plain(f"IV. Summary from other Sources of {name}", summaries_IV)
-    summaries_content = [sum_i, sum_ii, sum_iii, sum_iv]
+    
+    summaries_content = [sum_i, sum_ii, sum_afrin, sum_iii, sum_iv]
     summaries_card_html = ""
     if any(summaries_content):
         summaries_card_html = f'''<div class="card p-6 rounded-xl">
@@ -742,10 +726,13 @@ def build_html_page(name, nahiya, aliases, lat, lng,
                 <div class="space-y-4">{"<hr class=\"themed-border\">".join(s for s in summaries_content if s)}</div>
             </div>'''
 
+    # Transcripts Card (New)
+    transcripts_card_html = build_transcripts_list_html(transcripts_md)
+
     # Links Card
     links_html = build_links_html(links_md)
     links_card_html = ""
-    if links_md.strip(): # Links has its own check
+    if links_md.strip(): 
          links_card_html = f'''<div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
                 {links_html}
@@ -791,20 +778,17 @@ def build_html_page(name, nahiya, aliases, lat, lng,
 
     out = (html_template
            .replace("__NAME__", html.escape(name))
-           .replace("__NAHIYA__", html.escape(nahiya_disp))
-           .replace("__ALIASES__", html.escape(aliases))
-           .replace("__TRIBES__", html.escape(tribes_txt))
-           .replace("__FAMILIES__", html.escape(families_txt))
-           .replace("__FOUNDATION__", html.escape(foundation_txt or ""))
-           .replace("__SIZE__", html.escape(size_txt or ""))
+           .replace("__GENERAL_INFO_BLOCK__", general_info_block)
            .replace("__LAT__", "" if lat is None else str(lat))
            .replace("__LNG__", "" if lng is None else str(lng))
            .replace("__LAT_JS__", "null" if lat is None else str(lat))
            .replace("__LNG_JS__", "null" if lng is None else str(lng))
            .replace("__PHOTOS__", photos_html)
+           .replace("__BASIC_INFO_CARD__", basic_info_card_html)
            .replace("__FOUNDATION_CARD__", foundation_card_html)
            .replace("__MOUNTAINS_CARD__", mountains_card_html)
            .replace("__SUMMARIES_CARD__", summaries_card_html)
+           .replace("__TRANSCRIPTS_CARD__", transcripts_card_html) 
            .replace("__LINKS_CARD__", links_card_html)
            .replace("__ADDITIONAL_INFO_CARD__", add_info_card_html)
            .replace("__ADDITIONAL_TRANSCRIPTS_CARD__", add_transcripts_card_html)
@@ -826,7 +810,6 @@ def extract_expected_sections(md: str) -> dict:
                 return v
         return ""
     
-    # NEW HELPER to find sections by keyword
     def find_by_keyword(keyword):
         for k_norm, v in lookup.items():
             if keyword in k_norm:
@@ -836,6 +819,9 @@ def extract_expected_sections(md: str) -> dict:
     out = {}
     out["I"]   = find_by_prefix("I","tirej") or lookup.get("i. summary from tirejafrin site (english)", "")
     out["II"]  = find_by_prefix("II","ax")   or lookup.get("ii. summary from ax û walat transcript", "")
+    out["summ_afrin366"] = find_by_keyword("afrin 366") or find_by_keyword("summary of alkana from afrin 366")
+    out["transcripts_list"] = find_by_keyword("iii. transcripts") or find_by_keyword("transcripts")
+
     out["III"] = find_by_prefix("III","other") or lookup.get("iii. summary from other channels' transcripts", "")
     out["IV"]  = find_by_prefix("IV","source") or lookup.get("iv. summary from other sources", "")
     out["V_links"] = lookup.get("v. links", "")
@@ -861,7 +847,6 @@ def extract_expected_sections(md: str) -> dict:
     out["foundation_origin"] = find_by_keyword("foundation/origin information")
     out["name_meaning"] = find_by_keyword("possible village name meaning")
     
-    # Find and combine all "Mountains of the Kurds" sections
     mountains_sections = []
     for title, content in secs_raw.items():
         if "mountains of the kurds" in title.lower():
@@ -871,27 +856,21 @@ def extract_expected_sections(md: str) -> dict:
     return out
 
 def format_yaml_value(value):
-    """Formats a value from YAML into a clean, comma-separated string."""
-    if value is None:
-        return ""
-    if isinstance(value, list):
-        return ", ".join(str(v) for v in value)
+    if value is None: return ""
+    if isinstance(value, list): return ", ".join(str(v) for v in value)
     return str(value)
 
 def process_one(md_path: Path, out_dir: Path, master_lookup: dict):
     name = md_path.stem
     out_file = out_dir / f"{name}.html"
 
-    # Modification time check: only process if MD is newer or HTML doesn't exist.
     if out_file.exists():
         md_mtime = md_path.stat().st_mtime
         html_mtime = out_file.stat().st_mtime
         if md_mtime <= html_mtime:
-            return  # Silently skip up-to-date files
+            return
 
     md = read_text(md_path)
-    
-    # --- New Robust YAML Parsing ---
     fm_data = parse_yaml_frontmatter(md)
 
     aliases = format_yaml_value(fm_data.get('aliases'))
@@ -900,7 +879,6 @@ def process_one(md_path: Path, out_dir: Path, master_lookup: dict):
     foundation_txt = format_yaml_value(fm_data.get('foundation'))
     size_txt = format_yaml_value(fm_data.get('size'))
 
-    # Handle nahiya: it's special, we only want the first item if it's a list.
     nahiya_val = fm_data.get('nahiyah')
     if isinstance(nahiya_val, list) and nahiya_val:
         nahiya = str(nahiya_val[0])
@@ -908,19 +886,23 @@ def process_one(md_path: Path, out_dir: Path, master_lookup: dict):
         nahiya = str(nahiya_val)
     else:
         nahiya = md_find_nahiya_in_body(md)
-    # --------------------------------
 
     lat, lng = md_find_coords(md)
     photos = md_find_photos(md)
+    
+    # Extract basic info section as raw markdown (preserves Source sub-sections)
+    basic_info_md = md_extract_basic_info_section(md)
 
     minimap_html, minimap_css = extract_minimap(name, Path(NAHIYA_MAPS_DIR), master_lookup)
-
     sec = extract_expected_sections(md)
     vii_data = sec["VII"]
 
     html_text = build_html_page(
         name=name, nahiya=nahiya, aliases=aliases, lat=lat, lng=lng,
-        summaries_I=sec["I"], summaries_II=sec["II"], summaries_III=sec["III"], summaries_IV=sec["IV"],
+        summaries_I=sec["I"], summaries_II=sec["II"], 
+        summaries_III=sec["III"], summaries_IV=sec["IV"],
+        summ_afrin366=sec["summ_afrin366"],
+        transcripts_md=sec["transcripts_list"],
         links_md=sec["V_links"],
         vi_history=sec["VI"], vii_families=vii_data, viii_culture=sec["VIII"], ix_dengbej=sec["IX"], x_connections=sec["X"],
         foundation_origin_md=sec["foundation_origin"],
@@ -931,6 +913,7 @@ def process_one(md_path: Path, out_dir: Path, master_lookup: dict):
         photos=photos,
         foundation_txt=foundation_txt, size_txt=size_txt,
         tribes_txt=tribes_txt, families_txt=families_txt,
+        basic_info_md=basic_info_md,
         minimap_html=minimap_html, minimap_css=minimap_css
     )
     ensure_dir(out_dir)
@@ -942,8 +925,6 @@ def main():
     out_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(OUTPUT_DIR)
     
     failed_files = []
-
-    # Build the master lookup index from the HTML file at the very beginning.
     master_lookup = build_master_lookup(Path(MASTER_MAP_PATH))
     if not master_lookup:
         print("Could not build master lookup. Exiting.")
@@ -995,10 +976,9 @@ def main():
 
     if failed_files:
         print("\n" + "="*20 + " SUMMARY OF FAILURES " + "="*20)
-        print(f"Completed with {len(failed_files)} error(s). The following files could not be processed:")
+        print(f"Completed with {len(failed_files)} error(s).")
         for name, error in failed_files:
             print(f"  - File: {name}\n    Reason: {error}")
-        print("="*62)
     else:
         print("\nProcessing completed successfully with no errors.")
 

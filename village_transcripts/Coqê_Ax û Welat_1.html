@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript | Coqê - Ax û Welat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .jump-btn { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.875rem; transition: all 0.2s; }
+        .jump-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; font-size: 0.75rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .copy-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Coqê</h1>
+            <p class="text-xl subtext mt-2">Transcript from Ax û Welat</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- General Info Card -->
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transcript Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Village</h3>
+                        <p class="text-lg">Coqê</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Source Channel</h3>
+                        <p class="text-lg">Ax û Welat</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Length</h3>
+                        <p class="text-lg">33:14</p>
+                    </div>
+                    <div class="mt-4">
+                    <a href="https://www.youtube.com/watch?v=W_lwnl-ZtVA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+                </div>
+                <!-- Jump Buttons -->
+                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t themed-border">
+                    <a href="#english" class="jump-btn">Go to Translation</a>
+                    <a href="#kurdish" class="jump-btn">Biçe Transkrîptê</a>
+                </div>
+            </div>
+
+            <!-- English Translation Card -->
+            <div id="english" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">English Translation</h2>
+                    <button class="copy-btn" onclick="copySection('translation-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Copy
+                    </button>
+                </div>
+                <div id="translation-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30]</span>Man: Oh homeland, oh homeland... oh homeland...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:39]</span>Man: Oh homeland, oh homeland... oh homeland...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:44]</span>Man: Oh homeland, oh homeland...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:19]</span>Host: The sound of Mehmûdê Osman&#x27;s tembur is coming.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:22]</span>Host: Like the good tidings of the gathering.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:25]</span>Host: Dear viewers, may you have a good time.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:27]</span>Host: The program Soil and Homeland, today we are guests again...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:29]</span>Host: In Mount Kurmênc, we came to the village of Juq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:39]</span>Singer: Hey lo lo lo...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:46]</span>Singer: Hey lo lo lo...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:52]</span>Singer: Hey lo lo lo...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:05]</span>Singer: The stature...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:31]</span>Host: Thanks to your group.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:33]</span>Musician: Thanks to you too, to your program Soil and Homeland.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:36]</span>Host: Your group&#x27;s name was Hozan, right?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:38]</span>Musician: Exactly, it is Hozan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:40]</span>Host: Which village are you from?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:41]</span>Musician: We are from the village of Juq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:43]</span>Host: How many people are you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:44]</span>Musician: We are eight people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:46]</span>Host: Is it just these ones?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:47]</span>Musician: Yes, there are others.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:49]</span>Host: I wish you success.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:50]</span>Musician: Thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:52]</span>Host: You are surely... preparing for Newroz, right?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:56]</span>Musician: Yes, we are preparing for Newroz...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:59]</span>Musician: ...and for everything, for Kurdish occasions, we perform.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:03]</span>Host: Okay, thank you. Success to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:05]</span>Group: The voice of the struggle has echoed in the world.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:09]</span>Group: Has echoed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:12]</span>Group: From the arena of hope...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:22]</span>Group: Inside prison walls, up to the mountain tops.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:28]</span>Group: Raise the red flag, resistance is life.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:34]</span>Group: Resistance is life.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:36]</span>Group: Inside prison walls, up to the mountain tops.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:41]</span>Group: Raise the red flag, resistance is life.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:45]</span>Group: Resistance is life.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:48]</span>Host: Dear viewers, we have all arrived at the grave of Martyr Cemaleddîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:26]</span>Host: May I have your name?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:27]</span>Guest: Mohammed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:28]</span>Host: Brother Mohammed, what is the name of this shrine place?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:31]</span>Guest: The Shrine place, it is called Jem Ziorat (The Place of Visitation).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:33]</span>Host: Okay.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:34]</span>Host: Has this Martyr (shrine) been here for a long time?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:35]</span>Guest: This Martyr (shrine) is a thousand years old.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:37]</span>Host: It dates back a thousand years?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:38]</span>Guest: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:39]</span>Host: Was it a building before, or did you build it? Did the village households build it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:43]</span>Guest: Uh no... before it wasn&#x27;t a building. Some came... uh... before... Aqid Khakhi built the building.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:48]</span>Guest: Some came, uh... they became like supervisors and such.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:52]</span>Host: Where were they from?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:53]</span>Guest: They were from Juq [Cuq].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:54]</span>Host: Were they from your village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:55]</span>Guest: They were from our village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:57]</span>Host: When the people come to the Shrine, what do they do?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:58]</span>Guest: The people come... Yazidi... Shrine... it is itself a Martyr (Saint) and it is holy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:05]</span>Guest: And the Martyr (Saint) is holy in itself, you know. And it is a matter of conviction, you know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:09]</span>Guest: We are convinced by this Saint. Not only this Saint, there is belief in all Saints.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:15]</span>Host: Okay.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:16]</span>Guest: And if a person doesn&#x27;t have children, or a person, for example, comes and gets a blessing, takes some soil...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:22]</span>Guest: They make a pledge, they tie a piece of their cloth to the tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:26]</span>Guest: Naturally, this is also a conviction, you know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:27]</span>Host: Meaning, has anyone achieved their wish?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:28]</span>Guest: Naturally, certainly there have been.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:31]</span>Host: So many, didn&#x27;t they give it their effort/faith? The effort before this Shrine...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:35]</span>Guest: They prayed...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:36]</span>Host: Did they pray to God?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:37]</span>Guest: Naturally.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:38]</span>Host: And God gave (granted the wish), you know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:39]</span>Guest: He gave. Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:40]</span>Host: And many sought a wish... and achieved their wish.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:43]</span>Guest: Naturally, and they were sick, and they got better.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:45]</span>Host: They got better?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:46]</span>Guest: Uh naturally, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:47]</span>Host: I said, you know, it is also a conviction.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:49]</span>Host: Where do they come from, do they only come from your village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:51]</span>Guest: They come from everywhere... not just... they come from afar/everywhere.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:54]</span>Host: Meaning they come from Afrin too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:55]</span>Guest: They come from Afrin too, they come from the villages too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:57]</span>Host: So they come from outside (the region) too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:58]</span>Guest: They come to the Shrine you know... they come... coming from Afrin, from the villages, from Juq, from Cheqelelun.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:04]</span>Guest: You know, they know that there is a Saint here named Sheikh Jemadin (Jamaluddin).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:08]</span>Guest: They come near the village, you know. They pray, they make supplications.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:11]</span>Guest: And they used to come before, they established mourning rituals (visitations) at this place, they prayed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:14]</span>Guest: The people of Kukan, Juq, and those surroundings, you know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:17]</span>Host: Uh, the surroundings of Juq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:18]</span>Guest: Naturally.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:19]</span>Host: The villages surrounding Juq all together, they pray before...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:22]</span>Host: They pray to God, and they achieve their wish.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:24]</span>Guest: Naturally. This thing is very much... existed, you know...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:27]</span>Guest: Uh... I said, you know... this thing is Holy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:31]</span>Host: The Martyr (Saint) is Holy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:32]</span>Host: We also thank you, bless you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:34]</span>Guest: Bless you, my lord sir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:35]</span>Guest: Bless you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:13]</span>Old Woman: A boy was sick, became paralyzed/stiff for a while.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:18]</span>Old Woman: In a dream, the air/spirit went before my mystery (vision).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:21]</span>Old Woman: He threw a handful of sun/light into eternity.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:24]</span>Old Woman: He said afterwards, he got up and walked.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:27]</span>Old Woman: And the other said, ask for his name.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:29]</span>Old Woman: People of religion.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:31]</span>Old Woman: No, he asked, he said my name is Sheikh Jemadin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:34]</span>Old Woman: He said come and build a Shrine over me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:37]</span>Old Woman: Uh, he said how shall we come? You must make your place... evident/clear to us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:41]</span>Old Woman: The stones in front of them, the place of the lion/mystery... became truth in front of them. (Idiomatic/unclear).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:44]</span>Old Woman: Pardon me (let there be no blame).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:45]</span>Old Woman: And goodness appeared to the world (or &quot;village saw&quot;).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:47]</span>Old Woman: It was summer. There was no rain.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:49]</span>Old Woman: Elders and leaders gathered. They gathered earth.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:53]</span>Old Woman: Clouds gathered.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:54]</span>Old Woman: At this place, it caught/rained for them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:56]</span>Old Woman: Someone hold it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:57]</span>Old Woman: Let soil come, they did so and so, and by the command of God, it rained.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:02]</span>Old Woman: That stream is now the edge of the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:04]</span>Old Woman: From the water and soil... (unclear idiomatic phrase)... the drawing of water created a small stream.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:09]</span>Old Woman: See... they made it... cleaning it, just as you would want.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:13]</span>Old Woman: Meaning they took/held it (it was successful).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:15]</span>Old Woman: And afterwards...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:16]</span>Old Woman: Mohammed M... Abdulla... donkey... (Listing names or events, audio unclear).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:19]</span>Old Woman: They brought stones. They brought lintels/slabs, brought these things.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:22]</span>Old Woman: That too was on... you know...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:24]</span>Old Woman: They made the roof/dome, the face, they made that, they made it all.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:27]</span>Old Woman: Uh, the girls of the house, old women and slender ones came...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:30]</span>Old Woman: ...they held/took... to make a side/part.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:32]</span>Old Woman: &quot;Oh Lord, let there be a cure/solution&quot;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:34]</span>Old Woman: Let them rest themselves. Let their feet rest.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:36]</span>Old Woman: Let comfort/relief be made from it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:39]</span>Old Woman: Give yourself (submit) so there may be comfort.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:41]</span>Old Woman: Uh the world...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:47]</span>Old Woman: It is known, meaning someone did a good deed, they built it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:51]</span>Old Woman: Some painted, some held/laid stones, it is charity...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:54]</span>Old Woman: You know before the dome... their strength was like this, their poverty was like this.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:58]</span>Old Woman: And all things were like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:07]</span>Host: The merit of this relic (blessing stone)...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:09]</span>Old Woman: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:09]</span>Host: Let&#x27;s give you this relic.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:10]</span>Old Woman: Ah yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:11]</span>Host: Won&#x27;t they give you a relic, God forbid...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:13]</span>Old Woman: God forbid...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:14]</span>Host: May He accept it, God willing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:16]</span>Old Woman: God willing, may God grant the destiny too, God willing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:18]</span>Host: Uh, what is this, auntie?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:19]</span>Old Woman: It is a relic (blessing stone).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:21]</span>Host: What do they do with it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:22]</span>Old Woman: They apply it to themselves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:23]</span>Host: They rub it on themselves...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:24]</span>Old Woman: Their hand... here bring it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:28]</span>Old Woman: Like for their pain.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:32]</span>Host: Do they put it in water?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:33]</span>Old Woman: Won&#x27;t they get better?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:34]</span>Host: Will it get better?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:35]</span>Old Woman: Because we have conviction in it, it is a Saint.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:38]</span>Old Woman: This is the cure for everything. The place where the tribes/people come to.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:41]</span>Old Woman: Both... now they don&#x27;t mark/show it, but they still come.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:45]</span>Host: Uh, does anyone come from afar?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:46]</span>Old Woman: Yes, they come from Aleppo too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:48]</span>Old Woman: They come from Afrin too, from the villages too, from the surroundings, from Kukan, from [place name] villages they come to it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:54]</span>Old Woman: They come for the relic too, you know the girls come too, and the girl [prays] there and succeeds and it happens.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:59]</span>Host: Meaning they give (devote) their souls/bodies? (Or: Do they find their match?)</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:01]</span>Old Woman: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:02]</span>Host: They give with their soul, they take/marry off their daughters.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:04]</span>Old Woman: Yes, they are daughters of the house.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:05]</span>Old Woman: The one who has (a destiny) it happens, and she marries off her daughter.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:08]</span>Old Woman: They come before the Saint, they knock/stick, the stone, they give a side/part, yes...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:12]</span>Old Woman: They give the rent/due. (Unclear, possibly &quot;Dikevir didin&quot; - putting stone).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:13]</span>Old Woman: The girls also prepare rags, [unclear phrase], and do it and tie it, and the tree [unclear]... with it conviction happens...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:19]</span>Old Woman: They get a solution/cure.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:20]</span>Host: Has there been anyone from that village (who experienced this)?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:21]</span>Old Woman: There was. Many, many names, like Jamil and Jamil. Jamil and Jamil. Jamil, the very house of our uncle was like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:28]</span>Old Woman: And the whole world (everyone) is like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:30]</span>Old Woman: They were these people, they were these people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:33]</span>Old Woman: These girls succeed here, those don&#x27;t succeed, the one who for example from the door, that one happens like this, come... Mashallah, knock/try and it gets solved.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:40]</span>Old Woman: It&#x27;s all like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:41]</span>Old Woman: Yes?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:42]</span>Old Woman: A lame person, was in our village, our elder carried him on his back and brought him, right here, this this... hut/place, he slept in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:50]</span>Old Woman: He said in the morning, he got up, walked, and went all the way home.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:52]</span>Old Woman: That was our neighbor. Mashallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:54]</span>Old Woman: He walked and went.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:55]</span>Old Woman: And many humans/people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:56]</span>Old Woman: The lame person comes, they bring him before (the shrine).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:58]</span>Old Woman: Meaning a person with much belief sleeps in it, he sees the Saint in a dream of goodness.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:01]</span>Old Woman: Didn&#x27;t your people fear?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:02]</span>Old Woman: He didn&#x27;t fear things.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:04]</span>Host: Is your spouse/family head deceased?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:05]</span>Old Woman: It&#x27;s been a long time, twenty years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:07]</span>Host: May God have mercy on him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:09]</span>Old Woman: My husband was my cousin, and he wasn&#x27;t a stranger, he wasn&#x27;t new.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:13]</span>Old Woman: We also always had weapons.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:14]</span>Old Woman: And he wasn&#x27;t afraid.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:16]</span>Host: How much is your age (how old are you), auntie?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:17]</span>Old Woman: Eighty-five.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:18]</span>Host: Mashallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:31]</span>Host: Hello.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:32]</span>Girl: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:33]</span>Host: What is this tree?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:34]</span>Girl: Ah, by God, this is the tree of wishes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:36]</span>Girl: And, you know, everyone has their own wish.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:38]</span>Girl: Comes, sticks/ties their rag here, and asks for their wish.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:42]</span>Host: Do wishes happen (come true)?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:44]</span>Girl: By God, this is a symbol of optimism, you know...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:46]</span>Host: Meaning, is there anyone who has tried it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:47]</span>Girl: Yes, naturally.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:48]</span>Host: Have they come here and achieved their wish?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:49]</span>Girl: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:50]</span>Girl: For example, I came last year, and I asked for a wish of mine again, and it happened.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:55]</span>Host: It happened?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:56]</span>Girl: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:56]</span>Host: What was your wish?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:57]</span>Girl: By God, my wish was that I... arrive/succeed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:00]</span>Girl: That I finish a Baccalaureate (High School Diploma) result.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:02]</span>Girl: And God willing I will succeed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:03]</span>Girl: And after the Baccalaureate too, I want to enter the university stage.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:06]</span>Girl: Meaning, I succeed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:07]</span>Host: Did you succeed? Did you come last year?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:09]</span>Girl: Yes, I applied/presented last year, and this year I want to finish.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:12]</span>Host: What did you study?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:13]</span>Girl: I want to finish the Baccalaureate again.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:14]</span>Host: Your name?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:15]</span>Girl: Jano.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:15]</span>Host: Jano?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:16]</span>Girl: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:17]</span>Host: Mashallah, what a name.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:18]</span>Host: Are you from Juq?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:19]</span>Girl: Yes, I am from Juq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:20]</span>Girl: And our village is very nice.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:22]</span>Girl: And this is the tree of wishes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:23]</span>Girl: Yes, we come to the place.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:24]</span>Host: I also pray to God that you get your wishes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:26]</span>Girl: God willing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:27]</span>Host: We also thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:27]</span>Girl: Be healthy, thanks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:58]</span>Host: Dear viewers, we took you towards a shrine...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:01]</span>Host: But no, this village of Juq, half of them do not give up this habit.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:05]</span>Host: They made some food for us, and diverted our visit.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:10]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:48]</span>Host: Dear viewers, we have reached the end of the program Ax û Welat (Land and Country).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:51]</span>Host: As we saw, we spent the time in the village of Juq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:54]</span>Host: At this end, we have reached the artist Mehemed Beşar...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:59]</span>Host: And the saz player Mehmûd Osman.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:02]</span>Host: Welcome to the program Ax û Welat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:03]</span>Mehemed Beşar: You are welcome brother Sherif, teacher, upon heads and upon eyes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:08]</span>Mehemed Beşar: We also thank you, you undergo trouble...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:11]</span>Mehemed Beşar: And your work... and with it, much health to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:13]</span>Host: May you live long, thanks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:14]</span>Host: What have you prepared today, for us to conclude?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:17]</span>Mehemed Beşar: By God... there is a song, it is very sweet to my heart.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:21]</span>Mehemed Beşar: It is also about the Land and Country.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:24]</span>Mehemed Beşar: So I want to... [sing] it...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:26]</span>Host: The homeland is sweet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:27]</span>Mehemed Beşar: As much as you say sweet, it is very sweet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:29]</span>Mehemed Beşar: The homeland is mother, father, brother, it is everything.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:35]</span>Host: Dear viewers, listen, and here is Mehemed Beşar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:42]</span>Mehemed Beşar: I sold your place and property cheaply.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:48]</span>Mehemed Beşar: I fell far from my village, today I have no patience.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:54]</span>Mehemed Beşar: The place of my grandfather and father, today it smells of you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:00]</span>Mehemed Beşar: Eating bread from the griddle, the air is by divine power.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:05]</span>Mehemed Beşar: The place of my grandfather and father, today it smells of you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:12]</span>Mehemed Beşar: Eating bread from the griddle, the air is by divine power.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:18]</span>Mehemed Beşar: Always always roam, always always contemplate.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:24]</span>Mehemed Beşar: You won&#x27;t find [a place] as sweet as our village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:30]</span>Mehemed Beşar: Always always roam, always always contemplate.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:35]</span>Mehemed Beşar: You will never find [a place] as beautiful as the Land and Country.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:58]</span>Mehemed Beşar: Night fell upon me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:00]</span>Singer 1: I am the owner...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:03]</span>Singer 1: Some dreams and fantasies, brought to my memory.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:08]</span>Singer 1: The gathering of the great house, on the back of those roofs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:13]</span>Singer 1: He spread his table, he set down his morsel.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:18]</span>Singer 1: The gathering of the great house, on the back of those roofs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:23]</span>Singer 1: He spread his table, he gave me his morsel.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:30]</span>Singer 1: Always always wander, always always weave.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:35]</span>Singer 1: You will not see [a place] as sweet as our village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:40]</span>Singer 1: Always always wander, always always weave.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:45]</span>Singer 1: You will never see [a place] as beautiful as the homeland&#x27;s soil.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:50]</span>Singer 1: Always always wander, always always weave.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:55]</span>Singer 1: You will not see [a place] as sweet as our village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:08]</span>Singer 1: The white scarf is [fabric type], the robe is unique.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:13]</span>Singer 1: The turtledove and the goldfinch, on a sprout.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:18]</span>Singer 1: Blessings and abundance overflowed, on the sacks and bags.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:23]</span>Singer 1: Spring gave good news to the roses and flowers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:28]</span>Singer 1: Blessings and abundance overflowed, on the sacks and bags.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:33]</span>Singer 1: Spring gave good news to the roses and flowers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:37]</span>Singer 1: Always always wander, always always weave.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:41]</span>Singer 1: You will not see [a place] as sweet as our village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:46]</span>Singer 1: Always always wander, always always weave.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:50]</span>Singer 1: You will never see [a place] as beautiful as the homeland&#x27;s soil.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:55]</span>Singer 1: Always always wander, always always weave.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:59]</span>Singer 1: You will not see [a place] as sweet as our village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:04]</span>Singer 1: Always always wander, always always weave.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:09]</span>Singer 1: You will never see [a place] as beautiful as the homeland&#x27;s soil.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:46]</span>Singer 2: Oh land...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:49]</span>Singer 2: Oh son, land...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:54]</span>Singer 2: Oh land...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:59]</span>Singer 2: Oh son, land...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:04]</span>Singer 2: Oh land...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:09]</span>Singer 2: Oh son, land...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:14]</span>Singer 2: Oh land...</p>
+                </div>
+            </div>
+
+            <!-- Kurdish Transcript Card -->
+            <div id="kurdish" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transkrîpta bi Kurmancî</h2>
+                    <button class="copy-btn" onclick="copySection('transcript-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Kopî bike
+                    </button>
+                </div>
+                <div id="transcript-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30]</span>Man: Ax welat, lo welat... lo welat...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:39]</span>Man: Ax welat, lo welat... lo welat...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:44]</span>Man: Ax welat, lo welat...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:19]</span>Host: Dengê tembûra Mehmûdê Osman tê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:22]</span>Host: Wek mizgîna ajmeratê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:25]</span>Host: Bînerên hêja, dema we xweş be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:27]</span>Host: Bernameya Ax û Welat, îro dîsa em mêvan in...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:29]</span>Host: Li Çiyayê Kurmênc, em hatin gundê Cûqê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:39]</span>Singer: Hey lo lo lo...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:46]</span>Singer: Hey lo lo lo...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:52]</span>Singer: Hey lo lo lo...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:05]</span>Singer: Bejna...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:31]</span>Host: Spas ji bo koma we.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:33]</span>Musician: Spas ji we re jî, ji bernameya we Ax û Welat re.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:36]</span>Host: Navê koma we Hozan bû, ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:38]</span>Musician: Temam, Hozan e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:40]</span>Host: Hûn kîjan gundî ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:41]</span>Musician: Em ji gundê Cûqê ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:43]</span>Host: Hûn çend kes in?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:44]</span>Musician: Em heşt kes in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:46]</span>Host: Bes evana ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:47]</span>Musician: Temam, hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:49]</span>Host: Serkeftinê ji we re dixwazim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:50]</span>Musician: Sax bin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:52]</span>Host: Hûn jî ekîd... amadekariyê ji bo Newrozê dikin, ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:56]</span>Musician: Belê, em amadekariyê ji Newrozê re dikin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:59]</span>Musician: ...û ji her tiştî re, ji minasebeta Kurdî re em dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:03]</span>Host: Baş e, spas dikim. Serkeftin ji we re.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:05]</span>Group: Dengê qadê cîhanê, deng vedaye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:09]</span>Group: Deng vedaye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:12]</span>Group: Ji qada hêvînê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:22]</span>Group: Nav dîwarê zindana, heya serê çiya.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:28]</span>Group: Hildin ala sor, berxwedan jiyan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:34]</span>Group: Berxwedan jiyan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:36]</span>Group: Nav dîwarê zindana, heya serê çiya.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:41]</span>Group: Hildin ala sor, berxwedan jiyan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:45]</span>Group: Berxwedan jiyan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:48]</span>Host: Temaşevanên hêja, em hemû gihîştin cem gora şehîd Cemaleddîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:26]</span>Host: Navê te bi xêr?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:27]</span>Mêvan: Mihemed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:28]</span>Host: Birê Mihemed, vî navê vê ciyê Ziyaretê çi tî gotin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:31]</span>Mêvan: Ciyê Ziyaretê, Cêm Ziorat tî gotin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:33]</span>Host: Tamam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:34]</span>Host: Ev Şehîda ji mêj da ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:35]</span>Mêvan: Ev Şehîda bi hezar salan e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:37]</span>Host: Bi hezar salan da ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:38]</span>Mêvan: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:39]</span>Host: E berê xanî bû, lê we çêkir? Mala gundî çêkir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:43]</span>Mêvan: Ê na... berê na xanî bû. Hinek hat... e... berê... Eqîd Xaxî xanî kir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:48]</span>Mêvan: Hinek hat, e... bûn mîna serkêş û tişt.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:52]</span>Host: Ji kuderê bûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:53]</span>Mêvan: Ji Cûqê bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:54]</span>Host: Ji gundê we bûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:55]</span>Mêvan: Ji gundê me bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:57]</span>Host: Miletê têtin ber Ziyaretê, çi dikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:58]</span>Mêvan: Milet têtin... yeşîdî... Ziyaret... bixwe Şehîdek e û muqeddes e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:05]</span>Mêvan: Û Şehîdî bixwe muqeddes in yanî. Û qenaeteke jî yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:09]</span>Mêvan: Em muqtenî&#x27;in (qane ne) bi vî Şehîdî. Ne tenê bi vî Şehîdî, bi Şehîda giştik bawerî heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:15]</span>Host: Tamam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:16]</span>Mêvan: Û însanek qişkê (piçûk) xwa nabin, ew însanek mesela tê teberik dibin, axê dibin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:22]</span>Mêvan: Veda dikin, ew paçikekî xwa bi darê da dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:26]</span>Mêvan: Tabî ev jî qenaetek e yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:27]</span>Host: Yanî kes bigihîşt mirazê xwe?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:28]</span>Mêvan: Tabî, ekîd bûn yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:31]</span>Host: Yanî pir, zorkê xwa neda dikirin? Zorkî ber vê Ziyaretê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:35]</span>Mêvan: Nimê dikirin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:36]</span>Host: Li ber Xwedê digerîn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:37]</span>Mêvan: Tabî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:38]</span>Host: Û Xwedê dan yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:39]</span>Mêvan: Danê. Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:40]</span>Host: Û pir geriyan ber miraz... bigihîştin mirazê xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:43]</span>Mêvan: Tabî û nexweş bûn, çêbûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:45]</span>Host: Çêbûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:46]</span>Mêvan: E tabî, erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:47]</span>Host: Me go, eno, qenaetek e jî yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:49]</span>Host: Ji kuderê tên, ma tenê ji gundê we tên?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:51]</span>Mêvan: Ji kuderê tên... ne her... ji mîş da tên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:54]</span>Host: Yanî ji Efrînê jî tên?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:55]</span>Mêvan: Ji Efrînê jî tên, ji gunda jî tên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:57]</span>Host: Ji dera jî tên yanî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:58]</span>Mêvan: Tên Ziyaretê yanî... têtin... ji Efrînê tê, ji gunda tê, ji Cûqê, ji Çeqelêlûn tên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:04]</span>Mêvan: Eno dizanin eno Şehîdek navê xwe Şêx Cemadîn li vir heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:08]</span>Mêvan: Tên ber gund e yanî. Nimê dikin, diayê dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:11]</span>Mêvan: Û berê dehatin, şûînî (şînî) danîbûn li vî derî, nimê dikirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:14]</span>Mêvan: Ehlê Kûkanê, Cûqê, û hewa dorgir yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:17]</span>Host: E derdorê Cûqê ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:18]</span>Mêvan: Tabî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:19]</span>Host: Gundê derdorê Cûqê gişt tevra, nimê dikin ber...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:22]</span>Host: Li ber Xwedê xwa digerin, digihîjin mirazê xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:24]</span>Mêvan: Tabî. Ev tişta pirr ji... bî yanî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:27]</span>Mêvan: E... me go yanî... Muqeddes e yanî ev tişta.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:31]</span>Host: Şehîd Muqeddes e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:32]</span>Host: Me jî spas, seet xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:34]</span>Mêvan: Seet xweş begê yê sîdî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:35]</span>Mêvan: Seet xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:13]</span>Jina Kal: Kurik nexweş bû, hişk bû dîrok.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:18]</span>Jina Kal: Di xewnê da, hewa çû ber sîrêm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:21]</span>Jina Kal: Mista roş (roj) avête ebadî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:24]</span>Jina Kal: Go paşê, rabû meşî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:27]</span>Jina Kal: O din go navê xwa pirs ke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:29]</span>Jina Kal: Ehliya dîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:31]</span>Jina Kal: Na pirs kir, go navê min Şêx Cemadîn e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:34]</span>Jina Kal: Go werin ser mi Ziyaretê çêkin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:37]</span>Jina Kal: Ê go emê kî ça werin? Tê ji mera cî xwa... belî bike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:41]</span>Jina Kal: Kavirê li ber vana cî sêrê heq li ber ra bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:44]</span>Jina Kal: Bê lome bê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:45]</span>Jina Kal: Û çê ginde dîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:47]</span>Jina Kal: Wê havîn bû. Baran tune bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:49]</span>Jina Kal: Pîr û mîr kom bûn. Ax kom kirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:53]</span>Jina Kal: Ewr koom (kom) bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:54]</span>Jina Kal: Li vî derî, jê ra girtin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:56]</span>Jina Kal: Êkê bigrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:57]</span>Jina Kal: Ax bêtin, filan kirin, o bi emrê Xwedê baranê lê kir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:02]</span>Jina Kal: Ku jar nika hafê gindî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:04]</span>Jina Kal: Te ji av û xakê, qodî sofanê go... kuşandinê av çûk çêkir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:09]</span>Jina Kal: Se... çêkirin xwa... şûjikirinê, wekî tê dixwazî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:13]</span>Jina Kal: Yanî girtin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:15]</span>Jina Kal: Û paşê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:16]</span>Jina Kal: Mihemedê M... Ebdile... kero...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:19]</span>Jina Kal: Kavir anîn. Ba platn anîn, ve tişta anîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:22]</span>Jina Kal: Hew jî li ser yanî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:24]</span>Jina Kal: Bac qopyo çêkirin, wac, ewa çêkirin, gi çêkirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:27]</span>Jina Kal: Ê keçkê xwanê bûn, pîrik û yekî barîk wer...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:30]</span>Jina Kal: ...girtin bi kutte hêlekê çêke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:32]</span>Jina Kal: &quot;Ya Reb hal bibê&quot;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:34]</span>Jina Kal: Xwe bi xwa bêsîn. Ê pê xwa bêsîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:36]</span>Jina Kal: We rehetî jê bê çêke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:39]</span>Jina Kal: Xwa bide e rehet bibê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:41]</span>Jina Kal: Ê dinya...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:47]</span>Jina Kal: Er zan e, yanî xêrek lê kir, çêkirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:51]</span>Jina Kal: Hina boyax kir, hina kavir girtin, xêr e...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:54]</span>Jina Kal: Tu berê jî qopyo... qewet xwa hona bû, feqîret xwa hona bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:58]</span>Jina Kal: Û gi tişta wuna bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:07]</span>Host: Heqê vê teberkê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:09]</span>Jina Kal: Belê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:09]</span>Host: Me ne vî teberkê te bidin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:10]</span>Jina Kal: Ha erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:11]</span>Host: Ma ne teberkê te bidin, Xwedê neke...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:13]</span>Jina Kal: Xwedê neke...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:14]</span>Host: Bila qebûl ke, inşallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:16]</span>Jina Kal: Inşallah, Xwedê bi qismet ke jî inşallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:18]</span>Host: Ê ev çiye metê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:19]</span>Jina Kal: Teberk e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:21]</span>Host: Ev çi dikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:22]</span>Jina Kal: Di xwa didin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:23]</span>Host: Pîmiyê di xwa...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:24]</span>Jina Kal: Destê xwa... ka bîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:28]</span>Jina Kal: Wekî êşa xwa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:32]</span>Host: Dikin avê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:33]</span>Jina Kal: Manî çêbibe?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:34]</span>Host: Çêbê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:35]</span>Jina Kal: Te ma qenaeta me pê heye, Şehîd e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:38]</span>Jina Kal: Ev her derman e. Cokê (Cihê ku) êlet têyn (tên) ber.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:41]</span>Jina Kal: Hem... ew nika nîşaz (nîşan) nakin, hem tîn (tên).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:45]</span>Host: Ê kes ji dûr tê yanî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:46]</span>Jina Kal: Erê, ji Helebê jî tên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:48]</span>Jina Kal: Ji Efrînê jî tên, ji gunda jî tên, ji dorgirê tên, ji kûkanê tên, ji vage (vacê?) gundê go tên ber.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:54]</span>Jina Kal: Tên ber teberkê jî, manî keçka jî tê û keçik jî vird (wird) û necix (serkeftî) û dibê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:59]</span>Host: Yanî wayê (wan yê) canî xwa didin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:01]</span>Jina Kal: Lê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:02]</span>Host: Bi canî xwa din, keçkê xwa dibin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:04]</span>Jina Kal: Lê, keçkê xwanê bin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:05]</span>Jina Kal: Ê heye dibe û demrê (damerî) keçkê xwa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:08]</span>Jina Kal: Tên li ber, Şehîd, dikutin, sengo, hêlekê o didin, lê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:12]</span>Jina Kal: Dikirê didin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:13]</span>Jina Kal: Keçik jî paçikê çêdikin, mija dêrik, û dikin û diştînin, û dar nermal... pê qenaet dibe...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:19]</span>Jina Kal: Ew hal dibin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:20]</span>Host: Kaş (kes) gundî ê wî tunî biye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:21]</span>Jina Kal: Bû. Pirr, navê pir, ko Cemîl û Cemîl e. Cemîl û Cemîl e. Cemîl nefs malê apê me wahi bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:28]</span>Jina Kal: Û alem giştk waye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:30]</span>Jina Kal: Î gno bûn, î gno bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:33]</span>Jina Kal: Î keçik vird necixin, î no necixin, î hek mesela ji ber derê, î hona dibê, were... maşallah derbikî û hal dibê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:40]</span>Jina Kal: Tev waye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:41]</span>Jina Kal: Lê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:42]</span>Jina Kal: Yekî kût, li gundê me bû, kalem (kalê me) el pştoxo (pişta xwa) kir anî, vira ni, vî vî... kolî va tê de xew kirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:50]</span>Jina Kal: Go sibê, rabû meşî çû gişt mal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:52]</span>Jina Kal: Ew cîranê me. Maşallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:54]</span>Jina Kal: Meşî çû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:55]</span>Jina Kal: Û pir însan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:56]</span>Jina Kal: Kût tê, tînin ber.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:58]</span>Jina Kal: Yanî însan pir baweriyê tê da xew ke, dibîne Şehîd l &#x27;ma xêrê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:01]</span>Jina Kal: Qomê te ne ditirsî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:02]</span>Jina Kal: Ji tişta ne ditirsî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:04]</span>Host: Kulfetê te rehmetî bû?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:05]</span>Jina Kal: Ji mêj bû, bîs sal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:07]</span>Host: Xwedê rehma xwa lê ke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:09]</span>Jina Kal: Kulfetê min pismamê min bû, û neyî xerîb bû, no bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:13]</span>Jina Kal: Tim jî sîlahê me he bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:14]</span>Jina Kal: Û ne ditirsî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:16]</span>Host: Umrê te çiqas e metê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:17]</span>Jina Kal: Heştê pênc.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:18]</span>Host: Maşallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:31]</span>Host: Marhaba.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:32]</span>Keçik: Ehlen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:33]</span>Host: Ev dara çi ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:34]</span>Keçik: A wallahî ev dara miraza ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:36]</span>Keçik: Û yanî her yekî mirazê xwa heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:38]</span>Keçik: Tê paçê xwa vird va dizeliqîne, û mirazê xwa dixwaze.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:42]</span>Host: Miraz dibin yanî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:44]</span>Keçik: Wallahî ev remzê tefaûl e, yanî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:46]</span>Host: Yanî kesî ceribandî heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:47]</span>Keçik: Erê, teb.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:48]</span>Host: Hatine vira û gihiştine mirazê xwa?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:49]</span>Keçik: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:50]</span>Keçik: Mesela ez par çûne hatim, û min mirazkê xwa dîsa xwest, û bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:55]</span>Host: Bû?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:56]</span>Keçik: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:56]</span>Host: Mirazê te çi bû?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:57]</span>Keçik: Wallahî mirazê min, eno ez wusl (wesl) binecixim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:00]</span>Keçik: Ez bakelorya yekî hisl (hasil) biqedînim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:02]</span>Keçik: Û inşallah ez binecixim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:03]</span>Keçik: Û baedî bakelorya jî, ez dixwazim têkevim merheleyê camîa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:06]</span>Keçik: Yanî ez binecixim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:07]</span>Host: Tu necixî? Te sala çûnî hat?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:09]</span>Keçik: Erê, miqeddim (pêşkêş) man sala çûnî, û îsal jî dixwazim biqedînim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:12]</span>Host: Te çi xwand?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:13]</span>Keçik: Bakelorya dîsa ez dixwazim biqedînim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:14]</span>Host: Navê te?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:15]</span>Keçik: Jano.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:15]</span>Host: Jano?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:16]</span>Keçik: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:17]</span>Host: Maşallah, çi nave.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:18]</span>Host: Tu ji Cûqê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:19]</span>Keçik: Erê, ez ji Cûqê me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:20]</span>Keçik: Û gundê me zûr xweş e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:22]</span>Keçik: Û ev jî dara miraza ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:23]</span>Keçik: Erê, em tên bi derê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:24]</span>Host: Ez jî ber Xwedê digerim mirazê xwa bînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:26]</span>Keçik: Inşallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:27]</span>Host: Me jî spas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:27]</span>Keçik: Saxbe, spas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>[Mûzîk]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:58]</span>Host: Temaşevanên hêja, me te bir ber ziyaretekê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:01]</span>Host: Lê na, ev gundê Cûqê, nîvê wan jî vê xurmê bernadin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:05]</span>Host: Xwarin ji me ra hinek çêkirin, berê ziyareta me xwar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:10]</span>[Mûzîk]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:48]</span>Host: Temaşevanên hêja em gihiştin dawiya bernameya Ax û Welat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:51]</span>Host: Wekû me dît, berrê ra li gundê Cûqê me derbas kir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:54]</span>Host: Li vê dawiyê da, em gihiştin cem hunermend Mehemed Beşar...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:59]</span>Host: Û tembûrvan Mehmûd Osman.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:02]</span>Host: Bi xêr hatin bernameya Ax û Welat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:03]</span>Mehemed Beşar: Tu bi xêr hatî birayê Şerîf mamosta, ser seran ser çavan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:08]</span>Mehemed Beşar: Em jî spas dikin, zehmetiyê tu dikişînî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:11]</span>Mehemed Beşar: Û karê te... û pê ra gelekî saetxweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:13]</span>Host: Tu her bijî, spas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:14]</span>Host: Te çi amade kiriye îro, em bidawî bikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:17]</span>Mehemed Beşar: Wallahî... stranek heye, ber dilê min pir şêrîn e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:21]</span>Mehemed Beşar: Ew jî li ser Ax û Welat e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:24]</span>Mehemed Beşar: Êdî ez dixwazim ez... wê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:26]</span>Host: Welat şêrîn e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:27]</span>Mehemed Beşar: Ta bêje şêrîn e, gelekî şêrîn e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:29]</span>Mehemed Beşar: Welat dayik e, bav e, bira ye, her tişt e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:35]</span>Host: Temaşevanên hêja, guhdar bin û Mehemed Beşar va.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:42]</span>Mehemed Beşar: Min bi erzanî firot cîh û malê te.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:48]</span>Mehemed Beşar: Ji gundê xwe dûr ketim, îro sebram nayê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:54]</span>Mehemed Beşar: Cîhê kal û bavê min, îro bêhna te tê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:00]</span>Mehemed Beşar: Xwarina nanê sêlê, hewa bi qudretê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:05]</span>Mehemed Beşar: Cîhê kal û bavê min, îro bêhna te tê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:12]</span>Mehemed Beşar: Xwarina nanê sêlê, hewa bi qudretê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:18]</span>Mehemed Beşar: Timê timê biger, timê timê bifsir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:24]</span>Mehemed Beşar: Wek gundê me şêrîn tu nabînî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:30]</span>Mehemed Beşar: Timê timê biger, timê timê bifsir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:35]</span>Mehemed Beşar: Wek Ax û Welat xweşik tu car tu nabînî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:58]</span>Mehemed Beşar: Şev qol bû min da hat...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:00]</span>Singer 1: Ez a xwedanî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:03]</span>Singer 1: Henek xewn û xeyal, li bîra xwe hanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:08]</span>Singer 1: Civata mala mezin, ser pişta wan xanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:13]</span>Singer 1: Bi sifra xwe têve da, bi pariya xwe danî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:18]</span>Singer 1: Civata mala mezin, ser pişta wan xanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:23]</span>Singer 1: Bi sifra xwe têve da, pariya xwe min danî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:30]</span>Singer 1: Timî timî biger, timî timî biftin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:35]</span>Singer 1: Wek gundê me şîrîn tu nabînî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:40]</span>Singer 1: Timî timî biger, timî timî biftin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:45]</span>Singer 1: Wek axa welat xweşik tucar tu nabînî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:50]</span>Singer 1: Timî timî biger, timî timî biftin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:55]</span>Singer 1: Wek gundê me şîrîn tu nabînî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:08]</span>Singer 1: Şerfa sipî t&#x27;alîş, cûbe lew yê teka.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:13]</span>Singer 1: Qumrî ser çetçivîn, li ser sîbîlekê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:18]</span>Singer 1: Xêr û bêrê pir çûn, ser qil û şeleka.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:23]</span>Singer 1: Buharê mizgîn da, li gul û çîçeka.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:28]</span>Singer 1: Xêr û bêrê pir çûn, ser qil û şeleka.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:33]</span>Singer 1: Buharê mizgîn da, li gul û çîçeka.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:37]</span>Singer 1: Timî timî biger, timî timî biftin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:41]</span>Singer 1: Wek gundê me şîrîn tu nabînî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:46]</span>Singer 1: Timî timî biger, timî timî biftin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:50]</span>Singer 1: Wek axa welat xweşik tucar tu nabînî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:55]</span>Singer 1: Timî timî biger, timî timî biftin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:59]</span>Singer 1: Wek gundê me şîrîn tu nabînî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:04]</span>Singer 1: Timî timî biger, timî timî biftin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:09]</span>Singer 1: Wek axa welat xweşik tucar tu nabînî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:46]</span>Singer 2: Ax welato...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:49]</span>Singer 2: Lawo welato...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:54]</span>Singer 2: Ax welato...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:59]</span>Singer 2: Lawo welato...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:04]</span>Singer 2: Ax welato...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:09]</span>Singer 2: Lawo welato...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:14]</span>Singer 2: Ax welato...</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on January 19, 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Copy to clipboard function
+        function copySection(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Find the button that was clicked and update its text
+                const btn = event.target.closest('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ✓';
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript | Diraqliya - Ax û Welat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .jump-btn { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.875rem; transition: all 0.2s; }
+        .jump-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; font-size: 0.75rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .copy-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Diraqliya</h1>
+            <p class="text-xl subtext mt-2">Transcript from Ax û Welat</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- General Info Card -->
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transcript Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Village</h3>
+                        <p class="text-lg">Diraqliya</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Source Channel</h3>
+                        <p class="text-lg">Ax û Welat</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Length</h3>
+                        <p class="text-lg">28:26</p>
+                    </div>
+                    <div class="mt-4">
+                    <a href="https://www.youtube.com/watch?v=IGKR7PZ0VDA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+                </div>
+                <!-- Jump Buttons -->
+                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t themed-border">
+                    <a href="#english" class="jump-btn">Go to Translation</a>
+                    <a href="#kurdish" class="jump-btn">Biçe Transkrîptê</a>
+                </div>
+            </div>
+
+            <!-- English Translation Card -->
+            <div id="english" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">English Translation</h2>
+                    <button class="copy-btn" onclick="copySection('translation-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Copy
+                    </button>
+                </div>
+                <div id="translation-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:33]</span>Host: Dear viewers, good day to you. The Ax û Welat program today is at Mount Kurmenc.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:39]</span>Host: We have come to the village of Diriqliya.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:41]</span>Host: We saw that there is a mill here. A new mill has opened.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:45]</span>Host: Let’s watch together how this mill continues its work.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:57]</span>Host: Hello to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:58]</span>Guest 1: You are welcome, welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:59]</span>Host: Good times to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:00]</span>Guest 1: Thank you, may God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:02]</span>Host: We want some details, we became your guests. We came to the village of Diriqliya, we heard a wonderful new mill has opened here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:10]</span>Host: Before we get to know you, then get to know the mill, we want to know something about your work.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:15]</span>Guest 1: My name is Shaban. Welcome to your arrival.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:19]</span>Guest 1: This mill was built in Diriqliya.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:22]</span>Guest 1: It has been under construction for six months. But it has entered production just one month ago.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:28]</span>Guest 1: The mill has been working for a month.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:30]</span>Guest 1: Its production is good, it is fine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:32]</span>Guest 1: Currently, we are producing up to 40 tons.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:36]</span>Guest 1: Our work is 24 hours.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:39]</span>Guest 1: We have split it into two shifts. 12 hours by day, 12 hours by night.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:46]</span>Guest 1: Up to the chute [filling station]... close to 15 workers are working.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:53]</span>Guest 1: Among them there are technical operators. He also has assistants.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:58]</span>Guest 1: Uh, now we have been in motion for a month.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:02]</span>Guest 1: Since three days ago, we are now distributing flour.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:06]</span>Guest 1: Perhaps the region&#x27;s bakeries will turn their load [orders] towards us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:10]</span>Guest 1: Up to the chute, for 12 hours, we need about 15 workers. 15 workers work.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:17]</span>Guest 1: They work 12 hours. Among them are two people, they call them technical operators here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:22]</span>Guest 1: Meaning they understand the machines, the movement, the production.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:27]</span>Guest 1: The ratio of flour and the ratio of bran, meaning they have some expertise.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:31]</span>Guest 1: I am among them too. Roughly 14 to 15 hours a day, I am among them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:38]</span>Host: Meaning, how is the opinion? Does the community come here for flour?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:41]</span>Guest 1: Place... we were producing up to 40 tons now. We are still in the trial phase.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:46]</span>Guest 1: Meaning, as time goes on, this will come out [improve].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:49]</span>Host: Maybe it will get better.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:50]</span>Guest 1: It will get better. But it&#x27;s not enough. God willing, after a month, up to two months, we will increase it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:59]</span>Guest 1: Meaning we will increase it by approximately 15 tons.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:02]</span>Guest 1: We are expanding, they call it the annex here, so we say it will be enough for the region.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:08]</span>Guest 1: May God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:09]</span>Host: Thank you. Now, what kind of machines specifically are inside?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:12]</span>Guest 1: There are many machines. There is a pulling [intake] machine, a washing one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:18]</span>Guest 1: There is a sieve, then there is a weed seed remover.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:23]</span>Guest 1: Then there is a fine sieve, a flour one, a grinder.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:28]</span>Guest 1: It&#x27;s close to 20 machines. It is all industrial.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:32]</span>Guest 1: Meaning, it&#x27;s the first mill in the region... that is technical. It is a technical mill. Its production is good. Its flour is very good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:41]</span>Guest 1: They are very satisfied.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:43]</span>Host: Are there any elsewhere in Rojava, or is it only at your place?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:46]</span>Guest 1: Until now, it hasn&#x27;t been built. Up to this date, none have been built yet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:50]</span>Guest 1: But God willing, we will add to this. We need to add 15 tons to it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:56]</span>Guest 1: This is also coming soon. After a day, or a month, two more months, God willing it will be increased.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:04]</span>Host: Okay. Now where will we move on to?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:06]</span>Guest 1: I thank you. For your arrival.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:10]</span>Guest 1: The Ronahi crew, and your group, and this special program...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:15]</span>Guest 1: I thank you and wish you success. The name of your program is Ax û Welat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:20]</span>Host: Good, thanks, you&#x27;re welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:21]</span>Guest 1: Thank you, may God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:16]</span>Host: Good shift to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:17]</span>Guest 2: Mustafa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:18]</span>Host: Mr. Mustafa, where does the work start?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:21]</span>Guest 2: Well, our work starts from here. This is called the &quot;ramp&quot; [dump pit].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:26]</span>Guest 2: At this time wheat doesn&#x27;t come in sacks. This comes in bulk via tipper trucks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:31]</span>Guest 2: The tipper truck brings it here, parks over here. The owner empties it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:36]</span>Guest 2: Once emptied here, right here is the auger [intake].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:40]</span>Guest 2: Pushed here, right here is the auger. The operation is automatic.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:45]</span>Guest 2: Uh, there are buckets. It goes to the first sieve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:49]</span>Guest 2: It goes over there and the other operation begins.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:53]</span>Host: Meaning, which floor?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:54]</span>Guest 2: The third floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:55]</span>Host: Now from here we will go to the third floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:57]</span>Guest 2: Yes, now let&#x27;s go to the third floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:59]</span>Host: Okay, please go ahead.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:01]</span>Guest 2: Yes, please go ahead.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:02]</span>Host: Dear viewers, now we have reached the third floor. We want to know now, what is the name of this?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:09]</span>Guest 2: As I said, this is the first stage the wheat comes out of.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:13]</span>Guest 2: Uh, I said the first stage comes out from the ground, from the ramp. It comes out via the elevator.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:19]</span>Guest 2: It comes to the first sieve. They call this the sieve, the first one. Comes to the first sieve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:25]</span>Guest 2: This operation sorts it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:27]</span>Guest 2: If there is dirt, if there are stones... for example if there is fine wheat, tares, it sorts all of this.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:34]</span>Guest 2: It separates them, beneath it there are storage silos.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:37]</span>Guest 2: It puts the fine wheat to one side, the dirt to one side.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:41]</span>Guest 2: And the clean, pure wheat, that goes to another silo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:45]</span>Guest 2: Uh, with this operation, now it goes down to the second floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:50]</span>Host: Now from here it goes down to the second floor?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:52]</span>Guest 2: Yes, it goes down to the second floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:54]</span>Host: Let&#x27;s go to the second floor, let&#x27;s go down.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:15]</span>Host: Now what does this do here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:17]</span>Guest 2: This, I said, is the first sieve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:19]</span>Guest 2: Wheat came out of it, it gives it to this sieve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:22]</span>Guest 2: We sell... in the other oven/container too...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:25]</span>Guest 2: Meaning this brings out the clean wheat for us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:28]</span>Guest 2: This clean wheat goes to one side.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:31]</span>Guest 2: And this is the fine and broken wheat. This goes to another side.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:36]</span>Host: What do they do with this later, do they throw it away or what?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:38]</span>Guest 2: No, this is sold.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:42]</span>Guest 2: Yes, it is sold, this is broken wheat, not processed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:45]</span>Guest 2: This is sold, livestock owners buy it, it is known, they do that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:52]</span>Guest 2: Uh... and this... on top of this the elevator pulls again to the &quot;aspirator&quot;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:58]</span>Guest 2: There is an aspirator inside of it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:00]</span>Guest 2: Uh, this other aspirator... blows air... it sucks the dust inside of it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:07]</span>Guest 2: Uh, how should I say, it is a wind operation.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:10]</span>Guest 2: Cleaning that dust, dirt, for example if there is filth inside, or broken wheat, whatever it is... the aspirator sucks all that dirt via air.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:21]</span>Guest 2: Uh, and the stage...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:23]</span>Host: What is the name of this iron [machine]? What is the name of this iron?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:26]</span>Guest 2: This is the stone machine [de-stoner].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:29]</span>Guest 2: The wheat comes out of it afterwards, goes to the first floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:32]</span>Guest 2: From the first floor it ascends... it becomes poured into this.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:36]</span>Guest 2: The stone machine separates from within it, cleans it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:39]</span>Host: Where does it throw the stones?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:40]</span>Guest 2: The stones are here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:42]</span>Guest 2: Uh, I said this is also the stone machine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:45]</span>Guest 2: Afterwards, from this machine it goes down to the first floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:48]</span>Guest 2: Again from the first floor it ascends to the third floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:51]</span>Guest 2: Whatever iron is inside it, pieces of iron...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:01]</span>Worker: Whether it&#x27;s stones or sticks, they are thrown out of it. I mean, as we...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:05]</span>Host: What is its name?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:06]</span>Worker: The name... the name... is the name of this the stone-remover?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:10]</span>Worker: Yes... this machine, well, it has a name... yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:14]</span>Worker: This iron part removes stones from inside it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:31]</span>Host: Okay, our dear viewer looked, there are stones here too, right?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:34]</span>Host: Not that one, I am filling it, there is another one too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:36]</span>Worker: Yes, uh... when the thresher goes, when that happens, surely there are small stones inside, or pieces of iron, or...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:44]</span>Worker: ...fall in from the trailer without anyone noticing, here this machine separates them from each other.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:51]</span>Worker: Whatever stone it is, the heavy ones, yes, the stone comes out by itself.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:56]</span>Worker: This machine, no stone remains in it to go into the flour.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:00]</span>Worker: Yes, this machine is specifically for stones and iron pieces.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:04]</span>Worker: There is a magnet here, steel.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:07]</span>Host: Ha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:08]</span>Worker: Yes, when it works on electricity, that steel catches whatever iron is there.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:13]</span>Worker: So that it doesn&#x27;t fall into the tools (machinery).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:16]</span>Worker: And... dust falls down again.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:18]</span>Host: Uh... no no, what is the name of this?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:19]</span>Worker: Say that to us?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:21]</span>Worker: This is... an elevator...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:23]</span>Host: No, what is its function?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:25]</span>Worker: Its function, this... whether bran, dust, or...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:30]</span>Worker: ...or chaff and straw, for example if there is small wheat...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:34]</span>Worker: ...this, with the force of wind, takes it out.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:37]</span>Worker: It cleans, meaning it cleans the wheat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:39]</span>Host: Meaning the wheat doesn&#x27;t fall down? That dust and small stones and whatever dirt there is, go up with the wind.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:46]</span>Worker: Yes, they clean with the wind. They pull... meaning so that the wheat comes out clean.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:29]</span>Worker: Yes, as we said, we came down from above to the second floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:33]</span>Worker: Yes, from the second floor, this machine, that wheat falls from above into this machine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:38]</span>Worker: This machine&#x27;s work... this machine also peels the wheat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:44]</span>Worker: It takes the bran out of it. They call this bran.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:47]</span>Worker: Yes, it takes the bran out of it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:50]</span>Worker: And from here, it gives it down to the cylinder. To the first floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:54]</span>Host: Does it fall down too? To the first floor too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:56]</span>Worker: Yes, it falls down to the first floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:58]</span>Worker: There are cylinders on the first floor too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:01]</span>Worker: Yes, it spreads to the cylinders.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:04]</span>Worker: After that, meaning we have four boilers here too...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:10]</span>Worker: Every... Come on, this is also a sieve, a screen, they call it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:16]</span>Worker: From one side, it takes out bran.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:19]</span>Worker: From one side, it takes out flour.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:22]</span>Worker: From one side there is semolina, they call this semolina.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:25]</span>Worker: Yes, it takes out semolina.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:27]</span>Worker: They are four outlets.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:28]</span>Worker: It has four outlets.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:30]</span>Worker: Every... every outlet takes out something.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:34]</span>Worker: Yes, the bran one is separate, the semolina one is separate, the flour... flour comes out in two places. Zero flour and number one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:41]</span>Worker: Yes, currently... we are ready...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:02]</span>Worker: We said that... the bran machine takes that peel off it...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:07]</span>Host: Ha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:08]</span>Worker: Yes, that large aspirator... The largest one inside the mill is that aspirator.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:14]</span>Worker: That... its size approximately accounts for half the mill&#x27;s operation.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:19]</span>Worker: Half the mill depends on this aspirator.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:22]</span>Worker: Meaning like that, it pulls the bran separately.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:25]</span>Worker: And it pulls the semolina separately.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:27]</span>Worker: And... it pulls the flour separately, the zero flour.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:30]</span>Worker: It pulls the secondary flour separately, and pulls the number one separately too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:35]</span>Worker: That aspirator separates all this flour completely.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:39]</span>Worker: Yes, and after that it falls to the first floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:42]</span>Host: Okay, is it collected on the first floor too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:43]</span>Worker: Yes, it is on the first floor too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:44]</span>Host: Does it end accordingly?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:45]</span>Worker: Yes, it ends accordingly.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:54]</span>Host: Our dear viewer, now we have reached the first floor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:56]</span>Host: But we will ask brother Mustafa, now brother...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:59]</span>Host: Brother, is it washed? Is cleaning done in it for the wheat?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:01]</span>Host: Or does just the dust go away, is it pounded... like in the past?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:06]</span>Worker: No...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:07]</span>Host: The old shops used to find something like soup...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:10]</span>Worker: No, we said... after we pulled it up, we washed it, we finished...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:14]</span>Worker: This is the cylinder. This is the roller.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:17]</span>Host: Ha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:18]</span>Worker: Yes... uh... the first cylinder.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:21]</span>Worker: The first one... it just breaks the wheat into two pieces.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:25]</span>Worker: And gives it to the second one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:27]</span>Worker: Yes, that is the type of flour... that is the roller, and it brings out...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:31]</span>Worker: It gives... meaning there are five stages.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:33]</span>Worker: One gives to the hand of another.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:35]</span>Worker: One gives to the second, the third, the fourth, the fifth.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:39]</span>Worker: The second... that... and the third... is the other one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:43]</span>Worker: Like that, it takes out bran.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:44]</span>Host: Okay, they are all after one another then?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:45]</span>Worker: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:47]</span>Host: Hello.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:48]</span>Worker 2: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:49]</span>Host: What is your name?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:50]</span>Worker 2: Muhammad.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:51]</span>Host: Brother Muhammad, how many hours do you work here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:53]</span>Worker 2: Well, from seven in the morning until seven in the evening.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:56]</span>Host: Meaning from seven in the morning until seven in the evening you work here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:58]</span>Worker 2: Yeah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:59]</span>Host: Is your work very...?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Host: Good, praise be to God, thanks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:02]</span>Host: Hello to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:03]</span>Worker 1: Hello, you are welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:04]</span>Host: What is your name?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:05]</span>Worker 1: It is Mahmoud.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:07]</span>Host: Mahmoud?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:08]</span>Worker 1: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:09]</span>Host: Are you from the village of Qerqina?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:10]</span>Worker 1: I am from Qerqina.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:10]</span>Host: How are you doing?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:11]</span>Worker 1: By God, praise be to God, thanks to God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:12]</span>Host: Did you take the shift from seven until seven?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:15]</span>Worker 1: It is seven to seven.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:17]</span>Host: Good luck with your work.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:19]</span>Worker 1: It is good, praise be to God, thanks to God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:20]</span>Worker 1: Good health, you are very welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:30]</span>Host: Hello to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:31]</span>Worker 2: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:32]</span>Host: Your name, please?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:33]</span>Worker 2: Nuri.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:34]</span>Host: Mr. Nuri, here is the end [of the line], meaning what is your job?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:37]</span>Worker 2: Here is the end, it is the scale, we weigh [the sacks].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:40]</span>Worker 2: The sack is 50 kilos.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:42]</span>Worker 2: We weigh it, we fill the sack to 50 kilos, and we sew its mouth.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:46]</span>Worker 2: And we lift it to the stack.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:49]</span>Host: Meaning is it exactly fifty? No? Or is it less?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:51]</span>Worker 2: It is fifty, our measurement is permissible [accurate].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:54]</span>Worker 2: It is exactly fifty now.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:57]</span>Worker 2: Now the mouth of the sack is being sewn like this.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:00]</span>Worker 2: So this becomes ready.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:02]</span>Host: Let us say this is the end here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:03]</span>Worker 2: This is the end, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:05]</span>Host: Mashallah, please continue with your work.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:06]</span>Worker 2: Thanks, thanks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:46]</span>Host: Dear viewers, now after, uh, this wheat became flour.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:51]</span>Host: Now here too, we see them loading.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:53]</span>Host: We will ask this person, who are they, from where.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:56]</span>Host: Hello to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:57]</span>Customer: Hello.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:58]</span>Host: Where do you come from?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:59]</span>Customer: I am taking this to the bakery of Huse Village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:01]</span>Host: Are you a baker yourself?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:02]</span>Customer: I am a baker myself.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:04]</span>Host: And are you the owner of the vehicle too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:05]</span>Customer: I am the owner of the vehicle myself.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:07]</span>Host: And how is it, how is your work, is it good?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:09]</span>Customer: By God, right now, this is the first time we are taking [from here].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:12]</span>Customer: Now our work needs to be very good with this flour.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:16]</span>Host: And before, how was the previous flour?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:18]</span>Customer: The previous flour was not proper.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:21]</span>Customer: It was not proper, honestly.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:22]</span>Host: Why was it not proper?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:24]</span>Customer: Ummm...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:25]</span>Customer: This is from the mill owners, some chaos happens, sometimes they didn&#x27;t clean the wheat...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:30]</span>Customer: We can&#x27;t comment too much on this thing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:33]</span>Host: So you say this mill is very good, built in Afrin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:37]</span>Customer: This mill is very good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:40]</span>Customer: It implies it is good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:41]</span>Customer: Good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:42]</span>Host: Is Huse Village far from here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:44]</span>Customer: Approximately a matter of thirty-five kilometers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:47]</span>Host: How many tons [do you take] a day?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:48]</span>Customer: I take four tons daily.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:51]</span>Host: Are there many people? How many houses is the village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:54]</span>Customer: In my area, the villages are many. They all gather/come to us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:58]</span>Customer: Because of this thing, meaning people demand good bread...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:02]</span>Customer: ...to eat a piece of bread, let it be a good one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:05]</span>Customer: Because, you know, the bread comes out good, they run to us...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:09]</span>Customer: So let us eat [from] this bread, this bakery. Let us eat via the Huse Village bakery.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:15]</span>Host: We thank you too, farewell.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:16]</span>Customer: Thanks to you too, I thank you very much.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:30]</span>Host: Dear viewers, here we have reached the end of our episode...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:34]</span>Host: ...as we saw, and watched together with you, how this mill does this work...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:40]</span>Host: ...and at the end, now they will sing an Afrin song, for the workers of this mill, we reached the end of our program.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:46]</span>Singers: I am a lad from Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:48]</span>Singers: I am a farmer, a villager.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:50]</span>Singers: I am a lad from Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:52]</span>Singers: I am a farmer, a villager.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:54]</span>Singers: I am a musician and a lute player.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:56]</span>Singers: I am the leader of the dance and a poet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:59]</span>Singers: I am a musician and a lute player.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:01]</span>Singers: I am the leader of the dance and a poet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:04]</span>Singers: I have a home and a family [I am an owner].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:06]</span>Singers: I am not an orphan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:09]</span>Singers: I have a home and a family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:11]</span>Singers: I am not an orphan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:28]</span>Singers: By the sound of the birds.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:31]</span>Singers: In the shade of the huts.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:33]</span>Singers: By the sound of the birds.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:35]</span>Singers: In the shade of the huts.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:38]</span>Singers: In the morning I wake from sleep.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:40]</span>Singers: I tend to the shovel and the water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:43]</span>Singers: In the morning I wake from sleep.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:45]</span>Singers: I tend to the shovel and the water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:47]</span>Singers: What is the crazy world?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:50]</span>Singers: I open my eyes like a flower.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:52]</span>Singers: What is the crazy world?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:55]</span>Singers: I open my eyes like a flower.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:57]</span>Singers: I am a lad from Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:00]</span>Singers: I am a farmer, a villager.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:02]</span>Singers: I am a lad from Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:04]</span>Singers: I am a farmer, a villager.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:06]</span>Singers: I am a musician and a lute player.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:09]</span>Singers: I am the leader of the dance and a poet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:11]</span>Singers: I am a musician and a lute player.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:13]</span>Singers: I am the leader of the dance and a poet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:16]</span>Singers: I have a home and a family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:19]</span>Singers: I am not an orphan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:21]</span>Singers: I have a home and a family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:23]</span>Singers: I am not an orphan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:36]</span>Singers: Afrin is a creation [bounty].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:38]</span>Singers: With gold and stones [valuable lands].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:40]</span>Singers: Oh, Afrin is a creation.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:42]</span>Singers: With gold and stones.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:45]</span>Singers: With vineyards and with figs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:47]</span>Singers: With apples and with pomegranates.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:49]</span>Singers: With vineyards and with figs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:51]</span>Singers: With apples and with pomegranates.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:54]</span>Singers: With blessings and bounty.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:56]</span>Singers: Farewell [Head bowed in goodbye].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:58]</span>Singers: With blessings and bounty.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:01]</span>Singers: Farewell.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:03]</span>Singers: I am a lad from Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:06]</span>Singers: I am a farmer, a villager.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:08]</span>Singers: I am a lad from Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:10]</span>Singers: I am a farmer, a villager.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:13]</span>Singers: I am a musician and a lute player.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:15]</span>Singers: I am the leader of the dance and a poet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:17]</span>Singers: I am a musician and a lute player.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:20]</span>Singers: I am the leader of the dance and a poet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:22]</span>Singers: I have a home and a family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:24]</span>Singers: I am not an orphan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:27]</span>Singers: I have a home and a family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:29]</span>Singers: I am not an orphan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:32]</span>Singers: Oh cousin, oh brother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:35]</span>Singers: I gave a promise not to separate.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:37]</span>Singers: Oh cousin, oh brother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:39]</span>Singers: I gave a promise not to separate.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:42]</span>Singers: It is my home and my property.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:44]</span>Singers: It is my home and my grave.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:46]</span>Singers: It is my home and my property.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:49]</span>Singers: It is my home and my grave.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:51]</span>Singers: I will not sell the tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:53]</span>Singers: Not for gold nor money.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:55]</span>Singers: I will not sell the tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:58]</span>Singers: Not for gold nor money.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:00]</span>Singers: I am a Kurdish lad.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:03]</span>Singers: I am a farmer, a villager.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:05]</span>Singers: I am a Kurdish lad.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:07]</span>Singers: I am a farmer, a villager.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:10]</span>Singers: I am a musician and a lute player.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:12]</span>Singers: I am the leader of the dance and a poet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:14]</span>Singers: I am a musician and a lute player.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:17]</span>Singers: I am the leader of the dance and a poet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:19]</span>Singers: I have a home and a family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:21]</span>Singers: I am not an orphan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:24]</span>Singers: I have a home and a family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:26]</span>Singers: I am not an orphan.</p>
+                </div>
+            </div>
+
+            <!-- Kurdish Transcript Card -->
+            <div id="kurdish" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transkrîpta bi Kurmancî</h2>
+                    <button class="copy-btn" onclick="copySection('transcript-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Kopî bike
+                    </button>
+                </div>
+                <div id="transcript-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:33]</span>Host: Temaşevanên hêja, dema we xweş be. Bernameya Ax û Welat îro em barane li Çiyayê Kurmênc.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:39]</span>Host: Em hatine gundê Diriqliya.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:41]</span>Host: Me dît li vira aşek heye. Aşekî nû vebûye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:45]</span>Host: Dê bi hev re temaşe bikin çawa ev aş karê xwe berdewam dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:57]</span>Host: Merheba ji te re.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:58]</span>Guest 1: Ser çava, ehlen we sehlen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:59]</span>Host: Saetên te xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:00]</span>Guest 1: Sax be, Xwedê te razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:02]</span>Host: Em dixwazin hû hûrgulî em bûn mêvanê we. Em hatine gundê Diriqliya me got aşek ecêb nû vebûye li vira.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:10]</span>Host: De em dixwazin berî em te nas bikin, paşê aş nas bikin. Em dixwazin tiştekî li ser karê we nas bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:15]</span>Guest 1: Navê min Şaban e. Ehlen we sehlen ji hatina we ra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:19]</span>Guest 1: Ev aşa li Diriqliyê çêbûye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:22]</span>Guest 1: Ev şeş meh hene ketiye şixul. Lê nû mehek e ketiye întacê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:28]</span>Guest 1: Aş, va mihek e dixebite.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:30]</span>Guest 1: Întaca vî rind e, baş e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:32]</span>Guest 1: Heta niha 40 tonî lê derdixin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:36]</span>Guest 1: Şixulê me 24 saet e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:39]</span>Guest 1: Me kiriye du beş. 12 saet bi rojê, 12 saet bi şevê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:46]</span>Guest 1: Heta cûqê da... nêzîkî 15 karker di şixulin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:53]</span>Guest 1: Nav vana da jî amil fennî hene. Arîkarê wî jî heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:58]</span>Guest 1: Ee niha mehek e em ketine hereketê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:02]</span>Guest 1: Ji sê rojên vir da jî em niha êrd belav dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:06]</span>Guest 1: Belkî firnê firnê mantiqê rûyê barê xwe bidin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:10]</span>Guest 1: Heta cûqê, heta 12 saetan nêzîkî 15 karker gerêkî me ne. 15 karker di şixulin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:17]</span>Guest 1: 12 saetan di şixulin. Nav vana jî du kes, evêra dibêjin amil fennî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:22]</span>Guest 1: Yanî haş aletan hene, haş herekê hene, haş întacê hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:27]</span>Guest 1: Nisbeta êrd û nisbeta kepekê, yanî hinek xibreta xwe hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:31]</span>Guest 1: Ez jî nav vana me. Ez jî rojê teqrîben 14 saetan heta 15 saetan ez jî nav vana me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:38]</span>Host: Yanî raya çawa sa? Cimaetê tê der, êrd?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:41]</span>Guest 1: Cî, me heya 40 tonî niha derdixist. Li hîn em merheleyê tecrûbeyê da ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:46]</span>Guest 1: Yanî hîn dema bêj evê bête derê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:49]</span>Host: Belkî baştir bibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:50]</span>Guest 1: Vê baştir bibe. Lê têra nake. Înşallah pişta mehekê, heya du meha, em lê zêde dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:59]</span>Guest 1: Yanî teqrîben heya 15 tonan em lê zêde dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:02]</span>Guest 1: Em fereh dikin, vira dibêjin milheqê wî, ya jî em dibên ji bo mantiqê têra bike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:08]</span>Guest 1: Xwedê ji te razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:09]</span>Host: Sax be. Niha alet çi xusûs alet tê da ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:12]</span>Guest 1: Alet pir in. Aletê kişandinê heye, ê şuştinê heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:18]</span>Guest 1: Ê bêjing heye, dûra ê zîwanê heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:23]</span>Guest 1: Dûra elekê hûr heye, ê êrd heye, ê hêrandinê heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:28]</span>Guest 1: Nêzîkî 20 alet in. Giş sînaî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:32]</span>Guest 1: Yanî aşê yekemîn li mantiqê hef e. Yanî ne ê fennî ye. Aşekî fennî ye. Întaca xwe jî rind e. Ardê xwe jî pir rind e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:41]</span>Guest 1: Pir jî razî ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:43]</span>Host: Li Rojavayê ti deran heye yan bes li ba te heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:46]</span>Guest 1: Heta niha çênebûye. Heta vê tarîxê hîn çênebûye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:50]</span>Guest 1: Lê înşallah em kê vê lê zêde bikin. Gerek em 15 tonan lê zêde bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:56]</span>Guest 1: Ev jî nêzîk da ye. Pişta rojek da, heya mehek, du meh din, înşallah lê zêde dibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:04]</span>Host: Tamam. Niha emê derbaz bin heye çi?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:06]</span>Guest 1: Ez sipas dikim ji we ra. Bû hatina we ra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:10]</span>Guest 1: Ekîbê Rûnahî, û grûpê we ra, û va bernamê taybet...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:15]</span>Guest 1: Ez we ra sipas dikim û serkeftinê dixwazim. Navê bernamê we jî Ax û Welat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:20]</span>Host: Baş e, sipas, serçava.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:21]</span>Guest 1: Sax be, Xwedê ji te razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:16]</span>Host: Nobeta we bi xêr.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:17]</span>Guest 2: Mistefa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:18]</span>Host: Birêz Mistefa, ew kîderê karê xwe dest pê dike?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:21]</span>Guest 2: Welle karê me, ji vî derê dest pê dibe. Navê vê &quot;ramba&quot; ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:26]</span>Guest 2: Ava wextê genim cûwala da nayê. Ev ti dökme tê qelabe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:31]</span>Guest 2: Tînê qelabe li vir datîne, ser vira diskinê. Îseh vala dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:36]</span>Guest 2: Vala kir vira, li vî derê sehhab e ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:40]</span>Guest 2: Pûş kir vira, li vî derê sehhab e ye. Amelîye otomatîk.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:45]</span>Guest 2: Ee satil hene. Derê xirbêla yekê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:49]</span>Guest 2: Derê wi derê û amelîye din dest pê dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:53]</span>Host: Yanî daqê çendê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:54]</span>Guest 2: Daqê sê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:55]</span>Host: Niha ji vir em kan daqê sê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:57]</span>Guest 2: Ee niha em herin daqê sê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:59]</span>Host: Tamam, de kerem ke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:01]</span>Guest 2: Ha de kerem ke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:02]</span>Host: Temaşevanên hêja, niha em gihîştin daqê sîyê. Em dixwazin nas bikin niha navê vê çi ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:09]</span>Guest 2: Ewa min got merheleya yekê genim jê derdikeve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:13]</span>Guest 2: Ee, ew min got merheleya yekemîn ji ardê derdikeve ji ramba. A elewator ra derdikeve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:19]</span>Guest 2: Tê xirbêla yekê. Vêra dibên xirbêl, ewil. Tê xirbêla yekê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:25]</span>Guest 2: Ev amelîye ferz dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:27]</span>Guest 2: Ax hebe, kevir hebe... meselem genimê hûr hebe, der hebe, ev giyî difirizîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:34]</span>Guest 2: Başqe başqe dike, li jêrê wî xezan hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:37]</span>Guest 2: Genimê hûr dide alîkî, oxê dide alîkî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:41]</span>Guest 2: Û genimê pak, safî, ew jî derê xezanêkî din.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:45]</span>Guest 2: Ee bi vê ameliyê, niha da dikeve daqê duduyan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:50]</span>Host: Niha ji vir jî da dikeve daqê duduyan?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:52]</span>Guest 2: Ee, da dikeve daqê duduyan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:54]</span>Host: Xazî em herin daqê duduyan, em da kevin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:15]</span>Host: Niha ev li vir çi dike?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:17]</span>Guest 2: Ev min got xirbêla yekê ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:19]</span>Guest 2: Genim jê derket, didê vê xirbêlê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:22]</span>Guest 2: Em difiroşin... li tenurê din jî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:25]</span>Guest 2: Yani ev genimê paqij ji mera derdixe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:28]</span>Guest 2: Ev genimê paqij alîkî da derê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:31]</span>Guest 2: Û ev jî genimê hûr û şikî ye. Ev jî bi alîkî din da derê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:36]</span>Host: Ev paşê çi dikin, davêjin çi dikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:38]</span>Guest 2: Na, ev tê firotan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:42]</span>Guest 2: E, tê firotan, ev genimê şikî ye, ne çêkirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:45]</span>Guest 2: Ev tê firotan, xudanê pez-mez dikirrin, ew naskir e, ew dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:52]</span>Guest 2: Ee... ev jî... li ser vê da elewator dîsa dikişîne &quot;dispirator&quot;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:58]</span>Guest 2: Dispirator hindirê wî da heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:00]</span>Guest 2: Ee, ev dispiratorî din... ba didê... ew toza hindirê wî dikişîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:07]</span>Guest 2: Ee, çawa bêjim amelîyet ba ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:10]</span>Guest 2: Paqijkirina wî tozê, gemarê, meselem qirêş nav da hebe, genimê şikî be, çi be... hewa giyî dispirator vê gemarê dikişîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:21]</span>Guest 2: Ee, û merhela...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:23]</span>Host: Navê vê hesin çi ye? Navê vê hesin çi ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:26]</span>Guest 2: Ewa makîna keviran e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:29]</span>Guest 2: Genimê ba&#x27;dî jê derdikeve, derê daqê yekan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:32]</span>Guest 2: Ji daqê yekê hildikişe... boşî vê dibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:36]</span>Guest 2: Makîna kevira ji nav va diqetîne, paqij dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:39]</span>Host: Kevir li kîderê davêje?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:40]</span>Guest 2: Kevir li vir e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:42]</span>Guest 2: Ee, ev min got ev jî makîna keviran e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:45]</span>Guest 2: Ba&#x27;dî ji vê makînê da dikeve daqê yekan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:48]</span>Guest 2: Dîsa ji daqê yekê hildikişe daqê sîyan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:51]</span>Guest 2: Ewa çi hesin di nav da hebe, perçê hesin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:01]</span>Worker: Kevir be, dar be, ji nav tê avêtin. Yanî wek me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:05]</span>Host: Navê vê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:06]</span>Worker: Nav... nav... navê vê kevirnaha mi?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:10]</span>Worker: Erê... ev makîne îşta nav da heye... erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:14]</span>Worker: Ev perçê hesin, nav da derdixê kevir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:31]</span>Host: Tamam şuna me hêja nihêrî, vira ji kevir hene, ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:34]</span>Host: Ne ewa, tije dikim ê din jî heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:36]</span>Worker: Erê, ê... wextê ku patoz diçine, wextê ew dibe, îlle hûrikê kevirê nav, yan perçê hesin hene, yan ji...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:44]</span>Worker: ...ji romorkê dikeve nav ku insan pê bihese, di vir de ev makîna ji hev cûda dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:51]</span>Worker: Çi kevir be, yê giran, erê, ji xwes kevir derdikeve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:56]</span>Worker: Ev makîna, namîne têda kevir navê ard.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:00]</span>Worker: Erê ev makîna, xasî bo kevir û perçê hesin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:04]</span>Worker: Di vir de mexnatîs heye, polat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:07]</span>Host: Ha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:08]</span>Worker: Erê wextê di kehrebê de dişixule, ew polatê çi hesin hebe digire.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:13]</span>Worker: Ji bona nekeve nav aletan da.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:16]</span>Worker: Û... toz dikeve jêr dîsa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:18]</span>Host: Ê... nan na, navê vê çiye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:19]</span>Worker: Bêje ber me?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:21]</span>Worker: Eva... elevetor...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:23]</span>Host: Na, karê vê çiye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:25]</span>Worker: Karê vê, eva... çi kepek, çi toz, çi...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:30]</span>Worker: ...çi qirş û qalê, mesele genimî hûrikî hebe...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:34]</span>Worker: ...eva, bi zorê ba, derdixê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:37]</span>Worker: Pak dike, yanî genim pak dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:39]</span>Host: Yanî genim nakeve jêr? Ew toz û kevirê hûr û çi gemar hebe jî, bi bayê re diçine jorê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:46]</span>Worker: Erê, bi bayê re pak dikin. Dikşînin... yanî ji bona genimî pak derkeve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:29]</span>Worker: Erê, ev me got, em jê jor da ketin taqê duyê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:33]</span>Worker: Erê ji taqê duyê, ev makîne ew genim, jor da dikeve vê makînê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:38]</span>Worker: Ev makîne xebatê... ev makîne jî, genim diqeşirîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:44]</span>Worker: Kepekê jê derdixê. Vêra dibên kepek.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:47]</span>Worker: Erê, kepekê jê derdixîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:50]</span>Worker: Û ji vî derê, da xê silindirê. Taqê yekê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:54]</span>Host: Da dikeve jêr ji? Taqê yekê ji?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:56]</span>Worker: Erê da dikeve taqê yekê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:58]</span>Worker: Taqê yekê jî silindir hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:01]</span>Worker: Erê, li silindira belav dibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:04]</span>Worker: Piştî wî, yanî çar qazanê me ji li vê derê hene...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:10]</span>Worker: Her... Yallah, eva jî, xirbêl e, êlek, vêra dibên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:16]</span>Worker: Ji alîkî da, kepekê derdixê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:19]</span>Worker: Ji alîkî da ard derdixê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:22]</span>Worker: Ji alîkî da simîd heye, vêra dibên simîd.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:25]</span>Worker: Erê, simîd derdixê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:27]</span>Worker: Çar çavîk in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:28]</span>Worker: Çar çavîyê wî hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:30]</span>Worker: Her... her çavîkek tiştekî derdixê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:34]</span>Worker: Erê, ê kepekê başqe ye, ê simîd başqe ye, ê ard... bi du cîya ard tê der. Ardê zîro û numre yek.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:41]</span>Worker: Erê, halî yan... hazir em...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:02]</span>Worker: Me got hew... makîna kepekê wî qişrî jê derdixê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:07]</span>Host: Ha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:08]</span>Worker: Erê, ew despiratorê mezin... Ê tewrî mezin di hindir aş da hew despirator e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:14]</span>Worker: Hawa... teqrîben mezinbûna wî, qasî nîvî aş bi şuxilandinê dide.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:19]</span>Worker: Nîvî aş giyê ser vî despiratorî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:22]</span>Worker: Yanî hewa, kepekê ayîrî dikşîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:25]</span>Worker: Û simîd ayîrî dikşîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:27]</span>Worker: Û... ard ayîrî dikşîne, ardê zîro.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:30]</span>Worker: Ardê dûjî ayîrî dikşîne, û numre yek jî ayîrî dikşîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:35]</span>Worker: Hew despirator, vê ardî gi hemû ayîrî ayîrî dikî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:39]</span>Worker: Erê, û ba&#x27;dî wî da dikeve taqê yekê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:42]</span>Host: Tamam, cemê taqê yekê jî heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:43]</span>Worker: Erê taqê yekê jî heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:44]</span>Host: Ligor bidawî dibe?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:45]</span>Worker: Erê, ligor bidawî dibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:54]</span>Host: Temaşvanê me yê hêja, noha em gihiştin taqê yekê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:56]</span>Host: Lê emê bipirsin ji birê Mistefa, noha bira...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:59]</span>Host: Bira şûştî ye? Paqijî têda tê kirin ji bo genim?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:01]</span>Host: Yan tenê wekî tozê jê diçe, tê dequtin... weke berê ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:06]</span>Worker: Na...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:07]</span>Host: Tikanê berê tiştekî şurbe peyda dikin e...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:10]</span>Worker: Na, me got... ba&#x27;dî me kişand jor, me şûşt, me xilas kir...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:14]</span>Worker: Eva silindir e. Eva dêr e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:17]</span>Host: Ha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:18]</span>Worker: Erê... ê... silindirê yekê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:21]</span>Worker: Ê yekê... hewa bes genim dike du parçe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:25]</span>Worker: Û dide yê diduyan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:27]</span>Worker: Erê, hewa nokê ard... hewa dêr e, û derdixîne...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:31]</span>Worker: Dide... ya&#x27;nî pênc qonax in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:33]</span>Worker: Yek dide destê yekê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:35]</span>Worker: Yek didê, yê diduya, yê sisiya, yê çara, yê pênca.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:39]</span>Worker: Ê diduya... hewa... û ê sisiya... ewî din e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:43]</span>Worker: Hawa kepek derdixê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:44]</span>Host: Tamam, hemû li dû hev in êdî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:45]</span>Worker: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:47]</span>Host: Merheba.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:48]</span>Worker 2: Ahlan wa sahlan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:49]</span>Host: Navê te çiye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:50]</span>Worker 2: Mihemed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:51]</span>Host: Birê Mihemed, tu çend saeta kar dikî li vir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:53]</span>Worker 2: Welle, heftê sibê heta heftê êvarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:56]</span>Host: Yanî heftê sibê heya heftê êvarê tû li vir kar dikî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:58]</span>Worker 2: Aaa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:59]</span>Host: Karê te zêde...?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Host: Baş e, elhemdillah şukr.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:02]</span>Host: Merheba ji te re.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:03]</span>Worker 1: Merheba li ser seran.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:04]</span>Host: Navê te çi ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:05]</span>Worker 1: Mehmûd e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:07]</span>Host: Mehmûd?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:08]</span>Worker 1: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:09]</span>Host: Tu ji gundê Qerqîna yî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:10]</span>Worker 1: Qerqîna me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:10]</span>Host: Kêfa te baş e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:11]</span>Worker 1: Walah elhemdillah, şukr ji xwedê re.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:12]</span>Host: Te ji heftan heya heftan nobedarî berê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:15]</span>Worker 1: Hefta heta hefta ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:17]</span>Host: Baş e karê te.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:19]</span>Worker 1: Baş e elhemdillah şukr ji xwedê re.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:20]</span>Worker 1: Saf xweş, ser çava xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:30]</span>Host: Merheba ji te re.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:31]</span>Worker 2: Ahlan wa sahlan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:32]</span>Host: Navê te, bi xêr?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:33]</span>Worker 2: Nûrî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:34]</span>Host: Birêz Nûrî, li vir dawî ye, yanî karê te çi ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:37]</span>Worker 2: Li vê derê dawî ye, qeban e, em dipîvin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:40]</span>Worker 2: Tûrê 50 kîlo ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:42]</span>Worker 2: Em dipîvin, tûrê 50 kîlo em dikinî, û em devê wî didirûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:46]</span>Worker 2: Û em radikin ta sefî ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:49]</span>Host: Yanî heye pêncî ye? Na? Yan kêm e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:51]</span>Worker 2: Ewa pêncî ye, ma pîvana me caîz e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:54]</span>Worker 2: Ana pêncî ye temam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:57]</span>Worker 2: Ana devê tûrê wer dirûtin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:00]</span>Worker 2: We caîz bibe eva.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:02]</span>Host: Em bêjin li vir dawî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:03]</span>Worker 2: Dawî ye hewa, erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:05]</span>Host: Manşela, de kerem ke karê xwe berdewam bike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:06]</span>Worker 2: Spas, spas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:46]</span>Host: Temaşevanên hêja, li naha pişî, eee, af genimê bû ard.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:51]</span>Host: Naha vira jî, em dibînin bar dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:53]</span>Host: Emê ji vê bipirsin, gelo ev kî ne, kû derê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:56]</span>Host: Merheba ji te re.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:57]</span>Customer: Merheba.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:58]</span>Host: Tu ji kû derê tê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:59]</span>Customer: Ez dibim firna Gundê Hisê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:01]</span>Host: Tu bi xwe firnacî ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:02]</span>Customer: Ez bi xwe firnacî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:04]</span>Host: Û tu bi xwe xwediyê makînê ye jî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:05]</span>Customer: Bi xwe jî xwediyê makînê me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:07]</span>Host: E çawa, karê we çawa ye, baş e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:09]</span>Customer: Walah anha, derba yekê em dibin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:12]</span>Customer: Noka karê me gerek bi vê ardê ra pir baş be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:16]</span>Host: E berê, ardê berê çawa bû?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:18]</span>Customer: Ardê berê ne durist bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:21]</span>Customer: Ne durist bû, yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:22]</span>Host: Çima yanî ne durist bû?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:24]</span>Customer: Eee...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:25]</span>Customer: Ev ji xwediyê aş a, hinekî fewda çêdibê, hinekî genim ne paqij dikirin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:30]</span>Customer: Em nikanin zêde te&#x27;lîq bikin li ser vê tiştî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:33]</span>Host: Yanî tê bêje ev aşa pir baş e, ji marîfa bû Efrînê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:37]</span>Customer: Gelekî baş e ev aş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:40]</span>Customer: Yanî baş e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:41]</span>Customer: Baş e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:42]</span>Host: Gundê Hisê ji vir va dûr e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:44]</span>Customer: Teqrîben şuxlê sî pênc kîlometre.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:47]</span>Host: Roja çend ton dibe?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:48]</span>Customer: Ez rojane çar tona dibim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:51]</span>Host: Milet pir e? Gund çiqas mal e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:54]</span>Customer: Cemê min gund pir in. Gîş cemê dibin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:58]</span>Customer: Ji ber vê tiştî, yanî alem daxwaza nanê baş dike...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:02]</span>Customer: ...parîk nan bixwe, yekî baş be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:05]</span>Customer: Ji ber, yanî, înno nan baş derdikeve, dibezin cem me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:09]</span>Customer: Em jî vê nanî, vê firnê bixwin. Firna Gundê Hisê em pê bixwin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:15]</span>Host: Me jî spas, hatxweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:16]</span>Customer: Spas ji ştêra jî, ez gelekî we spas dikim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:30]</span>Host: Temaşevanên hêja, em li vir jî gihiştin dawiya xeleka xwe...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:34]</span>Host: ...wek me dît, û we bi hev re temaşe kir, çawa ev aşa vê karê dibî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:40]</span>Host: ...li dawiyê da jî, naha straneke Efrînî bêjin, ji karkerê vê aşê ra, em gihiştin dawiya bernameya xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:46]</span>Singers: Xurtim Efrînî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:48]</span>Singers: Cotkarim gundî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:50]</span>Singers: Xurtim Efrînî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:52]</span>Singers: Cotkarim gundî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:54]</span>Singers: Sazbend û tembûrvanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:56]</span>Singers: Sergovend û hozanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:59]</span>Singers: Sazbend û tembûrvanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:01]</span>Singers: Sergovend û hozanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:04]</span>Singers: Mal û xwedanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:06]</span>Singers: Ez ne sêwî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:09]</span>Singers: Mal û xwedanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:11]</span>Singers: Ez ne sêwî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:28]</span>Singers: Li ber dengê çûka.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:31]</span>Singers: Siyê hûlika.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:33]</span>Singers: Li ber dengê çûka.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:35]</span>Singers: Siyê hûlika.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:38]</span>Singers: Sibe ji xewê radibim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:40]</span>Singers: Merr û avê xwedikim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:43]</span>Singers: Sibe ji xewê radibim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:45]</span>Singers: Merr û avê xwedikim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:47]</span>Singers: Dîn dinê çi ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:50]</span>Singers: Çavê xwe gul dikim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:52]</span>Singers: Dîn dinê çi ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:55]</span>Singers: Çavê xwe gul dikim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:57]</span>Singers: Xurtim Efrînî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:00]</span>Singers: Cotkarim gundî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:02]</span>Singers: Xurtim Efrînî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:04]</span>Singers: Cotkarim gundî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:06]</span>Singers: Sazbend û tembûrvanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:09]</span>Singers: Sergovend û hozanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:11]</span>Singers: Sazbend û tembûrvanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:13]</span>Singers: Sergovend û hozanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:16]</span>Singers: Mal û xwedanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:19]</span>Singers: Ez ne sêwî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:21]</span>Singers: Mal û xwedanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:23]</span>Singers: Ez ne sêwî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:36]</span>Singers: Efrîn afer e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:38]</span>Singers: Bi zêr û bera.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:40]</span>Singers: Lo Efrîn afer e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:42]</span>Singers: Bi zêr û bera.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:45]</span>Singers: Bi rez û bi hejîra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:47]</span>Singers: Bi sêv û bi henara.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:49]</span>Singers: Bi rez û bi hejîra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:51]</span>Singers: Bi sêv û bi henara.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:54]</span>Singers: Bi xêr û bêra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:56]</span>Singers: Ser bi xatir e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:58]</span>Singers: Bi xêr û bêra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:01]</span>Singers: Ser bi xatir e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:03]</span>Singers: Xurtim Efrînî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:06]</span>Singers: Cotkarim gundî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:08]</span>Singers: Xurtim Efrînî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:10]</span>Singers: Cotkarim gundî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:13]</span>Singers: Sazbend û tembûrvanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:15]</span>Singers: Sergovend û hozanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:17]</span>Singers: Sazbend û tembûrvanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:20]</span>Singers: Sergovend û hozanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:22]</span>Singers: Mal û xwedanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:24]</span>Singers: Ez ne sêwî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:27]</span>Singers: Mal û xwedanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:29]</span>Singers: Ez ne sêwî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:32]</span>Singers: Lo pismam lo bira.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:35]</span>Singers: Min soz da naştera.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:37]</span>Singers: Lo pismam lo bira.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:39]</span>Singers: Min soz da naştera.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:42]</span>Singers: Mal û milkê min e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:44]</span>Singers: Mal û turba min e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:46]</span>Singers: Mal û milkê min e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:49]</span>Singers: Mal û turba min e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:51]</span>Singers: Navfiroşim dara.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:53]</span>Singers: Ne bi zêr û pera.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:55]</span>Singers: Navfiroşim dara.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:58]</span>Singers: Ne bi zêr û pera.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:00]</span>Singers: Xurtêkî Kurdî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:03]</span>Singers: Cotkarim gundî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:05]</span>Singers: Xurtêkî Kurdî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:07]</span>Singers: Cotkarim gundî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:10]</span>Singers: Sazbend û tembûrvanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:12]</span>Singers: Sergovend û hozanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:14]</span>Singers: Sazbend û tembûrvanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:17]</span>Singers: Sergovend û hozanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:19]</span>Singers: Mal û xwedanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:21]</span>Singers: Ez ne sêwî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:24]</span>Singers: Mal û xwedanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:26]</span>Singers: Ez ne sêwî me.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on January 19, 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Copy to clipboard function
+        function copySection(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Find the button that was clicked and update its text
+                const btn = event.target.closest('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ✓';
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

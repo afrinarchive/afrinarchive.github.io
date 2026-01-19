@@ -50,7 +50,8 @@
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
         .prose strong { font-weight: 600; }
-        .prose p { margin-bottom: 1rem; }
+        .prose p { margin-bottom: 1.5rem; } /* Increased Paragraph Spacing */
+        .prose-compact p { margin-bottom: 0.5rem; } /* Compact spacing for Basic Info */
         .prose ol, .prose ul { margin-bottom: 1rem; }
         .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
         .prose blockquote p { color: var(--text-color); }
@@ -181,30 +182,9 @@
                 <div class="flex flex-col md:flex-row gap-6 md:gap-8">
                     <div class="flex-1">
                         <div class="grid grid-cols-1 gap-4">
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3>
-                                <p class="text-lg">Reco</p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Also Known As</h3>
-                                <p class="text-lg">Maseka, Masika, Masikan, Maskanli, Mûsako, Mûsakê, ماسكانلي, ماسيكان, موساكو</p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Tribes</h3>
-                                <p class="text-lg"></p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3>
-                                <p class="text-lg">Bekir Cado, Dordo, Elî Qera, Hecî Şiketko, Kenîn, Mistê Xedê, Mûsê Îsê, Qaşî Qepê, Şêxê Bilkê, Fewzî, Hesenê Hesen, Mihemedê Nazmî, Sebrî, Xelîl, Xelîlê Beşîr, Xelîlê Dawid, Xoşnav</p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Foundation Date</h3>
-                                <p class="text-lg">1500, 1700, 1800</p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium subtext">Size</h3>
-                                <p class="text-lg"></p>
-                            </div>
+                            <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
+<div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Maseka, Masika, Masikan, Maskanli, Mûsako, Mûsakê, ماسكانلي, ماسيكان, موساكو</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekir Ce&#x27;don, Bildirêjê, Dirdê, Ekaşî Qapê, Elî Qere, Hecî Şiketko, Hewîdî, Kenîn, Mala Bekir Cadan, Mala Bildirêjê, Mala Durdu, Mala Ecko şeqe pî, Mala Elî Qere, Mala Hecî Şikeftka, Mala Hevidî, Mala Kenîn, Mala Mistik Xedê, Mala Misî Yûsiv, Mala Şêxê Bilkê, Mistê Xedê, Mîso Yisiv, Xadînan, Şêxî Bilkê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -227,17 +207,52 @@
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<img src="../village_photos/Maseka.jpg" alt="Photo of Maseka" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Maseka.jpg';">
-<img src="../village_photos/zarxtirej903.jpg" alt="Photo of Maseka" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=zarxtirej903.jpg';">
-<img src="../village_photos/mosako.jpg" alt="Photo of Maseka" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=mosako.jpg';">
+<div><img src="../village_photos/Maseka.jpg" alt="Photo of Maseka" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Maseka.jpg';"></div>
+<div><img src="../village_photos/zarxtirej903.jpg" alt="Photo of Maseka" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=zarxtirej903.jpg';"></div>
+<div><img src="../village_photos/mosako.jpg" alt="Photo of Maseka" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=mosako.jpg';"></div>
 </div>
             </div>
 
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Maseka</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Ax û Welat</h5>
+<p><strong>Foundation Date/Period:</strong> 400 years ago</p>
+<p><strong>Ruins:</strong> <span class="internal-link">Barcûq</span></p>
+<p><strong>Trees:</strong> <span class="internal-link">Dara Mirazan</span></p>
+<p><strong>Wells:</strong> <span class="internal-link">Bîra Barcûq</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Kevirê Kuxikê</span>, <span class="internal-link">Riya Hesin</span>, <span class="internal-link">Tunela trênê</span></p></div>
+            </div>
+
+            
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Maseka (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin / Geographic Study:</p>
+<p><strong><span class="internal-link">1 - PhD/Villages/Maseka</span> (ماسكانلي), <span class="internal-link">Masikan</span> (ماسيكان)</strong> /2068N - 166H - 2km - 620m/:</p>
+<ul>
+<li><span class="internal-link">1 - PhD/Villages/Maseka</span> (ماسكا): Name of a Kurdish tribe found in <span class="internal-link">Botan</span> (بوتان) /<span class="internal-link">Lerkh</span> (ليرخ), p. 48/. <span class="internal-link">Sharafkhan</span> (شرفخان) mentions it as &quot;<span class="internal-link">Mask</span>&quot; (ماسك).</li>
+</ul>
+<ul>
+<li>A medium-sized village located on the southwestern slope of &quot;<span class="internal-link">Bilaliku Mountain</span>&quot; (جبل بلاليكو), bordered to the west by the <span class="internal-link">Aleppo</span> (حلب) - <span class="internal-link">Medan Akbas</span> (ميدان أكبس) railway.</li>
+</ul>
+<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin .... Its Rivers and Green Hills</span>&#x27;:</p>
+<p><strong><span class="internal-link">Maskanli</span> (ماسكانلي)</strong>: A village in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
+<p>It is a large village located on the southeastern slope of a limestone plateau covered with oak forests. It extends eastward and southward over agricultural land with red soil. It is 2km northwest of <span class="internal-link">Rajo Town</span> (بلدة راجو).</p>
+<p>To the north, a mountain chain planted with oak trees and several streams and the archaeological bridge (<span class="internal-link">Hashraq</span> (حشرق)) and <span class="internal-link">Firfirik Village</span> (قرية فرفريك). To the south, an agricultural fertile plain and <span class="internal-link">Rajo Town</span> (بلدة راجو) directly. To the east, a valley and mountain chain and the village cemetery and <span class="internal-link">Mamali Village</span> (قرية مامالي). To the west, a high and rough mountain chain and the road (Rajo (راجو) - <span class="internal-link">Medan Ikbas</span> (ميدان إكبس)) and the railway line from Rajo (راجو) to <span class="internal-link">Medan Ikbas</span> (ميدان إكبس) and the first train tunnel and <span class="internal-link">Akash Mountain</span> (جبل عكاش) very high and <span class="internal-link">Surk Village</span> (قرية سورك) and <span class="internal-link">Kharab Majid</span> (خراب مجيد).</p>
+<p>It has approximately 100 houses and the village age according to one of the elderly village residents is about 500 years. It is one of the old villages in the region. Its old dwellings are stone and clay with flat wooden roofs, and modern cement houses have spread in its north on the adjacent slopes and south. It has an electrical network and the village drinks from a water network connected to <span class="internal-link">Rajo water network</span> (شبكة مياه راجو) and telephone and a mosque. The road between it and <span class="internal-link">Rajo Town</span> (بلدة راجو) is paved in addition to several streets in the village and it belongs to <span class="internal-link">Rajo Municipality</span> (بلدية راجو).</p>
+<p>Residents work in rain-fed agriculture (olives, grapes) over 166 hectares and raise sheep and goats. <span class="internal-link">Maskanli Village</span> (قرية ماسكانلي) is considered one of the beautiful villages due to its location and its views of <span class="internal-link">Rajo Town</span> (بلدة راجو) and <span class="internal-link">Akash Mountain</span> (جبل عكاش) which surround it from all directions with oak and forest trees.</p>
+<p>Among the village&#x27;s most important families: (<span class="internal-link">Musa</span> (موسى) - <span class="internal-link">Qaba</span> (قابه) - <span class="internal-link">Qere</span> (قره) - <span class="internal-link">Jabiru</span> (جابرو)) and many holders of university degrees. Among the known cultural figures in the village and at the <span class="internal-link">Syria</span> (سوريا) level are the writer <span class="internal-link">Ja&#x27;dan Ja&#x27;dan</span> (جعدان جعدان) and the buzuq player <span class="internal-link">Muhammad Bilku</span> (محمد بلكو).</p>
+<p>Village Head: <span class="internal-link">Mustafa Yusuf Hassan</span> (مصطفى يوسف حسن)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Maseka</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=nlhvXgPoZj8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=nlhvXgPoZj8</a></p>
+<p>The village of <span class="internal-link">Maseka</span> is located in the <span class="internal-link">Recû</span> district of the <span class="internal-link">Efrîn</span> region. According to local oral history, the village was established approximately 400 years ago. An elder, <span class="internal-link">Apê Mihemed</span>, recounts that the original inhabitants came from <span class="internal-link">Gewrkan</span> and established their families here. However, the history of the settlement was interrupted roughly 300 years ago when a sickness described as &quot;wêran&quot; caused the population to abandon the site. Eventually, the residents returned to rebuild. Today, the village is home to over 300 families, including lineages such as <span class="internal-link">Mala Ecko şeqe pî</span>, <span class="internal-link">Mala Misî Yûsiv</span>, <span class="internal-link">Mala Mistik Xedê</span>, <span class="internal-link">Mala Elî Qere</span>, <span class="internal-link">Mala Kenîn</span>, <span class="internal-link">Mala Durdu</span>, <span class="internal-link">Mala Bildirêjê</span>, <span class="internal-link">Mala Hecî Şikeftka</span>, <span class="internal-link">Mala Şêxê Bilkê</span>, <span class="internal-link">Mala Hevidî</span>, and <span class="internal-link">Mala Bekir Cadan</span>. While many residents migrated to cities like <span class="internal-link">Reqqa</span>, <span class="internal-link">Heleb</span>, and <span class="internal-link">Şam</span> for work, many returned to their land following the onset of the conflict in <span class="internal-link">Sûriyê</span> to cultivate crops like olives, melons, and grain.</p>
+<p>Maseka is distinguished by several unique landmarks and local beliefs. Residents speak of a large stone with a hole in it known as <span class="internal-link">Kevirê Kuxikê</span> (Stone of the Whooping Cough). Historically, before modern medicine was accessible, villagers believed that passing a sick child through the hole in this stone three times at dawn, without looking back, would cure whooping cough. Adjacent to this stone stands an oak tree called <span class="internal-link">Dara Mirazan</span> (Tree of Wishes), where people tie fabrics to the branches in hopes of having their wishes granted.</p>
+<p>Between Maseka and the neighboring village of <span class="internal-link">Mamola</span> lies a historic well known as <span class="internal-link">Bîra Barcûq</span>. The resident <span class="internal-link">Jwara</span> explains that the name may derive from &quot;Pareçûq,&quot; while others interpret it as &quot;the well that lifts heavy loads.&quot; This area serves as a shared space for both villages, featuring a communal cemetery. Local lore suggests this site was once a city named <span class="internal-link">Barcûq</span> containing mosques and water reservoirs, with roots potentially stretching back to the <span class="internal-link">Mîtanî</span> era. For generations, this well was the primary water source for domestic use and livestock, though it has recently been replaced by private cisterns.</p>
+<p>The village is also defined by the <span class="internal-link">Riya Hesin</span> (Railway) constructed during the <span class="internal-link">Osmanî</span> period, around 1912, by <span class="internal-link">Elman</span> (German) engineers. The construction involved digging a tunnel through the rocky terrain, a labor-intensive process that employed local villagers from Maseka and <span class="internal-link">Dewdûrê</span>, such as <span class="internal-link">Hisênê Ekeş</span>, <span class="internal-link">Reşîdê Ehme</span>, and <span class="internal-link">Hesenê Hecî Evdê</span>. An elder, <span class="internal-link">Ehmed</span>, recounts a story passed down from his ancestors: the Elman engineer in charge was so concerned about the tunnel excavation meeting perfectly from both sides that he vowed to shoot himself with a Mauser (&quot;Mozer a şûna xwe bikule&quot;) if the alignment was incorrect. The tunnel was successfully completed, becoming a vital link between <span class="internal-link">Ewropa</span> and the Levant.</p></div></details></div>
+            </div>
+
+            <div class="card p-6 rounded-xl"><h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcripts</h2><ul class="list-disc list-inside space-y-2 p-4"><li><a href="../village_transcripts/Maseka_Ax û Welat_1.html" target="_blank" rel="noopener noreferrer" class="internal-link hover:underline">Maseka_Ax û Welat_1</a></li><li><a href="../village_transcripts/Maseka_Ax û Welat_2.html" target="_blank" rel="noopener noreferrer" class="internal-link hover:underline">Maseka_Ax û Welat_2</a></li></ul></div>
+
             <div class="card p-6 rounded-xl space-y-6">
-                <div class="border-b themed-border pb-3 mb-4">
-        <h2 class="text-2xl font-semibold">Foundation/Origin Information of Maseka</h2>
-    </div>
-    <div class="p-4 prose max-w-none"><blockquote>
+                <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Foundation/Origin Information of Maseka</h2></div><div class="p-4 prose max-w-none"><blockquote>
 <p>Among its most important families are Musa, Qaba, Qere, and Jabiru.</p>
 </blockquote>
 <p><strong>Source:</strong> TirejAfrin Site</p>
@@ -257,10 +272,7 @@
 <p>No specific origin story, but former residents identify the houses of families such as Xelîl, Xelîlê Dawid, Mihemedê Nazmî, Xoşnav, Fewzî, Sebrî, Xelîlê Beşîr, and Hesenê Hesen.</p>
 </blockquote>
 <p><strong>Source:</strong> Afrin 366 Transcript</p></div>
-                <div class="border-b themed-border pb-3 mb-4">
-        <h2 class="text-2xl font-semibold">Possible Village Name Meaning of Maseka</h2>
-    </div>
-    <div class="p-4 prose max-w-none"><blockquote>
+                <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Possible Village Name Meaning of Maseka</h2></div><div class="p-4 prose max-w-none"><blockquote>
 <p>Maseka is the name of a Kurdish tribe found in Botan. Sharafkhan mentions it as &quot;Mask&quot;.</p>
 </blockquote>
 <p><strong>Source:</strong> TirejAfrin Site</p>
@@ -268,44 +280,6 @@
 <p>The high, rocky hill known as &quot;Kevirê Kar&quot; The Deaf Stone, was so-called by elders because its height muffled the sounds from the village below.</p>
 </blockquote>
 <p><strong>Source:</strong> Afrin 366 Transcript</p></div>
-            </div>
-
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">From "The Mountains of the Kurds (Afrin Region): a Comprehensive Geographical Study"</h2>
-                <div class="p-4 prose max-w-none"><p><strong>Maseka, ماسكانلي (Maskanli), Masaka /2068 - 166 AD - 2 km - 620 m/</strong></p>
-<ul>
-<li>Masika: the name of a Kurdish tribe found in <span class="internal-link">Botan</span> /Yazikh p. 48/. Al-Sharafnama mentioned it as &quot;<span class="internal-link">Masak</span>.&quot;</li>
-</ul>
-<ul>
-<li>A medium-sized village located on the western southern slope of <span class="internal-link">Jebel Bilayko</span>, and west of it is the border of Aleppo - Maydan Akbis.</li>
-</ul>
-<p><em>Taken from 234 of the Arabic edition of:</em></p>
-<p><em>Ali, Mohammed Abdo. Jibal al-Kurd (Mintaqat Afrin): Dirasah Jughrafiyah Shamilah [The Mountains of the Kurds (Afrin Region): A Comprehensive Geographical Study]. Self-published, 2014.</em></p></div>
-            </div>
-
-            <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site of Maseka (English)</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin / Geographic Study:</p>
-<p><strong><span class="internal-link">Maseka</span> (ماسكانلي), <span class="internal-link">Masikan</span> (ماسيكان)</strong> /2068N - 166H - 2km - 620m/:</p>
-<ul>
-<li><span class="internal-link">Maseka</span> (ماسكا): Name of a Kurdish tribe found in <span class="internal-link">Botan</span> (بوتان) /<span class="internal-link">Lerkh</span> (ليرخ), p. 48/. <span class="internal-link">Sharafkhan</span> (شرفخان) mentions it as &quot;<span class="internal-link">Mask</span>&quot; (ماسك).</li>
-</ul>
-<ul>
-<li>A medium-sized village located on the southwestern slope of &quot;<span class="internal-link">Bilaliku Mountain</span>&quot; (جبل بلاليكو), bordered to the west by the <span class="internal-link">Aleppo</span> (حلب) - <span class="internal-link">Medan Akbas</span> (ميدان أكبس) railway.</li>
-</ul>
-<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin .... Its Rivers and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Maskanli</span> (ماسكانلي)</strong>: A village in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located on the southeastern slope of a limestone plateau covered with oak forests. It extends eastward and southward over agricultural land with red soil. It is 2km northwest of <span class="internal-link">Rajo Town</span> (بلدة راجو).</p>
-<p>To the north, a mountain chain planted with oak trees and several streams and the archaeological bridge (<span class="internal-link">Hashraq</span> (حشرق)) and <span class="internal-link">Firfirik Village</span> (قرية فرفريك). To the south, an agricultural fertile plain and <span class="internal-link">Rajo Town</span> (بلدة راجو) directly. To the east, a valley and mountain chain and the village cemetery and <span class="internal-link">Mamali Village</span> (قرية مامالي). To the west, a high and rough mountain chain and the road (Rajo (راجو) - <span class="internal-link">Medan Ikbas</span> (ميدان إكبس)) and the railway line from Rajo (راجو) to <span class="internal-link">Medan Ikbas</span> (ميدان إكبس) and the first train tunnel and <span class="internal-link">Akash Mountain</span> (جبل عكاش) very high and <span class="internal-link">Surk Village</span> (قرية سورك) and <span class="internal-link">Kharab Majid</span> (خراب مجيد).</p>
-<p>It has approximately 100 houses and the village age according to one of the elderly village residents is about 500 years. It is one of the old villages in the region. Its old dwellings are stone and clay with flat wooden roofs, and modern cement houses have spread in its north on the adjacent slopes and south. It has an electrical network and the village drinks from a water network connected to <span class="internal-link">Rajo water network</span> (شبكة مياه راجو) and telephone and a mosque. The road between it and <span class="internal-link">Rajo Town</span> (بلدة راجو) is paved in addition to several streets in the village and it belongs to <span class="internal-link">Rajo Municipality</span> (بلدية راجو).</p>
-<p>Residents work in rain-fed agriculture (olives, grapes) over 166 hectares and raise sheep and goats. <span class="internal-link">Maskanli Village</span> (قرية ماسكانلي) is considered one of the beautiful villages due to its location and its views of <span class="internal-link">Rajo Town</span> (بلدة راجو) and <span class="internal-link">Akash Mountain</span> (جبل عكاش) which surround it from all directions with oak and forest trees.</p>
-<p>Among the village&#x27;s most important families: (<span class="internal-link">Musa</span> (موسى) - <span class="internal-link">Qaba</span> (قابه) - <span class="internal-link">Qere</span> (قره) - <span class="internal-link">Jabiru</span> (جابرو)) and many holders of university degrees. Among the known cultural figures in the village and at the <span class="internal-link">Syria</span> (سوريا) level are the writer <span class="internal-link">Ja&#x27;dan Ja&#x27;dan</span> (جعدان جعدان) and the buzuq player <span class="internal-link">Muhammad Bilku</span> (محمد بلكو).</p>
-<p>Village Head: <span class="internal-link">Mustafa Yusuf Hassan</span> (مصطفى يوسف حسن)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary from Ax û Walat Transcript of Maseka</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><p>Gundê Maseka, a village in the Rajo district, has a history stretching back approximately 300 years, according to the oral traditions passed down by elders. The village was not always in its current location; it was originally situated about 300 meters away in a place now remembered as &quot;Xirabê Malê&quot; (The Ruins of the House). This original settlement was abandoned after a devastating cholera outbreak forced the inhabitants to flee and re-establish their community at the present site. A significant historical feature of the area is a railway tunnel, part of the Hejaz Railway, constructed between 1912 and 1915 by the <span class="internal-link">Ottomans</span> and <span class="internal-link">Germans</span>. Villagers from Maseka participated in its construction, which involved blasting through the mountain with dynamite, and some of their descendants worked as guards on the line until the train ceased operations in 1950. The village shares key resources with the neighboring village of Mamala, including a cemetery and the historic &quot;<span class="internal-link">Bîra Barjoq</span>&quot; (Barjoq Well). This 15-meter-deep well, whose name originates from the Turkish &quot;Para Çok&quot; (lots of money), was once the center of a marketplace during the <span class="internal-link">Ottoman</span> era and served as the primary water source for both communities. The village also holds deep-rooted folk traditions, centered around two specific sites: the &quot;<span class="internal-link">Kevirê Koxkê</span>&quot; (Cough Stone), where children with coughs were passed through a hole in the rock in a healing ritual, and the adjacent &quot;<span class="internal-link">Darê Mraza</span>&quot; (Wish Tree), where people tie cloths to make wishes. These practices, along with the traditional preparation of fig-based foods like &quot;Bastîq&quot; and &quot;Helwa Kirmonco&quot; for winter provisions, are identified by the villagers as integral parts of their Kurdish cultural heritage.</p>
-<h3 class="font-semibold text-xl mt-6 mb-3">II. Summary from Ax û Walat Transcript of Maseka 2</h3>
-<p>According to oral tradition passed down from their ancestors, the village of Maseka, located in the Rajo district, was established in its current location approximately 300 years ago after its inhabitants relocated from a nearby site known as the ruins of Melwer (<span class="internal-link">xirabê Melwer</span>) due to a cholera outbreak. The new village was founded by eleven families: <span class="internal-link">Qaşî Qepê</span>, <span class="internal-link">Mûsê Îsê</span>, <span class="internal-link">Mistê Xedê</span>, <span class="internal-link">Elî Qera</span>, <span class="internal-link">Kenîn</span>, <span class="internal-link">Dordo</span>, <span class="internal-link">Evdî</span>, <span class="internal-link">Şêxê Bilkê</span>, <span class="internal-link">Bekir Cado</span>, and <span class="internal-link">Hecî Şiketko</span>. The villagers&#x27; livelihood is deeply rooted in agriculture, primarily the cultivation of olive trees, along with vegetables like watermelon and melon, and grains such as lentils, barley, and wheat. A significant cultural and economic activity is the preservation of figs, which are made into traditional Kurmanji winter provisions like bastiq (fig leather), lêçer, and mûj (fig rolls stuffed with walnuts and seeds), and sold in the markets of Rajo and Afrin. The village also holds unique traditions tied to its landscape, including a healing ritual at the &quot;<span class="internal-link">Kevirê Koxkê</span>&quot; (Cough Rock), where children with coughs were passed through a hole in the rock three times before sunrise, and the &quot;Dara Miraza&quot; (Wish Tree), where locals tie cloths to make wishes. A major historical landmark near the village is a railway tunnel from the line connecting Europe to Syria, which was built by <span class="internal-link">Ottomans</span> and <span class="internal-link">Germans</span> and completed in 1912. Local workers, including the grandfathers of current residents, labored on its construction, and a local story recounts that German leader Hitler was consulted on the project&#x27;s high cost.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>III. Summary from other Channels&#x27; Transcripts of Maseka</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4"><h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Maseka</h3>
-<p>The village of Muske (Gundê Mûsakê), located in the Rajo district, has a history of at least 300 years, according to the oral tradition of its Mukhtar,<span class="internal-link"> Xalo Ebû Osman</span>, whose father also held the position. The village&#x27;s foundational identity was uniquely centered on the traditional livelihood of partridge and falcon trapping, a practice known as komirlatî. Ancestors used sophisticated methods, including decoy pairs and large nets (çûl), to capture birds, with prized singing partridges being highly valuable. Over time, the village&#x27;s economy shifted to agriculture, specifically the cultivation of olive groves, which spurred its growth from a small settlement of 15-18 households to a community of 210. This past contrasts sharply with the present, as many residents have since left, leaving the village largely empty. Despite this hardship, villagers maintain a strong connection to their land and cultural practices, such as preparing their traditional vegetarian dolma with local freekeh and olive oil, and express a firm resolve not to sell their property. The community&#x27;s contemporary challenges are underscored by the fact that their concrete water tower has never been operational, forcing them to rely on water delivered by tanker trucks.</p>
-<h3 class="font-semibold text-xl mt-6 mb-3">C. Summary from Afrin 366 Transcript of Maseka 2</h3>
-<p>Located in the Rajo district of the Afrin region, Gundê Mûsako is a village with a history of over 200 years, which once consisted of approximately 175 houses and a population of around 1200 people. The older homes in the village were traditionally constructed using &quot;<span class="internal-link">kevirê bejî</span>&quot; (wild/mountain stone), and the landscape is marked by landmarks named through oral tradition, such as the high, rocky hill known as &quot;<span class="internal-link">Kevirê Kar</span>&quot; (The Deaf Stone), so-called by elders because its height muffled the sounds from the village below. This deep connection between people and place is evident as former residents identify the specific houses of their relatives and neighbors, preserving the memory of families such as <span class="internal-link">Xelîl</span>, <span class="internal-link">Xelîlê Dawid</span>, <span class="internal-link">Mihemedê Nazmî</span>, <span class="internal-link">Xoşnav</span>, <span class="internal-link">Fewzî</span>, <span class="internal-link">Sebrî</span>, <span class="internal-link">Xelîlê Beşîr</span>, and <span class="internal-link">Hesenê Hesen</span>. This act of remembrance is framed by the profound pain of displacement, described by one elder as &quot;xurbetî&quot; (exile), a difficult state that &quot;burns a person&#x27;s soul&quot; and fuels a deep, prayerful longing to return to their specific homes, properties, and courtyards.</p></div></details></div>
             </div>
 
             <div class="card p-6 rounded-xl">
@@ -320,7 +294,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on October 25, 2025</p>
+            <p class="text-sm subtext">Page Updated on January 19, 2026</p>
         </footer>
     </div>
 

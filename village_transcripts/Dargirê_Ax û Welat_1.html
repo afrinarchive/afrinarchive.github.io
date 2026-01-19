@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript | Dargirê - Ax û Welat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .jump-btn { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.875rem; transition: all 0.2s; }
+        .jump-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; font-size: 0.75rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .copy-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Dargirê</h1>
+            <p class="text-xl subtext mt-2">Transcript from Ax û Welat</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- General Info Card -->
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transcript Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Village</h3>
+                        <p class="text-lg">Dargirê</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Source Channel</h3>
+                        <p class="text-lg">Ax û Welat</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Length</h3>
+                        <p class="text-lg">41:31</p>
+                    </div>
+                    <div class="mt-4">
+                    <a href="https://www.youtube.com/watch?v=mASawqlEJXc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+                </div>
+                <!-- Jump Buttons -->
+                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t themed-border">
+                    <a href="#english" class="jump-btn">Go to Translation</a>
+                    <a href="#kurdish" class="jump-btn">Biçe Transkrîptê</a>
+                </div>
+            </div>
+
+            <!-- English Translation Card -->
+            <div id="english" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">English Translation</h2>
+                    <button class="copy-btn" onclick="copySection('translation-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Copy
+                    </button>
+                </div>
+                <div id="translation-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19]</span>Host: Yes dear viewers, this time we turned our way to the Mabeta district.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23]</span>Host: Today we entered the village of Dargirê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26]</span>Host: In Dargirê village, formerly the people all lived in caves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30]</span>Host: At one time, the people came out of the caves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33]</span>Host: This mountain, this village, formerly there were no trees in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:37]</span>Host: There was only one tree. The name of the village came from that tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:41]</span>Host: This week, let&#x27;s enter the village of Dargirê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:36]</span>Host: Yes dear viewers, in the village of Dargirê we passed under the tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:40]</span>Host: The village name comes from that tree, from that hill.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:44]</span>Host: Now we have entered, mothers entered with us, girls entered with us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:48]</span>Host: We thank them. Now we will ask the mothers about the history of the tree and the shrine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:53]</span>Host: Hello to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:54]</span>Woman 1: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:55]</span>Host: Mother, may we know you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:56]</span>Woman 1: My name is Seydû, I am Shêro&#x27;s mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:58]</span>Host: You are welcome [On my eyes].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:59]</span>Woman 1: May your eyes be healthy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:00]</span>Host: Mother Seydû is with us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:03]</span>Host: Mother, may we know you too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:04]</span>Woman 2: My name is Henîfe, I am Ahmed&#x27;s mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:06]</span>Host: Oh, you are welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:07]</span>Woman 2: May your eyes be healthy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:08]</span>Host: Be healthy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:10]</span>Host: Mother, let us ask, now... the village name comes from this tree...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:14]</span>Host: And from this hill.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:17]</span>Host: Mother, when do you pass under this tree? By God, it seems to be a holy place, is there a shrine here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:24]</span>Woman 1: The name of this shrine is the Shrine of Ehmed Dede.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:27]</span>Woman 1: We, on Thursday, we come, we bring oil and we tie rags to it, we light fires here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:35]</span>Woman 1: And the sick come before it, asking for their wishes. Girls come asking for their wishes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:40]</span>Woman 1: The sick come asking for their wishes. If rain doesn&#x27;t fall on us, we come and say...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:46]</span>Woman 1: Or we pray to God, we slaughter our chickens, saying let rain fall on us, and it falls, praise be to God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:52]</span>Woman 1: And we see it like that as a holy place, his name is Martyr, and we, the whole village, have conviction in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:57]</span>Host: Mother, let us ask you. Uh... where is that tomb? Where is the grave?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:02]</span>Woman 2: The tomb is here. It is here... meaning the martyr is here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:06]</span>Woman 2: And we have a tree... there was a room up here... its name is [unclear].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:13]</span>Woman 2: Also, on Wednesday, Wednesday night, before the day... a ray/light comes... a ray of some...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:19]</span>Woman 2: A ray of that much... it shines, separately it shines and shines.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:23]</span>Woman 2: And a ray yes... a ray lights up... Separately indeed, a light appeared, that one also appears.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:30]</span>Host: Meaning specifically Wednesday?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:32]</span>Woman 2: Wednesday, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:34]</span>Host: Mother, let us ask something else.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:36]</span>Host: Mother, they say Ahmed Dede. You know the word &quot;Dede&quot; is an Alevi word.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:41]</span>Host: A word... is given, they don&#x27;t say Sheikh.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:45]</span>Woman 2: They say Dede.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:46]</span>Host: And then when some... if [unclear]... for example no one... fire didn&#x27;t light... our house was here, this was our yard.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:54]</span>Host: One day we realized a lamp/light had lit itself.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:57]</span>Host: Was... Was that also on Thursday?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:59]</span>Woman 2: It was on Thursday. This was our house. Meaning we looked, no one was there, the fire lit itself. The lantern lit itself.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:09]</span>Woman 2: We saw such things too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:10]</span>Host: This grave is not in your memory? The tomb is not in your memory? From which year, from which time? Meaning the history is not clear?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:18]</span>Woman 2: No, it is not clear. But it is very ancient. Meaning very ancient, from our ancestors...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:25]</span>Woman 2: They used to say it is a very ancient tree. And meaning there are many, in summer they come and spread their mats here, sit under it, we see their mats under the tree more often.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:38]</span>Host: Mother, now your village is all... isn&#x27;t it Sunni? You are next to the Mabeta district.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:46]</span>Host: The Mabeta district are all our Alevi Kurds.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:50]</span>Woman 2: There are Sunnis too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:51]</span>Host: In Mabeta?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:52]</span>Woman 2: Yes, but we ourselves are Sunni. And we ourselves, for example... I was 50 years old when we moved, we came home here to the front yard.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:57]</span>Host: Eh mother, yes, now are all those in Dargirê Sunni?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:00]</span>Woman 2: No, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:01]</span>Host: Now, look, my point is, formerly the root of Afrin, in the beginning all our Kurds were Yezidis.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:07]</span>Host: After that time some became Muslim, until now some have remained on their religion. There are Alevis, and there are Sunnis. Are there any Alevi persons in your village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:14]</span>Woman 2: In here, no.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:15]</span>Host: None?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:16]</span>Woman 2: No, none. But Mabeta are Alevi. In Mabeta there are Alevis and there are Sunnis.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:19]</span>Host: Before, there were no mosques in it either?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:20]</span>Woman 2: The majority are Alevi.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:21]</span>Host: Uh yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:22]</span>Host: Uh mother, you said specifically on Thursday [you] come. Now what will you do?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:28]</span>Woman 1: We will bring our box, put oil in it, put rags in it and light it, take it inside and make our wishes, tie our rags to the tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:39]</span>Woman 1: And we stand, and our... and then we eat there.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:43]</span>Host: Have you ever been cut off from Thursday or do you come?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:46]</span>Woman 1: We, meaning let&#x27;s say... uh... [if] I don&#x27;t come, uh [others] come, [others] come, meaning always [people are] here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:52]</span>Host: Meaning they light the light.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:53]</span>Woman 1: We come and light it, we say he is our martyr, and we have conviction in him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:58]</span>Host: Okay, I thank you, please [come] my daughter.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:01]</span>Woman 1: Thanks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:04]</span>Host: Yes dear viewers, now we have exited from under the tree, the girls have all taken their boxes in their hands...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:09]</span>Host: It&#x27;s candles... uh now light them. Do you light them here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:11]</span>Girls: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:12]</span>Host: Please go ahead.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:11]</span>Host: Did you finish here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:12]</span>Girl 1: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:13]</span>Girl 1: Now we come... we girls live down there, we come for example let&#x27;s say one... someone is sick among us,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:22]</span>Girl 1: Or for example if they have different wishes, we come on Thursday and light fire here, and here we place our belief in this... meaning in this thing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:29]</span>Host: Uh... okay.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:30]</span>Host: Now what were your wishes? What did you ask for?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:33]</span>Girl 1: By God, uh I... I have a sick sister, uh [I] came for her I said God willing God gives her relief,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:39]</span>Girl 1: Or God willing God gives a cure, and she exits from this sickness, from this distress.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:43]</span>Host: God willing God gives relief. We also thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:46]</span>Girl 1: Thanks to you too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:48]</span>Voiceover: The citizens of these villages, until now, on the eves of Friday, light lamps on all these shrines.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:56]</span>Voiceover: Also on feast days, many inhabitants of these villages gather before this shrine and eat their breakfast together.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:06]</span>Voiceover: Before this shrine, an acorn tree has grown. According to the believers of these villages, this tree is the cure for the wart disease.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:16]</span>Voiceover: The inhabitants of the village state that if someone has warts on their skin, they must on Wednesday cut a piece from this tree and put it on their wart,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:26]</span>Voiceover: And without looking behind their back return to their home.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:31]</span>Voiceover: To the north of the village is the Shrine of Ehmed Dede. And the inhabitants of the village used to wash their clothes at the water well of the shrine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:41]</span>Voiceover: Near it there is also a wide mulberry tree. The citizens of these villages visit this shrine on occasions.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:49]</span>Voiceover: And in dry years, they gather together under this mulberry tree, and request the falling of rain via the religious elders from God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:49]</span>Host: Yes dear viewers... the villagers also wanted [to show] their games of the past, how when they were children, how they played,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:58]</span>Host: They wanted again their old games...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:00]</span>Host: Are they games? No, the game has arrived, which one do they like... We will first ask what their game is. Hello to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:05]</span>Guest 1: You are very welcome, welcome, you came with goodness and joy. With Ronahî channel, you are most welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:12]</span>Host: May your eyes not hurt [Thank you]. What is the name of the game, Uncle Zekiri?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:16]</span>Guest 1: Well, this game itself... it is from the past, our fathers and grandfathers used to play it. We learned from them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:24]</span>Guest 1: This game itself, it is a historical game, it is a revolutionary game.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:28]</span>Guest 1: Meaning the enemy... when they used to attack us, our fathers and grandfathers would hide themselves in the earth.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:36]</span>Guest 1: They bring the new generation, the old generation to our memory/face.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:41]</span>Guest 1: Now let us become like this game, this group of the earth... or rather the soil of the homeland.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:46]</span>Host: You are talking about this soil? The soil of the field?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:48]</span>Guest 1: This is the soil of the homeland. Like Kobani, how the enemy surrounded it but they came together. Like Sinjar, like Gire Spi.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:57]</span>Guest 1: Meaning this game brings that thing to our memory. Since the past, the enemy cannot defeat us one by one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:05]</span>Guest 1: Those who occupied Kurdistan, they say the comrades attack together, they attack our surroundings. This game has been raised/derived for us from that revolution.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:13]</span>Host: So it is a national game?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:14]</span>Guest 1: It is a national game, revolutionary, and our fathers and grandfathers played it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:19]</span>Host: How many people play when you play?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:21]</span>Guest 1: Comrade... a day might come when a cinematic film is made about it. It is indeed the revolutionary game. Ten, a hundred, two hundred, however many people there are, can play this game.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:35]</span>Host: Now how many of you will play?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:36]</span>Guest 1: We are now about eight here, we can play it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:40]</span>Host: Were you like this in the past too? In the past also eight...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:42]</span>Guest 1: Well comrade, in the past it was the majority, meaning however many adults would play it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:47]</span>Host: Meaning however many people there are, that many can play.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:49]</span>Guest 1: However many there are, they can play.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:52]</span>Host: Let us ask a bit about this. Before, your games in the past... what did you play? What do you remember?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:00]</span>Guest 2: Before we played... they called it &quot;Thief and Manager&quot;. Thief and Manager meant people would... some would hide, some would go far away.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:11]</span>Guest 2: Until they searched around and caught them all. If they caught them, that one &quot;died&quot;... meaning passed to the other. It would change, the thing, that one was finished.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:22]</span>Guest 2: And if they didn&#x27;t catch them, they searched until they caught them. And if one found an opportunity, came and sat in his place, it became a pride for him too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:35]</span>Guest 2: And some in that way... they flew... they call it &quot;Black Donkey&quot; or &quot;Long Black Donkey&quot;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:40]</span>Host: So there are many games?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:41]</span>Guest 2: Many, there are many games.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:42]</span>Host: Do those games exist now with you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:43]</span>Guest 2: Now they don&#x27;t exist, now...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:45]</span>Host: Do you not play?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:46]</span>Guest 2: No.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:47]</span>Host: Let us ask a bit from this one too. Do you play this game from your past?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:50]</span>Guest 3: In the past, the game itself... whenever there were feasts (Eids), the small Eid and the big Eid.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:56]</span>Host: During the time of the feast?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:57]</span>Guest 3: Sacrifice, the Ramadan feast, the Sacrifice feast, the state... They made fun and celebration, like... like a dance.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:05]</span>Guest 3: One would enter... and the youth of the village, meaning women and girls and old men... all, all the youth, would hold hands in a circle.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:15]</span>Guest 3: And they would go and go, let&#x27;s say... if we were strong/young men, if it was a girl, he/she would hit. Who did that shuffling... he let go of him, that let go of him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:26]</span>Guest 3: Then they take their places.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:29]</span>Host: Meaning there were many games in the past. What do you remember? Anything you remember too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:34]</span>Guest 4: Well during the Eid... under this tree, the shrine tree, meaning I truly remember, girls used to play with stones/jacks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:43]</span>Guest 4: They would place small stones, and throw their small pebble. When it hit, for example let&#x27;s say that...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:52]</span>Host: Does that game exist now?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:53]</span>Guest 4: Now... that too has disappeared.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:55]</span>Host: Does it exist among the children of today?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:57]</span>Guest 4: Meaning the truth of us, now no truth remains. Meaning we reached this point, the enemy made us forget everything.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:06]</span>Host: Now the village children don&#x27;t know? They don&#x27;t know these games?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:09]</span>Guest 4: The generation... the new generation doesn&#x27;t know. But indeed... those of our distress/age know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:16]</span>Host: So teach them, can you teach your children?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:18]</span>Guest 1: Oh the children... of... ten years old... they don&#x27;t know. Those like us... they don&#x27;t know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:24]</span>Host: We thank you. Do you remember anything too? No? Okay.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:29]</span>Host: Now how many people did you say will play?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:31]</span>Guest 1: We are now eight, we will play, eight are ready now.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:34]</span>Host: Now how will you do it? Interpret/explain the game for us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:37]</span>Guest 1: Comrade, now some of us will be on the group, we will run, and the enemy attacks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:42]</span>Guest 1: When the enemy attacks, one of our comrades, if one [of them] touches him with his hand, he dies.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:49]</span>Guest 1: And our comrade, if he kicks that enemy, knocks one of them down, we will kill our enemy, we will go on with our game.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:00]</span>Guest 1: Meaning until we drive our enemy out of our land, we will not leave them be, [otherwise] our comrade dies.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:08]</span>Host: Okay. Let&#x27;s play now, start.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:11]</span>Host: Yes dear viewers, now we will watch the game too. Please go ahead.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:15]</span>[Music and sounds of the game being played. Shouting and running.]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:14]</span>Narrator: The greenery of the village, many of its old games, which like tree roots they have preserved and use until now.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:36]</span>Narrator: The greenery of the village, they derive their livelihood from cultivating fields and olive trees and fruits, especially pomegranates.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:44]</span>Narrator: The village of Dargir preserves its place in valleys, ravines and mountains. Some of its mountains and valleys are these: Shexmir Valley, where ancient ruins are found here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:56]</span>Narrator: The Water Valley (Geliyê Avê), known for its clear water. Ibrahim Valley, Ali Valley, Cheqela, and regarding these valleys many stories are told.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:33]</span>Host: Uncle Aziz, hello to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:35]</span>Guest 5: Welcome, double hello. We welcome you to the village of Dargir, then we are happy with your arrival, and with Ronahî channel, in the name of the program Soil and Homeland.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:50]</span>Guest 5: And we are very happy with your arrival, and in the name of the village, all of us are proud.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:53]</span>Host: Thank you to you too. We were also very happy, today is a nice day that we spent in your village. But from afar we are [looking at] beautiful villages, we wanted to capture the scenery here too, we went to the mother as well.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:03]</span>Host: Uncle Aziz, we wanted to know the history of the village of Dargir. Since how many years has Dargir been established?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:08]</span>Guest 5: Dargir is an ancient village. An ancient village, maybe thousands of years... we don&#x27;t know. It is from long ago, the village is ancient.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:18]</span>Guest 5: And the village, the naming of the village [comes from] a big tree that was in our village, by that tree the village name, the village was named... by the name of that tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:27]</span>Host: Meaning this tree of your village, before there was nothing? That tree existed?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:30]</span>Guest 5: That tree existed. Before that there was another tree. This one, in the name of this tree, it is approximately 700 years old. And before it there was a big tree, the name of the village was put by the name of that tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:42]</span>Guest 5: It became known, the village became known by the name of that tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:45]</span>Host: Before, where were the people of the village, was it here? Was it somewhere else? Where did the people live?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:48]</span>Guest 5: The village was here. The village was caves. The village was in the caves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:52]</span>Guest 5: Caves... there are many around the village, they were all caves. This population, they were inside these caves, they lived there. And they owned sheep, they owned cattle.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:05]</span>Guest 5: And after this, approximately three hundred years ago, the village came out of the caves, they built houses on top. On top of the caves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:12]</span>Host: So how many caves do you have?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:13]</span>Guest 5: Uh... it is five caves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:15]</span>Host: And in that time, in the time of the caves, who were the families? Were they the same ones? But numbers were few? Did some others pass here later?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:23]</span>Guest 5: No... they were the same. Those who are here now... are from them. The first families that came to our village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:29]</span>Host: Meaning in the beginning they lived in the caves?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:31]</span>Guest 5: In the beginning they lived in the caves. Which families were they? The families...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:35]</span>Host: The same existed?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:36]</span>Guest 5: Yes. They are our grandfathers, our fathers and grandfathers. We said ancestors, the beginning ancestors... were the house of Shex Chile. They were in the caves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:44]</span>Guest 5: The Qere family were in the caves. The Hevide family were in the caves. The Tewit family were in the caves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:58]</span>Guest 5: And the Eljuja family were in the caves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Host: Naturally, shall we turn our attention to your final segment?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:02]</span>Man: Your final segment.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:03]</span>Host: So, how did the people make a living in the past? Is there water in the village? Are there springs?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:08]</span>Man: Yes, there are two wells in this village. The wells are actually springs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:13]</span>Man: There are two wells, a well is on this side of the village, the northern side of the village, we call it the Upper Well.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:20]</span>Man: Four villages used to take water from it in the past.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:22]</span>Host: Which villages were they?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:23]</span>Man: Kokane, Didyo, and Juqê and Dargirê. Our village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:27]</span>Host: So, this well you mentioned was located between these four villages in the past?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:29]</span>Man: Four villages.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:30]</span>Man: And the Lower Well, it is the Lower Well, it is at the edge of the village. This valley is called the Well of Dargirê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:37]</span>Man: People used to drink water from it, they washed clothes there... women washed clothes there by the tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:43]</span>Man: And above this tree, there is a large plane tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:46]</span>Man: That is also approximately...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:47]</span>Host: That isn&#x27;t a well?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:48]</span>Man: They are springs, they ooze out. At night... they ooze out.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:52]</span>Man: And this Lower Well, 15-20 years ago, when they cleaned the well... a spring of snakes came out of it, like a fountain.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:03]</span>Host: So, formerly in your village, Dargirê, how did they sustain their lives in the past?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:08]</span>Man: Our livelihood was formerly with livestock.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:10]</span>Man: They did it with livestock, after livestock... they planted vineyards and grains, then they planted vineyards.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:17]</span>Man: They were black grapes. After that fields... they planted olives.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:21]</span>Man: Approximately, olives have been planted for two hundred years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:23]</span>Man: Their age is two hundred years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:25]</span>Host: Two hundred years... two hundred years ago, there were trees on this mountain, right?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:29]</span>Host: So, what was on this mountain before?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:31]</span>Man: This mountain formerly... trees and bushes... what was there... they were terebinth trees, oak trees, they were trees, eh... they were common trees.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:39]</span>Host: So, these olives came into existence two hundred years after you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:41]</span>Man: Olives came to be. Two thousand olives came to be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:44]</span>Man: After olives came to be, we built presses in the village. There were five presses in the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:49]</span>Man: Olive presses.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:50]</span>Host: Inside the villages?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:51]</span>Man: Inside the villages, each one in a spot... house... I mean some are on this side, some are on that side, depending.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:54]</span>Host: Are there presses in the caves too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:56]</span>Man: The same cave... they used to live in it. From those caves, they turned five caves into presses. Olive presses.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:02]</span>Host: Who were they?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:04]</span>Man: That one belonged to the House of Hemedê Ejik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:06]</span>Man: One belonged to the House of Betalê Qere.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:07]</span>Man: One belonged to the House of Ibrîm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:09]</span>Man: One belonged to the House of Seydê Hesen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:11]</span>Man: One belonged to Henî Elû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:12]</span>Host: Are all these for olives?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:13]</span>Man: They are for olives.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:15]</span>Host: Is there another one, another press?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:17]</span>Man: Yes there is another, it is above the Lower Well, it used to be a guesthouse, they said. Formerly.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:22]</span>Man: Like that... it was a guesthouse above the Lower Well. Until now, its place is visible.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:26]</span>Host: How many households is the village of Dargirê now?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:28]</span>Man: It is three hundred households.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:30]</span>Man: They are three hundred households, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:32]</span>Host: May your house be prosperous. Thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:35]</span>Man: And yours too... and yours be prosperous. And may there be success. Good times.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:49]</span>Voiceover: Dargirê is one of the ancient villages of the Afrin Canton. The founding of the village dates back to nearly 300 years ago.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:57]</span>Voiceover: The village of Dargirê has taken its name from the meaning &quot;Trees occupied&quot; or &quot;It holds the mass&quot;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:04]</span>Voiceover: Some villagers say that the village gets its name from the large plane trees that used to exist in the village. And now only one of them remains.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:13]</span>Voiceover: There are ten main families in the village of Dargirê. And the foundation of these ten families was one family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:20]</span>Voiceover: The family of Bekirê Elîko. The family of Qere. The family of Ocê. The family of Omer Sefîno. And the family of Bekirê Kêlê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:28]</span>Voiceover: The village of Dargirê now consists of nearly 250 houses. And the number of citizens living in it is more than a thousand people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:34]</span>Host: Hello to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:35]</span>Muhammad: Oh welcome, welcome, and in safety, and may your time be good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:39]</span>Host: Be healthy. Shall we get to know you first?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:41]</span>Muhammad: I am Muhammad Dawud, from Dargirê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:44]</span>Host: You are welcome. Your name?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:45]</span>Woman: Naime, from Ashqê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:47]</span>Host: You are welcome. Brother Muhammad, in the village they mentioned that you make medicine. What medicine do you make?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:55]</span>Muhammad: We make medicine for the arteries, the heart vessels. Those whose heart is blocked. Like when clots form there. You know?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:03]</span>Muhammad: Like when their walking is heavy... We make that medicine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:06]</span>Muhammad: And we make medicine for the kidneys. There are kidneys that are weak. We make it for them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:10]</span>Host: Meaning when a person falls ill, becomes unhealthy?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:12]</span>Muhammad: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:13]</span>Host: You make medicine for them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:14]</span>Muhammad: We only make two types. Medicine for vessels and medicine for kidney inflammation.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:22]</span>Host: Now is this the medicine? Is this before us?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:24]</span>Muhammad: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:25]</span>Host: What do you do it with?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:28]</span>Muhammad: Apple, one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:30]</span>Muhammad: Lemon, two; ginger, three; garlic, four.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:35]</span>Muhammad: These are the main ingredients.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:37]</span>Muhammad: And a little vinegar of vinegar (apple vinegar) goes into it. Vinegar of course, two or three types of vinegar go into it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:43]</span>Muhammad: And it is made by way of a water bath (bain-marie). By way of hot water, that is.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:50]</span>Host: Now are they in two colors?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:52]</span>Muhammad: This yellow one... it doesn&#x27;t matter, just this one... mix it with honey. This is permissible, mixing it with honey is permissible.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:01]</span>Muhammad: But this one you give to the patient... you give it pure... one in the morning, immediately... one face-to-face (directly), a tablespoon, half an hour before he eats lunch.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:14]</span>Host: Is this for the vessels?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:15]</span>Muhammad: For the vessels, and the person who cannot catch their breath... the person who has fats, who has cholesterol... this burns it all. It even lowers sugar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:27]</span>Host: And mostly what work do you do? Do you know other work too? Is it cupping?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:31]</span>Muhammad: I am an expert in cupping.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:33]</span>Muhammad: Expert in cupping. Meaning we don&#x27;t just do cupping... we coordinate the human body.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:38]</span>Muhammad: The person whose body is heavy, from the head to the feet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:41]</span>Muhammad: The one whose body is numb, their feet become heavy, their back hurts, their knees hurt...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:48]</span>Muhammad: there are feet that burn. Men&#x27;s feet burn. Gout (salt) falls into men&#x27;s feet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:53]</span>Muhammad: This disease has its own names. The salt in the feet... they say &quot;uric acid&quot;, we say &quot;xwî&quot; in Kurmanji.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:01]</span>Muhammad: Some call it the disease of kings... they eat a lot of meat, their feet burn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:06]</span>Muhammad: We draw this impurity from the feet with a device, of course.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:09]</span>Host: With cupping?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:10]</span>Muhammad: With cupping.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:11]</span>Host: Brother Muhammad, have you been doing this work for a long time?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:13]</span>Muhammad: It has been fifteen years that we have been doing this work. Me and a woman here. A woman helps us...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:19]</span>Host: The elders become helpers?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:20]</span>Muhammad: Yes. The woman attends to the women. I define the points for her. And she does it too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:27]</span>Host: So where did you... where did you learn this work? Where did you see it, that you did this work?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:33]</span>Muhammad: In the beginning... we used to do ordinary cupping. This cupping, Islamic cupping... only two places, on the back...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:40]</span>Muhammad: inside it is the graveyard of the place, the cemetery... all the impurity of the place falls there... whatever dies, it must draw it out.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:47]</span>Muhammad: But this science, is a science of a very large sea.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:50]</span>Muhammad: Whatever science... in Iran, in India, Pakistan, in China, we pulled it all, we translated it all.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:58]</span>Muhammad: And applied it all places... on the customers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:00]</span>Muhammad: I was in Raqqa. I was in Raqqa among the Shawis in Meskene... I was there for seven years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:06]</span>Muhammad: For seven years we tested on them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:08]</span>Muhammad: The thing we saw benefit in, we kept for work. The thing we didn&#x27;t see benefit in, we forgot it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:14]</span>Muhammad: Inside however many things in this book, in this collection... that is in alternative medicine...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:19]</span>Muhammad: however many things in it I practiced, the thing that didn&#x27;t give a result... by God I practiced it but we didn&#x27;t do it (anymore).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:25]</span>Muhammad: But the thing that gave a result... the result of doing it happened for us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:29]</span>Muhammad: Those whose pressure doesn&#x27;t go down.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:31]</span>Muhammad: Their pressure is high, they have nervousness... until you say &#x27;hello&#x27; to him, he says &#x27;pain&#x27; to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:37]</span>Muhammad: Those... those same pressures we can, with God&#x27;s permission of course, bring down.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:42]</span>Muhammad: But we wanted... for this region to give us a certificate... in Aleppo they gave us a certificate, their certificate is not like that...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:49]</span>Muhammad: The request is that you give a certificate so we can do this work with it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:53]</span>Host: You can, there are health places, there is a ministry, you can ask them, go to them, I mean...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:58]</span>Muhammad: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:01]</span>Host: Now, you said this grass... is it cupping?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:05]</span>Muhammad: This is cupping...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:06]</span>Host: What are these devices?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:07]</span>Muhammad: This one is for sugar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:08]</span>Muhammad: Before a person comes to us, we measure the sugar entirely as one, and measure the pressure as two. Sugar and pressure.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:16]</span>Muhammad: If their pressure is high we know how, and if their pressure is low we know how.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:21]</span>Muhammad: Meaning our illness, (so) we know how to work with it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:24]</span>Muhammad: And the ways we work with... there are old ways... and there are modern ways...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:30]</span>Muhammad: there are four ways of wages (methods). There is by way of laser, there is by way of Chinese needles (acupuncture),</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:38]</span>Muhammad: and there is by way of blade, and there is by way of pen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:42]</span>Muhammad: All these... every person, every illness, we deal with it in a (specific) way.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:48]</span>Host: And separate... what else is there? The illnesses for what?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:51]</span>Host: I mean is it for children? Or I don&#x27;t know, other illnesses?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:54]</span>Host: Or is it for migraines? Or I don&#x27;t know, other illnesses?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:56]</span>Muhammad: Headache... we said we have been doing this work for fifteen years. Me and a woman here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:00]</span>Man: There are those sicknesses, they consist of eight bouts. Sometimes, a little, meaning instead of heartburn, it takes two sessions.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:07]</span>Man: Praise be to God, the whole area has recovered. Only one person is still following up with us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:12]</span>Host: What is that sickness?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:13]</span>Man: Migraine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:14]</span>Man: Migraine, in the area, everyone recovered in one hour. With God’s permission, like that, just one session.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:19]</span>Man: Only one person, outside, we are still following up.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:23]</span>Man: And for children, there are two night sicknesses (bedwetting), praise be to God they have improved.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:29]</span>Man: And still now we have four or five...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:31]</span>Host: Is it internal? Is it internal, or is it internal...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:36]</span>Man: Internal... well internal... brother...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:37]</span>Host: Did you give them medicine?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:38]</span>Man: We gave them medicine and we stimulated (activated) them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:41]</span>Man: Our work, we said we stimulate the blood. If the blood works, the whole body works.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:46]</span>Host: You know I went to the village of Hêkicê... Sheikh Izzedin was there... he was doing exactly this work. His work is very close to this.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:54]</span>Man: Everyone does cupping work, but ours, our work is called general activation.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:00]</span>Man: A person&#x27;s arteries and veins... and maybe numbness...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:04]</span>Man: You feel yourself, burning between your shoulders.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:08]</span>Man: Your feet became heavy. Your feet went numb.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:12]</span>Man: That which is on one&#x27;s heart, like the tip of a needle like this, goes and comes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:17]</span>Man: I know this has entered a slightly dangerous stage.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:21]</span>Man: At that time... we are forced to draw blood. Be it night, be it day...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:25]</span>Host: From where do you draw the blood?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:27]</span>Man: From the network of the back. Between the shoulder blades.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:31]</span>Man: Not from the ground, not the place people say, between the shoulder blades... we draw it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:37]</span>Man: And then every... person shows [symptoms] in a way.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:40]</span>Man: A purple kind... its meaning is a kind... the white one is a kind... the red one is a kind...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:45]</span>Host: Do you examine the evidence? Do you examine the sample?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:47]</span>Man: I examine the evidence. A black kind is a kind, a bluish kind is a kind.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:52]</span>Man: Even the kidney, if the kidney works or doesn&#x27;t work, it shows.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:55]</span>Host: It shows to you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:56]</span>Man: It shows. Of course, the document of cure is God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:58]</span>Host: May your house be prosperous, thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:00]</span>Man: Welcome. And have a good time.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:08]</span>Narrator: In the village of Dargirê, there are many ancient water wells, which were dug during the Roman era.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:16]</span>Narrator: And until now, the citizens of the village get their water from them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:20]</span>Narrator: Likewise, the water well of Hecmûra is a spring that four surrounding villages...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:26]</span>Narrator: Upper Koka, Lower Koka, Cûqê, and Dargirê take their water from it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:41]</span>Narrator: In the village of Dargirê, many ancient sites are found.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:46]</span>Narrator: Among these sites are the Kevmar caves. The number of these caves is close to twenty-five.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:53]</span>Narrator: According to the citizens, in ancient times, many of these caves were used as olive presses.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:00]</span>Narrator: Some of these presses are: The press of Ehmedê Ecik, Mixtar Betal, Henan Elo, Seydî Hesen, and Ibrahim Agha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:28]</span>Singer: The highlands... the highlands... the highlands...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:40]</span>Singer: Mazum Spring... Mazum Spring... Agit Spring... Mazum shop...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:51]</span>Singer: The highlands... the highlands... the highlands...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:16]</span>Singer: The longing of my heart is four shepherds...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:22]</span>Singer: What a tyrant you are to the luck of my beloved...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:29]</span>Singer: Enough come already, why didn&#x27;t you come...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:36]</span>Singer: What a tyrant you are to the luck of my beloved...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:52]</span>Singer: Enough come already, why didn&#x27;t you come...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:57]</span>Singer: Now the luck, the tyrant is you my love...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:04]</span>Singer: People and the world were all satisfied with us...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:09]</span>Singer: What a tyrant you are to the luck of my beloved...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:16]</span>Singer: The shepherd is at night... lo what did he say...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:21]</span>Singer: You said you know... I have two...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:27]</span>Singer: It is night... God... we loved each other...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:32]</span>Singer: We were ashamed... the uncle said...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:40]</span>Singer: Uncle shepherd... the gentle boy...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:55]</span>Singer: The longing of my heart is four shepherds...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:36]</span>Narrator: Near the village, between the village of Cûqê and Dargirê, there is also the shrine of Sheikh Jamaluddin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:44]</span>Narrator: At this shrine, the citizens of these villages, in dry years, used to organize religious rites and ceremonies for rainfall.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:53]</span>Narrator: The residents of Dargirê village are known for their cooperation and their communal life.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:59]</span>Narrator: And they share all their mourning and joy with each other.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:03]</span>Narrator: In the village, also, a children&#x27;s dance group named the Şehîdiyar group has been established.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:09]</span>Narrator: This group participates in all the village&#x27;s occasions.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:44]</span>Dancer: Hey! Hop!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:28]</span>Dancer: Come on girl!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:45]</span>Dancer: Come on!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:27]</span>Dancer: Hop, hop, hop!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:30]</span>Dancer: Hahaha!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:14]</span>Host: Yes, everything has a beginning, and it also has an end.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:19]</span>Host: Here too we will bid you farewell, we have reached the end of our program.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:23]</span>Host: We have spent these two days in the village of Dargir, and we got to know the history of Dargir village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:28]</span>Host: We will bid you farewell. Come on.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:31]</span>Host: Until another week, in another village, we will be together again.</p>
+                </div>
+            </div>
+
+            <!-- Kurdish Transcript Card -->
+            <div id="kurdish" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transkrîpta bi Kurmancî</h2>
+                    <button class="copy-btn" onclick="copySection('transcript-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Kopî bike
+                    </button>
+                </div>
+                <div id="transcript-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19]</span>Host: Belê temaşevanên hêja, vê carê jî me berê xwe da navçeya Mabeta.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23]</span>Host: Îro jî em derbasî gundê Dargirê bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26]</span>Host: Gundê Dargirê berê milet hemû di şikefta da jiyan dikir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30]</span>Host: Di demekê da milet derket ji şikefta.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33]</span>Host: Ev çiya, ev gund berê dar tê tune bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:37]</span>Host: Darek bi tenê hebû. Navê gund ji wê darê hat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:41]</span>Host: Vê hefteyê jî ka em derbasî gundê Dargirê bin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:36]</span>Host: Belê temaşevanên hêja, di gundê Dargirê da jî em derbasî bin darê bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:40]</span>Host: Navê gund ji wê darê hatiye, ji wê girî hatiye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:44]</span>Host: Niha em derbas bûn, dayik jî bi me ra derbas bûn, keçik jî bi me ra derbas bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:48]</span>Host: Em spasiya wan dikin. Niha jî emê dîroka darê û ziyaretê bipirsin ji dayika.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:53]</span>Host: Merhaba ji we ra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:54]</span>Woman 1: Ehlen we sehlen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:55]</span>Host: Dayê em te nas bikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:56]</span>Woman 1: Navê min Seydû ye, dayika Şêro me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:58]</span>Host: Serçava.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:59]</span>Woman 1: Serçavê te sax be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:00]</span>Host: Dayê ko Seydû me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:03]</span>Host: Dayê em te jî nas bikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:04]</span>Woman 2: Navê min Henîfe ye, dayika Ehmed im.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:06]</span>Host: Oy serçavê min.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:07]</span>Woman 2: Serçavê te sax be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:08]</span>Host: Sax be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:10]</span>Host: Dayê em bipirsin, naha... navê gund ji vê darê hatiye...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:14]</span>Host: Û ji vê girî hatiye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:17]</span>Host: Dayê, hûn kengî derbasî bin vê darê dibin? Wela cîkî pîroz xwariya, vir ziyaret heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:24]</span>Woman 1: Navê vê ziyaretê, ziyareta Ehmed Dede ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:27]</span>Woman 1: Em ji xwara pênşemê, em tên em zeytê tînin û em paçik dikinê, em êwir vêdixin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:35]</span>Woman 1: Û yê nexweş tê ber, mirazê xwe dixwaze. Yê keçik tên mirazê xwe dixwazin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:40]</span>Woman 1: Yê nexweş tê mirazê xwe dixwaze. Baranê ser me da lê nekir, em tên em divên...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:46]</span>Woman 1: Yan em berxudê digerin, em mirîşkê xwe serjê dikin, dibên bila baran li ser me da lê ke û lê dike jî elhemdillah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:52]</span>Woman 1: Û em wisa ji xwara cîkî pîroz dibînin, navê wî Şehîd e, û em qenaeta me gunda tevayî pê heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:57]</span>Host: Dayê ka em ji te bipirsin. Ee... ew tirbe li ku derê ye? Goristan li ku ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:02]</span>Woman 2: Tirbe li vê derê ye. Li vê derê ye... yanî şehîd li vir e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:06]</span>Woman 2: Û darek me jî heye... me&#x27;ne oda li vê derê jor e, navê wî nîse teke (?).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:13]</span>Woman 2: Hew jî, royê çarşemê, şevê çarşemê, berê royê... tîkê ware... tîkê çend...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:19]</span>Woman 2: Tîkê weqas... pişkîne, cida pişkîne pişkîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:23]</span>Woman 2: Û tîkê erê... tîkê pêşxwîne... Di cida bêle, dogekî eşk bû, hew jî eşk dibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:30]</span>Host: Yanî taybet roja çarşemê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:32]</span>Woman 2: Roja çarşemê erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:34]</span>Host: Dayê em tiştekî din bipirsin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:36]</span>Host: Dayê dibêjin Ehmed Dede. Tu zanî gotina &quot;Dede&quot; ev gotinek Elewî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:41]</span>Host: Gotinek... tê dayîn nabejin Şêx.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:45]</span>Woman 2: Dibêjin Dede.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:46]</span>Host: Û paşê wexta hinek, ger girû nexweş bîr bikin (?), mesela kes nîne ard tê de vênaxe (?), ewa... malê me li vir bû, ewa hewşet me bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:54]</span>Host: Em rojekê pê hesîn xwa çire vêketiye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:57]</span>Host: Mege... Ew jî pênşemê da bû?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:59]</span>Woman 2: Pênşemê da bû. Va mala me bû. Yanî me nerî kes nîne xwa ar vêketibû. Fenûs bi xwe vêketibû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:09]</span>Woman 2: Wa tişta jî me dî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:10]</span>Host: Ev gûr ne yê bîra we ye? Tirbe ne yê bîra we ye? Jî kîjan salê, ji kîjan demê ye? Yanî dîrok ne xuya ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:18]</span>Woman 2: Na ne xuya ye. Bes pir kevnar e. Yanî pir kevnar e, ji bav û kalê me da...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:25]</span>Woman 2: Hawa digotin darek pir kevnar e. Û yanî piran jî heye, havînê tên hesîrê xwe li vir radixin, li bin rûdinin, ve hesîrê xwe li bin darê am zêdetir dibînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:38]</span>Host: Dayê, naha gundê we hemû... wî sune nîne, ne? Têdî kelek we wî navçeya Mabeta ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:46]</span>Host: Navçeya Mabeta hemû Kurdê me yê Elewî ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:50]</span>Woman 2: Sune jî hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:51]</span>Host: Mabeta da?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:52]</span>Woman 2: E, lê em bi xwe Sune ne. Û em jî bi xwe mesela... emrê min 50 salî bû me barkir, em hatin mal virra hewşber.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:57]</span>Host: E dayê, erê, naha wî Dargirê hemû Sune ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:00]</span>Woman 2: Na, erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:01]</span>Host: Naha tedî, gotina min ew e, berê kokê efrînê, destpêkê hemû Kurdê me Êzîdî bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:07]</span>Host: Piştî vê demê da hinek bûn Misilman, heya naha jî hinek li ser ola xwe mane. Elewî jî hene, û Sune jî hene. Gundê we de kes Elewî heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:14]</span>Woman 2: Di vir da na.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:15]</span>Host: Tune?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:16]</span>Woman 2: Na tune. Bes Mabeta Elewî ne. Mabeta Elewî hene û Sune jî hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:19]</span>Host: Berê camî jî tê tune bûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:20]</span>Woman 2: Piraniya xwe Elewî ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:21]</span>Host: E erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:22]</span>Host: E dayê, we got bi taybet roja pênşemê tê. Naha hûnê çi bikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:28]</span>Woman 1: Emê qutiya xwe bînin, zeytê têkinê, û paçikê têkinê û vêxinê, bibin tekenave û mirazê xwe bixwazin, paçikê xwe bi darê xinê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:39]</span>Woman 1: Û em diskinin, û em çiçikê xwe... û em paşê lê em dixwin wara.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:43]</span>Host: Win tu caran ji pênşemê qut bûnê yan win tîn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:46]</span>Woman 1: Em yanî em bêjin... e... ne tême, e dên tê, e dên tê, yanî tim elane.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:52]</span>Host: Yanî ronîyê vêdixin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:53]</span>Woman 1: Em tên vêdixin, em dibên şehîdê me ye, û em qenaeta me jî pê heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:58]</span>Host: Tamam, spasîya we dikim, kerem kin kîça min.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:01]</span>Woman 1: Spas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:04]</span>Host: Belê temaşevanên hêja, naha ji bin darê jî em derketin, keçika jî hemû qutikê xwe dest xwe kirine...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:09]</span>Host: Mum e... e naha vêxin. Win li vir vêdixin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:11]</span>Girls: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:12]</span>Host: Ka kerem kin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:11]</span>Host: We li vir bi dawî kir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:12]</span>Girl 1: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:13]</span>Girl 1: Naha em tên... em qîzik lav de dijin, em tên mesela em bêjin yek... kesek nexweş bê ji me,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:22]</span>Girl 1: Yan jî mesela mirazên xwe cuda hebin, em tên roja pênşemê êr vêdixin, û li vê derê em wek em baweriya xwe bi vê... yanî vê tiştî dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:29]</span>Host: Ee... baş e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:30]</span>Host: Naha we mirazê xwe çi bûn? We çi xwest?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:33]</span>Girl 1: Wela e min... xuşkek min a nexweş heye, e hat jêra min got inşela Xwedê rehetiyekê pê bide,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:39]</span>Girl 1: Yan inşela Xwedê şifayekê bide, û ji vê nexweşiyê, ji vê tengiyê derkeve yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:43]</span>Host: İnşala Xwedê rehetîyê bide. Em jî spasiya we dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:46]</span>Girl 1: Spas ji we re jî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:48]</span>Voiceover: Welatiyên van gundan hetanî neha deryarên roja înê de, li ser van ziyaretgehan hemû fît vêdixin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:56]</span>Voiceover: Herwiha di rojên cejnan de, gelek şîniyên van gundan li ber vê ziyaretgehê kom dibin û taştîya xwe bihevdûra dixwin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:06]</span>Voiceover: Li ber vê ziyaretgehê dareke ziftê şîn bûye. Li gorî bawermendên van gundan, ev dar îlaça nexweşiya balûkan e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:16]</span>Voiceover: Şîniyên gund diyar dikin, ku kesek balûk li ser çermê wî hatibe, divê di roja çarşemê de, teneyeke ji vê darê jê bike û dîne ser balûka xwe,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:26]</span>Voiceover: Û bêyî ku li pişta xwe binêre vegere mala xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:31]</span>Voiceover: Li bakurê gund Ziyaretgeha Ehmed Dede heye. Û şîniyên gund li ber bîra avê ya ziyaretgehê cil û bergên xwe dişûştin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:41]</span>Voiceover: Li nêzî wê herwiha bîdareke berfireh heye. Welatiyên van gundan, di boneya da serdana vê ziyaretgehê dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:49]</span>Voiceover: Û di salên zuwa da, li ser vê bîdarê li hev kom dibin, û daxwaza barîna baranê berê rûspiyên olî ji Xweda dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:49]</span>Host: Belê temaşevanên hêja... gundî jî xwestin lîstikê wan ê berê çawa dema zarok bûn, çawa dilîstin,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:58]</span>Host: Xwestin dîsa lîstikê wan ê kevin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:00]</span>Host: Yarî ne? Na ji hatin lîstik, kîjan hez dikene... Em ê destpêkê bipirsin lîstika wan çi ye. Merheba ji were.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:05]</span>Guest 1: Ehlen ser çava, bi xêr hatin, bi xêr û xweşî hatin. Bi kenala Rûnahî hun li ser çava hatin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:12]</span>Host: Çavê te neêşin. Navê lîstikê çi ye Apê Zekîrî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:16]</span>Guest 1: Ê, ev lîstik bi xwe... hewa ji berê paşê, bav û kalê me pê dilîstin. Em ji wana elimîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:24]</span>Guest 1: Ev lîstika bi xwe, lîstikek dîrokî ye, lîstikek şoreşgerî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:28]</span>Guest 1: Yanî dijmin... wextê ku êrîşî ser me dikirin, bav û kalên me, xwe di axê de vedişartin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:36]</span>Guest 1: Berîna acer, berîna kevn tînin bîra me rû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:41]</span>Guest 1: Na em bibin wek vê lîstikê, hewa koma axê... yan axa welat ev.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:46]</span>Host: Hûn bahsa vê axê dikin? Axa zevî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:48]</span>Guest 1: Axa welat e ev ha. Wek Kobaniyê, na çawa dijmin derdora wê girtiyên lê hatine hewde. Wek Şengal, wek Girê Spî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:57]</span>Guest 1: Yanî ev lîstika wê tiştê tîne bîra me rû. Dijmin ji berê paşê de, yek bi yek bi me nikarin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:05]</span>Guest 1: Wanê Kurdistan dagir kirî, dibên hewalyê hewde êrîş dikin, derdora me êrîş dikin. Ev lîstika ji wê şoreşê me rakirine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:13]</span>Host: Yanî lîstikek netewî ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:14]</span>Guest 1: Lîstikek netewî ye, şoreşgerî ye, û bav û kalê me pê dilîstin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:19]</span>Host: Hûn çend kes dilîzin dema hûn dilîzin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:21]</span>Guest 1: Hewal... hewa rojek were dibe fîlmek sînemayî ser çêbibe. Hema bi xwe lîstika şoreşger. Deh, sed, dused, çi qas însan çêdibe, yanî li ser vê lîstikê tê lîstandin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:35]</span>Host: Na hûn çendê wê bilîzin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:36]</span>Guest 1: Em na wekî heşt hewa kene, em kanin pê bilîzin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:40]</span>Host: Hûn berê jî wisa bûn? Berê jî heşt...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:42]</span>Guest 1: Wele hewal berê pirranî bî, yanî çiqas mezin ge dilîstin pê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:47]</span>Host: Yanî çi qas kes hebe ewqas dikarin bilîzin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:49]</span>Guest 1: Çi qas hebe kanin bilîzin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:52]</span>Host: Ka em hinek ji vê bipirsin. Berê lîstikê wa berê... hûn çi dilîstin? Çi tê bîra we?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:00]</span>Guest 2: Berê dilîstin... vêra digotin &quot;Diz-Midûrê&quot;. Diz-Midûr jî, yanî însan waxtê nîk... hinek vedişartin, hinek dûr diçûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:11]</span>Guest 2: Heta ku lê difitilîn, gî digirtin. Bigirtana, ewa dimir... yanî didan yê din. Ewa diguherîta tîşta ew xelas dibû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:22]</span>Guest 2: Û ne girtana, lê digerîn heta digirtin. Û eger yek fersend danî, dihat eger rûniştî dihat ciyê xweyî, bibûn wî jî fexr.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:35]</span>Guest 2: Û hinda di wê ra, difir... dibên kerê reş an kerê reşî dirêj.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:40]</span>Host: Yanî lîstik pir in?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:41]</span>Guest 2: Pir in, lîstik pir in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:42]</span>Host: Ew lîstikên no hene li cem we?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:43]</span>Guest 2: Noko tune ne, noko...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:45]</span>Host: Hûn nalîzin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:46]</span>Guest 2: Na.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:47]</span>Host: Ka em hinek ji vî jî bipirsin. Hûn dilîzin vî lîstikê wa berê de?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:50]</span>Guest 3: Berê, lîstik bi xwe... çiqas eyd hebûn, eyda biçûk û eyda mezin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:56]</span>Host: Demê cejnê de?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:57]</span>Guest 3: Qurbanê, cejna Remezanê, cejna Qurbanê, dewlet... Kêf û şahî dikirin, wekî... wekî dîlanê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:05]</span>Guest 3: Yek diketi... û şabî gund, yanî jin û qîz û kal... gişt, şabab giştik, elqûş destê xwe dikirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:15]</span>Guest 3: Û diçûn diçûn, em bêjin... emê xurt ba, eger keç ba, lê dixistê. Wê şomiş kê dikir... ewa berda wî, ew berda wî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:26]</span>Guest 3: Na dikin şûna xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:29]</span>Host: Yanî lîstik berê pir bûn. Çi tê bîra we? Tiştên tê bîra we jî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:34]</span>Guest 4: Wele le îdê... li bin vê darê, darê zaretê, yanî fe&#x27;len tê bîra min, keçik dilîstin bi tûşê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:43]</span>Guest 4: Hîçik xwedî dinan, û bi kevirê xweyî çik davêtine. Wextê gi lê ket, meselen em bibêjin wê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:52]</span>Host: Ew lîstika heye noko heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:53]</span>Guest 4: No... hew jî hinda bûye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:55]</span>Host: Wekî di nava zarokên no de heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:57]</span>Guest 4: Yanî ti rastkî me, noko ti rast nemaye. Yanî me gihando kir, dijmin hişt em giş bîr bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:06]</span>Host: Noko zarokê gund nizanin? Vê lîstikan nizanin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:09]</span>Guest 4: Jîlê... jîlê nû nizane. Lê hema î... tengê me ra zanin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:16]</span>Host: Ê ka wane fêr bikin, wane zarokên xwe kanin bifêr bikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:18]</span>Guest 1: Ya zarokên... ge... deh salî... nizanin. Î wekî me... nizanin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:24]</span>Host: Em spasîya we dikin. Tu tişt tê bîra we jî? Na? Temam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:29]</span>Host: No hunê çend kes bilîzin we got?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:31]</span>Guest 1: Em no heştin ê, emê bilîzin, heştin no amade ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:34]</span>Host: No winê çawa bikin? Ka jime ra lîstikê şîrove bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:37]</span>Guest 1: Hewal no emê hine ser komê bin, emê birevin, û dijmin êrîş dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:42]</span>Guest 1: Gava dijmin êrîş kir, hewalê me yek, da yek destê xwe gandê hawa dimre.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:49]</span>Guest 1: Û we hewalî me jî eger depî we dijminî ke, yek ji wana birrike, emê ewa dijminê xwe bikujin, emê herin ser lîstika xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:00]</span>Guest 1: Yanî heta ku em dijminê xwe ji nav axa xwe derxin, emê ji wan re nehêlin êsa, hewalê me dimre.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:08]</span>Host: Temam. Ka nawnê bilîzin, destpêbikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:11]</span>Host: Belê temaşevanên hêja, naha jî emê jî lîstikê temaşe bikin. Ka kerem kin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:15]</span>[Music and sounds of the game being played. Shouting and running.]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:14]</span>Narrator: Şînayîya gund, gelek lîstikên xwayî kevin, ê wekî gisinçirê parastine û heta naha bikartînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:36]</span>Narrator: Şînayîya gund, debarê xwe ji çandiniya zeviyan û darên zeytûn û mêweyan, bi taybet hinaram werdigrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:44]</span>Narrator: Gundê Dargirê ciyê xwe di gelî, newal û çiyan diparêze. Hin ji çiya û geliyên wê evin: Geliyê Şêxmîr, ku li vir şûnwarên kevnar têne dîtin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:56]</span>Narrator: Geliyê Avê, bi ava xwayî zelal tê naskirin. Geliyê Îbrahîm, Geliyê Alî, Çeqela, û di derbarê van geliyan de jî gelek çîrok têne gotin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:33]</span>Host: Apê Ezîz merheba ji te re.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:35]</span>Guest 5 (Apê Ezîz): Ehlen we sehlen, merhabteyn. Em bi xêr hatine gundê Dargirê, paşê kefxweş in bi hatina we, û bi kenala Rûnahî, bi navê bernameya Ax û Welat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:50]</span>Guest 5: Û em pir kefxweş in bi hatina we, û bi navê gund, giştikê em şanaz in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:53]</span>Host: Spas ji were jî. Em jî gelek kefxweş bûn, îro rojek xweş e jî em darbas bûn gundê we bûn. Lê ji dûr de em li cwan gundê ne, me xwest dîmenê vira jî em bigrin, em çûn cem dayîka jî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:03]</span>Host: Apê Ezîz, me xwest dîroka gundê Dargirê em nas bikin. Dargir ji çi qas sal da çêbûye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:08]</span>Guest 5: Dargir gundekî kevnar e. Gundekî kevnar e, bi dibe bi hezar sala... em nizanin. Ji mêj e, gund kevnar e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:18]</span>Guest 5: Û gund, navdêna gund bi darek mezin li gundê me hebû, bi wê darê navê gund, gund navs bikirine... bi navê wê darê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:27]</span>Host: Yanî ev darê gundê we, berê tiştek ne bû? Wê darê hebû?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:30]</span>Guest 5: Wê darê hebû. Berî wê jî darek din hebû. Evê, di navê vê darê teqrîben emrê xwe 700 sal heye. Û berî wê jî darek mezin hebû, ma navê gund bi navê wê darê lê nayî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:42]</span>Guest 5: Gotî naskirin, gund hatî naskirin bi navê wê darê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:45]</span>Host: Berê milet li kuderê gund, li vir bû? Li cîkî din bû? Li kuderê jiyan dikir milet?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:48]</span>Guest 5: Gund li vir bû. Gund şikeft bûn. Gund di şikefta de bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:52]</span>Guest 5: Şikeft... gelek dorhêta gund heye, gi şikeft bûn. Vê biletiyê, divê şikeft no de bûn, jiyan dikirin. Û xudan pez bûn, xudan dewar bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:05]</span>Guest 5: Û ba&#x27;dî vê, teqrîben sêsed sal heye, gund ji şikefta derket, xonî ser girtin. Ser pişta şikefta.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:12]</span>Host: Ê çiqas şikeft ba we heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:13]</span>Guest 5: E... pênc şikeft e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:15]</span>Host: E di wê demê de, demê şikeftê de, malbat kî bûn? Eynî hew bûn? Lê jimar kêm bûn? Piştî hinek din derbas vir bûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:23]</span>Guest 5: Na... hew bûn. Wanê manoko... ji wan e. Ewel malbatê hatine gundê me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:29]</span>Host: Yanî e destpêkê di şikeftan de jiyan dikirin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:31]</span>Guest 5: E destpêkê şikeftan de jiyan dikirin. Kîjan malbat bûn? Malbatê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:35]</span>Host: Eynî hebûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:36]</span>Guest 5: E. Kalê me ne, bavo û kalê me ne. Me got selef, destpêkê selef... mala Şêx Çîlê bûn. Di şikefta da bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:44]</span>Guest 5: Malbata Qere di şikefta da bûn. Malbata Hevîdê di şikefta da bûn. Malbata Têwit di şikefta da bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:58]</span>Guest 5: Û Malbata Eljûja di şikefta da bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Host: Qelbet, emê berê xwe bidin pişka te ya dawî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:02]</span>Man: Pişka te ya dawî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:03]</span>Host: Ê berê millet çawa dabora xwe dikir? Av li gundî heye? Kanî hene?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:08]</span>Man: Ê, li vê gundî du bîr hene. Bîr jî kanî ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:13]</span>Man: Du bîr hene, bîr li vî alîkî gund e, aliyê şîmalî gund e, em dibêjin Bîra Jorin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:20]</span>Man: Çar gund a, av berê jê dibir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:22]</span>Host: Kîjan gund bûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:23]</span>Man: Kuku anê, Didyo, û Cûqê û Dargirê. Gundê me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:27]</span>Host: Yani ev bîra te digot ketiye nava berê vê çar gundana?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:29]</span>Man: Çar gundana.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:30]</span>Man: Û Bîra Jêrîn, Bîra Jêrîn e, li qulba gund e. Geliya vê dibêjin Bîra Dargirê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:37]</span>Man: Xelkê av jê vedixwar, kinc li wir dişuştin... jinan kinc dişuştin li wir darê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:43]</span>Man: Û li ser vê darê jî, darek çinarê mezin heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:46]</span>Man: Ew jî teqrîben...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:47]</span>Host: Ew bîr na?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:48]</span>Man: Kanî ne, dizên. Şev... dizên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:52]</span>Man: Û vê Bîra Jêrîn, berî vê 15-20 sala, ka kirin şî... bîrê... çûkaniya mara têra derket, wek kowa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:03]</span>Host: Ê berê gundê we, Dargirê, berê jiyana dabora xwe bi çi dikirin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:08]</span>Man: Dabora me berê bi pez hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:10]</span>Man: Bi pez dikirin, du pez ra paşînkê... rez, dexil diçandin, paşê rez çandin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:17]</span>Man: Rez reşik bûn. Du ra zevî... zeytûn çandin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:21]</span>Man: Teqrîben zeytûn du sed sal çandine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:23]</span>Man: Emrê xwe du sed sal in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:25]</span>Host: Du sed sal... berî du sed salî, vê çiyayî wekû darok lê hebû ha?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:29]</span>Host: Ê berê çi li vê çiyayî de hebû?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:31]</span>Man: Vê çiyayî berê... dar û mirkelem... yekî çi hebû... benîştûk bûn, sindiyan bûn, dar bûn, a... dar am bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:39]</span>Host: Yani ev piştî we bi du sed sal zeytûn çêbûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:41]</span>Man: Zeytûn çêbûn. Du hezar zeytûn çêbûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:44]</span>Man: Ba&#x27;dî zeytûn çêbûn, me me&#x27;ser çêkirin li gund. Pênc me&#x27;ser li gund bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:49]</span>Man: Me&#x27;serên zeytûna.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:50]</span>Host: Nav gundan?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:51]</span>Man: Nav gundan, her yek li darekî... mal... yanî hinek li vî alî ne, hinek li vî alî ne, hasib.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:54]</span>Host: Di şikeftan de jî me&#x27;ser hene?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:56]</span>Man: Nefs wê şikeftê... têda jiyan dikirin. Ji wê şikeftan, pênc şikeft kirin me&#x27;ser. Me&#x27;serê zeytûna.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:02]</span>Host: Ew kî bûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:04]</span>Man: Ew yek a Mala Hemedê Ejik bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:06]</span>Man: Yek a Mala Betalê Qere bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:07]</span>Man: Yek a Mala Ibrîm bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:09]</span>Man: Yek a Mala Seydê Hesen bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:11]</span>Man: Yek a Henî Elû bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:12]</span>Host: Evna hemî yê zeytûnan e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:13]</span>Man: Yê zeytûnan e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:15]</span>Host: Ê tird jî heye, me&#x27;sera tird?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:17]</span>Man: Ê tird heye, li ser Bîra Jêrîn e, mîrxane bû digot. Berê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:22]</span>Man: Hawa... mîrxane bû li ser Bîra Jêrîn bû. Heta noka, cihê xwe bélî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:26]</span>Host: Niha gundê Dargirê bi çiqas mal e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:28]</span>Man: Sê sed mal e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:30]</span>Man: Sê sed mal in a.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:32]</span>Host: Mala te ava be. Spas ji te ra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:35]</span>Man: O te jî... o te jî ava be. O serkeftin be. Saet xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:49]</span>Voiceover: Dargirê yek ji gundên kevnar ên Kantona Efrînê ye. Avakirina gund vedigere nêzî 300 sal berê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:57]</span>Voiceover: Gundê Dargirê navê xwe ji wateya &quot;Dar girt&quot;, an &quot;Girs werdigre&quot; hildaye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:04]</span>Voiceover: Hinek gundî dibêjin, ku gund navê xwe ji darên çinarê yên mezin, ku di gund de hebûn, werdigre. Û niha tenê darek ji wan maye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:13]</span>Voiceover: Di gundê Dargirê de deh malbatên serekî hene. Û bingeha van deh malbatan jî yek malbat bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:20]</span>Voiceover: Malbata Bekirê Elîko. Malbata Qere. Malbata Ocê. Malbata Omer Sefîno. Û Malbata Bekirê Kêlê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:28]</span>Voiceover: Gundê Dargirê niha ji nêzî 250 xaniyan pêk tê. Û hejmara welatiyên têde jiyan dikin jî, bêtirî hezar kesî ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:34]</span>Host: Merhaba ji we ra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:35]</span>Muhammad: Way ehlen we sehlen, we bi selametî, we saet a we xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:39]</span>Host: Sax be. Em destpêkê we nas bikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:41]</span>Muhammad: Ez Mihemed Dawûd, ji Dargirê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:44]</span>Host: Serçava. Navê we?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:45]</span>Woman: Naîme, ji Eşqê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:47]</span>Host: Serçava min. Birê Mihemed, di gund da behsa we kirin ku hûn derman çêdikin. Hûn dermanê çi çêdikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:55]</span>Muhammad: Em dermanê şerayînê çêdikin, damarên dil. Ê dilê xwe girtî. Wek vêra celta çêdibin. Dizane?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:03]</span>Muhammad: Wek meşê xwe giran... Wî dermanî em çêdikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:06]</span>Muhammad: Û dermanê kul a em çêdikin. Kulên hene zeîf in. Em ji wan ra çêdikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:10]</span>Host: Yani dema insan nexweş dikeve, nesax dibe?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:12]</span>Muhammad: Ewa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:13]</span>Host: Hûn ji wan re derman çêdikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:14]</span>Muhammad: Du new&#x27; tenê em çêdikin. Dermanê damara û dermanê kulbûnê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:22]</span>Host: Nuha ev derman e? Ev pîşê me ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:24]</span>Muhammad: Ewa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:25]</span>Host: Ew çi bi çi dikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:28]</span>Muhammad: Sêv yek.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:30]</span>Muhammad: Lîmûn dudu, zencebîl sisê, sîr çar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:35]</span>Muhammad: Evna maddêt reîsî ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:37]</span>Muhammad: Û kîçik sîrkê xel dikeve nav. Xel teben, du sê new&#x27;a xel dikevin nav.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:43]</span>Muhammad: Û b&#x27;rêka hemmam maî çêdibe. B&#x27;rêka ava germ yani.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:50]</span>Host: Nuha dinav du reng in?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:52]</span>Muhammad: Vay zer... hewa nabe, bes vebî... teket hev hingivke. Hewa cayîz e, teket hev hingiv cayîz e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:01]</span>Muhammad: Hewa bes te da nexweş... te hûr da ye... êkê sibe, fewren... êkê rû bi rû, kevçîkê leqînê, berî nîn bixwe bi nîv saetê wex.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:14]</span>Host: Ev ji bo damara ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:15]</span>Muhammad: Ji bo damara, û insanê nefesa xwe naîde... insanê şihûm vêra, kolestrol vêra... hewa gi dişewitîne. Heta şekir da dixîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:27]</span>Host: Û pirraniya te çi karî dikî? Tu karê din jî dizanî? Hecamet nahn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:31]</span>Muhammad: Ez xebîrê hucamê me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:33]</span>Muhammad: Xebîrê hucamê. Yani ne em hucamê çêdikin... em insan dinasiqînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:38]</span>Muhammad: Insanê canê xwe giran, ji serî da heta linga.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:41]</span>Muhammad: Ê canê xwe de tevizî, piyê xwe giran dibe, pişta xwe dêşe, kabê xwe dêşin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:48]</span>Muhammad: ling hene dişewitin. Lingê meran dişewitin. Xwî dikeve lingê meran.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:53]</span>Muhammad: Vê nexweşiyê pey nav xwe hene. E xwîr lingan da... &quot;uric acid&quot; dibên, em bi kurmancî dibêjin &quot;xwî&quot;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:01]</span>Muhammad: Hin dibêjin nexweşiya padşah... goşt pir dixwin, lingê xwe dişewitin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:06]</span>Muhammad: Vê gamarê em ji linga dikişînin bi cîhazê teben.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:09]</span>Host: Bi hecamet?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:10]</span>Muhammad: Bi hecamet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:11]</span>Host: Birê Mihemed, te ji mêj de vî karî dikî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:13]</span>Muhammad: Bî deh-pênc sal in em vî karî dikin. Ez û jina kî va. Jinek mera harî dike...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:19]</span>Host: Ê mezin dibin alîkar?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:20]</span>Muhammad: Ewa. Jinik jinka teslîm dibe. Ez jî ra niqata tehdîd dikim. Û hewa jî çêdike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:27]</span>Host: Ê te ev kar ji ku derê... te ji ku derê fêr bû? Te ji ku derê, te dît, te ev kar dikir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:33]</span>Muhammad: Siftahînê... me hucamê adî çêdikir. Vê hucamê, hucamê îslamiyê... du cî tenê, li piştê da...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:40]</span>Muhammad: nava xwe tirba cî ne, meqbera... gemara cî gi dikeve wira... tiştî dimire, mecbûr dikişîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:47]</span>Muhammad: Bes vê ilmê, ilmekî behr pir mezin e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:50]</span>Muhammad: Çiqa ilm... li Îranê, li Hind, Pakistan, li Sîn, me gi kişand, me gi terceme kir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:58]</span>Muhammad: Û gi cî tebîqan... li ser mişteriyan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:00]</span>Muhammad: Ez li Reqa bûm. Ez li Reqa şawiyê di Meskene... heft sala li wir bûm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:06]</span>Muhammad: Heft sala me li ser wana ceribandin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:08]</span>Muhammad: Tiştî me feyde dît, me şixûl ra hîşt. Tiştî me feyde nedît, me jêbîr kir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:14]</span>Muhammad: N&#x27;aw çiqa tişt di vê kitêbê da, di vê cimişgiriyê... hewa tib el-bedîl da...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:19]</span>Muhammad: çiqa tişt têda ez mîşgirî, tiştî netîce neda... wala wî ez mîşgirî war me ew nekir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:25]</span>Muhammad: Bes tiştî netîce da... netîca kiren bi mera çêbû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:29]</span>Muhammad: Wana daxta xwe danakevin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:31]</span>Muhammad: Daxta xwe bilind, wanda &#x27;esebî... ta vêra go &#x27;merheba&#x27; ta ra dibê &#x27;wuce&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:37]</span>Muhammad: Hewna... heman daxtna em karin bizna xwedê teben em daxînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:42]</span>Muhammad: Bes me xwestinî... şahadek vê mentiqê bi me de... li Heleb danî me şahade, şahadê xwe ne awa...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:49]</span>Muhammad: Daxwaz wîn şahada kî bidin em pê vî karî bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:53]</span>Host: Tu dikarî, ciyê tenduristî hene, wezaret heye, tu dikarî li wan bipirsî, here ba wan, yanî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:58]</span>Muhammad: Ewa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:01]</span>Host: No, te got ev giya... ecemet ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:05]</span>Muhammad: Hewa ecemet...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:06]</span>Host: Ev cîhazna çine?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:07]</span>Muhammad: Hewa î î şekir e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:08]</span>Muhammad: Insan berî were cem me, em şekirî gi dîsa dikin yek, û daxtê dipîvin dudu. Şekir û daxtê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:16]</span>Muhammad: Daxtê xwe bilind be em zanin çuwa, û daxtê xwe walçax be em zanin çuwa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:21]</span>Muhammad: Ma&#x27;ne nexweşiya me em zanibin çuwa vêra bişixûlin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:24]</span>Muhammad: Û rêt em pê dişixûlin... rêt kevn heye... û rêt hedîs heye...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:30]</span>Muhammad: çar rêk ecere hene. Bi rêkê leyzir heye, bi rêkê eber-sîniye heye,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:38]</span>Muhammad: û bi rêkê şefra heye, û bi rêkê qelem heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:42]</span>Muhammad: Hewna gi... her insanek, her nexweşiyek, bi rengekî em vêra muamele dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:48]</span>Host: Û cuda... başqa çi heye? Ê nexweşiyê ji bo çi?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:51]</span>Host: Yani ji bo zaroka ye? Ev nizanim nexweşiyên dinda?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:54]</span>Host: Na ji bo şeqîqa ye? Ev nizanim nexweşiyên dinda?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:56]</span>Muhammad: Serêş... me got deh-pênc sal in em vî karî dikin. Ez û jina kî va.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:00]</span>Mêr: Ew nexweşiyê hene, ji heşt sewran çêdibin. Car jî, çîçkê, yanê şûna dilsok e, dibe du celse.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:07]</span>Mêr: Elhemdulîlah mentiqe gişt çêbûne. Bes yekî tenê hîn mûteba&#x27;e dike bi me re.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:12]</span>Pêşkêşvan: Ew nexweşî çiye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:13]</span>Mêr: Şeqîqe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:14]</span>Mêr: Şeqîqe, li mentiqê gişt saetekê de çêbûne. Bi îzna Xwedê weha, celsek tenê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:19]</span>Mêr: Bes yekî tenê, bera, hîn em mûteba&#x27;e dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:23]</span>Mêr: Û li bo zarokan, du nexweşiya şevê hene, elhemdulîlah baş bûne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:29]</span>Mêr: Û hîn noka me ye çar û pênc hene...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:31]</span>Pêşkêşvan: Yê kî batên? Yê kî batên, wela yê kî batên...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:36]</span>Mêr: Yê kî batên... wela yê kî batên... bira...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:37]</span>Pêşkêşvan: Te derman dayê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:38]</span>Mêr: Me derman dayê û me neşitandin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:41]</span>Mêr: Şixulê me, me go em di neşitînin xwînê. Xwîn şixulî, can gişt dişixule.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:46]</span>Pêşkêşvan: Tu zanî ez çûme gundê Hêkicê... li wê derê bû Şêx Izzedîn... ew jî eyna vî karî dikir yanê. Karê wî pir ji vî nêzîk e yanê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:54]</span>Mêr: Karê hicamê gişt dikin, bes ê me, karê me navê xwe tenşît &#x27;am.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:00]</span>Mêr: Insanê şerel û şerayîn... û dibe ku hesî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:04]</span>Mêr: Tu bi xwe hesî, mabeyna pîlê te şewitîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:08]</span>Mêr: Piyê te giran bûn. Pîçê te tevizîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:12]</span>Mêr: Yê li ser dilê mera wekî pozê derziyê hana, diçe û distîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:17]</span>Mêr: Zanim ev da çîçkê ket merheleyê xetûre.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:21]</span>Mêr: Wê çaxê... em kî mecbûrî xwînê bikşînin. Şev bê, ro bê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:25]</span>Pêşkêşvan: Ji kû derê xwînê dikşîne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:27]</span>Mêr: Ji şebekê piştî. Mabeyna herf pêla.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:31]</span>Mêr: Ne ji er, ne şûna xelq dibê, mabeyna herf pêla... em dikşînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:37]</span>Mêr: Û pişt her... însanek bi rengekî bêl dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:40]</span>Mêr: Tûne mûr... me&#x27;nasiya wî tûneke... î sipî tûneke... î sor tûneke...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:45]</span>Pêşkêşvan: Tu belgeya fehis dikî? Tu pirje fehis dikî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:47]</span>Mêr: Belgeya fehis dikim. Tûne reş tûneke, tûne berheşîn tûneke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:52]</span>Mêr: Heta gurçik, îza gurçikê dişixule, ê naşixule, bêl dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:55]</span>Pêşkêşvan: Te re bêl dike?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:56]</span>Mêr: Bêl dike. Tebe&#x27;en, belgeya şîfê Xwedê ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:58]</span>Pêşkêşvan: Mala te ava be, spas tera.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:00]</span>Mêr: Ehlen we sehlen. Û saeta we xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:08]</span>Bêjer: Di gundê Dargirê de, gelek bîrên avê yên kevnar, ku di serdema Romaniyan de hatine kolandin, hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:16]</span>Bêjer: Û heta niha welatiyên gund, ava xwe jê werdigrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:20]</span>Bêjer: Her wiha bîra avê ya Hecmûra, kaniyek e ku, çar gundên derdorê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:26]</span>Bêjer: Koka Jorîn, Koka Jêrîn, Cûqê û Dargirê, ava xwe jê werdigrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:41]</span>Bêjer: Di gundê Dargirê de, gelek şûnwarên kevnar têne dîtin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:46]</span>Bêjer: Ji van şûnwaran, şikeftên Kevmar in. Hejmara van şikeftan, nêzî bîst û pênc in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:53]</span>Bêjer: Li gorî welatiyan, di serdemên kevn de, gelek ji van şikeftan wekî mehserên zeytûnan dihatin bikaranîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:00]</span>Bêjer: Hin ji van mehseran evin: Mehsera Ehmedê Ecik, Mixtar Betal, Henan Elo, Seydî Hesen û Ibrahîm Axa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:28]</span>Stranbêj: Deyariya... deyariya... deyariya...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:40]</span>Stranbêj: Kanî Mazûm... Kanî Mazûm... Kanî Agît... Mazûm dukan...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:51]</span>Stranbêj: Deyariya... deyariya... deyariya...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:16]</span>Stranbêj: Hesreta dilê min çar şivan in...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:22]</span>Stranbêj: Çi zalimê te vê bextê yara min...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:29]</span>Stranbêj: Êdî bese were, çima tu nehatî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:36]</span>Stranbêj: Çi zalimê te vê bextê yara min...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:52]</span>Stranbêj: Êdî bese were, çima tu nehatî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:57]</span>Stranbêj: Êdî bextê, zalim tuyî yara min...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:04]</span>Stranbêj: Xelk û alem tevda gişt li me razî bûn...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:09]</span>Stranbêj: Çi zalimê te vê bextê yara min...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:16]</span>Stranbêj: Şivan bi şev e... lo çi gotî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:21]</span>Stranbêj: Te digot zani... min dudo tî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:27]</span>Stranbêj: Şev a... xwedê... me hev hezkir...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:32]</span>Stranbêj: Me fedî kir... lalo gotî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:40]</span>Stranbêj: Lalo şivan... lawikê kibar...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:55]</span>Stranbêj: Hesreta dilê min çar şivan in...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:36]</span>Bêjer: Li nêzî gund, di navbera gundê Cûqê û Dargirê de, her wiha ziyareta Şêx Cemaleddîn heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:44]</span>Bêjer: Li vê ziyaretgehê jî, welatiyên van gundan, di salên zuha de, rê û resmên olî ji bo barîna baranê li dar dixistin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:53]</span>Bêjer: Şêniyên gundê Dargirê, bi hevkariya xwe, bi jiyana xwe ya komînal têne naskirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:59]</span>Bêjer: Û hemû şîn û şahiyên xwe, bi hevdû re parve dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:03]</span>Bêjer: Di gund de her wiha, komek dîlanê ya zarokan, bi navê koma Şehîdiyar hatiye avakirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:09]</span>Bêjer: Ev kom beşdarî hemû minasebetên gund dibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:44]</span>Danser: Hê! Hop!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:28]</span>Danser: Hayde keç!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:45]</span>Danser: Hayde!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:27]</span>Danser: Hop, hop, hop!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:30]</span>Danser: Hahaha!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:14]</span>Host: Belê, her tiştek destpêkek heye, dawiyek jî heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:19]</span>Host: Li vir jî em ê xatirê xwe ji we bixwazin, em gihiştin dawiya bernameya xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:23]</span>Host: Ev du roj e me li gundê Dargirê me darbaz kir, me dîroka gundê Dargirê jî naskir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:28]</span>Host: Em ê xatirê xwe ji we bixwazin. De ka.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:31]</span>Host: Haya hefteyekî din, li gundekî din, em ê dîsa bi hev re bin.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on January 19, 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Copy to clipboard function
+        function copySection(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Find the button that was clicked and update its text
+                const btn = event.target.closest('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ✓';
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
