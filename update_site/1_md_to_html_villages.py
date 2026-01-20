@@ -805,10 +805,11 @@ def extract_expected_sections(md: str) -> dict:
     secs_raw = md_sections(md)
     lookup = {normalize_section_title(k): v for k, v in secs_raw.items()}
     def find_by_prefix(num_roman, keyword):
+        matches = []
         for k_norm, v in lookup.items():
             if k_norm.startswith(f"{num_roman.lower()}.") and keyword in k_norm:
-                return v
-        return ""
+                matches.append(v)
+        return "\n\n---\n\n".join(matches) if matches else ""
     
     def find_by_keyword(keyword):
         for k_norm, v in lookup.items():
