@@ -16,10 +16,28 @@ import html
 from bs4 import BeautifulSoup
 import yaml
 
+import shutil
+import glob
+
 INPUT_PATH  = r"H:\\My Drive\\Zachar\\1 - PhD\\Villages"
 OUTPUT_DIR  = r"C:\\Users\\Zachar\\Desktop\\Afrin_Archive\\village_sites"
 NAHIYA_MAPS_DIR = r"C:\\Users\\Zachar\\Desktop\\Afrin_Archive\\nahiyas"
 MASTER_MAP_PATH = r"C:\Users\Zachar\Desktop\Afrin_Archive\nahiyas\All_Nahiyas_Clickable_Maps.html"
+
+# --- Transcript & Subtitle Paths ---
+TRANSCRIPTS_SOURCE_DIR = r"H:\\My Drive\\Zachar\\1 - PhD\\Villages_Transcripts"
+SUBTITLES_SOURCE_DIR = r"C:\\Users\\Zachar\\Desktop\\programs I made\\python programs\\archive programs\\make_subtitles\\subtitle_files"
+SUBTITLES_DEST_DIR = r"C:\\Users\\Zachar\\Desktop\\Afrin_Archive\\village_subtitles\\subtitles"
+
+SOURCE_TO_SUBTITLE_MAP = {
+    "Afrin 366": ("afrin366_videos", "afrin366_videos_"),
+    "Ax u Walat": ("videos", "videos_"),
+    "Ax û Welat": ("videos", "videos_"), # Handling both spellings
+    "Afrin Flo": ("afrin_flo_videos", "afrin_flo_videos_"),
+    "Halil Sino": ("khalil_sino_videos", "khalil_sino_videos_"),
+    "Khalil Sino": ("khalil_sino_videos", "khalil_sino_videos_"),
+    "Afrin Zeyton": ("afrinzeyton_videos", "afrinzeyton_videos_")
+}
 
 def has_meaningful_content(md_block: str) -> bool:
     if not md_block:
@@ -330,17 +348,135 @@ def build_links_html(links_md: str) -> str:
         return '<div class="p-4 italic subtext">No data provided.</div>'
     return '<ul class="list-disc list-inside space-y-2 p-4">' + "".join(items) + "</ul>"
 
-def build_transcripts_list_html(transcripts_md: str) -> str:
+def build_transcripts_table_html(transcripts_md: str, metadata_lookup: dict) -> str:
+    """
+    Parses transcripts markdown, styles matches site theme (minimalist/transparent),
+    sorts rows by priority, removes IDs from display, and adds download attribute.
+    """
     if not has_meaningful_content(transcripts_md):
         return ""
-    links = re.findall(r'\[\[(.*?)\]\]', transcripts_md)
-    if not links:
+
+    # parse links
+    wikilinks = re.findall(r'\[\[(.*?)\]\]', transcripts_md)
+    mdlinks = re.findall(r'\[([^\]]+)\]\(([^)]+)\)', transcripts_md)
+    
+    entries = []
+    for w in wikilinks:
+        entries.append((w, w))
+    for text, link in mdlinks:
+        p = Path(link)
+        entries.append((text, p.stem))
+
+    # Priority for sorting
+    SORT_ORDER = ["TirejAfrin", "Ax û Welat", "Afrin 366", "Khalil Sino", "Afrin Flo", "Afrin Zeyton"]
+    
+    row_data = [] # Stores dict of data for sorting
+
+    for text, stem in entries:
+        meta = metadata_lookup.get(stem)
+        
+        video_url = "#"
+        subtitle_file = None
+        
+        # Determine source name for display and sorting
+        if meta:
+            video_url = meta.get('url') or "#"
+            raw_source = meta.get('source')
+            t_id = meta.get('id')
+            village = meta.get('village')
+            
+            subtitle_file = find_and_copy_subtitle(raw_source, t_id, village)
+            
+            # clean source name for display (remove id)
+            disp_source = raw_source
+            
+            # If the stem has a suffix like "_2", append it to the source name
+            # Pattern: .*_(\d+)$ matches end of string digits
+            m_part = re.search(r'_(\d+)$', stem)
+            if m_part:
+                part_num = m_part.group(1)
+                # Check if number exists as a distinct word to avoid matching "3" in "366"
+                if not re.search(rf'\b{part_num}\b', disp_source):
+                    disp_source = f"{disp_source} {part_num}"
+        else:
+            disp_source = text
+            raw_source = text
+            
+        # Normalize for sorting
+        sort_key = 999
+        for idx, key in enumerate(SORT_ORDER):
+            if key.lower() in str(disp_source).lower():
+                sort_key = idx
+                break
+        
+        row_data.append({
+            "sort": sort_key,
+            "source": disp_source,
+            "video_url": video_url,
+            "subtitle_file": subtitle_file,
+            "stem": stem
+        })
+        
+    # Sort
+    # row_data.sort(key=lambda x: x["sort"])
+    
+    rows_html = []
+    for r in row_data:
+        # Video
+        if r["video_url"] and r["video_url"] != "#":
+            # Use external-link class to match site theme colors
+            video_col = f'<a href="{r["video_url"]}" target="_blank" class="external-link hover:underline">Watch Video</a>'
+        else:
+            video_col = '<span class="subtext opacity-50">No Video</span>'
+            
+        # Subtitle
+        if r["subtitle_file"]:
+            sub_link = f"../village_subtitles/subtitles/{r['subtitle_file']}"
+            # download attribute matching filename
+            sub_col = f'<a href="{sub_link}" download="{r["subtitle_file"]}" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a>'
+        else:
+            sub_col = '<span class="subtext italic opacity-50">Not Available</span>'
+            
+        # Transcript
+        final_link = f"../village_transcripts/{r['stem']}.html"
+        # Use external-link class to match video link color
+        trans_col = f'<a href="{final_link}" target="_blank" class="external-link hover:underline">View Transcript</a>'
+        
+        # Increased font size (text-sm -> text-base or removed class for default which is typically base)
+        rows_html.append(f"""
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">{r['source']}</td>
+                <td class="px-4 py-3 text-base">{video_col}</td>
+                <td class="px-4 py-3 text-base">{sub_col}</td>
+                <td class="px-4 py-3 text-base">{trans_col}</td>
+            </tr>
+        """)
+
+    if not rows_html:
         return ""
-    items = []
-    for link_text in links:
-        safe_link = f"../village_transcripts/{link_text.strip()}.html" 
-        items.append(f'<li><a href="{html.escape(safe_link)}" target="_blank" rel="noopener noreferrer" class="internal-link hover:underline">{html.escape(link_text)}</a></li>')
-    return f'<div class="card p-6 rounded-xl"><h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcripts</h2><ul class="list-disc list-inside space-y-2 p-4">{"".join(items)}</ul></div>'
+
+    # Minimal table style
+    html_out = f"""
+    <div class="mb-4">
+        <a href="../village_subtitles/how_to_use_substital.html" target="_blank" class="text-base font-medium external-link hover:underline">Need help with using this subtitles on Youtube? (Click here)</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b-2 themed-border">
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Source</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Video</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Subtitles</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Transcript</th>
+                </tr>
+            </thead>
+            <tbody>
+                {"".join(rows_html)}
+            </tbody>
+        </table>
+    </div>
+    """
+    return html_out
 
 
 def section_or_placeholder(title: str, body_md: str, open_details=True) -> str:
@@ -377,14 +513,13 @@ def photos_grid_html(name: str, photos: list) -> str:
     return '<div class="grid grid-cols-1 md:grid-cols-2 gap-4">\n' + "\n".join(tiles) + '\n</div>'
 
 def build_html_page(name, nahiya, aliases, lat, lng,
-                    summaries_I, summaries_II, summaries_III, summaries_IV, summ_afrin366,
-                    transcripts_md,
+                    ordered_summaries,
+                    transcripts_html,
                     links_md,
                     vi_history, vii_families, viii_culture, ix_dengbej, x_connections,
                     foundation_origin_md, name_meaning_md,
                     mountains_of_kurds_md,
-                    xi_ar_tirej, xii_axw_en, xiii_halil_en, xiv_flo_en, xv_afr366_en, xvi_zeyton_en, xvii_other_en,
-                    xviii_axw_ku, xix_halil_ku, xx_flo_ku, xxi_afr366_ku, xxii_zeyton_ku, xxiii_other_ku,
+                    xi_ar_tirej,
                     photos,
                     foundation_txt, size_txt, tribes_txt, families_txt,
                     basic_info_md,
@@ -711,23 +846,38 @@ def build_html_page(name, nahiya, aliases, lat, lng,
             </div>'''
 
     # Summaries Card
-    sum_i   = section_or_placeholder(f"I. Summary from TirejAfrin Site of {name} (English)", summaries_I, open_details=True)
-    sum_ii  = section_or_placeholder_plain(f"II. Summary from Ax û Walat Transcript of {name}", summaries_II)
-    sum_afrin = section_or_placeholder_plain(f"Summary from Afrin 366 Transcript of {name}", summ_afrin366)
-    
-    sum_iii = section_or_placeholder_plain(f"III. Summary from other Channels' Transcripts of {name}", summaries_III) if has_meaningful_content(summaries_III) else ""
-    sum_iv  = section_or_placeholder_plain(f"IV. Summary from other Sources of {name}", summaries_IV)
-    
-    summaries_content = [sum_i, sum_ii, sum_afrin, sum_iii, sum_iv]
+    # Summaries Card (Dynamic Order)
     summaries_card_html = ""
-    if any(summaries_content):
-        summaries_card_html = f'''<div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                <div class="space-y-4">{"<hr class=\"themed-border\">".join(s for s in summaries_content if s)}</div>
-            </div>'''
+    if ordered_summaries:
+        summary_blocks = []
+        for title, content in ordered_summaries:
+             # Use the title from the MD file, but maybe clean it up?
+             # Actually, simpler to just pass it as title.
+             # section_or_placeholder expects a title string and content string.
+             # We want to display the title as well.
+             # Actually section_or_placeholder adds the <h3>Title</h3> inside.
+             # So we just pass the title from MD.
+             
+             # Special case for "I. Summary..." to check if we want open_details logic?
+             # The user said "exact order of md file".
+             # Let's assume standard behavior.
+             block = section_or_placeholder_plain(title, content)
+             if block:
+                 summary_blocks.append(block)
+
+        if summary_blocks:
+            summaries_card_html = f'''<div class="card p-6 rounded-xl">
+                    <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                    <div class="space-y-4">{"<hr class=\"themed-border\">".join(summary_blocks)}</div>
+                </div>'''
 
     # Transcripts Card (New)
-    transcripts_card_html = build_transcripts_list_html(transcripts_md)
+    transcripts_card_html = ""
+    if transcripts_html:
+         transcripts_card_html = f'''<div class="card p-6 rounded-xl">
+            <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcriptions and Subtitles</h2>
+            <div class="p-4 prose-compact max-w-none">{transcripts_html}</div>
+        </div>'''
 
     # Links Card
     links_html = build_links_html(links_md)
@@ -752,28 +902,6 @@ def build_html_page(name, nahiya, aliases, lat, lng,
                 <div class="space-y-4">{"<hr class=\"themed-border\">".join(s for s in add_info_content if s)}</div>
             </div>'''
             
-    # Additional Summaries and Transcripts Card
-    xi  = section_or_placeholder_plain("XI. Summary from TirejAfrin Site (Arabic)", xi_ar_tirej)
-    xii = section_or_placeholder_plain("XII. Ax û Walat Transcript (English)", xii_axw_en)
-    xiii= section_or_placeholder_plain("XIII. Halil Sino Transcript (English)", xiii_halil_en)
-    xiv = section_or_placeholder_plain("XIV. Afrin Flo Transcript (English)", xiv_flo_en)
-    xv  = section_or_placeholder_plain("XV. Afrin 366 Transcript (English)", xv_afr366_en)
-    xvi = section_or_placeholder_plain("XVI. Afrin Zeyton Transcript (English)", xvi_zeyton_en)
-    xvii= section_or_placeholder_plain("XVII. Other Transcripts (English)", xvii_other_en)
-    xviii=section_or_placeholder_plain("XVIII. Ax û Walat Transcript (Kumancî)", xviii_axw_ku)
-    xix = section_or_placeholder_plain("XIX. Halil Sino Transcript (Kumancî)", xix_halil_ku)
-    xx  = section_or_placeholder_plain("XX. Afrin Flo Transcript (Kumancî)", xx_flo_ku)
-    xxi = section_or_placeholder_plain("XXI. Afrin 366 Transcript (Kumancî)", xxi_afr366_ku)
-    xxii= section_or_placeholder_plain("XXII. Afrin Zeyton Transcript (Kumancî)", xxii_zeyton_ku)
-    xxiii=section_or_placeholder_plain("XXIII. Other Transcripts (Kumancî)", xxiii_other_ku)
-    add_transcripts_content = [xi, xii, xiii, xiv, xv, xvi, xvii, xviii, xix, xx, xxi, xxii, xxiii]
-    add_transcripts_card_html = ""
-    if any(add_transcripts_content):
-        add_transcripts_card_html = f'''<div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Additional Summaries and Transcripts</h2>
-                <div class="space-y-4">{"<hr class=\"themed-border\">".join(s for s in add_transcripts_content if s)}</div>
-            </div>'''
-
     photos_html = photos_grid_html(name, photos)
 
     out = (html_template
@@ -791,7 +919,7 @@ def build_html_page(name, nahiya, aliases, lat, lng,
            .replace("__TRANSCRIPTS_CARD__", transcripts_card_html) 
            .replace("__LINKS_CARD__", links_card_html)
            .replace("__ADDITIONAL_INFO_CARD__", add_info_card_html)
-           .replace("__ADDITIONAL_TRANSCRIPTS_CARD__", add_transcripts_card_html)
+           .replace("__ADDITIONAL_TRANSCRIPTS_CARD__", "")
            .replace("__TODAY__", html.escape(today))
            .replace("__MINIMAP_CSS__", minimap_css or "")
            .replace("__MINIMAP_COLUMN__", minimap_column_html)
@@ -803,14 +931,10 @@ def normalize_section_title(t: str) -> str:
 
 def extract_expected_sections(md: str) -> dict:
     secs_raw = md_sections(md)
+    # Lookup for structural sections (normalization needed to match keys)
     lookup = {normalize_section_title(k): v for k, v in secs_raw.items()}
-    def find_by_prefix(num_roman, keyword):
-        matches = []
-        for k_norm, v in lookup.items():
-            if k_norm.startswith(f"{num_roman.lower()}.") and keyword in k_norm:
-                matches.append(v)
-        return "\n\n---\n\n".join(matches) if matches else ""
     
+    # Helper to find by fuzzy keyword
     def find_by_keyword(keyword):
         for k_norm, v in lookup.items():
             if keyword in k_norm:
@@ -818,13 +942,30 @@ def extract_expected_sections(md: str) -> dict:
         return ""
         
     out = {}
-    out["I"]   = find_by_prefix("I","tirej") or lookup.get("i. summary from tirejafrin site (english)", "")
-    out["II"]  = find_by_prefix("II","ax")   or lookup.get("ii. summary from ax û walat transcript", "")
-    out["summ_afrin366"] = find_by_keyword("afrin 366") or find_by_keyword("summary of alkana from afrin 366")
+    
+    # Known Structural Sections (to exclude from Summaries)
+    # These are handled explicitly or by specific dedicated functions
+    excluded_keywords = [
+        "basic information",
+        "map and location",
+        "photos",
+        "foundation", # Foundation/Origin
+        "possible village name meaning",
+        "transcripts",
+        "links", 
+        "mountains of the kurds",
+        "history",
+        "families",
+        "cultural aspects",
+        "dengbej",
+        "connections",
+        "tirejafrin site (arabic)", # Specifically exclude Arabic summary if treated as extra info
+         # Add other structural sections if they appear in MD
+         "xi. summary from tirejafrin site (arabic)" # Ensuring explicit match
+    ]
+    
+    # Structural Extractions
     out["transcripts_list"] = find_by_keyword("iii. transcripts") or find_by_keyword("transcripts")
-
-    out["III"] = find_by_prefix("III","other") or lookup.get("iii. summary from other channels' transcripts", "")
-    out["IV"]  = find_by_prefix("IV","source") or lookup.get("iv. summary from other sources", "")
     out["V_links"] = lookup.get("v. links", "")
     out["VI"]  = lookup.get("vi. history", "")
     out["VII"] = lookup.get("vii. families, clans, etc.", "")
@@ -832,19 +973,8 @@ def extract_expected_sections(md: str) -> dict:
     out["IX"]  = lookup.get("ix. dengbêj/çirok", "") or lookup.get("ix. dengbej/cirok", "")
     out["X"]   = lookup.get("x. connections with other villages", "")
     out["XI"]  = lookup.get("xi. summary from tirejafrin site (arabic)", "")
-    out["XII"] = lookup.get("xii. ax û walat transcript (english)", "")
-    out["XIII"]= lookup.get("xiii. halil sino transcript (english)", "")
-    out["XIV"] = lookup.get("xiv. afrin flo transcript (english)", "")
-    out["XV"]  = lookup.get("xv. afrin 366 transcript (english)", "")
-    out["XVI"] = lookup.get("xvi. afrin zeyton transcript (english)", "")
-    out["XVII"]= lookup.get("xvii. other transcripts (english)", "")
-    out["XVIII"]= lookup.get("xviii. ax û walat transcript (kumancî)", "") or lookup.get("xviii. ax û walat transcript (kurmancî)", "")
-    out["XIX"] = lookup.get("xix. halil sino transcript (kumancî)", "") or lookup.get("xix. halil sino transcript (kurmancî)", "")
-    out["XX"]  = lookup.get("xx. afrin flo transcript (kumancî)", "") or lookup.get("xx. afrin flo transcript (kurmancî)", "")
-    out["XXI"] = lookup.get("xxi. afrin 366 transcript (kumancî)", "") or lookup.get("xxi. afrin 366 transcript (kurmancî)", "")
-    out["XXII"]= lookup.get("xxii. afrin zeyton transcript (kumancî)", "") or lookup.get("xxii. afrin zeyton transcript (kurmancî)", "")
-    out["XXIII"]= lookup.get("xxiii. other transcripts (kumancî)", "") or lookup.get("xxiii. other transcripts (kurmancî)", "")
-
+    
+    # Also extract Foundation/Meaning/Mountains to ensure we key them if they exist in secs_raw
     out["foundation_origin"] = find_by_keyword("foundation/origin information")
     out["name_meaning"] = find_by_keyword("possible village name meaning")
     
@@ -854,6 +984,36 @@ def extract_expected_sections(md: str) -> dict:
             mountains_sections.append(content)
     out["mountains_of_kurds"] = "\n\n---\n\n".join(mountains_sections)
 
+    # Dynamic Ordered Summaries Extraction
+    # Iterate through original secs_raw to preserve order
+    ordered_summaries = []
+    
+    # We need to map the excluded keywords to the normalized keys found in secs_raw
+    # actually, just check if the normalized key contains any excluded keyword.
+    
+    for title, content in secs_raw.items():
+        t_norm = normalize_section_title(title)
+        
+        # Check if this section is one of the excluded structural ones
+        is_structural = False
+        for kw in excluded_keywords:
+            if kw in t_norm:
+                is_structural = True
+                break
+        
+        if not is_structural:
+            # It's likely a summary.
+            # Double check it has "summary" or is a Roman Numeral section we want
+            # Actually, "I. Summary...", "II. Summary..." 
+            # We can just include it if it's not structural.
+            # But let's be safe and check if it LOOKS like a summary or generic section
+            
+            # Use title as header in the card? No, build_html_page handles that.
+            # We will pass a list of (title, content) tuples so build_html_page can decide.
+            ordered_summaries.append((title, content))
+            
+    out["ordered_summaries"] = ordered_summaries
+
     return out
 
 def format_yaml_value(value):
@@ -861,15 +1021,98 @@ def format_yaml_value(value):
     if isinstance(value, list): return ", ".join(str(v) for v in value)
     return str(value)
 
-def process_one(md_path: Path, out_dir: Path, master_lookup: dict):
+def scan_transcripts_metadata(transcripts_dir: str) -> dict:
+    """"
+    Scans all .md files in the transcripts directory and extracts metadata.
+    Returns a dictionary keyed by the transcript filename (stem) containing:
+    {
+       'url': ...,
+       'source': ...,
+       'id': ...,
+       'village': ...
+    }
+    """
+    meta_map = {}
+    path_obj = Path(transcripts_dir)
+    if not path_obj.exists():
+        return meta_map
+
+    for p in path_obj.glob("*.md"):
+        try:
+            txt = read_text(p)
+            fm = parse_yaml_frontmatter(txt)
+            # Normalize keys to be safe
+            fm_norm = {k.lower(): v for k, v in fm.items()}
+            
+            source = fm_norm.get('transcript source')
+            t_id = fm_norm.get('transcript id')
+            village = fm_norm.get('transcript village')
+            url = fm_norm.get('transcript url')
+
+            meta_map[p.stem] = {
+                "source": source,
+                "id": t_id,
+                "village": village,
+                "url": url,
+                "filename": p.name
+            }
+        except Exception as e:
+            print(f"Warning: could not parse metadata for {p.name}: {e}")
+    return meta_map
+
+def find_and_copy_subtitle(source, transcript_id, village_name):
+    """
+    Finds a subtitle file based on source and ID, copies it to the destination,
+    and returns the relative path (filename) for linking.
+    """
+    if not source or not transcript_id:
+        return None
+    
+    mapping = SOURCE_TO_SUBTITLE_MAP.get(source)
+    if not mapping:
+        return None
+    
+    folder_name, file_prefix = mapping
+    search_dir = Path(SUBTITLES_SOURCE_DIR) / folder_name
+    
+    if not search_dir.exists():
+        return None
+
+    # Search pattern: prefix + id + "_" + *.srt
+    # Note: transcript_id might be int or str
+    pattern = f"{file_prefix}{transcript_id}_*.srt"
+    matches = list(search_dir.glob(pattern))
+    
+    if not matches:
+        return None
+    
+    # Take the first match
+    src_file = matches[0]
+    dest_dir = Path(SUBTITLES_DEST_DIR)
+    ensure_dir(dest_dir)
+    dest_file = dest_dir / src_file.name
+    
+    # Copy if not exists or size differs (simple check)
+    if not dest_file.exists() or dest_file.stat().st_size != src_file.stat().st_size:
+        try:
+            shutil.copy2(src_file, dest_file)
+            print(f"   -> Copied subtitle: {dest_file.name}")
+        except Exception as e:
+            print(f"   -> Error copying subtitle {src_file.name}: {e}")
+            return None
+            
+    return src_file.name
+
+def process_one(md_path: Path, out_dir: Path, master_lookup: dict, transcripts_lookup: dict):
     name = md_path.stem
     out_file = out_dir / f"{name}.html"
 
     if out_file.exists():
         md_mtime = md_path.stat().st_mtime
         html_mtime = out_file.stat().st_mtime
-        if md_mtime <= html_mtime:
-            return
+        # Force regeneration for subtitle integration
+        # if md_mtime <= html_mtime:
+        #    return
 
     md = read_text(md_path)
     fm_data = parse_yaml_frontmatter(md)
@@ -898,19 +1141,19 @@ def process_one(md_path: Path, out_dir: Path, master_lookup: dict):
     sec = extract_expected_sections(md)
     vii_data = sec["VII"]
 
+    # Generate Transcripts Table HTML
+    transcripts_html = build_transcripts_table_html(sec["transcripts_list"], transcripts_lookup)
+
     html_text = build_html_page(
         name=name, nahiya=nahiya, aliases=aliases, lat=lat, lng=lng,
-        summaries_I=sec["I"], summaries_II=sec["II"], 
-        summaries_III=sec["III"], summaries_IV=sec["IV"],
-        summ_afrin366=sec["summ_afrin366"],
-        transcripts_md=sec["transcripts_list"],
+        ordered_summaries=sec["ordered_summaries"],
+        transcripts_html=transcripts_html, # Pass the generated HTML, not the MD
         links_md=sec["V_links"],
         vi_history=sec["VI"], vii_families=vii_data, viii_culture=sec["VIII"], ix_dengbej=sec["IX"], x_connections=sec["X"],
         foundation_origin_md=sec["foundation_origin"],
         name_meaning_md=sec["name_meaning"],
         mountains_of_kurds_md=sec["mountains_of_kurds"],
-        xi_ar_tirej=sec["XI"], xii_axw_en=sec["XII"], xiii_halil_en=sec["XIII"], xiv_flo_en=sec["XIV"], xv_afr366_en=sec["XV"], xvi_zeyton_en=sec["XVI"], xvii_other_en=sec["XVII"],
-        xviii_axw_ku=sec["XVIII"], xix_halil_ku=sec["XIX"], xx_flo_ku=sec["XX"], xxi_afr366_ku=sec["XXI"], xxii_zeyton_ku=sec["XXII"], xxiii_other_ku=sec["XXIII"],
+        xi_ar_tirej=sec["XI"],
         photos=photos,
         foundation_txt=foundation_txt, size_txt=size_txt,
         tribes_txt=tribes_txt, families_txt=families_txt,
@@ -931,14 +1174,19 @@ def main():
         print("Could not build master lookup. Exiting.")
         return
 
+    print("Scanning transcript metadata...")
+    transcripts_lookup = scan_transcripts_metadata(TRANSCRIPTS_SOURCE_DIR)
+
     if in_path.is_file():
         if in_path.suffix.lower() != ".md":
             print(f"Skipping non-md file: {in_path}")
             return
         try:
-            process_one(in_path, out_dir, master_lookup)
+            process_one(in_path, out_dir, master_lookup, transcripts_lookup)
         except Exception as e:
             print(f"✗ ERROR processing {in_path.name}: {e}")
+            import traceback
+            traceback.print_exc()
             failed_files.append((in_path.name, e))
     else:
         md_files = sorted([p for p in in_path.glob("*.md") if p.is_file()])
@@ -946,34 +1194,13 @@ def main():
             print("No .md files found.")
             return
 
-        batch_size = 15
-        first_batch = md_files[:batch_size]
-        rest_batch = md_files[batch_size:]
-
-        print(f"--- Processing first batch of {len(first_batch)} files ---")
-        for p in first_batch:
+        print(f"--- Processing {len(md_files)} files ---")
+        for p in md_files:
             try:
-                process_one(p, out_dir, master_lookup)
+                process_one(p, out_dir, master_lookup, transcripts_lookup)
             except Exception as e:
                 print(f"✗ ERROR processing {p.name}: {e}")
                 failed_files.append((p.name, e))
-
-        if rest_batch:
-            print("---")
-            try:
-                choice = input(f"Continue with the remaining {len(rest_batch)} files? (y/N): ").lower()
-                if choice == 'y':
-                    print(f"--- Processing remaining {len(rest_batch)} files ---")
-                    for p in rest_batch:
-                        try:
-                            process_one(p, out_dir, master_lookup)
-                        except Exception as e:
-                            print(f"✗ ERROR processing {p.name}: {e}")
-                            failed_files.append((p.name, e))
-                else:
-                    print("Processing stopped by user.")
-            except (KeyboardInterrupt, EOFError):
-                print("\nProcessing stopped by user.")
 
     if failed_files:
         print("\n" + "="*20 + " SUMMARY OF FAILURES " + "="*20)
