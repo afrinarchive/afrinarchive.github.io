@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Baflûnê</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #1a202c;
+            --card-bg: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+        .dark {
+            --bg-color: #1a202c;
+            --text-color: #f7fafc;
+            --card-bg: #2d3748;
+            --border-color: #4a5568;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: all 0.3s; }
+        .card { background-color: var(--card-bg); }
+        .themed-border { border-color: var(--border-color); }
+        .subtext { color: #718096; }
+        .dark .subtext { color: #a0aec0; }
+        
+        /* Minimap & Lightbox */
+        #minimap-baflûnê         .map-container {
+#minimap-baflûnê         .map-container img {
+#minimap-baflûnê         .highlight-box {
+#minimap-baflûnê         .nebi-huri { left: 34.51%; top: 3.04%; width: 9.89%; height: 7.26%; }
+#minimap-baflûnê         .mersewa { left: 45.41%; top: 9.34%; width: 9.89%; height: 7.26%; }
+#minimap-baflûnê         .siltete { left: 59.84%; top: 11.05%; width: 9.28%; height: 6.82%; }
+#minimap-baflûnê         .omer-simo { left: 38.85%; top: 14.75%; width: 8.88%; height: 6.52%; }
+#minimap-baflûnê         .siiriya { left: 31.08%; top: 20.83%; width: 9.69%; height: 7.12%; }
+#minimap-baflûnê         .zeytuneke { left: 42.89%; top: 21.05%; width: 9.69%; height: 7.12%; }
+#minimap-baflûnê         .ikidame { left: 74.97%; top: 19.87%; width: 9.69%; height: 7.12%; }
+#minimap-baflûnê         .dersiwane { left: 63.17%; top: 24.76%; width: 10.69%; height: 7.86%; }
+#minimap-baflûnê         .diraqliya { left: 30.88%; top: 28.17%; width: 9.28%; height: 6.82%; }
+#minimap-baflûnê         .pelusanke { left: 44.40%; top: 31.06%; width: 9.49%; height: 6.97%; }
+#minimap-baflûnê         .alciya { left: 36.23%; top: 36.70%; width: 8.88%; height: 6.52%; }
+#minimap-baflûnê         .qetlebiye { left: 47.73%; top: 37.73%; width: 9.28%; height: 6.82%; }
+#minimap-baflûnê         .dewris { left: 28.15%; top: 38.77%; width: 8.88%; height: 6.52%; }
+#minimap-baflûnê         .qerqina { left: 36.93%; top: 43.81%; width: 8.68%; height: 6.37%; }
+#minimap-baflûnê         .naza { left: 21.09%; top: 41.88%; width: 9.69%; height: 7.12%; }
+#minimap-baflûnê         .omera { left: 47.83%; top: 44.11%; width: 9.08%; height: 6.67%; }
+#minimap-baflûnê         .erebwerane { left: 62.46%; top: 36.92%; width: 9.49%; height: 6.97%; }
+#minimap-baflûnê         .dikmedase { left: 69.93%; top: 42.18%; width: 9.08%; height: 6.67%; }
+#minimap-baflûnê         .yazibaxe { left: 80.93%; top: 44.85%; width: 9.69%; height: 7.12%; }
+#minimap-baflûnê         .qastele-eli-cindo { left: 71.44%; top: 52.78%; width: 9.49%; height: 6.97%; }
+#minimap-baflûnê         .baflune { left: 57.72%; top: 59.38%; width: 9.49%; height: 6.97%; }
+#minimap-baflûnê         .ezaz { left: 79.21%; top: 67.16%; width: 9.69%; height: 7.12%; }
+#minimap-baflûnê         .qitme { left: 51.16%; top: 65.68%; width: 9.28%; height: 6.82%; }
+#minimap-baflûnê         .cema { left: 42.38%; top: 47.44%; width: 9.49%; height: 6.97%; }
+#minimap-baflûnê         .sinka { left: 46.92%; top: 55.23%; width: 9.28%; height: 6.82%; }
+#minimap-baflûnê         .berava { left: 35.72%; top: 46.55%; width: 8.48%; height: 6.23%; }
+#minimap-baflûnê         .sera { left: 41.27%; top: 55.67%; width: 9.28%; height: 6.82%; }
+#minimap-baflûnê         .gabeleke { left: 31.28%; top: 54.26%; width: 9.49%; height: 6.97%; }
+#minimap-baflûnê         .meydanke { left: 20.99%; top: 50.04%; width: 9.49%; height: 6.97%; }
+#minimap-baflûnê         .hilubiye { left: 23.11%; top: 63.53%; width: 9.69%; height: 7.12%; }
+#minimap-baflûnê         .kerferome { left: 13.72%; top: 67.38%; width: 9.08%; height: 6.67%; }
+#minimap-baflûnê         .qurtqulaqe-mezin { left: 22.50%; top: 70.05%; width: 9.69%; height: 7.12%; }
+#minimap-baflûnê         .qurtqulaqe-cucik { left: 22.10%; top: 73.17%; width: 9.49%; height: 6.97%; }
+#minimap-baflûnê         .xirabi-sera { left: 41.07%; top: 57.45%; width: 9.69%; height: 7.12%; }
+#minimap-baflûnê         .metina { left: 41.37%; top: 63.90%; width: 9.49%; height: 6.97%; }
+#minimap-baflûnê         .sere-kaniye { left: 46.42%; top: 67.61%; width: 9.49%; height: 6.97%; }
+#minimap-baflûnê         .mesale { left: 39.15%; top: 69.46%; width: 10.09%; height: 7.41%; }
+#minimap-baflûnê         .kortike { left: 30.98%; top: 73.17%; width: 9.69%; height: 7.12%; }
+#minimap-baflûnê         .qeredepe { left: 26.74%; top: 78.28%; width: 10.09%; height: 7.41%; }
+#minimap-baflûnê         .qestele-kistik { left: 20.38%; top: 80.73%; width: 8.88%; height: 6.52%; }
+#minimap-baflûnê         .cumke { left: 20.69%; top: 84.58%; width: 8.68%; height: 6.37%; }
+
+        .lightbox-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 5000; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border-radius: 8px; }
+    </style>
+</head>
+<body class="bg-stone-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <header class="mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold">Baflûnê</h1>
+            <p class="text-lg text-gray-500 mt-2">Şera</p>
+        </header>
+
+        <main class="space-y-8">
+            
+            
+    <div class="card p-6 rounded-xl shadow-sm border themed-border">
+        <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+            <h2 class="text-2xl font-semibold">General Information</h2>
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none">
+                <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <svg id="theme-toggle-light-icon" class="hidden h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col md:flex-row gap-8">
+            <div class="flex-1 space-y-4">
+                
+        <div class="pb-2">
+            <h3 class="text-sm font-medium subtext uppercase tracking-wide">Nahiya</h3>
+            <p class="text-lg font-medium">Şera</p>
+        </div>
+                
+        <div class="pb-2">
+            <h3 class="text-sm font-medium subtext uppercase tracking-wide">Also Known As</h3>
+            <p class="text-lg font-medium">Bafilonê, Bafliun, Baflunê, Baflûnê, بافليون</p>
+        </div>
+                
+                
+        <div class="pb-2">
+            <h3 class="text-sm font-medium subtext uppercase tracking-wide">Families / Clans</h3>
+            <p class="text-lg font-medium">Evdê Seydo, Henan Evdo, Malê Betê, Malê Dewrêş, Malê Ebdî Ûfê, Malê Hecî Husê, Îbrahîmê Elî Kûrê</p>
+        </div>
+                
+                
+                
+            </div>
+            <div class="flex-1 min-w-0"><div class="map-container" id="minimap-baflûnê">
+<img alt="Map Image 12" onerror="this.onerror=null; this.src='https://placehold.co/991x1349/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 12.png"/>
+<div class="nebi-huri highlight-box"></div><div class="mersewa highlight-box"></div><div class="siltete highlight-box"></div><div class="omer-simo highlight-box"></div><div class="siiriya highlight-box"></div><div class="zeytuneke highlight-box"></div><div class="ikidame highlight-box"></div><div class="dersiwane highlight-box"></div><div class="diraqliya highlight-box"></div><div class="pelusanke highlight-box"></div><div class="alciya highlight-box"></div><div class="qetlebiye highlight-box"></div><div class="dewris highlight-box"></div><div class="qerqina highlight-box"></div><div class="naza highlight-box"></div><div class="omera highlight-box"></div><div class="erebwerane highlight-box"></div><div class="dikmedase highlight-box"></div><div class="yazibaxe highlight-box"></div><div class="qastele-eli-cindo highlight-box"></div><div class="baflune highlight-box" style="display: block;"></div><div class="ezaz highlight-box"></div><div class="qitme highlight-box"></div><div class="cema highlight-box"></div><div class="sinka highlight-box"></div><div class="berava highlight-box"></div><div class="sera highlight-box"></div><div class="gabeleke highlight-box"></div><div class="meydanke highlight-box"></div><div class="hilubiye highlight-box"></div><div class="kerferome highlight-box"></div><div class="qurtqulaqe-mezin highlight-box"></div><div class="qurtqulaqe-cucik highlight-box"></div><div class="xirabi-sera highlight-box"></div><div class="metina highlight-box"></div><div class="sere-kaniye highlight-box"></div><div class="mesale highlight-box"></div><div class="kortike highlight-box"></div><div class="qeredepe highlight-box"></div><div class="qestele-kistik highlight-box"></div><div class="cumke highlight-box"></div>
+</div></div>
+        </div>
+    </div>
+    
+            
+            <div class="card p-6 rounded-xl shadow-sm border themed-border">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Location</h2>
+                <div id="map" class="rounded-lg h-96 z-0"></div>
+                <div class="mt-2 text-sm text-gray-500 flex justify-between">
+                    <span>Coords: 36.611144, 36.981585</span>
+                    <a href="https://akmckeever.substack.com/" target="_blank" class="hover:underline">Map Source: AK McKeever</a>
+                </div>
+            </div>
+
+            
+    <div class="card p-6 rounded-xl shadow-sm border themed-border">
+        <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+        <div class="flex flex-col">
+            <img src="../village_photos/Befluon.jpg" alt="Photo of Baflûnê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer hover:opacity-95 transition" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Missing+Image';">
+            
+        </div>
+        
+
+        <div class="flex flex-col">
+            <img src="../village_photos/baflyon.jpg" alt="Photo of Baflûnê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer hover:opacity-95 transition" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Missing+Image';">
+            
+        </div>
+        
+        </div>
+    </div>
+    
+            
+            <div class="card p-6 rounded-xl shadow-sm border themed-border space-y-6">
+        <div>
+            <h2 class="text-xl font-semibold mb-3">Foundation & Origin</h2>
+            <div class="prose max-w-none text-gray-800 dark:text-gray-200">
+<blockquote>
+<p>Among its most important families is the Ibrahim Ali Kor family, who are the first inhabitants of the village.</p>
+</blockquote>
+<p class="text-xs text-gray-500 text-right mt-2"><strong>Source:</strong> TirejAfrin Site</p>
+
+
+<blockquote>
+<p>According to oral tradition, the village was established by two cousins, Ibrahim and Hanan, who were shepherds from the village of Qitmê. They fled persecution from Islamic authorities and settled in the area, then known as Xerabê Baflunê (the Ruins of Baflunê), taking refuge in its ancient caves.</p>
+</blockquote>
+<p class="text-xs text-gray-500 text-right mt-2"><strong>Source:</strong> Ax û Walat Transcript</p>
+
+
+</div>
+        </div>
+        <hr class="themed-border">
+        <div>
+            <h2 class="text-xl font-semibold mb-3">Name Meaning</h2>
+            <div class="prose max-w-none text-gray-800 dark:text-gray-200">
+<blockquote>
+<p>It is believed that &quot;Baflun&quot; is a Syriac name.</p>
+</blockquote>
+<p class="text-xs text-gray-500 text-right mt-2"><strong>Source:</strong> TirejAfrin Site</p>
+
+
+</div>
+        </div>
+        </div>
+            
+            
+    <div class="card p-6 rounded-xl shadow-sm border themed-border">
+        <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+        <div class="space-y-4">
+            
+        <details class="group" open>
+            <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                <span>I. Summary from TirejAfrin Site (English) of Baflûnê</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="p-4 prose max-w-none text-gray-800 dark:text-gray-200">
+                
+<p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin) geographical study</span>&#x27; by Dr. Mohammed Abdo Ali:</p>
+
+
+<p><strong>Baflûnê, Bafliun</strong> (بافليون) /602n - 157ha - 13km - 770m/:</p>
+
+<ul class="list-disc list-inside space-y-1">
+<li>It is believed that &quot;Baflun&quot; (بافلون) is a <span class="internal-link">Syriac</span> name.</li>
+<li>A small village located in a strategic position. Its air is healthy due to the elevation of its location, and it was a summer resort for some notables of the region. Near it are remains of a <span class="internal-link">British</span> camp for oil exploration from the fifth decade of the twentieth century. ==A stone-paved road leads to it from east of Qatma village dating back to that period and still in good condition.==</li>
+</ul>
+
+<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span>:</p>
+
+
+<p><strong>Bafliun</strong> (بافليون): A village in the Afrin (جبل الكرد), belonging to Sharran District (ناحية شران), Afrin Region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
+
+
+<p>It is a small village located in the eastern part of the Afrin Region and north of <span class="internal-link">Sam&#x27;an Mountain</span> (جبل سمعان) on a high mountain elevation and in a strategic defensive position. It is bordered to the north by mountain elevations planted with olive and vine trees and remains of British company buildings from the forties and Jamanli (جمانلي) and Omranli (عمرانلي) and Sinkarli (سنكرلي) villages, to the south by a stream and slope heading south and lands of Qatma village (قرية قاطمة) and <span class="internal-link">Aleppo-Meydan Ekbas railway</span> (سكة حديد حلب - ميدان اكبس), to the west by deep stream and mountain elevations planted with olive and forest trees and Qatma village (قرية قاطمة), and to the east by slope and stream and mountain elevations and rugged terrain planted with olive and forest trees and <span class="internal-link">Sheikh Hamid shrine</span> (مزار شيخ حميد) and Qastal Jindo village (قرية قسطل جندو) and Azaz city (مدينة إعزاز).</p>
+
+
+<p>The number of its houses reaches approximately ==55 houses== and its age is 103 years, meaning it was ==established in 1903== (1903م). Its old houses are stone-clay with flat wooden roofs and the modern ones are concrete spread to the south and west. The inhabitants work in olive and grain cultivation in addition to raising sheep and goats. Electricity network and drinking water from artesian well from al-Malikiya village (قرية المالكية) are available. It has an elementary school and telephone from Qatma telephone center and a recently paved road to the village center connecting to Qatma village and Qastal Jindo (قسطل جندو), and it is administratively subordinate to Qatma Town.</p>
+
+
+<p>Among its most important families is the <span class="internal-link">Ibrahim Ali Kor</span> family (عائلة إبراهيم علي كور), who are the first inhabitants of the village. Its population according to civil registry dated 31/12/2004 is (593 people).</p>
+
+
+<p><strong>Village Mayor:</strong> Abdo Saydo Saydo (عبدو سيدو سيدو)</p>
+
+
+
+
+            </div>
+        </details>
+        <hr class='themed-border'>
+        <details class="group" open>
+            <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                <span>II. Summary of Baflûnê from Ax û Welat</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="p-4 prose max-w-none text-gray-800 dark:text-gray-200">
+                
+<p>Summary of Baflûnê from Ax û Welat</p>
+
+<p>Source: https://www.youtube.com/watch?v=G2CbtBUzOWY</p>
+
+
+<p>The village of <span class="internal-link">Baflûnê</span>, situated in the <span class="internal-link">Şera</span> district of <span class="internal-link">Çiyayê Kurmênc</span>, stands at an altitude of approximately 700 meters. The current settlement was founded between 150 and 200 years ago by two cousins named <span class="internal-link">Ibrahîm</span> and <span class="internal-link">Henan</span>. These founders migrated from the nearby village of <span class="internal-link">Qitmê</span>, located just five kilometers away. According to village elders, they sought refuge in this mountainous location to escape religious persecution and preserve their <span class="internal-link">Êzdî</span> faith. Prior to their arrival, the site was known as <span class="internal-link">xirabê Baflûnê</span>, indicating that it had been inhabited and subsequently ruined in earlier historical eras.</p>
+
+
+<p>The population of Baflûnê is entirely Êzdî. Following the initial establishment by the lineages of <span class="internal-link">Îbrahîmê Elî Kûrê</span> and <span class="internal-link">Henan Evdo</span> (also identified as <span class="internal-link">Evdê Seydo</span>), the community expanded with the arrival of other families. These include <span class="internal-link">Malê Hecî Husê</span>, <span class="internal-link">Malê Dewrêş</span>, <span class="internal-link">Malê Betê</span>, and <span class="internal-link">Malê Ebdî Ûfê</span>. Elders note that some of these later groups arrived from <span class="internal-link">Sînko</span>. The village grew to contain approximately 70 to 80 households, with residents primarily engaging in agriculture and the cultivation of olive trees.</p>
+
+
+<p>A distinctive feature of Baflûnê is the presence of numerous ancient caves and rock cut cisterns. Villagers estimate there are around 15 caves in the vicinity, with several located within the village itself. These caves played a crucial role in the survival of the community during times of instability. Residents describe a historical defense system where ropes connected the caves; if bandits or threats were detected, a rope would be pulled to ring bells inside neighboring caves, alerting the entire community to take defensive positions. One particular ancient cistern is named <span class="internal-link">Gulê Selmo</span>, honoring a local woman responsible for its maintenance.</p>
+
+
+<p>The documentary focuses heavily on the preservation of Êzdî cultural traditions, specifically the celebration of <span class="internal-link">Cejna Xidir Êlyas</span>. A central custom discussed is the preparation of <span class="internal-link">Pêxûn</span>, a mixture of seven roasted and ground grains including wheat, barley, chickpeas, and lentils. This mixture is heavily salted and consumed by unmarried youth before they sleep. Tradition holds that they must not drink water after eating it; instead, they hope to dream of a person offering them water, whom they believe will be their future spouse. The program concludes with a villager singing the epic ballad of <span class="internal-link">Derwêşê Evdî</span>, further rooting the village in the oral history of the region.</p>
+
+
+
+            </div>
+        </details>
+        
+        </div>
+    </div>
+    
+            
+            
+    <div class="card p-6 rounded-xl shadow-sm border themed-border">
+        <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Links & Transcripts</h2>
+        <div class="p-4 prose max-w-none">
+            
+<p>### III. Transcripts</p>
+
+<ul class="list-disc list-inside space-y-1">
+<li><span class="internal-link">Baflûnê_Ax û Welat_1</span></li>
+</ul>
+
+
+
+<p>### V. Links</p>
+
+<p>Tirejafrin:</p>
+
+<p>http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20baflun.htm</p>
+
+
+<p>Ax û Welat:</p>
+
+<p>https://www.youtube.com/watch?v=dGLEmMYblgo</p>
+
+<p>https://www.youtube.com/watch?v=G2CbtBUzOWY</p>
+
+
+
+
+        </div>
+    </div>
+    
+            
+        </main>
+
+        <footer class="mt-12 py-6 border-t themed-border text-center text-gray-500 text-sm">
+            Updated: January 18, 2026
+        </footer>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-overlay" onclick="this.style.display='none'">
+        <img id="lightbox-img" class="lightbox-image" src="">
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Theme Toggle
+        const btn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function applyTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            } else {
+                html.classList.remove('dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            }
+        }
+        applyTheme();
+
+        btn.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+            applyTheme();
+        });
+
+        // Lightbox
+        document.querySelectorAll('.lightbox-trigger').forEach(img => {
+            img.addEventListener('click', e => {
+                document.getElementById('lightbox-img').src = e.target.src;
+                document.getElementById('lightbox').style.display = 'flex';
+                e.stopPropagation();
+            });
+        });
+
+        // Leaflet Map
+        const lat = 36.611144;
+        const lng = 36.981585;
+        if (lat && lng) {
+            const map = L.map('map').setView([lat, lng], 14);
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}').addTo(map);
+            L.marker([lat, lng]).addTo(map).bindPopup("<b>Baflûnê</b>").openPopup();
+            
+            // Load JSON markers if available
+            fetch('afrin_locations.json').then(r=>r.json()).then(locs => {
+                locs.forEach(l => {
+                    if(l.lat != lat) {
+                        L.marker([l.lat, l.lng]).addTo(map).bindPopup(l.name);
+                    }
+                });
+            }).catch(e => console.log("No extra markers found"));
+        } else {
+            document.getElementById('map').innerHTML = '<div class="flex items-center justify-center h-full text-gray-500">No coordinates available</div>';
+        }
+    </script>
+</body>
+</html>

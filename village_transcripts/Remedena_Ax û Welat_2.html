@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript | Remedena - Ax û Welat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .jump-btn { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.875rem; transition: all 0.2s; }
+        .jump-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; font-size: 0.75rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .copy-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Remedena</h1>
+            <p class="text-xl subtext mt-2">Transcript from Ax û Welat</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- General Info Card -->
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transcript Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Village</h3>
+                        <p class="text-lg">Remedena</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Source Channel</h3>
+                        <p class="text-lg">Ax û Welat</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Length</h3>
+                        <p class="text-lg">07:26</p>
+                    </div>
+                    <div class="mt-4">
+                    <a href="https://www.youtube.com/watch?v=_zpHDMCgYPw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+                </div>
+                <!-- Jump Buttons -->
+                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t themed-border">
+                    <a href="#english" class="jump-btn">Go to Translation</a>
+                    <a href="#kurdish" class="jump-btn">Biçe Transkrîptê</a>
+                </div>
+            </div>
+
+            <!-- English Translation Card -->
+            <div id="english" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">English Translation</h2>
+                    <button class="copy-btn" onclick="copySection('translation-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Copy
+                    </button>
+                </div>
+                <div id="translation-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00]</span>Host: We are still living in the village of Ramadan, we are walking around.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03]</span>Host: Now we have entered a home, where a woman is a tailor.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06]</span>Host: We wanted to ask about the tailoring work, let&#x27;s get to know her together.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10]</span>Host: Hello to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11]</span>Fehîme: Welcome, you are very welcome. Upon our heads and upon both our eyes [You are most welcome].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16]</span>Host: Be healthy, thank you. Let&#x27;s get to know you first, what is your name?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20]</span>Fehîme: My name is Fehîme.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21]</span>Host: With pleasure [Upon my eyes].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22]</span>Host: Since when have you been a tailor?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24]</span>Fehîme: Since [I was] ten years old.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26]</span>Fehîme: Since ten years old I learned tailoring, and I sew.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29]</span>Host: Who did you learn from?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30]</span>Fehîme: From my mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31]</span>Host: Is your mother also a tailor?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33]</span>Fehîme: Yes, my mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:34]</span>Host: How many years has she been a tailor?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:36]</span>Fehîme: She... she was a tailor at my age until she grew up.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:39]</span>Fehîme: Then, she also learned from her mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:42]</span>Fehîme: And I, I learned from her.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:44]</span>Host: So the craft is learned from the mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:45]</span>Fehîme: Exactly, we learned from our mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:47]</span>Host: Very well.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:48]</span>Host: Now... your guests are ready, we thank you, we are ready too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:53]</span>Host: They have also worn their Kurmanji [Kurdish] clothes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:56]</span>Host: Specifically, what do you sew?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:58]</span>Fehîme: Specifically, we sew Kurmanji clothes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:02]</span>Fehîme: Under the name of Afrin, the Kurmanji dress, known as the Afrin style.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:07]</span>Fehîme: And naturally, we sew for all four parts of Kurdistan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:11]</span>Host: You sew for the four parts too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:13]</span>Host: Do you have them here now, can we see them?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:15]</span>Fehîme: Yes, there is one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:17]</span>Fehîme: But most are Kurmanji style.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:19]</span>Host: Meaning the majority you sew are the Afrin style?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:20]</span>Fehîme: The majority are Afrin style.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:22]</span>Host: Now, regarding the most difficult one you sew, which is it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:25]</span>Fehîme: It is the Afrin one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:27]</span>Host: The Afrin one is difficult?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:28]</span>Fehîme: Afrin has its &#x27;sicef&#x27; [facings/troubles].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:29]</span>Host: Its difficulty?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:30]</span>Fehîme: Its difficulties are the &#x27;sicef&#x27; [technical sewing term for facing/lining].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:32]</span>Host: Which one are you telling us about? [The trouble] of my eyes or...? (Joking about the double meaning of pain/trouble).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:40]</span>Fehîme: You are talking about this?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:41]</span>Fehîme: Those troubles... its difficulty comes from these, these are made by hand, they aren&#x27;t sewn by machine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:47]</span>Host: So on a day of resistance/work, how do you manage?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:49]</span>Fehîme: Well, one day we prepare the facings, then we sew.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:54]</span>Host: And do you finish one in a day?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:55]</span>Fehîme: Yes, sure. A Kurmanji dress comes out [is finished] in a day.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:59]</span>Host: Before, did you work in the village, or did you work outside the village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:02]</span>Fehîme: I work in the village. One year I went to Jindires to work, I opened a shop.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:08]</span>Host: You opened one there too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:09]</span>Fehîme: I opened one there, girls were learning from me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:12]</span>Fehîme: Because of the events [crisis], I came here, and I did my work again.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:17]</span>Host: But you didn&#x27;t bring [your machine] here with you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:18]</span>Fehîme: I didn&#x27;t come [with it], uh...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:20]</span>Host: Your machine wasn&#x27;t this one?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:22]</span>Fehîme: My machine no, this is my mother&#x27;s. Mine... my machine is the large needle type [industrial].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:27]</span>Host: What else do you sew besides dresses?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:30]</span>Fehîme: I sew Shalwar [men&#x27;s baggy trousers] too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:32]</span>Host: For men?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:32]</span>Fehîme: For men.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:33]</span>Host: Meaning, are these Shalwar sewn by you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:35]</span>Fehîme: These Shalwar are sewn by me, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:40]</span>Host: Since you are a woman doing the work of [sewing] Shalwars, is there any difficulty?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:44]</span>Fehîme: No. There is none.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:46]</span>Host: No? No difficulty at all? Is it easier than the Kurmanji dress?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:49]</span>Fehîme: It is easier than the Kurmanji dress.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:50]</span>Host: No difficulty in it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:51]</span>Fehîme: No.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:52]</span>Host: Do specific people come to you, or do you sew to sell?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:55]</span>Fehîme: No, I sew for the people [custom orders].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:57]</span>Host: Meaning, whoever needs it, you [sew] for them?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:58]</span>Host: Whoever needs it, they bring it, and I sew it for them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:02]</span>Host: Very well, if you would sew for us too...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:03]</span>Fehîme: Oh, you are most welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:04]</span>Host: For the program &quot;Xwelet&quot;, we will also wear our Kurmanji clothes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:07]</span>Fehîme: You are welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:09]</span>Host: Be healthy. What are these? Let&#x27;s look at these too. These are...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:12]</span>Fehîme: These are &#x27;Şaş&#x27; [head wraps/turbans], they are wrapped around.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:14]</span>Host: They are Şaş?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:15]</span>Fehîme: Wrapped around, yes, these. These I make with my own hands. It is my handiwork.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:19]</span>Host: Is this the &#x27;merkub&#x27; [center piece]?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:20]</span>Fehîme: This &#x27;merkub&#x27;...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:21]</span>Host: Are these ready-made, you bring them?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:22]</span>Fehîme: I buy the center piece and I make it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:24]</span>Host: So you bring the wraps ready-made?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:25]</span>Fehîme: The wraps are brought ready-made. Yes, the surrounding part I make myself, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:29]</span>Host: And how much endurance/work does this take?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:32]</span>Fehîme: This takes about a week, the issue of these.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:34]</span>Host: Is there difficulty?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:35]</span>Fehîme: Its difficulty is great, but...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:36]</span>Host: And before the people... how did they do it before? There was no electricity, no lamps, the people... what difficulties did women endure in the past?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:42]</span>Fehîme: Yes, their difficulties were many, but... we also used to make them by lantern light.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:46]</span>Host: You caught that time?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:47]</span>Fehîme: We caught that time. But...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:49]</span>Fehîme: Our electricity is not much... for a long time...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:51]</span>Host: How many years has electricity been in the village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:53]</span>Fehîme: The village, roughly, it came fifteen years ago.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:55]</span>Host: Fifteen years? Isn&#x27;t that recent?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:56]</span>Fehîme: No, no, not recently. We... were children, we were small.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:00]</span>Fehîme: We worked [without it], electricity came later.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:03]</span>Host: So in that time, how did your mother work?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:05]</span>Fehîme: My mother... she did sewing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:07]</span>Host: She didn&#x27;t do it with this machine?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:09]</span>Fehîme: No. My mother didn&#x27;t make the &#x27;merkub&#x27; [center piece].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:12]</span>Fehîme: The &#x27;merkub&#x27;... is my work.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:14]</span>Host: So this addition [skill], you learned it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:16]</span>Fehîme: Hm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:17]</span>Host: Are your guests from the village, or from outside the village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:19]</span>Fehîme: My guests are from the village, they are my friends.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:22]</span>Fehîme: Of them one, friend Sheziye. The Christian friend, friend Euf... and next to you is my mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:28]</span>Host: Your mother also learned [it]?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:29]</span>Fehîme: Yes, my mother also learned.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:31]</span>Fehîme: The sewing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:32]</span>Host: Okay, I will go to the mother now too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:34]</span>Host: And how many women in the village have taken your place in the commune?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:37]</span>Fehîme: We are seven.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:39]</span>Fehîme: Of them, three are teachers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:42]</span>Host: They do teaching work too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:43]</span>Fehîme: And they take their place in the commune too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:46]</span>Host: And the commune in total, what is your number [of people]?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:48]</span>Fehîme: We women are seven, and men are roughly ten.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:54]</span>Host: Seventeen people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:55]</span>Fehîme: Seventeen people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:56]</span>Host: Very well. Your commune, how long, how many months has it been established?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:59]</span>Fehîme: It has been seven months.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:00]</span>Host: Seven months?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:01]</span>Fehîme: The Martyr Rênas Commune.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:04]</span>Host: Thank you to you too, I will now move to the mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:07]</span>Fehîme: You are most welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:09]</span>Host: Mother, hello to you too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:10]</span>Mother: You are welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:12]</span>Host: You are welcome [Response].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:12]</span>Mother: May you be healthy, my dear.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:14]</span>Host: Be healthy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:15]</span>Mother: Be healthy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:15]</span>Host: Mother, they say you are a tailor? You yourself are a tailor too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:18]</span>Mother: Yes, we used to do it in the past.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:21]</span>Mother: Later, we taught our daughter.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:24]</span>Host: How many years have you been a tailor?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:26]</span>Mother: Well, I did it a lot, I did the small bits and pieces, when the girl grew up, I handed it over to the girls.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:32]</span>Host: You too, like your daughter mentioned, did you also learn from your mother?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:36]</span>Mother: Yes, yes. I also learned from my mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:38]</span>Host: Yes, yes, I also learned from my mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:41]</span>Host: So when you were a tailor... were you in this village then too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:45]</span>Mother: No, I wasn&#x27;t in this village. I was a girl at our home, I did it [sewing], and we came [here].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:50]</span>Host: Which village are you from?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:51]</span>Mother: I am Sorya [from Syria/Syriac background].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:53]</span>Host: How many years have you been in this village? The village of Ramadan?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:56]</span>Mother: Roughly... meaning, there are fifty-five years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:59]</span>Host: 55 years?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:00]</span>Mother: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:01]</span>Host: So during the time you were a tailor...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:03]</span>Host: When you were sewing dresses...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:06]</span>Host: Who turned up at your place? Just the village, or did women from outside come too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:09]</span>Mother: No, at that time there wasn&#x27;t that [demand]. Uh... we had neighbors, there were household members, family, when it was necessary, we sewed [for them].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:20]</span>Host: Meaning you, for example, they say from the surrounding villages nobody came to you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:24]</span>Mother: No, at that time it wasn&#x27;t like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:25]</span>Host: And after that? Did they come?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:26]</span>Mother: Later, now there are many. They come from everywhere.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:30]</span>Host: They come from everywhere.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:32]</span>Host: What other work did you do? Besides tailoring, what other work did you do?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:36]</span>Mother: Well my dear, we made these ropes, we made lace, we made cross-stitch, that is the work of the old times.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:44]</span>Host: Regarding electricity... they say electricity came to you 15 years ago? How did you manage before?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:50]</span>Mother: Yes, we did it by the lamp light, my dear.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:52]</span>Mother: Those lamps that exist.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:54]</span>Host: Kerosene lamps?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:55]</span>Mother: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:55]</span>Mother: Well, we put the lamp like this in front of us, and we produced cross-stitch with it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:01]</span>Host: Do you have any strength left in your eyes?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:02]</span>Mother: Not much...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:02]</span>Host: You didn&#x27;t do anything [to damage them]?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:04]</span>Mother: Well, lately our eyes don&#x27;t see well.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:07]</span>Mother: The girls, like this from below, I told them do this, do that, I did the start, the girls finished it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:14]</span>Host: Okay, I thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:16]</span>Mother: I do the same [thank you], welcome, from your strength and patriotism, may God the Lord of the worlds look upon your condition and may our leader emerge [free], my dear.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:24]</span>Host: Thank you to you too, health to you mother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:26]</span>Mother: Thanks to you too.</p>
+                </div>
+            </div>
+
+            <!-- Kurdish Transcript Card -->
+            <div id="kurdish" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transkrîpta bi Kurmancî</h2>
+                    <button class="copy-btn" onclick="copySection('transcript-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Kopî bike
+                    </button>
+                </div>
+                <div id="transcript-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00]</span>Host: Hêj em di gundê Remedana de dijîn, em di gerin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03]</span>Host: Neha jî em derbasî malekê bûn, jinek jî terzî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06]</span>Host: Me xwest em li ser karê terziyê jî bipirsin, emê bi hev re nas bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10]</span>Host: Merheba ji we re.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11]</span>Fehîme: Ehlen we sehlen, tu bi xêr hatî. Ser serê me û ser her du çavê me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16]</span>Host: Sax bî, spas. Em destpêkê we nas bikin, navê we bi xêr?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20]</span>Fehîme: Navê min Fehîme.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21]</span>Host: Ser çava.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22]</span>Host: Ji kengî da tu terzî ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24]</span>Fehîme: Ji deh salan da.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26]</span>Fehîme: Deh salan da ez êlimî terziyê, ez didirûm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29]</span>Host: Te ji kê fêr bû?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30]</span>Fehîme: Ji diya xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31]</span>Host: Diya te eyna terzî ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33]</span>Fehîme: Ê, diya min.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:34]</span>Host: Ew çend sal e terzî ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:36]</span>Fehîme: Hewa... wek li emrê min terzî bû heta mezin bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:39]</span>Fehîme: Paşê, hewa jî diya xwe elimî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:42]</span>Fehîme: Min jî, ez jê elimîm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:44]</span>Host: Yanî halet ji diya xwe elimîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:45]</span>Fehîme: Aywa, em ji diya xwe em fêr bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:47]</span>Host: Baş e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:48]</span>Host: Niha... mîvanê te jî hazir in, em jî spas dikin em jî hazir bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:53]</span>Host: Wan jî cilê xwe yê Kurmancî li xwe kirine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:56]</span>Host: Bi taybet hûn çi didirûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:58]</span>Fehîme: Taybet em cilê Kurmancî didirûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:02]</span>Fehîme: Bi navê Efrînê, fîstanê Kurmancî, Efrînê tên naskirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:07]</span>Fehîme: Û teben [tabî] bi çar parçeyê Kurdistanê em gişka didirûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:11]</span>Host: Ê çar parçeyan jî tu didirî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:13]</span>Host: Niha li ba te hene, em karin bibînin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:15]</span>Fehîme: Lê, yekî heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:17]</span>Fehîme: Û ê pir Kurmancî ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:19]</span>Host: Yanî ê pirraniya vî yê Efrînê didirûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:20]</span>Fehîme: Ê pir Efrînê ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:22]</span>Host: Niha ev yê herî zehmet tu didirî, kîjan e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:25]</span>Fehîme: Yê Efrînê ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:27]</span>Host: Yê Efrînê zehmet e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:28]</span>Fehîme: Efrînê sicefê xwe hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:29]</span>Host: Zehmetiya xwe?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:30]</span>Fehîme: Zehmetiya xwe sicef in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:32]</span>Host: Gelo tu kîjan merra dibêjî? Ê çavê min an...?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:40]</span>Fehîme: Tu behsa vê dikî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:41]</span>Fehîme: Hev sicef na... zehmetiya xwe ji van heye, hewna bi destan çêdibin, bi makînê nayê dirûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:47]</span>Host: De rojeke berxwedêr tu çawa dikî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:49]</span>Fehîme: Hawa, rojekê em sicefa çêdikin, paşê em didirûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:54]</span>Host: Û tu rojêkê de yekî diqedînî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:55]</span>Fehîme: Ê, lê. Rojêkê fîstanê Kurmancî derdikeve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:59]</span>Host: Ê tu berê di gund de kar dikir, te li derveyî gund kar dikir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:02]</span>Fehîme: Ez di gund de kar dikim. Salekê ez çûm Cindirêsê kar dikir, min mehel vekir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:08]</span>Host: Te li wir jî vekir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:09]</span>Fehîme: Min li wir vekir, qîzik li cem min dielimîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:12]</span>Fehîme: Ji bûyerê, ez hatim vêderê, min dîsa karê xwe kir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:17]</span>Host: Lê te neaniye vêderê tu bi xwe re?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:18]</span>Fehîme: Ez nehatime, ê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:20]</span>Host: Makîna te jî nebû hewa?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:22]</span>Fehîme: Makîna min na, ev ya diya min e. Ya min... makîna min yê derzî mezin e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:27]</span>Host: Ê tu başqe ji fîstan çi didirîne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:30]</span>Fehîme: Ez şelwarê jî didirûm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:32]</span>Host: Ê mêra?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:32]</span>Fehîme: Ê mêra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:33]</span>Host: Yanî, ev şelwarê te dirûtî ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:35]</span>Fehîme: Ev şelwarê min dirûtî ye, erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:40]</span>Host: Ê dema niha tu jin, û karê şelwara jî dikî, zehmetiya wê heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:44]</span>Fehîme: Na. Tê tune.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:46]</span>Host: Na? Zehmetiya xwe kûk tune? Ji fîstanê Kurmancî qolaytir e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:49]</span>Fehîme: Ji fîstanê Kurmancî qolaytir e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:50]</span>Host: Zehmetiya wê tê tune?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:51]</span>Fehîme: Na.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:52]</span>Host: Ê tu bi taybet kes tê ba te, lê tu didirî ji difroşî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:55]</span>Fehîme: Na, ez ji xelkê re didirûm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:57]</span>Host: Yanî, kî gerek bibûyî te jê re?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:58]</span>Fehîme: Gerekê kî bî, tînin, ji min re ez jê re didirûm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:02]</span>Host: Ê baş e, eger ji me re jî bidirî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:03]</span>Fehîme: Ya ehlen we sehlen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:04]</span>Host: Ji bo bernameya xwelet, dê em jî cilê xwe yê Kurmancî li xwe dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:07]</span>Fehîme: Tu bi xêr hatî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:09]</span>Host: Sax bî. Ev çine? Ka em li van jî binêrin. Ev jî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:12]</span>Fehîme: Hewna jî şaş in, durbin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:14]</span>Host: Şaş in?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:15]</span>Fehîme: Durbin, ê, hevna. Hevna bi destê xwe çêdikim. Ke destê min e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:19]</span>Host: Ev merkub a?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:20]</span>Fehîme: Ev merkuna...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:21]</span>Host: Ev hazir in, tînî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:22]</span>Fehîme: Merk&#x27;a dikirim û ez çêdikim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:24]</span>Host: De şaşê hewna hazir tînî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:25]</span>Fehîme: Şaşê hazir tînin. Ê, doro ez bi xwe çêdikim, erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:29]</span>Host: Ê ev jî çiqasî berxwedana wê heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:32]</span>Fehîme: Hewa bi heftan berxwedana meseleya van.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:34]</span>Host: Zehmetî ya heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:35]</span>Fehîme: Zehmetiya xwe pir e, lê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:36]</span>Host: Ê berya miletê... berê çawa dikir? Cereyan tune bû, wala trîk, milet... jina di berê çi zehmetî dikşandin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:42]</span>Fehîme: Ê zehmetiya xwe pir ne, lê... me jî li ber çira çêdikir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:46]</span>Host: Tu gihîştiyê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:47]</span>Fehîme: Em gihîştinê. Lê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:49]</span>Host: Kerebeya me pir ne... ji mêj ve...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:51]</span>Host: De gund çend sal e kerebe hatiyê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:53]</span>Fehîme: Gund teqrîben, de û pênc salan hatiyê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:55]</span>Host: Panzdeh salan? Ne zûda ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:56]</span>Fehîme: Na, na, ne zûda ye. Em... bi zarok bûn, em biçûk bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:00]</span>Fehîme: Me çêdikir, kerebe paşê hat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:03]</span>Host: Dibê dema, diya te çawa kar dikir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:05]</span>Fehîme: Diya min... dirûn dikir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:07]</span>Host: Ê, bi vê makînê çênekir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:09]</span>Fehîme: Na. Diya min, me&#x27;rêk çênekir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:12]</span>Fehîme: Me&#x27;rêk... şuxlê min e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:14]</span>Host: Yanî tu ev zêde bûn te, tu fêr bûyî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:16]</span>Fehîme: Hm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:17]</span>Host: Mîvanê te ji gund in, ji derveyî gund in?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:19]</span>Fehîme: Mîvanê min ji gund in, hevalê min in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:22]</span>Fehîme: Jê yek, hevala Şêziyê. Hevala File, hevala Euf... û ser mile te jî, diya min e hewa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:28]</span>Host: Dayîka te jî fêr bûye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:29]</span>Fehîme: Erê, dayîka min jî fêr bûye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:31]</span>Fehîme: Durînê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:32]</span>Host: Tamam, ezê naha cem dayîkê jî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:34]</span>Host: Û hûn çend jin, di gund de, di komînê de we cihê xwe girtiye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:37]</span>Fehîme: Em heft in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:39]</span>Fehîme: Jê sisê, mamosteyên jê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:42]</span>Host: Karê mamosteyî jî dikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:43]</span>Fehîme: Û cihê xwe di komînê de jî digirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:46]</span>Host: Ê komîn bi giştî, hejmara we çend kes in?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:48]</span>Fehîme: Em jin heft in, û mêr jî teqrîben deh hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:54]</span>Host: Hevdeh kes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:55]</span>Fehîme: Heftdeh kes in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:56]</span>Host: Baş e. Komîna we çiqas, çend meh ne ava bûye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:59]</span>Fehîme: Heft meh hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:00]</span>Host: Heft meh hene?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:01]</span>Fehîme: Komîna Şehîd Rênas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:04]</span>Host: Spas ji were jî, ezê neha biftim cem dayîkê jî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:07]</span>Fehîme: Ehlen we sehlen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:09]</span>Host: Dayê merheba ji te re jî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:10]</span>Mother: Tu bi xêr hatî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:12]</span>Host: Tu bi xêr hatî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:12]</span>Mother: Eyî sax bin yarim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:14]</span>Host: Sax bî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:15]</span>Mother: Sax bî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:15]</span>Host: Dayê, dibê tu terzî ye? Tu bi xwe jî terzî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:18]</span>Mother: Ê, ma berê ma dikir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:21]</span>Mother: Paşê ma ber qîzika xwe elimand.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:24]</span>Host: Ê tu çend sal e terzî ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:26]</span>Mother: Wele, ma pir kir, da hûrik mûrik ma kir, da qîzik gihîştin ma teslîmî qîzka kir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:32]</span>Host: Tû jî, wek keçka te behs kir, tû jî ji diya xwe yê fêr bûye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:36]</span>Mother: Erê, erê. Ji dêka xwe ez jî elimîm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:38]</span>Host: Erê, erê, ji dêka xwe ez jî elimîm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:41]</span>Host: Ê dema te terzî bû... tu li vî gundî bû dîsa?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:45]</span>Mother: La, ez ne li vî gundî bûm. Ez qîz bûm li mala ma bûm, ma dikir, û em hatin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:50]</span>Host: Tu ji kîjan gundî ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:51]</span>Mother: Ez Sorya me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:53]</span>Host: Ê tu çend sal hatî vî gundî? Gundê Remedana?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:56]</span>Mother: Teqrîben... yanî pêncî û pênc sala hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:59]</span>Host: 55 sal in?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:00]</span>Mother: Ê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:01]</span>Host: Dibê dema te terzî bûn...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:03]</span>Host: Dema te fîstan didirûtin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:06]</span>Host: Çi derdiketin cem te? Ê gund tenê, yan jina derve jî dihatin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:09]</span>Mother: Na, we çaxê dawa tune bû. Da... cîran ki mera hebû, ê malê bûn, aîlê bûn, da lazim dibû ma didirûtin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:20]</span>Host: Yanî te, mesela noha dibêjin gundê derdora ber kes nedihat cem te?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:24]</span>Mother: Na, we çaxê ne we bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:25]</span>Host: Û piştî wê? Hatine?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:26]</span>Mother: Paşê, noka pir in. Ji her derke da têne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:30]</span>Host: Ji her derkê da têne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:32]</span>Host: Wekî din te çi kar dikir? Başqe ji karê terzî te çi kar din dikir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:36]</span>Mother: Wele yarim, ma vê rêsna çêdikirin, ma tentena çêdikirin, ma qenewîç çêdikirin, da şuxlê zemanî ber e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:44]</span>Host: Behsa karebê... dibê 15 sal e kerebe hatiye cew? Ê berê te çawa dikir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:50]</span>Mother: Ê ma li ber çirê dikir yarim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:52]</span>Mother: Hewa çiray ne hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:54]</span>Host: Çirê gazê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:55]</span>Mother: Lê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:55]</span>Mother: Wele ma çira hano didan û pêşî xwe, û ma pê qenewîç derçêdikirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:01]</span>Host: Tu şiqamet di çavên te da mane?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:02]</span>Mother: Tişî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:02]</span>Host: Te tiştê nekirî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:04]</span>Mother: Wele, orta da çavê me nadîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:07]</span>Mother: Qîzikê hano ji xwaro, mi digot hano bikin, hano bikin, ma li pêşiyê dikir, qîziko temam dikir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:14]</span>Host: Temam, spasî ya te dikim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:16]</span>Mother: Ez jî waji bikim, ehla we sehla, ji qeweta we ax û velatra, Xwedê rebî alemê, berûçkê weva binêre serûkî me bi derkeve yarim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:24]</span>Host: Spas ji te re jî, sihet xweş dayê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:26]</span>Mother: Spas ji we re jî.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on January 19, 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Copy to clipboard function
+        function copySection(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Find the button that was clicked and update its text
+                const btn = event.target.closest('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ✓';
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

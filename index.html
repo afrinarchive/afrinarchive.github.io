@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive of Afrin</title>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <style>
+        /* Bounce animation for the arrow */
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(-25%);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+
+            50% {
+                transform: translateY(0);
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+
+        /* Importing a unique, historical font for each language */
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Cinzel&family=EB+Garamond&family=Forum&family=GFS+Didot&family=Inter:wght@400;500;700&family=Lateef&family=Marck+Script&family=Noto+Naskh+Arabic&family=Noto+Sans+Armenian&family=Noto+Sans+Cuneiform&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Syriac+Eastern&family=Noto+Serif+Armenian&family=Scheherazade+New:wght@400;700&family=UnifrakturMaguntia&family=Unna&family=Vollkorn&display=swap');
+
+        /* Base body font remains Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f5f3;
+            background-image: url('landing/images/background2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #3a3a3a;
+            overflow-x: hidden;
+        }
+
+        .main-section {
+            background: linear-gradient(135deg, rgba(247, 245, 243, 0.7) 0%, rgba(242, 237, 231, 0.7) 100%);
+            padding: 40px;
+            min-height: 80vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .layout-container {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .graph-column {
+            flex: 3;
+            height: 70vh;
+            background-color: #000000;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            cursor: grab;
+            border: 3px solid #009A3D;
+        }
+
+        #graph-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #loading-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-family: sans-serif;
+            font-size: 1.2em;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        .content-column {
+            flex: 2;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .site-title-en {
+            font-size: 60px;
+            font-weight: 700;
+            color: rgba(44, 44, 44, 0.9);
+            margin-bottom: 0px;
+            letter-spacing: -1.5px;
+            font-family: 'Inter', sans-serif;
+            margin-top: 0;
+            line-height: 1.1;
+        }
+
+        .site-title-ar {
+            font-size: 64px;
+            font-weight: 400;
+            color: #8b7355;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            direction: rtl;
+            font-family: 'Scheherazade New', 'Amiri', 'Noto Naskh Arabic', 'Times New Roman', serif;
+            letter-spacing: 2px;
+            line-height: 1.8;
+        }
+
+        .welcome-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 5px 5px;
+            padding: 0 0px;
+            margin-bottom: 15px;
+        }
+
+        .welcome-lang {
+            background-color: transparent;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .lang-ar {
+            color: #1d6a61;
+            font-family: 'Scheherazade New', serif;
+        }
+
+        .lang-ku {
+            color: #a14e38;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .lang-en {
+            color: #aa7143;
+            font-family: 'Cinzel', serif;
+        }
+
+        .lang-fr {
+            color: #1a3038;
+            font-family: 'Unna', serif;
+        }
+
+        .lang-de {
+            color: #DD0000;
+            font-family: 'Vollkorn', serif;
+        }
+
+        .lang-so {
+            color: #5c27a5;
+            font-family: 'Noto Naskh Arabic', serif;
+        }
+
+        .lang-fa {
+            color: #b03d05;
+            font-family: 'Lateef', serif;
+            font-size: 28px;
+        }
+
+        .lang-ru {
+            color: #b3004d;
+            font-family: 'Vollkorn', serif;
+        }
+
+        .lang-hy {
+            color: #285db3;
+            font-family: 'Noto Serif Armenian', sans-serif;
+        }
+
+        .lang-arc {
+            color: #b38508;
+            font-family: 'Noto Sans Syriac Eastern', sans-serif;
+        }
+
+        .lang-ota {
+            color: #004c52;
+            font-family: 'Amiri', serif;
+        }
+
+        .lang-tr {
+            color: #a12831;
+            font-family: 'Vollkorn', serif;
+        }
+
+        .lang-akk {
+            color: #624c45;
+            font-family: 'Noto Sans Cuneiform', sans-serif;
+            font-size: 28px;
+        }
+
+        .lang-la {
+            color: #4c4952;
+            font-family: 'Forum', serif;
+        }
+
+        .lang-el {
+            color: #00537f;
+            font-family: 'GFS Didot', serif;
+        }
+
+        .lang-egy {
+            color: #725736;
+            font-family: 'Noto Sans Egyptian Hieroglyphs', sans-serif;
+            font-size: 28px;
+        }
+
+        .lang-hit {
+            color: #847773;
+            font-family: 'Noto Sans Cuneiform', sans-serif;
+            font-size: 28px;
+        }
+
+        .lang-hur {
+            color: #705f58;
+            font-family: 'Noto Sans Cuneiform', sans-serif;
+            font-size: 28px;
+        }
+
+        .lang-syr {
+            color: #a84466;
+            font-family: 'Noto Sans Syriac Eastern', sans-serif;
+        }
+
+        .search-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 420px;
+            padding: 16px 22px;
+            border: 2px solid #d4c4a8;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            color: #3a3a3a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-sizing: border-box;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #8b7355;
+            box-shadow: 0 2px 12px rgba(139, 115, 85, 0.15);
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .search-button {
+            background-color: #ffcc00;
+            color: #3a3a3a;
+            border: none;
+            padding: 18px 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            width: 100%;
+            max-width: 420px;
+            box-sizing: border-box;
+        }
+
+        .search-button:hover {
+            background-color: #e6b800;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 420px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid #d4c4a8;
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-result-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #e5e5e5;
+            transition: background-color 0.2s ease;
+        }
+
+        .search-result-item:hover {
+            background-color: rgba(139, 115, 85, 0.1);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            font-weight: 500;
+            color: #3a3a3a;
+            margin-bottom: 2px;
+        }
+
+        .search-result-subtitle {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .sections-container {
+            display: flex;
+            height: 320px;
+            width: 100%;
+        }
+
+        .section {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 20px 15px;
+            color: white;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-width: 0;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            z-index: 1;
+        }
+
+        .section-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .play-icon {
+            display: none;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .section-text {
+            font-size: 15px;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .section-1 {
+            background-color: #009A3D;
+            background-image: linear-gradient(rgba(0, 154, 61, 0.75), rgba(0, 154, 61, 0.75)), url('landing/images/villages.jpg');
+            cursor: pointer;
+            transition: background-image 0.2s ease;
+        }
+
+        .section-1:hover {
+            background-image: linear-gradient(rgba(0, 220, 88, 0.85), rgba(0, 220, 88, 0.85)), url('landing/images/villages.jpg');
+        }
+
+        .section-2 {
+            background-color: #F32837;
+            background-image: linear-gradient(rgba(243, 40, 55, 0.75), rgba(243, 40, 55, 0.75)), url('landing/images/infographics.jpg');
+            cursor: pointer;
+            transition: background-image 0.2s ease;
+        }
+
+        .section-2:hover {
+            background-image: linear-gradient(rgba(255, 85, 100, 0.9), rgba(255, 85, 100, 0.9)), url('landing/images/infographics.jpg');
+        }
+
+        .section-3 {
+            background-color: #FFCC00;
+            color: #333;
+            background-image: linear-gradient(rgba(255, 204, 0, 0.8), rgba(255, 204, 0, 0.8)), url('landing/images/who.jpg');
+        }
+
+        .section-4 {
+            background-color: #F32837;
+            background-image: linear-gradient(rgba(243, 40, 55, 0.75), rgba(243, 40, 55, 0.75)), url('landing/images/updates.jpg');
+            cursor: pointer;
+            transition: background-image 0.2s ease;
+        }
+
+        .section-4:hover {
+            background-image: linear-gradient(rgba(255, 85, 100, 0.9), rgba(255, 85, 100, 0.9)), url('landing/images/updates.jpg');
+        }
+
+        .section-5 {
+            background-color: #009A3D;
+            background-image: linear-gradient(rgba(0, 154, 61, 0.75), rgba(0, 154, 61, 0.75)), url('landing/images/contact.jpg');
+            cursor: pointer;
+            transition: background-image 0.2s ease;
+        }
+
+        .section-5:hover {
+            background-image: linear-gradient(rgba(0, 220, 88, 0.85), rgba(0, 220, 88, 0.85)), url('landing/images/contact.jpg');
+        }
+
+        .village-directory-title {
+            font-size: 28px;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0px;
+            line-height: 1.2;
+            margin-top: 8px;
+        }
+
+        .section-1 .section-text,
+        .section-2 .section-text,
+        .section-3 .section-text,
+        .section-4 .section-text,
+        .section-5 .section-text {
+            font-size: 16px;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .secondary-title {
+            font-size: 28px;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0px;
+            line-height: 1.2;
+            margin-top: 8px;
+        }
+
+        .floating-scroll-arrow {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 70px;
+            background-color: rgba(139, 115, 85, 0.95);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 99999;
+            font-size: 36px;
+            font-weight: 900;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .floating-scroll-arrow:hover {
+            background-color: rgba(139, 115, 85, 1);
+            border-color: rgba(255, 255, 255, 1);
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        /* Search Results Page */
+        .search-results-page {
+            display: none;
+            min-height: 100vh;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(247, 245, 243, 0.7) 0%, rgba(242, 237, 231, 0.7) 100%);
+        }
+
+        .search-results-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-results-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .back-button {
+            background-color: #ffcc00;
+            color: #3a3a3a;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .back-button:hover {
+            background-color: #e6b800;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-results-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #3a3a3a;
+            margin: 0;
+        }
+
+        .search-results-count {
+            font-size: 16px;
+            color: #666;
+            margin-left: auto;
+        }
+
+        .search-results-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .search-result-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #d4c4a8;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-result-card:hover {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-color: #8b7355;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-result-card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 8px;
+        }
+
+        .search-result-card-title:hover {
+            text-decoration: underline;
+        }
+
+        .search-result-card-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .search-result-card-description {
+            font-size: 16px;
+            color: #3a3a3a;
+            line-height: 1.4;
+        }
+
+        .match-highlight {
+            font-weight: bold;
+            background-color: #ffeb3b;
+            padding: 1px 2px;
+            border-radius: 2px;
+        }
+
+        .see-more-button {
+            width: 100%;
+            padding: 8px;
+            background-color: rgba(139, 115, 85, 0.1);
+            border: none;
+            border-top: 1px solid #e5e5e5;
+            cursor: pointer;
+            color: #8b7355;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .see-more-button:hover {
+            background-color: rgba(139, 115, 85, 0.2);
+        }
+
+        /* --- Updates Slider --- */
+        .updates-slider-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+            /* Adjust height as needed */
+            margin-top: 10px;
+        }
+
+        .updates-slider {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .update-item {
+            min-width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .update-date {
+            font-weight: 700;
+            color: #ffcc00;
+        }
+
+        /* Using the existing .section-text class for consistent styling */
+        .update-description {
+            font-size: 16px;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .updates-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+        }
+
+        .updates-nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .updates-nav-dot.active {
+            background-color: #ffcc00;
+        }
+
+        /* --- Responsive Styles --- */
+
+        /* For tablets and smaller desktops */
+        @media (max-width: 1024px) {
+            .layout-container {
+                flex-direction: column;
+                /* Stack vertically */
+                gap: 30px;
+            }
+
+            /* Override desktop sizing and set both columns to full width for mobile */
+            .graph-column,
+            .content-column {
+                width: 100%;
+                flex: none;
+            }
+        }
+
+        /* For smaller tablets and large phones */
+        @media (max-width: 768px) {
+            .main-section {
+                padding: 30px 15px;
+            }
+
+            .site-title-en {
+                font-size: 42px;
+            }
+
+            .site-title-ar {
+                font-size: 46px;
+                margin-bottom: 25px;
+            }
+
+            .welcome-lang {
+                font-size: 20px;
+            }
+
+            .sections-container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .section {
+                height: auto;
+                min-height: 100px;
+                padding-top: 25px;
+                padding-bottom: 25px;
+                justify-content: center;
+            }
+
+            .search-results-page {
+                padding: 20px 15px;
+            }
+
+            .search-results-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .back-button {
+                padding: 16px 30px;
+                font-size: 16px;
+            }
+
+            .search-results-title {
+                font-size: 24px;
+            }
+
+            .graph-column {
+                height: 50vh;
+            }
+
+            .floating-scroll-arrow {
+                display: none;
+            }
+        }
+
+        /* For smaller mobile phones */
+        @media (max-width: 480px) {
+            .site-title-en {
+                font-size: 36px;
+            }
+
+            .site-title-ar {
+                font-size: 40px;
+            }
+
+            .welcome-container {
+                gap: 3px 8px;
+            }
+
+            .welcome-lang {
+                font-size: 18px;
+            }
+
+            .search-input {
+                padding: 14px 18px;
+                font-size: 15px;
+            }
+
+            .search-button {
+                padding: 15px 28px;
+                font-size: 16px;
+            }
+
+            .village-directory-title,
+            .secondary-title {
+                font-size: 24px;
+            }
+
+            .section-text {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- The button now contains the SVG arrow and an ID -->
+    <button id="scroll-arrow" class="floating-scroll-arrow" onclick="scrollToSections()">
+        <svg class="animate-bounce" style="width: 40px; height: 40px;" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+    </button>
+
+    <div class="main-section">
+        <div class="layout-container">
+            <div class="graph-column" id="graph-container">
+                <canvas id="graph-canvas"></canvas>
+                <div id="loading-indicator">Loading Graph Data...</div>
+            </div>
+            <div class="content-column">
+                <h1 class="site-title-en">Archive of Afrin</h1>
+                <h2 class="site-title-ar">أرشيف عفرين</h2>
+                <div class="welcome-container">
+                    <span class="welcome-lang lang-ar">أهلاً وسهلاً</span>
+                    <span class="welcome-lang lang-ku">Bi xêr hatî</span>
+                    <span class="welcome-lang lang-en">Welcome</span>
+                    <span class="welcome-lang lang-fr">Bienvenue</span>
+                    <span class="welcome-lang lang-de">Willkommen</span>
+                    <span class="welcome-lang lang-so">بەخێربێیت</span>
+                    <span class="welcome-lang lang-fa">خوش آمدید</span>
+                    <span class="welcome-lang lang-ru">Добро пожаловать</span>
+                    <span class="welcome-lang lang-hy">Բարի գալուստ</span>
+                    <span class="welcome-lang lang-arc">ܒܫܲܝܢܵܐ</span>
+                    <span class="welcome-lang lang-ota">خوش کلدکز</span>
+                    <span class="welcome-lang lang-tr">Hoş geldiniz</span>
+                    <span class="welcome-lang lang-akk">𒀀</span>
+                    <span class="welcome-lang lang-la">Salvete</span>
+                    <span class="welcome-lang lang-el">Καλώς ήρθατε</span>
+                    <span class="welcome-lang lang-egy">𓇍𓇋𓇋𓀀</span>
+                    <span class="welcome-lang lang-hit">𒀀𒋗𒇷</span>
+                    <span class="welcome-lang lang-hur">𒄷𒌨𒊑</span>
+                    <span class="welcome-lang lang-syr">ܫܠܵܡܵܐ</span>
+                </div>
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" class="search-input"
+                        placeholder="Search villages, people, places...">
+                    <div id="search-results" class="search-results"></div>
+                    <button class="search-button" onclick="showSearchResultsPage()">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-results-page" id="search-results-page">
+        <div class="search-results-container">
+            <div class="search-results-header">
+                <button class="back-button" onclick="returnToMain()">← Return to Archive</button>
+                <h1 class="search-results-title" id="search-results-page-title">Search Results</h1>
+                <div class="search-results-count" id="search-results-count"></div>
+            </div>
+            <div class="search-results-list" id="search-results-page-list">
+            </div>
+        </div>
+    </div>
+
+    <div class="sections-container">
+        <div class="section section-1" onclick="window.open('village_site_files/00_village_names.html', '_blank')">
+            <div class="section-content">
+                <div class="section-header">
+                    <div class="play-icon"></div>
+                    <h3 class="section-title">Online Archive</h3>
+                </div>
+                <h4 class="village-directory-title">Village Directory</h4>
+                <p class="section-text">A collection of information about the villages of Afrin. The database currently
+                    holds information about 366 villages.</p>
+            </div>
+        </div>
+        <div class="section section-2"
+            onclick="window.open('https://www.zachariahhopkins.com/landing_pages/charts.html', '_blank')">
+            <div class="section-content">
+                <div class="section-header">
+                    <h3 class="secondary-title">Infographics</h3>
+                </div>
+                <p class="section-text">Charts, posters, and graphs created from the Afrin Archive's data.</p>
+            </div>
+        </div>
+        <div class="section section-3">
+            <div class="section-content">
+                <div class="section-header">
+                    <h3 class="secondary-title">About Us</h3>
+                </div>
+                <p class="section-text">We are dedicated to preserving and documenting the rich cultural heritage,
+                    history, and stories of Afrin for future generations.</p>
+                <ul class="section-text"
+                    style="list-style-type: disc; margin-top: 10px; padding-left: 20px; text-align: left;">
+                    <li><b>168 Hours, 57 Minutes of Transcripts</b></li>
+                    <li><b>263 Interview Videos Transcribed</b></li>
+                    <li><b>366 Villages Recorded</b></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section section-4" onclick="window.location.href = 'updates/updates.html'">
+            <div class="section-content">
+                <div class="section-header">
+                    <h3 class="secondary-title">Updates</h3>
+                </div>
+                <div class="updates-slider-wrapper">
+                    <div class="updates-slider">
+                        <!-- Update items will be loaded here -->
+                    </div>
+                </div>
+                <div class="updates-nav">
+                    <!-- Navigation dots will be added here -->
+                </div>
+            </div>
+        </div>
+        <div class="section section-5" onclick="window.location.href = 'mailto:afrin.archive@gmail.com'">
+            <div class="section-content">
+                <div class="section-header">
+                    <h3 class="secondary-title">Contact Us</h3>
+                </div>
+                <p class="section-text">afrin.archive@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/search.js"></script>
+    <script type="text/javascript">
+        // This is the "glue" code for index.html
+        let lastSearchResults = [];
+        let lastSearchQuery = '';
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            // Initialize the shared search module with the correct path
+            await AfrinArchiveSearch.init("village_site_files/graph-data.json");
+
+            // The D3 graph code remains here
+            const container = document.getElementById('graph-container');
+            const canvas = document.getElementById('graph-canvas');
+            const context = canvas.getContext('2d');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const homeNodeId = 'Efrîn';
+
+            const isMobile = window.innerWidth <= 768;
+
+            let width = container.clientWidth;
+            let height = container.clientHeight;
+            canvas.width = width;
+            canvas.height = height;
+            let simulation;
+
+            window.addEventListener('resize', () => {
+                width = container.clientWidth;
+                height = container.clientHeight;
+                canvas.width = width;
+                canvas.height = height;
+                if (simulation) {
+                    simulation.force("center", d3.forceCenter(width / 2, height / 2)).restart();
+                }
+            });
+
+            const graph = await d3.json("village_site_files/graph-data.json");
+            if (!graph) return;
+
+            let nodesForSimulation = graph.nodes;
+            let edgesForSimulation = graph.edges;
+
+            const nodeById = new Map(graph.nodes.map(node => [node.id, node]));
+            const homeNode = nodeById.get(homeNodeId);
+            if (homeNode) { homeNode.fx = width / 2; homeNode.fy = height / 2; }
+            const links = edgesForSimulation.map(link => ({ source: nodeById.get(link.from), target: nodeById.get(link.to) }));
+            const validLinks = links.filter(d => d.source && d.target);
+            loadingIndicator.innerText = 'Initializing Physics...';
+            simulation = d3.forceSimulation(nodesForSimulation)
+                .force("link", d3.forceLink(validLinks).id(d => d.id).distance(100).strength(0.1))
+                .force("charge", d3.forceManyBody().strength(-60))
+                .force("center", d3.forceCenter(width / 2, height / 2))
+                .on("tick", ticked);
+            function ticked() {
+                context.clearRect(0, 0, width, height);
+                context.save();
+                context.translate(transform.x, transform.y);
+                context.scale(transform.k, transform.k);
+                context.strokeStyle = "rgba(255, 255, 255, 0.15)";
+                context.beginPath();
+                validLinks.forEach(d => { context.moveTo(d.source.x, d.source.y); context.lineTo(d.target.x, d.target.y); });
+                context.stroke();
+                nodesForSimulation.forEach(d => {
+                    let radius = d.type === 'file' ? 5 : (d.id === homeNodeId ? 8 : 2);
+                    let labelColor = d.id === homeNodeId ? "#fff" : "#ccc";
+                    let labelFont = d.id === homeNodeId ? "14px sans-serif" : (d.type === 'file' ? "12px sans-serif" : "10px sans-serif");
+                    context.font = labelFont;
+                    context.textAlign = "center";
+                    context.strokeStyle = 'rgba(45, 45, 45, 0.8)';
+                    context.lineWidth = 2;
+                    context.strokeText(d.label, d.x, d.y - radius - 3);
+                    context.fillStyle = labelColor;
+                    context.fillText(d.label, d.x, d.y - radius - 3);
+                });
+                nodesForSimulation.forEach(d => {
+                    context.beginPath();
+                    let radius = d.type === 'file' ? 5 : (d.id === homeNodeId ? 8 : 2);
+                    let fillColor = d.type === 'file' ? "#86efac" : (d.id === homeNodeId ? "#ffcc00" : "#666");
+                    context.moveTo(d.x + radius, d.y);
+                    context.arc(d.x, d.y, radius, 0, 2 * Math.PI);
+                    context.fillStyle = fillColor;
+                    context.fill();
+                });
+                context.restore();
+            }
+            let transform = d3.zoomIdentity;
+            const zoom = d3.zoom().scaleExtent([0.1, 8]).on("zoom", (event) => { transform = event.transform; ticked(); });
+            d3.select(canvas).call(zoom);
+            d3.select(canvas).on("click", function (event) {
+                const [mx, my] = d3.pointer(event);
+                const simX = transform.invertX(mx);
+                const simY = transform.invertY(my);
+                const closestNode = simulation.find(simX, simY, 30 / transform.k);
+                if (closestNode && closestNode.type === 'file') {
+                    const filename = encodeURIComponent(closestNode.id) + '.html';
+                    window.open(`village_sites/${filename}`, '_blank');
+                }
+            });
+            setTimeout(() => { loadingIndicator.style.display = 'none'; }, 1000);
+
+            setupSearchUI();
+            setupUpdatesSlider();
+        });
+
+        function setupSearchUI() {
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            let searchTimeout;
+            searchInput.addEventListener('input', () => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(performSearch, 300);
+            });
+            searchInput.addEventListener('keydown', e => {
+                if (e.key === 'Enter') { e.preventDefault(); showSearchResultsPage(); }
+            });
+            document.addEventListener('click', e => {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+            searchInput.addEventListener('focus', () => {
+                if (searchInput.value.trim() && searchResults.innerHTML) {
+                    searchResults.style.display = 'block';
+                }
+            });
+        }
+
+        function performSearch() {
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            const query = searchInput.value.trim();
+            if (!query) { searchResults.style.display = 'none'; return; }
+
+            const results = AfrinArchiveSearch.search(query);
+            lastSearchResults = results;
+            lastSearchQuery = query;
+
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item"><div class="search-result-title">No results found</div></div>';
+            } else {
+                const dropdownHTML = results.slice(0, 8).map(result => `
+                    <div class="search-result-item" onclick="openVillage('${escapeHtml(result.village.filename).replace(/'/g, "\\'")}')">
+                        <div class="search-result-title">${escapeHtml(result.village.name)}</div>
+                        <div class="search-result-subtitle">${escapeHtml(result.matchType)}: ${highlightMatch(result.matchText, result.query)}</div>
+                    </div>`).join('');
+
+                const seeMoreHTML = results.length > 8 ? `
+                    <div class="see-more-button" onclick="showSearchResultsPage()">
+                        See All ${results.length} results
+                    </div>` : '';
+                searchResults.innerHTML = dropdownHTML + seeMoreHTML;
+            }
+            searchResults.style.display = 'block';
+        }
+
+        function showSearchResultsPage() {
+            const query = document.getElementById('search-input').value.trim();
+            const results = query ? AfrinArchiveSearch.search(query) : lastSearchResults;
+
+            document.querySelector('.main-section').style.display = 'none';
+            document.querySelector('.sections-container').style.display = 'none';
+            document.querySelector('.floating-scroll-arrow').style.display = 'none';
+            document.getElementById('search-results').style.display = 'none';
+            document.getElementById('search-results-page').style.display = 'block';
+
+            const safeQuery = escapeHtml(query || lastSearchQuery);
+            document.getElementById('search-results-page-title').textContent = `Search Results for "${safeQuery}"`;
+            document.getElementById('search-results-count').textContent = `${results.length} result${results.length !== 1 ? 's' : ''} found`;
+
+            const list = document.getElementById('search-results-page-list');
+            list.innerHTML = results.length === 0 ? '<div style="text-align: center; padding: 40px; color: #666;">No results found.</div>' :
+                results.map(result => `
+                    <div class="search-result-card" onclick="openVillage('${escapeHtml(result.village.filename).replace(/'/g, "\\'")}')">
+                        <div class="search-result-card-title">${escapeHtml(result.village.name)}</div>
+                        <div class="search-result-card-subtitle">Found in: ${escapeHtml(result.matchType)}</div>
+                        <div class="search-result-card-description">Match: ${highlightMatch(result.matchText, result.query)}</div>
+                    </div>`).join('');
+        }
+
+        function returnToMain() {
+            document.querySelector('.main-section').style.display = 'flex';
+            document.querySelector('.sections-container').style.display = 'flex';
+            document.getElementById('search-results-page').style.display = 'none';
+        }
+
+        function openVillage(filename) {
+            window.open(`village_sites/${filename}`, '_blank');
+            document.getElementById('search-results').style.display = 'none';
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML.replace(/\n/g, ' ').replace(/\r/g, ' ');
+        }
+
+        function highlightMatch(text, query) {
+            if (!query) return escapeHtml(text);
+            const regex = new RegExp(`(${escapeHtml(query)})`, 'gi');
+            return escapeHtml(text).replace(regex, '<span class="match-highlight">$1</span>');
+        }
+        function setupUpdatesSlider() {
+            const sliderContainer = document.querySelector('.updates-slider');
+            const navContainer = document.querySelector('.updates-nav');
+            if (!sliderContainer || !navContainer) return;
+
+            fetch('updates.json')
+                .then(response => response.json())
+                .then(updates => {
+                    updates.forEach(update => {
+                        const slideHTML = `
+                            <div class="update-item">
+                                <div class="update-date">${escapeHtml(update.date)}</div>
+                                <p class="section-text update-description">${escapeHtml(update.description)}</p>
+                            </div>
+                        `;
+                        sliderContainer.insertAdjacentHTML('beforeend', slideHTML);
+                    });
+                    initializeSlider(updates);
+                })
+                .catch(error => {
+                    console.error('Error loading updates:', error);
+                    sliderContainer.innerHTML = `<div class="update-item"><p class="section-text">Could not load updates.</p></div>`;
+                });
+
+            function initializeSlider(updates) {
+                const slides = sliderContainer.children;
+                if (slides.length === 0) return;
+
+                let currentIndex = 0;
+                let slideInterval;
+
+                updates.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('updates-nav-dot');
+                    dot.addEventListener('click', () => {
+                        goToSlide(i);
+                        resetInterval();
+                    });
+                    navContainer.appendChild(dot);
+                });
+
+                const dots = navContainer.children;
+
+                const goToSlide = (index) => {
+                    sliderContainer.style.transform = `translateX(-${index * 100}%)`;
+                    Array.from(dots).forEach(d => d.classList.remove('active'));
+                    dots[index].classList.add('active');
+                    currentIndex = index;
+                };
+
+                const nextSlide = () => {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    goToSlide(currentIndex);
+                };
+
+                const resetInterval = () => {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(nextSlide, 4000); // 4-second interval
+                };
+
+                goToSlide(0);
+                resetInterval();
+            }
+        }
+    </script>
+</body>
+
+<script>
+    // Get the arrow button element
+    const scrollArrow = document.getElementById('scroll-arrow');
+
+    // This function scrolls to the target section and then hides the arrow
+    function scrollToSections() {
+        document.querySelector('.sections-container').scrollIntoView({ behavior: 'smooth' });
+        scrollArrow.style.display = 'none';
+    }
+
+    // Add an event listener to check scroll position
+    window.addEventListener('scroll', () => {
+        // If the user has scrolled more than 50 pixels down, hide the arrow
+        if (window.scrollY > 50) {
+            scrollArrow.style.display = 'none';
+        } else {
+            // Otherwise, show it
+            scrollArrow.style.display = 'flex';
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map - ÇK Map 12</title>
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
+    <style>
+        /* Basic setup for the map container and image */
+        .map-container {
+            position: relative;
+        }
+        .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR ÇK Map 12 --- 
+         Recalculated for original image dimensions of 991x1349 pixels.
+        */
+        .nebi-huri { left: 34.51%; top: 3.04%; width: 9.89%; height: 7.26%; }
+        .mersewa { left: 45.41%; top: 9.34%; width: 9.89%; height: 7.26%; }
+        .siltete { left: 59.84%; top: 11.05%; width: 9.28%; height: 6.82%; }
+        .omer-simo { left: 38.85%; top: 14.75%; width: 8.88%; height: 6.52%; }
+        .siiriya { left: 31.08%; top: 20.83%; width: 9.69%; height: 7.12%; }
+        .zeytuneke { left: 42.89%; top: 21.05%; width: 9.69%; height: 7.12%; }
+        .ikidame { left: 74.97%; top: 19.87%; width: 9.69%; height: 7.12%; }
+        .dersiwane { left: 63.17%; top: 24.76%; width: 10.69%; height: 7.86%; }
+        .diraqliya { left: 30.88%; top: 28.17%; width: 9.28%; height: 6.82%; }
+        .pelusanke { left: 44.40%; top: 31.06%; width: 9.49%; height: 6.97%; }
+        .alciya { left: 36.23%; top: 36.70%; width: 8.88%; height: 6.52%; }
+        .qetlebiye { left: 47.73%; top: 37.73%; width: 9.28%; height: 6.82%; }
+        .dewris { left: 28.15%; top: 38.77%; width: 8.88%; height: 6.52%; }
+        .qerqina { left: 36.93%; top: 43.81%; width: 8.68%; height: 6.37%; }
+        .naza { left: 21.09%; top: 41.88%; width: 9.69%; height: 7.12%; }
+        .omera { left: 47.83%; top: 44.11%; width: 9.08%; height: 6.67%; }
+        .erebwerane { left: 62.46%; top: 36.92%; width: 9.49%; height: 6.97%; }
+        .dikmedase { left: 69.93%; top: 42.18%; width: 9.08%; height: 6.67%; }
+        .yazibaxe { left: 80.93%; top: 44.85%; width: 9.69%; height: 7.12%; }
+        .qastele-eli-cindo { left: 71.44%; top: 52.78%; width: 9.49%; height: 6.97%; }
+        .baflune { left: 57.72%; top: 59.38%; width: 9.49%; height: 6.97%; }
+        .ezaz { left: 79.21%; top: 67.16%; width: 9.69%; height: 7.12%; }
+        .qitme { left: 51.16%; top: 65.68%; width: 9.28%; height: 6.82%; }
+        .cema { left: 42.38%; top: 47.44%; width: 9.49%; height: 6.97%; }
+        .sinka { left: 46.92%; top: 55.23%; width: 9.28%; height: 6.82%; }
+        .berava { left: 35.72%; top: 46.55%; width: 8.48%; height: 6.23%; }
+        .sera { left: 41.27%; top: 55.67%; width: 9.28%; height: 6.82%; }
+        .gabeleke { left: 31.28%; top: 54.26%; width: 9.49%; height: 6.97%; }
+        .meydanke { left: 20.99%; top: 50.04%; width: 9.49%; height: 6.97%; }
+        .hilubiye { left: 23.11%; top: 63.53%; width: 9.69%; height: 7.12%; }
+        .kerferome { left: 13.72%; top: 67.38%; width: 9.08%; height: 6.67%; }
+        .qurtqulaqe-mezin { left: 22.50%; top: 70.05%; width: 9.69%; height: 7.12%; }
+        .qurtqulaqe-cucik { left: 22.10%; top: 73.17%; width: 9.49%; height: 6.97%; }
+        .xirabi-sera { left: 41.07%; top: 57.45%; width: 9.69%; height: 7.12%; }
+        .metina { left: 41.37%; top: 63.90%; width: 9.49%; height: 6.97%; }
+        .sere-kaniye { left: 46.42%; top: 67.61%; width: 9.49%; height: 6.97%; }
+        .mesale { left: 39.15%; top: 69.46%; width: 10.09%; height: 7.41%; }
+        .kortike { left: 30.98%; top: 73.17%; width: 9.69%; height: 7.12%; }
+        .qeredepe { left: 26.74%; top: 78.28%; width: 10.09%; height: 7.41%; }
+        .qestele-kistik { left: 20.38%; top: 80.73%; width: 8.88%; height: 6.52%; }
+        .cumke { left: 20.69%; top: 84.58%; width: 8.68%; height: 6.37%; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans p-4 sm:p-8">
+
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-3xl font-bold mb-4 text-center">Interactive Map - ÇK Map 12</h1>
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6 text-center">
+            <p class="text-lg">
+                <!-- Links to highlight each area -->
+                Click to highlight:
+                <a href="#nebi-huri" class="text-blue-600 hover:underline">Nebi Huri</a> |
+                <a href="#mersewa" class="text-blue-600 hover:underline">Mersewa</a> |
+                <a href="#siltete" class="text-blue-600 hover:underline">Siltete</a> |
+                <a href="#omer-simo" class="text-blue-600 hover:underline">Omer Simo</a> |
+                <a href="#siiriya" class="text-blue-600 hover:underline">Siiriya</a> |
+                <a href="#zeytuneke" class="text-blue-600 hover:underline">Zeytuneke</a> |
+                <a href="#ikidame" class="text-blue-600 hover:underline">Ikidame</a> |
+                <a href="#dersiwane" class="text-blue-600 hover:underline">Dersiwane</a> |
+                <a href="#diraqliya" class="text-blue-600 hover:underline">Diraqliya</a> |
+                <a href="#pelusanke" class="text-blue-600 hover:underline">Pelusanke</a> |
+                <a href="#alciya" class="text-blue-600 hover:underline">Alciya</a> |
+                <a href="#qetlebiye" class="text-blue-600 hover:underline">Qetlebiye</a> |
+                <a href="#dewris" class="text-blue-600 hover:underline">Dewris</a> |
+                <a href="#qerqina" class="text-blue-600 hover:underline">Qerqina</a> |
+                <a href="#naza" class="text-blue-600 hover:underline">Naza</a> |
+                <a href="#omera" class="text-blue-600 hover:underline">Omera</a> |
+                <a href="#erebwerane" class="text-blue-600 hover:underline">Erebwerane</a> |
+                <a href="#dikmedase" class="text-blue-600 hover:underline">Dikmedase</a> |
+                <a href="#yazibaxe" class="text-blue-600 hover:underline">Yazibaxe</a> |
+                <a href="#qastele-eli-cindo" class="text-blue-600 hover:underline">Qastele Eli Cindo</a> |
+                <a href="#baflune" class="text-blue-600 hover:underline">Baflune</a> |
+                <a href="#ezaz" class="text-blue-600 hover:underline">Ezaz</a> |
+                <a href="#qitme" class="text-blue-600 hover:underline">Qitme</a> |
+                <a href="#cema" class="text-blue-600 hover:underline">Cema</a> |
+                <a href="#sinka" class="text-blue-600 hover:underline">Sinka</a> |
+                <a href="#berava" class="text-blue-600 hover:underline">Berava</a> |
+                <a href="#sera" class="text-blue-600 hover:underline">Sera</a> |
+                <a href="#gabeleke" class="text-blue-600 hover:underline">Gabeleke</a> |
+                <a href="#meydanke" class="text-blue-600 hover:underline">Meydanke</a> |
+                <a href="#hilubiye" class="text-blue-600 hover:underline">Hilubiye</a> |
+                <a href="#kerferome" class="text-blue-600 hover:underline">Kerferome</a> |
+                <a href="#qurtqulaqe-mezin" class="text-blue-600 hover:underline">Qurtqulaqe Mezin</a> |
+                <a href="#qurtqulaqe-cucik" class="text-blue-600 hover:underline">Qurtqulaqe Cucik</a> |
+                <a href="#xirabi-sera" class="text-blue-600 hover:underline">Xirabi Sera</a> |
+                <a href="#metina" class="text-blue-600 hover:underline">Metina</a> |
+                <a href="#sere-kaniye" class="text-blue-600 hover:underline">Sere Kaniye</a> |
+                <a href="#mesale" class="text-blue-600 hover:underline">Mesale</a> |
+                <a href="#kortike" class="text-blue-600 hover:underline">Kortike</a> |
+                <a href="#qeredepe" class="text-blue-600 hover:underline">Qeredepe</a> |
+                <a href="#qestele-kistik" class="text-blue-600 hover:underline">Qestele Kistik</a> |
+                <a href="#cumke" class="text-blue-600 hover:underline">Cumke</a> |
+                <a href="#" id="clear-link" class="text-red-600 hover:underline ml-4">Clear Highlights</a>
+            </p>
+        </div>
+
+        <!-- Map displayed at 991px wide -->
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 991px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">991px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 12.png" alt="Map Image 12" onerror="this.onerror=null; this.src='https://placehold.co/991x1349/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="nebi-huri highlight-box"></div><div class="mersewa highlight-box"></div><div class="siltete highlight-box"></div><div class="omer-simo highlight-box"></div><div class="siiriya highlight-box"></div><div class="zeytuneke highlight-box"></div><div class="ikidame highlight-box"></div><div class="dersiwane highlight-box"></div><div class="diraqliya highlight-box"></div><div class="pelusanke highlight-box"></div><div class="alciya highlight-box"></div><div class="qetlebiye highlight-box"></div><div class="dewris highlight-box"></div><div class="qerqina highlight-box"></div><div class="naza highlight-box"></div><div class="omera highlight-box"></div><div class="erebwerane highlight-box"></div><div class="dikmedase highlight-box"></div><div class="yazibaxe highlight-box"></div><div class="qastele-eli-cindo highlight-box"></div><div class="baflune highlight-box"></div><div class="ezaz highlight-box"></div><div class="qitme highlight-box"></div><div class="cema highlight-box"></div><div class="sinka highlight-box"></div><div class="berava highlight-box"></div><div class="sera highlight-box"></div><div class="gabeleke highlight-box"></div><div class="meydanke highlight-box"></div><div class="hilubiye highlight-box"></div><div class="kerferome highlight-box"></div><div class="qurtqulaqe-mezin highlight-box"></div><div class="qurtqulaqe-cucik highlight-box"></div><div class="xirabi-sera highlight-box"></div><div class="metina highlight-box"></div><div class="sere-kaniye highlight-box"></div><div class="mesale highlight-box"></div><div class="kortike highlight-box"></div><div class="qeredepe highlight-box"></div><div class="qestele-kistik highlight-box"></div><div class="cumke highlight-box"></div>
+            </div>
+        </div>
+
+        <!-- Map displayed at 800px wide -->
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 800px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">800px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 12.png" alt="Map Image 12" onerror="this.onerror=null; this.src='https://placehold.co/800x1089/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="nebi-huri highlight-box"></div><div class="mersewa highlight-box"></div><div class="siltete highlight-box"></div><div class="omer-simo highlight-box"></div><div class="siiriya highlight-box"></div><div class="zeytuneke highlight-box"></div><div class="ikidame highlight-box"></div><div class="dersiwane highlight-box"></div><div class="diraqliya highlight-box"></div><div class="pelusanke highlight-box"></div><div class="alciya highlight-box"></div><div class="qetlebiye highlight-box"></div><div class="dewris highlight-box"></div><div class="qerqina highlight-box"></div><div class="naza highlight-box"></div><div class="omera highlight-box"></div><div class="erebwerane highlight-box"></div><div class="dikmedase highlight-box"></div><div class="yazibaxe highlight-box"></div><div class="qastele-eli-cindo highlight-box"></div><div class="baflune highlight-box"></div><div class="ezaz highlight-box"></div><div class="qitme highlight-box"></div><div class="cema highlight-box"></div><div class="sinka highlight-box"></div><div class="berava highlight-box"></div><div class="sera highlight-box"></div><div class="gabeleke highlight-box"></div><div class="meydanke highlight-box"></div><div class="hilubiye highlight-box"></div><div class="kerferome highlight-box"></div><div class="qurtqulaqe-mezin highlight-box"></div><div class="qurtqulaqe-cucik highlight-box"></div><div class="xirabi-sera highlight-box"></div><div class="metina highlight-box"></div><div class="sere-kaniye highlight-box"></div><div class="mesale highlight-box"></div><div class="kortike highlight-box"></div><div class="qeredepe highlight-box"></div><div class="qestele-kistik highlight-box"></div><div class="cumke highlight-box"></div>
+            </div>
+        </div>
+
+        <!-- Map displayed at 600px wide -->
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 600px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">600px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 12.png" alt="Map Image 12" onerror="this.onerror=null; this.src='https://placehold.co/600x817/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="nebi-huri highlight-box"></div><div class="mersewa highlight-box"></div><div class="siltete highlight-box"></div><div class="omer-simo highlight-box"></div><div class="siiriya highlight-box"></div><div class="zeytuneke highlight-box"></div><div class="ikidame highlight-box"></div><div class="dersiwane highlight-box"></div><div class="diraqliya highlight-box"></div><div class="pelusanke highlight-box"></div><div class="alciya highlight-box"></div><div class="qetlebiye highlight-box"></div><div class="dewris highlight-box"></div><div class="qerqina highlight-box"></div><div class="naza highlight-box"></div><div class="omera highlight-box"></div><div class="erebwerane highlight-box"></div><div class="dikmedase highlight-box"></div><div class="yazibaxe highlight-box"></div><div class="qastele-eli-cindo highlight-box"></div><div class="baflune highlight-box"></div><div class="ezaz highlight-box"></div><div class="qitme highlight-box"></div><div class="cema highlight-box"></div><div class="sinka highlight-box"></div><div class="berava highlight-box"></div><div class="sera highlight-box"></div><div class="gabeleke highlight-box"></div><div class="meydanke highlight-box"></div><div class="hilubiye highlight-box"></div><div class="kerferome highlight-box"></div><div class="qurtqulaqe-mezin highlight-box"></div><div class="qurtqulaqe-cucik highlight-box"></div><div class="xirabi-sera highlight-box"></div><div class="metina highlight-box"></div><div class="sere-kaniye highlight-box"></div><div class="mesale highlight-box"></div><div class="kortike highlight-box"></div><div class="qeredepe highlight-box"></div><div class="qestele-kistik highlight-box"></div><div class="cumke highlight-box"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This function shows the highlight for the area specified in the URL hash
+        function showHighlight() {
+            // Hide all highlight boxes first
+            document.querySelectorAll('.highlight-box').forEach(box => {
+                box.style.display = 'none';
+            });
+
+            // Check if there is a hash in the URL (e.g. #sorbe)
+            if (window.location.hash) {
+                // Get the class name from the hash by removing the #
+                const highlightClass = window.location.hash.substring(1);
+
+                // Find all elements with that class and show them
+                document.querySelectorAll('.' + highlightClass).forEach(element => {
+                    element.style.display = 'block';
+                });
+            }
+        }
+
+        // This function clears the highlight by removing the hash from the URL
+        function clearHighlights(event) {
+            event.preventDefault();
+            // Use history.pushState to clean the URL without reloading the page
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+            // Run showHighlight again to process the now-empty hash
+            showHighlight();
+        }
+
+        // Run the highlight function on page load and when the hash changes
+        window.addEventListener('DOMContentLoaded', showHighlight);
+        window.addEventListener('hashchange', showHighlight);
+        // Add a click listener to the "Clear Highlights" link
+        document.getElementById('clear-link').addEventListener('click', clearHighlights);
+    </script>
+
+</body>
+</html>
+

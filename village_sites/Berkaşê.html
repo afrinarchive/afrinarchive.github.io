@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Berkaşê</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1.5rem; } /* Increased Paragraph Spacing */
+        .prose-compact p { margin-bottom: 0.5rem; } /* Compact spacing for Basic Info */
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap-bilbil- .map-container {
+            position: relative;
+        }
+        #minimap-bilbil- .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap-bilbil- .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR BILBILE AREAS --- 
+         Recalculated for original image dimensions of 991x1019 pixels.
+        */
+        #minimap-bilbil- .singele { left: 12.71%; top: 6.48%; width: 8.48%; height: 8.24%; }
+        #minimap-bilbil- .beke { left: 21.60%; top: 13.05%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .eli-kere { left: 28.96%; top: 17.76%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .heyama { left: 30.07%; top: 21.59%; width: 8.07%; height: 7.85%; }
+        #minimap-bilbil- .zere { left: 38.24%; top: 21.98%; width: 8.07%; height: 7.85%; }
+        #minimap-bilbil- .baliya { left: 48.94%; top: 19.14%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .xilalka { left: 9.59%; top: 32.58%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .bexce { left: 22.60%; top: 29.73%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .bilbile { left: 41.37%; top: 26.40%; width: 10.09%; height: 9.81%; }
+        #minimap-bilbil- .qurne { left: 51.46%; top: 25.32%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .topeli-mehmud { left: 60.24%; top: 27.58%; width: 8.48%; height: 8.24%; }
+        #minimap-bilbil- .kurdo { left: 70.64%; top: 28.16%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .ebudane { left: 84.76%; top: 34.15%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .elcara { left: 58.63%; top: 38.96%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .uga { left: 51.66%; top: 39.16%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .qestele-xidiriya { left: 26.03%; top: 33.66%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .xidiriya { left: 32.09%; top: 36.02%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .kurzele { left: 18.37%; top: 46.42%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .berkase { left: 33.20%; top: 47.79%; width: 9.08%; height: 8.83%; }
+        #minimap-bilbil- .serqiya { left: 44.20%; top: 44.16%; width: 8.88%; height: 8.64%; }
+        #minimap-bilbil- .qestele-miqded { left: 56.81%; top: 45.24%; width: 9.69%; height: 9.42%; }
+        #minimap-bilbil- .sexorze { left: 64.38%; top: 45.34%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .bibaka { left: 41.07%; top: 51.52%; width: 8.48%; height: 8.24%; }
+        #minimap-bilbil- .qurta { left: 51.66%; top: 50.15%; width: 9.49%; height: 9.22%; }
+        #minimap-bilbil- .qasa { left: 48.33%; top: 52.11%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .kela { left: 18.47%; top: 55.05%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .kere { left: 24.52%; top: 57.41%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .qota { left: 33.80%; top: 53.09%; width: 8.27%; height: 8.05%; }
+        #minimap-bilbil- .kotana { left: 54.49%; top: 60.06%; width: 10.29%; height: 10.01%; }
+        #minimap-bilbil- .upila { left: 50.05%; top: 61.73%; width: 9.49%; height: 9.22%; }
+        #minimap-bilbil- .xelilaka { left: 33.90%; top: 62.71%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .esune { left: 26.64%; top: 60.75%; width: 8.68%; height: 8.44%; }
+        #minimap-bilbil- .zivinge { left: 28.76%; top: 69.28%; width: 9.28%; height: 9.03%; }
+        #minimap-bilbil- .qirigole { left: 45.41%; top: 64.97%; width: 9.89%; height: 9.62%; }
+        #minimap-bilbil- .qizilbasa { left: 61.96%; top: 65.85%; width: 9.49%; height: 9.22%; }
+        #minimap-bilbil- .bele { left: 58.22%; top: 69.48%; width: 10.09%; height: 9.81%; }
+        #minimap-bilbil- .hesendera { left: 48.23%; top: 77.13%; width: 9.69%; height: 9.42%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Berkaşê</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Bilbilê</p></div>
+<div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Berkaşê, Berkesheh, Berkeshli, Berkêş, بركشة, بركشلي, بركيشه</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Amkan, Omka, Qerebaba</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">&#x27;Emwî, Avdî Şêşê, Besûş Gube, Elîf, Elîkê, Ibik, Me&#x27;mik, Seydik, Şêşê</p></div>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-bilbil-">
+<img alt="Map of Bilbile" onerror="this.onerror=null; this.src='https://placehold.co/991x1019/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 14.png"/>
+<div class="singele highlight-box"></div><div class="beke highlight-box"></div><div class="eli-kere highlight-box"></div><div class="heyama highlight-box"></div><div class="zere highlight-box"></div><div class="baliya highlight-box"></div><div class="xilalka highlight-box"></div><div class="bexce highlight-box"></div><div class="bilbile highlight-box"></div><div class="qurne highlight-box"></div><div class="topeli-mehmud highlight-box"></div><div class="kurdo highlight-box"></div><div class="ebudane highlight-box"></div><div class="elcara highlight-box"></div><div class="uga highlight-box"></div><div class="qestele-xidiriya highlight-box"></div><div class="xidiriya highlight-box"></div><div class="kurzele highlight-box"></div><div class="berkase highlight-box" style="display: block;"></div><div class="serqiya highlight-box"></div><div class="qestele-miqded highlight-box"></div><div class="sexorze highlight-box"></div><div class="bibaka highlight-box"></div><div class="qurta highlight-box"></div><div class="qasa highlight-box"></div><div class="kela highlight-box"></div><div class="kere highlight-box"></div><div class="qota highlight-box"></div><div class="kotana highlight-box"></div><div class="upila highlight-box"></div><div class="xelilaka highlight-box"></div><div class="esune highlight-box"></div><div class="zivinge highlight-box"></div><div class="qirigole highlight-box"></div><div class="qizilbasa highlight-box"></div><div class="bele highlight-box"></div><div class="hesendera highlight-box"></div>
+</div></div>
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.72382, 36.799536</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div><img src="../village_photos/berkase.jpg" alt="Photo of Berkaşê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=berkase.jpg';"></div>
+<div><img src="../village_photos/barkshle.jpg" alt="Photo of Berkaşê" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=barkshle.jpg';"></div>
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Berkaşê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Ax û Welat</h5>
+<p><strong>Etymology:</strong> Named because the village is located near the slope of the mountain (nîzîkaşê çiyê)</p>
+<p><strong>Foundation Date/Period:</strong> 450 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">çiyayê Kûtê</span></p></div>
+            </div>
+
+            
+
+            <div class="card p-6 rounded-xl">
+                    <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Berkaşê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin)</span>&#x27; Geographic Study:</p>
+<p><strong><span class="internal-link">1 - PhD/Villages/Berkaşê</span> (بەرکاشێ), بركشلي (Berkeshli), بركشة (Berkesheh)</strong> /427N - 700m/:</p>
+<ul>
+<li><span class="internal-link">Berkashi</span> (بەرکاشی): means &quot;at the slope&quot; in Kurdish, which is a true description of the village&#x27;s location. <span class="internal-link">Al-Khoury Barsom</span> (الخوري برصوم) says it is an Aramaic name: from the house of disturbances, or from the Syriac &quot;the kneeling retreated,&quot; or <span class="internal-link">Bark Al-Karh</span> (بارك الكرح) or the cave /p.69/. All of this contradicts the facts.</li>
+</ul>
+<ul>
+<li>Located on the steep southern slope of <span class="internal-link">Mount Samaq</span> (جبل سماق), about 4km east of <span class="internal-link">Sharqiyan</span> (شرقيان) village. Its location is not ideal and seems hidden with care.</li>
+</ul>
+<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span>:</p>
+<p><strong>بركشلي (Berkeshli)</strong>: A farm in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Bulbul District</span> (ناحية بلبل), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
+<p>It is a small farm located on the middle steep southern slope of the limestone Mount Samaq (جبل سماق), in the northern part of the <span class="internal-link">Aleppo plateau</span> (هضبة حلب). Streams descend with the slope southward. It is 4km southwest of &quot;Sharqiyan&quot; (شرقيان) village and 20km southwest of Bilbil (بلبل) town.</p>
+<p>It is bordered to the north by a high mountain chain and rugged terrain and &quot;<span class="internal-link">Dubiru</span>&quot; (دوبيرو) and &quot;<span class="internal-link">Khadriyanli</span>&quot; (خضريانلي) villages, to the south by a deep stream valley and <span class="internal-link">Qotanli</span> (قوتانلي) village 1km away, to the west by a passage and stream valley between two mountain elevations planted with olive trees and &quot;<span class="internal-link">Kurzil Bilbil</span>&quot; (كورزيل بلبل) village, and to the east by a deep stream valley and &quot;<span class="internal-link">Bîk Oshaghi</span>&quot; (بيك أوشاغي) village.</p>
+<p>Its lands are mountainous, rugged, and economically poor. Most of its residents migrated to cities like Aleppo (حلب) and Afrin (عفرين) seeking livelihood. The village has approximately 15 houses and is about 250 years old. The houses are stone and mud with flat wooden roofs, while the modern ones are stone and cement. It has an electricity network and a modern olive press. The village drinks from recent artesian wells or from cisterns that collect rainwater.</p>
+<p>The residents work in rainfed agriculture growing olives, vineyards, and grains. Due to the narrow cultivated areas, they focus on raising sheep and goats. The road to the village is mountainous dirt unpaved. Among the most important owners of the village is the family of artist and singer (<span class="internal-link">Abdo Mohammed</span>) (عبدو محمد).</p>
+<p>Village Head: <span class="internal-link">Jamil Hanan Ja&#x27;far</span> (جميل حنان جعفر)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Berkaşê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=J8tH7xWQJjc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=J8tH7xWQJjc</a></p>
+<p>The village of Berkaşê, located in the Afrin region, is highlighted in this documentary not through its physical monuments or ancient ruins, but through the living memory of its residents, specifically regarding the cultural and political resistance of the 1990s. The primary historical narrative focuses on the role of village residents in the Kurdish theater and arts movement during a period of intense pressure from the Syrian government.</p>
+<p>Two notable residents, <span class="internal-link">Ehmed</span> (often referred to as <span class="internal-link">Apê Ehmed</span>) and <span class="internal-link">Menan Osman &#x27;Emwî</span>, provide a detailed oral history of this era. Ehmed is a veteran stage actor who began his theatrical work around 1976, continuing through the early 1990s. The transcript reveals that Berkaşê was home to individuals deeply involved in regional artistic troupes, specifically <span class="internal-link">Koma Berxwedan</span> and <span class="internal-link">Koma Agirî</span>. These groups were part of a broader movement (including <span class="internal-link">Koma Engîzekê</span>) that used folklore and theater to preserve Kurdish identity and articulate political resistance.</p>
+<p>The historical significance of the village&#x27;s residents lies in their dedication to these cultural activities despite severe state oppression. Ehmed recounts the years between 1990 and 1995 as a particularly volatile period where security forces frequently targeted their performances. The plays were typically performed during <span class="internal-link">Newroz</span> celebrations at various regional locations, including <span class="internal-link">Binê Seringekê</span>, the area around the <span class="internal-link">Kelê</span> (fortress), and the hills of <span class="internal-link">Cindirêsê</span>. The content of these plays was often allegorical or satirical; Ehmed describes playing a comedic but politically charged character named <span class="internal-link">Inxîfat</span> (or <span class="internal-link">Imiş</span>), a &quot;kuşkar&quot; (fuel/dung collector), to mock the absurdity of the political situation.</p>
+<p>The narrative also details the risks involved. Ehmed mentions fellow performers like <span class="internal-link">Berezanî</span> from <span class="internal-link">Şêxûrzê</span>, <span class="internal-link">Menaf</span>, and <span class="internal-link">&#x27;Ezdîn</span> from <span class="internal-link">Serîncekê</span>. He recounts a specific harrowing event involving a member named <span class="internal-link">Ebû Selam</span>, who broke his leg while fleeing from security agents. The troupe managed to rescue him from capture, highlighting the solidarity and danger inherent in their work. The transcript underscores that for the people of Berkaşê, theater was not merely entertainment but a form of &quot;berxwedan&quot; (resistance) against policies represented by figures they associated with &quot;Kemalism&quot; and state intelligence. Today, elders like Ehmed and Menan Osman &#x27;Emwî are viewed as custodians of this difficult history, linking the struggles of the 1990s to the contemporary political landscape of the region.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Berkaşê from Ax û Welat 2</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=iO71bGoP6i8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=iO71bGoP6i8</a></p>
+<p>The village of <span class="internal-link">Berkêşê</span> is a historic settlement located in the <span class="internal-link">Bilbil</span> district of the <span class="internal-link">Efrîn</span> region (also known as <span class="internal-link">Çiyayê Kurmênc</span>). Geographically, it is situated on <span class="internal-link">çiyayê Kûtê</span>, approximately 35 kilometers southwest of the town of Bilbil and 35 kilometers north of the city of Efrîn. The village’s name is derived from its topography, specifically its location near the slope (ber kêş) of the mountain. According to local accounts, Berkêşê was founded approximately 450 years ago. The social structure of the village is notably homogenous; the entire population descends from a single family lineage belonging to the <span class="internal-link">Amkan</span> tribe.</p>
+<p>The documentary focuses primarily on the recollections of a local resident named <span class="internal-link">Ehmed</span>, a cobbler who adopts the comedic persona and nickname <span class="internal-link">Emiş</span>. Ehmed explains that he uses this persona to endear himself to the community and hide his struggles. He is a father to two sons, <span class="internal-link">Mihemed</span> and <span class="internal-link">Enter</span>. Through a conversation with an interviewer and a fellow villager named <span class="internal-link">Menan Osman</span>, Ehmed recounts the vibrant but difficult history of Kurdish cultural resistance in the region during the 1990s.</p>
+<p>Ehmed details his involvement in local theater and folklore groups, specifically mentioning <span class="internal-link">Koma Berxwedan</span>, <span class="internal-link">Koma Agirî</span>, and <span class="internal-link">Koma Engîzek</span>. These groups were active in preserving culture through plays and performances during <span class="internal-link">Newroz</span> celebrations and other gatherings. He describes performing in various locations in the region, such as <span class="internal-link">Binê Serîncekê</span>, near <span class="internal-link">Kelê</span>, and in <span class="internal-link">Cindirêsê</span>. The theater sketches often carried political subtexts, including critiques of the policies of <span class="internal-link">Mistefa Kemal</span> and the concept of betrayal, featuring characters like one played by an actor named <span class="internal-link">Berezanî</span> from <span class="internal-link">Şêxûrzê</span>.</p>
+<p>However, Ehmed emphasizes the severe repression these cultural activists faced between 1990 and 1995. He describes how state security forces subjected them to intense scrutiny and torture, forcing them to cease their theatrical activities by the mid-90s to ensure their survival. Despite these past hardships, the villagers express pride in their cultural heritage and voice strong support for contemporary political and security forces in the region, including the <span class="internal-link">YPG</span>, <span class="internal-link">YPJ</span>, and <span class="internal-link">Asayîş</span>. The narrative underscores the resilience of the Berkêşê community, linking their historical roots on çiyayê Kûtê to a modern identity forged through cultural struggle.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Berkaşê from Ax û Welat 3</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=zBiZO9xtqgU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=zBiZO9xtqgU</a></p>
+<p>The village of <span class="internal-link">Berkaşê</span> is a historic settlement located in the <span class="internal-link">Bilbil</span> district of the <span class="internal-link">Efrîn</span> region. Situated approximately 35 kilometers north of the city of Efrîn, the village rests at the foot of <span class="internal-link">Çiyayê Kûtê</span> (also referred to as <span class="internal-link">Çiyayê Gûtiyan</span>, linking it to the ancient Gutian people). The name Berkaşê is derived from its geographical position; speakers explain it means &quot;below the slope&quot; (&quot;Ber kaş&quot; or &quot;Ber kêş&quot;) due to its location beneath the mountain.</p>
+<p>The village was founded approximately 450 years ago. According to local oral history, the first family to settle there was <span class="internal-link">Elîf</span>. The primary lineage of the village traces back to a founding ancestor named <span class="internal-link">Me&#x27;mik</span>, who arrived with his four sons: <span class="internal-link">Elîkê</span>, Me&#x27;mik, <span class="internal-link">Seydik</span>, and <span class="internal-link">Ibik</span>. These sons established the core families of the village, who predominantly belong to the <span class="internal-link">Amkan</span> (or <span class="internal-link">Omka</span>) tribe. Later in the village&#x27;s history, the <span class="internal-link">Şêşê</span> family (also referred to as <span class="internal-link">Mala Şêşê</span> or <span class="internal-link">Avdî Şêşê</span>) migrated to Berkaşê from <span class="internal-link">Qerebaba</span>. An elder, <span class="internal-link">Mihemed Me&#x27;mû</span>, recounts that the name Şêşê originated from an ancestor named <span class="internal-link">Hemê</span> who was born with six fingers (&quot;şeş bêç&quot;) on his hands and feet.</p>
+<p>Berkaşê is characterized by a lack of natural springs (<span class="internal-link">kanî</span>). Consequently, the residents historically relied on rainwater harvesting, with every house possessing a cistern (<span class="internal-link">sarnic</span>) to store water for the year. Agriculture is the primary livelihood, with villagers cultivating olives, grapes, and almonds. The village also contains a historical landmark: the <span class="internal-link">Guvaşgeha kevnar ya tîrî</span> (an ancient grape press), which was constructed around 1930. The surrounding geography includes the valley of <span class="internal-link">Geliyê Sor</span> and the ridge known as <span class="internal-link">Gaza Kewê</span>. To the west lies <span class="internal-link">Zêwê</span> and <span class="internal-link">Bîbaka</span>, while <span class="internal-link">Qûta</span> lies to the south.</p>
+<p>The village has a strong cultural and artistic reputation. Mala Şêşê is particularly renowned for producing musicians and singers. During the documentary, members of this family, including <span class="internal-link">Hesen Mihemed</span> and <span class="internal-link">Reşîd Mihemed</span>, discuss their musical heritage, noting the influence of historical regional figures like <span class="internal-link">Elî Rehmetî</span>, <span class="internal-link">Cemîl Hûro</span>, and <span class="internal-link">Nûrî Şêxo</span>. The village is also home to theater enthusiasts like <span class="internal-link">Menanê Osman</span>, who performed comedic skits and was involved with cultural groups like <span class="internal-link">Koma Berxwedan</span>. Despite the lack of a local school, forcing children to walk to the nearby village of Qûta for education, the village boasts a high level of educational attainment, with many doctors and engineers among its population. Residents also maintain traditional practices, such as gathering wild herbs like <span class="internal-link">Tûlik</span>, <span class="internal-link">Çaqir</span>, <span class="internal-link">Zenter</span>, and <span class="internal-link">Bîkmazova</span> from the surrounding hills during spring.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 2</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>91</p>
+<p>BERKAŞÊ</p>
+<p>3.4.2017</p>
+<p>The village of Berkaşê is on Kotê mountain, 20 km southwest of the town of Bilbilê. It is affiliated with the Bilbilê district of the Efrînê canton. It is located 35 km north of the city of Efrînê.</p>
+<p>Because the village is near the slope of the mountain, it was named Berkaşê.</p>
+<p>All the people of the village are from one family, from the Amka tribe. The village was built nearly 450 years ago, and the family of Me’mkê Elîfê was the first family to reside in the village.</p>
+<p>The village of Berkaşê was built on an ancient site whose history dates back to the Goths, and many traditions bear witness to this fact.</p>
+<p>The Şeşê family came from the village of Qere Baba and settled in the village of Berkaşê. This family is famous for the art of minstrelsy and dance</p>
+<p>92</p>
+<p>is famous, and many artists have emerged from them, including Hesen Mihemed and Ebdo Mihemed.</p>
+<p>Heboyê Me’mkê and Umerê Elîko were elders and wise men of the village. All the village&#x27;s problems were solved through them, and they also protected their village from ill-wishers.</p>
+<p>To the north of the village is Kotê mountain, which extends from the village of Kurzêlê to the village of Uga; to the east are olive fields and the village of Bîbaka; to the south are the Sor valley, Gaza Kewa, and the village of Qota; and to the west are the Sor valley and Kotê mountain.</p>
+<p>The people of the village make their living primarily from agriculture, like all the surrounding villages, but some families also raise livestock alongside farming. Some young men and men from the village work in various factories in Bilbil and Efrînê.</p>
+<p>Nearly 60 houses and around 1100 people live in the village, but due to the lack of services, many people have migrated outside the village.</p>
+<p>There are 3 martyrs from the village:</p>
+<p>Martyr Şîrazor, Mistefayê Mezin and his brother Mistefayê Biçûk.</p>
+<p>The village&#x27;s commune is named after Martyr Mistefa.</p>
+<p>There is no school in the village, and the village children go to school in the village of Qota, which is 2 km away from the village.</p>
+<p>93</p>
+<p>There is an old grape press in the west of the village. It was built in the 1930s.</p>
+<p>According to the number of residents in the village, the literacy rate is good. More than 10 people have graduated from university, including 3 doctors and 4 engineers.</p></div></details></div>
+                </div>
+
+            <div class="card p-6 rounded-xl">
+            <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcriptions and Subtitles</h2>
+            <div class="p-4 prose-compact max-w-none">
+    <div class="mb-4">
+        <a href="../village_subtitles/how_to_use_substital.html" target="_blank" class="text-base font-medium external-link hover:underline">Need help with using this subtitles on Youtube? (Click here)</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b-2 themed-border">
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Source</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Video</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Subtitles</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Transcript</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Ax û Welat 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=J8tH7xWQJjc" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/videos_561_Berkase.srt" download="videos_561_Berkase.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Berkaşê_Ax û Welat_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Ax û Welat 2</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=iO71bGoP6i8" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/videos_979_Berkase.srt" download="videos_979_Berkase.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Berkaşê_Ax û Welat_2.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Ax û Welat 3</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=zBiZO9xtqgU" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/videos_1067_Berkase.srt" download="videos_1067_Berkase.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Berkaşê_Ax û Welat_3.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    </div>
+        </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Foundation/Origin Information of Berkaşê</h2></div><div class="p-4 prose max-w-none"><blockquote>
+<p>Among the most important owners of the village is the family of artist and singer (Abdo Mohammed).</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>The village was founded by a man named Memik from the Amkan tribe, whose four sons formed the initial community, which later grew with the arrival of other families, such as the Şaşê family from the nearby village of Qere Baba.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p></div>
+                <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Possible Village Name Meaning of Berkaşê</h2></div><div class="p-4 prose max-w-none"><blockquote>
+<p>&quot;Berkashi&quot; means &quot;at the slope&quot; in Kurdish. Al-Khoury Barsom says it is an Aramaic name: from the house of disturbances, or from the Syriac &quot;the kneeling retreated,&quot; or Bark Al-Karh or the cave.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>The village derives its name from its position &quot;by the slope of the mountain&quot; (&quot;ber kêşê&quot;).</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Barkshle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Barkshle.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=_hVQS_nEcjI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_hVQS_nEcjI</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=J8tH7xWQJjc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=J8tH7xWQJjc</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=iO71bGoP6i8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=iO71bGoP6i8</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=zBiZO9xtqgU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zBiZO9xtqgU</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Berkaşê";
+            const villageLat = 36.72382;
+            const villageLng = 36.799536;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

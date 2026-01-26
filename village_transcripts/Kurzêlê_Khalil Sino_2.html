@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript | Kurzêlê - Khalil Sino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .jump-btn { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.875rem; transition: all 0.2s; }
+        .jump-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; font-size: 0.75rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .copy-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Kurzêlê</h1>
+            <p class="text-xl subtext mt-2">Transcript from Khalil Sino</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- General Info Card -->
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transcript Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Village</h3>
+                        <p class="text-lg">Kurzêlê</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Source Channel</h3>
+                        <p class="text-lg">Khalil Sino</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Length</h3>
+                        <p class="text-lg">24:29</p>
+                    </div>
+                    <div class="mt-4">
+                    <a href="https://www.youtube.com/watch?v=slM0ZyC68A0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+                </div>
+                <!-- Jump Buttons -->
+                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t themed-border">
+                    <a href="#english" class="jump-btn">Go to Translation</a>
+                    <a href="#kurdish" class="jump-btn">Biçe Transkrîptê</a>
+                </div>
+            </div>
+
+            <!-- English Translation Card -->
+            <div id="english" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">English Translation</h2>
+                    <button class="copy-btn" onclick="copySection('translation-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Copy
+                    </button>
+                </div>
+                <div id="translation-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00]</span>Chorus: Where is the sea of baskets, let&#x27;s raise and enlarge them all together.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17]</span>Chorus: Clothes and costumes, customs and traditions, let&#x27;s create conversation, letters, and joy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26]</span>Chorus: Clothes and costumes, customs and traditions, let&#x27;s create conversation, letters, and joy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:49]</span>Chorus: Village by village, place by place, seeing every famous person.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:54]</span>Chorus: Village by village, place by place, seeing every famous person.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:00]</span>Chorus: Where are those songs and lullabies, let them graze upon the smiles of mysteries and statues.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:05]</span>Chorus: Where are those songs and lullabies, let them graze upon the smiles of mysteries and statues.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:13]</span>Chorus: Our channel is joy, the Hotim Efrin channel.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:23]</span>Chorus: Our channel is joy, the Hotim Efrin channel.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:33]</span>Chorus: Hotim Efrin, Hotim Efrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:50]</span>Host: Good day my dear and precious friends, I am with you again with a nice video and a wonderful video.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:57]</span>Host: My video today is in the village of Qerzel, our greetings to them, welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:02]</span>Host: Heritage meatballs (kibbeh), they are Aunt Zeyneb&#x27;s and Mother Evdo&#x27;s meatballs, bless their hands, Hotim Efrin channel.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:04]</span>Host: We haven&#x27;t uploaded to the channel in a long time, let our mothers make a heritage dish.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:08]</span>Host: Today we are guests of Mother Evdo, one of the residents of Qerzel village, and Aunt Zeyneb.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:12]</span>Host: Our greetings go to brother Evdo, and to all the residents of Qerzel village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:15]</span>Host: We will make a heritage dish together, surely you have missed it too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:19]</span>Host: It is beautiful, at our side... in these moments we are sitting together, let us always be united.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:24]</span>Host: We will always visit our people, ask about the state of the village, listen to the voice of the villages, listen to the stories of the villages.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:30]</span>Host: I become very happy, and before we start our video, even if the introduction is a bit long for you, please forgive my shortcoming.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:37]</span>Host: I wish good times to everyone standing by the Hotim Efrin channel, with the grace of the Lord of the Worlds, and your grace, we reached 20,000 subscribers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:44]</span>Host: It&#x27;s still going up, I always promised you, I said I would bring the voice of our ancestors to you, and always ask about the state of my people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:51]</span>Host: I am in love with my Kurdish heritage and folklore.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:53]</span>Host: God willing I will always present to you, even if I have to walk, I will not be negligent towards you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:58]</span>Host: And one request from the lovers of heritage, whoever is ready for the Hotim Efrin channel, your request is on our head, on our eyes (welcome).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:06]</span>Host: The contact number is available, I invite the villages, invitations... be our hope in the heritage party, in the coming new year.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:14]</span>Host: And if anyone has a request ready, the place of the village is on our head, on our eyes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:17]</span>Host: And before we start our video, we again wish good times to everyone standing by the Hotim Efrin channel.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:24]</span>Host: Whether with a like, whether with a subscription, good times to everyone, because 20,000 subscribers is not a small amount.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:30]</span>Host: Maybe some people see it as a normal number, but for me, 20,000 Kurmanji Kurds watching me, this is a heavy burden on my back.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:38]</span>Host: I will now present even nicer and more elegant things to you, God willing I will not fall short for my people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:44]</span>Host: And I was very touched, in a short period of time we reached 20,000 subscribers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:49]</span>Host: This is a pride for me, that a young man from Afrin visits his people, and within 5 months has 20,500 subscribers on YouTube, 20,000 Kurds watching me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:59]</span>Host: Strength to your health, strength to our channel, may Kurds be everywhere, may they reach hundreds of thousands, may we see everyone on the path of YouTube.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:05]</span>Host: Let&#x27;s start our video, we will pass over to Mother Evdo, Aunt Zeyneb, let&#x27;s see what food they will make for us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:12]</span>Host: I say again, I wish you were with us, so we could sit together under the olive tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:16]</span>Host: The place of our ancestors, our olive trees are worth all the wealth of the world, worth the fortune of the world.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:22]</span>Host: Have a good time and be with us until the end of the video.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:27]</span>Host: Mother Evdo?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:28]</span>Dayika Evdo: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:29]</span>Host: Mother Evdo, health to you all.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:30]</span>Dayika Evdo: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:31]</span>Host: You are very welcome, today we became guests of Qerzel.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:34]</span>Host: And together we are making dough, kneading it... brings back memories of the homeland.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:38]</span>Host: Even if it hasn&#x27;t come (referring to memories/traditions), and Aunt Zeyneb&#x27;s hands work so hard.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:41]</span>Zeyneb: By God thanks to them too, we are talking for you, it&#x27;s not dough, how it was made, what was done...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:47]</span>Host: Before, how many minutes did you use to knead, Aunt Zeyneb?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:49]</span>Zeyneb: Did we knead again? We didn&#x27;t have machine molds, we used to knead by hand.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:53]</span>Zeyneb: Ah, we used to knead by hand.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:55]</span>Zeyneb: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:56]</span>Host: By hand?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:57]</span>Zeyneb: Yes, those machines didn&#x27;t exist.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:00]</span>Zeyneb: We used to soften our dough by hand, three hours later we would shape (mist) it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:03]</span>Zeyneb: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:05]</span>Zeyneb: And we made kofta with it... or other food...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:08]</span>Host: Were there not many machines before?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:09]</span>Zeyneb: We kneaded by hand, yes by hand.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:11]</span>Zeyneb: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:40]</span>Host: Aunt Zeyneb, are you from this village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:41]</span>Zeyneb: No, I am a bride (daughter-in-law) of this village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:45]</span>Host: Which village are you from?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:46]</span>Zeyneb: From Cheqela.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:58]</span>Host: How many years have you been here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:00]</span>Zeyneb: It&#x27;s been more than 45 years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:04]</span>Host: This means the residents of Qerzel are generous/good people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:07]</span>Zeyneb: Qerzel (people) are generous.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:08]</span>Zeyneb: Yes, by God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:10]</span>Zeyneb: Yes, by God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:11]</span>Host: Mother Evdo?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:11]</span>Dayika Evdo: Yes dear.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:12]</span>Host: What kind of meatballs are these? It&#x27;s big, it&#x27;s nice, may God give good health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:16]</span>Dayika Evdo: May you see a happy face God willing, may you not see bitterness God willing, that is also our &#x27;teke&#x27; (offering/share).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:19]</span>Dayika Evdo: Amen, amen, amen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:20]</span>Dayika Evdo: May God make this nation good, God willing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:22]</span>Dayika Evdo: And hold everyone together, may God hold us all together, and may God be pleased with everyone, welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:30]</span>Dayika Evdo: Welcome (Host name/honorific) Mother Evdo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:32]</span>Dayika Evdo: And you too, welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:35]</span>Dayika Evdo: It&#x27;s red water (tomato paste water).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:37]</span>Dayika Evdo: It&#x27;s eggplant paste (or molasses).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:39]</span>Dayika Evdo: It&#x27;s oil.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:40]</span>Dayika Evdo: It&#x27;s pepper paste.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:42]</span>Dayika Evdo: Everything is put in it, garlic, all put in one, we kneaded it with red water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:54]</span>Chorus: Where is the sea of baskets, let&#x27;s raise and enlarge them all together.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:10]</span>Singer: Mother, my head hurts, mom, my head hurts.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:13]</span>Singer: Mother, my head hurts, mom, my head hurts.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:20]</span>Singer: My love, what is your pain, tell me your pain.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:25]</span>Singer: My love, what is your pain, tell me your pain.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:32]</span>Singer: Mother, I had a tree, mom, I had a tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:37]</span>Singer: It was in the middle of our courtyard, it was in the middle of our courtyard.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:43]</span>Singer: It was at the edge of the terrace, it was at the edge of the terrace.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:49]</span>Singer: Mother, we used to churn (butter), it was giving its nature (sweat/essence).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:54]</span>Singer: It was the light of the eyes, it was the light of the eyes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:23]</span>Singer: Mother, my head hurts, mom, my head hurts.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:28]</span>Singer: Mother, my head hurts, mom, my head hurts.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:35]</span>Singer: My love, what is your pain, tell me your pain.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:39]</span>Singer: My love, what is your pain, tell me your pain.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:46]</span>Singer: Mother, I had a tree, mom, I had a tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:52]</span>Host: Strength to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:54]</span>Host: Signs and sound.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:55]</span>Zeyneb: My voice? You know, my voice.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:58]</span>Zeyneb: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:02]</span>Host: Do you like it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:03]</span>Zeyneb: When we were young, we would wet the raw girl&#x27;s meat... (idiom: when young we had energy/voice), now we are old.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:07]</span>Zeyneb: Meat...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:10]</span>Zeyneb: No, we still like it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:13]</span>Host: Aunt Zeyneb, before, for how many minutes would your voice sing/knead, Aunt Zeyneb?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:15]</span>Zeyneb: Well, until normally, this is red water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:19]</span>Zeyneb: You knead it, until it becomes like mist (smooth)...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:24]</span>Zeyneb: Let Evdo knead it too and let&#x27;s all eat, health to everyone.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:29]</span>Host: Now Mother Evdo, you talk to us, oh Mother Evdo, what did you put in it, tell us everything, just regarding the ingredients.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:36]</span>Dayika Evdo: What did we do? We took out bulgur, oh semolina, it&#x27;s semolina.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:40]</span>Dayika Evdo: We got up and put it in the machine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:44]</span>Dayika Evdo: We put red pepper in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:46]</span>Dayika Evdo: We put red pepper in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:48]</span>Dayika Evdo: And eggplant, onions.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:51]</span>Dayika Evdo: Parsley.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:53]</span>Dayika Evdo: Everything is put in it like this.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:54]</span>Dayika Evdo: Pepper, all put in one, we kneaded it with red water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:58]</span>Dayika Evdo: We put eggplant too and hot peppers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:00]</span>Old Woman: We crumble the wheat bread... And tender, filled... we did it all.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:03]</span>Old Woman: And tender, filled... we put everything in it. This is red dough.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:12]</span>Host: Abdo, make it so we can all eat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:16]</span>Host: Grandma, Khalil and I, tonight we will...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:19]</span>Host: All of us, this grandmother...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:23]</span>Host: What is for dinner tonight?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:25]</span>Host: Your red dinner, very... and I love to see you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:31]</span>Old Woman: It is dough, my dear... go to the side... meatballs... go to the side...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:35]</span>Old Woman: They become dumplings... pounded dumplings... shishparak, pieces...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:39]</span>Host: The borani soup prepared by the village housewife...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:43]</span>Host: And the village wheat, the &#x27;bizok&#x27; wheat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:46]</span>Host: The &#x27;dank&#x27; (crushed wheat) of the village... yes...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:48]</span>Host: And danik... she made it from dank.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:49]</span>Host: And in Xozyan we made &#x27;hesîde&#x27; (a dessert).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:52]</span>Old Woman: Made it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:53]</span>Host: And in Shikak village [she] made bread.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:55]</span>Old Woman: Made it. Wheat bread for us...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:56]</span>Host: Is it Kerzele bread? We will [eat] the red dough...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:58]</span>Old Woman: We made wheat bread too, we made it all, they are all big.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:03]</span>Host: Please, help yourselves... Bless your hands.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:06]</span>Old Woman: May God bring a good year... May God protect all friends...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:09]</span>Old Woman: May it be good and happy for you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:10]</span>Old Woman: May God let you see good days in the coming year, pass good years, God willing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:15]</span>Old Woman: May health and blessing be upon everyone happy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:17]</span>Host: Praise be to God...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:21]</span>Old Woman: It is yeast bread and... plenty of oil...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:40]</span>Host: The bread is...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:44]</span>Host: What is it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:50]</span>Host: He said, did he make the dough into dough?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:52]</span>Old Woman: The dough with...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:55]</span>Host: Shouldn&#x27;t it be in pieces?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:57]</span>Host: The dough isn&#x27;t done.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:59]</span>Host: Did you taste if it&#x27;s done?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:02]</span>Old Woman: Everyone taste it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:04]</span>Host: Is it dry?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:05]</span>Old Woman: It is dry.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:06]</span>Host: Come, come eat...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:08]</span>Song: The air was of trees and cypresses, before my heart were trees and roses...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:18]</span>Song: I threw my hand to it, oh mother it was trees and doors...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:28]</span>Song: Oh it went from my hand, my heart was cut from the hand...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:02]</span>Song: Oh mother my head hurts, mom my head hurts...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:14]</span>Song: My love what is your pain, tell me your pain...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:25]</span>Song: I try, I try, there is no remedy...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:31]</span>Song: The butter in the churn scattered...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:37]</span>Song: Yogurt drink of Selme&#x27;s house...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:43]</span>Song: Uncle Ude was nameless, the lady doesn&#x27;t wake from sleep...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:49]</span>Song: Selme&#x27;s daughters are three...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:55]</span>Song: All three are on the way to the water...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:00]</span>Song: Give one to me, give to me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:06]</span>Song: Until the threshing floor lifts...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:36]</span>Host: What are they putting on themselves?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:38]</span>Man: He said I made dough.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:40]</span>Host: What is it, let me understand?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:41]</span>Man: Cold water dough.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:44]</span>Host: So do Arabs call it Kubeni?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:46]</span>Man: It is Kubeni.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:47]</span>Host: Are you Arab?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:48]</span>Man: Arab... I don&#x27;t know Arabic, I am Kurmanji.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:50]</span>Host: It&#x27;s meat, right?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:51]</span>Man: It&#x27;s wedding meat, dough.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:00]</span>Man: (Unclear banter)</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:01]</span>Host: If it is with dough, if it is with dough...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:03]</span>Man: Kubeni is dough, stuffed dumplings of bulgur and meat...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:17]</span>Host: Guys, you loaded it up, what did you say he ate?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:25]</span>Host: Oh sacrifice, they didn&#x27;t stop father, they became meat...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:32]</span>Host: What meat is it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:33]</span>Man: Lamb meat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:34]</span>Host: Lamb meat?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:35]</span>Man: No, it&#x27;s donkey meat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:37]</span>Host: It&#x27;s not donkey meat?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:38]</span>Man: No no, it&#x27;s donkey meat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:40]</span>Host: Is it a young one?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:41]</span>Man: It is a young one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:42]</span>Man 2: It&#x27;s a foal, a donkey foal...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:51]</span>Host: Uncle Fevzi, why do you know Kurdish?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:58]</span>Host: Dear, what did you say, you said what meat is it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:00]</span>Cook: Lamb meat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:01]</span>Host: You said lamb, [he] said donkey?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:03]</span>Cook: No no, have we ever brought a donkey to your village man?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:05]</span>Host: So, you say you have eaten donkey meat?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:07]</span>Cook: No no.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:12]</span>Host: Have you eaten donkey meat?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:14]</span>Host: No, no no.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:17]</span>Host: By God, you&#x27;ve eaten donkey head finally.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:21]</span>Cook: The meat is soft, soft.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:25]</span>Host: It hasn&#x27;t become soft yet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:27]</span>Host: Is it without salt?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:28]</span>Cook: No no, there is salt in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:33]</span>Host: How is the pan (dish)?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:35]</span>Man: The pan is good, the pan is good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:47]</span>Man: Hello crow...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:35]</span>Host: Uncle, who is [unclear]?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:38]</span>Host: This is Kurzele village, we are sitting at the Mukhtar&#x27;s courtyard.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:44]</span>Old Man: This valley over here...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:51]</span>Old Man: What should I say, here, it is small, Pirqe Valley is its name.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:54]</span>Old Man: Pirqe Valley, it is deep, very deep.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:56]</span>Old Man: Up to the lentils of Kimar it goes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:02]</span>Old Man: It belongs to Ali Genim&#x27;s family...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:06]</span>Old Man: This Tekhiyan slope also belongs to Sheikh Avdo&#x27;s family...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:13]</span>Old Man: From there, Kimar is close...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:35]</span>Host: But are there pistachios here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:37]</span>Old Man: There are pistachios.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:38]</span>Host: Abbas, Uncle Ahmed?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:39]</span>Old Man: No no, none.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:40]</span>Host: Are there no cherries either?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:41]</span>Old Man: No cherries either. The cold comes to them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:42]</span>Old Man: Because it is hot [in summer] basically.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:48]</span>Host: This aunt of mine, Çaqmaqo...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:52]</span>Host: It has a lot of cold, there are no cherries in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:03]</span>Host: Peaches, apricots, nectarines?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:05]</span>Old Man: Apricots, peaches, pomegranates, walnuts, pears...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:16]</span>Host: Are there cows?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:17]</span>Old Man: He said my cow gives two pieces of hair.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:22]</span>Host: Do cows go &#x27;dodo&#x27;?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:24]</span>Old Man: No no, they go &#x27;moo&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:30]</span>Host: Chocolate cow?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:32]</span>Old Man: No, chocolate cows haven&#x27;t come out.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:41]</span>Song: Oh mother my head hurts, mom my head hurts...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:47]</span>Song: My love what is your pain...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:51]</span>Song: Tell me your pain...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:56]</span>Song: I try, I try, there is no remedy...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Singer: Oh the red one, the red one, you don&#x27;t pass by slowly.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:15]</span>Singer: The patterned shoes at this time, the patterned shoes at this time.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:20]</span>Singer: Melko&#x27;s house is on that mountain, Melko&#x27;s house is on that mountain.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:25]</span>Singer: You killed me, you melted me, Kerem the bottle of rose water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:30]</span>Singer: You killed me, you melted me, Kerem the bottle of rose water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:59]</span>Host: So Mother Avdo, good health to you, bless your hands.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:03]</span>Host: May God be pleased with you, you did us a great service. But one enjoyed talking with her.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:09]</span>Host: And anytime we come again, we will ask about your condition.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:13]</span>Host: And God willing, if we have time, we will be guests of the village of Girzele again.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:17]</span>Host: Aunt Zein, bless your hands too, may God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:20]</span>Aunt Zein: May you also be alive, my dear. May the outcome be every year, good health to you all.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:24]</span>Aunt Zein: Your coming is worth the wealth of the whole world.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:26]</span>Host: I will ask for my leave. Before I go, my respects to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:29]</span>Host: And [if] you have anyone abroad, whoever they are, whoever sees us, say hello.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:33]</span>Host: And please give a kiss to your son.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:36]</span>Host: Hoping I don&#x27;t cause inconvenience.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:38]</span>Aunt Zein: Welcome. God brings you good health. May God keep you, God willing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:42]</span>Aunt Zein: Don&#x27;t worry, be happy. You [saw] the places of the village... We have a visit.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:46]</span>Aunt Zein: And my greetings to my family, to everyone. To my brother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:50]</span>Aunt Zein: To my relatives in Turkey.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:52]</span>Aunt Zein: May God keep them all, God willing. May God join all our hands together.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:56]</span>Aunt Zein: So that a parent may see their child, God willing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:59]</span>Host: Praise be to God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:00]</span>Aunt Zein: We spend our every day like this, good health to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:03]</span>Aunt Zein: And this day is a very fine day.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:06]</span>Aunt Zein: May God be with you all. Praise be to God, everyone is comfortable, everyone is happy. May God keep you all.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:13]</span>Host: Brother, we are done, good health to you. May God be pleased with you. You welcomed us warmly and we stayed with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:20]</span>Host: And we were very happy, it is a face and great honor that we walk among such a people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:24]</span>Host: In the land of Gindîkê... We were very happy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:27]</span>Host: And brother Hamude, good health to you. We tired you out.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:30]</span>Hamude: On my head [you are welcome]. And you too. And welcome. For your coming.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:33]</span>Hamude: The house is your house and the village is your village. We are all brothers to each other.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:37]</span>Hamude: And God willing, may the outcome be that everyone passes through and comes to their family and their place and land.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:41]</span>Hamude: May God be pleased with all of you and good health to you. With success.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:43]</span>Host: May the outcome be for the whole Kurdish nation, may they all return to their land.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:46]</span>Hamude: Amen, amen oh Lord. Amen, amen oh Lord.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:48]</span>Host: However much they wander, we are ready.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:50]</span>Host: Brother Hatimi, may God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:52]</span>Hatimi: May God be pleased with you too. You are a valuable guest, welcome. Your brother is very perfect inside.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:57]</span>Hatimi: May God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:58]</span>Host: Good health to you. May God fill your pockets. May God [grant that] you see no accident or trouble.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:03]</span>Hatimi: Be healthy, be healthy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:04]</span>Host: May God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:05]</span>Woman/Group: Good health to you, may God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:07]</span>Host: If you have any commands or words, say them, I am leaving.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:09]</span>Hatimi: Your health. Health to you all. We don&#x27;t want anything. May God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:10]</span>Host: Fine and dear people, good health to you. You were with us until the end of the video.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:15]</span>Host: Good health to Aunt Avdo, specifically in the whole village of Gindîkê Rizele.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:20]</span>Host: Bless the hand of Aunt Zein, mother of Avdo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:22]</span>Host: Good health to everyone. May God be pleased with you. Wait for us with a good video and a wonderful video.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:27]</span>Host: Well God willing, for next time we are very ready.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:28]</span>Singer: I am snow, I am snow, I am snow, Lele Nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:33]</span>Singer: I am snow, I am snow, I am snow, Lele Nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:37]</span>Singer: Lele Nar, you are beautiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:39]</span>Singer: I am snow, I am snow, I am snow, Lele Nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:43]</span>Singer: I am the snow of the black mountain, Lele Nar you are beautiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:48]</span>Singer: I am the snow of the black mountain, Lele Nar you are beautiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:53]</span>Singer: I am snow, I am snow, I am snow, Lele Nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:57]</span>Singer: I am snow, I am snow, I am snow, Lele Nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:02]</span>Singer: Lele Nar, you are beautiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:05]</span>Singer: I am snow, I am snow, I am snow, Lele Nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:11]</span>Singer: I am the snow of the black mountain, Lele Nar you are beautiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:16]</span>Singer: I am the snow of the black mountain, Lele Nar you are beautiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:20]</span>Singer: I am snow, I am snow, I am snow, Lele Nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:25]</span>Singer: I am snow, I am snow, I am snow, Lele Nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:29]</span>Singer: Lele Nar, you are beautiful.</p>
+                </div>
+            </div>
+
+            <!-- Kurdish Transcript Card -->
+            <div id="kurdish" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transkrîpta bi Kurmancî</h2>
+                    <button class="copy-btn" onclick="copySection('transcript-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Kopî bike
+                    </button>
+                </div>
+                <div id="transcript-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00]</span>Chorus: Kan behra sêlkên, tev bilind û mezin bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17]</span>Chorus: Cil û berg, adet û urfan, şor û herf û şa bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26]</span>Chorus: Cil û berg, adet û urfan, şor û herf û şa bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:49]</span>Chorus: Gund bi gund, war bi war, dîtina her kesê navdar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:54]</span>Chorus: Gund bi gund, war bi war, dîtina her kesê navdar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:00]</span>Chorus: Ka ew stran û lorîkan, biçêrin kên sêr û heykan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:05]</span>Chorus: Ka ew stran û lorîkan, biçêrin kên sêr û heykan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:13]</span>Chorus: Qanala me ye xweşî, qanala Hotim Efrîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:23]</span>Chorus: Qanala me ye xweşî, qanala Hotim Efrîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:33]</span>Chorus: Hotim Efrîn, Hotim Efrîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:50]</span>Host: Rojbaş hevalên min û hêja, hevalên min û ezîz, ez dîsa bi wara, bi vîdeoyeke xweş û vîdeoyeke ecêb.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:57]</span>Host: Vîdeoya min îro li gundê Qerzêlê ye, silavên me ji wa ra hene, hûn bi xêr hatin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:02]</span>Host: Kutilkên tûras, kutilkên xaltîka Zeyneb û dayîka Evdo ne, destên wan sax bin, qanala Hotim Efrîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:04]</span>Host: Ji mêj da me ser qenalê danexistiye, xwarinek tûras çêlbikin destê dayîkên me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:08]</span>Host: Îro jî em mîvan darê dayîka Evdo ne ji şêniyên gundê Qerzêlê û xaltîka Zeyneb.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:12]</span>Host: Silavên me ji kakê Evdo ra hene, ji şêniyên gundê Qerzêlê gişta ra hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:15]</span>Host: Em ê bi hevra xwarineke tûras çêkin bi hevra, ekîd we jî bîrya kiriye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:19]</span>Host: Xweşke, di kêlekê me da... ma lehze yana em bi hevra rûniştine, tim destyek bin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:24]</span>Host: Em ê tim li ser miletê xwe bigerin, li halê gundê bipirsin, guhdarê dengê gunda bin, guhdarê çîrokê gunda bin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:30]</span>Host: Ez pir kêfxweş dibim, û berî em dest bi vîdeoya xwe dikin, heta ku muqedîmeke biçûke serwa dirêj be, hûn ya qisûra min af bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:37]</span>Host: Ez dibêjim saetên her kesî xweş li kêleka qanala Hotim Efrîn sekinîn, bi fedlê Rebbul Alemîn, bi fedlê we em gihîştin 20 hezar muşterek.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:44]</span>Host: Hîn derdikeve, min tim wara soz dabû, min gotibû ez ê dengê bav û kalan bo we bînim, tim li halê miletê xwe bipirsim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:51]</span>Host: Ez aşiqê tûras û folklora xwe Kurd im.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:53]</span>Host: Inşallah ez ê tim ji we ra biqedînim, heta ku gav pîkînim, ne teqsîr nakim ji we ra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:58]</span>Host: Û yek daxwazê jî li hezkiriyên tûrasî, yê qanala Hotim Efrîn hazir be, ji we xwas tenê ser serê me, ser çavê me ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:06]</span>Host: Hejmara serxwasê têkiliyê, ez dewatî gundê dikim, daûçorî nuhal hêviyên me bin li hifla tûrasiyê, di sala nû hatî da.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:14]</span>Host: Û yek daxwazê hazir be, cî gundê ser serê me, ser çavê me ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:17]</span>Host: Û berî em dest bi vîdeoya xwe dikin, em dîsa dibêjin saetên her kesî xweş li kêleka qanala Hotim Efrîn sekinîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:24]</span>Host: Gelo like be, gelo îştîrak be, saetên her kesî xweş, ber 20 hezar muşterek ne hindik e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:30]</span>Host: Belkî hin mirov bibînin reqemek adî ye, bes cem min 20 hezar Kurmancî Kurd li min seyr dike, hewa barek giran e li ser pişta min.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:38]</span>Host: Ez ê artix hin tiştên xweştir û kibar ji we ra biqedînim, inşallah ez ji miletê xwe ra ne qesirînim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:44]</span>Host: Û ez pir tesîr bûm, me di mecalek wextek cûcûk da em gihîştin 20 hezar muşterek.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:49]</span>Host: Eva ji min ra fexr eke, ku xortek Efrîn, nav miletê xwe bigere, xîlalî 5 meha da 20 hezar û 500 muşterek be li ser Youtube, 20 hezar Kurd li min seyr ke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:59]</span>Host: Qûwet li seetê be, qûwet li qanala me be, Kurda giya be, giya bi sed hezara bigerin, giya di rê YouTube em dest giya da bibînin jî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:05]</span>Host: Em dest bi vîdeoya xwe bikin, em ê derbas cem dayîka Evdo bin, xaltîka Zeyneb, em sehkin ew ê çi xwarinê ji me ra çêkin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:12]</span>Host: Ez dîsa dibêjim xweşke hûn li cem me bûna, me bi hevra rûnişta li bindarê zeytûnê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:16]</span>Host: Ciyê bav û kalan, darên me zeytûnê malê dinyayê giyê dikê, bi serwetê dinyayê giyê dikê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:22]</span>Host: Saetên we xweş û bi me ra bin heta tûla vîdeoyê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:27]</span>Host: Dayîka Evdo?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:28]</span>Dayika Evdo: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:29]</span>Host: Dayîka Evdo siheta we giya bi xêr.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:30]</span>Dayika Evdo: Ehlên we sehlên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:31]</span>Host: Tu pir bi xêr hatî, em îro bûne mîvan darê Qerzêlê bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:34]</span>Host: Û bi hevra jî em kehevîr çêkin, mista êd barê, warê bîra me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:38]</span>Host: Ne hatî jî, û xaltîka Zeyneb jî destê wê hardiqasî bixwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:41]</span>Zeyneb: Wilayî wa jî spas, ma ji we ra xeber didin, ne hewîr e, wa çû çêkirî, wa çi kirî çi...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:47]</span>Host: Berê wa çi, çend deqa distiran xaltîka Zeyneb?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:49]</span>Zeyneb: Ma dîsa distira? Ma qalib makîne me tune bûn, me bi desta distira.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:53]</span>Zeyneb: Aaa, me bi desta distira.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:55]</span>Zeyneb: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:56]</span>Host: Ma bi desta?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:57]</span>Zeyneb: Erê ew makîne tinebûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:00]</span>Zeyneb: Me bi desta hewîrê xwe nerm dikira, sê saeta paşê me mist dida.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:03]</span>Zeyneb: Belê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:05]</span>Zeyneb: Û me pê kofte... ya xwarinê dî dikan...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:08]</span>Host: Berê pir makîne tina bûn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:09]</span>Zeyneb: Bi desta distira, erê bi desta.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:11]</span>Zeyneb: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:40]</span>Host: Xaltîka Zeyneb tu ji vî gundî yî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:41]</span>Zeyneb: Na, ez bûkê vî gundî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:45]</span>Host: Tu ji kîjan gundî yî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:46]</span>Zeyneb: Ji Çeqela.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:58]</span>Host: Çend sal in tu li vir î?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:00]</span>Zeyneb: 45 sal zêde bûn e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:04]</span>Host: Vê me&#x27;neyê şêniyê vê Qerzêlê camêr in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:07]</span>Zeyneb: Qerzêlê camêr in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:08]</span>Zeyneb: Erê wela.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:10]</span>Zeyneb: Erê wela.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:11]</span>Host: Dayîka Evdo?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:11]</span>Dayika Evdo: Erê can.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:12]</span>Host: Ev kutilkên çi ne? Mezin e, rind e, Xwedê sihet xweş bide.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:16]</span>Dayika Evdo: Rûyê te xweş bibîne inşallah, te&#x27;lê de nebîne inşallah, ew jî yê tekeyê me ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:19]</span>Dayika Evdo: Amîn, amîn, amîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:20]</span>Dayika Evdo: Xwedê rindê vî miletî ke inşallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:22]</span>Dayika Evdo: Û giy bi hevra bigirin, Xwedê bi me giya ra bigire, û Xwedê ji giya razî be, ehlen we sehlen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:30]</span>Dayika Evdo: Serto serxweş dayîka Evdo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:32]</span>Dayika Evdo: Û te ji ehlen we sehlen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:35]</span>Dayika Evdo: Ava sor e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:37]</span>Dayika Evdo: Dimsî bacan e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:39]</span>Dayika Evdo: Zêt e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:40]</span>Dayika Evdo: Dimsî îsot e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:42]</span>Dayika Evdo: Ê giy katiyê ho, sîr, giş katiyêkî, bi ava sor me stiraye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:54]</span>Chorus: Kan behra sêlkên, tev bilind û mezin bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:10]</span>Singer: Anê serê min dêşe, dayê serê min dêşe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:13]</span>Singer: Anê serê min dêşe, dayê serê min dêşe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:20]</span>Singer: Yarim derde te çiye, derde xwe ji min ra bêje.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:25]</span>Singer: Yarim derde te çiye, derde xwe ji min ra bêje.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:32]</span>Singer: Anê darek min hebû, dayê darek min hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:37]</span>Singer: Li ortê hewşa me bû, li ortê hewşa me bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:43]</span>Singer: Li keviya sewkê bû, li keviya sewkê bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:49]</span>Singer: Anê mixiz me dikir, bidandina xûyê bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:54]</span>Singer: Birûniya çava bû, birûniya çava bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:23]</span>Singer: Anê serê min dêşe, dayê serê min dêşe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:28]</span>Singer: Anê serê min dêşe, dayê serê min dêşe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:35]</span>Singer: Yarim derde te çiye, derde xwe ji min ra bêje.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:39]</span>Singer: Yarim derde te çiye, derde xwe ji min ra bêje.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:46]</span>Singer: Anê darek min hebû, dayê darek min hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:52]</span>Host: Qawet li te be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:54]</span>Host: Dişan û deng.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:55]</span>Zeyneb: Dengê min? Tu zanî, dengî min.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:58]</span>Zeyneb: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:02]</span>Host: Tu bir hez dikî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:03]</span>Zeyneb: Ma wextê xortirî qîza xam şil dikin... niha kal bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:07]</span>Zeyneb: Goştê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:10]</span>Zeyneb: Na êdî hez dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:13]</span>Host: Xaltîka Zeyneb berê dengî te çend deqa distiran xaltîka Zeyneb?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:15]</span>Zeyneb: Wile heta adî ev ava sor e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:19]</span>Zeyneb: Te kê bistire, heta wekî mîjij ew dibe...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:24]</span>Zeyneb: Êkê Evdo jêkê bistire û em kî gî bixwin, siheta giya xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:29]</span>Host: No dayîka Evdo tu ji me ra xeberde, ya dayîka Evdo, çi çi dikatiyê, me ra gî xeberde, bes li hepta.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:36]</span>Dayika Evdo: Me çi kirê? Me bilxur, a simît derxist, simît e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:40]</span>Dayika Evdo: Me rabû li makînê xist.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:44]</span>Dayika Evdo: Îsota sor kirnê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:46]</span>Dayika Evdo: Îsota sor kirnê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:48]</span>Dayika Evdo: Û bacan, pîvaz.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:51]</span>Dayika Evdo: Bexdenûs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:53]</span>Dayika Evdo: Gî katiyê ho.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:54]</span>Dayika Evdo: Îsot, giş katiyêkî bi ava sor me stiraye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:58]</span>Dayika Evdo: Bacan jî kirnê û îsotê tîj.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:00]</span>Old Woman: Nanê genim em hûrik dikin... Û naze tijî... megî kiriye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:03]</span>Old Woman: Û naze tijî... hemû tiştê xwe ve dikine. Ava hevirê sora.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:12]</span>Host: Ebdoyê çêke, em gî bixwin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:16]</span>Host: Pîrê, ez û Xelîl, em ê îşev...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:19]</span>Host: Em gî, ev pîra...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:23]</span>Host: Îşev şîv çi heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:25]</span>Host: Şîva te sora se, bera pir... û hez dikim te bibînim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:31]</span>Old Woman: Hewîr e, ez benî... de biçin perakan... gofte... biçin perakan...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:35]</span>Old Woman: Çûçê dibin... kute çûçê dibin... çîşparakan, tekeya...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:39]</span>Host: Şorba boraniyê malkindî (malgundî) badîna hazir kir...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:43]</span>Host: Û gindî badîna, bizokê badîna.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:46]</span>Host: Dankê badîna... erê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:48]</span>Host: Danik jî... ji dank çekir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:49]</span>Host: Û li xozyanê jî me hesîde çêkir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:52]</span>Old Woman: Çêkir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:53]</span>Host: Û li gundî Şkakê manan (nan) çêkir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:55]</span>Old Woman: Çêkir. Nanê genimî ji me ra...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:56]</span>Host: Nanê kerzelê ne? Em ê hevirê sora...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:58]</span>Old Woman: Me nanê genimî jî kiriye, me gi kiriye, hemû mezin in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:03]</span>Host: De, keremkin... Destê we xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:06]</span>Old Woman: Xwedê salekî xweş... Xwedê havalê giya biuhêrim...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:09]</span>Old Woman: Te bi xêr û xweş be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:10]</span>Old Woman: Xwedê sala bê, rojên xweş bibînin, salêd xweş derbas bikin inşallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:15]</span>Old Woman: Bi sahet û bereket bê ser hemûyan şên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:17]</span>Host: Elhemdulillah...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:21]</span>Old Woman: Nanê hevir e û... zeytê pir...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:40]</span>Host: Nan biye...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:44]</span>Host: Çîçik e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:50]</span>Host: Go, hemîre kîrî hemîre?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:52]</span>Old Woman: Hemîre bi...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:55]</span>Host: Ma ne bi perçe be?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:57]</span>Host: Hemîre nake biye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:59]</span>Host: Te tam kir sekir biye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:02]</span>Old Woman: Hemû de tam ke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:04]</span>Host: Hêşke ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:05]</span>Old Woman: Hêşke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:06]</span>Host: Were werim bixwe...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:08]</span>Song: Hewa dar û sewlê bî, li ber dilê min dar û gulê bî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:18]</span>Song: Me destê xwe avêtiyê, anê dar û deriyê bî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:28]</span>Song: Erê destê mi ra çû, dilê mi ji dest birîbû...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:02]</span>Song: Anê serê min dêşê, dayê serê min dêşê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:14]</span>Song: Yarim derdê te çi ye, derdê xwe ji min ra bêje...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:25]</span>Song: Dikim dikim daw na bî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:31]</span>Song: Rûnê li meşkê belav bî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:37]</span>Song: Dewê malê Selmê ne...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:43]</span>Song: Apê Ûdê benav bî, xatûn ji xew ranabî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:49]</span>Song: Qîza Selmê ne sisê ne...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:55]</span>Song: Harsê li rîya avê ne...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:00]</span>Song: Yekê bide min bide min...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:06]</span>Song: Heta bêder hiltîne...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:36]</span>Host: Wa çine li ser xwe dikin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:38]</span>Man: Go min hewîr çêkir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:40]</span>Host: Çi ye fêmkim?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:41]</span>Man: Hewîrê avê sar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:44]</span>Host: Pa Erebî dibêjin kubênî ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:46]</span>Man: Kubênî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:47]</span>Host: Tu Ereb î?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:48]</span>Man: Ereb î... Erebî nizanim, ez Kurmanc im.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:50]</span>Host: Goşt e ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:51]</span>Man: Goştê dawetê ye, hewîr.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:00]</span>Man: (Unclear banter)</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:01]</span>Host: Ku bi hewîr be, ku bi hewîr be...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:03]</span>Man: Kubênî hewîr, kutilkê savar û goşt...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:17]</span>Host: Gelê, we lêkî barîkir, te go çî xwaro?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:25]</span>Host: Lo qurban, ne sekinîn babo, goşt bûne...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:32]</span>Host: Goştê çi ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:33]</span>Man: Goştê berxê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:34]</span>Host: Goştê berxê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:35]</span>Man: Na goştê kerê ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:37]</span>Host: Goştê kerê nîne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:38]</span>Man: Na na goştê kerê ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:40]</span>Host: Yê ciwan e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:41]</span>Man: Yê ciwan e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:42]</span>Man 2: Kerê kulax e, kerê qulax e...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:51]</span>Host: Xalê Fevzî, ya bo çi Kurdî dizanî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:58]</span>Host: Heyran, te go çi, te go goştê çi ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:00]</span>Cook: Goştê berxê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:01]</span>Host: Te go berx e, te go goştê kerê ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:03]</span>Cook: Na na, me qet ker dawiye gundê we la?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:05]</span>Host: Ewa, tu dibê we goştê kerê xwariye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:07]</span>Cook: Na na.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:12]</span>Host: We goştê kerê xwariye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:14]</span>Host: Na, na na.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:17]</span>Host: Wele serê kerê xwariye xulas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:21]</span>Cook: Goştê nerm e, nerm e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:25]</span>Host: Hêj nerm nebûye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:27]</span>Host: Bê xwê ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:28]</span>Cook: Na na, xwê têda ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:33]</span>Host: Tigan (tawa) çawa ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:35]</span>Man: Tigan xweş e, tigan xweş e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:47]</span>Man: Selam qijikê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:35]</span>Host: Apo kî ye ferî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:38]</span>Host: Hav o gundî Kûrzêlê ye, em li Hewşê Mixtêr rûniştine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:44]</span>Old Man: Haf derya hanêkî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:51]</span>Old Man: Eş çi bêjim, li vir da, çîçik e, Geliyê Pirqê ye navê wî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:54]</span>Old Man: Geliyê Pirqê, kûr e, pirr kûr e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:56]</span>Old Man: Heta nîskê kîmarê derra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:02]</span>Old Man: E malê Elî Genim e...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:06]</span>Old Man: Ev qeracê têxiyan jî, ê malî Şêx Avdo...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:13]</span>Old Man: Jê we da, Kîmar nîzîk e...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:35]</span>Host: Bes fistiq hene li vir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:37]</span>Old Man: Fistiq hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:38]</span>Host: Ebbas, Xalê Ehmed?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:39]</span>Old Man: Na na ben.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:40]</span>Host: Keraz jî tune?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:41]</span>Old Man: Keraz jî tune. Serma têne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:42]</span>Old Man: Cema germ e yaxe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:48]</span>Host: Ewa xaltî min, Çaqmaqo...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:52]</span>Host: Sarme xwe pirr e, kerez tê da tune.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:03]</span>Host: Xox, zerdele, şeftalî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:05]</span>Old Man: Mişmiş, xox, hinar, cewîz, armûd...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:16]</span>Host: Menge hene?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:17]</span>Old Man: Digo menge min didî du qeti mû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:22]</span>Host: Menge dikin &#x27;do do&#x27;?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:24]</span>Old Man: Na na, dikin &#x27;moo&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:30]</span>Host: Mengeya çîkolata?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:32]</span>Old Man: Na, mengeya çîkolata derneketine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:41]</span>Song: Onê serê min dêşê, dayê serê min dêşê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:47]</span>Song: Yarim derdê te çiye...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:51]</span>Song: Derdê xoş mi ra bêje...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:56]</span>Song: Diklim diklim daw na bê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Singer: Way de sorê, de sorê, te hûr hûr li naborê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:15]</span>Singer: Solê çînî li vê çaxê, solê çînî li vê çaxê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:20]</span>Singer: Mala Melko li wê daxê, mala Melko li wê daxê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:25]</span>Singer: Te ez kuştim helandim, kerem şîşê gulyaxê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:30]</span>Singer: Te ez kuştim helandim, kerem şîşê gulyaxê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:59]</span>Host: Ê dayika Evdo saeta te xweş, destê te sax be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:03]</span>Host: Xwedê ji we razî be, we xizmetek mezin ji me re kir. Bes mirov xweş pê re daixivî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:09]</span>Host: Û li her demê ku emê dîsa werin halê we bipirsin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:13]</span>Host: Û emê înşallah wext me re hebe emê dîsa mêvandarê gundê Girzêlê bin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:17]</span>Host: Xaltîka Zên destê te jî sax be, Xwedê ji te razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:20]</span>Aunt Zein: Ewa jî sax be qurban. Aqûbet li her sal be, saeta we giyan xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:24]</span>Aunt Zein: Hatina te jî malê dinyayê giyan dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:26]</span>Host: Ezê destûra xwe bixwazim. Berî ez herim, temenna tewqîtan we ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:29]</span>Host: Û ti kesî we li derve heye, nikanin kî ne, kê me bibîne silav bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:33]</span>Host: Û keremkin tam ya li lawikê xwe bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:36]</span>Host: Bi hêvî ez nekim bê mecalî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:38]</span>Aunt Zein: Ehlen we sehlen. Xwedê saeta te xweş tîne. Xwedê te bihêle înşallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:42]</span>Aunt Zein: Te temê nekî bi kêf be. Te tewarê gun... Me ziyaretekî ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:46]</span>Aunt Zein: Û silavên min jî ji bileyî min ra, ji hemê re hene. Ji birakê min re hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:50]</span>Aunt Zein: Ji xîzêt min, Tirkiyê re hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:52]</span>Aunt Zein: Xwedê giyan bihêle înşallah. Xwedê destê me giyan bi hevdû gîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:56]</span>Aunt Zein: Ê deqê welî jî qîçikê xwe bibîne înşallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:59]</span>Host: Elhemdillah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:00]</span>Aunt Zein: Her rojê me waha derbas dikin, saeta we xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:03]</span>Aunt Zein: Û ev roj jî, roek a pirr a kîbar e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:06]</span>Aunt Zein: Xwedê hevalê we giyan be. Elhemdillah giyan rihet in, giyan bi kêf in. Xwedê we giyan bihêle.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:13]</span>Host: Bira jî em tew bûn saeta te xweş. Xwedê ji te razî be. Te îstiqbol kirin hûr û li cem te man.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:20]</span>Host: Û em pirr kêfxweş bûn, rû şerefeke mezin e ku em nav miletê waha bigerin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:24]</span>Host: Di nav erdê Gindîkê... Em pirr kêfxweş bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:27]</span>Host: Û kekê Hemûdê saeta te xweş. Me te xeriqand.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:30]</span>Hamude: Ser seran. Û te jî xweş. Û ehlen we sehlen. Ji hatina we ra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:33]</span>Hamude: Mal mala we ye û gund gundê we ye. Em giş birakê hevdû ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:37]</span>Hamude: Û înşallah aqbet her yekî derba be û were ba filan mala xwe û cî û warê xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:41]</span>Hamude: Xwedê ji we giyan razî be û saeta we xweş. Bi tewfîq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:43]</span>Host: Aqbet li miletê Kurd giyî be, giyî vegerin ser axa xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:46]</span>Hamude: Amîn amîn ya Reb. Amîn amîn ya Reb.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:48]</span>Host: Çi qedera bigerin, em amade ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:50]</span>Host: Kekê Hatîmî, Xwedê ji te razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:52]</span>Hatimi: Xwedê ji te jî razî be. Tu koçekî qîmî tî, ehlen we sehlen. Birakê te çi kamil e di hûndir de.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:57]</span>Hatimi: Xwedê ji te razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:58]</span>Host: Saeta te xweş. Xwedê kîsikê te tijî bike. Xwedê qeza û bela nebînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:03]</span>Hatimi: Sax bî, sax bî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:04]</span>Host: Xwedê ji we razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:05]</span>Woman/Group: Saeta we xweş, Xwedê ji we razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:07]</span>Host: Te emr û ti gotin we hebe bêjin ez derim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:09]</span>Hatimi: Saxiya te. Saxiya we giya. Em tiştek naxwazin. Xwedê ji we razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:10]</span>Host: Miletê kîbar û delal, saeta we xweş. Hîn bi me re bûn heta toliya vîdyoyê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:15]</span>Host: Saeta xaltîka Evdo xweş, xurtî gundê Gindîkê Rizele hemû de.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:20]</span>Host: Destê xaltîka Zên sax be, dayika Evdo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:22]</span>Host: Saeta her kesî xweş. Xwedê ji we razî be. Li hêviya me bin bi vîdyokî xweş û vîdyokî ecêb.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:27]</span>Host: Hela înşallah bi carê em gelekî hazir in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:28]</span>Singer: Ez berf im, berf im, berf im, lêlê nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:33]</span>Singer: Ez berf im, berf im, berf im, lêlê nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:37]</span>Singer: Lêlê nar, tu delal î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:39]</span>Singer: Ez berf im, berf im, berf im, lêlê nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:43]</span>Singer: Ez berfa çiyayê reş im, lêlê nar tu delal î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:48]</span>Singer: Ez berfa çiyayê reş im, lêlê nar tu delal î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:53]</span>Singer: Ez berf im, berf im, berf im, lêlê nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:57]</span>Singer: Ez berf im, berf im, berf im, lêlê nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:02]</span>Singer: Lêlê nar, tu delal î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:05]</span>Singer: Ez berf im, berf im, berf im, lêlê nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:11]</span>Singer: Ez berfa çiyayê reş im, lêlê nar tu delal î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:16]</span>Singer: Ez berfa çiyayê reş im, lêlê nar tu delal î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:20]</span>Singer: Ez berf im, berf im, berf im, lêlê nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:25]</span>Singer: Ez berf im, berf im, berf im, lêlê nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:29]</span>Singer: Lêlê nar, tu delal î.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on January 19, 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Copy to clipboard function
+        function copySection(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Find the button that was clicked and update its text
+                const btn = event.target.closest('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ✓';
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

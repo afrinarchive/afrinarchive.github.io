@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map - ÇK Map 11</title>
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
+    <style>
+        /* Basic setup for the map container and image */
+        .map-container {
+            position: relative;
+        }
+        .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR ÇK Map 11 --- 
+         Recalculated for original image dimensions of 973x1284 pixels.
+        */
+        .aster { left: 34.84%; top: 6.93%; width: 11.92%; height: 9.03%; }
+        .coqe { left: 16.85%; top: 13.55%; width: 8.43%; height: 6.39%; }
+        .cumqe { left: 40.70%; top: 13.94%; width: 10.28%; height: 7.79%; }
+        .meriske { left: 65.67%; top: 4.21%; width: 9.66%; height: 7.32%; }
+        .kefermize { left: 59.92%; top: 7.16%; width: 11.31%; height: 8.57%; }
+        .sewarxa { left: 66.60%; top: 8.02%; width: 9.04%; height: 6.85%; }
+        .tirtewile { left: 35.25%; top: 17.60%; width: 10.48%; height: 7.94%; }
+        .qibare { left: 50.87%; top: 18.46%; width: 9.66%; height: 7.32%; }
+        .efrin { left: 37.82%; top: 22.04%; width: 10.69%; height: 8.10%; }
+        .gaze { left: 7.50%; top: 22.82%; width: 8.43%; height: 6.39%; }
+        .gunde-mezin { left: 13.16%; top: 19.00%; width: 10.28%; height: 7.79%; }
+        .xelnare { left: 19.01%; top: 18.69%; width: 8.84%; height: 6.70%; }
+        .kefersile { left: 23.54%; top: 22.90%; width: 9.04%; height: 6.85%; }
+        .marate { left: 16.03%; top: 24.30%; width: 9.66%; height: 7.32%; }
+        .keferdele-jorin { left: 5.76%; top: 24.77%; width: 8.84%; height: 6.70%; }
+        .keferdele-jerin { left: 10.59%; top: 32.48%; width: 8.02%; height: 6.07%; }
+        .bablite { left: 25.69%; top: 30.61%; width: 9.25%; height: 7.01%; }
+        .xalta { left: 55.19%; top: 24.14%; width: 9.66%; height: 7.32%; }
+        .meremine { left: 63.62%; top: 18.30%; width: 8.43%; height: 6.39%; }
+        .inabke { left: 63.72%; top: 20.64%; width: 9.25%; height: 7.01%; }
+        .cilbire { left: 68.86%; top: 31.00%; width: 9.25%; height: 7.01%; }
+        .bene { left: 76.46%; top: 35.75%; width: 9.66%; height: 7.32%; }
+        .basile { left: 63.00%; top: 37.62%; width: 9.66%; height: 7.32%; }
+        .kurzele { left: 43.58%; top: 34.66%; width: 9.46%; height: 7.16%; }
+        .turinde { left: 41.11%; top: 26.32%; width: 10.28%; height: 7.79%; }
+        .kersane { left: 34.84%; top: 25.70%; width: 10.69%; height: 8.10%; }
+        .pitete { left: 30.22%; top: 33.41%; width: 10.07%; height: 7.63%; }
+        .endare { left: 36.99%; top: 34.74%; width: 10.07%; height: 7.63%; }
+        .cidede { left: 34.74%; top: 28.50%; width: 10.90%; height: 8.26%; }
+        .kefirbetre { left: 20.97%; top: 36.37%; width: 9.04%; height: 6.85%; }
+        .kokebe { left: 26.72%; top: 38.94%; width: 9.46%; height: 7.16%; }
+        .tilfe { left: 16.65%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        .keferzite { left: 19.22%; top: 50.08%; width: 9.66%; height: 7.32%; }
+        .kifere { left: 34.12%; top: 47.98%; width: 8.84%; height: 6.70%; }
+        .basute { left: 38.54%; top: 44.39%; width: 8.84%; height: 6.70%; }
+        .soxaneke { left: 54.78%; top: 42.68%; width: 10.48%; height: 7.94%; }
+        .aqibe { left: 68.35%; top: 43.54%; width: 9.25%; height: 7.01%; }
+        .xurebke { left: 81.09%; top: 45.95%; width: 9.25%; height: 7.01%; }
+        .zarete { left: 78.73%; top: 49.30%; width: 9.04%; height: 6.85%; }
+        .kimare { left: 45.43%; top: 47.66%; width: 8.84%; height: 6.70%; }
+        .birce { left: 36.48%; top: 51.95%; width: 9.25%; height: 7.01%; }
+        .xeziwe { left: 28.57%; top: 61.37%; width: 9.25%; height: 7.01%; }
+        .iska { left: 17.37%; top: 68.07%; width: 9.25%; height: 7.01%; }
+        .sadere { left: 23.54%; top: 64.56%; width: 10.28%; height: 7.79%; }
+        .berade { left: 45.63%; top: 58.33%; width: 10.07%; height: 7.63%; }
+        .meyase { left: 61.46%; top: 56.23%; width: 9.04%; height: 6.85%; }
+        .bircilqase { left: 59.30%; top: 64.72%; width: 9.25%; height: 7.01%; }
+        .biiye { left: 36.28%; top: 66.98%; width: 9.04%; height: 6.85%; }
+        .kefer-nabo { left: 49.54%; top: 66.51%; width: 9.04%; height: 6.85%; }
+        .basufane { left: 38.34%; top: 71.96%; width: 9.25%; height: 7.01%; }
+        .gundi-mezin { left: 62.90%; top: 72.35%; width: 10.07%; height: 7.63%; }
+        .birc-hedar { left: 47.48%; top: 71.57%; width: 9.25%; height: 7.01%; }
+        .kibesine { left: 50.77%; top: 75.16%; width: 9.46%; height: 7.16%; }
+        .farfirtine { left: 47.58%; top: 77.57%; width: 9.87%; height: 7.48%; }
+        .basemre { left: 66.80%; top: 80.76%; width: 9.87%; height: 7.48%; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans p-4 sm:p-8">
+
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-3xl font-bold mb-4 text-center">Interactive Map - ÇK Map 11</h1>
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6 text-center">
+            <p class="text-lg">
+                <!-- Links to highlight each area -->
+                Click to highlight:
+                <a href="#aster" class="text-blue-600 hover:underline">Aster</a> |
+                <a href="#coqe" class="text-blue-600 hover:underline">Coqe</a> |
+                <a href="#cumqe" class="text-blue-600 hover:underline">Cumqe</a> |
+                <a href="#meriske" class="text-blue-600 hover:underline">Meriske</a> |
+                <a href="#kefermize" class="text-blue-600 hover:underline">Kefermize</a> |
+                <a href="#sewarxa" class="text-blue-600 hover:underline">Sewarxa</a> |
+                <a href="#tirtewile" class="text-blue-600 hover:underline">Tirtewile</a> |
+                <a href="#qibare" class="text-blue-600 hover:underline">Qibare</a> |
+                <a href="#efrin" class="text-blue-600 hover:underline">Efrin</a> |
+                <a href="#gaze" class="text-blue-600 hover:underline">Gaze</a> |
+                <a href="#gunde-mezin" class="text-blue-600 hover:underline">Gunde Mezin</a> |
+                <a href="#xelnare" class="text-blue-600 hover:underline">Xelnare</a> |
+                <a href="#kefersile" class="text-blue-600 hover:underline">Kefersile</a> |
+                <a href="#marate" class="text-blue-600 hover:underline">Marate</a> |
+                <a href="#keferdele-jorin" class="text-blue-600 hover:underline">Keferdele Jorin</a> |
+                <a href="#keferdele-jerin" class="text-blue-600 hover:underline">Keferdele Jerin</a> |
+                <a href="#bablite" class="text-blue-600 hover:underline">Bablite</a> |
+                <a href="#xalta" class="text-blue-600 hover:underline">Xalta</a> |
+                <a href="#meremine" class="text-blue-600 hover:underline">Meremine</a> |
+                <a href="#inabke" class="text-blue-600 hover:underline">Inabke</a> |
+                <a href="#cilbire" class="text-blue-600 hover:underline">Cilbire</a> |
+                <a href="#bene" class="text-blue-600 hover:underline">Bene</a> |
+                <a href="#basile" class="text-blue-600 hover:underline">Basile</a> |
+                <a href="#kurzele" class="text-blue-600 hover:underline">Kurzele</a> |
+                <a href="#turinde" class="text-blue-600 hover:underline">Turinde</a> |
+                <a href="#kersane" class="text-blue-600 hover:underline">Kersane</a> |
+                <a href="#pitete" class="text-blue-600 hover:underline">Pitete</a> |
+                <a href="#endare" class="text-blue-600 hover:underline">Endare</a> |
+                <a href="#cidede" class="text-blue-600 hover:underline">Cidede</a> |
+                <a href="#kefirbetre" class="text-blue-600 hover:underline">Kefirbetre</a> |
+                <a href="#kokebe" class="text-blue-600 hover:underline">Kokebe</a> |
+                <a href="#tilfe" class="text-blue-600 hover:underline">Tilfe</a> |
+                <a href="#keferzite" class="text-blue-600 hover:underline">Keferzite</a> |
+                <a href="#kifere" class="text-blue-600 hover:underline">Kifere</a> |
+                <a href="#basute" class="text-blue-600 hover:underline">Basute</a> |
+                <a href="#soxaneke" class="text-blue-600 hover:underline">Soxaneke</a> |
+                <a href="#aqibe" class="text-blue-600 hover:underline">Aqibe</a> |
+                <a href="#xurebke" class="text-blue-600 hover:underline">Xurebke</a> |
+                <a href="#zarete" class="text-blue-600 hover:underline">Zarete</a> |
+                <a href="#kimare" class="text-blue-600 hover:underline">Kimare</a> |
+                <a href="#birce" class="text-blue-600 hover:underline">Birce</a> |
+                <a href="#xeziwe" class="text-blue-600 hover:underline">Xeziwe</a> |
+                <a href="#iska" class="text-blue-600 hover:underline">Iska</a> |
+                <a href="#sadere" class="text-blue-600 hover:underline">Sadere</a> |
+                <a href="#berade" class="text-blue-600 hover:underline">Berade</a> |
+                <a href="#meyase" class="text-blue-600 hover:underline">Meyase</a> |
+                <a href="#bircilqase" class="text-blue-600 hover:underline">Bircilqase</a> |
+                <a href="#biiye" class="text-blue-600 hover:underline">Biiye</a> |
+                <a href="#kefer-nabo" class="text-blue-600 hover:underline">Kefer Nabo</a> |
+                <a href="#basufane" class="text-blue-600 hover:underline">Basufane</a> |
+                <a href="#gundi-mezin" class="text-blue-600 hover:underline">Gundi Mezin</a> |
+                <a href="#birc-hedar" class="text-blue-600 hover:underline">Birc Hedar</a> |
+                <a href="#kibesine" class="text-blue-600 hover:underline">Kibesine</a> |
+                <a href="#farfirtine" class="text-blue-600 hover:underline">Farfirtine</a> |
+                <a href="#basemre" class="text-blue-600 hover:underline">Basemre</a> |
+                <a href="#" id="clear-link" class="text-red-600 hover:underline ml-4">Clear Highlights</a>
+            </p>
+        </div>
+
+        <!-- Map displayed at 973px wide -->
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 973px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">973px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 11.png" alt="Map Image 11" onerror="this.onerror=null; this.src='https://placehold.co/973x1284/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="aster highlight-box"></div><div class="coqe highlight-box"></div><div class="cumqe highlight-box"></div><div class="meriske highlight-box"></div><div class="kefermize highlight-box"></div><div class="sewarxa highlight-box"></div><div class="tirtewile highlight-box"></div><div class="qibare highlight-box"></div><div class="efrin highlight-box"></div><div class="gaze highlight-box"></div><div class="gunde-mezin highlight-box"></div><div class="xelnare highlight-box"></div><div class="kefersile highlight-box"></div><div class="marate highlight-box"></div><div class="keferdele-jorin highlight-box"></div><div class="keferdele-jerin highlight-box"></div><div class="bablite highlight-box"></div><div class="xalta highlight-box"></div><div class="meremine highlight-box"></div><div class="inabke highlight-box"></div><div class="cilbire highlight-box"></div><div class="bene highlight-box"></div><div class="basile highlight-box"></div><div class="kurzele highlight-box"></div><div class="turinde highlight-box"></div><div class="kersane highlight-box"></div><div class="pitete highlight-box"></div><div class="endare highlight-box"></div><div class="cidede highlight-box"></div><div class="kefirbetre highlight-box"></div><div class="kokebe highlight-box"></div><div class="tilfe highlight-box"></div><div class="keferzite highlight-box"></div><div class="kifere highlight-box"></div><div class="basute highlight-box"></div><div class="soxaneke highlight-box"></div><div class="aqibe highlight-box"></div><div class="xurebke highlight-box"></div><div class="zarete highlight-box"></div><div class="kimare highlight-box"></div><div class="birce highlight-box"></div><div class="xeziwe highlight-box"></div><div class="iska highlight-box"></div><div class="sadere highlight-box"></div><div class="berade highlight-box"></div><div class="meyase highlight-box"></div><div class="bircilqase highlight-box"></div><div class="biiye highlight-box"></div><div class="kefer-nabo highlight-box"></div><div class="basufane highlight-box"></div><div class="gundi-mezin highlight-box"></div><div class="birc-hedar highlight-box"></div><div class="kibesine highlight-box"></div><div class="farfirtine highlight-box"></div><div class="basemre highlight-box"></div>
+            </div>
+        </div>
+
+        <!-- Map displayed at 800px wide -->
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 800px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">800px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 11.png" alt="Map Image 11" onerror="this.onerror=null; this.src='https://placehold.co/800x1056/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="aster highlight-box"></div><div class="coqe highlight-box"></div><div class="cumqe highlight-box"></div><div class="meriske highlight-box"></div><div class="kefermize highlight-box"></div><div class="sewarxa highlight-box"></div><div class="tirtewile highlight-box"></div><div class="qibare highlight-box"></div><div class="efrin highlight-box"></div><div class="gaze highlight-box"></div><div class="gunde-mezin highlight-box"></div><div class="xelnare highlight-box"></div><div class="kefersile highlight-box"></div><div class="marate highlight-box"></div><div class="keferdele-jorin highlight-box"></div><div class="keferdele-jerin highlight-box"></div><div class="bablite highlight-box"></div><div class="xalta highlight-box"></div><div class="meremine highlight-box"></div><div class="inabke highlight-box"></div><div class="cilbire highlight-box"></div><div class="bene highlight-box"></div><div class="basile highlight-box"></div><div class="kurzele highlight-box"></div><div class="turinde highlight-box"></div><div class="kersane highlight-box"></div><div class="pitete highlight-box"></div><div class="endare highlight-box"></div><div class="cidede highlight-box"></div><div class="kefirbetre highlight-box"></div><div class="kokebe highlight-box"></div><div class="tilfe highlight-box"></div><div class="keferzite highlight-box"></div><div class="kifere highlight-box"></div><div class="basute highlight-box"></div><div class="soxaneke highlight-box"></div><div class="aqibe highlight-box"></div><div class="xurebke highlight-box"></div><div class="zarete highlight-box"></div><div class="kimare highlight-box"></div><div class="birce highlight-box"></div><div class="xeziwe highlight-box"></div><div class="iska highlight-box"></div><div class="sadere highlight-box"></div><div class="berade highlight-box"></div><div class="meyase highlight-box"></div><div class="bircilqase highlight-box"></div><div class="biiye highlight-box"></div><div class="kefer-nabo highlight-box"></div><div class="basufane highlight-box"></div><div class="gundi-mezin highlight-box"></div><div class="birc-hedar highlight-box"></div><div class="kibesine highlight-box"></div><div class="farfirtine highlight-box"></div><div class="basemre highlight-box"></div>
+            </div>
+        </div>
+
+        <!-- Map displayed at 600px wide -->
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 600px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">600px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 11.png" alt="Map Image 11" onerror="this.onerror=null; this.src='https://placehold.co/600x792/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="aster highlight-box"></div><div class="coqe highlight-box"></div><div class="cumqe highlight-box"></div><div class="meriske highlight-box"></div><div class="kefermize highlight-box"></div><div class="sewarxa highlight-box"></div><div class="tirtewile highlight-box"></div><div class="qibare highlight-box"></div><div class="efrin highlight-box"></div><div class="gaze highlight-box"></div><div class="gunde-mezin highlight-box"></div><div class="xelnare highlight-box"></div><div class="kefersile highlight-box"></div><div class="marate highlight-box"></div><div class="keferdele-jorin highlight-box"></div><div class="keferdele-jerin highlight-box"></div><div class="bablite highlight-box"></div><div class="xalta highlight-box"></div><div class="meremine highlight-box"></div><div class="inabke highlight-box"></div><div class="cilbire highlight-box"></div><div class="bene highlight-box"></div><div class="basile highlight-box"></div><div class="kurzele highlight-box"></div><div class="turinde highlight-box"></div><div class="kersane highlight-box"></div><div class="pitete highlight-box"></div><div class="endare highlight-box"></div><div class="cidede highlight-box"></div><div class="kefirbetre highlight-box"></div><div class="kokebe highlight-box"></div><div class="tilfe highlight-box"></div><div class="keferzite highlight-box"></div><div class="kifere highlight-box"></div><div class="basute highlight-box"></div><div class="soxaneke highlight-box"></div><div class="aqibe highlight-box"></div><div class="xurebke highlight-box"></div><div class="zarete highlight-box"></div><div class="kimare highlight-box"></div><div class="birce highlight-box"></div><div class="xeziwe highlight-box"></div><div class="iska highlight-box"></div><div class="sadere highlight-box"></div><div class="berade highlight-box"></div><div class="meyase highlight-box"></div><div class="bircilqase highlight-box"></div><div class="biiye highlight-box"></div><div class="kefer-nabo highlight-box"></div><div class="basufane highlight-box"></div><div class="gundi-mezin highlight-box"></div><div class="birc-hedar highlight-box"></div><div class="kibesine highlight-box"></div><div class="farfirtine highlight-box"></div><div class="basemre highlight-box"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This function shows the highlight for the area specified in the URL hash
+        function showHighlight() {
+            // Hide all highlight boxes first
+            document.querySelectorAll('.highlight-box').forEach(box => {
+                box.style.display = 'none';
+            });
+
+            // Check if there is a hash in the URL (e.g. #sorbe)
+            if (window.location.hash) {
+                // Get the class name from the hash by removing the #
+                const highlightClass = window.location.hash.substring(1);
+
+                // Find all elements with that class and show them
+                document.querySelectorAll('.' + highlightClass).forEach(element => {
+                    element.style.display = 'block';
+                });
+            }
+        }
+
+        // This function clears the highlight by removing the hash from the URL
+        function clearHighlights(event) {
+            event.preventDefault();
+            // Use history.pushState to clean the URL without reloading the page
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+            // Run showHighlight again to process the now-empty hash
+            showHighlight();
+        }
+
+        // Run the highlight function on page load and when the hash changes
+        window.addEventListener('DOMContentLoaded', showHighlight);
+        window.addEventListener('hashchange', showHighlight);
+        // Add a click listener to the "Clear Highlights" link
+        document.getElementById('clear-link').addEventListener('click', clearHighlights);
+    </script>
+
+</body>
+</html>
+

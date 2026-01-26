@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilbile Map Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Basic setup for the map container and image */
+        .map-container {
+            position: relative;
+        }
+        .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR BILBILE AREAS --- 
+         Recalculated for original image dimensions of 991x1019 pixels.
+        */
+        .singele { left: 12.71%; top: 6.48%; width: 8.48%; height: 8.24%; }
+        .beke { left: 21.60%; top: 13.05%; width: 8.27%; height: 8.05%; }
+        .eli-kere { left: 28.96%; top: 17.76%; width: 8.27%; height: 8.05%; }
+        .heyama { left: 30.07%; top: 21.59%; width: 8.07%; height: 7.85%; }
+        .zere { left: 38.24%; top: 21.98%; width: 8.07%; height: 7.85%; }
+        .baliya { left: 48.94%; top: 19.14%; width: 8.68%; height: 8.44%; }
+        .xilalka { left: 9.59%; top: 32.58%; width: 8.27%; height: 8.05%; }
+        .bexce { left: 22.60%; top: 29.73%; width: 8.68%; height: 8.44%; }
+        .bilbile { left: 41.37%; top: 26.40%; width: 10.09%; height: 9.81%; }
+        .qurne { left: 51.46%; top: 25.32%; width: 8.27%; height: 8.05%; }
+        .topeli-mehmud { left: 60.24%; top: 27.58%; width: 8.48%; height: 8.24%; }
+        .kurdo { left: 70.64%; top: 28.16%; width: 8.88%; height: 8.64%; }
+        .ebudane { left: 84.76%; top: 34.15%; width: 8.88%; height: 8.64%; }
+        .elcara { left: 58.63%; top: 38.96%; width: 8.88%; height: 8.64%; }
+        .uga { left: 51.66%; top: 39.16%; width: 8.88%; height: 8.64%; }
+        .qestele-xidiriya { left: 26.03%; top: 33.66%; width: 8.88%; height: 8.64%; }
+        .xidiriya { left: 32.09%; top: 36.02%; width: 8.88%; height: 8.64%; }
+        .kurzele { left: 18.37%; top: 46.42%; width: 9.28%; height: 9.03%; }
+        .berkase { left: 33.20%; top: 47.79%; width: 9.08%; height: 8.83%; }
+        .serqiya { left: 44.20%; top: 44.16%; width: 8.88%; height: 8.64%; }
+        .qestele-miqded { left: 56.81%; top: 45.24%; width: 9.69%; height: 9.42%; }
+        .sexorze { left: 64.38%; top: 45.34%; width: 9.28%; height: 9.03%; }
+        .bibaka { left: 41.07%; top: 51.52%; width: 8.48%; height: 8.24%; }
+        .qurta { left: 51.66%; top: 50.15%; width: 9.49%; height: 9.22%; }
+        .qasa { left: 48.33%; top: 52.11%; width: 8.68%; height: 8.44%; }
+        .kela { left: 18.47%; top: 55.05%; width: 8.68%; height: 8.44%; }
+        .kere { left: 24.52%; top: 57.41%; width: 8.68%; height: 8.44%; }
+        .qota { left: 33.80%; top: 53.09%; width: 8.27%; height: 8.05%; }
+        .kotana { left: 54.49%; top: 60.06%; width: 10.29%; height: 10.01%; }
+        .upila { left: 50.05%; top: 61.73%; width: 9.49%; height: 9.22%; }
+        .xelilaka { left: 33.90%; top: 62.71%; width: 9.28%; height: 9.03%; }
+        .esune { left: 26.64%; top: 60.75%; width: 8.68%; height: 8.44%; }
+        .zivinge { left: 28.76%; top: 69.28%; width: 9.28%; height: 9.03%; }
+        .qirigole { left: 45.41%; top: 64.97%; width: 9.89%; height: 9.62%; }
+        .qizilbasa { left: 61.96%; top: 65.85%; width: 9.49%; height: 9.22%; }
+        .bele { left: 58.22%; top: 69.48%; width: 10.09%; height: 9.81%; }
+        .hesendera { left: 48.23%; top: 77.13%; width: 9.69%; height: 9.42%; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans p-4 sm:p-8">
+
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-3xl font-bold mb-4 text-center">Bilbile Map Links</h1>
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6 text-center">
+            <p class="text-lg">
+                Click to highlight:
+                <a href="#singele" class="text-blue-600 hover:underline">Singele</a> |
+                <a href="#beke" class="text-blue-600 hover:underline">Beke</a> |
+                <a href="#eli-kere" class="text-blue-600 hover:underline">Eli Kere</a> |
+                <a href="#heyama" class="text-blue-600 hover:underline">Heyama</a> |
+                <a href="#zere" class="text-blue-600 hover:underline">Zere</a> |
+                <a href="#baliya" class="text-blue-600 hover:underline">Baliya</a> |
+                <a href="#xilalka" class="text-blue-600 hover:underline">Xilalka</a> |
+                <a href="#bexce" class="text-blue-600 hover:underline">Bexce</a> |
+                <a href="#bilbile" class="text-blue-600 hover:underline">Bilbile</a> |
+                <a href="#qurne" class="text-blue-600 hover:underline">Qurne</a> |
+                <a href="#topeli-mehmud" class="text-blue-600 hover:underline">Topeli Mehmud</a> |
+                <a href="#kurdo" class="text-blue-600 hover:underline">Kurdo</a> |
+                <a href="#ebudane" class="text-blue-600 hover:underline">Ebudane</a> |
+                <a href="#elcara" class="text-blue-600 hover:underline">Elcara</a> |
+                <a href="#uga" class="text-blue-600 hover:underline">Uga</a> |
+                <a href="#qestele-xidiriya" class="text-blue-600 hover:underline">Qestele Xidiriya</a> |
+                <a href="#xidiriya" class="text-blue-600 hover:underline">Xidiriya</a> |
+                <a href="#kurzele" class="text-blue-600 hover:underline">Kurzele</a> |
+                <a href="#berkase" class="text-blue-600 hover:underline">Berkase</a> |
+                <a href="#serqiya" class="text-blue-600 hover:underline">Serqiya</a> |
+                <a href="#qestele-miqded" class="text-blue-600 hover:underline">Qestele Miqded</a> |
+                <a href="#sexorze" class="text-blue-600 hover:underline">Sexorze</a> |
+                <a href="#bibaka" class="text-blue-600 hover:underline">Bibaka</a> |
+                <a href="#qurta" class="text-blue-600 hover:underline">Qurta</a> |
+                <a href="#qasa" class="text-blue-600 hover:underline">Qasa</a> |
+                <a href="#kela" class="text-blue-600 hover:underline">Kela</a> |
+                <a href="#kere" class="text-blue-600 hover:underline">Kere</a> |
+                <a href="#qota" class="text-blue-600 hover:underline">Qota</a> |
+                <a href="#kotana" class="text-blue-600 hover:underline">Kotana</a> |
+                <a href="#upila" class="text-blue-600 hover:underline">Upila</a> |
+                <a href="#xelilaka" class="text-blue-600 hover:underline">Xelilaka</a> |
+                <a href="#esune" class="text-blue-600 hover:underline">Esune</a> |
+                <a href="#zivinge" class="text-blue-600 hover:underline">Zivinge</a> |
+                <a href="#qirigole" class="text-blue-600 hover:underline">Qirigole</a> |
+                <a href="#qizilbasa" class="text-blue-600 hover:underline">Qizilbasa</a> |
+                <a href="#bele" class="text-blue-600 hover:underline">Bele</a> |
+                <a href="#hesendera" class="text-blue-600 hover:underline">Hesendera</a> |
+                <a href="#" id="clear-link" class="text-red-600 hover:underline">Clear Highlights</a>
+            </p>
+        </div>
+
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 991px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">991px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 14.png" alt="Map of Bilbile" onerror="this.onerror=null; this.src='https://placehold.co/991x1019/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="singele highlight-box"></div><div class="beke highlight-box"></div><div class="eli-kere highlight-box"></div><div class="heyama highlight-box"></div><div class="zere highlight-box"></div><div class="baliya highlight-box"></div><div class="xilalka highlight-box"></div><div class="bexce highlight-box"></div><div class="bilbile highlight-box"></div><div class="qurne highlight-box"></div><div class="topeli-mehmud highlight-box"></div><div class="kurdo highlight-box"></div><div class="ebudane highlight-box"></div><div class="elcara highlight-box"></div><div class="uga highlight-box"></div><div class="qestele-xidiriya highlight-box"></div><div class="xidiriya highlight-box"></div><div class="kurzele highlight-box"></div><div class="berkase highlight-box"></div><div class="serqiya highlight-box"></div><div class="qestele-miqded highlight-box"></div><div class="sexorze highlight-box"></div><div class="bibaka highlight-box"></div><div class="qurta highlight-box"></div><div class="qasa highlight-box"></div><div class="kela highlight-box"></div><div class="kere highlight-box"></div><div class="qota highlight-box"></div><div class="kotana highlight-box"></div><div class="upila highlight-box"></div><div class="xelilaka highlight-box"></div><div class="esune highlight-box"></div><div class="zivinge highlight-box"></div><div class="qirigole highlight-box"></div><div class="qizilbasa highlight-box"></div><div class="bele highlight-box"></div><div class="hesendera highlight-box"></div>
+            </div>
+        </div>
+
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 800px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">800px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 14.png" alt="Map of Bilbile" onerror="this.onerror=null; this.src='https://placehold.co/800x823/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="singele highlight-box"></div><div class="beke highlight-box"></div><div class="eli-kere highlight-box"></div><div class="heyama highlight-box"></div><div class="zere highlight-box"></div><div class="baliya highlight-box"></div><div class="xilalka highlight-box"></div><div class="bexce highlight-box"></div><div class="bilbile highlight-box"></div><div class="qurne highlight-box"></div><div class="topeli-mehmud highlight-box"></div><div class="kurdo highlight-box"></div><div class="ebudane highlight-box"></div><div class="elcara highlight-box"></div><div class="uga highlight-box"></div><div class="qestele-xidiriya highlight-box"></div><div class="xidiriya highlight-box"></div><div class="kurzele highlight-box"></div><div class="berkase highlight-box"></div><div class="serqiya highlight-box"></div><div class="qestele-miqded highlight-box"></div><div class="sexorze highlight-box"></div><div class="bibaka highlight-box"></div><div class="qurta highlight-box"></div><div class="qasa highlight-box"></div><div class="kela highlight-box"></div><div class="kere highlight-box"></div><div class="qota highlight-box"></div><div class="kotana highlight-box"></div><div class="upila highlight-box"></div><div class="xelilaka highlight-box"></div><div class="esune highlight-box"></div><div class="zivinge highlight-box"></div><div class="qirigole highlight-box"></div><div class="qizilbasa highlight-box"></div><div class="bele highlight-box"></div><div class="hesendera highlight-box"></div>
+            </div>
+        </div>
+
+        <div class="map-wrapper bg-white p-4 rounded-lg shadow-md mb-4" style="width: 600px; margin-left:auto; margin-right:auto;">
+            <h2 class="text-xl font-semibold mb-2">600px wide</h2>
+            <div class="map-container">
+                <img src="ÇK Map 14.png" alt="Map of Bilbile" onerror="this.onerror=null; this.src='https://placehold.co/600x617/ef4444/ffffff?text=IMAGE+NOT+FOUND';">
+                <div class="singele highlight-box"></div><div class="beke highlight-box"></div><div class="eli-kere highlight-box"></div><div class="heyama highlight-box"></div><div class="zere highlight-box"></div><div class="baliya highlight-box"></div><div class="xilalka highlight-box"></div><div class="bexce highlight-box"></div><div class="bilbile highlight-box"></div><div class="qurne highlight-box"></div><div class="topeli-mehmud highlight-box"></div><div class="kurdo highlight-box"></div><div class="ebudane highlight-box"></div><div class="elcara highlight-box"></div><div class="uga highlight-box"></div><div class="qestele-xidiriya highlight-box"></div><div class="xidiriya highlight-box"></div><div class="kurzele highlight-box"></div><div class="berkase highlight-box"></div><div class="serqiya highlight-box"></div><div class="qestele-miqded highlight-box"></div><div class="sexorze highlight-box"></div><div class="bibaka highlight-box"></div><div class="qurta highlight-box"></div><div class="qasa highlight-box"></div><div class="kela highlight-box"></div><div class="kere highlight-box"></div><div class="qota highlight-box"></div><div class="kotana highlight-box"></div><div class="upila highlight-box"></div><div class="xelilaka highlight-box"></div><div class="esune highlight-box"></div><div class="zivinge highlight-box"></div><div class="qirigole highlight-box"></div><div class="qizilbasa highlight-box"></div><div class="bele highlight-box"></div><div class="hesendera highlight-box"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This function shows the highlight for the area specified in the URL hash
+        function showHighlight() {
+            // Hide all highlight boxes first
+            document.querySelectorAll('.highlight-box').forEach(box => {
+                box.style.display = 'none';
+            });
+
+            // Check if there is a hash in the URL (e.g. #remadiye)
+            if (window.location.hash) {
+                // Get the class name from the hash by removing the #
+                const highlightClass = window.location.hash.substring(1);
+
+                // Find all elements with that class and show them
+                document.querySelectorAll('.' + highlightClass).forEach(element => {
+                    element.style.display = 'block';
+                });
+            }
+        }
+
+        // This function clears the highlight by removing the hash from the URL
+        function clearHighlights(event) {
+            event.preventDefault();
+            // Use history.pushState to clean the URL without reloading the page
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+            // Run showHighlight again to process the now-empty hash
+            showHighlight();
+        }
+
+        // Run the highlight function on page load and when the hash changes
+        window.addEventListener('DOMContentLoaded', showHighlight);
+        window.addEventListener('hashchange', showHighlight);
+        // Add a click listener to the "Clear Highlights" link
+        document.getElementById('clear-link').addEventListener('click', clearHighlights);
+    </script>
+
+</body>
+</html>

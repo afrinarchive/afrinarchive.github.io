@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Abû Ke&#x27;bê Şerqî</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #1a202c;
+            --card-bg: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+        .dark {
+            --bg-color: #1a202c;
+            --text-color: #f7fafc;
+            --card-bg: #2d3748;
+            --border-color: #4a5568;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: all 0.3s; }
+        .card { background-color: var(--card-bg); }
+        .themed-border { border-color: var(--border-color); }
+        .subtext { color: #718096; }
+        .dark .subtext { color: #a0aec0; }
+        
+        /* Minimap & Lightbox */
+        
+        .lightbox-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 5000; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border-radius: 8px; }
+    </style>
+</head>
+<body class="bg-stone-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <header class="mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold">Abû Ke&#x27;bê Şerqî</h1>
+            <p class="text-lg text-gray-500 mt-2">Cindires</p>
+        </header>
+
+        <main class="space-y-8">
+            
+            
+    <div class="card p-6 rounded-xl shadow-sm border themed-border">
+        <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+            <h2 class="text-2xl font-semibold">General Information</h2>
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none">
+                <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <svg id="theme-toggle-light-icon" class="hidden h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col md:flex-row gap-8">
+            <div class="flex-1 space-y-4">
+                
+        <div class="pb-2">
+            <h3 class="text-sm font-medium subtext uppercase tracking-wide">Nahiya</h3>
+            <p class="text-lg font-medium">Cindires</p>
+        </div>
+                
+        <div class="pb-2">
+            <h3 class="text-sm font-medium subtext uppercase tracking-wide">Also Known As</h3>
+            <p class="text-lg font-medium">Abu Ka'b Eastern, Abû ke'bê Şerqî, Ebû Ke'ibê, أبو كعب شرقي</p>
+        </div>
+                
+                
+                
+                
+                
+            </div>
+            
+        </div>
+    </div>
+    
+            
+            <div class="card p-6 rounded-xl shadow-sm border themed-border">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Location</h2>
+                <div id="map" class="rounded-lg h-96 z-0"></div>
+                <div class="mt-2 text-sm text-gray-500 flex justify-between">
+                    <span>Coords: 36.387605, 36.752234</span>
+                    <a href="https://akmckeever.substack.com/" target="_blank" class="hover:underline">Map Source: AK McKeever</a>
+                </div>
+            </div>
+
+            
+    <div class="card p-6 rounded-xl shadow-sm border themed-border">
+        <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+        <div class="flex flex-col">
+            <img src="../village_photos/Abo Keb.jpg" alt="Photo of Abû Ke'bê Şerqî" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer hover:opacity-95 transition" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Missing+Image';">
+            
+        </div>
+        
+
+        <div class="flex flex-col">
+            <img src="../village_photos/abo kab shrxe.jpg" alt="Photo of Abû Ke'bê Şerqî" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer hover:opacity-95 transition" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Missing+Image';">
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2 italic">Top: &quot;Shrine of Abu Ka&#x27;b East - Jindires&quot; and &quot;www.tirejafrin.com&quot;</p>
+        </div>
+        
+        </div>
+    </div>
+    
+            
+            <div class="card p-6 rounded-xl shadow-sm border themed-border space-y-6">
+        <div>
+            <h2 class="text-xl font-semibold mb-3">Foundation & Origin</h2>
+            <div class="prose max-w-none text-gray-800 dark:text-gray-200">
+<blockquote>
+<p>It was previously an important center for the Yazidis southeast of Fiririya village in the last decade of the twentieth century. Currently it has become an abandoned village and only its shrine remains to this date.</p>
+</blockquote>
+<p class="text-xs text-gray-500 text-right mt-2"><strong>Source:</strong> TirejAfrin Site</p>
+
+
+</div>
+        </div>
+        <hr class="themed-border">
+        <div>
+            <h2 class="text-xl font-semibold mb-3">Name Meaning</h2>
+            <div class="prose max-w-none text-gray-800 dark:text-gray-200">
+<blockquote>
+<p>Named after the shrine of &quot;أبو كعب&quot; (Abu Ka&#x27;b) the Yazidi located there.</p>
+</blockquote>
+<p class="text-xs text-gray-500 text-right mt-2"><strong>Source:</strong> TirejAfrin Site</p>
+
+
+</div>
+        </div>
+        </div>
+            
+            
+    <div class="card p-6 rounded-xl shadow-sm border themed-border">
+        <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+        <div class="space-y-4">
+            
+        <details class="group" open>
+            <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                <span>I. Summary from TirejAfrin Site (English) of Abû Ke&#x27;bê Şerqî</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="p-4 prose max-w-none text-gray-800 dark:text-gray-200">
+                
+<p>According to the book &quot;جبل الكرد&quot; &quot;<span class="internal-link">Mountain of the Kurds (Afrin) geographical study</span>&quot; by Dr. Mohammed Abdo Ali:</p>
+
+
+<p><strong>Ebû Ke&#x27;ibê, أبو كعب</strong> /225n - 180m - 5km/:</p>
+
+<ul class="list-disc list-inside space-y-1">
+<li>Named after the shrine of &quot;أبو كعب&quot; (Abu Ka&#x27;b) the <span class="internal-link">Yazidi</span> located there.</li>
+<li>Two sections, western: consists of about twenty families. And eastern: has one family.</li>
+</ul>
+
+<p>And according to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from Qatma village:</p>
+
+
+<p><strong>أبو كعب شرقي</strong> (Abu Ka&#x27;b Eastern): A village in Afrin valley, belonging to Cindirês District, Afrin, Aleppo Governorate.</p>
+
+
+<p>It is a village in <span class="internal-link">Afrin River Valley</span> located south of Fiririya village in <span class="internal-link">Cindirês plain</span> and near the shrine of أبو كعب (<span class="internal-link">Abu Ka&#x27;b</span>). To the north it is bordered by a fertile agricultural plain planted with olive trees and Fiririya village. To the south by Afrin River valley and Jalma village in the far south. To the west by a fertile agricultural plain and Afrin River valley and Abu Ka&#x27;b Western village at a distance of 1km. To the east by a fertile agricultural plain and Eastern Zallaqa village. ==The number of its houses is about 5 houses and its age is about 150 years.== Its old houses are made of clay, branches, and wood with two levels. ==It was previously an important center for the <span class="internal-link">Yazidis</span> southeast of Fiririya village in the last decade of the twentieth century.== ==Currently it has become an abandoned village and only its shrine remains to this date. Nothing is available in it.==</p>
+
+
+
+
+            </div>
+        </details>
+        
+        </div>
+    </div>
+    
+            
+            
+    <div class="card p-6 rounded-xl shadow-sm border themed-border">
+        <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Links & Transcripts</h2>
+        <div class="p-4 prose max-w-none">
+            
+<p>### V. Links</p>
+
+<p>Tirejafrin:</p>
+
+<p>http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20abo%20kaeb%20sharxe.htm</p>
+
+
+
+
+        </div>
+    </div>
+    
+            
+        </main>
+
+        <footer class="mt-12 py-6 border-t themed-border text-center text-gray-500 text-sm">
+            Updated: January 18, 2026
+        </footer>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-overlay" onclick="this.style.display='none'">
+        <img id="lightbox-img" class="lightbox-image" src="">
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Theme Toggle
+        const btn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function applyTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            } else {
+                html.classList.remove('dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            }
+        }
+        applyTheme();
+
+        btn.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+            applyTheme();
+        });
+
+        // Lightbox
+        document.querySelectorAll('.lightbox-trigger').forEach(img => {
+            img.addEventListener('click', e => {
+                document.getElementById('lightbox-img').src = e.target.src;
+                document.getElementById('lightbox').style.display = 'flex';
+                e.stopPropagation();
+            });
+        });
+
+        // Leaflet Map
+        const lat = 36.387605;
+        const lng = 36.752234;
+        if (lat && lng) {
+            const map = L.map('map').setView([lat, lng], 14);
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}').addTo(map);
+            L.marker([lat, lng]).addTo(map).bindPopup("<b>Abû Ke&#x27;bê Şerqî</b>").openPopup();
+            
+            // Load JSON markers if available
+            fetch('afrin_locations.json').then(r=>r.json()).then(locs => {
+                locs.forEach(l => {
+                    if(l.lat != lat) {
+                        L.marker([l.lat, l.lng]).addTo(map).bindPopup(l.name);
+                    }
+                });
+            }).catch(e => console.log("No extra markers found"));
+        } else {
+            document.getElementById('map').innerHTML = '<div class="flex items-center justify-center h-full text-gray-500">No coordinates available</div>';
+        }
+    </script>
+</body>
+</html>

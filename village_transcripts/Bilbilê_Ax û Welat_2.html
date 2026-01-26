@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript | Bilbilê - Ax û Welat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .jump-btn { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.875rem; transition: all 0.2s; }
+        .jump-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; font-size: 0.75rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .copy-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Bilbilê</h1>
+            <p class="text-xl subtext mt-2">Transcript from Ax û Welat</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- General Info Card -->
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transcript Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Village</h3>
+                        <p class="text-lg">Bilbilê</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Source Channel</h3>
+                        <p class="text-lg">Ax û Welat</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Length</h3>
+                        <p class="text-lg">45:18</p>
+                    </div>
+                    <div class="mt-4">
+                    <a href="https://www.youtube.com/watch?v=rf5ESvgSEYQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+                </div>
+                <!-- Jump Buttons -->
+                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t themed-border">
+                    <a href="#english" class="jump-btn">Go to Translation</a>
+                    <a href="#kurdish" class="jump-btn">Biçe Transkrîptê</a>
+                </div>
+            </div>
+
+            <!-- English Translation Card -->
+            <div id="english" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">English Translation</h2>
+                    <button class="copy-btn" onclick="copySection('translation-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Copy
+                    </button>
+                </div>
+                <div id="translation-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:55]</span>Host: Dear viewers, [in] the program Xelat, we have headed towards Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:00]</span>Host: We have come to the district of Bilbile.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:03]</span>Host: As for this district of Bilbile, forty-five villages are connected to the district of Bilbile.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:09]</span>Host: And there are historical things in the district of Bilbile.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:14]</span>Host: But we will get to know more, so let&#x27;s move on together.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:21]</span>[Instrumental Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:54]</span>Host: Yes dear viewers, we have moved on to the Bilbil district.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:58]</span>Host: Right now we are at the house of the village headman.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:01]</span>Host: We will get to know more and introduce the history of this village, how many families are in this village, in the Bilbil district.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:09]</span>Host: Uncle Wrik is by my side. Hello teacher.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:12]</span>Guest: Hello, welcome. First of all, in the beginning, we welcome our television and Ronahî to the Bilbil district.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:21]</span>Guest: You are most welcome [lit: you came upon our head and eyes].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:24]</span>Host: Thank you very much [lit: may your head be healthy, may your eyes be healthy].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:26]</span>Host: Uncle Wrik, we want to learn something about the Bilbil district.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:30]</span>Host: Meaning, how many families are in it? As I know, they say Bilbil is known for the springs in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:36]</span>Host: How many villages are attached to it? Explain something for us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:41]</span>Guest: First okay, in the beginning, Bilbil itself is known by the name of the Gir Mountain.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:48]</span>Guest: Our Gir Mountain, its height above sea level is 1200 meters.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:53]</span>Guest: And with its springs too, all its springs are there, but our six springs...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:59]</span>Guest: ...are mostly in Bilbil.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:01]</span>Guest: And we, in the beginning, Bilbil was known by six families.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:07]</span>Guest: But what happened? Every family was settled in a spot. Every family was settled in a place.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:13]</span>Guest: Because they were goatherds. They owned sheep/goats. Bilbil was not in its [current] place.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:19]</span>Host: Where were they settled before?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:21]</span>Guest: Some were settled in Berkêş, they called it &#x27;Tûyê Husik&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:25]</span>Guest: Some were at Geylê Eqa. Some at Hêra Mêrzê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:30]</span>Guest: Some were at Rîşê Hesen Kuwêda. Meaning every family was settled in a place.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:38]</span>Guest: But the water was scarce. In this area, water was scarce.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:42]</span>Guest: At the current location of Bilbil, where the village is built, there was water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:46]</span>Guest: Its thicket was very dense. It was all trees, it was all reeds.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:51]</span>Guest: There were even wild animals living there. The people couldn&#x27;t even fetch their water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:59]</span>Guest: When the women came, at that time when they came to fetch their water, no, their men would also come with their weapons, just so they could fetch water from here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:09]</span>Guest: What happened in this place? In the time of the Ottomans, they—what they call &#x27;collecting money&#x27;—would go around the people, asking for &#x27;taxes&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:22]</span>Guest: They realized it would be easier [to defend themselves]. Since every family, every household was settled in a different spot.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:28]</span>Guest: They reasoned, they said come, why don&#x27;t we all gather, inside this place, and settle by this spring?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:36]</span>Guest: They said let&#x27;s settle, okay. They put their minds together, gathered and came.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:40]</span>Guest: At the time they came here, to the place of water to populate the village, to live, they said okay, what shall we name our village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:49]</span>Guest: A name for the place of Bilbil, no, the village wasn&#x27;t there. Every family was settled in a spot.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:52]</span>Host: Where is Bilbil from? The name Bilbil.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:54]</span>Guest: The name Bilbil, didn&#x27;t we say... After the sound... They were going to name it. They heard a bird, a fowl, singing on the tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:02]</span>Guest: They said, they asked, they said what is the name of this bird? They said its name is &#x27;Bilbil&#x27; [Nightingale].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:07]</span>Guest: They said okay, let the name of this place be Bilbil too. And they named it Bilbil. And until now it is known by this name.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:13]</span>Host: Now at the start you said, we have a mountain that is 1200 meters.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:16]</span>Host: As I know they say, from the upper side, the Citadel of Aleppo is also visible.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:21]</span>Host: Meaning Aleppo is visible from here. Meaning from here to Aleppo isn&#x27;t it a hundred kilometers, no?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:31]</span>Host: And so, the Citadel of Aleppo is visible from here? Is it that high?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:36]</span>Guest: We said first it is 1200 meters itself. The altitude, its height is great, it overlooks Aleppo. That is why it is visible.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:44]</span>Guest: At night, its electricity [lights] show... it doesn&#x27;t show completely.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:47]</span>Host: It&#x27;s not visible by day, but comes [into view] by night?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:48]</span>Guest: By day there is smoke, fog forms. It&#x27;s not visible by day. But by night all of Aleppo is visible, it is seen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:55]</span>Guest: On top of the Gir Mountain, they call it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:56]</span>Guest: We said Bilbil is known by the Gir Mountain. There is the Qestel [Fountain]. Its spring exists until now.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:02]</span>Guest: Before in the old times, the Ottomans in... even until now, the place of the goatherds is there.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:07]</span>Guest: They have walled all around it. They were all sheep owners. There was life on top of Gir, there was existence.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:13]</span>Guest: But after Bilbil was populated here, the people all came down and settled at this spring.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:18]</span>Host: Uncle Wrik, you said how many families are here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:22]</span>Guest: We said six families in Bilbil, the original ones. One of them...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:27]</span>Guest: ...the Cibko family. One of them is Xûra. One of them is Hemlera.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:35]</span>Guest: And one of them, are the Dadoxa family. And one is the Hecî Şêxelîl family. The Qadûrlera family is there.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:47]</span>Host: And is there anyone else? Did they come from the village or...?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:50]</span>Guest: After the village was built, when the Agha came into our village...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:54]</span>Guest: Before the Agha, no, I believe Hesik... Hesikê Kûroxlî, was from the Cibko family. He was a very tough man.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:05]</span>Guest: And because of his strength he stood against the Aghas. In the beginning, there was no Agha in Bilbil. The Agha lived in Bêkê village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:14]</span>Guest: They coveted Bilbil. They said come let&#x27;s settle in Bilbil. Hesik stood against him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:20]</span>Guest: He said &quot;I will not let the Agha come and enter our village&quot;. Because whichever village the Agha enters, whichever region he takes place in, it becomes bad.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:27]</span>Guest: He stood against him, they stood up with force, did bad things... They had Hesik killed. Until they came and settled here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:34]</span>Host: So how many houses [households] is Bilbil district?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:37]</span>Guest: At this time it is around 500 houses. 500 houses. There are 45 villages... villages, they are also dependent on the Bilbil district.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:50]</span>Host: And the institutions in it, are they all here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:53]</span>Guest: All our institutions are here, all of them. Here is the center we said, isn&#x27;t it a district. And all institutions are established in the district.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:02]</span>Guest: The People&#x27;s House, women&#x27;s institutions, art and culture...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:06]</span>Guest: Actually the atmosphere in the time, in this place, also the Self Administration we said...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:11]</span>Guest: ...established in Rojava, all institutions, the Administration of the time, at that time, actually all institutions were established here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:22]</span>Guest: And until now it continues and will always continue, and day by day it will get bigger.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:38]</span>Host: Dear viewers, as we said, we came to the Qestel [Fountain].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:42]</span>Host: This spring... there are six springs here. One of these, they call it Qestel.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:48]</span>Host: This is in the middle of the Bilbil district. But we will learn more from Brother Omer.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:54]</span>Host: Brother Omer is by my side. He will explain this name to us better. Hello teacher.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:58]</span>Guest 2: Hello, welcome. We welcome...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:00]</span>Guest 2: First of all, your arrival, we came until... Ronahî television, especially the program &quot;Ax û Welat&quot;, we welcome... most welcome, you came all the way here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:12]</span>Guest 2: We said, as you explained, and Uncle Wrik also said, this spring, they call it Qestel, it is the spring in the middle of the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:22]</span>Guest 2: Meaning for example, before in the images themselves they said, for example Bilbil was not here before, meaning the village Bilbil was not here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:29]</span>Guest 2: These mountains... far away. Every place, by the name of a family...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:34]</span>Guest 2: For example, as they say... for example Cibko, for example, there is Cibko&#x27;s place, for example Xeraşa, they were settled at Kumreş... they were settled at Tûyê Husik...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:44]</span>Guest 2: This happened later, meaning in its time, in the time before when they were there, meaning you know people always look for a place with water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:55]</span>Guest 2: A place where there is no water, there is no life, there is no existence.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:59]</span>Guest 2: But they, for example very... were scattered, until... for example...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Man: Afterward, when alone... water, there was a spring nearby.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:04]</span>Man: For example, at the spring, they were in the middle, there were trees and vegetation, it was wonderful (mashallah), though they saw much hardship.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:10]</span>Man: There was a step (ledge) for example, the Nightingale&#x27;s Step.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:14]</span>Man: That is why the name &quot;Bilbile&quot; (Nightingale) comes from there.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:17]</span>Man: I mean, for example, our springs are many, for example... the springs at the slope are numerous.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:22]</span>Man: For example, there are springs at the slope, they are underwater and loud, for example...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:24]</span>Host: The Gilberkêş Spring?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:26]</span>Man: Personally, Hemid&#x27;s spring... is Gilberkêş... It is in our neighborhood, for example.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:32]</span>Host: Is its name &quot;At the slope&quot;?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:34]</span>Man: We have other springs for example, there is Ese&#x27;s Spring.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:37]</span>Man: There is Osman&#x27;s, there is Kenari, there is the Upper Fountain for example.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:41]</span>Man: We have the Cross and high stream, there is the top of the big mountain.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:44]</span>Man: There was Hemed&#x27;s Spring, for example.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:46]</span>Man: A spring they called... On the Kelxelîl Tomb, that existed too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:49]</span>Man: But specifically this spring... before, for example... it wasn&#x27;t like it is now, in that sense.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:53]</span>Man: According to, for example, us—we didn&#x27;t witness it, but they used to tell us about it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:56]</span>Man: I mean, if it existed, it was built, the spring is behind us, this spring.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:58]</span>Man: Next to this spring, there was a mill.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:00]</span>Host: Ali Seydo&#x27;s Mill?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:02]</span>Man: Ali Seydo&#x27;s Mill, exactly.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:03]</span>Host: Is it gone?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:04]</span>Man: No, no it is gone. Just...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:06]</span>Man: They mention it often... they called the place, they called it the Spring of Ali Seydo&#x27;s family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:10]</span>Man: They too... migrated from... the work areas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:14]</span>Man: And here was the middle of the village, for example the people... I mean they were together.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:19]</span>Man: They built all that, they said let us... fix this spring because, for example, the state authorities used to take water from it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:25]</span>Man: They spoke of the old nightingales, in the middle... there were old nightingales.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:28]</span>Man: Everything of theirs was completely determined/strong, my brother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:30]</span>Man: They washed their clothes by it (the spring).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:31]</span>Man: They processed their wool by it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:33]</span>Man: Their livestock by it... they watered them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:35]</span>Man: I mean sometimes, water... they released water for the home gardens too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:39]</span>Man: I mean this... specifically regarding the issue of the fountain, these were the things.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:42]</span>Man: I mean the people built it for... their need for it was great.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:46]</span>Man: They needed it for everything.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:48]</span>Man: May God be pleased with them, for example they were below us, for example below us there is a place they called &quot;Binê Bîstana&quot; (Below the Orchards).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:52]</span>Man: There were two orchards.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:54]</span>Man: I mean every person, for example, had their own garden, they watered the garden with it, they worked.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:58]</span>Host: And the water of your valley/area?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:59]</span>Man: It was this valley/area, yes indeed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:00]</span>Man: After the front, for example the valley, they called this &quot;Binê Bîstana&quot;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:03]</span>Man: Over there, for example, there were gardens before, now... I mean they planted their important things.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:08]</span>Man: Not huge orchards, just for the household, for subsisting/managing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:11]</span>Man: That was it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:12]</span>Host: They watered their livestock with it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:13]</span>Man: This was the fountain.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:15]</span>Host: Thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:16]</span>Man: You are welcome (Upon my eyes), welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:18]</span>Man: And thank you very much (may your house be built).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:19]</span>Man: We also greet our pilgrims and those watching our knowledge/culture.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:23]</span>Man: And those watching the culture, we send our greetings from the grave (ancestors/depths).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:27]</span>Man: And especially, Leader Apo, and have a very good time.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:40]</span>Host: Dear viewers, now the mother is making dinner here as well.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:45]</span>Host: Here they call it &quot;shishbarak&quot; (meat dumplings in yogurt).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:48]</span>Host: Mother Xec?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:49]</span>Woman: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:50]</span>Host: Please, how did you make the shishbarak?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:54]</span>Woman: Shishbarak...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:55]</span>Host: What did you put in it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:56]</span>Woman: Kneaded/Prepared it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:57]</span>Host: Kneaded it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:58]</span>Woman: In the beginning, we prepared/kneaded our dough.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:00]</span>Woman: We added yogurt...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:01]</span>Woman: And we boiled it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:03]</span>Woman: And we made... soup and we made our shishbaraks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:07]</span>Woman: We put our meat in, put it in and boiled it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:10]</span>Host: Is it dough?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:11]</span>Woman: It is dough.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:12]</span>Host: What did you put inside it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:13]</span>Woman: We put meat inside it, and we [put] onions and oil...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:18]</span>Woman: Stuff like that, we put inside it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:22]</span>Host: How much time does it require?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:25]</span>Woman: Well the time... it requires approximately an hour, two hours.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:30]</span>Host: An hour, two hours?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:32]</span>Woman: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:33]</span>Host: Bon appétit.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:34]</span>Woman: Thanks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:37]</span>Host: Dear viewers, now this is shishbarak.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:41]</span>Host: Now the group calls it shishbarak, and is there another saying/name? What do they say?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:46]</span>Host: In Afrin? They say shishbarak, who are they?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:48]</span>Woman: We say shishbarak.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:43]</span>Host: Dear viewers, the mothers are making food here now, and while they prepare the food, there is a magnificent song, from this region.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:52]</span>Host: The region... the district of Bilbile. One with a beautiful voice, they will all sing a song together. Please, go ahead.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:58]</span>Woman: It is me, it is me, I am the ember. It is me, it is me, I am the ember.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:06]</span>Chorus: It is me, it is me, I am the ember. It is me, it is me, I am the ember.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:15]</span>Woman: When the dark times came, I was like the sea. When the dark times came, I was like the sea.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:24]</span>Chorus: When the dark times came, I was like the sea. When the dark times came, I was like the sea.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:32]</span>Woman: The house planted in front, I am the rice paddy and the vineyard. The house planted in front, I am the rice paddy and the vineyard.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:40]</span>Chorus: The house planted in front, I am the rice paddy and the vineyard. The house planted in front, I am the rice paddy and the vineyard.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:49]</span>Woman: The billy goat grazes on the cliff. The billy goat grazes on the cliff.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:58]</span>Chorus: The billy goat grazes on the cliff. The billy goat grazes on the cliff.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:07]</span>Woman: Those over there are our houses. Those over there are our houses.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:16]</span>Chorus: Those over there are our houses. Those over there are our houses.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:25]</span>Woman: Inside the houses are wicker screens. Inside the houses are wicker screens.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:34]</span>Chorus: Inside the houses are wicker screens. Inside the houses are wicker screens.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:43]</span>Woman: Behind the screen are the bride and groom. Behind the screen are the bride and groom.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:51]</span>Chorus: Behind the screen are the bride and groom. Behind the screen are the bride and groom.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:13]</span>Woman: Dear viewers, the mothers are making food here now... I can say, this is Kufte (meatballs), with yogurt sauce.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:21]</span>Woman: And this is fried Kufte. This is thin bread.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:27]</span>Woman: And this is Shish-perek, it is made with meat and dough.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:31]</span>Woman: And this is Sembusak, with meat and rice.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:35]</span>Woman: And this is a sweet/pastry, this is bread with syrup (Shilik), as we, the Kurds of Afrin, call it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:41]</span>Woman: And this is Kitayi, it is made with meat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:44]</span>Woman: And this is Qetmer (Katmer)... it is very old, it is made with oil and sugar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:49]</span>Woman: This is our table, we have prepared this. And bon appetit, my dears. This is our Kurmanji dinner.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:51]</span>Host: Dear viewers, here we have reached the end of our program.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:55]</span>Host: Truly, we never want to say goodbye to you and separate from you... but what can we do, we have reached the end of our program.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:02]</span>Host: We spent time in the district of Bilbile, as we watched together... We got to know the culture of this region.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:09]</span>Host: But in the end, we came to Uncle Mihemed. Uncle Mihemed sings old songs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:15]</span>Host: He sings songs of this region, of the outside, of the north, he sings of all Kurdistan, old songs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:23]</span>Host: And here, the tambour player brother Kemal is here, playing the tambour. And brother Nebî Beyrem. Hello to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:31]</span>Guest: You are most welcome, you have brought joy to our heads and eyes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:34]</span>Guest: Be healthy. Uncle Mihemed, how many years have you been singing songs?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:39]</span>Guest: Well songs, when we were small, were children, we... we sang. But... from that time until now, meaning we don&#x27;t call ourselves singers...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:46]</span>Guest: But we didn&#x27;t forget them, not a single word left our memory. We didn&#x27;t practice professionally, of course. We didn&#x27;t always practice like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:54]</span>Guest: But we were small and children, we went herding cattle, cows and sheep, we would fall into [the mood] with our cattle, and we sang to ourselves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:02]</span>Guest: We used to put on reels of recorders... actually recorders hadn&#x27;t even come out yet. We had a passion for it. So, one word...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:07]</span>Host: Who did you listen to?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:09]</span>Guest: We listened to Cemîl Horo. We listened to Elî Tûjo, Bavê Elî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:14]</span>Host: Who are the old artists from here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:16]</span>Guest: Artists from here, from this village itself, meaning...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:19]</span>Host: No not the village, of the Afrin region.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:21]</span>Guest: There was... Eylê Kopê was there, Reşîdê Mem Çûçanê was there, may God have mercy on them, may the Lord&#x27;s mercy be upon them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:29]</span>Guest: Hecî Nazê was there, Evdê Şa&#x27;re was there... Bavê... what was his name?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:35]</span>Host: Bavê Sele?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:36]</span>Guest: That&#x27;s right, Elîk was there, Beytaz was there. That&#x27;s right, Elîk was there, Beytaz was there.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:40]</span>Host: Did you listen to all of them?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:42]</span>Guest: Well we listened, there are some, at that time, the words stayed in our memory, we mostly... we listened to Cemîl Horo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:50]</span>Host: Okay, now what will you sing for us?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:52]</span>Guest: Well now, we will present a piece for guests and love. And this is a heritage, an old heritage, this one too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:58]</span>Guest: Meaning... [unclear]... Cemîl Horo performed it. May God have mercy on him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:03]</span>Guest: Meaning, I loved that person very much.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:05]</span>Host: Please go ahead, Uncle Mihemed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:06]</span>Guest: You are welcome, be healthy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:51]</span>Guest: Oh love, love, love, love, love, love, love, love, love, love, love, love, love...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:00]</span>Singer: Oh beloved Meyro, oh...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:03]</span>Singer: Oh beloved, beloved, beloved...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:12]</span>Singer: My petite one, beloved Meyro.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:15]</span>Singer: Come oh Meyro, oh Meyro, oh Meyro...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:23]</span>Singer: Oh, oh, fear God somewhat (have a God from God).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:27]</span>Singer: You will turn your face to our mountain, Lawan Pasha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:32]</span>Singer: To our mountain, Metina.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:34]</span>Singer: Oh beloved, beloved, beloved...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:38]</span>Singer: My petite one, beloved Meyro.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:40]</span>Singer: Oh beloved, beloved, beloved...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:12]</span>Singer: Woe is me, woe is me, woe is me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:23]</span>Singer: The blood enemy was asleep lo, the blood enemy was asleep.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:33]</span>Singer: Broad breasts pressed against him lo, broad breasts pressed against him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:44]</span>Singer: The dagger from the sash lo, the dagger from the sash.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:54]</span>Singer: Do not bring the dagger lo, do not bring the dagger.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[42:04]</span>Singer: The dagger was a mace of jewels lo, the dagger was a mace of jewels.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[42:15]</span>Singer: It was upon the boy&#x27;s heart lo, it was upon the boy&#x27;s heart.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[42:25]</span>Singer: Fair Fato was opposite him lo, Fair Fato was opposite him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[42:36]</span>Singer: Hec Hekîmo was beside him lo, Hec Hekîmo was beside him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[42:46]</span>Singer: Ay...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[43:00]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[45:18]</span>[End of Audio]</p>
+                </div>
+            </div>
+
+            <!-- Kurdish Transcript Card -->
+            <div id="kurdish" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transkrîpta bi Kurmancî</h2>
+                    <button class="copy-btn" onclick="copySection('transcript-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Kopî bike
+                    </button>
+                </div>
+                <div id="transcript-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:55]</span>Host: Temaşevanên hêja, bernameya Xelat, me berê xwe da Efrînê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:00]</span>Host: Em hatine navçeya Bilbilê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:03]</span>Host: Ev navçeya Bilbilê jî, çil û pênc gund girêdayî navçeya Bilbilê ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:09]</span>Host: Lê tiştên dîrokî di navçeya Bilbilê da hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:14]</span>Host: Lê em ê hêna zêde nas bikin, lê ka em bi hev ra derbas bin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:21]</span>[Mûzîka Enstrûmental]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:00]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:54]</span>Host: Belê temaşevanên hêja, em derbasî navçeya Bilbilê bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:58]</span>Host: Lê niha em li mala keyayê gund in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:01]</span>Host: Em ê zêde naskin û bidin naskirin, dîroka vê gundî, çiqas malbat di vê gundî de hene, di navçeya Bilbilê de.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:09]</span>Host: Lê Apê Wrik li kêleka min e. Merheba mamosta.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:12]</span>Guest: Merheba, ehlen we sehlen. Ewil serî de, destpêkê, em xêrhatina televîzyona me û Ronahî li navçeya Bilbilê dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:21]</span>Guest: Hûn hatin ser serê me û ser çavê me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:24]</span>Host: Serê te sax be, çavê te sax be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:26]</span>Host: Apê Wrik, em dixwazin tiştekî li ser navçeya Bilbilê naskin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:30]</span>Host: Yanî çiqas malbat tê de ye? Wek ez zanim dibêjin Bilbilê kaniyên tê de naskirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:36]</span>Host: Çiqas gund girêdayî vê hene? Tiştekî ji me re xuyan bikî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:41]</span>Guest: Ewil temam, destpêkê, Bilbil bi xwe bi navê çiyayê Gir tê naskirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:48]</span>Guest: Çiyayê me yê Gir, bilindbûna wî li ser bahrê 1200 mîtro ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:53]</span>Guest: Û bi kaniya wî jî, hemû kaniya wî jî hene, feqet şeş kaniyên me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:59]</span>Guest: ...bêtir di Bilbilê de hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:01]</span>Guest: Û em jî destpêkê, Bilbil bi şeş aîla dihat naskirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:07]</span>Guest: Feqet çi bû? Her aîleke li çokekî rûniştibûn. Her aîleke li derekê rûniştibûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:13]</span>Guest: Jiber ku me&#x27;zcî bûn. Xwedî pez bûn. Bilbil ne di ciyê xwe da bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:19]</span>Host: Li ku derê rûniştibûn berê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:21]</span>Guest: Hinek li Berkêşê rûniştibûn, vê re digotin &#x27;Tûyê Husik&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:25]</span>Guest: Hinek li Geylê Eqa bûn. Hinek li Hêra Mêrzê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:30]</span>Guest: Hinek li Rîşê Hesen Kuwêda bûn. Yanî her aîlek li derekê rûniştibûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:38]</span>Guest: Feqet av tenê bû. Li vî darnê av tenê bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:42]</span>Guest: Li ciyê Bilbilê niha, gund lê ava bûye, av hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:46]</span>Guest: Hirşê vê gelek pir bû. Gî dar bû, gî qamûş bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:51]</span>Guest: Heya heywanatên berrî hebûn, di wir de dijiyan. Milet nikarîbû hata ava xwe bibira.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:59]</span>Guest: Daxêk jinê dihatin, wê demê ku dihatin ava xwe bibira, ne, zilamê wan jî tev sîlahê xwe dihatin, heya av dihatin ji vê derê dibirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:09]</span>Guest: Di vî derî de çi bû? Di dema Osmaniyan de, wanê di vêra dibêjin &#x27;pere tûp dikirin&#x27;, li ser milet digerin, digotin &#x27;vêrgî&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:22]</span>Guest: Wê jî sehkir, rehet dibê yanî. Tê her aîlek, her malbatek li çokê rûniştiye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:28]</span>Guest: Kir aqil, got werin, xêr e çima gî kom nabin, di hindir vê derê, ser vê kaniyê rûnanin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:36]</span>Guest: Ê got em rûnin, temam. Dê aqilê xwe çûn ser hevdu, top bûn hatin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:40]</span>Guest: Di dema ku hatin li vê derê, li ciyê avê ku gund şên bikin, jiyan bikin, ê got temam, em ê navê gundê xwe çi lêkin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:49]</span>Guest: Navekî ciyê Bilbilê, no, gund tê nebû. Her malbatek li çokê rûniştibû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:52]</span>Host: Bilbil jikanî? Navê Bilbilê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:54]</span>Guest: Navê Bilbilê, ne me got... Piştî ku deng... Eke nav lê bikin. Seh kirin çûkek, teyrek, li ser darê dixwîne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:02]</span>Guest: Gotin, pirs kirin, gotin navê vê teyrî çi ye? Gotin navê vî &#x27;Bilbil&#x27; e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:07]</span>Guest: Gotin temam, bila navê vir jî bibe Bilbil. Û nav lê kirin Bilbil. Û heya niha jî bi vî navî tê naskirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:13]</span>Host: Niha destpêkê te got, çiya li cem me heye 1200 mîtro.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:16]</span>Host: Wek ez zanim dibêjin, ji hela jûr, Keleha Helebê jî xuya dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:21]</span>Host: Yanî Heleb jî vir va xuya dike. Yanî ji vira heya Helebê ne sed kîlometre ye, na?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:31]</span>Host: Û yanî, ji vir va Keleha Helebê xuya dike? Ma ewqas bilind e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:36]</span>Guest: Me got ewil bi xwe 1200 mîtro ye. Îrtîfa, bilindbûna vê pir e, li ser Heleb ketiye. Loma xuya tê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:44]</span>Guest: Bi şev, kehrabê wê nîşan... temamîna xuya nake.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:47]</span>Host: Bi roj xuya nake, bes bi şev tê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:48]</span>Guest: Bi roj dûman dibe, mij çêdibe. Bi roj xuya nake. Bes bi şev temamîna Heleb xuyaye, tê dîtin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:55]</span>Guest: Li serî çiyayê Gir, vêra dibêjin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:56]</span>Guest: Me got Bilbil bi çiyayê Gir tê naskirin. Qestel heye. Kaniya wê heya niha heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:02]</span>Guest: Berê dema berê, Osmaniyan li da... her heta niha, ciyê me&#x27;zciya tê de heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:07]</span>Guest: Gî dor wê toxim girtine. Gî xwedî pez bûn. Li serê Gir jiyan hebû, heyat hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:13]</span>Guest: Bes piştî Bilbil li virê şên bû, milet gî daket li ser vê kaniyê rûnişt.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:18]</span>Host: Apê Wrik, te got çend malbat di vir de hene?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:22]</span>Guest: Me got şeş malbat di Bilbilê de, êd esas hene. Yek ji wan...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:27]</span>Guest: ...malbata Cibko. Yek ji wan Xûra heye. Yek ji wan Hemlera heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:35]</span>Guest: Yek jî ji wan, malê Dadoxa ne. Yek jî malê Hecî Şêxelîl heye. Malê Qadûrlera heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:47]</span>Host: Û kesî din jî heye? Ji gund hatine yan... ?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:50]</span>Guest: Demê gund ava bû, şûnda, demê Axa ketin gundê me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[15:54]</span>Guest: Berê Axa, ne, bawerim Hesikê... Hesikê Kûroxlî, ji malbata Cibko bû. Mirovakî pir qebadayî bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:05]</span>Guest: Û jiber hewla li hember axaleran sekinî. Destpêkê Axa di Bilbilê de tune bû. Axa li gundê Bêkê rûniştibû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:14]</span>Guest: Tima&#x27;ê wan ket Bilbilê. Gotin werin di Bilbilê de rûnin. Hesik li hemberê derket.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:20]</span>Guest: Got &quot;Ez nahêlim Axa were di gundê me keve&quot;. Jiber Axa di kîjan gundî keve, di kîjan mintîqê de cî bigire, xirab dibe yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:27]</span>Guest: Li hemberê sekinî, rabûn bi destî, kirin xirab... Hesik dan kuştinê. Heya hatin di vir de rûniştin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:34]</span>Host: Ê navçeya Bilbilê çiqas mal e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:37]</span>Guest: Di vê demê de dor 500 mal e. 500 mal e. 45 gund ji... gundî hene, ew jî tabe&#x27;ê navçeya Bilbilê ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:50]</span>Host: Û sazî di wê, hemû li vir hene?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[16:53]</span>Guest: Saziyê me gişkî hene, hemû hene. Virê merkez e me got, ne navçe ye. Ê hemû sazî jî di navçê de ava dibin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:02]</span>Guest: Mala gel e, saziyê jinê ne, çand û hûner e...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:06]</span>Guest: Zatî hewa di dema, di vê derê de, hem Îdara Zatiyê me got...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:11]</span>Guest: ...ava kirin di Rojava da, hemû sazî, Rêveberiya dema, di wê demê de, zatî hemû sazî li vir hatin ava kirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:22]</span>Guest: Û heya niha jî berdewam dike û ê tim jî berdewam bike, hîn roj bi rojê jî ê mezintir bibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:30]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:38]</span>Host: Temaşevanên hêja, wek me got, em hatin ser Qestelê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:42]</span>Host: Ev kaniya... ev şeş kanî li vir hene. Jiyek hev va, vêra dibêjin Qestel.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:48]</span>Host: Ev di orta navçeya Bilbilê da ye. Lê hîn em ê zêde naskin ji Birê Omer.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:54]</span>Host: Birê Omer li kêleka min e. Em ê vê navê xuyan bike ji me re baştir. Merheba mamosta.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:58]</span>Guest 2: Merheba, ser çava. Em xêrhatin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:00]</span>Guest 2: Destpêkê, hatina we, em hatin heta... televîzyona Ronahî, taybetî bernama &quot;Ax û Welat&quot;, em xêrhatin... ser çavê me re, heya biderî hatine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:12]</span>Guest 2: Me got, wek te xuyan kirî, û Apê Wrik jî got, ev kaniya, vêra dibêjin Qestel, kaniya orta gund e yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:22]</span>Guest 2: Yanî mesela, berê jî dîmenê bi xwe da gotin, mesela Bilbil berê li vir tune bû, yanî gund Bilbil li vir tune bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:29]</span>Guest 2: Ev çiyayên... dûr yanî. Her her cîk, bi navê malbatekê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:34]</span>Guest 2: Mesela, wek gotina... mesela Cibko, mesela, ciyê Cibko heye, mesela Xeraşa, li kumreşê rûniştibûn... li Tûyê Husik rûniştibûn...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:44]</span>Guest 2: Ev piştra mesela bûn, yanî di wextê xwe da, wextê ku berê wara ve da, yanî dizanê mesela milet jî tim li hember ciyê av digere.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:55]</span>Guest 2: Ciyê ku av tune be, jiyan nabe, heyat nabe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:59]</span>Guest 2: Lê wara, mesela pir... ra&#x27;d bûn, heta şu... mesela...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Man: Dûre dema tenê... av, kaniya li ber hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:04]</span>Man: Mesela ser kaniyê, ortê bûn, dar û ber bûn û maşellah bûn û zehmetê pir dîtin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:10]</span>Man: Pîngek hebû mesela, Pînga Bilbile.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:14]</span>Man: Lewra navê Bilbile ji wê tê yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:17]</span>Man: Yanî mesela kaniyên me yên pir mesela... kaniya ber kaşê pir in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:22]</span>Man: Mesela kaniyê ber kaşê hene, bin av û deng in mesela...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:24]</span>Host: Kaniya Gilberkêş?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:26]</span>Man: Bi xwe kaniya Hemîd... Gilberkêş e... Li taxa me ye mesela.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:32]</span>Host: Navê wê ber kaşê ye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:34]</span>Man: Kaniyên me yê din hene mesela, Kaniya Êsê heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:37]</span>Man: Osman heye, Kenarî heye, Qestela Jûr heye mesela.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:41]</span>Man: Selîb û çayê me bilind, serê çiyayê gir heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:44]</span>Man: Kaniya Hemedê hebû mesela.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:46]</span>Man: Kanîk li digotin... Ser Tirbê Kelxelîl, ew jî hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:49]</span>Man: Ema ew bi xwe ev kaniya... berî mesela... ne wek naha wate yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:53]</span>Man: Gorî mesela, me, em negihîştinê, hema ji me re behs dikirin mesela.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:56]</span>Man: Yanî heba, çekirin, kaniya li pişta me ye ev kanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:58]</span>Man: Li ber vê kaniyê, aşek hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:00]</span>Host: Aşê Elî Seydo?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:02]</span>Man: Aşê Elî Seydo yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:03]</span>Host: Tine?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:04]</span>Man: Na, na tine ye. Hema...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:06]</span>Man: Hema pir dikin... warê digotin, digotin kaniya mala Elî Seydo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:10]</span>Man: Ew jî... bar dikin ji... cîbkaran.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:14]</span>Man: Û ev li vir jî ortê gund bû mesela milet... yanî bi hev re bûn mesela.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:19]</span>Man: Ew gî çêkirin, go em... vê kaniyê çêkin boy mesela hewana dewletê av jê dibirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:25]</span>Man: Digotin bilbilên kevin, ortê... bilbilên kevin hebûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:28]</span>Man: Hemû tiştê xwe gişt azîm bûn biraye min.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:30]</span>Man: Kincê xwe li ber dişûştin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:31]</span>Man: Hiriyê xwe li ber dikirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:33]</span>Man: Dewara xwe li ber... av didan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:35]</span>Man: Yanî carna, av... av ji boy malbaxçan jî ber didan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:39]</span>Man: Yanî ev... taybetî mesele pey qestelê ev bûn yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:42]</span>Man: Yanî milet çêkir ji boy... ihtiyaciya wan pê gherîkî bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:46]</span>Man: Ji boy her tiştî wan pê gerek e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:48]</span>Man: Xwedê jê razî mesela li jêrî me bûn, mesela jêrî me heye mesela digotin Binê Bîstana.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:52]</span>Man: Du baxçe bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:54]</span>Man: Yanî her însanekî mesela baxçê xwe hebû, pê baxçe av didan, kar dikirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:58]</span>Host: Ê ava derê we?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:59]</span>Man: Ev derê bû de, are yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:00]</span>Man: Piştî berê mesela derê, ve digotin Binê Bîstana.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:03]</span>Man: Li wir mesela baxçe hebûn ber, îse... yanî tiştê xweyî giring wan diçandin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:08]</span>Man: Ne bi baxçê pir, ji boy malê yanî, ji boy îdarekirinê yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:11]</span>Man: Ev bûn yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:12]</span>Host: Dewarê xwe pê didênî yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:13]</span>Man: Qestel ev bû yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:15]</span>Host: Spas dikim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:16]</span>Man: Ser çavê min, xêr hatin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:18]</span>Man: Û gelek mala ava.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:19]</span>Man: Em toveyên jî silavê me hacî û ilmê me seyr dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:23]</span>Man: Û ilmê temaşe dikin, em silavê xwe ji gora dikişînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:27]</span>Man: Û bi taybetî, Rêber Apo, û saetê we gelek xweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:40]</span>Host: Temaşevanên hêja, dê naha dayik li vir jî şîvê dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:45]</span>Host: Li vira dibêjin şîşperek.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:48]</span>Host: Ana Xec?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:49]</span>Woman: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:50]</span>Host: Ji kerema xwe, te şîşperek çawa çêkir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:54]</span>Woman: Şîşperek...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:55]</span>Host: Te çi kire nav?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:56]</span>Woman: Jî da.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:57]</span>Host: Jî da?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:58]</span>Woman: Destpêkê de, me hevîrê xwe dûtin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:00]</span>Woman: Me kir mast...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:01]</span>Woman: Û me keland.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:03]</span>Woman: Û me kir... şorbakê û me şîşpereka xwe çêkirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:07]</span>Woman: Me goştê xwe kirî, kirî keland.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:10]</span>Host: Hêvîr e?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:11]</span>Woman: Hêvîr e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:12]</span>Host: We çi kiriye nav de?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:13]</span>Woman: Me goşt kir nav de, û me pîvaz û zeyt...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:18]</span>Woman: Tişt mişt, me kir nav de.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:22]</span>Host: Çiqasî dem dixwaze wextê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:25]</span>Woman: Welle wextê... teqrîben saetek, du saeta dixwaze.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:30]</span>Host: Saetek, du saeta?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:32]</span>Woman: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:33]</span>Host: Noşî can be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:34]</span>Woman: Spas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:37]</span>Host: Temaşevanên hêja, naha ev şîşperek e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:41]</span>Host: Naha cemaet dibêjin şîşperek, û çi ve gotinek din heye? Dibêjin çi?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:46]</span>Host: Li Efrînê? Dibêjin şîşperek, kî ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:48]</span>Woman: Em dibêjin şîşperek.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:43]</span>Host: Temaşevanên hêja, li naha dayik li vira xwarinê çêdikin, haya xwarinê amade dikin, stranek bi heybetî heye, ê vê herêmê ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:52]</span>Host: Herêma... navçeya Bilbilê. Yekê dengxweş, gî stranekê bi hevra bibêjin. Dê kerem kin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:58]</span>Woman: Ez im, ez im, pêreng ez im. Ez im, ez im, pêreng ez im.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:06]</span>Chorus: Ez im, ez im, pêreng ez im. Ez im, ez im, pêreng ez im.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:15]</span>Woman: Gava reş hat, wek dengiz im. Gava reş hat, wek dengiz im.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:24]</span>Chorus: Gava reş hat, wek dengiz im. Gava reş hat, wek dengiz im.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:32]</span>Woman: Mal ber çandî, çeltik rez im. Mal ber çandî, çeltik rez im.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:40]</span>Chorus: Mal ber çandî, çeltik rez im. Mal ber çandî, çeltik rez im.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:49]</span>Woman: Lê diçêre nêrî gazê. Lê diçêre nêrî gazê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[31:58]</span>Chorus: Lê diçêre nêrî gazê. Lê diçêre nêrî gazê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:07]</span>Woman: Wanê d&#x27;hana malêt me ne. Wanê d&#x27;hana malêt me ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:16]</span>Chorus: Wanê d&#x27;hana malêt me ne. Wanê d&#x27;hana malêt me ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:25]</span>Woman: Di nav mala da çît perde ne. Di nav mala da çît perde ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:34]</span>Chorus: Di nav mala da çît perde ne. Di nav mala da çît perde ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:43]</span>Woman: Di paş perde da bûk zava ne. Di paş perde da bûk zava ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:51]</span>Chorus: Di paş perde da bûk zava ne. Di paş perde da bûk zava ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:13]</span>Woman: Timaşevanên hêja, li naha dayik li vira xwarina çêdikin... Ez kanim bêjim, ev kofte ye, bi lebenniye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:21]</span>Woman: Ev jî kofta qawurmediye. Eva nanê tenik e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:27]</span>Woman: Ev jî şîş-perek, bi goşt û hevîr çêdibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:31]</span>Woman: Ev jî sermîsek, bi goşt û riz.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:35]</span>Woman: Ev jî şîrînû ye, ev a nanê bi şilik, em dibên, cemek kurdê Efrînê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:41]</span>Woman: Ev jî kitayî ye, bi goşt çêdibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:44]</span>Woman: Û ev jî qetmer... ew pir kevne, rûn û şekir çêdibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:49]</span>Woman: Vêsta sifra me, heva me hazir kiriye. Û saet xweş, bêlcanî we. Şîvê me Kurmancan va ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:51]</span>Host: Temaşevanên hêja, li vir jî em gihîştin dawiya bernama xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:55]</span>Host: Bi rastî, tu caran mera xatirê xwe ji we nakan û ji we biqetîn... lê em çawa bikin, em gihîştin dawiya bernama xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:02]</span>Host: Li navçeya Bilbilê me darbaskir, wek me bi hevra temaşe kir... Çanda vê herêmê me nas kir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:09]</span>Host: Lê di dawiyê da jî, em hatin cem Apê Mihemed. Apê Mihemed jî stranên kevn dibêje.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:15]</span>Host: Stranên vê herêmê dibêje, ê derwa, ê bakur dibêje, ê hemû ê Kurdistanê dibêje, stranên kevn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:23]</span>Host: Û vêra tembûrvan birê Kemal li vêraye, tembûrê dixe. Û birê Nebî Beyrem. Merheba ji te ra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:31]</span>Guest: Ya ehlen we sehlen, bi xêr hatin ser serê me û ser çavê me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:34]</span>Host: Sax bî. Apê Mihemed, çend sal e tu distirê stranan dibêjî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:39]</span>Guest: Welle strana, em biçûk bûn zarok bûn, me... me debêt. Bes... ji wê çaxê da hetanî naha, yanî em nabêjin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:46]</span>Guest: Bes dê me ji bîr nekirin, yek şor ji bîra me neçû. Me mumarise nekir, elbet. Me tim wiha mumarise nekir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:54]</span>Guest: Bes em biçûk û zarok bûn, em diçûn ber dewar, çêlek û pez, me diketin meselen ber dewarê xwe, me ji xwe ra digot.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:02]</span>Guest: Me gulana m&#x27;secla... m&#x27;secle jî ne derketibûn. Meraqa me l&#x27;ser hebû. Işta yek şor...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:07]</span>Host: Te guhdariya kê dikir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:09]</span>Guest: Guldariya Cemîl Horo me dikir. Ê Elî Tûjo me dikir, Bavê Elî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:14]</span>Host: Hunermendên vir kevn, kî ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:16]</span>Guest: Hunermendên vir, nefsê vê gundî, yanî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:19]</span>Host: Na ê gund na, ê herêma Efrînê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:21]</span>Guest: Hebû, Eylê Kopê hebû, Reşîdê Mem Çûçanê hebû, Xwedê rehma xwe li wan bike, rehma mîreba li wan be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:29]</span>Guest: Hecî Nazê hebû, Evdê Şa&#x27;re hebû... Bavê... navê wî çi bû?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:35]</span>Host: Bavê Sele?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:36]</span>Guest: Rast e, Elîk hebû, Beytaz hebû. Rast e Elîk hebû, Beytaz hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:40]</span>Host: Te guhdariya wan giyan dikir?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:42]</span>Guest: Welle me guhdarî dikir, de hinek hen, ew çaxê hewna, kelîmet di bîra me de bûn, me pir... ê me Cemîl Horo me guhdarî dikir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:50]</span>Host: Ê baş e, naha tê çi ji me ra bistirê?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:52]</span>Guest: Ya me nika, harfekî mêvanan û muhbeta bidin. De ev jî tûrasek, tûrasekî kevn e, hav jî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:58]</span>Guest: Yanî bavê... qelemkda... Cemîl Horo dida ye. Xwedê rehma xwe lêke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:03]</span>Guest: Yanî, min ji wî însanî pir hez dikir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:05]</span>Host: Dê kerem ke Apê Mihemed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:06]</span>Guest: Ya ehlen we sehlen, sax bî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:51]</span>Guest: Oy de yar, yar, yar, yar, yar, yar, yar, yar, yar, yar, yar, yar, yar...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:00]</span>Singer: Yar meyrûyê, oy...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:03]</span>Singer: Ay de yar, yar, yar...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:12]</span>Singer: Kînam yar meyrûyê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:15]</span>Singer: Bê lê meyrû, lê meyrû, lê meyrû...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:23]</span>Singer: Arê, arê, xudêkî ji xudê hebinê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:27]</span>Singer: Tê berê xo bide çayê mayî Lawan paşa ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:32]</span>Singer: Çayê me yî Metînê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:34]</span>Singer: Oy de yar, yar, yar...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:38]</span>Singer: Kînam yar meyrûyê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[40:40]</span>Singer: Arê de yar, yar, yar...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:12]</span>Singer: Wey lo, wey lo, wey lo wo, wey lo, wey lo, wey lo wo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:23]</span>Singer: Serkê xînê di xew da wo lo, serkê xînê di xew da wo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:33]</span>Singer: Memik panik pê ve da wo lo, memik panik pê ve da wo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:44]</span>Singer: Xencer jiber şelya wo lo, xencer jiber şelya wo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[41:54]</span>Singer: Ne tû bîne xencer bî lo, ne tû bîne xencer bî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[42:04]</span>Singer: Xencer gurzik cewher bî lo, xencer gurzik cewher bî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[42:15]</span>Singer: Ser dilkê lawik wer bî lo, ser dilkê lawik wer bî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[42:25]</span>Singer: Fota gewrê li hember bî lo, Fota gewrê li hember bî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[42:36]</span>Singer: Hec Hekîmo liser bî lo, Hec Hekîmo liser bî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[42:46]</span>Singer: Ay...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[43:00]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[45:18]</span>[End of Audio]</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on January 19, 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Copy to clipboard function
+        function copySection(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Find the button that was clicked and update its text
+                const btn = event.target.closest('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ✓';
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Diraqliya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1.5rem; } /* Increased Paragraph Spacing */
+        .prose-compact p { margin-bottom: 0.5rem; } /* Compact spacing for Basic Info */
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container and image */
+        #minimap--era .map-container {
+            position: relative;
+        }
+        #minimap--era .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Style for the yellow highlight circles */
+        #minimap--era .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR ÇK Map 12 --- 
+         Recalculated for original image dimensions of 991x1349 pixels.
+        */
+        #minimap--era .nebi-huri { left: 34.51%; top: 3.04%; width: 9.89%; height: 7.26%; }
+        #minimap--era .mersewa { left: 45.41%; top: 9.34%; width: 9.89%; height: 7.26%; }
+        #minimap--era .siltete { left: 59.84%; top: 11.05%; width: 9.28%; height: 6.82%; }
+        #minimap--era .omer-simo { left: 38.85%; top: 14.75%; width: 8.88%; height: 6.52%; }
+        #minimap--era .siiriya { left: 31.08%; top: 20.83%; width: 9.69%; height: 7.12%; }
+        #minimap--era .zeytuneke { left: 42.89%; top: 21.05%; width: 9.69%; height: 7.12%; }
+        #minimap--era .ikidame { left: 74.97%; top: 19.87%; width: 9.69%; height: 7.12%; }
+        #minimap--era .dersiwane { left: 63.17%; top: 24.76%; width: 10.69%; height: 7.86%; }
+        #minimap--era .diraqliya { left: 30.88%; top: 28.17%; width: 9.28%; height: 6.82%; }
+        #minimap--era .pelusanke { left: 44.40%; top: 31.06%; width: 9.49%; height: 6.97%; }
+        #minimap--era .alciya { left: 36.23%; top: 36.70%; width: 8.88%; height: 6.52%; }
+        #minimap--era .qetlebiye { left: 47.73%; top: 37.73%; width: 9.28%; height: 6.82%; }
+        #minimap--era .dewris { left: 28.15%; top: 38.77%; width: 8.88%; height: 6.52%; }
+        #minimap--era .qerqina { left: 36.93%; top: 43.81%; width: 8.68%; height: 6.37%; }
+        #minimap--era .naza { left: 21.09%; top: 41.88%; width: 9.69%; height: 7.12%; }
+        #minimap--era .omera { left: 47.83%; top: 44.11%; width: 9.08%; height: 6.67%; }
+        #minimap--era .erebwerane { left: 62.46%; top: 36.92%; width: 9.49%; height: 6.97%; }
+        #minimap--era .dikmedase { left: 69.93%; top: 42.18%; width: 9.08%; height: 6.67%; }
+        #minimap--era .yazibaxe { left: 80.93%; top: 44.85%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qastele-eli-cindo { left: 71.44%; top: 52.78%; width: 9.49%; height: 6.97%; }
+        #minimap--era .baflune { left: 57.72%; top: 59.38%; width: 9.49%; height: 6.97%; }
+        #minimap--era .ezaz { left: 79.21%; top: 67.16%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qitme { left: 51.16%; top: 65.68%; width: 9.28%; height: 6.82%; }
+        #minimap--era .cema { left: 42.38%; top: 47.44%; width: 9.49%; height: 6.97%; }
+        #minimap--era .sinka { left: 46.92%; top: 55.23%; width: 9.28%; height: 6.82%; }
+        #minimap--era .berava { left: 35.72%; top: 46.55%; width: 8.48%; height: 6.23%; }
+        #minimap--era .sera { left: 41.27%; top: 55.67%; width: 9.28%; height: 6.82%; }
+        #minimap--era .gabeleke { left: 31.28%; top: 54.26%; width: 9.49%; height: 6.97%; }
+        #minimap--era .meydanke { left: 20.99%; top: 50.04%; width: 9.49%; height: 6.97%; }
+        #minimap--era .hilubiye { left: 23.11%; top: 63.53%; width: 9.69%; height: 7.12%; }
+        #minimap--era .kerferome { left: 13.72%; top: 67.38%; width: 9.08%; height: 6.67%; }
+        #minimap--era .qurtqulaqe-mezin { left: 22.50%; top: 70.05%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qurtqulaqe-cucik { left: 22.10%; top: 73.17%; width: 9.49%; height: 6.97%; }
+        #minimap--era .xirabi-sera { left: 41.07%; top: 57.45%; width: 9.69%; height: 7.12%; }
+        #minimap--era .metina { left: 41.37%; top: 63.90%; width: 9.49%; height: 6.97%; }
+        #minimap--era .sere-kaniye { left: 46.42%; top: 67.61%; width: 9.49%; height: 6.97%; }
+        #minimap--era .mesale { left: 39.15%; top: 69.46%; width: 10.09%; height: 7.41%; }
+        #minimap--era .kortike { left: 30.98%; top: 73.17%; width: 9.69%; height: 7.12%; }
+        #minimap--era .qeredepe { left: 26.74%; top: 78.28%; width: 10.09%; height: 7.41%; }
+        #minimap--era .qestele-kistik { left: 20.38%; top: 80.73%; width: 8.88%; height: 6.52%; }
+        #minimap--era .cumke { left: 20.69%; top: 84.58%; width: 8.68%; height: 6.37%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Diraqliya</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şera</p></div>
+<div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Botan, Diraqiliya, Diraqliya, Dirqiliyê, Duragli, Duraq, Durqliya, Dûrka, Dûrê, دوراق, دوراقلي</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Mala Cînciq, Mala Ebo, Mala Ereb, Mala Hesu, Mala Mêmkê, Mala Qulîka, Mala Qêsim, Mala Çîçekle</p></div>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
+<img alt="Map Image 12" onerror="this.onerror=null; this.src='https://placehold.co/991x1349/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 12.png"/>
+<div class="nebi-huri highlight-box"></div><div class="mersewa highlight-box"></div><div class="siltete highlight-box"></div><div class="omer-simo highlight-box"></div><div class="siiriya highlight-box"></div><div class="zeytuneke highlight-box"></div><div class="ikidame highlight-box"></div><div class="dersiwane highlight-box"></div><div class="diraqliya highlight-box" style="display: block;"></div><div class="pelusanke highlight-box"></div><div class="alciya highlight-box"></div><div class="qetlebiye highlight-box"></div><div class="dewris highlight-box"></div><div class="qerqina highlight-box"></div><div class="naza highlight-box"></div><div class="omera highlight-box"></div><div class="erebwerane highlight-box"></div><div class="dikmedase highlight-box"></div><div class="yazibaxe highlight-box"></div><div class="qastele-eli-cindo highlight-box"></div><div class="baflune highlight-box"></div><div class="ezaz highlight-box"></div><div class="qitme highlight-box"></div><div class="cema highlight-box"></div><div class="sinka highlight-box"></div><div class="berava highlight-box"></div><div class="sera highlight-box"></div><div class="gabeleke highlight-box"></div><div class="meydanke highlight-box"></div><div class="hilubiye highlight-box"></div><div class="kerferome highlight-box"></div><div class="qurtqulaqe-mezin highlight-box"></div><div class="qurtqulaqe-cucik highlight-box"></div><div class="xirabi-sera highlight-box"></div><div class="metina highlight-box"></div><div class="sere-kaniye highlight-box"></div><div class="mesale highlight-box"></div><div class="kortike highlight-box"></div><div class="qeredepe highlight-box"></div><div class="qestele-kistik highlight-box"></div><div class="cumke highlight-box"></div>
+</div></div>
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.706306, 36.909418</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div><img src="../village_photos/Doraqli.jpg" alt="Photo of Diraqliya" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Doraqli.jpg';"></div>
+<div><img src="../village_photos/Doraqli1.jpg" alt="Photo of Diraqliya" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Doraqli1.jpg';"></div>
+<div><img src="../village_photos/dorqle.jpg" alt="Photo of Diraqliya" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=dorqle.jpg';"></div>
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Diraqliya</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Ax û Welat</h5>
+<p><strong>Etymology:</strong> Derived from the Turkish word &quot;Duraqli&quot; meaning a stopping place or station, or potentially from a Greek word meaning bravery</p>
+<p><strong>Caves:</strong> <span class="internal-link">Şikeftê Mala Kordê</span></p>
+<p><strong>Springs:</strong> <span class="internal-link">Kanî</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Taka Reş</span>, <span class="internal-link">Ziyareta Qereqoçê</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Gelî Xirabe</span>, <span class="internal-link">Berîsank</span></p>
+<p><strong>Trees:</strong> <span class="internal-link">Taka Reş</span></p>
+<p><strong>Wells:</strong> <span class="internal-link">Bîra Qereqoçê</span>, <span class="internal-link">Bîra Tûyê</span>, <span class="internal-link">Bîra Şadiyê</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Ava Efrînê</span>, <span class="internal-link">Geliyê Qereqoje</span>, <span class="internal-link">Şaşorkê</span>, <span class="internal-link">Geliyê Qonê</span>, <span class="internal-link">Çinare</span></p></div>
+            </div>
+
+            
+
+            <div class="card p-6 rounded-xl">
+                    <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Diraqliya</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds (Afrin)</span> Geographic Study:</p>
+<p><strong><span class="internal-link">1 - PhD/Villages/Diraqliya</span></strong> (دوراقلي) (<span class="internal-link">Duraq</span> دوراق) /1166N - 620E - 15km - 490m/:</p>
+<ul>
+<li><span class="internal-link">Deraq</span> (Deraq): In Kurdish means &quot;situation or condition&quot;, and the name might be derived from it. And <span class="internal-link">Duraq</span> (Duraq): Linguistically in Turkish means &quot;the stop&quot;, or stopping place. As for the Arabized name, it is a verbal corruption of the old name.</li>
+</ul>
+<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span>:</p>
+<p><strong>Duragli</strong>: A village in Jabal al-Kurd (جبل الكرد) belonging to Sheran district (ناحية شران), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب), (1146 N).</p>
+<p>It is a large village located in the northern part of <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد), on a low limestone plateau that gently descends toward the southeast in the direction of the <span class="internal-link">Afrin Valley</span> (وادي عفرين), with clayey soil. It is 15 km from the town of <span class="internal-link">Sheran</span> (شران) in the northwest direction. It is bounded to the north by a wide plain of olive trees and valley and the village of <span class="internal-link">Sa&#x27;ranjak</span> (سعرنجك). To the south by slope and valley and plain planted with olive and grain trees and the village of <span class="internal-link">Aliji</span> (آليجي). To the east by valley and plain of olive and grain trees and the village of <span class="internal-link">Zaytunak</span> (زيتوناك). To the west by valley and slope and mountain chain and the village of <span class="internal-link">Qazarbaş</span> (قزربباش) and <span class="internal-link">Bilan Koyi</span> (بيلان كوي). The number of its houses is about 75 houses and its age is about 400 years. Its old dwellings are stone-clay with wooden roofs and the modern ones are of stone and reinforced cement. It has an electricity network and it has an elementary school. The village drinks from a connected water network dug in its southeast. Its residents work in olive and grain cultivation and summer vegetables on an area of 1100 hectares rainfed and there is an olive press in the village. It is one of the beautiful and sweet villages in the region due to the beauty of its houses. It is connected to the district center by a paved road.</p>
+<p>Village mayor: <span class="internal-link">Wahid Sheikho Mohammed</span> (وحيد شيخو محمد)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Diraqliya from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=IGKR7PZ0VDA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=IGKR7PZ0VDA</a></p>
+<p>The documentary takes place in the village of <span class="internal-link">Diriqliya</span> in the <span class="internal-link">Çiyayê Kurmênc</span> (Afrin) region. Unlike typical historical accounts involving ancient lineages or ruins, the current narrative of Diriqliya focuses on modern industrial development and its economic centrality to the surrounding area. The village is home to a newly established, technologically advanced flour mill (aş) that serves as a focal point for local employment and regional food security.</p>
+<p>The facility is managed by <span class="internal-link">Şaban</span>, who oversees a team of approximately 15 workers operating in 12-hour shifts to keep the mill running 24 hours a day. The mill has recently entered its production phase, currently processing about 40 tons of wheat, with plans to expand capacity by another 15 tons. The workforce connects Diriqliya to the broader region; for instance, a worker named <span class="internal-link">Mehmûd</span> identifies himself as a resident of the neighboring village of <span class="internal-link">Qerqîna</span>.</p>
+<p>The social and physical structure of the village described in this account is defined by this multi-story industrial building. <span class="internal-link">Mistefa</span>, a technical lead, describes the vertical organization of the mill, referring to the different floors as &quot;daq&quot; (e.g., <span class="internal-link">daqê sê</span>, <span class="internal-link">daqê du</span>). The process involves sophisticated machinery for cleaning wheat, removing stones and metal via magnetic separators, and separating the product into fine flour, semolina (simîd), and bran (kepek). The distinct lack of mentioning ancient landmarks or shrines suggests the village&#x27;s current reputation is heavily tied to this modern utility.</p>
+<p>The reach of Diriqliya extends significantly across the <span class="internal-link">Efrîn</span> region. A customer interviewed at the site is a baker from <span class="internal-link">Gundê Hisê</span>, located roughly 35 kilometers away. He travels to Diriqliya to purchase four tons of flour daily, citing the superior cleanliness and quality of the product compared to other sources. The documentary concludes with a musical performance celebrating the <span class="internal-link">Efrînî</span> identity, referencing the region&#x27;s agricultural abundance—specifically vineyards, figs, apples, and pomegranates—though these are lyrical tributes to the region rather than specific geographic features of the village itself.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Diraqliya from Ax û Welat 2</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Lz-343TNf-4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Lz-343TNf-4</a></p>
+<p>The village of <span class="internal-link">Duraqliya</span>, located in the <span class="internal-link">Şera</span> district of <span class="internal-link">Efrîn</span>, holds a strategic and historical position between the ancient sites of <span class="internal-link">Keleha Sem‘anê</span> and <span class="internal-link">Keleha Hûrî</span>. According to local elders like <span class="internal-link">Fewzî</span>, the village’s name likely stems from the Turkish word &quot;Duraqli,&quot; functioning as a &quot;stopping place&quot; or station where travelers on the historical <span class="internal-link">Silk Road</span> would rest near water sources before continuing to <span class="internal-link">Kilis</span>. Others suggest a <span class="internal-link">Greek</span> origin for the name, implying &quot;bravery.&quot; In the 1990s, during the rise of the Kurdish Freedom Movement, the village acquired the name <span class="internal-link">Botan</span> among locals due to its strong political engagement and the presence of cadres who established camps there.</p>
+<p>The settlement history of Duraqliya begins with the migration of families from a nearby location known as <span class="internal-link">Gelî Xirabe</span>. Originally, these ancestors lived in caves known as <span class="internal-link">Şikeftê Mala Kordê</span>. The first settler to establish a house at the current village site was <span class="internal-link">Îbrahîmê Cinciq</span>, the patriarch of the <span class="internal-link">Mala Cînciq</span> family, who moved down to access better water sources and agricultural land. Today, the village is home to approximately 140 households comprising several distinct families. The largest families include Mala Cînciq, <span class="internal-link">Mala Hesu</span>, and <span class="internal-link">Mala Qulîka</span>, alongside smaller lineages such as <span class="internal-link">Mala Mêmkê</span>, <span class="internal-link">Mala Qêsim</span>, <span class="internal-link">Mala Ebo</span>, <span class="internal-link">Mala Ereb</span>, and <span class="internal-link">Mala Çîçekle</span>. The community is described as cohesive, with frequent intermarriage creating strong bonds between these groups.</p>
+<p>The landscape around Duraqliya is defined by the <span class="internal-link">Ava Efrînê</span> (Afrin River), which flows through the nearby <span class="internal-link">Deşta Berîsankê</span>. The village was historically rich in water sources, utilizing wells like <span class="internal-link">Bîra Tûyê</span>, <span class="internal-link">Bîra Şadiyê</span>, and <span class="internal-link">Bîra Qereqoçê</span>, though some have dried up or become saline. Spiritual life in the village centers around specific landmarks, most notably <span class="internal-link">Taka Reş</span> (also called <span class="internal-link">Takê Reş</span>), a sacred valonia oak tree. For generations, residents visited this tree, particularly on Fridays, to tie fabrics to its branches and seek healing for illnesses. Another sacred site, <span class="internal-link">Ziyareta Qereqoçê</span>, is located near the village cemetery and a well of the same name.</p>
+<p>In modern history, Duraqliya is renowned for its role in education and infrastructure within <span class="internal-link">Rojava</span>. It was the site of the first Kurdish-language school in the region, <span class="internal-link">Dibistana Şehîd Fewzî</span>, established on September 6, 2011, by teachers like <span class="internal-link">Dicle</span> and <span class="internal-link">Mehmûd</span> in the private home of a resident named <span class="internal-link">Pîr Beşîr</span>. Additionally, the village hosts a major industrial facility, <span class="internal-link">Aşê Rûken</span>, a large flour mill founded by <span class="internal-link">Rûken</span> and <span class="internal-link">Fîraz Şêxo</span> in 2013 to address bread shortages in the canton during the Syrian civil war.</p></div></details></div>
+                </div>
+
+            <div class="card p-6 rounded-xl">
+            <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcriptions and Subtitles</h2>
+            <div class="p-4 prose-compact max-w-none">
+    <div class="mb-4">
+        <a href="../village_subtitles/how_to_use_substital.html" target="_blank" class="text-base font-medium external-link hover:underline">Need help with using this subtitles on Youtube? (Click here)</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b-2 themed-border">
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Source</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Video</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Subtitles</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Transcript</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Ax û Welat 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=IGKR7PZ0VDA" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/videos_975_Diraqliya.srt" download="videos_975_Diraqliya.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Diraqliya_Ax û Welat_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Ax û Welat 2</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=Lz-343TNf-4" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/videos_1136_Diraqliya.srt" download="videos_1136_Diraqliya.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Diraqliya_Ax û Welat_2.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    </div>
+        </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Foundation/Origin Information of Diraqliya</h2></div><div class="p-4 prose max-w-none"><blockquote>
+<p>founded by ancestors who migrated from the Cizîra Botan region.</p>
+</blockquote>
+<p><strong>Source:</strong> Halil Sino Transcript</p></div>
+                <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Possible Village Name Meaning of Diraqliya</h2></div><div class="p-4 prose max-w-none"><blockquote>
+<p>Deraq: In Kurdish means &quot;situation or condition&quot;. Duraq: In Turkish means &quot;the stop&quot;, or stopping place.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>formerly known as Dûrka due to its distance from Afrin.</p>
+</blockquote>
+<p><strong>Source:</strong> Halil Sino Transcript</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Diraqliya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Diraqliya.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=Lz-343TNf-4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Lz-343TNf-4</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=ZhG_v4dSB58" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZhG_v4dSB58</a><br><a href="https://www.youtube.com/watch?v=9N4jjItI8pc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9N4jjItI8pc</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=IGKR7PZ0VDA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=IGKR7PZ0VDA</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Diraqliya";
+            const villageLat = 36.706306;
+            const villageLng = 36.909418;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

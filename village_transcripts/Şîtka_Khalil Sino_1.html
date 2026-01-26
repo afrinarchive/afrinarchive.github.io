@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript | Şîtka - Khalil Sino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .jump-btn { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.875rem; transition: all 0.2s; }
+        .jump-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; font-size: 0.75rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .copy-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Şîtka</h1>
+            <p class="text-xl subtext mt-2">Transcript from Khalil Sino</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- General Info Card -->
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transcript Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Village</h3>
+                        <p class="text-lg">Şîtka</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Source Channel</h3>
+                        <p class="text-lg">Khalil Sino</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Length</h3>
+                        <p class="text-lg">30:50</p>
+                    </div>
+                    <div class="mt-4">
+                    <a href="https://www.youtube.com/watch?v=KGhOashBALk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+                </div>
+                <!-- Jump Buttons -->
+                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t themed-border">
+                    <a href="#english" class="jump-btn">Go to Translation</a>
+                    <a href="#kurdish" class="jump-btn">Biçe Transkrîptê</a>
+                </div>
+            </div>
+
+            <!-- English Translation Card -->
+            <div id="english" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">English Translation</h2>
+                    <button class="copy-btn" onclick="copySection('translation-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Copy
+                    </button>
+                </div>
+                <div id="translation-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00]</span>Host: Hello, noble and dear people. I have come with a nice video and a wonderful video. Our video today is in the village of Şîtka.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09]</span>Host: Greetings and respect to the people of Şîtka village, we have greetings for you, those who are welcome to the channel Hatim in Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15]</span>Host: So be with us now with a happy and cheerful heart, we will proceed to the village of Şîtka.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19]</span>Host: Before I proceed to the village of Şîtka, I would like to send greetings and respect to brother Ezîz Mihemed, our teacher, our school...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27]</span>Host: May God give you a long life and give you good health. We have greetings for you from the middle of Şîtka village all the way to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33]</span>Host: And God willing, in the coming days may you be present in Afrin, we will sit together and pass a nice and noble video together.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:39]</span>Host: Good health to you and don&#x27;t forget to support us, we will succeed with your support.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:43]</span>[Music playing]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:29]</span>Singer: I am far from myself, there is neither life here, nor am I here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:37]</span>Singer: When I fell far from you, it was not by my heart&#x27;s desire.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:45]</span>Singer: I am far from myself, there is neither life here...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:48]</span>Host: Noble and dear people, after we have now passed through the village of Şîtka, we will now proceed to Uncle Îsam&#x27;s house.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:55]</span>Host: Truly, a villager brother called us earlier, he said &quot;Come, my brother Îsam is waiting.&quot;</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:00]</span>Host: So now we will proceed to Uncle Îsam and we will pass a nice video together.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:03]</span>Host: Be with us until the end of the video and don&#x27;t forget to support us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:06]</span>Singer: ...nor am I here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:10]</span>Singer: When I fell far from you, it was not by my heart&#x27;s desire.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:16]</span>Singer: It was not by my heart&#x27;s desire... it was not by my heart&#x27;s desire.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:24]</span>Singer: It was not by my heart&#x27;s desire... it was not by my heart&#x27;s desire.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:48]</span>Host: Hello.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:49]</span>Guest: Welcome, upon my eyes, you came safely.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:52]</span>Host: Uncle Îsam we thank you very much, today you welcomed us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:55]</span>Guest: Be healthy, welcome to you, to your country.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:57]</span>Host: May God be pleased with you. We wanted to make a nice and noble video together today in the courtyard.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:03]</span>Guest: Upon my head, welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:05]</span>Host: Can you introduce yourself to my people?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:08]</span>Guest: I am Îsam from Şîtka, father of Lîvar, I am from Şîtka village. Our name is Îsam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:19]</span>Guest: And our time, work, stamp (residence) is also... right here, home is here, we do/live it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:24]</span>Guest: In a general way.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:25]</span>Guest: And I am in the village, I grew up in my village, I get up and sit down in the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:31]</span>Guest: We spent our life in the village, our life.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:35]</span>Host: May God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:39]</span>Host: Personally Uncle Îsam, did you grow up in Şîtka village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:42]</span>Guest: In the village... yes. I grew up in the village and for a few years I went to Aleppo and worked, school was somewhere and it was a short time, we returned.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:54]</span>Guest: We loved the village life, we are from the villages... I am very attached to the village, that is.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:58]</span>Guest: In these circumstances whatever happened again, we stayed and endured (were trees), and we completed life and continued. Yes, like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:11]</span>Host: How many children do you have now?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:13]</span>Guest: My children, with goodness... Lîvar, she is the eldest, our daughter married late.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:21]</span>Guest: And we have a small daughter, her name is Lorîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:24]</span>Guest: And Mihemed, he is the middle one, he does his studies.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:27]</span>Guest: He is our troublesome chick still... may God keep him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:31]</span>Host: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:33]</span>Host: Uncle Îsam, now let&#x27;s talk a little about the village of Şîtka.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:38]</span>Host: In the beginning, why was it named Şîtka? Can you speak to us about that?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:43]</span>Guest: Well Şîtka, precisely that... now we don&#x27;t know one hundred percent, but they say Şîtka had two brothers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:51]</span>Guest: Our village and Hise Village, beside each other... they were together.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:55]</span>Guest: They say one&#x27;s name was Şêrko, and one was Mîrko.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:58]</span>Guest: They said... so, one chose to stay here, and one chose to stay there.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:03]</span>Guest: In a part [of the story] they say on this basis they named it Şîtka, so...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:08]</span>Host: The village of Şîtka falls in which district? Can you tell us?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:12]</span>Guest: The village of Şîtka falls in the Mabata district. It is five kilometers distant from Mabata district.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:18]</span>Guest: Between the village of Kaxrê and Hise Village, Birîmce is also close to us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:26]</span>Guest: The village doesn&#x27;t reach far... they are on the crossroads.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:29]</span>Guest: These... these ones.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:33]</span>Host: The village of Şîtka itself falls in the Mabata district, it falls five kilometers far from its district.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:38]</span>Host: Exactly, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:39]</span>Host: Uncle Îsam, in Şîtka village now let us speak a little about the villagers&#x27; commitments. Have they increased their commuting? Now they head towards Afrin, for example going out a lot... like for example bringing their things, have they increased their commuting a lot?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:50]</span>Guest: Şîtka village is very... Afrin, they are close to Afrin and Afrin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:55]</span>Guest: It is the [central] area, it is wide, meaning they go to Afrin and come back a lot.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:00]</span>Guest: They bring their needs and necessities from Afrin. Before, there was a market on the threshing floor area. The market, the people became few, the market was ruined.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:09]</span>Guest: So now they go to Afrin and come back a lot, needs... they bring their things from Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:15]</span>Host: Now in the village of Şîtka, markets used to happen before, now the market doesn&#x27;t happen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:19]</span>Guest: The market doesn&#x27;t happen. Before there were many people in it, there was movement outside, there was a market on the threshing floor of Hise Village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:25]</span>Guest: The market was lively too, meaning it was acceptable (good).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:28]</span>Guest: So for a period it stopped, the market ended its business completely, people worked...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:34]</span>Guest: People go and come.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:36]</span>Guest: And in that situation in general, praise be to God meaning... it is acceptable, it is good, so.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:42]</span>Guest: The village has rested.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:44]</span>Host: Uncle Îsam, now let us speak a little, how many schools are there in Şîtka village now?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:50]</span>Guest: Well the school with us in the village, since long ago in the caves (old times) there is a school, it is preparatory(?), from first grade until sixth.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:58]</span>Guest: The village school... after sixth [grade] they go to Mabata, meaning they complete it in Mabata.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:03]</span>Host: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:04]</span>Guest: There is only a primary school in the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:07]</span>Host: It exists in the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:08]</span>Guest: It exists in the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:10]</span>Host: Are there olive presses in Şîtka village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:13]</span>Guest: Well there were presses in the old days, there were two, they called them the presses of... the Kalo family (?), these were very old.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:21]</span>Guest: The simple ones... they were by hand... presses.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:24]</span>Guest: Currently there are some on the threshing floor of Hise Village, the modern ones have come out, there are presses outside.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:32]</span>Host: Is there a mosque in Şîtka village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:34]</span>Guest: There is also a mosque. They built the mosque in the year eighty-four.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:39]</span>Guest: The name of the mosque, the mosque of Şîtka is Salahaddin by name.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:43]</span>Guest: There is a mosque, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:45]</span>Host: Uncle Îsam, Şîtka village is around how many families? Now let&#x27;s assume, regarding now.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:51]</span>Guest: Well in our village, there are approximately seven or eight large families.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:57]</span>Guest: Yes, and that is one type, mashallah they were many, their little ones, a number are also outside, many have traveled outside.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:07]</span>Guest: Lebanon, Europe, Aleppo... meaning the people have scattered, they have scattered. Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:15]</span>Host: In every village, previously they had their Aghas (Lords). Does Şîtka village have its Agha?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:19]</span>Guest: Well the community of Şîtka, there are no Aghas in it. Hise Village had them, Birîmce had them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:25]</span>Guest: Our community didn&#x27;t have Aghas in the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:27]</span>Guest: They don&#x27;t bow to them (or don&#x27;t act like it?), meaning they don&#x27;t become Aghas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:29]</span>Guest: Meaning they are equal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:30]</span>[Music playing]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:46]</span>Host: Uncle Isam, we want you to talk to us a little about the situation of the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:51]</span>Host: Now the men of the area, the youth of the area, what work are they busy with now?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:56]</span>Guest: Well, generally, the youth of the village... the boys... the work is empty. Meaning...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:04]</span>Guest: Plowing, trees... One has a tractor, one has a family to manage with livestock, a plowman...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:10]</span>Guest: One has surroundings... Meaning they serve... manage the property.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:14]</span>Guest: And with us, there are many olives, apricots, vineyards...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:18]</span>Guest: Sumac... Meaning, in this area, people manage their living with these things, they get by.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:24]</span>Host: The youth then... one has opened a shop, one works by the trees of Afrin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:29]</span>Guest: Everyone manages a job somehow.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:33]</span>Host: Now let&#x27;s talk a bit about the orchards in the village of Shitka. Now, on your side, which trees are abundant?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:41]</span>Guest: Well, with us, generally, fruits work... generally, in this area, they succeed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:49]</span>Guest: There are cherries, they existed before this, but this year the cold hit them, they were mostly burned.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:55]</span>Guest: There are walnuts, walnuts grow well in this soil.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:59]</span>Guest: And fruits generally all exist. Apples, plums, greengages, peaches...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:05]</span>Guest: Apricots, nectarines... Meaning almost everything exists. These things are here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:11]</span>Host: Uh, now on your village side, are your apricots abundant, do you have almonds too?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:16]</span>Guest: There are almonds, there are apricots, there are Sekerpare apricots, there are vineyards, there are pomegranates...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:24]</span>Guest: Generally... everything exists, meaning our area is beautiful, its weather is nice, things grow well in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:31]</span>Host: Now Uncle Isam, in every village, there used to be a threshing stone. Is the threshing stone of this village still here now?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:36]</span>Guest: Well, the threshing stone is there in the middle of the village. But the community has stopped, no one uses it much. Who remains... to go use it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:44]</span>Host: But before, they used the threshing stone. Was the life of the past good?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:47]</span>Guest: Before, life was good of course. In that weather, they drove the livestock around [threshing], our thoughts went back...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:53]</span>Guest: We used to thresh [grain], meaning, there was a taste to life.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:56]</span>Guest: Even now things are nice... [but] not like that taste of the past.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:00]</span>Guest: Sometimes... before... it was good, the world had taste. Not like... yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:08]</span>Host: Uncle Isam, may you be healthy, we were very happy, may God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:12]</span>Host: Aunt Barzan greets [us] from the city of Sweden, and is watching now, send a greeting to the village, and greet the village girls one by one and mention the village name.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:21]</span>Guest: Welcome, above all, [to] your conscience, brother Khalil, a hundred hellos and with goodness and safety...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:28]</span>Guest: You came to the village of Shitka, to me, to Abuliwar...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:32]</span>Guest: And you too... and that one of yours... the taste... your thing... as they say...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:38]</span>Guest: And our greetings, our knees [affection] are high, to the village girls, to the women of the village, to the elderly...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:45]</span>Guest: To the young people, the grown girls of the village, I greet them a lot. To the Peshmerga...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:51]</span>Guest: To the others, the distant ones... We say come back sometimes, come, you have missed our homeland. So we can see you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:58]</span>Guest: The homeland now is very beautiful. And our greetings to...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:02]</span>Guest: There are [greetings] to everyone. To our children, those in Russia, those in Germany. Mashallah they are many.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:09]</span>Guest: We say we miss you, come back once so we can see each other.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:12]</span>Guest: The mother, the father, remember the homeland. And a hundred hellos and welcome to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:17]</span>Host: Aunt Barzan greets you. Our greetings are for the village and we thank you very much for this nice and kind reception.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:24]</span>Guest: Be healthy, may God and the Prophet be pleased with you. We have shortcomings, forgive us and...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:30]</span>Guest: A hundred hellos...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:58]</span>Host: Peace be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:59]</span>Man: Peace.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:00]</span>Host: May you be healthy, may God be pleased with you. I was passing through here... I passed through here to the village of Shitka... I saw you are sitting.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:07]</span>Host: I said I won&#x27;t pass until I say hello.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:08]</span>Man: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:09]</span>Host: How is your situation, how are you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:10]</span>Man: Well, we are sitting. We are doing our work.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:13]</span>Man: We are chatting, looking around... It is Eid time.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:18]</span>Host: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:19]</span>Man: People... are busy with rags and tatters [clothes/shopping], clothes. They are calculating sacrifices.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:23]</span>Host: It is the Eid of Arafat, may it be blessed, may it pass with goodness and safety upon us and you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:28]</span>Man: Our village... we toured a lot.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:30]</span>Man 2: Praise be to God, thanks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:31]</span>Man: We were happy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:33]</span>Host: God willing, in the coming days everyone will come?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:35]</span>Man: By God, we passed through the village of Shitka, we filmed it like this, it is a very beautiful village, Mashallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:42]</span>Man: Meaning, since it&#x27;s not far, we come, we start a little... we can&#x27;t finish the filming.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:47]</span>Man: We were very happy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:48]</span>Host: We send greetings from here, our greetings are to the village. The people of Shitka village, wherever they may be, our greetings are to them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:53]</span>Host: And so we passed now, we saw you sitting, I said I&#x27;ll give you a greeting.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:57]</span>Man: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:58]</span>Host: May God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:59]</span>Man: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Guest: No, let it remain alone [unwashed/untouched].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:08]</span>Host: So, how are the walnuts coming along over there?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:10]</span>Host: How much time is left until the walnut season is here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:13]</span>Guest: It is not far, it is already the time for walnuts and pickles.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:16]</span>Guest: Yes, indeed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:18]</span>Guest: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:19]</span>Host: We will, God willing, have a pleasant hour, may God be pleased with you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:23]</span>Host: Temir, as you said, let them sound out a bit, let them talk.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:27]</span>Guest: We have greetings for all the Kurdish people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:30]</span>Host: Cheers [Have a good time].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:32]</span>Guest: It is good. The people thus... [unintelligible]...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:36]</span>Host: Before this conversation, we are getting up...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:38]</span>Host: A little bit of the carriage/car... [unintelligible].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:40]</span>Guest: Nobody... [unintelligible].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:43]</span>Host: Good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:45]</span>Host: Cheers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:40]</span>Singer: When you left... My sight... My sight... You are my sight.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:54]</span>Singer: You are the light of my heart.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:00]</span>Singer: You are the cure for my soul.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:07]</span>Singer: Oh come my soul, oh come.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:14]</span>Singer: Oh come, my pain is heavy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:21]</span>Singer: I am burning... I am burning.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:27]</span>Singer: Oh come, your scent is like a rose.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:39]</span>Singer: My sight... My sight... You are my sight.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:46]</span>Singer: You are the light of my eyes... My sight...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:52]</span>Singer: My sight... My sight... You are my sight.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:58]</span>Singer: You are the light of my eyes... My sight...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:37]</span>Singer: In exile... it is not possible without you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:44]</span>Singer: My sight... My sight... You are my sight.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:51]</span>Singer: You are the light of my heart.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:57]</span>Singer: You are the cure for my soul.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:04]</span>Singer: Oh come my soul, oh come.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:10]</span>Singer: Oh come, my pain is heavy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:17]</span>Singer: I am burning... I am burning.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:23]</span>Singer: Oh come, your scent is like a rose.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:36]</span>Singer: My sight... My sight... You are my sight.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:43]</span>Singer: You are the light of my eyes... My sight.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:49]</span>Singer: My sight... My sight... You are my sight.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:55]</span>Singer: You are the light of my eyes...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:59]</span>Host: Dear and precious people, behind the [unintelligible place name], we passed over the cemetery of Shitka village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:04]</span>Host: We arranged the gathering of Hussein&#x27;s village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:07]</span>Host: May God have mercy on Merya Wagiya [Marya of Wagiya].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:10]</span>Host: And may all the villagers be [blessed], until now the video [continues] until death.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:13]</span>Host: I want everyone to recite a Fatiha [prayer] for the soul of our Merya.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:17]</span>Host: May God have mercy on all your dead.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:19]</span>Host: And now I will share the [view of the] cemetery with you for a moment, cheers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:22]</span>Host: Support us a little, and until a new step comes out, we have presented the village of Shitka for you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:26]</span>Host: The cemetery and a sharing, may God have mercy on your dead.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:56]</span>Singer: It was summer and winter.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:03]</span>Singer: The leaves of autumn...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:08]</span>Singer: Rained down on the ground...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:13]</span>Singer: The snow on the mountains melted, my love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:19]</span>Singer: Still you did not come, cruel love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:34]</span>Singer: I waited for you...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:38]</span>Singer: Every time and moment.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:42]</span>Singer: Night came, midnight...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:47]</span>Singer: It was a cry for help for me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:51]</span>Singer: It was too late for me, cruel love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:01]</span>Singer: Life has passed...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:04]</span>Singer: Sweet love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:08]</span>Singer: I remained without you... without a place or home.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:16]</span>Singer: My turtledove...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:20]</span>Singer: Is [lost in] flowers and grief.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:24]</span>Singer: Still you did not come...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:28]</span>Singer: Cruel love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:39]</span>Singer: My eyes are on the road...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:44]</span>Singer: [Waiting] for you, love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:48]</span>Singer: Because of your love... [I need] an ointment/cure, love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:54]</span>Singer: I am weak [without strength], love...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:58]</span>Singer: Cruel love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:00]</span>Singer: My eyes are full [of tears], it has turned to blood, oh love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:08]</span>Singer: Because of your love, I am dying, oh love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:16]</span>Singer: I am sleepless, oh love, oh fair one, oh love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:50]</span>[Sound of weaving loom continues until the end of the video]</p>
+                </div>
+            </div>
+
+            <!-- Kurdish Transcript Card -->
+            <div id="kurdish" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transkrîpta bi Kurmancî</h2>
+                    <button class="copy-btn" onclick="copySection('transcript-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Kopî bike
+                    </button>
+                </div>
+                <div id="transcript-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00]</span>Host: Merheba miletê kîbar û delal. Ez hatim bi vîdyoyeke xweş û vîdyoyeke aceb. Vîdyoya me ya îro li gundê Şîtka ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09]</span>Host: Silav û rêz ji xelkê gundê Şîtka ra, silavên me ji were hene, yên bi xêr hatin ser qenata Hatim li Efrîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15]</span>Host: Ka niha bi me ra bin bi dilkî xweş û geş, em ê derbasî gundê Şîtka bin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19]</span>Host: Berî ku ez derbasî gundê Şîtka dibim, ez dixwazim silav û rêz ji kekê Ezîz Mihemed, mamosteyê me, mekteba me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27]</span>Host: Xwedê emrê dirêj bide te û siheta xweş bide te. Silavên me ji te ra hene ji ortê gundê Şîtka heta li cem te.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33]</span>Host: Û înşalla rojên pêş de tu li Efrîn hazir be, em ê bi hev ra rûnên û bi hev ra vîdyoyeke xweş û kîbar bi hev ra derbas kin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:39]</span>Host: Siheta we xweş û bîr nekin me de&#x27;m bikin, em ê bi de&#x27;ma we serkevin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:43]</span>[Music playing]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:29]</span>Singer: Ji xwe dûr im, ne jiyan li vir heye, ne jî ez li vir im.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:37]</span>Singer: Gava ji te dûr ketim, ne bi dilê min bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:45]</span>Singer: Ji xwe dûr im, ne jiyan li vir heye...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:48]</span>Host: Miletê kîbar û delal, piştî niha em derbasî gundê Şîtka bûn, em ê niha derbasî mala Xalê Îsam bin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:55]</span>Host: Bi rastî birayê gundî berê me re deng kir, got &quot;Were, birayê min Îsam li teskiniye (sekinî ye).&quot;</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:00]</span>Host: Niha jî em ê derbasî cem Xalê Îsam bin û em ê vîdyoyeke xweş bi hev ra derbas kin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:03]</span>Host: Bi me ra bin heta dawiya vîdyo û bîr nekin me de&#x27;m bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:06]</span>Singer: ...ne jî ez li vir im.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:10]</span>Singer: Gava ji te dûr ketim, ne bi dilê min bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:16]</span>Singer: Ne bi dilê min bû... ne bi dilê min bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:24]</span>Singer: Ne bi dilê min bû... ne bi dilê min bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:48]</span>Host: Merheba.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:49]</span>Guest: Ehlên û sehlên, şişta (serçavan) rem, hatin silema.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:52]</span>Host: Xalê Îsam em gelek te spas dikin, hûru (îro) te me pêşwaz kirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:55]</span>Guest: Sax be, ehlên û sehlên ji we ra, ji welatê we ra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:57]</span>Host: Xwedê ji te razî be. Me dixwest îro li batê (hewşê) em vîdyoyeke xweş û kîbar çêkin bi hev ra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:03]</span>Guest: Ser serî min, ehlên û sehlên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:05]</span>Host: Dikarî xwe ji miletê min nas bikî bidî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:08]</span>Guest: Ez Îsam im ji Şîtka, bavê Lîvar, ji gundê Şîtka me. Navê me Îsam e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:19]</span>Guest: Û dewr, kar, morê me jî... hol vêr, mal vêr, em dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:24]</span>Guest: Bi şiklê am.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:25]</span>Guest: Û ez li gund im, ezjmêş (ez mezin bûm) li gundê min, li gund radibim, rûdinim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:31]</span>Guest: Heyat me li gund derbas kir, heyata xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:35]</span>Host: Xwedê ji te razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:39]</span>Host: Tibxo (tê bixwe) Xalê Îsam, tu li gundê Şîtka mezin bûyî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:42]</span>Guest: Li gund... erê. Li gund mezin bûm û çend sal ez çûm Helebê şixulîm, mekteb derok (derek) û fatrok (wextek) kinik bû, em vegeriyan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:54]</span>Guest: Heyata gund me hez kir, em ji gunda... pir ez bi gund va girêdayî me yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:58]</span>Guest: Di vî zarfî da çi qewimîn bî dîsa, em man û dar bûn û me heyat temam kir û me berdewam kir. Erê wilo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:11]</span>Host: Çend qîçik te niha hene?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:13]</span>Guest: Qîçikê min, bi xêr... Lîvar, hewa ye mezin e, keçika me dereng zewicî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:21]</span>Guest: Û qîskek (kîzkek) me biçûk heye, ew jî navê wê Lorîn e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:24]</span>Guest: Û Mihemed, ew jî ortê ye, xwendina xwe dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:27]</span>Guest: Ew çîçikê me şikilcî ye deha... ma kerî xwedê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:31]</span>Host: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:33]</span>Host: Xalê Îsam niha em çîçikê behsa ser gundê Şîtka bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:38]</span>Host: Destpêkê xêr lê kirin Şîtka? Dikanî ji me ra xeber bidî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:43]</span>Guest: Welle Şîtka, bidebet (bi deqet) ew... ana sedî sed em nizanin, bes Şîtka dibêjin du bira hebûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:51]</span>Guest: Gundê me û Gundê Hisê, b&#x27;kêlek hev... bi heva bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:55]</span>Guest: Dibêjin navê yekî Şêrko bû, yekî jî Mîrko bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:58]</span>Guest: Gotin... hane (yê din) yek xwest li vir girt, yekî jî li wir girt.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:03]</span>Guest: Li parik dibêjin ser vê esasê nav lê dan Şîtka, hane...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:08]</span>Host: Gundê Şîtka li kîjan nahiyê dikeve? Dikanî ji me ra xeber bidî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:12]</span>Guest: Gundê Şîtka li nahiyeya Mabatê (Mabeta) dikeve. Ba&#x27;dê nahiyeya Mabatê pênc kîlometre.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:18]</span>Guest: Mabeyna gundê Kaxrê û Gundê Hisê, Birîmce jî me va nêzîk e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:26]</span>Guest: Gund nagî (nagihi) dur... ser duryana ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:29]</span>Guest: Ev na... ev na.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:33]</span>Host: Gundê Şîtka, bi xwe li nahiyeya Mabatê dikeve, dûrî pênc kîlometre ji nahiyeya xwe dûr dikeve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:38]</span>Host: Tamam erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:39]</span>Host: Xalê Îsam, di gundê Şîtka da niha em çîçikê ser îltîzamata gundî deng bikin. Tewasûlî xwe pir kirine? Niha li ber Efrîn lê dixin, mesele berketê (berkê) deran pir... ki mesele tiştê xwe tînin, tewasûlî xwe pir dij kirine?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:50]</span>Guest: Gundê Şîtka pir... Efrîn ji Efrîn va hane nêzîk in û Efrîn...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:55]</span>Guest: Ewe mentîqe ye, fere ye, yanê pir darrin (diherin) Efrîn tên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:00]</span>Guest: Hacet-macetê xwe ji Efrîn tînin. Berê bazar ser bêra (bêndera) hebû. Bazar çîçikê milet nema, bazar xera bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:09]</span>Guest: Ê noka pir darrin Efrîn tên, hacet... ewê xwe ji Efrîn tînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:15]</span>Host: Niha li gundê Şîtka, berê bazar çêdibûn, niha bazar çênabe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:19]</span>Guest: Bazar çênabe. Berê milet tê da pir hebû, dar (der) hebû, bazar ser bêra Gundê Hisê hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:25]</span>Guest: Bazar jî şên bû, yanî meqbûl bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:28]</span>Guest: Ê fatrokê sekinî, bazar da şolê (dawiya şolê) teq ra, bi şixulin milet...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:34]</span>Guest: Milet herê (here) werê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:36]</span>Guest: Û we da&#x27;l (dihal) bi şeklê am, elhemduillah yanî... meqbûl e rind e hane.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:42]</span>Guest: Gund vehesiya.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:44]</span>Host: Xalê Îsam, niha em çîçikê xeber din, di gundê Şîtka da mekteb çend in niha?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:50]</span>Guest: Welle mekteb cem me gund, ji mêj şikeftan da heye mektebê îedadî ye, ji sefî yekê da heta şeşê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:58]</span>Guest: Mektebê gund... ba&#x27;dê şeşê diçin Mabatê, yanî li Mabatê temam dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:03]</span>Host: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:04]</span>Guest: Mekteb bes serekî heye li gund.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:07]</span>Host: Li gund heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:08]</span>Guest: Li gund heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:10]</span>Host: Mekbez di gundê Şîtka da hene?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:13]</span>Guest: Welle meqbez kevin de hebûn, didu hebûn, digotin meqbezê... malê Kalo (?), evna pir kevin bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:21]</span>Guest: Ê şade... bi desta bûn... meqbez.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:24]</span>Guest: Halyen jî ser bêra Gundê Hisê hene, êd hedîs (nûjen) derketin, meqbez der hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:32]</span>Host: Camî di gundê Şîtka da hene?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:34]</span>Guest: Camî jî heye. Camî sala heştê û çara da girtin (çêkirin).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:39]</span>Guest: Navê camiyê, camiya Şîtka ya Selahedîn e navê xwa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:43]</span>Guest: Camî heye, erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:45]</span>Host: Xalê Îsam, gundê Şîtka dûre (dora) çiqas malbat e? Niha em deynkin, ser niha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:51]</span>Guest: Welle gundê me da, teqrîben heft-heşt malbat mezin hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:57]</span>Guest: Erê, ew jî deher (teher) yek maşalla pir bûn, e qeçik (piçik) qeçikê xwa, hejmarek jî li derva ne, pir sefirîne derva.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:07]</span>Guest: Libnanê, Ewropa, Helebê... yanî bela bûn e milet, bela bûn e. Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:15]</span>Host: Li her gundekî, berê axlerê xwa hebûn. Gundê Şîtka axê xwa hene?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:19]</span>Guest: Welle cemaa Şîtka axler tê nînin. Gundê Hisê hebûn, Birîmce hebûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:25]</span>Guest: Cemaa me axler tê nebûn li gund.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:27]</span>Guest: Jê ra nakin (Çêrê nakin?), yanî nabin axler.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:29]</span>Guest: Yanî wek hev in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[09:30]</span>[Music playing]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:46]</span>Host: Xalê Îsam, em dixwazin tu hinekî ji me ra xeber de, ser wezîyê gund.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:51]</span>Host: Niha mîrkê devar, xortê devar bi çi karî mijûl dibin niha?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:56]</span>Guest: Welle bi şeklekî am, xortê gund... kurî... şuxulî çol-mole ye. Yanê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:04]</span>Guest: Cûtan, daran... Yê hey tirektor e, yê hey &#x27;eylûmesîn (?) bi dewar e, cûtajo...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:10]</span>Guest: Yê hey dordor e... Yanê xizmet... milk dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:14]</span>Guest: Û cem me pir zeytûn e, mişmiş, rez...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:18]</span>Guest: Tarş, sumaq... Yanê mentîqe bi vî tiştî xalk debara xwe pê îdare dike, der dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:24]</span>Host: Şebab inca... yê hey dikan vekiriye, yê hey li darê Efrîn di şuxule...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:29]</span>Guest: Her yek xebatûnkî îdare dike yanê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:33]</span>Host: Niha em tiştekî xeber din ser baxçê di gundî şîtka. Niha liyalî we da darê çi pirr in?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:41]</span>Guest: Welle li cem me, bi şekl am, fewakê miştexe bi şekl am vê mentîqê di necehe yanê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:49]</span>Guest: Kerez hene, berî vê hebûn, bes îsal serma lê xist, bî pir şewitîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:55]</span>Guest: Gûz hene, vê topraxê gûz rind lê di necehin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:59]</span>Guest: Û fewakê bi şekl am giya heye. Sêv, hilîk, canîrek, xox...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:05]</span>Guest: Mişmiş, şeftelî... Yanê teqrîben giya heye. Ev tişta li hene ha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:11]</span>Host: Eh niha li gundiyolî we da jî, çi mişmişê xwe pirr in, bahîvê xwe jî hene?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:16]</span>Guest: Bahîv hene, mişmiş hene, mişmişê şekirpare hene, rez hene, hinar hene...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:24]</span>Guest: Bi şekl am... giya heye yanê mentîqê cem me çîçike, cewê xwe xweş e, tişt lê di necehe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:31]</span>Host: Niha Xalê Îsam li her gundekî berê delîbê xwe hebû. Delîbê vî gundî jî niha heye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:36]</span>Guest: Welle delîb heye li orta gund. Bes jimeh sekinîye kes pir îstîmal nake. Kê mano... here îstîmal dike?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:44]</span>Host: Ama berê îstîmal dikirin delîb. Heyata berê xweş bû?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:47]</span>Guest: Berê heyat xweş bû teben. Wê hewa dewar lê digerandin, têbîrê me diçûn ber...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:53]</span>Guest: Me têva dida yanê, heneka heyatê hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:56]</span>Guest: Noka jî tişta çîçike... ne wek wê nekê berê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:00]</span>Guest: Car car hebîn, berê di... weta xweş bî, tamê dinê hebî. Ne wek... erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:08]</span>Host: Xalê Îsam, saeta te xweş, em pir kêfxweş bûn, Xwedê ji we razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:12]</span>Host: Emkeka Barzanî silav dikin li bajarê Swêd, û dikênê niha silav ji gund re bişîne, û qîçka gundê yek bi yek silav ke û navê gundê hawa de.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:21]</span>Guest: Ewle w sehle, berî giya, batina te, birê Xelîl mît seleme û bixêr û bi selamet...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:28]</span>Guest: Hatin gundê Şîtka, cem min, cem Ebûlîwar...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:32]</span>Guest: Û ti jî... û ewê ta jî... tama... şeye ta... wek dibên...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:38]</span>Guest: Û silavê me, jibrokê me berzûro, ji qîçka gund re, ji jinê gund re, meîrê re...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:45]</span>Guest: Ji ciwanê re, keçka gund mezin, pir silav dikim. Pêşmerge re...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:51]</span>Guest: Ji yên din re, beryê... Em dibên car caran werin, werin welatê me bîra we kerî. Ana em we bibînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:58]</span>Guest: Weta noka pir xweş e. Û silavê me ji...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:02]</span>Guest: Giya re hene. Ji qîçka me, e li Rûsya, e li Elmanya. Maşalla pir in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:09]</span>Guest: Em dibên me bîra we kirî, carke werin em hevdu bibînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:12]</span>Guest: Dêka, bavê, wagi bîra we kirî. Û mît seleme û ehlen we sehlen batenê te.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:17]</span>Host: Emkeka Barzanî silav dikin. Silavê me ji gund re hene û em gelek spas dikin ser vî istiqbalê xweş û kîbar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:24]</span>Guest: Sax bin, Xwedê û Pêxember ji we razî bin. Te qusîr me hene, win ê efû kin û...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:30]</span>Guest: Mît seleme...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:58]</span>Host: Selam eleykum.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:59]</span>Man: Selam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:00]</span>Host: Saeta we xweş, Xwedê ji we razî be. Ez di vir ra derbaz bûm... ez di vir ra derbazî gundê Şîtka bûm... mi sehkir hûn rûniştine.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:07]</span>Host: Mi go ez derbas nakim heta selam nekim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:08]</span>Man: Ehlen we sehlen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:09]</span>Host: Rewşa we çawa ye, hûn çawa ne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:10]</span>Man: Welle em rûniştine. Em şuxulê xwe dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:13]</span>Man: Em şoba dikin, çav li derdor dikin... Wextê &#x27;eydê ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:18]</span>Host: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:19]</span>Man: Xelk... mijûlî şilq-milq e, cil-milq e. Hesabê qurbanan dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:23]</span>Host: &#x27;Eyda &#x27;erefatê ye, pîroz be li xêr û selamet ser me û we ra derbas be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:28]</span>Man: Gundê me... em pir fitilîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:30]</span>Man 2: Elhemdulelah şikir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:31]</span>Man: Em şa bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:33]</span>Host: İnşallah rojê pêşda giyê werin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:35]</span>Man: Bixwedê em derbasî gundê Şîtka bûn, me weka teswîr kir, gundekî pirr xweş e, maşallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:42]</span>Man: Yanî bî dûr nî, em tên, em çîçike dest pê... em nikan teswîrê xilas kin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:47]</span>Man: Em pir kêfxweş bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:48]</span>Host: Em ji vir silav dikin, silavê me ji gund re hene. Şehbê gundê Şîtka li kîderê dibin bila bin silavê me jê re hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:53]</span>Host: Û wa niha derbas bûn, me sehkir hûn rûniştine, mi go silamekî we dim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:57]</span>Man: Ehlen we sehlen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:58]</span>Host: Xwedê ji we razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:59]</span>Man: Ehlen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Guest: Na, neşûla tennê bit.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:08]</span>Host: Pa aliyê gwîza çawa tê kine ho?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:10]</span>Host: Çend ma hetan wextê gwîza ji hebe?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:13]</span>Guest: Wê ne dûr e, êdî wextê gwîz û tirş e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:16]</span>Guest: Eê ware hen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:18]</span>Guest: Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:19]</span>Host: Emê wane inşallah saeteka xweş, Xwedê ji we razî be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:23]</span>Host: Temir wekî te gotin wane hînke dengin, şora bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:27]</span>Guest: Silavê me ji xelkê Kurmanc gişki re heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:30]</span>Host: Saetaxweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:32]</span>Guest: Rind e. Milet hono... [unintelligible]...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:36]</span>Host: Berî vê şorê em radibin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:38]</span>Host: Piçkî ereba... [unintelligible].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:40]</span>Guest: Kes... [unintelligible].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:43]</span>Host: Rind.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:45]</span>Host: Saetaxweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:40]</span>Singer: Wexta tu çû... Diyam in... Diyam in... Diyam in î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:54]</span>Singer: Tu roniya dilê min î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:00]</span>Singer: Tu dermanê canê min î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:07]</span>Singer: De were canê min, de were.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:14]</span>Singer: De were derdê min giran e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:21]</span>Singer: Ez qeliya me... ez qeliya me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:27]</span>Singer: De were bîna te mîna gul e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:39]</span>Singer: Diyam in... Diyam in... Diyam in î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:46]</span>Singer: Tu roniya çavê min... Diyam in...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:52]</span>Singer: Diyam in... Diyam in... Diyam in î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:58]</span>Singer: Tu roniya çavê min... Diyam in...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:37]</span>Singer: Lê xerîbî... bê te nabê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:44]</span>Singer: Diyam in... Diyam in... Diyam in î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:51]</span>Singer: Tu roniya dilê min î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:57]</span>Singer: Tu dermanê canê min î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:04]</span>Singer: De were canê min, de were.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:10]</span>Singer: De were derdê min giran e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:17]</span>Singer: Ez qeliya me... ez qeliya me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:23]</span>Singer: De were bîna te mîna gul e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:36]</span>Singer: Diyam in... Diyam in... Diyam in î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:43]</span>Singer: Tu roniya çavê min... Diyam in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:49]</span>Singer: Diyam in... Diyam in... Diyam in î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:55]</span>Singer: Tu roniya çavê min...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:59]</span>Host: Miletê kî bar û delal, li pişta nihos, em derbas ser tirbê gundê Şîtka bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:04]</span>Host: Mijwara gundê Hisên çîçikê sewrandin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:07]</span>Host: Xwedê rehma xwe li Merya Wagiyake.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:10]</span>Host: Û gundî giştibin, heta niha vîdyo bibê wextê bimra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:13]</span>Host: Ez dixwazim her yek Fatiha kî bixwînin, ser bûrûhê Merya dima.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:17]</span>Host: Xwedê rehma xwe li miriyê we giya ke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:19]</span>Host: Û neha jî ez ê lehze tirba ji we re mişarek bikim, saetaxweş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:22]</span>Host: Bîna kemê da em kin, û heta gavekî nû derketin, gundê Şîtka me ji we re derxist.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:26]</span>Host: Tirba û mişarekekim, Xwedê rehma xwe li miriyê we ke.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:56]</span>Singer: Havîn û zivistan bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:03]</span>Singer: Pelgên payîzê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:08]</span>Singer: Li erdê barî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:13]</span>Singer: Berf li çiya heliya yarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:19]</span>Singer: Her tû nehatî, zalim yarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:34]</span>Singer: Li benda te mam...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:38]</span>Singer: Her wext û gavê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:42]</span>Singer: Şev hat nîvê şevê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:47]</span>Singer: Li min hewar bû...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:51]</span>Singer: Li min dereng bû, zalim yarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:01]</span>Singer: Emr borî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:04]</span>Singer: Şêrîna yarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:08]</span>Singer: Bê te ez mam... bê cî û warê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:16]</span>Singer: Li min qumrî ya...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:20]</span>Singer: Gul û xemaye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:24]</span>Singer: Her tû nehatî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:28]</span>Singer: Zalim yarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:39]</span>Singer: Çavê min li rêya...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:44]</span>Singer: Te bû yarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:48]</span>Singer: Ber evîna te... melhem yarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:54]</span>Singer: Bê halim yarê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:58]</span>Singer: Zalim yarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:00]</span>Singer: Çavê min tije, xwîn bûye yarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:08]</span>Singer: Ber evîna te, mirim yarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:16]</span>Singer: Bê xew im yarê, gewrê yarê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:50]</span>[Dengê şuxulê tevnê tê heta dawiya vîdyoyê]</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on January 19, 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Copy to clipboard function
+        function copySection(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Find the button that was clicked and update its text
+                const btn = event.target.closest('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ✓';
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
