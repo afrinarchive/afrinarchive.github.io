@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -126,15 +147,50 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Mansora</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Ruins:</strong> <span class="internal-link">Ebû Ke&#x27;b</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Deşta Cûmê</span>, <span class="internal-link">Çemê Efrîn</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Mansora</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>It is stated in the book Afrin... Its River and Green Hills by the writer Abd al-Rahman Muhammad from the village of Qatmah:</p>
-<p><strong>Al-Mansoura Farm:</strong> A farm in the Jome plain, part of the Afrin Villages Center sub-district in the Aleppo Governorate.</p>
-<p>It is a small farm located south of the village of al-Fiririyah. Most of its inhabitants are Arab newcomers who benefited from the agricultural reform law. The farm was built next to the abandoned village of Abu Ka&#x27;b on the right bank of the Afrin River. It is bordered to the north by Fiririyah village, to the south by Qarsaq farm, to the east by the villages of Iskan and Shah Dayr, and to the west by the village of Tal Silor. Its houses are modern and built of stone. Its residents work in agriculture, cultivating grains, cotton, sugar beets, and vegetables, irrigated by water from the Afrin River. It has a primary school, and the road leading to it is an unpaved dirt road.</p></div></details></div>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Mansora</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20mansora.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20mansora.htm</a></p>
+<p>It is stated in the book: Efrîn .... Her River and Her Green Hills by the writer <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p><span class="internal-link">Mezre&#x27;a Mensûra</span>: A farm in <span class="internal-link">Deşta Cûmê</span> belonging to the district center of <span class="internal-link">Efrîn</span> villages, Heleb governorate.</p>
+<p>It is a small farm south of the village of <span class="internal-link">Ferîriyê</span>. Most of its inhabitants are <span class="internal-link">Arab</span> newcomers benefiting from the Agrarian Reform Law. The farm was built next to the abandoned village of <span class="internal-link">Ebû Ke&#x27;b</span> on the right bank of <span class="internal-link">Çemê Efrîn</span>.</p>
+<p>It is bordered to the north by the village of Ferîriyê, to the south by <span class="internal-link">Mezre&#x27;a Qarsaq</span>, to the east by the villages of <span class="internal-link">Îskan</span> and <span class="internal-link">Şeh Dêr</span>, and to the west by the village of <span class="internal-link">Tel Selûr</span>.</p>
+<p>Its houses are modern and made of stone. Its inhabitants work in agriculture, growing grains, cotton, sugar beets, and vegetables, irrigated by the waters of Çemê Efrîn. A primary school is available there, and the road leading to it is a graded dirt road.</p>
+<p>Preparation and execution:</p>
+<p>Director of <span class="internal-link">Tirej Efrîn</span> website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn .... Her River and Her Green Hills</span> by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه مزرعة المنصورة : مزرعة في سهل جوم تتبع ناحية مركز قرى عفرين محافظة حلب وهي مزرعة صغيرة جنوب قرية الفريرية ,معظم سكانها من العرب الوافدين المستنفعين من قانون الإصلاح الزراعي بنيت المزرعة بجوار قرية آبو كعب المهجورة على الضفة اليمنى لنهر عفرين يحدها شمالاً قرية فريرية وجنوباً مزرعة قارساق وشرقاً قرية اسكان وشح دير وغرباً قرية تل سلور بيوتها حديثة حجرية يعمل سكانها بالزراعة الحبوب والقطن والشمندر السكري والخضراوات مروياً من مياه نهر عفرين تتوفر فيها مدرسة ابتدائية و الطريق الواصل إليها معبد ترابي .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -143,7 +199,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>TirejAfrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20mansora.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20mansora.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20mansora.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20mansora.htm</a></li></ul>
             </div>
 
             
@@ -153,7 +209,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -271,6 +327,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

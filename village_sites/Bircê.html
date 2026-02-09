@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -183,7 +204,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Birc Ebdalo, Bircê, Birj Abdalo, Birj Abdullah, Burj Ebdalo, Colaqa, برج عبدالله, برج عبدالو</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Imêratî, To&#x27;ta, Xaltî</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Mala Aloyê Dêla Hesen, Mala Arif Axa, Mala Dewşê, Mala Ehmedê Hesenê Elû, Mala Evdalê Şemsê, Mala Hesenê Nebî, Mala Hesenê Osmên, Mala Hesenê Usmên, Mala Hisên Îso, Mala Keyalî, Mala Kuleh, Mala Kîkî, Mala Mela Osmên, Mala Mele Usmên</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Arif Betal, Baqûbî, El Qeckê, Kelaho, Mala Aloyê Dêla Hesen, Mala Arif Axa, Mala Dewşê, Mala Ehmedê Hesenê Elû, Mala Evdalê Şemsê, Mala Hesenê Nebî, Mala Hesenê Osmên, Mala Hesenê Usmên, Mala Hisên Îso, Mala Keyalî, Mala Kuleh, Mala Kîkî, Mala Mela Osmên, Mala Mele Usmên, Sîdo Mîmî, Yeqûb</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -232,15 +253,59 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Bircê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin)</span>&#x27; geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Bircê, برج عبدالو, برج عبدالله</strong> /1962N - 150H - 12km - 240m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Bircê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20abdalo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20abdalo.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Birc</span>, <span class="internal-link">Birc Ebdalo</span>, <span class="internal-link">Birc Ebdellah</span> / 1962 inhabitants - 150 houses - 12km - 240m /:</p>
+<p>Its name is attributed to an archaeological tower (Birc) that existed in the center of the village, and to the name of its first inhabitant <span class="internal-link">Evdal</span>, which is a local Kurdish variation of the name <span class="internal-link">Ebdellah</span>, which was adopted again as the name of the village after Arabization.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Birc Ebdalo is a village in the <span class="internal-link">Cûm</span> plain and the <span class="internal-link">Efrîn</span> valley, belonging to the villages of the Efrîn center and district, Heleb governorate. It is a large village located on a limestone plateau and the Cûm plain on the western slope of <span class="internal-link">Çiyayê Seman</span> and <span class="internal-link">Lêlûn</span>. It is 15km away from the city of Efrîn towards the south.</p>
+<p>It is bordered to the north by a wide and agriculturally fertile plain, the valley of the Efrîn river, and the village of <span class="internal-link">Kefêr</span>. To the south, it is bordered by a fertile agricultural valley and plain, <span class="internal-link">Girê Temûs</span> planted with pomegranate and apple trees, and the village of <span class="internal-link">Xezawiyê</span>. To the east lies a rugged and elevated mountain range of Çiyayê Seman and Lêlûn and the villages of <span class="internal-link">Kîmar</span> and <span class="internal-link">Brad</span>. To the west, there is a wide and agriculturally fertile plain, the valley of the Efrîn river, some orchards planted with pomegranates, apples, and olives, and the village of <span class="internal-link">Kefer Zît</span> on the highest elevation on the western side of the Efrîn river.</p>
+<p>The number of its houses is approximately 200, and its age is approximately 400 years according to the statements of the citizen <span class="internal-link">Hesen Nebo</span>. Its old houses are made of stone and mud with wooden ceilings, while the modern ones are made of stone and cement. The village has expanded to the north, south, and east, and on both sides of the <span class="internal-link">Riya Xezawiyê-Efrîn</span> (Xezawiyê-Efrîn road). An electricity network is available, as is drinking water from <span class="internal-link">Kaniya Birc Ebdellah</span> located on the northern side of the village. It has a primary and middle school. It belongs to the <span class="internal-link">Basûtê</span> municipality. The road leading to it is paved and connects with the region and neighboring villages. Several streets have been paved by the Basûtê municipality. There is an old archaeological spring from the Roman era next to the village on the northern side.</p>
+<p>Its residents work in the cultivation of cereals and olives through rain-fed farming, and the cultivation of pomegranates, cotton, sugar beets, apples, and vegetables through irrigation from the Efrîn river or artesian wells dug within the orchards.</p>
+<p>According to the statements of one of the residents, the first founder of the village is <span class="internal-link">Ebdalo</span>, in reference to the village of Birc Ebdellah. Among its most important families are <span class="internal-link">Arif Betal</span> (<span class="internal-link">Sîdo Mîmî</span>), <span class="internal-link">Yeqûb</span> (<span class="internal-link">Baqûbî</span> - <span class="internal-link">Kelaho</span>), and <span class="internal-link">El Qeckê</span>, and they were the first to inhabit the village. It is a beautiful village in terms of location and general view, surrounded by pomegranate, walnut, and apple trees from all sides. From the village comes <span class="internal-link">Betal Arif</span>, a former member of the People&#x27;s Council, and the lawyer <span class="internal-link">Mihemed Nûrî Arif</span>, one of the first lawyers in the Efrîn region.</p>
+<p>Village Mukhtar: <span class="internal-link">Ednan Elî</span></p>
+<p>Preparation and Execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>Its name is attributed to an archaeological tower that existed in the center of the village, and to the name of its first inhabitant &quot;<span class="internal-link">Abdal</span>,&quot; which is a local Kurdish modification of the name &quot;<span class="internal-link">Abdullah</span>&quot; which was adopted again as a name for the village after Arabization.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmah</span> village:</p>
-<p><strong>برج عبدالو</strong>: A village in <span class="internal-link">Joumeh</span> plain and <span class="internal-link">Afrin Valley</span>, belonging to the <span class="internal-link">Central District</span> and Afrin, Aleppo Governorate.</p>
-<p>It is a large village located on the limestone plateau and Joumeh plain on the western slope of Simaan and <span class="internal-link">Leiloun</span> mountains, 15 km away from Afrin City to the south. It is bordered to the north by a vast plain and fertile agricultural land and Afrin River valley and <span class="internal-link">Kafir</span> village, and to the south by a valley and agricultural fertile plain and <span class="internal-link">Tell Tamosah</span> planted with pomegranate and apple trees and <span class="internal-link">Ghazawiyah</span> village. To the east by a rough and elevated mountainous chain of <span class="internal-link">Simaan</span> and Leiloun mountains and <span class="internal-link">Kimar</span> and <span class="internal-link">Bradeh</span> villages. To the west by a vast plain and fertile agricultural land and Afrin River valley and some orchards planted with pomegranate, apple and olive trees and <span class="internal-link">Kafr Zeit</span> village on the highest elevation from the western side of Afrin River. The number of its houses is about 200 houses and its age is about 400 years according to the words of citizen <span class="internal-link">Hassan Nabo</span>. Its old houses are stone and clay with wooden roofs, and the modern ones are made of stones and cement. The village has expanded north, south and east and on both sides of the <span class="internal-link">Ghazawiyah-Afrin</span> road. It has electricity network and drinking water from the <span class="internal-link">Birj Abdullah</span> spring located in the northern side of the village. It has an elementary and preparatory school. It returns to <span class="internal-link">Basutah</span> municipality. The road leading to it is paved connecting with the region and neighboring villages. Several streets have been paved by Basutah municipality. There is an ancient archaeological spring from the <span class="internal-link">Roman</span> era next to the village in the northern side. The inhabitants work in grain and olive cultivation rainfed and pomegranate, cotton and sugar beet cultivation and apple and vegetable cultivation irrigated from Afrin River or artesian wells drilled within the orchards. According to the words of one of the inhabitants, the first founder of the village was <span class="internal-link">Abdul Wa</span> relative to Birj Abdullah village. Among its most important families are <span class="internal-link">Aref Battal</span> (<span class="internal-link">Sido Mimi</span>) - <span class="internal-link">Yacoub</span> (<span class="internal-link">Baqoubi</span> - <span class="internal-link">Klaho</span>) <span class="internal-link">Ali Qajkeh</span> - and they are the first to inhabit the village. It is a beautiful village in terms of location and general scenery surrounded by pomegranate, walnut and apple trees from all directions. From the village is <span class="internal-link">Battal Aref</span>, former member of the People&#x27;s Assembly and lawyer <span class="internal-link">Mohammed Nouri Aref</span>, one of the first lawyers in Afrin Region.</p>
-<p>Village headman: <span class="internal-link">Adnan Ali</span></p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Bircê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=NFSOqcbBvmE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=NFSOqcbBvmE</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Statements by resident Hesen Nebo.</li>
+</ul>
+<ul>
+<li>Statements by some residents of the village.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Birc ، برج عبدالو ، برج عبدالله /1962ن - 150هـ - 12كم - 240م/:</p>
+<ul>
+<li>ينسب اسمها إلى برج أثري كان موجودا وسط القرية، وإلى اسم ساكنها الأول</li>
+</ul>
+<p>&quot;عڤدال&quot;، وهو تغيير كردي محلي لاسم &quot;عبدالله&quot; الذي اعتمد مجدداً كاسم للقرية بعد التعريب. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه برج عبدالو : قرية في سهل جوم ووادي عفرين، تتبع قرى مركز و منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع على هضبة كلسية وسهل الجوم على السفح الغربي لجبل سمعان وليلون ، تبعد عن مدينة عفرين 15كم باتجاه الجنوب ، يحدها شمالاً سهل واسع وخصب زراعيا ووادي نهر عفرين وقرية كفير وجنوباً وادي وسهل زراعي خصب وتل تموس مزروعة بأشجار الرمان والتفاح وقرية الغزاوية . وشرقاً سلسلة جبلية وعرة ومرتفعة لجبل سمعان وليلون وقرية كيمار وبراده . وغرباً سهل واسع وخصب زراعيا ووادي نهر عفرين وبعض البساتين المزروعة بالرمان والتفاح والزيتون وقرية كفر زيت في أعلى مرتفع من الجهة الغربية لنهر عفرين يبلغ عدد بيوتها حوالي200بيتاً وعمرها حوالي400عاماً حسب أقوال المواطن /حسن نبو/ بيوتها القديمة حجرية طينية ذات سقوف خشبية والحديثة من الأحجار ولأسمنت توسعت القرية شمالاً وجنوباً وشرقاً وعلى جانبي طريق الغزاوية عفرين تتوفر فيها شبكة الكهرباء ومياه الشرب من نبع برج عبد الله الواقع في الجهة الشمالية من القرية فبها مدرسة ابتدائية وإعدادية .وهي عائدة لبلدية باسوطة.الطريق الواصل إليها مزفت يتصل مع المنطقة والقرى المجاورة .تم تزفيت عدة شوارع من قبل بلدية باسوطة .يوجد نبع اثري قديم من العهد الروماني جانب القرية في الجهة الشمالية .يعمل سكانها بزراعة الحبوب والزيتون بعلا وبزراعة الرمان والقطن و الشمندر السكري والتفاح والخضراوات سقيا من نهر عفرين أو الآبار الارتوازية المحفورة ضمن البساتين .وحسب أقوال أحد السكان أن مؤسس القرية الأول هو عبد الو نسبة لقرية برج عبد الله .ومن أهم عوائلها عارف بطال ( سيدو ميمي ) - يعقوب ( باقوبي - كلاحو ) عل قجكه -  وهم أول من سكن القرية  . هي قرية جميلة من حيث الموقع والمنظر العام محاطة بأشجار الرمان والجور والتفاح من كافة الجهات . ومن القرية بطال عارف عضو مجلس الشعب سابقاً والمحامي محمد نوري عارف من أوائل المحامين في منطقة عفرين</p>
+<p>مختار القرية :  عدنان علي</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Bircê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=NFSOqcbBvmE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=NFSOqcbBvmE</a></p>
 <p>The village of <span class="internal-link">Bircê Ebdalo</span>, located in the <span class="internal-link">Şêrawa</span> district of <span class="internal-link">Efrîn</span>, sits between <span class="internal-link">Deşta Cûmê</span> and <span class="internal-link">Çiyayê Lêlûn</span>. Its name originates from a historical structure known as <span class="internal-link">Birca Evdal</span> (The Tower of Evdal). According to local oral history recounted by elder <span class="internal-link">Tahir Kuleh</span>, a solitary man named <span class="internal-link">Evdal</span>, also identified as <span class="internal-link">Ebdê Şemo</span>, lived in this tower long ago. While the tower itself is ruined, its foundation stones were incorporated into the home of the <span class="internal-link">Mala Keyalî</span> family.</p>
 <p>The village is historically significant for its deep roots and connection to the surrounding landscape. To the east lies the Çiyayê Lêlûn mountain range, home to the famous <span class="internal-link">Dûderî</span> cave. This cave is a major archaeological site where a joint Syrian Japanese team discovered the skeletal remains of a two year old Neanderthal child in 1993, dating back approximately 60,000 years. Archaeologist <span class="internal-link">Hîşam</span> notes that the burial style, with limbs folded against the chest, indicates that the Neanderthals possessed spiritual beliefs about the afterlife. Local resident <span class="internal-link">Emîne</span> participated in these excavations, sifting through soil to find flint tools and animal bones.</p>
 <p>Socially, Bircê Ebdalo is defined by a strong bond between its <span class="internal-link">Êzîdî</span>, <span class="internal-link">Misilman</span>, and <span class="internal-link">Ereb</span> residents. They share a single cemetery and participate in each other&#x27;s religious rites. The village is home to several prominent families, including <span class="internal-link">Mala Mele Usmên</span>, <span class="internal-link">Mala Evdalê Şemsê</span>, and <span class="internal-link">Mala Hesenê Usmên</span>. Some families, such as <span class="internal-link">Mala Kuleh</span> and <span class="internal-link">Mala Ehmedê Hesenê Elû</span>, historically lived in specific caves within the village before modern housing was built. The Arab population, including <span class="internal-link">Mala Hisên Îso</span> and <span class="internal-link">Mala Kîkî</span> (locally called <span class="internal-link">Malê Têt</span>), migrated to the village about a century ago from <span class="internal-link">Tirmonînê</span> and belong to the <span class="internal-link">Imêratî</span> tribe or <span class="internal-link">To&#x27;ta</span> group.</p>
@@ -332,7 +397,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20abdalo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20abdalo.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=NFSOqcbBvmE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=NFSOqcbBvmE</a></li><li>Jawlat (post-2018):<br><a href="https://www.youtube.com/watch?v=zV0UVqjpSQg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zV0UVqjpSQg</a></li><li>Gundên Me (post-2018):<br><a href="https://www.youtube.com/watch?v=TIALTm8oVy0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TIALTm8oVy0</a></li><li>Drone video:<br><a href="https://www.facebook.com/radyodelal/posts/pfbid01Fv5A4d5T69UBGNtE7ctAvXdLfCWVyqXLq6R61BNa8boFgYJZw5tK7K8WGrYZjWLl" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/radyodelal/posts/pfbid01Fv5A4d5T69UBGNtE7ctAvXdLfCWVyqXLq6R61BNa8boFgYJZw5tK7K8WGrYZjWLl</a><br><a href="https://www.youtube.com/watch?v=M47MskVyfvI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=M47MskVyfvI</a><br><a href="https://www.youtube.com/watch?v=8vSnv_b_gDA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8vSnv_b_gDA</a><br><a href="https://www.youtube.com/watch?v=QeRPEv3IBTY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=QeRPEv3IBTY</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=QeRPEv3IBTY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=QeRPEv3IBTY</a><br><a href="https://www.youtube.com/watch?v=UU6s-dv4P6M" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=UU6s-dv4P6M</a><br><a href="https://www.youtube.com/watch?v=w92uAJdmAPA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=w92uAJdmAPA</a><br><a href="https://www.youtube.com/watch?v=focOuf5GhlY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=focOuf5GhlY</a><br><a href="https://www.youtube.com/watch?v=NFSOqcbBvmE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=NFSOqcbBvmE</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20abdalo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20abdalo.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=NFSOqcbBvmE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=NFSOqcbBvmE</a></li><li>Jawlat (post-2018):<br><a href="https://www.youtube.com/watch?v=zV0UVqjpSQg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zV0UVqjpSQg</a></li><li>Gundên Me (post-2018):<br><a href="https://www.youtube.com/watch?v=TIALTm8oVy0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TIALTm8oVy0</a></li><li>Drone video:<br><a href="https://www.facebook.com/radyodelal/posts/pfbid01Fv5A4d5T69UBGNtE7ctAvXdLfCWVyqXLq6R61BNa8boFgYJZw5tK7K8WGrYZjWLl" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/radyodelal/posts/pfbid01Fv5A4d5T69UBGNtE7ctAvXdLfCWVyqXLq6R61BNa8boFgYJZw5tK7K8WGrYZjWLl</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=M47MskVyfvI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=M47MskVyfvI</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=8vSnv_b_gDA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8vSnv_b_gDA</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=QeRPEv3IBTY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=QeRPEv3IBTY</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=UU6s-dv4P6M" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=UU6s-dv4P6M</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=w92uAJdmAPA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=w92uAJdmAPA</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=focOuf5GhlY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=focOuf5GhlY</a></li></ul>
             </div>
 
             
@@ -342,7 +407,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -460,6 +525,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,7 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Gorda, Gordan, كوردان, گوردان</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Hec-kebate, Tîto</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Cemîl Behrî Kinê, Hec-kebate, Tîto</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -218,19 +239,52 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Gorda</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds</span> (Afrin) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Gorda, <span class="internal-link">Gordan</span> (گوردان)</strong> /1350n - 380h - 15km - 550m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Gorda</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Gorda.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Gorda.htm</a></p>
+<p>Based on the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Gorda</span>, <span class="internal-link">Gordan</span> /1350 inhabitants - 380 hectares - 15km - 550m/:</p>
+<p>It is stated in the <span class="internal-link">Ferhenga Goranî</span> that <span class="internal-link">Gord</span> means a blunt sword that does not cut or kill. The <span class="internal-link">Ferhenga Kurdistan</span> states that it comes from: strength and courage, and is also a marking on certain types of goats. As for Gord as a name for the village, it is the proper name of a woman from the village of Swiya who resided in that location, and it was named after her. Her old place of residence still exists south of the village of Swiya and is called <span class="internal-link">Xirab Gord</span>.</p>
+<p>The village is surrounded by mountains from the east, north, and west. On some surrounding peaks, as well as in the village site, there are remains of many ancient ruins. These locations have names: <span class="internal-link">Bena Dirêj</span> (The Long Rise/Height), <span class="internal-link">Poz Kol</span> (The Barren Peak), and <span class="internal-link">Xirab Kortliq</span>, which is also an ancient dwelling place. The current Gordan is a small village located on the western side of the <span class="internal-link">Ola Cehnim</span> valley (Valley of Hell/Death), which is a wooded and rugged valley where those wanted by authorities sometimes take refuge. The village is considered an area rich in archaeological finds, and it contains numerous caves that were used for habitation in ancient times. There is an old water well near the village.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p><span class="internal-link">Kûrdan</span>: A village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Jindirês</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village located at the southern edge of the middle section of the mentioned mountain block, where a number of gullies descending from the north converge into a single course heading south. It is overlooked by limestone mountain slopes furrowed by gullies. It is 15km away from Jindirês towards the north.</p>
+<p>It is bordered to the north by a very deep gully and a high, steep mountain chain planted with olive and forest trees, and the villages of <span class="internal-link">Rûtanlî</span> and <span class="internal-link">Îkî Axûr</span>; to the south by a deep gully heading towards the Jindirês plain and the villages of <span class="internal-link">Miska Jêrîn</span> and <span class="internal-link">Zindakan</span>; to the west by a gully and mountainous heights planted with olive and oak trees and the village of <span class="internal-link">Çobanlî</span>; and to the east by a deep gully, mountainous heights planted with olive and oak trees, and the villages of <span class="internal-link">Xeltanê Rojava</span> and <span class="internal-link">Xeltanê Rojhilat</span>.</p>
+<p>The number of its houses reaches 45, and its age is approximately 300 years. Its old houses are stone and mud with flat wooden roofs, while the modern ones are cement, extending north and west along the transportation roads. A electricity network and a primary school are available. There is a Roman water well at the bottom of the village. It is connected to the district center by a paved road reaching the center of the village. The village drinks from the water of old wells in the bottom of the valley on the northern side of the village and from cisterns collecting rain water. Most of its residents work in the cultivation of olives, grains, vines, and figs via rain-fed agriculture (380 hectares) and the raising of sheep and goats.</p>
+<p>The village site is mountainous, steep, and very rugged. Among its most important families is the <span class="internal-link">Cemîl Behrî Kinê</span> family. It is noted that the popular folkloric artist <span class="internal-link">Ebû Selah</span> is a son of this village - <span class="internal-link">Koma Hawar</span>.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Ehmed Xûrşîd</span></p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and execution by the manager of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span>.</p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Gorda ، گوردان /1350ن - 380هـ - 15كم - 550م/:</p>
 <ul>
-<li>According to the &#x27;<span class="internal-link">Kurdish-Kuranic Dictionary</span>&#x27; (قاموس كوراني), <span class="internal-link">Gord</span> means the severed sword that does not cut or kill. The &#x27;<span class="internal-link">Kurdistan Dictionary</span>&#x27; (قاموس كردستان) says it means: strength and courage, and also refers to marks of certain types of goats. As for Gord as a name for the village, it is a proper name of a woman from &quot;<span class="internal-link">1 - PhD/Villages/Sêwiya</span>&quot; village (سيويا), who settled in that location and was named after her. The site of her old residence still exists south of Sêwiya village (سيويا), called &quot;<span class="internal-link">Xirabê Gordê</span>&quot; (خربة گوردي).</li>
-<li>It is surrounded by mountains from the east, north, and west, and there are remains of many ancient antiquities on some surrounding peaks and also at the village site. Those sites have the following names: <span class="internal-link">Bena Ddirêj</span> &quot;the long elevation&quot; (المرتفع الطويل), <span class="internal-link">Pozê Kol</span> &quot;the bare peak&quot; (القمة الجرداء), and <span class="internal-link">Xirabî Kortliq</span> (خرابي كورتليق), which is also an ancient residence site. The current Gordan (گوردان) is a small village located on the western side of the <span class="internal-link">Ole Cce&#x27;nim</span> valley &quot;<span class="internal-link">Hell of the Dead</span>&quot; (جهنم الموت), which is a forested and rugged valley where those wanted by the authorities sometimes take refuge. The village is considered one of the areas rich in archaeological finds, and has several caves that were used for residence in ancient times. There is also an old water well near the village.</li>
+<li>جاء في /قاموس كوراني/ أن گورد Gord يعني السيف المبتور الذي لايقطع ولا</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from Qatmeh village:</p>
-<p><strong>Kordan (كوردان)</strong>: A village in the Kurdish Mountain (جبل الكرد), belonging to <span class="internal-link">Jindires District</span> (جندريس), Afrin (عفرين), Aleppo Governorate (حلب).</p>
-<p>It is a small village located at the southern end of the central part of the mentioned mountain mass, where several watercourses descending from the north converge into one course heading south. It overlooks limestone mountain slopes carved by watercourses. It is 15 km north of Jindires. It is bordered to the north by a very deep watercourse and a high steep mountainous chain planted with olive and forest trees and <span class="internal-link">Rotanli</span> village (روطانلي) and <span class="internal-link">Iki Akhur</span> (إيكي آخور), and to the south by a deep watercourse heading toward the Jindires plain and <span class="internal-link">Maska Tahtani</span> village (مسكة تحتاني) and <span class="internal-link">Zindkan</span> (زندكان), and to the west by a watercourse and mountainous heights planted with olive and oak trees and <span class="internal-link">Jawbanli</span> village (جوبانلي), and to the east by a deep watercourse and mountainous heights planted with olive and oak trees and <span class="internal-link">Khaltan Western</span> and <span class="internal-link">Eastern</span> villages (خلطان غربي وشرقي). The number of its houses is 45 houses and its age is about 300 years. Its old houses are stone and clay with flat wooden roofs, and the modern ones are concrete extending north and west along the transportation roads. It has electricity network and an elementary school and a Roman water well at the bottom of the village. It is connected to the district by a paved road to the village center. The village drinks from the water of old wells at the bottom of the valley from the northern side of the village and from rainwater collection cisterns. Most of its residents work in growing olives, grains, grapes, figs, and pomegranates through dry farming (380 hectares) and raising sheep and goats. The village&#x27;s location is mountainous with steep slopes and very rugged terrain. One of its most important families is the <span class="internal-link">Jamil Bahri Kanna</span> family (جميل بحري كنة).</p>
-<p>It is mentioned that the traditional folklore artist <span class="internal-link">Abu Salah</span> is from the sons of this village - <span class="internal-link">Kuma Hawar</span> (كوما هاوار).</p>
-<p>Village mayor: <span class="internal-link">Mohammed Ahmed Khurshid</span> (محمد أحمد خورشيد)</p>
-<p><strong>Prepared and implemented by: Director of <span class="internal-link">Tirej Afrin</span> website: Abdulrahman Haji Othman</strong></p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Gorda from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=c5LgQVpmUnA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=c5LgQVpmUnA</a></p>
+<p>يقتل. ويقول /قاموس كردستان/ بأنه من: القوة والشجاعة، وأيضاً من علامات بعض أنواع حيوان الماعز. أما Gord كاسم للقرية، فهو اسم علم لامرأة من قرية &quot;سيويا&quot; Swiya، أقامت في ذلك الموقع وسميت باسمها، ولايزال موقع إقامتها القديم موجود جنوبي قرية Swiya، ويسمى &quot;خربة گوردي&quot; Xirab Gord.</p>
+<ul>
+<li>تحيط بها الجبال من الشرق والشمال والغرب، وتوجد على بعض القمم المحيطة</li>
+</ul>
+<p>وكذلك في موقع القرية، بقايا آثار قديمة كثيرة، ولتلك المواقع تسميات هي:Bena Ddirj &quot;المرتفع الطويل&quot;، و Poz Kol &quot;القمة الجرداء&quot;، و Xirab Kortliq وهو مكان سكن قديم أيضاً. وگوردان الحالية قرية صغيرة تقع على الجانب الغربي من وادي Ole Cce&#x27;nim &quot;جهنم الموت&quot;، وهو واد مشجر ووعر يلجأ إليه المطلوبون من السلطات أحياناً. وتعتبر القرية من المناطق الغنية باللقى الأثرية، وفيها كهوف عديدة كانت تستخدم للسكن قديما. ويوجد بالقرب من القرية بئر ماء قديم. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كوردان : قرية في جبل الكرد ، تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في الطرف الجنوبي للجزء الأوسط من كتلة الجبل المذكور ، عند تجمع عدد من المسيلات المنحدرة من الشمال في مجرى واحد يتجه جنوباً . تشرف عليها سفوح جبلية كلسية خددتها المسيلات ، تبعد عن جنديرس 15كم باتجاه الشمال . يحدها شمالاً مسيل عميق جداً وسلسلة جبلية عالية شديدة الانحدار مزروعة بأشجار الزيتون والحراجية وقرية روطانلي وإيكي آخور ، وجنوباً مسيل عميق يتجه نحو سهل جنديرس وقرية مسكة تحتاني وزندكان ، وغرباً مسيل ومرتفعات جبلية مزروعة بأشجار الزيتون والبلوط وقرية جوبانلي ، وشرقاً مسيل عميق ومرتفعات جبلية مزروعة بأشجار الزيتون و البلوط و قرية خلطان غربي و شرقي، يبلغ عدد بيوتها 45 بيتاً و عمرها حوالي 300عاماً . بيوتها القديمة حجرية طينية بسقوف خشبية مستوية والحديثة إسمنتية تمتد شمالاً وغرباً على امتداد طرق المواصلات ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وبئر ماء روماني في أسفل القرية تتصل مع الناحية بطريق مزفتة حتى وسط القرية ، تشرب القرية من مياه الآبار القديمة في أسفل الوادي من الجهة الشمالية للقرية ومن صهاريج جمع مياه الأمطار، يعمل معظم سكانها بزراعة الزيتون والحبوب والكرمة والتين بعلاً ( 380 هـ ) و تربية الأغنام والماعز . موقع القرية جبلي شديد الانحدار و وعر جداً ومن أهم عوائلها عائلة جميل بحري كنة . يذكر أن الفنان التراثي الفلكلوري الشعبي أبو صلاح من أبناء هذه القرية - كوما هاوار</p>
+<p>مختار القرية :  محمد أحمد خورشيد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Gorda from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=c5LgQVpmUnA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=c5LgQVpmUnA</a></p>
 <p>The village of <span class="internal-link">Gorda</span>, situated in the <span class="internal-link">Cindirêsê</span> district of the <span class="internal-link">Efrîn</span> region (historically referred to as <span class="internal-link">Çiyayê Kurmênc</span>), serves as the focal point for the life and legacy of the renowned artist <span class="internal-link">Bavê Selah</span> (born <span class="internal-link">Ebdulrehman Omer</span>). While the transcript does not detail the ancient founding of the village itself, it presents Gorda as a cradle of artistic preservation and resistance against cultural erasure. Bavê Selah was born in Gorda in 1952 and, following his death on July 14, 2016, was laid to rest in the same soil, cementing the village&#x27;s reputation as the home of a &quot;cultural ambassador&quot; for the Kurds of <span class="internal-link">Rojava</span>.</p>
 <p>The social fabric described in the documentary centers on the artistic lineage of Bavê Selah. He did not emerge in isolation but from a &quot;family of art.&quot; His mother, <span class="internal-link">Gulîzar Yûsif</span>, was a dengbêj who sang epic songs, and she was the daughter of <span class="internal-link">Ibrahîmê Tirko</span>, a famous dengbêj of the region. This intergenerational transmission of culture was supplemented by Bavê Selah&#x27;s apprenticeship under <span class="internal-link">Adîk</span>, a master musician from the neighboring village of <span class="internal-link">Kora</span>, who taught him the tembûr. The narrative also highlights the sacrifices of this family; Bavê Selah was the father of seven children, one of whom, <span class="internal-link">Dîvar</span>, joined the Freedom Movement and was martyred.</p>
 <p>Gorda and its residents lived under the intense pressure of the Syrian Baathist regime. Bavê Selah was arrested multiple times, with his final detention occurring in 2011, because the regime viewed his preservation of Kurdish history and music as a political threat equivalent to forming a party. A significant portion of his work involved resisting the &quot;Arabization&quot; of the region. Together with colleagues <span class="internal-link">Perîşan</span>, <span class="internal-link">Ebdurehman Hacî Osman</span>, <span class="internal-link">Nûrî Qornehesen</span>, and <span class="internal-link">Şêro Menan</span>, he launched a project called <span class="internal-link">Tîrêj Efrîn</span>. This initiative used music to record and restore the original Kurdish names of villages in Efrîn that the government had officially renamed.</p>
@@ -291,7 +345,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Gorda.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Gorda.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=c5LgQVpmUnA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=c5LgQVpmUnA</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=AgbS6SPIwOs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=AgbS6SPIwOs</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Gorda.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Gorda.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=c5LgQVpmUnA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=c5LgQVpmUnA</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=AgbS6SPIwOs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=AgbS6SPIwOs</a></li></ul>
             </div>
 
             
@@ -301,7 +355,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -419,6 +473,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

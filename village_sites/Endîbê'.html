@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -132,9 +153,42 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Endîbê&#x27;</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>From the book: Afrin... Its River and Green Hills by the author Abd al-Rahman Muhammad from the village of Qatmah:</p>
-<p><strong>Ain Dibah:</strong> A farm in Jabal al-Kurd (the Mountain of the Kurds), belonging to the subdistrict of Afrin Center&#x27;s villages, Aleppo Governorate.</p>
-<p>It is a farm, or a residence for the farmers of the Sidi Mimi Aghas, situated around an archaeological tell. It is bordered to the north by a plain and the village of Ain Hajar Kabir; to the south by an agricultural plain and al-Zaydiyyah; to the west by a plain planted with olive trees and the village of Juwayq; and to the east by a fertile plain and the village of Istaro. Currently, it is an empty structure, as its inhabitants migrated long ago to Aleppo and Afrin. It is a deserted village and is administratively part of the village of Juwayq.</p></div></details></div>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Endîbê&#x27;</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-en%20debah.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-en%20debah.htm</a></p>
+<p>It is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p><span class="internal-link">Eyn Dîbê</span>: A farm in <span class="internal-link">Çiyayê Kurmênc</span> belonging to the sub district of the villages of the center of <span class="internal-link">Efrîn</span>, governorate of <span class="internal-link">Heleb</span>. It consists of a farm or housing for the peasants of the Aghas of <span class="internal-link">Sîdî Mîmî</span>, situated around an archeological hill.</p>
+<p>It is bordered to the north by a plain and the village of <span class="internal-link">Eyn Hecerê Mezin</span>; to the south by an agricultural plain and <span class="internal-link">Zeydiyê</span>; to the west by a plain planted with olive trees and the village of <span class="internal-link">Cewîq</span>; and to the east by a fertile plain and the village of <span class="internal-link">Estaro</span>.</p>
+<p>Currently, it consists of a building devoid of residents due to the migration of the population from old times to Heleb and Efrîn. It is a deserted village, and it follows the village of Cewîq.</p>
+<p>Sources:</p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed.</li>
+</ul>
+<p>Preparation and execution:</p>
+<ul>
+<li>Manager of Tirej Efrîn site: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه عين ديبه : مزرعة في جبل الكرد تتبع ناحية قرى مركز عفرين محافظة حلب وهي عبارة عن مزرعة أو سكناً للفلاحين من الأغوات سيدي ميمي الواقعة حول تل أثري يحدها شمالاً سهل وقرية عين حجر كبير وجنوباً سهل زراعي والزيدية وغرباً سهل مزروع بأشجار الزيتون وقرية جويق وشرقاً سهل خصب وقرية استارو وحالياً عبارة عن بناء خالي من السكان بسبب هجرة السكان من القديم إلى حلب وعفرين وهي قرية مهجورة ,وهي تابعة لقرية جويق.</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -143,7 +197,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>TirejAfrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-en%20debah.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-en%20debah.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-en%20debah.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-en%20debah.htm</a></li></ul>
             </div>
 
             
@@ -153,7 +207,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -271,6 +325,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

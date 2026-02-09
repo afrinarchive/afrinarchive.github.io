@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Kersanê, كرسانه, كرسنطاش, كرسان</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Feyû, Xubarî</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -207,21 +229,72 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Kersanê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The text offers three theories: 1) From French &quot;wine&quot; and Turkish &quot;taş&quot; (stone), meaning &quot;Wine Stone&quot; or a wine press; 2) From Persian &quot;Karsan&quot; meaning &quot;a round vessel&quot;; 3) From &quot;Kersene,&quot; the name of a plant resembling lentils (vetch).</p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çemê Efrîn</span>, <span class="internal-link">Deşta Cûmê</span>, <span class="internal-link">Kersan Cemetery</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kersanê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Kersanê</span>, كرسانه - كرسنطاش</strong> /144N - 2km - 230m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kersanê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kersan.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kersan.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Kersan</span> / <span class="internal-link">Kersanê</span> - <span class="internal-link">Kersantaş</span>.</p>
+<p>/144 inhabitants - 2 km - 230 m/:</p>
+<p>Regarding the name: &quot;Kersanê&quot; means &quot;wine&quot; in French, and &quot;taş&quot; = stone in Turkish, so the meaning of the name is &quot;Wine Stone,&quot; or a press for making wine. Additionally, &quot;Karsan&quot; in Persian means &quot;a round vessel,&quot; and &quot;Kersene&quot; is the name of a plant resembling lentils (vetch).</p>
+<p>Its existence is ancient, and the <span class="internal-link">Feyû</span> family, known in the city of <span class="internal-link">Efrîn</span>, was perhaps the most prominent and earliest to inhabit it. Currently, it contains some dilapidated houses. It is located on the western bank of the <span class="internal-link">Çemê Efrîn</span> (Afrin River), a few hundred meters away, and its ownership currently belongs to the <span class="internal-link">Xubarî</span> family.</p>
+<p>It is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Kersanê: A village in <span class="internal-link">Çiyayê Kurmênc</span> following the sub-district of the Efrîn center villages, Heleb governorate. It is a small village located in the <span class="internal-link">Cûmê</span> plain on the western bank of the Çemê Efrîn. It was formerly a residence for the agents and peasants of the Aghas but was abandoned starting from the third quarter of this century.</p>
+<p>It is bordered to the north by a wide, agriculturally fertile plain and the city of Efrîn; to the south by a wide plain, <span class="internal-link">Cedîde Kersantaş</span>, the village of <span class="internal-link">Betîtê</span>, and the Çemê Efrîn; to the west by a wide fertile plain planted with grains and vegetables irrigated from the Çemê Efrîn; and to the east directly by the course of the Çemê Efrîn, a wide plain, and the village of <span class="internal-link">Turindê</span>.</p>
+<p>Currently, this village is abandoned due to rural-to-urban migration. Only three or four houses remained. At present, nothing remains in it except the cemetery, which belongs to the residents of southern Efrîn.</p>
+<p>Sources:</p>
 <ul>
-<li>&quot;كرسانه&quot; means &quot;wine&quot; in French, and طاش = stone in Turkish, so the meaning of the name would be &quot;wine stone&quot; or winemaking press. And &quot;كارسان&quot; in Persian means &quot;round container,&quot; and &quot;كرسنه&quot; is a name for a plant resembling lentils.</li>
-<li>Its existence is ancient, and perhaps the &quot;فيو&quot; family known in Afrin City was the most prominent and first to inhabit it. Currently it has some ruined houses. It is located on the western bank of <span class="internal-link">Afrin River</span> a few hundred meters away and its ownership currently belongs to the <span class="internal-link">Al-Ghabari</span> family.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>And according to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmah</span> village:</p>
-<p><strong>كرسانه</strong>: A village in <span class="internal-link">Kurdish Mountain</span> belonging to the central district villages of Afrin, Aleppo Governorate.</p>
-<p>It is a small village located in <span class="internal-link">Jum Plain</span> on the western bank of Afrin River and was previously inhabited by agents and farmers of the wealthy. They emigrated from the third quarter of this century. It is bordered to the north by a wide and fertile agricultural plain and Afrin City, to the south by a wide plain and the new <span class="internal-link">Kersan Tash</span> and <span class="internal-link">Batita</span> village and Afrin River, to the west by a wide and fertile plain planted with grains and vegetables irrigated from Afrin River, and to the east by Afrin River course directly and a wide plain and <span class="internal-link">Turinda</span> village. Currently this village is abandoned due to rural migration to cities. Only three or four houses remain. Currently only the cemetery remains and for the residents of southern Afrin.</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Manager of Tirej Efrîn website: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Kersan ، كرسانه</p>
+<ul>
+<li>كرسنطاش</li>
+</ul>
+<p>/144ن - 2كم - 230م/:</p>
+<ul>
+<li>&quot;كرسانه&quot; بمعنى &quot;النبيذ&quot; بالفرنسية، وطاش = حجر بالتركية، فيكون معنى الاسم</li>
+</ul>
+<p>هو &quot;حجر النبيذ&quot;، أو معصرة صنع النبيذ. و &quot;كارسان&quot; في الفارسية تعني &quot; وعاء مدوراً&quot;، و &quot; كرسنه&quot; اسم لنبات يشبه العدس.</p>
+<ul>
+<li>وجودها قديم، ولعل عائلة &quot;فيو&quot; المعروفة في مدينة عفرين أبرز وأول من</li>
+</ul>
+<p>سكنتها. فيها حالياً بعض الدور المهدمة. تقع على الضفة الغربية لنهر عفرين ببضع مئات من الأمتار وتعود ملكيتها حالياً لآل غباري. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كرسانه : قرية في جبل الكرد تتبع ناحية قرى مركز عفرين محافظة حلب. وهي قرية صغيرة تقع في سهل جوم على الضفة الغربية لنهر عفرين وكانت سابقاً مسكناً لوكلاء وفلاحي الأغوات هجرت من الربع الثالث من هذا القرن يحدها شمالاً سهل واسع وخصب زراعياً ومدينة عفرين وجنوباً سهل واسع وجديدة كرسان طاش وقرية بتيتة ونهر عفرين وغرباً سهل واسع وخصب مزروع بالحبوب والخضراوات المروية من نهر عفرين وشرقاً مجرى نهر عفرين مباشرة وسهل واسع وقرية طورندة وحالياً هذه القرية مهجورة بسبب هجرة الريف إلى المدن. ولم يبق سوى ثلاث أو أربع بيوت. وحالياً لم يبق فيها سوى المقبرة ولسكان عفرين الجنوبية .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -230,7 +303,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kersan.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kersan.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kersan.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kersan.htm</a></li></ul>
             </div>
 
             
@@ -240,7 +313,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -358,6 +431,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

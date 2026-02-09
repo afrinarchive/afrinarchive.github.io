@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,6 +205,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Hlîl, Holîlê, هليل, هوليلو</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Holîlo, Holîlî, Kîlê, Xeşman</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -211,27 +233,82 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Holîlê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Named after &#x27;Holîl&#x27;, the nickname of the first owner of the village. There is a connection to the Holîlan, a Kurdish tribe found in Kirmaşan linked to the Lûr-Feylî Kurds.</p>
+<p><strong>Foundation Date/Period:</strong> 300 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Bilêl</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Mezelê Şêx Mihemed Elî</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Holîlê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of <span class="internal-link">Rajo District</span> (راجو) / Reco</p>
-<p><strong>Holîlê (هوليلو)</strong></p>
-<p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds</span> / Afrin City / Geographic Study:</p>
-<p><strong>Gundî Holîlê, Holîlê (هوليلو), Hlîl (هليل)</strong> /792N - 81ha - 5km - 720m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Holîlê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20holelo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20holelo.htm</a></p>
+<p>The following is stated in the book Çiyayê Kurmênc (Efrîn): A Geographical Study: <span class="internal-link">Gundê Holl</span>, <span class="internal-link">Holîlo</span>, <span class="internal-link">Helel</span> / 792 inhabitants - 81 hectares - 5 km - 720 m /:</p>
+<p>Etymology and Origins</p>
+<p><span class="internal-link">Holîl</span>: A title by which the first owner of the village was known. There is still a large family in the village known by the name &quot;<span class="internal-link">Holîlî</span>&quot; (<span class="internal-link">Holl</span>). <span class="internal-link">Holîlan</span> is the name of a Kurdish tribe found in <span class="internal-link">Kirmaşan</span> (Lirx, p. 75), and it is linked to the Kurdish <span class="internal-link">Lûr</span>-<span class="internal-link">Feylî</span> tribes. This small village stands on the western slope of the <span class="internal-link">Çiyayê Bilêl</span> mountain.</p>
+<p>Location and Geography</p>
+<p>The book Efrîn... Her River and Her Green Hills states: Holîlo is a village in <span class="internal-link">Çiyayê Kurmênc</span> affiliated with the <span class="internal-link">Reco</span> sub-district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village situated on a rocky flat on the southern slope of a limestone and flint mountain, with oak trees scattered across its slopes. It overlooks agricultural lands to the south, furrowed by streams descending southward. It is located 3 km northeast of the town of Reco. Its soil is clay-based and poor.</p>
+<p>Boundaries</p>
+<p>It is bordered to the north by a mountain range and the village of <span class="internal-link">Hecmanlî</span>; to the south by a slope, a valley, olive trees, vineyards, and the villages of <span class="internal-link">Kûranlî</span> and <span class="internal-link">Hec Xelîl</span>; to the east by a harsh slope, a deep stream, a high mountain range, and the village of <span class="internal-link">Çerxetlî</span>; and to the west by a slope, a deep valley, a high mountain range, and the town of Reco.</p>
+<p>Infrastructure and Services</p>
+<p>The number of houses reaches about 25, and the village is approximately 300 years old. Its old dwellings are made of stone and mud with wooden ceilings, while modern cement buildings have spread to the north. A modern electricity grid is available. The village drinks from cisterns dug in front of the houses, which collect rainwater in winter. It has a telephone and a modern primary school. The village belongs to the municipality of Hec Xelîl. The village is connected to the sub-district by a levelled, unpaved dirt road.</p>
+<p>Agriculture and Economy</p>
+<p>Residents work in rain-fed agriculture on an area of 81 hectares (olives, grains, legumes, vines) alongside raising sheep and goats.</p>
+<p>Religious Sites and Society</p>
+<p>The shrine of <span class="internal-link">Mezelê Şêx Mihemed Elî</span> is located in the village. Among the families present in the village are: the <span class="internal-link">Xeşman</span> family, the Holîlo family, and the <span class="internal-link">Kîlê</span> family. The village mukhtar is <span class="internal-link">Mihemed Yûsif kurê Ekaş</span>. The village is known for its residents being revolutionaries against the French occupation, most notably the late <span class="internal-link">Hisên Simo</span>.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Yûsif</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li>Holîl (هوليل): A title known by the first owner of the village, as there is still a large family in the village named &quot;<span class="internal-link">Holîlî</span>&quot; (هوليلي) Holîl. Holîlan is the name of a Kurdish tribe found in <span class="internal-link">Kermanshah</span> (كرمنشاه) /Lerkh, p.75/, connected to the Kurdish Lor-Fili tribes.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>This small village is located on the western slope of &quot;<span class="internal-link">Bilal Mountain</span>&quot; (جبل بلال).</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from Qatmeh village:</p>
-<p><strong>Holîlê (هوليلو)</strong>: A village in Kurdish Mountain (جبل الكرد) belonging to Rajo District (ناحية راجو), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located on a rocky plateau on the southern slope of a calcareous mountain planted with oak trees on its slopes, overlooking to the south agricultural lands served by streams flowing southward. It is 3 km from the town of Rajo (راجو) towards the northeast, with poor pastoral soil. It is bounded to the north by a mountain chain and the village of <span class="internal-link">Hajmanli</span> (حجمانلي), to the south by a slope, valley, olive and grape trees and the village of <span class="internal-link">Kuranli</span> (كورانلي) and <span class="internal-link">Haj Khalil</span> (حاج خليل), to the east by a harsh slope, deep stream, high mountain chain and the village of <span class="internal-link">Jarkhtle</span> (جرختلي), and to the west by a slope, deep valley, high mountain chain and the town of Rajo (راجو). The number of its houses is about 25 houses and its age is about 300 years. Its old dwellings are stone-clay with wooden roofs, while the modern ones are concrete spread to the north. It has a modern electricity network and the village drinks from cisterns dug in front of houses that collect rainwater in winter. It has a telephone and modern elementary school. The village is affiliated with the municipality of Haj Khalil (حاج خليل). The residents work in rainfed agriculture on an area of 81 hectares (olives, grains, legumes, grapes) in addition to raising sheep and goats. The village connects to the district by an unpaved dirt road. There is a shrine of <span class="internal-link">Sheikh Mohammed Ali</span> (الشيخ محمد علي) in the village.</p>
-<p>Among the families present in the village: <span class="internal-link">Al Khushman</span> (آل خشمان) - <span class="internal-link">Al Holîlê</span> (آل هوليلو) - <span class="internal-link">Al Kîla</span> (آل كيله) - Village Mukhtar <span class="internal-link">Mohammed Youssef bin Akash</span> (محمد يوسف بن عكاش). The village is known for having revolutionaries against the French occupation, most notably the late <span class="internal-link">Hussein Samou</span> (حسين سمو).</p>
-<p><strong>Village Mukhtar:</strong> Mohammed Youssef (محمد يوسف)</p></div></details></div>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Director of the Tirej Efrîn website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Gund Holl ، هوليلو ، هليل /792ن - 81هـ - 5كم - 720م/:</p>
+<ul>
+<li>هوليل: لقب عرف به صاحب القرية الأول، حيث لاتزال في القرية عائلة كبيرة</li>
+</ul>
+<p>باسم &quot;هوليلي&quot; Holl. وهوليلان اسم عشيرة كردية يوجد منها في كرمنشاه /ليرخ، ص75/، وهي ترتبط بعشائر اللور- الفيلية الكردية.</p>
+<ul>
+<li>تقوم هذه القرية الصغيرة على السفح الغربي لجبل &quot;جبل بلال&quot;.</li>
+</ul>
+<p>جاء في كتاب عفرين .... نهرها وروابيها الخضراء : هوليلو : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . و هي قرية صغيرة تقع على منبسط صخري في السفح الجنوبي لجبل كلسي صواني تنتشر على سفوحه أشجار السنديان وتشرف جنوباً على أراض ٍ زراعية تخددها مسيلات تنحدر جنوباً . تبعد عن بلدة راجو 3 كم باتجاه الشمال الشرقي ، تربتها غضارية فقيرة ،يحدها شمالاً سلسلة جبلية و قرية /حجمانلي/ ، وجنوباً منحدر و وادي وأشجار الزيتون و الكرمة وقرية /كورانلي/ و حاج خليل ، و شرقاً منحدر قاسي ومسيل عميق و سلسلة جبلية علية و قرية /جرختلي/ ، وغرباً منحدر و وادي عميق و سلسلة جبلية عالية وبلدة راجو ،يبلغ عدد بيوتها حوالي 25 بيتاً و عمرها حوالي 300 عاماً ، مساكنها القديمة حجرية ـ طينية بسقوف خشبية ، و الحديثة أسمنتية انتشرت شمالاً ، تتوفر فيها شبكة كهرباء حديثة و تشرب القرية من الصهاريج المحفورة أمام المنازل والتي تجمع فيها مياه الأمطار شتاءاً ، وفيها هاتف و مدرسة ابتدائية حديثة ,القرية تابعة لبلدية حاج خليل ، يعمل السكان بالزراعة البعلية على مساحة تبلغ 81 هـ ( الزيتون ، الحبوب ، البقول ، الكرمة ) إلى جانب تربية الأغنام والماعز، وتتصل القرية مع الناحية بطريق ترابي مسوى غير مزفت ، ويو [ جد في القرية مزار الشيخ محمد علي  . ومن العائلات الموجودة في القرية : آل خشمان</p>
+<ul>
+<li>آل هوليلو - آل كيله - مختار القرية محمد يوسف بن عكاش وتعرف القرية بأنهم</li>
+</ul>
+<p>كانوا ثوار ضد الاحتلال الفنسي ومن ابرزهم المرحوم حسين سمو</p>
+<p>مختار القرية : محمد يوسف</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -253,7 +330,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20holelo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20holelo.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=I25t4t2pm-M" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=I25t4t2pm-M</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20holelo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20holelo.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=I25t4t2pm-M" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=I25t4t2pm-M</a></li></ul>
             </div>
 
             
@@ -263,7 +340,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -381,6 +458,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

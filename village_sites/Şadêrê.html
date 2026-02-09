@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -209,23 +230,71 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Şadêrê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The name is composed of two syllables: &#x27;Şa&#x27; or &#x27;Şah&#x27; in Kurdish meaning &#x27;king&#x27;, and &#x27;dêr&#x27;, meaning &#x27;monastery&#x27;, making the full meaning &#x27;King&#x27;s Monastery&#x27; (Dêra Şah).</p>
+<p><strong>Foundation Date/Period:</strong> approximately 400 years</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Seman</span>, <span class="internal-link">Şêx Berekat</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Şêx Rikab</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Geliyê Şêx Rikab</span>, <span class="internal-link">Geliyê Şêx Riqaq</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Şadêrê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27;, a geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Şadêrê, شيح الدير, شيخ الدير</strong> /1305n - 335e - 19km - 215m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Şadêrê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20shadere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20shadere.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): Lêkolînek Cografî</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span> regarding <span class="internal-link">Şadr</span>, <span class="internal-link">Şîh el-Dêr</span>, <span class="internal-link">Şêx el-Dêr</span> (1305 inhabitants, 335 houses, 19 km distance, 215 m altitude):</p>
+<p>The name is composed of two syllables: &quot;Şa&quot; or &quot;Şah&quot; in Kurdish meaning &quot;king,&quot; and &quot;dêr&quot; meaning &quot;monastery,&quot; so the full meaning becomes &quot;King&#x27;s Monastery.&quot; Some say the name is Syriac from &quot;Şîh el-Dêr,&quot; and during Arabization, the Syriac &quot;Şîh&quot; was replaced by the Arabic &quot;Şêx.&quot; However, Khoury Barsoum states that &quot;Şîh&quot; in Aramaic means a fragrant plant. This difference in meaning between Aramaic and Syriac makes the Kurdish designation more probable.</p>
+<p>The village has a beautiful location situated on a limestone rocky height. It is bordered to the east by the valley of <span class="internal-link">Geliyê Şêx Rikab</span>. Its residences are currently adjacent to the village of <span class="internal-link">Xezawiyê</span>. There is a small spring south of the village. Approximately half of the village residents are <span class="internal-link">Êzîdî</span>, and it contains the old cemetery for the Yezidis of the neighboring villages. In its center stands the old shrine of <span class="internal-link">Şêx Rikab</span>, and the site contains old and important archaeological signs.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Rûbar û Girên Wê Yên Kesk</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Şêx el-Dêr is a village in the <span class="internal-link">Efrîn</span> valley, belonging to the Central Villages subdistrict of the Efrîn region, Aleppo governorate. It is a village situated on the northern slope of a rocky height at its contact point with the flood plain of the Efrîn river valley. It is bordered to the north by a wide, agriculturally fertile plain, the Efrîn river valley, and the village of <span class="internal-link">Keferzît</span>. To the south, it is bordered by the rugged mountain chain of <span class="internal-link">Çiyayê Seman</span> and <span class="internal-link">Şêx Berekat</span>. To the west, it is bordered by a mountainous height, a fertile plain, and the village of <span class="internal-link">Îska</span>. To the east, it is bordered by the valley of <span class="internal-link">Geliyê Şêx Riqaq</span> and the town of Xezawiyê at a distance of 500 meters.</p>
+<p>The number of its houses is approximately 150, and its age is about 400 years, indicated by its ancient location and the presence of old antiquities and a shrine on the eastern side. Its houses are built of stone with mud and wood, while modern ones are of stone and reinforced concrete situated on both sides of the <span class="internal-link">Riya Xezawiyê-Celme</span> (Xezawiyê and Celme road). An electricity network is available, as well as drinking water from the well and the small spring in the middle of the villages. There is also a mosque, a primary school, and a telephone.</p>
+<p>It connects to Efrîn via a paved road that passes through the center of the village to the neighboring villages. The residents work in the cultivation of grains, olives, pomegranates, walnuts, apples, and vegetables irrigated from wells and the Efrîn river, as well as raising sheep. A portion of the inhabitants work in limestone quarries south of the village. The village is surrounded by pomegranate and walnut trees.</p>
+<p>Among the holders of higher degrees in the village is <span class="internal-link">Mamed Cumo</span> (PhD in Oriental Languages, Kurdish, from France).</p>
+<p>Village Mukhtar: <span class="internal-link">Ebdulrehman Şeref</span></p>
+<p>Preparation and execution:</p>
+<p>Manager of Tirej Afrin website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>Sources:</p>
 <ul>
-<li>The name is composed of two parts: Şa or Şah in Kurdish means &quot;king&quot;, and &quot;دير&quot;, and the complete meaning becomes &quot;monastery of the king&quot;. Some say that the name is Syriac from &quot;شيح الدير&quot;, and in Arabization &quot;شيح&quot; Syriac was replaced with Arabic &quot;شيخ&quot;. As for <span class="internal-link">al-Khouri Barsoum</span>, he says that &quot;شيح&quot; in Aramaic means a sweet-smelling plant /p.103/. This difference in meaning between Aramaic and Syriac makes the Kurdish naming most likely.</li>
-<li>The village has a beautiful location situated on a limestone rocky elevation adjacent to the east of <span class="internal-link">Sheikh Rikab</span> valley. Its dwellings currently adjoin <span class="internal-link">Ghazawiya</span> village. There is a small water spring south of the village. About half the village population is Yazidi, and it contains the old cemetery for Yazidis of neighboring villages, and in its center is the old <span class="internal-link">Sheikh Rikab</span> shrine, and at the site are important ancient archaeological indications.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): Lêkolînek Cografî by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: Afrin.... its river and green hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qutmeh</span> village:</p>
-<p><strong>شيخ الدير</strong>: A village in Afrin valley, belonging to the central villages district and Afrin region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p>It is a village located on the northern slope of a rocky elevation at its contact with the flood plain of Afrin river valley. It is bordered to the north by a vast fertile agricultural plain and Afrin river valley and <span class="internal-link">Kafr Zait</span> village, to the south by a mountainous chain from the rugged <span class="internal-link">Jebel Samaan</span> and <span class="internal-link">1 - PhD/Villages/Sheikh Barakat</span> village, to the west by a mountainous elevation and fertile plain and <span class="internal-link">Eskan</span> village, and to the east by <span class="internal-link">Sheikh Raqaq</span> valley and <span class="internal-link">Ghazawiya</span> town at a distance of 500m. The number of its houses is approximately 150 houses and its age is about 400 years, evidenced by its ancient location and the presence of ancient ruins and a shrine from the eastern side. Its houses are stone made of clay and wood, and the modern ones are made of stones and reinforced cement on both sides of the <span class="internal-link">Ghazawiya</span> and <span class="internal-link">Jalmeh</span> road. It has an electricity network and drinking water from wells and small springs in the village center, as well as a mosque and elementary school and telephone. It connects to Afrin by a paved road passing through the village center to neighboring villages. The residents work in grain, olive, pomegranate, walnut, apple cultivation, and irrigated vegetables from wells and Afrin river, as well as sheep raising. Some residents work in limestone quarries south of the village. The village is surrounded by pomegranate and walnut trees.</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Mamd Jamo</span> / Doctorate in Oriental Languages / Kurdish / <span class="internal-link">France</span></p>
-<p>Village headman: <span class="internal-link">Abdul Rahman Sharaf</span></p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Rûbar û Girên Wê Yên Kesk by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Şadr ، شيح الدير ، شيخ الدير /1305ن - 335هـ - 19كم - 215م/:</p>
+<p>-الاسم مؤلف من مقطعين: Şa أوŞah في الكردية بمعنى &quot;ملك&quot;، و &quot;دير&quot;، ويصبح</p>
+<p>المعنى الكامل &quot;دير الملك&quot;. ومنهم من يقول أن الاسم سرياني من &quot;شيح الدير&quot;، وفي التعريب استبدل &quot;شيح&quot; السريانية بـ شيخ العربية. أما الخوري برصوم، فيقول إن &quot;شيح&quot; في الآرامية: بمعنى نبات طيب الرائحة /ص103/. وهذا الاختلاف في المعنى في الآرامية والسريانية، يجعل التسمية الكردية هي الراجحة.</p>
+<ul>
+<li>للقرية موقع جميل تقع على مرتفع صخري كلسي يجاورها شرقا وادي شيخ رْكَاب.</li>
+</ul>
+<p>وتلاصق مساكنها حالياً ق.غزاوية. يوجد في جنوب القرية نبع ماء صغير. نصف سكان القرية تقريبا من الإيزيدية، وفيها المقبرة القديمة لإيزيديي القرى المجاورة، وفي وسطها مزار شيخ ركاب القديم، وفي الموقع دلائل أثرية قديمة وهامة. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه شيخ الدير : قرية في وادي عفرين , تتبع ناحية قرى مركز ومنطقة عفرين , محافظة حلب . وهي قرية تقع في السفح الشمالي لمرتفع صخري عند تماسه مع السهل الفيضي لوادي نهر فرين يحدها شمالاً سهل واسع خصب زراعياً ووادي نهر عفرين وقرية كفرزيت وجنوباً سلسلة جبلية من جبل سمعان الوعرة وشيخ بركات وغربا ًمرتفع جبلي وسهل خصب وقرية إسكان أما شرقاً فيحدها وادي شيخ رقاق وبلدة الغزاوية على مسافة500م يبلغ عدد بيوتها حوالي150بيتاً وعمرها حوالي400عام بدلالة موقعها القديم ووجود آثار قديمة ومزار من الجهة الشرقية . بيوتها حجرية من الطين والخشب والحديثة من الأحجار والأسمنت المسلح على جانبي طريق الغزاوية و جلمة . تتوفر فيها شبكة الكهرباء ومياه الشرب من البئر والنبع الصغيرين في وسط القرى وكذلك هناك جامع ومدرسة ابتدائية وهاتف. تصل عفرين بطريق مزفت يمر في وسط القرية إلى القرى المجاورة ويعمل الأهالي بزراعة الحبوب والزيتون والرمان والجوز والتفاح والخضار المروية من الآبار ونهر عفر ين وكذلك تربية الأغنام ويعمل قسم من السكان في مقالع الأحجار الكلسية جنوب القرية وتحاط القرية بأشجار الرمان والجوز . ومن حاملي الشهادات العليا في القرية : مامد جمو / دكتوراة في اللغات الشرقية / الكردية / فرنسا</p>
+<p>مختار القرية : عبدالرحمن شرف</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -240,7 +309,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20shadere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20shadere.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=IvjAKVDHJTE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=IvjAKVDHJTE</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100063697286863" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100063697286863</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=si0eE9azvsE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=si0eE9azvsE</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20shadere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20shadere.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=IvjAKVDHJTE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=IvjAKVDHJTE</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100063697286863" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100063697286863</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=si0eE9azvsE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=si0eE9azvsE</a></li></ul>
             </div>
 
             
@@ -250,7 +319,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -368,6 +437,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

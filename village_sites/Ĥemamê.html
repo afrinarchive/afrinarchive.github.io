@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -176,7 +197,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Hammam, Hemamê, Omar Agha Qashla, الحمام, Ḧemamê</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Golkê</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Arif Axa, Aze, Ağler, Birekê Axa, Biş, Ebdîn Axa, Ehmed Axa, Enwer Axa, Genc, Izzet Axa, Krêt, Malbata Arif Axa, Malbata Ebdo Reşo, Malbata Ehmed Axa, Malbata Ehmedê Biş, Malbata Elî Krêt, Malbata Enwer Axa, Malbata Izzet Axa, Malbata Mehmed Gênc, Malbata Nûrî Azê, Malbata Omer Axa, Malbata Silêman Axa, Malbata Şêx Mihemed Axa, Omer Axa, Roşo, Silêman Axa, Şêx Mihemed Axa</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Arif Axa, Aze, Ağler, Birekê Axa, Biş, Ebdîn Axa, Ehmed Axa, Ehmed Kenc Axa, Enwer Axa, Genc, Izzet Axa, Kenc, Krêt, Malbata Arif Axa, Malbata Ebdo Reşo, Malbata Ehmed Axa, Malbata Ehmedê Biş, Malbata Elî Krêt, Malbata Enwer Axa, Malbata Izzet Axa, Malbata Mehmed Gênc, Malbata Nûrî Azê, Malbata Omer Axa, Malbata Silêman Axa, Malbata Şêx Mihemed Axa, Omer Axa, Roşo, Silêman Axa, Şêx Mihemed Axa</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -220,24 +241,62 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Ĥemamê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) Geographic Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong><span class="internal-link">Ḧemam</span></strong> (الحمام), <strong><span class="internal-link">Al-Hammam</span></strong> (الحمام) /3088n - 588ha - 8km - 170m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Ĥemamê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hemame.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hemame.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Hemam</span> /3088 inhabitants - 588 - 8km - 170m/:</p>
+<p>It took its name from the mineral water baths (hemam) that were located near it.</p>
+<p>It is a large village located at the extreme southwestern end of the <span class="internal-link">Efrîn</span> region. It overlooks <span class="internal-link">Deşta Amiq</span> (Amik Plain) from the west. It contains an old palace belonging to the Aghas of the region from the <span class="internal-link">Kenc</span> family. The village was a major border crossing station before the cancellation of the border crossing that used to pass through it. During the border demarcation, the village was divided into two halves; the Turks moved their section far from the border line, while the border line and the paved road pass beside the Syrian village. One of the village residents dug an artesian well north of the village and built a restaurant, a swimming pool, and baths, exploiting the warm mineral water of the well.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p><span class="internal-link">Omer Axa Qişle</span> / Hemam:</p>
+<p>A village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Cindirês</span> district of the Efrîn region, Aleppo governorate. It is located at the southwestern end of the mentioned mountain, overlooking Deşta Amiq to the west and adjacent to the Sanjak of Alexandretta (Hatay) on the road leading to it. It is 8km west of the town of Cindirês.</p>
+<p>It is bordered to the north, east, and south by the Turkish border (specifically: north by a valley and mountainous heights planted with olive trees, forest trees, the healing water baths, the village of <span class="internal-link">Merwanê Jorîn</span>, and a valley where olive trees rise, with the Turkish border directly 10 meters away). To the west, it is bordered directly by the Turkish border at a distance of 2 meters, the Turkish Deşta Amiq, and the town of <span class="internal-link">Reyhanli</span>. To the east, it is bordered by a valley, heights planted with olive trees, the village of <span class="internal-link">Hecî Skender</span>, and <span class="internal-link">Eşkanê Rojava</span>.</p>
+<p>The number of its houses is about 150, and its age is approximately 500 years. Its old houses are made of mud and wood, while the modern ones are cement, extending north and east along the road that connects it to the town of Cindirês. Previously, during the French Mandate era, it was the center of the district (Nahiyah) before the annexation of the Sanjak of Alexandretta to Turkey. The center was then moved to Cindirês after independence in 1950 AD. It became a small village after that, but today the village of Hemam is a large village, extending north and east.</p>
+<p>There are three old houses on the western side, 15 meters away, belonging to the family of <span class="internal-link">Ehmed Kenc Axa</span>. There is an old mosque inside the courtyard of one of the old houses built by the Ehmed Kenc Axa family; the house is currently destroyed and demolished, and a poor family lives in the ground section. The village has an electricity network, drinking water from artesian wells, a police station, and it is a border point. It contains a modern primary and preparatory school, a farmers&#x27; association, and a tourist restaurant containing healing waters in the northern section of the village called (<span class="internal-link">Hemamên Şifa</span>). It connects to the district and the region via a paved road.</p>
+<p>Its residents work in the cultivation of olives, grains, and legumes, as trees cover 70% of the planted areas, irrigated by pumping from the village springs. They also produce summer vegetables. The people work in raising sheep and goats. The village drinks from an old well south of the village and from spring waters. It is connected to the town of Cindirês by a paved road. It is the last village on the southwestern side of the Efrîn region, Aleppo governorate, and Syria.</p>
+<p>Among its most important families is the (<span class="internal-link">Kenc Axa</span>) family, of whom only one house remains; the rest of their lands remained on the opposite side of the border with Turkish territory. This village is considered one of the beautiful villages in the Cindirês district and the Efrîn region.</p>
+<p>Village Mukhtar: <span class="internal-link">Husên Reşîd Kinde</span></p>
+<p>Sources:</p>
 <ul>
-<li>It took its name from the mineral water baths that existed near it.</li>
-<li>A large village located at the far southwestern end of Afrin (منطقة عفرين). It overlooks from the west the <span class="internal-link">Amuq plain</span> (سهل العمق). It has an old palace belonging to the region&#x27;s aghas from <span class="internal-link">Al Kunj family</span> (آل كنج), and the village was a major border crossing point before the closure of the border crossing that passed through it. The village was divided during border demarcation into two halves, then the <span class="internal-link">Turks</span> (الأتراك) moved their part away from the border line, while the border line and paved road pass beside the <span class="internal-link">Syrian village</span> (القرية السورية). One of the village residents dug artesian wells north of the village and built a restaurant, swimming pool and baths utilizing the warm mineral water from the well.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: &#x27;عفرين&#x27; &#x27;Afrin&#x27;.... Its River and Green Hills by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Omar Agha Qashla</span></strong> (عمر آغا قشلة) / <strong><span class="internal-link">Al-Hammam</span></strong> (الحمام): A village in <span class="internal-link">Kurdish mountain</span> (جبل الكرد), belonging to <span class="internal-link">Cindires sub-district</span> (ناحية جندرس), Afrin (منطقة عفرين), <span class="internal-link">Aleppo governorate</span> (محافظة حلب).</p>
-<p>Located at the southwestern end of the mentioned mountain overlooking west to <span class="internal-link">Amuq plain</span> (سهل العمق) and adjacent to <span class="internal-link">Alexandron district</span> (لواء اسكندرون) on the road leading to it. It is 8km west of <span class="internal-link">Cindires town</span> (بلدة جندرس). It is bordered to the north, east and south by the <span class="internal-link">Turkish border</span> (الحدود التركية) and to the north by valleys and mountainous heights planted with olive trees and forest trees and healing water baths and <span class="internal-link">Marwana Upper village</span> (مروانة فوقاني) and a valley where olive trees rise and the <span class="internal-link">Turkish border</span> (الحدود التركية) directly at 10 meters distance, to the west by the <span class="internal-link">Turkish border</span> (الحدود التركية) directly at 2m distance and the <span class="internal-link">Turkish Amuq plain</span> (سهل العمق التركي) and <span class="internal-link">Reihaniye town</span> (بلدة الريحانية), and to the east by valleys and heights planted with olive trees and <span class="internal-link">Haj Iskandar village</span> (قرية حاج اسكندر) and <span class="internal-link">Ishkan Western</span> (اشكان غربي).</p>
-<p>The number of houses is about 150 houses and its age is about <span class="internal-link">500 years</span> (500عاماً). Its old houses are clay and wood and the modern ones are concrete extending northward and eastward and along the sides of the road connecting it to <span class="internal-link">Cindires town</span> (بلدة جندرس).</p>
-<p>It was previously during the <span class="internal-link">French mandate</span> (الانتداب الفرنسي) a center for the sub-district before the annexation of <span class="internal-link">Alexandron district</span> (لواء اسكندرون) to <span class="internal-link">Turkey</span> (تركيا), then the center was moved to <span class="internal-link">Cindires</span> (جندرس) after independence in 1950 (1950). After that it became a small village and today <span class="internal-link">Al-Hammam village</span> (قرية الحمام) is a large village, extending northward and eastward.</p>
-<p>There are three old houses on the western side at 15m distance belonging to the <span class="internal-link">Ahmad Kunj Agha family</span> (عائلة أحمد كنج الآغا), and there is an old mosque inside the courtyard of one of the old houses built by the <span class="internal-link">Ahmad Kunj Agha family</span> (عائلة أحمد كنج آغا) and the house is currently destroyed and demolished and the ground floor is inhabited by a poor family.</p>
-<p>The village has an electricity network and drinking water from artesian wells and a police station and it is a border point and an elementary and preparatory school and an agricultural association and a tourism destination with healing waters in the northern part of the village called (<span class="internal-link">healing baths</span>) (حمامات الشفاء) and connects with the sub-district and region by paved roads.</p>
-<p>Its residents work in olive, grain and legume cultivation where its trees spread over 70% of the cultivated and irrigated areas by pumping from the village springs, and it also produces summer vegetables. The residents work in raising sheep and goats and the village drinks from an old well south of the village and spring water. It is connected to <span class="internal-link">Cindires town</span> (بلدة جندرس) by paved road and it is the last village from the southwestern direction of Afrin (منطقة عفرين) and <span class="internal-link">Aleppo governorate</span> (محافظة حلب) and <span class="internal-link">Syria</span> (سورية).</p>
-<p>Among its most important families is the (<span class="internal-link">Kunj Agha family</span>) (عائلة كنج آغا) of whom only one house remains and the rest remained on their lands on the opposite side of the border with the <span class="internal-link">Turkish lands</span> (الأراضي التركية). This village is considered one of the beautiful villages in <span class="internal-link">Cindires sub-district</span> (ناحية جندرس) and Afrin (منطقة عفرين).</p>
-<p>Village mayor: <span class="internal-link">Hussein Rashid Kanda</span> (حسين رشيد كنده)</p>
-<p>Preparation and implementation: Director of <span class="internal-link">Afrin Heritage website</span> (موقع تيريج عفرين): <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥemamê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=uabMKQ9hDoI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=uabMKQ9hDoI</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Manager of Navenda Tirej Efrîn: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Ĥemam ، الحمام /3088ن - 588هـ - 8كم - 170م/:</p>
+<ul>
+<li>أخذت اسمها من حمامات المياه المعدنية التي كانت موجودة بقربها.</li>
+</ul>
+<ul>
+<li>قرية كبيرة تقع في أقصى النهاية الجنوبية الغربية لمنطقة عفرين. تشرف من</li>
+</ul>
+<p>الغرب على سهل العمق. فيها قصر قديم لآغوات المنطقة من آل كنج، وكانت القرية محطة عبور حدودية رئيسية قبل إلغاء المعبر الحدودي الذي كان يمر منها. قسمت القرية أثناء ترسيم الحدود إلى نصفين، ثم نقل الأتراك قسمهم بعيدا عن خط الحدود، بينما يمر خط الحدود والطريق المعبد بجانب القرية السورية. وقد حفر أحد سكان القرية بئرا ارتوازية شمالي القرية، وبنى مطعما ومسبحا وحمامات مستغلا المياه المعدنية الدافئة للبئر. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه عمر آغا قشلة / الحمام : قرية في جبل الكرد، تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب. تقع في النهاية الجنوبية الغربية للجبل المذكور مشرفة غرباً على سهل العمق ومتجاورة مع لواء اسكندرون على الطريق المؤدي إليه . تبعد 8كم غرب بلدة جنديرس ، يحدها شمالاً وشرقاً وجنوباً الحدود التركية ويحدها شمالاً وادي ومرتفعات جبلية مزروعة بأشجار الزيتون وأشجار حراجية وحمامات مياه الشفاء وقرية /مروانه فوقاني/ و وادي ترتفع فيه أشجار الزيتون والحدود التركية مباشرة على بعد10أمتار وغرباً الحدود التركية مباشرة على بعد 2م وسهل العمق التركي وبلدة /الريحانية/ ، وشرقاً وادي ومرتفعات مزروعة بأشجار الزيتون وقرية /حاج اسكندر/ و/اشكان غربي/ . عدد بيوتها حوالي 150بيتاً وعمرها حوالي 500عاماً ، بيوتها القديمة طينية خشبية والحديثة منها إسمنتية ممتدة شمالاً وشرقاً وعلى محاذاة الطريق التي تصلها ببلدة جنديرس . كانت سابقاً في عهد الانتداب الفرنسي مركزاً للناحية قبل ضم لواء اسكندرون إلى تركيا ثم نقل المركز إلى جنديرس بعد الاستقلال عام 1950 م ، وأصبحت بعد ذلك قرية صغيرة واليوم قرية الحمام قرية كبيرة ، ممتدة شمالاً وشرقاً ، يوجد فيها ثلاث بيوت قديمة من الجهة الغربية على بعد 15م عائدة لعائلة أحمد كنج الآغا , ويوجد جامع قديم داخل ساحة أحد البيوت القديمة بنته عائلة أحمد كنج آغا والبيت حالياً مدمر ومهدم والقسم الأرضي تسكنه عائلة فقيرة . يوجد في القرية شبكة للكهرباء ومياه الشرب من الآبار الارتوازية ومخفر للشرطة وهي نقطة حدودية ومدرسة ابتدائية وإعدادية حديثة وجمعية فلاحية ومقصفاً للسياحة فيه مياه شافية في القسم الشمالي للقرية تسمى (حمامات الشفاء ) وتتصل مع الناحية والمنطقة بطريق مزفتة. يعمل سكانها بزراعة الزيتون والحبوب والبقول حيث تنتشر أشجارها على 70% من المساحات المزروعة والمروية بالضخ من ينابيع القرية , كما تنتج الخضار الصيفية. يعمل الأهالي بتربية الأغنام و الماعز وتشرب القرية من بئر قديم جنوب القرية ومياه الينابيع , تربطها ببلدة جنديرس طريق مزفتة وهي آخر قرية من الناحية الجنوبية الغربية من منطقة عفرين ومحافظة حلب وسورية . من أهم عوائلها عائلة ( كنج آغا ) والذي لم يبق منهم سوى بيتاً واحداً والباقون بقيت أراضيهم في الجهة المقابلة للحدود مع الأراضي التركية ، تعتبر هذه القرية من القرى الجميلة في ناحية جنديرس و منطقة عفرين .</p>
+<p>مختار القرية :  حسين رشيد كنده</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥemamê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=uabMKQ9hDoI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=uabMKQ9hDoI</a></p>
 <p>The village of <span class="internal-link">Hemamê</span>, located approximately 10 kilometers west of <span class="internal-link">Cindirêsê</span> in the Afrin region, is a settlement defined by its healing waters and the geopolitical division of the 20th century. Historically known as <span class="internal-link">Qişla Omer Axa</span>, the village was established as a local center of power by the <span class="internal-link">Ağler</span> (Aghas), a landed elite family who migrated from <span class="internal-link">Mabetê</span>. The settlement was divided among three brothers: <span class="internal-link">Şêx Mihemed Axa</span>, <span class="internal-link">Arif Axa</span>, and <span class="internal-link">Silêman Axa</span>. During the French Mandate era, the village served as a bustling trade hub (nahiye) with a bazaar that operated four days a week, attracting merchants from <span class="internal-link">Heleb</span>, <span class="internal-link">Hama</span>, and <span class="internal-link">Hums</span>.</p>
 <p>The history of Hemamê was irrevocably changed in 1939 when the border between Syria and Turkey was drawn directly through the community. This division split the village in two; the northern section, known as <span class="internal-link">Hemamê Ereba</span>, fell under Turkish control, while the southern section remained in the <span class="internal-link">Afrin</span> region. This separation severed families and cut the villagers off from their agricultural lands and the original thermal springs located on the northern side. Despite this, the residents maintained a distinct identity, and in 1997, a new well was drilled on the southern side, successfully tapping into the same sulfur-rich thermal water source. This site is now a local center for treating rheumatism and skin ailments.</p>
 <p>Architecturally, the village preserves traces of its feudal and administrative past. Notable structures include the ruins of the Agha mansions, such as the <span class="internal-link">Qişla Arif Axa</span> and <span class="internal-link">Qişla Ehmed Axa</span>. A former French military outpost, the <span class="internal-link">Mexfera Kevin</span>, still stands and is currently inhabited by locals like <span class="internal-link">Nûrî Azê</span>. The village mosque houses a significant historical artifact: a stone inscription bearing the name of the Ayyubid ruler <span class="internal-link">Melik el-Eşref</span>, suggesting a deep historical footprint in the area long before the modern settlement.</p>
@@ -315,7 +374,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hemame.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hemame.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=uabMKQ9hDoI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=uabMKQ9hDoI</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=ZkqHKjkzu2M" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZkqHKjkzu2M</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=krrcgs3KYWI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=krrcgs3KYWI</a><br><a href="https://www.youtube.com/watch?v=uabMKQ9hDoI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=uabMKQ9hDoI</a><br><a href="https://www.youtube.com/watch?v=XT3afwYkNmY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=XT3afwYkNmY</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hemame.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hemame.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=uabMKQ9hDoI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=uabMKQ9hDoI</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=ZkqHKjkzu2M" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZkqHKjkzu2M</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=krrcgs3KYWI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=krrcgs3KYWI</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=XT3afwYkNmY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=XT3afwYkNmY</a></li></ul>
             </div>
 
             
@@ -325,7 +384,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -443,6 +502,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

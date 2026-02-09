@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Abein, Aben, Bênê, ابين, بينه</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Rûbarî</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekro, Ebdo, Ebdî, Kedro, Kelto, Kenco, Mûsaco, Neaso, Sîdo, Xebariye</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -209,24 +232,75 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Bênê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> In Kurdish, the name means scent or breath/breathing (bên), or it is a corruption of the Kurdish word for long elevation (ben). Other theories suggest a Syriac origin meaning &#x27;heap of stones, branches, and fruits&#x27; or an Aramaic origin meaning &#x27;the monks&#x27; or &#x27;heaps of stones&#x27;.</p>
+<p><strong>Foundation Date/Period:</strong> 500 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Lêlûn</span>, <span class="internal-link">Dûranî</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Wadiyê Tinib</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Bênê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds</span> (Afrin) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Bênê, ابين</strong> /4051N - 25km - 485m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Bênê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-bene.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-bene.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Bên</span>, <span class="internal-link">Ebîn</span> /4051 inhabitants, 25km, 485m/:</p>
+<p>Bên or Bên: In Kurdish, it means scent or breath and breathing (bên). However, I believe it is corrupted from the Kurdish word (ben) which means long elevation. This name fits the terrain of the village site to a great extent, and the name was corrupted from (ben) to (Bn/Bên) according to the habit of the Kurds of <span class="internal-link">Efrîn</span> who tend to incline vowels heavily, sometimes inclining them twice. As for Khuri <span class="internal-link">Bersûm</span>, he says it is of Syriac origin meaning &quot;heap of stones, branches, and fruits.&quot; In another place, he says about the word &quot;Ebîn&quot; that it is Aramaic meaning &quot;the monks,&quot; which weakens his opinions.</p>
+<p>It is a large village with a high percentage of educated and cultured people, and their migration to <span class="internal-link">Heleb</span> is significant. From it comes the <span class="internal-link">Kedro</span> family, creative in the art of painting. It is one of the villages of the <span class="internal-link">Rûbarî</span> tribe, and from it is the member of the Syrian People&#x27;s Council, Brigadier General <span class="internal-link">Ebdulhemîd Xebarî</span>.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Ebîn is a village in <span class="internal-link">Çiyayê Lêlûn</span>, following the subdistrict of the villages of the center and district of Efrîn, Heleb Governorate. Its name is Akkadian Aramaic and means &quot;heaps of stones.&quot; It is a large village located at the end of the southeastern slope of the <span class="internal-link">Dûranî</span> limestone plateau, from the southeast of which extends an undulating plain. It inclines towards the northeast, and a valley passes south of it heading with the slope of the plain to feed the valley of <span class="internal-link">Tinib</span>. Volcanic soil covers the plain and the plateau, on which basalt stones are scattered.</p>
+<p>It is 20km away from the city of Efrîn towards the southeast. It is bordered on the north by a wide plain and the village of Tinib and <span class="internal-link">Keştaar</span> nearby; on the south by a wide plain and the village of <span class="internal-link">Çetal Ziyaret</span>; on the east by a wide plain of olive trees and the village of <span class="internal-link">Dêr El-Cemal</span>; and on the west by a wide plain planted with olive trees and the village of <span class="internal-link">Baselhaya</span> and <span class="internal-link">Cilbir</span> which follow the villages of the Efrîn center.</p>
+<p>The number of its houses reaches about 250 houses and its age is 500 years. A municipality was established in it since 1984. It has an electricity network, drinking water, a primary and middle school, a telephone center, and a paved road branching from the Heleb road passing through the village of Dêr El-Cemal to Ebîn and the neighboring villages. It has a consumer institution, a peasant society, a mosque, three modern villas on the western and southern sides, and two pharmacies. Its modern houses are made of stones and cement, while the old ones are of stones, mud, and wooden roofs. The people of the village work in cultivating cereals, vegetables, olives, and raising livestock.</p>
+<p>Among its most important families are the <span class="internal-link">Xebariye</span> family (specifically Ebdulhemîd Xebarî, a member of the People&#x27;s Council several times), <span class="internal-link">Kenco</span>, Kedro, <span class="internal-link">Ebdî</span>, <span class="internal-link">Mûsaco</span>, <span class="internal-link">Sîdo</span>, <span class="internal-link">Bekro</span>, <span class="internal-link">Ebdo</span>, <span class="internal-link">Kelto</span>, and <span class="internal-link">Neaso</span>. Among the PhD holders from this village are Dr. <span class="internal-link">Mihemed Hisên Ehmed</span> who holds a PhD in Business Administration from France, Dr. <span class="internal-link">Hisên Seado</span> with a PhD in Nuclear Physics from Germany, and Dr. <span class="internal-link">Îmad Mihemed Kenco</span> with a PhD in Organic Chemistry from France. There are many university degree holders in all specializations. The mukhtar of the village is <span class="internal-link">Elî Ibrahîm</span>.</p>
+<p>Preparation and execution:</p>
+<p>Manager of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li><span class="internal-link">Bên</span> or Bîn (بين): means in Kurdish the smell or breath and breathing. However, I believe it is corrupted from the Kurdish word Benê which means the long elevation, and this name suits the terrain of the village&#x27;s location to a great extent, and the name was corrupted from Benê to Bênê according to the custom of Afrin Kurds who tend to elongate names, sometimes pronouncing them twice.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>As for <span class="internal-link">al-Khouri Barsoum</span>, he says it is Syriac in origin meaning &quot;stone heap, branches and fruits.&quot; In another place he says about the word &quot;<span class="internal-link">Abein</span>&quot; that it is Aramaic meaning &quot;the monks,&quot; which weakens his opinion.</p>
 <ul>
-<li>A large village with a large percentage of scholars and intellectuals, and their migration is large to <span class="internal-link">Aleppo</span>. From it is the <span class="internal-link">Kadro</span> family creative in the art of painting. It is from the villages of the <span class="internal-link">Robari</span> tribe, and from it is member of the <span class="internal-link">Syrian People&#x27;s Assembly</span> Colonel <span class="internal-link">Abdul Hameed Ghobari</span>.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>And according to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmah</span> village:</p>
-<p><strong>ابين</strong>: A village in <span class="internal-link">Leiloun Mountain</span>, belonging to the central villages sub-district and Afrin, Aleppo Governorate.</p>
-<p>Its name is almost Aramaic and means (stone heaps). It is a large village located at the end of the southeastern slope of the <span class="internal-link">Durani Limestone Plateau</span> which extends from its southeast a rolling plain that slopes towards the northeast as a valley passes south of it. The valley heads with the slope of the plain to feed <span class="internal-link">Tanb Valley</span>. The plain and plateau are covered with volcanic soil scattered with basaltic stones. It is 20 km away from Afrin City towards the southeast. It is bordered to the north by a vast plain and <span class="internal-link">Tanb</span> village and nearby <span class="internal-link">Kashtaar</span>, and to the south by a vast plain and <span class="internal-link">Jatal al-Ziyarah</span> village, and to the east by a vast plain of olive trees and <span class="internal-link">Deir al-Jamal</span> village, and to the west by a vast plain planted with olive trees and <span class="internal-link">Basalhaya</span> village and Jalbal belonging to the central villages of Afrin. The number of its houses is about 250 houses and its age is 500 years. A municipality was established in it since 1984. It has electricity network and drinking water and elementary and preparatory school and telephone center and paved road branching from Aleppo road passing through Deir al-Jamal village to Abein and neighboring villages. It has a consumer institution and agricultural association and mosque and three modern villas from the western and southern sides and two pharmacies. Its modern houses are made of stones and cement, while the old ones are made of stones and clay and wooden roofs. The village residents work in grain and vegetable cultivation and olives and raising livestock. Among its most important families is the <span class="internal-link">Ghobariyah</span> family (Abdul Hameed al-Ghobari / member of the People&#x27;s Assembly for several terms) - <span class="internal-link">Kanjo</span> - <span class="internal-link">Kadro</span> - <span class="internal-link">Abdi</span> - <span class="internal-link">Musajo</span> - <span class="internal-link">Sido</span> - <span class="internal-link">Bakro</span> - <span class="internal-link">Abdo</span> - <span class="internal-link">Kalto</span> - <span class="internal-link">Naaso</span>. Among the PhD holders from this village is <span class="internal-link">Dr. Mohammed Hussein Ahmad</span> holder of a PhD in Business Administration from France and <span class="internal-link">Dr. Hussein Saado</span> / PhD in Nuclear Physics from <span class="internal-link">Germany</span> and <span class="internal-link">Dr. Imad Mohammed Kanjo</span> / PhD in Organic Chemistry from France and there are many university degree holders in various specializations. Village headman: <span class="internal-link">Ali Ibrahim</span>.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>THE VILLAGE OF BÊNÊ</p>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Bn ، ابين /4051ن - 25كم - 485م/:</p>
+<ul>
+<li>Bnأو Bn (بين): تعني في الكردية الرائحة أو النَفَس والتنفس. إلا أنني</li>
+</ul>
+<p>أعتقد أنه محرف من كلمة Ben الكردية التي تعني المرتفع الطويل، وهذا الاسم يلائم تضاريس موقع القرية إلى حد كبير، وتم تحريف الاسم من Ben إلى Bn على عادة أكراد عفرين الذين يمعنون في إمالة الأسماء، فيميلونها أحياناً مرتين. أما الخوري برصوم، فيقول أنه سرياني الأصل بمعنى &quot;كومة الحجار، الأغصان والأثمار&quot;. وفي موضع آخر يقول عن لفظة &quot;أبين&quot; بأنها آرامية بمعنى &quot;الرهبان&quot;، وهذا ما يضعف من رأييه.</p>
+<ul>
+<li>قرية كبيرة فيها نسبة كبيرة من الدارسين والمثقفين، وهجرتهم كبيرة إلى حلب.</li>
+</ul>
+<p>منها عائلة كدرو المبدعة في فن الرسم. وهي من قرى عشيرة روباري، ومنها عضو مجلس الشعب السوري العميد عبدالحميد غباري. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه ابين : قرية في جبل ليلون , تتبع ناحية قرى مركز ومنطقة عفرين ، محافظة حلب . اسمها اكادي آرامي ويعني (أكوام الحجارة) هي قرية كبيرة تقع في نهاية السفح الجنوبي الشرقي لهضبة الدورانية الكلسية التي يمتد من جنوبها الشرقي سهل متموج . يميل باتجاه الشمال الشرقي كما يمر جنوبها واد يتجه مع انحدار السهل ليرفد وادي تنب تغطي السهل والهضبة تربة بركانية تنتشر عليها الحجارة البازلتية . تبعد عن مدينة عفرين 20كم نحو الجنوب الشرقي. يحدها شمالاً سهل واسع وقرية تنب وكشتعار القريبة وجنوبا سهل واسع وقرية جتال الزيارة وشرقا سهل واسع من أشجار الزيتون وقرية دير الجمال وغربا سهل واسع مزروع بأشجار الزيتون وقرية باصلحايا وجلبل تتبع قرى مركز عفر ين . يبلغ عدد بيوتها حوالي 250بيتاً وعمرها500عاماً أحدث فيها بلدية منذ عام 1984 تتوفر فيها شبكة الكهرباء ومياه الشرب ومدرسة ابتدائية وإعدادية ومركز للهاتف وطريق مزفت يتفرع من طريق حلب مرورا بقرية دير الجمال حتى إبين والقرى المجاورة وفيها مؤسسه استهلاكية وجمعية فلاحيه وجامع وثلاث فيلات حديثة من الجهة الغربية والجنوبية وصيدليتين بيوتها الحديثة من الأحجار والإسمنت أما القديمة فهي من الأحجار والطين والسقوف الخشبية , يعمل أهالي القرية بزراعة الحبوب والخضروات والزيتون وتربية المواشي ومن أهم عوائلها عائلة الغبارية ( عبدالحميد الغباري / عضو مجلس الشعب لمرات عدة ) - كنجو - كدرو - عبدي - موساجو</p>
+<ul>
+<li>سيدو - بكرو - عبدو - كلتو - نعسو  ومن حملة شهادة الدكتواره من هذه</li>
+</ul>
+<p>القرية الدكتور محمد حسين أحمد الحائز على شهادة دكتوراه في إدارة الأعمال من فرنسا والدكتور حسين سعدو / دكتواره في الفيزياء النووية من المانيا والدكتور عماد محمد كنجو / دكتواره في الكيمياء العضوية من فرنسا وهناك العديد من حملة</p>
+<p>الشهادات الجامعية في مجمل االاختصاصات ، مختار القرية علي ابراهيم .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>THE VILLAGE OF BÊNÊ</p>
 <p>15.6.2016</p>
 <p>The village of Bênê is affiliated with the Şêrewa district of Efrîn canton, located about 18 km east of the town of Basûtê and 27 km southeast of the city of Efrînê.</p>
 <p>It is also 4 km from the town of Dêrcemal in the Şahba region and 35 km north of Helebê.</p>
@@ -287,7 +361,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-bene.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-bene.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-bene.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-bene.htm</a></li></ul>
             </div>
 
             
@@ -297,7 +371,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -415,6 +489,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Beit Talita, Bteitech, Pitêtê, بتيته, Bteyteh</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Efendî, Heyanî, Nazî</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -207,26 +229,63 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Pitêtê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Aramaic meaning Beyt Telîta (The Hanging) or Beyt Tîna (House of the Fig)</p>
+<p><strong>Foundation Date/Period:</strong> Late 19th century</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Basûtê</span>, <span class="internal-link">Girê Eyn Darê</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Girê Eyn Darê</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çemê Efrînê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Pitêtê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of Central District / City of Afrin / Efrîn</p>
-<p>بتيته / Pitêtê</p>
-<p>===</p>
-<p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Pitêtê, Bteitech</strong> /288 inhabitants - 452 hectares - 6km - 320m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Pitêtê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-pitete.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-pitete.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc (Efrîn): A Geographical Study by Dr. <span class="internal-link">Mihemed Ebdo Elî</span>: <span class="internal-link">Pitt</span>, <span class="internal-link">Betîte</span> /288 inhabitants, 452 hectares, 6km, 320m/:</p>
+<p>Father <span class="internal-link">Şelhet</span> says that the name is Aramaic from &quot;Beyt Telîta&quot; meaning &quot;The Hanging&quot; /<span class="internal-link">Xêredîn El Esedî</span>, Vol 2, p53/. However, Chorepiscopus <span class="internal-link">Bersûm</span> says it is Aramaic meaning &quot;Beyt Tîna&quot; (House of the Fig) /p56/. We do not know the reason for the difference in meaning within the same language; it may be that the name is not Aramaic to begin with.</p>
+<p>The following is stated in the book Efrîn... Her River and Her Green Hills by the writer <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Betîte is a village in <span class="internal-link">Çiyayê Kurmênc</span>, belonging to the villages of the center and district of <span class="internal-link">Efrîn</span>, Heleb governorate. It is a village located at the end of the furrowed northern slope of <span class="internal-link">Çiyayê Basûtê</span> (Mount Basuta) at a distance of 800m west of <span class="internal-link">Çemê Efrînê</span> (Afrin River). Its soil is fertile alluvial clay, and it is 6km southwest of Efrîn city with a wide plain in front of it overlooking the area up to Efrîn city and the course of Çemê Efrînê (Afrin River).</p>
+<p>It is bordered to the north by a wide and agriculturally fertile plain, the <span class="internal-link">Riya Efrîn-Cindirês</span> (Efrîn-Cindirês road), the village of <span class="internal-link">Babîlît</span>, <span class="internal-link">Cedîde Kirsan Taş</span>, and Efrîn city. To the south, it is bordered by a mountain range and a very high mountainous elevation planted with olive trees and vines, the farm of <span class="internal-link">Bûzîkê</span>, and the village of <span class="internal-link">Kewkebê</span>. To the east, there is a harsh slope, a plain, the course of Çemê Efrînê (Afrin River), the archaeological site of <span class="internal-link">Girê Eyn Darê</span>, and the village of <span class="internal-link">Eyn Darê</span>. To the west, there is a wide agricultural plain, the village of <span class="internal-link">Kefer Betre</span>, the farm of <span class="internal-link">Hesûn</span>, <span class="internal-link">Şêx Ebdurrahman</span>, and the village of <span class="internal-link">Telef</span>.</p>
+<p>The number of its houses reaches about 16 houses and its age is about 125 years. Its old houses are made of stone and mud with wooden roofs, while the modern ones are of stone with roofs of reinforced concrete. According to the account of one of the elderly owners of the village, he said that the old location of the village was beside Çemê Efrînê (Afrin River) to the west, and as a result of the prevalence of diseases, the village was forced to move to the current elevated location to avoid diseases.</p>
+<p>An electricity network and a primary school are available in the village, as well as a paved dirt road reaching the center of the village. The residents drink from wells and cisterns. The population works mainly in the cultivation of grains, olives, vegetables, and cotton, and in raising sheep and goats. Among the families present in the village are: <span class="internal-link">Efendî</span>, <span class="internal-link">Nazî</span>, and <span class="internal-link">Heyanî</span>.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Studies of <span class="internal-link">Navenda Tirej Efrîn</span> / <span class="internal-link">Ebdulrehman Hacî Osman</span>.</p>
+<p>Preparation and Execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> website: Ebdulrehman Hacî Osman</p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Pitt ، بتيته /288ن - 452هـ - 6كم - 320م/:</p>
 <ul>
-<li><span class="internal-link">Father Shelaht</span> says that the name is Aramaic from &quot;Beit Talita&quot; meaning &quot;the suspended one&quot;, / <span class="internal-link">Khayr al-Din al-Asadi</span>, v. 2, p.53/. As for <span class="internal-link">Al-Khuri Barsoum</span> he says it is Aramaic meaning &quot;House of Figs&quot;, /p.56/. We do not know the reason for the difference in meaning within the same language, perhaps the reason is that the name is not originally Aramaic.</li>
+<li>يقول الأب شلحت إن الاسم آرامي من &quot;بيت تليتا&quot; أي &quot;المعلّقة&quot;، / خيرالدين</li>
 </ul>
-<p>And according to the book: Afrin.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmeh village</span></p>
-<p><strong>Bteitech</strong>: A village in <span class="internal-link">Mount of the Kurds</span>, belonging to central villages and Afrin region, <span class="internal-link">Aleppo</span> Governorate.</p>
-<p>It is a village located at the end of the northern furrowed slope of <span class="internal-link">Mount Basuta</span> at a distance of 800 m west of <span class="internal-link">Afrin River</span>, surrounded by fertile clayey soil, and is 6km southwest of Afrin city with a wide plain in front of it overlooking it up to Afrin city and the <span class="internal-link">Afrin River</span> course. It is bounded to the north by a wide and fertile agricultural plain and the <span class="internal-link">Afrin-Jindires</span> road and <span class="internal-link">Bableit village</span> and <span class="internal-link">Jadidah Karsan Tash</span> and Afrin city, to the south by a mountain chain and very high mountain elevation cultivated with olive and vine trees and <span class="internal-link">Bozikah farm</span> and <span class="internal-link">Kokbah village</span>, to the east by a harsh slope and plain and the <span class="internal-link">Afrin River</span> course and the <span class="internal-link">Tell Ain Darah</span> archaeological site and <span class="internal-link">Ain Darah village</span>, and to the west by a wide agricultural plain and <span class="internal-link">Kafr Batrah village</span> and <span class="internal-link">Hasoun farm</span> and <span class="internal-link">Sheikh Abdul Rahman</span> and <span class="internal-link">Tilf village</span>. The number of its houses reaches about 16 houses and its age is about 125 years. Its old houses are stone and clay with wooden roofs and the modern ones are stone with reinforced concrete roofs. According to the account of one of the village&#x27;s elderly residents who said that the village&#x27;s old location was beside <span class="internal-link">Afrin River</span> from the west and as a result of frequent diseases the village was forced to move to the current elevated location to avoid diseases. There is an electricity network and an elementary school and a paved dirt road to the village center. The residents drink from wells and ponds and the inhabitants work in cultivating grains and olives and vegetables and cotton and raising sheep and goats primarily.</p>
-<p>And among the families present in the village: <span class="internal-link">Al Afandi family</span> - <span class="internal-link">Al Nazi family</span> - <span class="internal-link">Al Hayani family</span></p>
-<p>Preparation and implementation: <span class="internal-link">Tirij Afrin</span> website director: Abdul Rahman Haji Othman</p>
-<p>20 / 12 / 2013</p></div></details></div>
+<p>الأسدي، ج 2، ص53/. أما الخوري برصوم فيقول أنه آرامي بمعنى &quot;بيت التينة&quot;، /ص56/. ولا نعلم سبب الاختلاف في المعنى داخل اللغة الواحدة، فقد يكون مرد ذلك أن الاسم ليس آرامي من الأساس. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه بتيته : قرية في جبل الكرد ، تتبع قرى مركز و منطقة عفرين ، محافظة حلب . وهي قرية تقع عند نهاية السفح الشمالي المخدد لجبل باسوطة على بعد 800 م غرب نهر عفرين ، تربتها غضارية لحقية خصبة ، وتبعد6كم جنوبي غربي مدينة عفرين وسهل واسع أمامه مشرف عليه حتى مدينة عفرين ومجرى نهر عفرين. يحدها شمالاً سهل واسع وخصب زراعياً وطريق عفرين جنديرس وقرية بابليت وجديدة كرسان طاش ومدينة عفرين , وجنوباً سلسلة جبلية ومرتفع جبلي عالي جداً مزروعة بأشجار الزيتون والكرمة ومزرعة بوزيكة وقرية كوكبه , وشرقاً منحدر قاسي وسهل ومجرى نهر عفرين وموقع تل عين داره الأثري وقرية عين داره , وغرباً سهل واسع زراعيا وقرية كفر بطرة ومزرعة حسون وشيخ عبد الرحمن وقرية تلف يبلغ عدد بيوتها حوالي 16بيتاً وعمرها حوالي125عاماً بيوتها القديمة حجرية طينية ذات سقوف خشبية والحديثة حجرية والأسقف من الإسمنت المسلح وحسب رواية أحد أصحاب القرية المعمرين حيث قال أن موقع القرية القديم بجانب نهر عفرين من الغرب ونتيجة كثرة الأمراض أضطر القرية الانتقال إلى الموقع الحالي المرتفع تجنبا من الأمراض تتوفر فيها شبكة الكهرباء ومدرسة ابتدائية وطريق ترابي معبد حتى وسط القرية . يشرب الأهالي من الآبار والبرك ويعمل السكان بزراعة الحبوب والزيتون والخضروات والقطن وتربية الأغنام والماعز بشكل رئيسي . ومن العائلات الموجودة في القرية : آل أفندي</p>
+<ul>
+<li>آل نازي -  آل حياني</li>
+</ul>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -244,7 +303,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-pitete.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-pitete.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=apYUlPjHGNo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=apYUlPjHGNo</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-pitete.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-pitete.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=apYUlPjHGNo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=apYUlPjHGNo</a></li></ul>
             </div>
 
             
@@ -254,7 +313,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -372,6 +431,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

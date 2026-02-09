@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -104,6 +125,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şera</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Baya&#x27;a, Wirkan, Wêreganê, Wîregan, البياعة, ويركان, ويركان، فيركانه, ويركن, ويره كان, فيركان</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Mihemed Deran</p></div>
                         </div>
                     </div>
                     
@@ -127,21 +149,73 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Wêreganê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Wêrgan: Means wolf in the ancient Persian language. In Turkish, it means the seller or giver. The Arabized name El Beyaah is a translation of the supposed Turkish naming of the village.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 350 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Telîlaq</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Telîlaq</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Geliyê Cehenem</span>, <span class="internal-link">Çemê Sabûn</span>, <span class="internal-link">Pira Romî</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Wêreganê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &quot;جبل الكرد&quot; &quot;<span class="internal-link">Mountain of the Kurds</span>&quot; / عفرين (Afrin) / geographical study:</p>
-<p><strong>Wêregan, ويركن– ويركان, البياعة</strong> /441n - 460h - 10km - 460m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Wêreganê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20wergana.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20wergana.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc / Efrîn / A Geographical Study: <span class="internal-link">Wregan</span>, <span class="internal-link">Wêrkan</span>, <span class="internal-link">El Beyaah</span> /441 inhabitants, 460m altitude, 10km distance/.</p>
+<p><span class="internal-link">Wêrgan</span>: Means wolf in the ancient Persian language. In Turkish, it means the seller or giver. The Arabized name is a translation of the supposed Turkish naming of the village.</p>
+<p>It is a small village located on a slope descending west towards the <span class="internal-link">Efrîn</span> river. South of the village, there is an archaeological hill called <span class="internal-link">Telîlaq</span>. Foundations of archaeological buildings appear next to it.</p>
+<p>It is stated in the book Efrîn... Her River and Her Green Hills: Wêrkan is a village in <span class="internal-link">Çiyayê Kurmênc</span>, affiliated with the <span class="internal-link">Şera</span> district, Efrîn region, Heleb governorate (412 inhabitants). It is a small village located in the northern part of Çiyayê Kurmênc, on the southwestern slope of a limestone plateau of low elevation. It slopes south towards agricultural lands in the direction of <span class="internal-link">Geliyê Cehenem</span> (Hell Valley), which ends westward in the valley of the Efrîn river. It is 10km away from the town of Şera towards the northeast.</p>
+<p>The settlement of the area is ancient, evidenced by the presence of an archaeological hill south of the village called Telîlaq where foundations of ancient buildings appear. It is bordered on the north by an agricultural plain, a valley, and the course of the Efrîn river coming from under the Roman bridge, called <span class="internal-link">Çemê Sabûn</span>, and the village of <span class="internal-link">Dêr Sewan</span>. It is bordered on the south by the deep Geliyê Cehenem, a mountain range, the village of Telîlaq <span class="internal-link">El Senoberiyê</span>, and the village of <span class="internal-link">Omranlî</span>. It is bordered on the east by a valley, a mountain range of olive trees and forest trees, the village of <span class="internal-link">Ereb Wêran</span>, and the farm of <span class="internal-link">Mezreya Cemîl</span>. It is bordered on the west by a valley, the course of the Efrîn river, and the village of <span class="internal-link">Bilêlûrsink</span> <span class="internal-link">El Bilêlûriye</span>.</p>
+<p>The number of its houses is about 40 houses and its age is about 350 years. Its old houses are made of stone, mud, and wooden ceilings, and the modern ones are of cement and stone. An electricity network, a primary school, and a paved road to the district center are available in it. It belongs to the municipality of Dêr Sewan.</p>
+<p>The residents drink from artesian wells. Its inhabitants work mainly in the cultivation of olives, vines, grains, and livestock raising. There is an agricultural society in the village. Among its most important families is the <span class="internal-link">Mihemed Deran</span> family. It is one of the beautiful villages located next to the Efrîn river and the <span class="internal-link">Pira Romî</span> (Roman Bridge) erected over the Efrîn river, situated on the southwestern side of the bridge.</p>
+<p>Sources of Information:</p>
 <ul>
-<li>Wirghan: meaning wolf in ancient Persian. In Turkish it means the seller or the giver. The Arabized name is a translation of the supposed Turkish naming of the village.</li>
-<li>A small village located on a slope descending westward toward <span class="internal-link">Afrin River</span>. South of the village there is an archaeological tell called &quot;تليلاق&quot; (Talilaq). Ancient building foundations appear near it.</li>
+<li>Book: جبل الكرد ( عفرين ) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by للدكتور محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book عفرين.... نهرها ورواييها الخضراء &quot;Afrin.... <span class="internal-link">Her River and Green Hills</span>&quot;:</p>
-<p><strong>ويركان</strong> (Wirkan): A village in <span class="internal-link">Kurdish Mountain</span>, belonging to <span class="internal-link">Sheran</span> district, Afrin region, <span class="internal-link">Aleppo</span> governorate, (412 n).</p>
-<p>It is a small village located in the northern part of <span class="internal-link">Kurdish Mountain</span>, on the southwestern slope of a low limestone plateau, descending southward toward agricultural lands in the direction of <span class="internal-link">Jahannam</span> valley which ends westward in <span class="internal-link">Afrin River</span> valley. It is 10km from the town of <span class="internal-link">Sheran</span> toward the northeast. The settlement of the region is ancient evidenced by the presence of an archaeological tell south of the village called تليلاق (Talilaq) where ancient building foundations appear. To the north it is bordered by an agricultural plain and valley and the course of <span class="internal-link">Afrin River</span> coming from under the Roman bridge called الصابون (Al-Saboun) River and <span class="internal-link">Deir Sawan</span> village. To the south by the deep <span class="internal-link">Jahannam</span> valley and mountain chain and تليلاق (Talilaq)/الصنوبرية (Al-Sanubariya)/ village and <span class="internal-link">Omranli</span> village. To the east by a valley and mountain chain of olive and forest trees and <span class="internal-link">Arab Wiran</span> village and <span class="internal-link">Al-Jamil</span> farm. To the west by a valley and the course of <span class="internal-link">Afrin River</span> and <span class="internal-link">Ballorsink</span>/البللورية (Al-Balluriya)/ village. Its number of houses is about 40 houses and its age is about 350 years. Its old houses are made of stones, clay, and wooden roofs, and the modern ones are of concrete and stones. It has electricity network and elementary school and a paved road to the district center and it belongs to the municipality of <span class="internal-link">Deir Al-Sawan</span>. The residents drink from artesian wells. Its inhabitants work in cultivating olives, grapes, grains, and raising livestock mainly. It has an agricultural cooperative. Among its most important families is the family of <span class="internal-link">Mohammed Duran</span>. It is one of the beautiful villages located beside <span class="internal-link">Afrin River</span> and the Roman bridge erected on <span class="internal-link">Afrin River</span> from the southwestern side of the bridge.</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by للكاتب عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Manager of the website Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Wregan ، ويركن ويركان، البياعة /441ن</p>
+<ul>
+<li>460هـ- 10كم - 460م/:</li>
+</ul>
+<ul>
+<li>ويرغان: بمعنى الذئب في اللغة الفارسية القديمة. أما في التركية فبمعنى</li>
+</ul>
+<p>البائع أو المعطي. والاسم المعرب ترجمة للتسمية التركية المفترضة للقرية.</p>
+<ul>
+<li>قرية صغيرة تقع على سفح ينحدر غربا نحو نهر عفرين. يوجد جنوبي القرية تل</li>
+</ul>
+<p>أثري يدعى &quot; تليلاق&quot;. تظهر بجوارها أساسات أبنية أثرية. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : ويركان : قرية في جبل الكرد ، تتبع ناحية شران منطقة عفرين محافظة حلب ، ( 412 ن ) . وهي قرية صغيرة تقع في القسم الشمالي من جبل الكرد ، على السفح الجنوبي الغربي لهضبة كلسية قليلة الارتفاع ، تنحدر جنوباً نحو أراض زراعية باتجاه وادي جهنم الذي ينتهي غرباً في وادي نهر عفرين ، تبعد عن بلدة شران 10كم نحو الشمال الشرقي ، إعمار المنطقة قديم بدلالة وجود تل أثري جنوب القرية يدعى تليلاق حيث تظهر أساسات أبنية قديمة ، يحدها شمالاً سهل زراعي ووادي ومجرى نهر عفرين القادم من تحت الجسر الروماني المسمى نهر الصابون وقرية دير صوان , وجنوباً وادي جهنم العميق وسلسلة جبلية وقرية تليلاق /الصنوبرية/ وقرية عمرانلي , وشرقاً وادي وسلسلة جبلية من أشجار الزيتون والأشجار الحراجية وقرية عرب ويران ومزرعة الجميل وغرباً وادي ومجرى نهرعفرين وقرية بللورسنك/البللورية/عددبيوتهاحوالي40بيت وعمرها حوالي350عام بيوتها القديمة من الأحجار والطين والسقوف الخشبية والحديثة من الإسمنت والأحجار تتوفر فيها شبكة الكهرباء ومدرسة ابتدائية وطريق مزفت إلى مركز الناحية وهي عائدة لبلدية دير الصوان . يشرب الأهالي من الآبار الارتوازية يعمل سكانها بزراعة الزيتون والكرمة والحبوب وتربية المواشي بشكل رئيسي فيها جمعية فلاحية ومن أهم عوائلها عائلة محمد دران وهي من القرى الجميلة الواقعة جانب نهر عفرين والجسر الروماني المنصوب على نهر عفرين من الطرف الجنوبي الغربي من الجسر . مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -156,7 +230,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20wergana.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20wergana.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=M9l0DgD_G8A" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=M9l0DgD_G8A</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20wergana.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20wergana.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=M9l0DgD_G8A" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=M9l0DgD_G8A</a></li></ul>
             </div>
 
             
@@ -166,7 +240,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -284,6 +358,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

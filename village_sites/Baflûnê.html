@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -168,7 +189,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şera</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Bafilonê, Bafliun, Baflunê, Baflûnê, بافليون</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Evdê Seydo, Henan Evdo, Malê Betê, Malê Dewrêş, Malê Ebdî Ûfê, Malê Hecî Husê, Îbrahîmê Elî Kûrê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Evdê Seydo, Henan Evdo, Ibrahîm Elî Kûr, Malê Betê, Malê Dewrêş, Malê Ebdî Ûfê, Malê Hecî Husê, Îbrahîmê Elî Kûrê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
@@ -209,18 +230,51 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Baflûnê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin) geographical study</span>&#x27; by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Baflûnê, Bafliun</strong> (بافليون) /602n - 157ha - 13km - 770m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Baflûnê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20baflun.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20baflun.htm</a></p>
+<p>Based on the book <span class="internal-link">Çiyayê Kurmênc</span> (Efrîn) A Geographical Study: Baflûn / 602 inhabitants / 157 houses / 13 km distance / 770 m altitude.</p>
+<p>It is believed that Baflûn is a Syriac name.</p>
+<p>It is a small village situated in a fortified location. Its air is fresh due to the high elevation of its site, and it used to be a summer resort for some Aghas of the region. Near it are the remains of an English camp for oil exploration dating back to the fifth decade of the twentieth century. A road paved with stones leads to it from the east of <span class="internal-link">Qetme</span>, dating back to that period, and it is still in good condition.</p>
+<p>According to the book <span class="internal-link">Efrîn</span>... Her River and Her Green Hills:</p>
+<p>Baflûn is a village in Çiyayê Kurmênc following the <span class="internal-link">Şera</span> district of the Efrîn area in the Heleb governorate. It is a small village located in the eastern part of Çiyayê Kurmênc and the northern part of <span class="internal-link">Çiyayê Seman</span> on a high mountainous elevation and in a fortified defensive location.</p>
+<p>It is bordered to the north by mountainous highlands planted with olive trees and vineyards, the remains of buildings from an English company from the 1940s, and the villages of <span class="internal-link">Ceman</span>, <span class="internal-link">Omera</span>, and <span class="internal-link">Sînka</span>. To the south, it is bordered by a stream and a slope heading southward, the lands of the village of Qetme, and the <span class="internal-link">Xeta Trêna Heleb-Meydan Ekbez</span> (Heleb-Meydan Ekbez railway line). To the west, there is a deep stream, mountainous highlands planted with olive trees and forest trees, and the village of Qetme. To the east, there is a slope, a stream, rugged mountainous highlands planted with olive trees and vineyards, the shrine of <span class="internal-link">Şêx Hemîd</span>, the village of <span class="internal-link">Qestel Cindo</span>, and the city of <span class="internal-link">Ezaz</span>.</p>
+<p>The number of its houses is approximately 55, and its age is 103 years, meaning it was founded in the year 1903. Its old houses are made of stone and mud with flat wooden roofs, while the modern ones are concrete and spread to the south and west. The residents work in the cultivation of olives and grains alongside the raising of sheep and goats. An electricity network is available, as well as drinking water from an artesian well in the village of <span class="internal-link">Malkiyê</span>. It contains a primary school and a telephone connected to the Qetme telephone center. A newly paved road reaches the center of the village and connects to the village of Qetme and Qestel Cindo. Administratively, it belongs to the municipality of Qetme.</p>
+<p>Among its most important families is the <span class="internal-link">Ibrahîm Elî Kûr</span> family, who were the first inhabitants of the village. The number of its souls, according to the civil registry on date 31/12/2004, is 593.</p>
+<p>Village Mukhtar: <span class="internal-link">Ebdo Sîdo Sîdo</span></p>
+<p>Sources</p>
+<p>Book: جبل الكرد ( عفرين ) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme.</p>
+<p>Studies of <span class="internal-link">Navenda Tirej Soft</span> / <span class="internal-link">Ebdulrehman Hacî Osman</span>.</p>
+<p>Some residents of the villages.</p>
+<p>Preparation and Execution: Manager of the <span class="internal-link">Tirej Efrîn</span> website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Bafln ، بافليون /602ن - 157هـ - 13كم</p>
 <ul>
-<li>It is believed that &quot;Baflun&quot; (بافلون) is a <span class="internal-link">Syriac</span> name.</li>
-<li>A small village located in a strategic position. Its air is healthy due to the elevation of its location, and it was a summer resort for some notables of the region. Near it are remains of a <span class="internal-link">British</span> camp for oil exploration from the fifth decade of the twentieth century. A stone-paved road leads to it from east of Qatma village dating back to that period and still in good condition.</li>
+<li>770م/:</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span>:</p>
-<p><strong>Bafliun</strong> (بافليون): A village in the Afrin (جبل الكرد), belonging to Sharran District (ناحية شران), Afrin Region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the eastern part of the Afrin Region and north of <span class="internal-link">Sam&#x27;an Mountain</span> (جبل سمعان) on a high mountain elevation and in a strategic defensive position. It is bordered to the north by mountain elevations planted with olive and vine trees and remains of British company buildings from the forties and Jamanli (جمانلي) and Omranli (عمرانلي) and Sinkarli (سنكرلي) villages, to the south by a stream and slope heading south and lands of Qatma village (قرية قاطمة) and <span class="internal-link">Aleppo-Meydan Ekbas railway</span> (سكة حديد حلب - ميدان اكبس), to the west by deep stream and mountain elevations planted with olive and forest trees and Qatma village (قرية قاطمة), and to the east by slope and stream and mountain elevations and rugged terrain planted with olive and forest trees and <span class="internal-link">Sheikh Hamid shrine</span> (مزار شيخ حميد) and Qastal Jindo village (قرية قسطل جندو) and Azaz city (مدينة إعزاز).</p>
-<p>The number of its houses reaches approximately 55 houses and its age is 103 years, meaning it was established in 1903 (1903م). Its old houses are stone-clay with flat wooden roofs and the modern ones are concrete spread to the south and west. The inhabitants work in olive and grain cultivation in addition to raising sheep and goats. Electricity network and drinking water from artesian well from al-Malikiya village (قرية المالكية) are available. It has an elementary school and telephone from Qatma telephone center and a recently paved road to the village center connecting to Qatma village and Qastal Jindo (قسطل جندو), and it is administratively subordinate to Qatma Town.</p>
-<p>Among its most important families is the <span class="internal-link">Ibrahim Ali Kor</span> family (عائلة إبراهيم علي كور), who are the first inhabitants of the village. Its population according to civil registry dated 31/12/2004 is (593 people).</p>
-<p><strong>Village Mayor:</strong> Abdo Saydo Saydo (عبدو سيدو سيدو)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Baflûnê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=G2CbtBUzOWY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=G2CbtBUzOWY</a></p>
+<ul>
+<li>يعتقد أن &quot;بافلون&quot; اسم سرياني.</li>
+</ul>
+<p>قرية صغيرة تقع في موقع حصين. هواءها عليل بسبب ارتفاع موقعها، وكانت مصيفا لبعض آغوات المنطقة. بالقرب منها بقايا معسكر إنكليزي للتنقيب عن النفط من العقد الخامس للقرن العشرين، يصل إليه طريق مرصوف بالحجارة من شرقي ق.قطمه يعود إلى تلك الفترة، ولايزال بحالة جيدة. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : بافليون : قرية في جبل الكرد ، تتبع ناحية شران منطقة عفرين محافظة حلب . وهي قرية صغيرة تقع في الجزء الشرقي لجبل الكرد والشمالي لجبل سمعان على مرتفع جبلي عالي وفي موقع دفاعي حصين, يحدها شمالاً مرتفعات جبلية مزروعة بأشجار الزيتون والكرمة وبقايا أبنية لشركة إنكليزية في الأربعينات وقرية جمانلي وعمرانلي وسنكرلي وجنوباً مسيل ومنحدر يتجه نحو الجنوب وأراضي قرية قاطمة وسكة حديد حلب - ميدان اكبس وغرباً مسيل عميق ومرتفعات جبلية مزروعة بأشجار الزيتون والأشجار الحراجية وقرية قاطمة , وشرقاً منحدر ومسيل ومرتفعات جبلية وعرة ومزروعة بأشجار الزيتون والكرمة ومزار شيخ حميد وقرية قسطل جندو ومدينة إعزاز . يبلغ عدد بيوتها55تقريباً وعمرها103عاماً أي تأسس في عام 1903م بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية والحديثة إسمنتية منتشرة جنوباً وغرباً . يعمل السكان بزراعة الزيتون والحبوب إلى جانب تربية الأغنام والماعز تتوفر فيها شبكة الكهرباء ومياه الشرب من البئر الارتوازي من قرية المالكية فيها مدرسة ابتدائية وهاتف من مركز هاتف قاطمة وطريق مزفّت حديثاً حتى وسط القرية ويصل لقرية قاطمة وقسطل جندو وهي عائدة إدارياً لبلدية قاطمة من أهم عوائلها عائلة إبراهيم علي كور وهم السكان الأوائل في القرية ، يبلغ عدد نفوسها حسب السجل المدني بتاريخ 31/12/2004م (593ن).</p>
+<p>مختار القرية : عبدو سيدو سيدو</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Baflûnê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=G2CbtBUzOWY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=G2CbtBUzOWY</a></p>
 <p>The village of <span class="internal-link">Baflûnê</span>, situated in the <span class="internal-link">Şera</span> district of <span class="internal-link">Çiyayê Kurmênc</span>, stands at an altitude of approximately 700 meters. The current settlement was founded between 150 and 200 years ago by two cousins named <span class="internal-link">Ibrahîm</span> and <span class="internal-link">Henan</span>. These founders migrated from the nearby village of <span class="internal-link">Qitmê</span>, located just five kilometers away. According to village elders, they sought refuge in this mountainous location to escape religious persecution and preserve their <span class="internal-link">Êzdî</span> faith. Prior to their arrival, the site was known as <span class="internal-link">xirabê Baflûnê</span>, indicating that it had been inhabited and subsequently ruined in earlier historical eras.</p>
 <p>The population of Baflûnê is entirely Êzdî. Following the initial establishment by the lineages of <span class="internal-link">Îbrahîmê Elî Kûrê</span> and <span class="internal-link">Henan Evdo</span> (also identified as <span class="internal-link">Evdê Seydo</span>), the community expanded with the arrival of other families. These include <span class="internal-link">Malê Hecî Husê</span>, <span class="internal-link">Malê Dewrêş</span>, <span class="internal-link">Malê Betê</span>, and <span class="internal-link">Malê Ebdî Ûfê</span>. Elders note that some of these later groups arrived from <span class="internal-link">Sînko</span>. The village grew to contain approximately 70 to 80 households, with residents primarily engaging in agriculture and the cultivation of olive trees.</p>
 <p>A distinctive feature of Baflûnê is the presence of numerous ancient caves and rock cut cisterns. Villagers estimate there are around 15 caves in the vicinity, with several located within the village itself. These caves played a crucial role in the survival of the community during times of instability. Residents describe a historical defense system where ropes connected the caves; if bandits or threats were detected, a rope would be pulled to ring bells inside neighboring caves, alerting the entire community to take defensive positions. One particular ancient cistern is named <span class="internal-link">Gulê Selmo</span>, honoring a local woman responsible for its maintenance.</p>
@@ -275,7 +329,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20baflun.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20baflun.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=dGLEmMYblgo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=dGLEmMYblgo</a><br><a href="https://www.youtube.com/watch?v=G2CbtBUzOWY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=G2CbtBUzOWY</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20baflun.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20baflun.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=dGLEmMYblgo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=dGLEmMYblgo</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=G2CbtBUzOWY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=G2CbtBUzOWY</a></li></ul>
             </div>
 
             
@@ -285,7 +339,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -403,6 +457,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

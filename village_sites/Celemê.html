@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,7 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Celeme, Celemê, Cêlemê, Galamo, Jelamê, Jiqallali Joum, جلمه</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Malê Betalê Betêl, Malê Cimo, Malê Ebû Na&#x27;me, Malê El-Xazêl, Malê Emrî, Malê Ewê, Malê Gedel, Malê Hemoyê Reşo, Malê Koso, Malê Kêlxelo, Malê Mihemed Eyûb, Malê Qereqo Celkî, Malê Sêwê, Malê Zekî axa, Malê Şêxîn Ebû</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Al Kenc, Erebo, Malê Betalê Betêl, Malê Cimo, Malê Ebû Na&#x27;me, Malê El-Xazêl, Malê Emrî, Malê Ewê, Malê Gedel, Malê Hemoyê Reşo, Malê Koso, Malê Kêlxelo, Malê Mihemed Eyûb, Malê Qereqo Celkî, Malê Sêwê, Malê Zekî axa, Malê Şêxîn Ebû, Mistefa, Wehîd Axa</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -221,16 +242,55 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Celemê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds (Afrin)</span> - A Geographical Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Celemê</span> (جلمه)</strong> /3605N - 1894E - 11km - 200m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Celemê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20celeme.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20celeme.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span> regarding <span class="internal-link">Celem</span>:</p>
+<p>Henry Lammens says about it that it is the Crusader village of <span class="internal-link">Galamo</span> located in the Diocese of Antioch. We do not know the meaning of its name.</p>
+<p>It is a large village located on the western slope of a plateau adjacent to <span class="internal-link">Çiyayê Lêlûn</span>. It is characterized by tobacco cultivation, and there are numerous ovens for drying it. There are two springs in the village: the first is in the south with a flow of 8 liters/second, and the second is north of the village. There is an archeological mound (<span class="internal-link">Tel</span>) in the north of the village. Celem was one of the villages of the <span class="internal-link">Al Kenc</span> family in <span class="internal-link">Deşta Cûmê</span> before they left for Turkey in the fifth decade of the twentieth century.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme, <span class="internal-link">Çeqelî Cûm</span>:</p>
+<p>It is a village in the plain of the <span class="internal-link">Efrîn</span> valley (Deşta Cûmê), administratively following the <span class="internal-link">Cindirês</span> district, Efrîn region, Aleppo governorate. It is very large, located near the western and northern slopes of <span class="internal-link">Çiyayê Seman</span>. Its soil is fertile alluvium due to the abundance of springs that flow from its lands.</p>
+<p>It is bordered to the north by a fertile plain planted with pomegranate trees, the <span class="internal-link">Çemê Efrînê</span> (river), the village of <span class="internal-link">Frêriyê</span>, and <span class="internal-link">Ebû Keib</span> West. To the south, it is bordered by a rugged mountain range of the nearby Çiyayê Seman, <span class="internal-link">Ziyareta Şêx Berekat</span>, and <span class="internal-link">Daret Ize</span>. To the west lies a plain fertile for agriculture planted with pomegranate trees, the farm of <span class="internal-link">Feylek</span>, <span class="internal-link">Xirbe Elûş</span>, and <span class="internal-link">Tel Selûr</span>. To the east are mountain heights, the <span class="internal-link">Qarsaq</span> farm, and the village of <span class="internal-link">Iskan</span>.</p>
+<p>The number of its houses reaches about 500, and its age is about 500 years. Its old houses are stone and mud with flat wooden roofs, while the majority are modern concrete spreading towards the northwest. A electricity network, a primary school, a preparatory school, and a mosque in the center of the village are available. A municipality hall was established in 1999, as well as an agricultural extension unit, a peasant cooperative society, and a telephone center. The village drinks from a network that draws its water from springs whose flow is estimated at 3 liters/second.</p>
+<p>There are about 25 buildings for tobacco fermentation equipped with heating and featuring dual-slope roofs. Its residents work in rainfed agriculture on an area of 1425 hectares with grains, olive trees, and tobacco. They cultivate 470 hectares via irrigation from artesian wells and a spring in its south with tobacco, vegetables, pomegranate trees, apricots, and walnuts. A section of them works in fermenting rainfed tobacco (Virginian) and irrigated tobacco (Burley), alongside raising sheep, cows, and goats.</p>
+<p>The settlement of the area is very ancient, indicated by the remains of archeological places within it. The village of Celem is considered one of the large and old villages in Deşta Cûmê, the Cindirês district, and the Efrîn region. There are several old houses in the form of luxurious villas belonging to the family of <span class="internal-link">Mistefa</span> and <span class="internal-link">Wehîd Axa</span>, who were the first to inhabit the village and are the original inhabitants. Three farms are dependencies of the village: Ebû Keib East, Ebû Keib West, and <span class="internal-link">Hacîler</span>.</p>
+<p>An asphalt road connects it to the town of Cindirês, and currently, there is a main street in the center of the village established by the municipality of Celem.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Erebo</span></p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme, Çeqelî Cûm.</p>
+<p>Preparation and Execution:</p>
+<p>Manager of <span class="internal-link">Tîrêj Efrîn</span> website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Celem ، جلمه /3605ن - 1894هـ - 11كم - 200م/:</p>
 <ul>
-<li><span class="internal-link">Henry Lammens</span> (هنري لامانس) says about it that it is the Christian village <span class="internal-link">Galamo</span> (Galamo) located in the <span class="internal-link">Antioch</span> (انطاكية) parish. We do not know the meaning of its name.</li>
-<li>A large village located on the western slope of a plateau adjacent to <span class="internal-link">Mount Lilon</span> (جبل ليلون). It is distinguished by tobacco cultivation, and it has several ovens for drying it. It has two springs, the first in the south with an abundance of &quot;8 liters/second&quot; and the second north of the village. There is an archaeological hill north of the village. <span class="internal-link">1 - PhD/Villages/Celemê</span> (جلمه) was one of the villages of the <span class="internal-link">Al Kanj</span> (آل كنج) family in the <span class="internal-link">Joumeh Plain</span> (سهل جومه) before their migration to <span class="internal-link">Turkey</span> (تركيا) in the fifth decade of the twentieth century.</li>
+<li>يقول هنري لامانس عنها إنها قرية Galamo الصليبية الواقعة في أبرشية</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdul Rahman Mohammed (عبدالرحمن محمد) from Qatmeh village (قرية قطمه):</p>
-<p><strong>Jiqallali Joum</strong>: A village in the <span class="internal-link">Afrin Valley</span> (وادي عفرين) (<span class="internal-link">Joum Plain</span> (سهل الجوم)), belonging to Cindirês District (ناحية جندیرس), Afrin Region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is very large, located near the western and northern slopes of <span class="internal-link">Mount Simaan</span> (جبل سمعان). Its soil is fertile due to the abundance of springs that flow from its lands. To the north, there is a fertile plain planted with <span class="internal-link">pomegranate trees</span> (أشجار الرمان) and the <span class="internal-link">Afrin River Valley</span> (وادي نهر عفرين) and <span class="internal-link">Freiriyeh Village</span> (قرية الفريرية) and <span class="internal-link">Abu Kaab</span> (أبوكعب) to the west. To the south, there is a mountainous chain and a rough area of the nearby Mount Simaan (جبل سمعان) and the shrine of <span class="internal-link">1 - PhD/Villages/Sheikh Barakat</span> (الشيخ بركات) and <span class="internal-link">Dar Tazza</span> (دارتعزة). To the west, there is a fertile agricultural plain planted with pomegranate trees (أشجار الرمان) and the farm of <span class="internal-link">Filik</span> (فيلك) and <span class="internal-link">Kharbet Alush</span> (خربة علوش) and <span class="internal-link">Tell Silur</span> (تل سلور). To the east, there are mountainous heights and the farm of <span class="internal-link">1 - PhD/Villages/Qarsaq</span> (قارساق) and <span class="internal-link">Iskan Village</span> (قرية اسكان). It has about 500 houses and its age is about 500 years. Its old houses are stone and clay with flat wooden roofs, while most of them are modern concrete that spread towards the northwest. It has an electricity network, an elementary school, a preparatory school, a mosque in the center of the village, and a municipal building was established in 1999 with an agricultural extension unit, an agricultural cooperative association, and a telephone center. The village gets its drinking water from a network that draws its water from springs whose flow is estimated at 3 liters/second. It has about 25 buildings for tobacco fermentation equipped with heating and sloped roofs. Its residents work in rainfed agriculture on an area of 1425 hectares with grains, olive trees, and tobacco. They cultivate 470 hectares irrigated from artesian well water and from a spring in its south with tobacco, vegetables, <span class="internal-link">pomegranate</span> (الرمان), <span class="internal-link">apricot</span> (المشمش), and <span class="internal-link">walnut trees</span> (الجوز). Some of them work in tobacco fermentation (Virginia rainfed and Burley irrigated), in addition to raising sheep, cattle, and goats. The region&#x27;s settlement is very old, as evidenced by the archaeological remains in it. <span class="internal-link">Celemê Village</span> (قرية جلمة) is considered one of the large and old villages in the Joum Plain (سهل الجوم), <span class="internal-link">Cindirês Subdistrict</span> (ناحية جندیرس), and Afrin (منطقة عفرين). There are several old houses in the form of luxurious villas belonging to the family of <span class="internal-link">Mustafa</span> (مصطفى) and <span class="internal-link">Wahid Agha</span> (وحيد آغا), the first to inhabit the village and the original inhabitants of the village. It is followed by three farms: <span class="internal-link">Abu Kaab East</span> (أبوكعب شرقي), <span class="internal-link">Abu Kaab West</span> (أبوكعب غربي), <span class="internal-link">Hajiler</span> (حاجيلر). It is connected to the town of Cindirês (جندیرس) by a paved road, and currently there is a main street in the center of the village created by the municipality of Celemê (جلمة).</p>
-<p>Village Headman: <span class="internal-link">Mohammed Arbo</span> (محمد عربو)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Celemê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=E8vpDQO72o4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=E8vpDQO72o4</a></p>
+<p>إنطاكية. ولم نعرف معنى لاسمها.</p>
+<ul>
+<li>قرية كبيرة تقع على السفح الغربي لهضبة ملاصقة لجبل ليلون. تمتاز بزراعة</li>
+</ul>
+<p>التبغ، وتوجد فيها أفران عديدة لتجفيفه. فيها نبعان الأول في الجنوب بغزارة &quot; 8ل/ثا&quot; والثاني شمالي القرية. يوجد تل أثري في شمالي القرية. كانت جلمه من قرى آل كنج في سهل جومه قبل مغادرتهم إلى تركيا في العقد الخامس من القرن العشرين. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه جقللي جوم : قرية في سهل وادي عفرين ( سهل الجوم ) ، تتبع ناحية جنديرس ،منطقة عفرين ، محافظة حلب . وهي كبيرة جداً تقع قرب السفح الغربي والشمالي لجبل سمعان ، تربتها لحقية خصبة لوفرة الينابيع التي تنبع من أراضيها ، يحدها شمالاً سهل خصب مزروع بأشجار الرمان ووادي نهر عفرين وقرية الفريرية وأبوكعب غربي ، وجنوباً سلسلة جبلية وعرة لجبل سمعان القريبة ومزار الشيخ بركات ودارتعزة ، وغرباً سهل خصب زراعياً مزروع بأشجار الرمان ومزرعة فيلك وخربة علوش وتل سلور ، وشرقاً مرتفعات جبلية ومزرعة قارساق وقرية اسكان ، يبلغ عدد بيوتها حوالي 500بيتاً وعمرها حوالي 500عاماً ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية أما الأغلبية فهي إسمنتية حديثة تنتشر نحو الشمال الغربي ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية ومدرسة إعدادية جامع في وسط القرية وأحدثت فيها دار للبلدية في عام 1999 م ووحدة إرشادية زراعية وجمعية تعاونية فلاحية ومركزاً للهاتف ، تشرب القرية من شبكة تستمد مياهها من الينابيع الذي تقدر غزارتها 3/ثا ، يوجد فيها حوالي 25بناءاً لتخمير التبغ مزودة بالتدفئة وذات سقوف بانحدارين ، يعمل سكانها بالزراعة البعلية على مساحة قدرها 1425 هـ بالحبوب وأشجار الزيتون والتبغ ويزرعون 470 هـ رياً من مياه الآبار الارتوازية ومن ينبوع في جنوبها بالتبغ بالخضر وأشجار الرمان والمشمش والجوز ويعمل قسم منهم في تخمير التبغ (الفرجيني) البعلي ، والتبغ (البرلي) المسقي ، إلى جانب تربية الأغنام والأبقار و الماعز ، إنّ إعمار المنطقة قديم جداً بدلالة بقايا الأماكن الأثرية فيها ، وتعتبر قرية جلمة من القرى الكبيرة و القديمة في سهل الجوم وناحية جنديرس ومنطقة عفرين ، يوجد عدة دور قديمة بشكل فيلات فخمة تعود لعائلة مصطفى ووحيد آغا أول من سكنوا القرية وهم السكان الأصليين للقرية ، تتبعها ثلاث مزارع : أبوكعب شرقي ، أبوكعب غربي ، حاجيلر . تصلها ببلدة جنديرس طريق مزفت وحالياً يوجد شارع رئيسي في وسط القرية أحدثت من قبل بلدية جلمة .</p>
+<p>مختار القرية :  محمد عربو</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Celemê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=E8vpDQO72o4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=E8vpDQO72o4</a></p>
 <p>The village of <span class="internal-link">Celemê</span>, located in the <span class="internal-link">Cindirês</span> district of the <span class="internal-link">Afrin</span> region, sits at the foot of <span class="internal-link">Çiyayê Lêlûn</span> overlooking the vast <span class="internal-link">Deşta Cûmê</span>. The village name is said to derive from the Kurmanji words &quot;Cî&quot; (place) and &quot;Lêm&quot; (the sound of rushing water), referencing the abundance of water sources in its history. The settlement is home to a diverse population of approximately 5,000 people, comprising three communities: Kurds, <span class="internal-link">Arabs</span>, and <span class="internal-link">Turkmens</span>.</p>
 <p>The history of Celemê is bifurcated into two distinct sites: the current village and an ancient site known as <span class="internal-link">Celemê kevn</span> (or <span class="internal-link">Eski Celemê</span>), located about three kilometers away in the mountains. This ancient site dates back to the <span class="internal-link">Mîtanî</span> and <span class="internal-link">Hûrî</span> empires, evidenced by archaeological remnants such as bull head carvings and rock-cut tombs. A catastrophic earthquake in 528 AD, which also destroyed the nearby <span class="internal-link">Keleha Semanê</span>, devastated the original settlement. For generations, the old site served as a seasonal residence for families such as <span class="internal-link">Malê Koso</span>, <span class="internal-link">Malê Cimo</span>, and <span class="internal-link">Malê Ewê</span>, who would graze their livestock there before moving to the lower village. The ancient area features significant landmarks, including <span class="internal-link">Şikefta Dîbsiz</span> (a cave 40 meters wide), <span class="internal-link">Şikefta Bûyê</span>, and two historical wells known as <span class="internal-link">Bîra Sor</span> and <span class="internal-link">Bîra Kevzê</span>.</p>
 <p>Socially, Celemê is defined by specific longstanding families rather than broad tribal confederations. The <span class="internal-link">Kêlxelo</span> family is identified as <span class="internal-link">Turkman</span>, while <span class="internal-link">Malê Emrî</span> (also known as <span class="internal-link">Malê Ebû Na&#x27;me</span>) is an <span class="internal-link">Arab</span> family. The majority of the village is Kurdish, including families such as <span class="internal-link">Malê Gedel</span>, <span class="internal-link">Malê Hemoyê Reşo</span>, <span class="internal-link">Malê Sêwê</span>, <span class="internal-link">Malê El-Xazêl</span>, <span class="internal-link">Malê Şêxîn Ebû</span>, and <span class="internal-link">Malê Qereqo Celkî</span>. Historically, the village was under the influence of local aghas (lords) like <span class="internal-link">Malê Betalê Betêl</span> and later <span class="internal-link">Malê Zekî axa</span>, who maintained properties in the area. A unique example of the village&#x27;s intercommunal nature is <span class="internal-link">Kulfet</span>, a healer from the <span class="internal-link">Malê Mihemed Eyûb</span> family who treats the skin condition Mêristan.</p>
@@ -304,7 +364,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20celeme.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20celeme.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=E8vpDQO72o4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=E8vpDQO72o4</a></li><li>Local FB page:<br><a href="https://www.facebook.com/gunde.celeme" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/gunde.celeme</a><br><a href="https://www.youtube.com/watch?v=E8vpDQO72o4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=E8vpDQO72o4</a><br><a href="https://www.youtube.com/watch?v=Y3EPikudgZ0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Y3EPikudgZ0</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=q_bznq2CGO4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=q_bznq2CGO4</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20celeme.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20celeme.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=E8vpDQO72o4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=E8vpDQO72o4</a></li><li>Local FB page:<br><a href="https://www.facebook.com/gunde.celeme" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/gunde.celeme</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=Y3EPikudgZ0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Y3EPikudgZ0</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=q_bznq2CGO4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=q_bznq2CGO4</a></li></ul>
             </div>
 
             
@@ -314,7 +374,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -432,6 +492,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -166,7 +187,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Daliya, Dalyanli, Dela, Dêla, الدالية, داليانلي</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Mala Bûzo, Mala Hemîdî, Mala Çowê, Mala Ûskê</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Dalî, Reşwan</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Hec Hemûdî, Mala Bûzo, Mala Hemîdî, Mala Çowê, Mala Ûskê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -209,25 +231,54 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Dela</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of Mabetli District (المعبطلي) / Mabeta</p>
-<p><span class="internal-link">1 - PhD/Villages/Dela</span> (داليانلي) - <span class="internal-link">1 - PhD/Villages/Dela</span></p>
-<p>===</p>
-<p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds (Afrin)</span> Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Dela</span> (داليانلي), <span class="internal-link">Al-Daliya</span> (الدالية)</strong> /431N - 535m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Dela</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dela.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dela.htm</a></p>
+<p>Based on the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p>Dela, <span class="internal-link">Dalyanlî</span>, <span class="internal-link">El-Dalyê</span> /431 inhabitants - 535m altitude/</p>
+<p><span class="internal-link">Dalî</span>: One of the <span class="internal-link">Reşwan</span> Kurdish tribes.</p>
+<p>It is a small village located on the southern slope of Mount <span class="internal-link">Xastiya</span>. Caves and valleys sloping southward toward the Xastiya valley are abundant in and around it. Among the village houses and alleys, hewn stones and building foundations can be seen, indicating the existence of ancient habitation dating back to old eras.</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Dalyanlî is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Mabeta</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village situated in the central part of the mentioned mountain, on the southeastern surface of a limestone plateau that extends north and south. Caves are abundant there, and it is furrowed by torrential valleys toward the southwest. It is located 15km southwest of the town of Mabeta. Its soil is clay, covered with pastures and forests.</p>
+<p>The village is bordered to the north by a high mountain range planted with forest trees and the village of <span class="internal-link">Turmişkanlî</span>; to the south by a steep slope, the fertile <span class="internal-link">Cercim</span> valley, and the village of <span class="internal-link">Kurdanlî</span>; to the west by a slope, a deep watercourse, and the village of <span class="internal-link">Remezanlî</span>; and to the east by a high mountain range, a torrential valley, and the village of <span class="internal-link">Hac Qasimlî</span>.</p>
+<p>The number of houses is approximately 40, and the village is about 250 years old. Its old houses are made of stone and mud with flat wooden roofs, while modern cement buildings intermingle with the old ones in the southwest of the village. An electricity network and a primary school are available, as well as an asphalt road reaching the center of the village. Currently, the village drinks from a well belonging to the state in the Cercim valley. Its residents rely on rain fed cultivation of grains, legumes, and olives, alongside raising sheep, goats, and cows. Water flows at the bottom of the village from the southeastern side from the <span class="internal-link">Rotanlî</span> spring, passing through several villages until reaching the <span class="internal-link">Amq</span> plain within the lands of the <span class="internal-link">Iskenderun</span> district.</p>
+<p>Among the families of the village are <span class="internal-link">Hec Hemûdî</span>. There are university degree holders and cultural figures such as <span class="internal-link">Huseyn Bozo</span> / <span class="internal-link">Zana Efrînî</span> and <span class="internal-link">Osman Ebdulhenan</span>.</p>
+<p>Village Mukhtar: <span class="internal-link">Zahid Ixtiyar</span></p>
+<p>Preparation and Execution:</p>
+<p>Director of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Studies of <span class="internal-link">Navenda Tirej Soft</span> / Ebdulrehman Hacî Osman.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Dela ، داليانلي ، الدالية /431ن - 535م/:</p>
 <ul>
-<li><span class="internal-link">Dali</span> (دالي): One of the Kurdish Rashwan tribes.</li>
-<li>A small village located on the southern slope of <span class="internal-link">Khastiya Mountain</span> (جبل خاستيا). Caves and valleys sloping south toward <span class="internal-link">Khastiya valley</span> (وادي خاستيا) abound in and around it. Carved stones and building foundations are observed between the village houses and alleys indicating the existence of ancient settlement dating back to ancient times.</li>
+<li>دالي: إحدى عشائر رشوان الكردية.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from <span class="internal-link">Qitma village</span> (قطمه):</p>
-<p><strong><span class="internal-link">Dalyanli</span> (داليانلي)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Ma&#x27;batli District</span> (ناحية المعبطلي), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the central part of the mentioned mountain on the southeastern surface of a limestone plateau extending north and south. Caves abound in it and are crossed by stream valleys toward the southwest, 15km away from <span class="internal-link">Mabetli town</span> (بلدة معبطلي) toward the southwest. Its soil is clay spread over it with pastures and forests.</p>
-<p>It is bordered to the north by a high mountain chain planted with forestry trees and <span class="internal-link">Tur Mishkanli village</span> (قرية طور مشكانلي), to the south by a steep slope and the fertile <span class="internal-link">Jarjam valley</span> (وادي جرجم) and <span class="internal-link">Kordanli village</span> (قرية كوردانلي), to the west by a slope and deep stream and <span class="internal-link">Ramdanli village</span> (قرية رمضانلي), and to the east by a high mountain chain and <span class="internal-link">Sili valley</span> (وادي سيلي) and <span class="internal-link">Haj Qasimli village</span> (قرية حاج قاسملي).</p>
-<p>The number of houses is about 40, and its age is about 250 years. Its old houses are stone and clay, with flat wooden roofs. Modern concrete construction intermingles with the old in the southwest of the village. It has electricity network and primary school and a paved road to the village center. Currently the village drinks from a state-owned well in <span class="internal-link">Jarjam valley</span> (وادي جرجم).</p>
-<p>Its inhabitants depend on cultivating grains, legumes and olives rain-fed, in addition to raising sheep, goats and cattle. Water flows at the bottom of the village from the southeastern side from <span class="internal-link">Rutanli spring</span> (نبع روطانلي) passing through several villages to the deep plain within the lands of <span class="internal-link">Iskenderun district</span> (لواء اسكندرن).</p>
-<p>Among the village families is <span class="internal-link">Haj Hamoudi</span> (حج حمودي), and there are university degree holders and cultural personalities (<span class="internal-link">Hussein Bozo</span> (حسين بوزو) / <span class="internal-link">Afrin City singer</span> (زانا عفريني)) and <span class="internal-link">Othman Abdulhanan</span> (عثمان عبدالحنان).</p>
-<p>Village mayor: <span class="internal-link">Zahed Ikhtivar</span> (زاهد اختيار)</p>
-<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin City Heritage</span>: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Dela from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=OA3FTGQNLgk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=OA3FTGQNLgk</a></p>
+<ul>
+<li>قرية صغيرة تقع على السفح الجنوبي لجبل خاستيا. تكثر فيها وحولها المغاور</li>
+</ul>
+<p>والأودية المنحدرة نحو الجنوب باتجاه وادي خاستيا. تشاهد بين دور القرية وأزقتها أحجار مشذبة وأساسات بناء تدل على وجود سكن قديم فيها تعود إلى العهود القديمة. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه داليانلي : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في القسم الأوسط من الجبل المذكور على السطح الجنوبي الشرقي لهضبة كلسية تتطاول شمالاً وجنوباً ، تكثر فيها المغاور وتخددها الأودية السيلية نحو الجنوب الغربي ، تبعد عن بلدة معبطلي15كم باتجاه الجنوب الغربي ، تربتها غضارية تنتشر فوقها المراعي و الأحراج ، يحدها شمالاً سلسلة جبلية عالية مزروعة بالأشجار الحراجية وقرية طور مشكانلي ، وجنوباً منحدر شديد الانحدار ووادي جرجم الخصب وقرية كوردانلي ،وغرباً منحدر ومسيل عميق وقرية رمضانلي ، وشرقاً سلسة جبلية عالية ووادي سيلي وقرية حاج قاسملي ، يبلغ عدد بيوتها حوالي 40بيتاً وعمرها حوالي 250عاماً ، بيوتها القديمة حجرية طينية ، سقوفها خشبية مستوية ويتداخل البناء الإسمنتي الحديث مع القديم في جنوب غرب القرية ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وطريق مزفت حتى وسط القرية وحالياً تشرب القرية من بئر عائد للدولة في وادي جرجم ، يعتمد سكانها على زراعة الحبوب والبقول والزيتون بعلاً إلى جانب تربية الأغنام والماعز والأبقار ، ويجري الماء في أسفل القرية من جهة الجنوبية الشرقية من نبع روطانلي مروراً بعدة قرى حتى سهل العمق داخل أراضي لواء اسكندرن . من عائلات القرية ( حج حمودي ) وهناك من حملة الشهادات الجامعية ومن الشخصيات الثقافية ( حسين بوظو / زانا عفريني ) وعثمان عبدالحنان .</p>
+<p>مختار القرية : زاهد اختيار</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Dela from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=OA3FTGQNLgk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=OA3FTGQNLgk</a></p>
 <p>The village of <span class="internal-link">Dela</span>, located within the <span class="internal-link">Mabeta</span> district of the <span class="internal-link">Efrîn</span> region, sits amidst the rugged terrain of <span class="internal-link">Çiyayê Xastiya</span>. The village overlooks the valley known variously as <span class="internal-link">Geliya Circimê</span>, <span class="internal-link">Geliyê Dola</span>, or <span class="internal-link">Geliyê Zirzim</span>. According to local oral history recounted by the village head, the settlement was established by a lineage of religious scholars and students, referred to as <span class="internal-link">xuceler</span>. These founders, specifically the <span class="internal-link">Mala Hemîdî</span> family, originally migrated from <span class="internal-link">Gundê Bilêl</span> to <span class="internal-link">Gundê Hisê</span> before eventually settling in the current location.</p>
 <p>The name Dela is the subject of local interpretation. While the speakers acknowledge that words like &quot;Dali&quot; or &quot;Dela&quot; can imply madness in Arabic or Turkish, the villagers attribute the name to the concept of being <span class="internal-link">dîndar</span> (devout) or <span class="internal-link">baqil</span> (wise). They view their ancestors as people who were &quot;mad&quot; with religious love or wisdom, having dedicated themselves to studying the Quran and the sciences. Before constructing permanent stone houses, these early settlers lived seasonally in caves located at a site called <span class="internal-link">Hecî Eşqer</span> during the winter and in simple huts during the summer.</p>
 <p>The social structure of Dela is defined by three primary families: Mala Hemîdî, <span class="internal-link">Mala Ûskê</span>, and <span class="internal-link">Mala Çowê</span>. The Mala Çowê family is noted to have migrated from <span class="internal-link">Gundê Qudê</span>. Over time, the village has seen significant migration, with many younger generations moving to Efrîn, <span class="internal-link">Cindirês</span>, and <span class="internal-link">Heleb</span> for work, leaving a smaller population of roughly 35 households primarily composed of the elderly.</p>
@@ -310,7 +361,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dela.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dela.htm</a><br><a href="https://www.youtube.com/watch?v=OA3FTGQNLgk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=OA3FTGQNLgk</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dela.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dela.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=OA3FTGQNLgk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=OA3FTGQNLgk</a></li></ul>
             </div>
 
             
@@ -320,7 +371,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -438,6 +489,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

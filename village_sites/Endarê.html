@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -132,7 +153,10 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Endarê</h2>
-                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Khalil Sino</h5>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Afrin 366</h5>
+<p><strong>Ruins:</strong> <span class="internal-link">Kelha Basûtê</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Aviyona</span>, <span class="internal-link">Berê Serê Solê</span>, <span class="internal-link">Hisênmiderî</span></p>
+<h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Khalil Sino</h5>
 <p><strong>Etymology:</strong> Named after the archaeological hill Tilya Andarê located nearby</p>
 <p><strong>Foundation Date/Period:</strong> modern settlement expanded approx 70 to 80 years ago</p>
 <p><strong>Hills:</strong> <span class="internal-link">Tilya Andarê</span>, <span class="internal-link">Girê Andarê</span></p>
@@ -145,29 +169,87 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Endarê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>From the book Jabal al-Kurd (Afrin): A Geographical Study by Dr. Muhammad Abdu Ali:</p>
-<p><strong>&#x27;Endarê, Ain Dara /601p - 330hh - 6km - 255m/:</strong></p>
-<p>Translator&#x27;s Note: The numbers likely refer to population (p), households (hh), distance from the district center (km), and elevation (m).</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Endarê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p><span class="internal-link">Endar</span> Village Entry</p>
+<p>The following is stated in the book Çiyayê Kurmênc (Efrîn): A Geographical Study by Dr. <span class="internal-link">Mihemed Ebdo Elî</span>:</p>
+<p>Endar / <span class="internal-link">Endarê</span> (601 inhabitants - 330 hectares/AH - 6km - 255m):</p>
+<p>Etymology:</p>
+<p>&quot;Ain&quot; means spring (a word of Arabic origin), and &quot;Dar&quot; means tree in Kurdish. The full meaning of the name is &quot;Spring of the Tree&quot; (<span class="internal-link">Kaniya Daran</span>). The location is densely wooded, especially with willow trees. The spring might also have a connection to the name of the Iranian King &quot;Darius.&quot; However, Khoury Barsoum states: It is from Syriac, meaning &quot;Spring of the houses and dwellings,&quot; and it might be related to war and fighting (Page 242).</p>
+<p>Location and History:</p>
+<p>It is a small village located at the end of the southwestern slope of a limestone plateau. An archaeological tell (hill) is located 800m to the west of it. Upon this hill is a famous temple from the Hittite era, as well as traces of habitation from various eras; ancient pottery shards are scattered on its surface. To the south of the tell, there are ruins of an agricultural village from the Neolithic age dating back ten thousand years. There is a factory for manufacturing plastic irrigation pipes in the village.</p>
+<p>The Spring of Endarê:</p>
+<p>Its flow rate was 129 liters/second. A small lake forms at its source, from which water drains via a channel heading southwest, passing beside the archaeological hill, and finally ending in the river of <span class="internal-link">Efrîn</span> at a distance of 1km. In the sixties and seventies of the last century, the lake and its channel were famous and well-known for their abundant fish.</p>
+<p>The Archaeological Tell:</p>
+<p>Located on the eastern bank of the river of Efrîn, 800m west of the village. It rises 40m above the surrounding area. The tell consists of two parts:</p>
+<p>The First Part: Rises slightly above the course of the river of Efrîn. Its length is 280m and its width is 180m. Excavation works revealed traces of habitation dating back to the second millennium BC and the first millennium AD; it was a flourishing city at that time.</p>
+<p>The Second Part: This is higher in elevation than the first part and has a conical shape. Excavation works revealed traces of successive civilizations: Hittite, Iranian (Zoroastrian), Greek, Byzantine, and then Islamic. It is considered an open-air museum of antiquities.</p>
+<p>The following is stated in the book Efrîn... Her River and Her Green Hills by the writer <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Endarê:</p>
+<p>A village in the valley of Efrîn, administratively following the villages of the Efrîn center sub-district, Heleb governorate.</p>
+<p>It is a small village located at the end of the southwestern slope of a limestone plateau, at its contact point with the plain of the Efrîn river valley, between <span class="internal-link">Çiyayê Lêlûn</span> to the east and the Efrîn river valley to the west. It is 6km south of the river of Efrîn.</p>
+<p>To the west of the village, there is a spring bearing its name, which forms a natural lake surrounded by a belt of various natural trees. In front of it lies a vast, agriculturally fertile plain. It is bordered to the north by a wide plain and the nearby village of <span class="internal-link">Tirinde</span>; to the south by a fertile agricultural plain planted with pomegranate and apple trees and the touristic town of <span class="internal-link">Basûtê</span>; to the west by a plain, the spring called <span class="internal-link">Kaniya Endarê</span>, the archaeological tell, the river of Efrîn, and the village of <span class="internal-link">Cudêdê</span> / <span class="internal-link">Kersantaş</span>; and to the east by a mountain range, the village of <span class="internal-link">Qerzîhel</span>, and the western chain of Çiyayê Lêlûn and <span class="internal-link">Çiyayê Seman</span>.</p>
+<p>The number of its houses is about 45, and the age of the village is approximately 400 years. Its old houses are made of wood and stone with mud roofs, while modern construction is of stone and reinforced concrete. To the east of the village lies a spring after which the village was named (Endarê). The area has ancient buildings, evidenced by the presence of an archaeological tell 800m to the southwest of the village, where a Hittite temple and ruins from the Islamic era were found, with pottery shards scattered on its surface.</p>
+<p>The village has an electricity network, drinking water from the Endarê spring, a primary school, and a paved road passing through its center to the village of Basûtê and neighboring villages. There is also a telephone center and an agricultural guidance center. Its residents work in the cultivation of grains, cotton, and irrigated olives using the Endarê spring and the river of Efrîn. A section of the residents works in tourism businesses due to the presence of the lake on the western side of the village.</p>
+<p>The Spring:</p>
+<p>Located on the western slope of the village near the public <span class="internal-link">Riya Heleb-Efrîn</span> (Aleppo-Afrin road). Its flow is 129 liters/second. At the water outlet, it forms a small lake from which water flows westward to irrigate the orchards and pours into the river of Efrîn. Recreational touristic cafes are established on the borders of the lake.</p>
+<p>The village of Endarê is one of the ancient villages in the region, revealed by ruins of successive civilizations from the Aramean, Greek, and Byzantine, to the Arab Islamic era. The most important of these archaeological remnants is the Byzantine wall built on the ruins of an ancient Greek wall, and the massive temple dating back to the first millennium.</p>
+<p>Kaniya Endarê (Spring of Endarê):</p>
+<p>A water spring in the village of Endarê, sub-district of the villages of the Efrîn center and region, Heleb governorate. It is located at the end of the western slope of Çiyayê Lêlûn and Çiyayê Seman, near the village, and is 5km south of the city of Efrîn. Its flow is 129 L/s. At its outlet, it forms a small lake from which water drains via a channel heading southwest, irrigating the village orchards, then ending in the valley of the river of Efrîn at a distance of 1km. A structure was built on it to preserve and collect the water, pumping it through water networks to the village itself and to the villages of Basûtê and <span class="internal-link">Zerîfê</span>. A cafe was also established on the edge of the lake, frequented by residents of the cities of Heleb and Efrîn and neighboring areas. The road to it from Efrîn is paved.</p>
+<p>Village Mukhtar: <span class="internal-link">Ebdulrehman Reşîd</span></p>
+<p>Sources:</p>
 <ul>
-<li>Ain = spring, an Arabic word, and Dar = tree in Kurdish. The full meaning of the name is &quot;spring of the tree.&quot; The location is densely wooded, especially with willow trees. The spring may also be linked to the name of the Iranian king &quot;Darius.&quot; As for Khoury (Priest) Barsom, he says it is from Syriac: the spring of houses and dwellings. Could it also be from war and combat? /p. 242/.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A small village located at the end of the southwestern slope of a limestone plateau. There is an archaeological tell 800m to its west, upon which sits a famous temple from the Hittite era, along with آثار of settlement from various ages. Archaeological pottery shards are also scattered on its surface. To the south of the tell are the remains of an agricultural village from the Stone Age, dating back ten thousand years. The village has a factory for manufacturing plastic irrigation pipes.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
+<p>Preparation and Execution:</p>
 <ul>
-<li>As for the Ain Dara spring: its flow rate was 129 l/s. A small lake forms at its source, from which water drains through a channel heading southwest, passing by the archaeological tell, and ending in the Afrin River 1 km away. In the 1960s and 1970s, the lake and its channel were famous and well-known for their abundance of fish.</li>
+<li>Manager of Navenda Tirej Efrîn: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
 </ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : &#x27; Endar ، عينداره /601ن - 330هـ - 6كم - 255م/:</p>
 <ul>
-<li>The Archaeological Tell /8km/: It is located on the eastern bank of the Afrin River, 800m west of the village, and rises 40m above its surroundings. The tell consists of two parts. The first part rises slightly above the Afrin River&#x27;s course, measuring 280m long and 180m wide. Excavations here have uncovered remains of settlements dating back to the second millennium BC and the first millennium AD, when it was a thriving city. The second part is higher than the first and has a conical shape. Excavations have uncovered آثار of successive civilizations: Hittite, Iranian &quot;Zoroastrian,&quot; Greek, Byzantine, and then Islamic. It is considered an open-air museum of archaeology.</li>
+<li>عين = نبع، وهي كلمة عربية، ودار Dar = شجر في الكردية، ومعنى كامل الاسم</li>
 </ul>
-<p>From the book: Afrin... Its River and Green Hills by the author Abd al-Rahman Muhammad from the village of Qatma:</p>
-<p><strong>Ain Dara:</strong> A village in the Afrin valley, belonging to the sub-district of Afrin Center, Aleppo Governorate.</p>
-<p>It is a small village located at the end of the southwestern slope of a limestone plateau, where it meets the plain of the Afrin River valley, situated between Mount Lelun to the east and the Afrin River valley to the west. It is 6 km south of the Afrin River. To the west of the village, there is a spring that bears its name, forming a natural lake surrounded by a belt of various native trees. In front of it lies a wide, fertile agricultural plain. It is bordered to the north by a wide plain and the nearby village of Torondeh; to the south by a fertile agricultural plain planted with pomegranate and apple trees and the tourist town of Basouta; to the west by a plain, a spring called Ain Dara, an archaeological tell, the Afrin River, and the village of Jadida Kursan Tash; and to the east by a mountain range, the village of Qarzihil, and the western Mount Lelun and Simeon chain.</p>
-<p>The village has about 45 houses and is approximately 400 years old. Its old houses are made of wood and stone with mud roofs, while modern buildings are of stone and reinforced concrete. To the east of the village is the spring after which the village was named (Ain Dara). The area&#x27;s buildings are ancient, as evidenced by the presence of an archaeological tell 800m to the southwest of the village, followed by the discovery of a Hittite temple and ruins from the Islamic era, with pottery shards scattered on its surface.</p>
-<p>The village is supplied with an electricity network, drinking water from the Ain Dara spring, an elementary school, and a paved road that passes through its center to the village of Basouta and neighboring villages. There is also a telephone center and an agricultural guidance center. The residents work in the cultivation of irrigated grains, cotton, and olives from the Ain Dara spring and the Afrin River. A portion of the population works in tourism due to the presence of the lake on the west side of the village. The spring is located on the western slope of the village near the main Aleppo-Afrin road. Its flow rate is 129 l/s. At its outlet, it forms a small lake from which water flows westward to irrigate the orchards and empties into the Afrin River. Recreational tourist cafes are set up along the lake&#x27;s edge.</p>
-<p>The village of Ain Dara is one of the ancient villages in the region, as revealed by the remains of successive civilizations from the Aramaic, Greek, and Byzantine periods, followed by the Arab Islamic era. The most important of these archaeological remains are the Byzantine wall, built on the ruins of an ancient Greek wall, and the massive temple dating back to the first millennium.</p>
-<p><strong>Ain Dara Spring:</strong> A water spring in the village of Ain Dara, sub-district and district of Afrin, Aleppo Governorate.</p>
-<p>It is located at the end of the western slope of Mount Lelun and Simeon, near the village and 5 km south of the city of Afrin. Its flow rate is 129 l/s. At its outlet, it forms a small lake from which water is discharged through a channel heading southwest, irrigating the village&#x27;s orchards before ending in the Afrin River valley 1 km away. A structure was built on it to conserve, collect, and pump water through networks to the village itself and to the villages of al-Basouta and al-Zarifah. A cafeteria was also established on the edge of the lake, frequented by residents of the cities of Aleppo and Afrin and surrounding areas. The road to it from Afrin is paved.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Endarê from Khalil Sino</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=JthABP62cfA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=JthABP62cfA</a></p>
+<p>هو &quot;نبع الشجر&quot;، والموقع كثيف الشجر وخاصة شجر الصفصاف. وربما كان للنبع صلة باسم الملك الإيراني &quot;داريوس&quot;. أما الخوري برصوم فيقول: إنه من السريانية: عين البيوت والمساكن، وقد تكون من الحرب والقتال؟، /ص242/.</p>
+<ul>
+<li>قرية صغيرة تقع عند نهاية السفح الجنوبي الغربي لهضبة كلسية. يوجد تل أثري</li>
+</ul>
+<p>على بعد 800م إلى الغرب منها، وعليه معبد مشهور من العهد الحثي، وأثار سكن من العصور المختلفة، كما تتناثر على سطحه الكسر الفخارية الأثرية. وفي جنوبي التل آثار قرية زراعية من العصر الحجري تعود إلى عشرة آلاف عام. وفي القرية معمل لصناعة أنابيب الري البلاستيكية.</p>
+<ul>
+<li>أما نبع ماء عين دارة: فكان غزارته 129ل/ثا. ويتشكل عند منبعه بحيرة صغيرة</li>
+</ul>
+<p>تنصرف المياه منها عبر ساقية تتجه نحو الجنوب الغربي، وتمر بجانب التل الأثري، ثم تنتهي في نهر عفرين على بعد 1كم. وفي ستينات وسبعينات القرن الماضي، كانت البحيرة وساقيتها مشهورتين ومعروفتين بأسماكهما الكثيرة.</p>
+<ul>
+<li>التل الأثري /8كم/: يقع على الضفة الشرقية لنهر عفرين على بعد 800م غربي</li>
+</ul>
+<p>القرية، ويرتفع عما حوله 40م، ويتألف التل من قسمين، الأول: يرتفع قليلا عن مجرى نهر عفرين، طوله 280 م وعرضه 180 م، وكشفت أعمال التنقيب فيها عن أثار سكن تعود للألف الثاني قبل الميلاد والألف الأول بعد الميلاد، وكانت حينها مدينة عامرة. أما القسم الثاني: وهو أعلى ارتفاعا من القسم الأول، وله شكل مخروطي، وكشفت أعمال التنقيب عن آثار حضارات متعاقبة: حثية إيرانية &quot;زردشتية&quot; ويونانية وبيزنطية ثم إسلامية، وهو يعتبر متحفا للآثار في الهواء الطلق. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه عينداره : قريـة فـي وادي عفريـن ، تتبـع ناحـية قـرى مركـز عفريـن ، محـافظة حــلب . وهي قرية صغيرة تقع على نهاية السفح الجنوبي الغربي لهضبة كلسية ، عند تماسه مع سهل وادي نهر عفرين ، بين جبل ليلون شرقاً و وادي نهر عفرين غرباً ، وهي تبعد 6كم جنوب نهر عفرين ، يوجد إلى الغرب من القرية ينبوع تحمل اسمه ، يشكل بحيرة طبيعية أحيطت بنطاق من الأشجار الطبيعية المختلفة ، ومن أمامه سهل واسع خصب زراعياً يحدها شمالاً سهل واسع وقرية طورندة القريبة وجنوباً سهل خصب زراعياً مزروعة بأشجار الرمان والتفاح وبلدة باسوطة ، السياحية وغرباً سهل وعين تسمى عين دارة وتل أثري ونهر عفر ين وقرية جديدة كرسان طاش وشرقاً سلسلة جبلية وقرية قرزيحل وسلسلة جبل ليلون وسمعان الغربية. يبلغ عدد بيوتها حوالي 45 بيتاً وعمر القرية حوالي 400 عام بيوتها القديمة خشبية وحجرية ذات سقوف طينية والبناء الحديث من الحجارة والأسمنت المسلح يوجد إلى شرق القرية نبع سميت القرية باسمه (عين دارة) و المنطقة أبنيتها قديمة بدلالة وجود تل أثري على بعد 800 م إلى الجنوب الغربي للقرية ثم العثور على معبد حثي وأثري للعهد الإسلامي وتتناثر على سطحه أكاسر الفخارية . تتوفر فيها شبكة الكهرباء ومياه الشرب من نبع عين دارة ومدرسة ابتدائية و طريق مزفت يمر في وسطها إلى قرية باسوطة والقرى المجاورة وكذلك وجود مركزاً للهاتف ومركز للإرشاد الزراعي ، يعمل سكانها بزراعة الحبوب والقطن والزيتون المروية من نبع عين دارة ونهر عفر ين ويعمل قسم من السكان في الأعمال السياحية بسبب وجود بحيرة في الجهة الغربية للقرية أما النبع يقع في السفح الغربي للقرية بالقرب من الطريق العام حلب عفر ين غزارته 129 ل/ ثا يشكل عند مخرج المياه بحيرة صغيرة تنساب المياه منها باتجاه الغرب لسقاية البساتين ويصب في نهر عفر ين , وتقام على حدود البحيرة المقاصف السياحية الترفيهية وقرية عين دارة من القرى القديمة في المنطقة كشفت عنها آثار الحضارات المتعاقبة من الآرامية واليونانية والبيزنطية ثم العهد العربي الإسلامي وأهم هذه المخلفات الأثرية السور البيزنطي المقام على أنقاض سور يوناني قديم ثم المعبد الضخم الذي يعود للألف الأول . نبع عينداره : ينبوع ماء في قرية عين داره ، ناحية قرى مركز و منطقة عفرين ، محافظة حلب . يقع عند نهاية السفح الغربي لجبل ليلون وسمعان ، بالقرب من القرية ويبعد 5كم عن مدينة عفرين جنوباً ، غزارته 129 ل/ثا ، يشكل عند مخرجه بحيرة صغيرة تصرف المياه منها عبر مجرى يتجه نحو الجنوب الغربي ، و يسقي بساتين القرية ثم ينتهي في وادي نهر عفرين على بعد 1كم ، أقيم عليه بناء لحفظ المياه و جمعها وضخها عبر شبكات مائية إلى القرية ذاتها و إلى قريتي الباسوطة و الظريفة و أقيم كذلك على طرف البحيرة مقصف يؤمه سكان مدينتي حلب و عفرين و المناطق المجاورة ، الطريق إليها من عفرين مزفتة .</p>
+<p>مختار القرية :  عبدالرحمن رشيد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Endarê from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=sgK4MxSjWUo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=sgK4MxSjWUo</a></p>
+<p>The documentary focuses on the village of <span class="internal-link">&#x27;Enderê</span> in the <span class="internal-link">Efrîn</span> region, documenting a journey through the snowy landscape during a rare winter spell. The host and local residents describe &#x27;Enderê as a beautiful but small village situated very close to <span class="internal-link">Basûtê</span> and <span class="internal-link">Kerzêlê</span>. The narrative highlights the close geographic and social ties between these communities, with speakers frequently mentioning them in the same breath.</p>
+<p>A significant portion of the conversation is dedicated to the environmental history of the area. Elders and residents recall a time when &#x27;Enderê and its surroundings were abundant with water and dense vegetation. They describe how people used to travel from cities like <span class="internal-link">Heleb</span> to picnic under the trees by the springs. One resident recounts that the water was once so plentiful that it contained fish, but in recent years, a severe drought has caused the springs to dry up and the trees to wither. There is a specific discussion regarding <span class="internal-link">Hisênmiderî</span>, a location where cloud patterns and wind interactions with <span class="internal-link">merx</span> trees (junipers) historically indicated rain, a natural cycle that residents feel has been disrupted by the loss of trees.</p>
+<p>Socially, the village is presented as an agricultural community facing economic challenges. Farmers encountered on the road discuss their winter crops, specifically listing parsley, arugula, radishes, and lettuce. Despite a productive harvest, they express frustration that the market prices are too low to make a profit, with some crops left unsold. The social commentary also touches on the behavior of the youth, with a local driver criticizing reckless driving on the icy roads and calling for greater community unity and respect among the people of the region.</p>
+<p>While no specific family lineages or tribes are explicitly named, the transcript identifies several key landmarks that define the local geography. The most improved historical site mentioned is <span class="internal-link">Kelha Basûtê</span>, the fortress located in the neighboring village. Other specific localities mentioned by travelers and locals include <span class="internal-link">Aviyona</span> and <span class="internal-link">Berê Serê Solê</span>, which appear to be well known points of reference for the inhabitants of &#x27;Enderê and the surrounding countryside. The video concludes with praise for the industrious nature of the people of Basûtê and Kerzêlê, who are described as hardworking and devoted to their land.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Endarê from Khalil Sino</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=JthABP62cfA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=JthABP62cfA</a></p>
 <p>The village of <span class="internal-link">Endarê</span> (also referred to as <span class="internal-link">Andarê</span>) is located in the plains of the Afrin region. Its history is deeply intertwined with land ownership struggles and agricultural reforms. According to the elder <span class="internal-link">Xalê Mistefa</span> (also known as <span class="internal-link">Bavê Kewa</span>), the land originally did not belong to the current residents. For a long time, the area was owned by <span class="internal-link">Helebiyan</span> (merchants from Aleppo), who purchased the land approximately 70 to 80 years ago. The local Kurds lived there as sharecroppers (ortaq or cotar) working for these landlords. During this feudal period, the residents lived in caves (sikeven) rather than modern houses.</p>
 <p>The demographics and structure of Endarê shifted significantly following the <span class="internal-link">Islahe Zîraî</span> (Agrarian Reform) instituted during the era of the <span class="internal-link">Beas</span> (Baath) party. As a result of these reforms, the Helebiyan owners were pushed out, and the land was eventually redistributed or claimed by the farmers who worked it, though this involved legal disputes and imprisonment for some residents in the early 1980s before the land status was settled as state property or private holdings.</p>
 <p>The modern population of Endarê consists largely of migrants from the village of <span class="internal-link">Kurzêlê</span>. Xalê Mistefa notes that he himself moved from Kurzêlê about 40 years ago. The village currently houses around 70 families. The oldest inhabitants, such as the <span class="internal-link">Molê Reşîdê Hemêdê Hemê</span>, were present before this influx. Notable families include <span class="internal-link">Mala Mehemedê Şêx Xezê</span>, <span class="internal-link">Mala Qeydî</span>, <span class="internal-link">Mala Bêrem</span>, and <span class="internal-link">Mala Belaliya</span>. Additionally, the <span class="internal-link">Mala Hemîdê</span> family (specifically the lineage of <span class="internal-link">Hemîdê Reş</span>) traces their origins to the <span class="internal-link">Kilepçekî</span> tribe. There is also a small presence of <span class="internal-link">Ereb</span> (Arab) families who arrived about 20 years ago from <span class="internal-link">Sefîre</span>, east of <span class="internal-link">Heleb</span>, fleeing a blood feud.</p>
@@ -193,6 +275,13 @@
             <tbody>
                 
             <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Afrin 366 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=sgK4MxSjWUo" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/afrin366_videos_162_Endare.srt" download="afrin366_videos_162_Endare.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Endarê_Afrin 366_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
                 <td class="px-4 py-3 text-base">Khalil Sino 1</td>
                 <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=JthABP62cfA" target="_blank" class="external-link hover:underline">Watch Video</a></td>
                 <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/khalil_sino_videos_15_Endare.srt" download="khalil_sino_videos_15_Endare.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
@@ -209,7 +298,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20endare.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20endare.htm</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=JthABP62cfA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=JthABP62cfA</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20endare.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20endare.htm</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=sgK4MxSjWUo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sgK4MxSjWUo</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=JthABP62cfA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=JthABP62cfA</a></li></ul>
             </div>
 
             
@@ -219,7 +308,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -337,6 +426,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

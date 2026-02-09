@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -126,23 +147,69 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Tilî Kêşû</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> According to the Mukriyanî dictionary, Kaş is a type of tree, and it is also a local Kurdish proper name</p>
+<p><strong>Springs:</strong> <span class="internal-link">Batman</span></p>
+<p><strong>Hills:</strong> <span class="internal-link">Til Kaşûr</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Xerab Mecîd</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çemê Reş</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Tilî Kêşû</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>From the book Jabal al-Kurd / Afrin / A Geographical Study:</p>
-<p><strong>Tilê Kêşûr, Tell Kashur, Kashur /275 m/:</strong></p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Tilî Kêşû</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20tal%20kashor.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20tal%20kashor.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Til Kşr</span>, <span class="internal-link">Til Keşûr</span>, <span class="internal-link">Keşûr</span> /275m/:</p>
+<p><span class="internal-link">Til Kaşûr</span>: It is stated in the /<span class="internal-link">Mukriyanî</span> dictionary/ regarding the name that <span class="internal-link">Kaş</span> is a type of tree. It is also a local Kurdish proper name.</p>
+<p>It is an archaeological hill, with ruins of ancient monuments scattered in its flat surroundings, indicating a history of ancient habitation. The hill is located in the <span class="internal-link">Deşta &#x27;Emaq</span> plain, about 1km south of the village of <span class="internal-link">Şediya</span>. The site was a temporary dwelling for some livestock breeders, so it was included within the administrative divisions of the township of <span class="internal-link">Reco</span>.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Til Kaşûr: A village in <span class="internal-link">Çiyayê Kurmênc</span> administratively following the township of Reco, area of <span class="internal-link">Efrîn</span>, governorate of <span class="internal-link">Heleb</span>. It is a small village administratively attached to the village of <span class="internal-link">Qemreş</span> and is located on an archaeological hill. It is surrounded by a wide plain from all sides that is agriculturally fertile. Currently, not a single house remains of the village except for the remaining ruins that indicate the extinction of the village in the past.</p>
+<p>It is bordered to the north by the course of the <span class="internal-link">Çemê Reş</span> (Black River) and the Turkish border a few meters away from it; to the south by a plain and the village of <span class="internal-link">Sorkê</span>; to the east by a fertile plain planted with summer vegetables irrigated by the <span class="internal-link">Batman</span> spring, a high mountain chain, and <span class="internal-link">Xerab Mecîd</span>; and to the west by the course of the Çemê Reş (Black River) and the Turkish border directly a few meters away.</p>
+<p>There are no services available at the village site. Its lands are fertile due to its location near the Çemê Reş (Black River) and Batman spring. These lands are cultivated by the residents of the following villages: Sorkê, <span class="internal-link">Atmana</span>, and <span class="internal-link">Kurrê</span>.</p>
+<p>Sources of Information:</p>
 <ul>
-<li><strong>Tell Kashur:</strong> It is mentioned in the /Mukriani Dictionary/ regarding the name that Kaşû is a type of tree. It is also a local Kurdish proper name.</li>
-<li>It is an archaeological tell, with ancient ruins scattered in its surrounding plain, indicating a history of old settlement. The tell is located in the Lêçe Plain, about 1 km south of the village of Shadiyanli. The site was a temporary residence for some livestock herders and was subsequently included in the administrative divisions of the Rajo subdistrict.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>From the book Afrin... Its River and Green Hills:</p>
-<p><strong>Tell Kashur:</strong></p>
-<p>A village in Jabal al-Kurd, belonging to the Rajo subdistrict, Afrin district, Aleppo Governorate.</p>
-<p>It is a small village, administratively part of the village of /Kamrash/, and is located on an archaeological tell, surrounded on all sides by a wide and agriculturally fertile plain. Currently, no houses remain in the village, only the surviving ruins that indicate the village disappeared long ago. It is bordered to the north by the course of the Black River and the Turkish border, a few meters away; to the south by a plain and the village of /Sorek/; to the east by a fertile plain cultivated with summer vegetables irrigated from the Ein Batman spring, a high mountain range, and /Kharab Majid/; and to the west by the course of the Black River and the Turkish border, directly a few meters away.</p>
-<p>There are no services available at the village site. Its lands are fertile due to their proximity to the Black River and the Ein Batman spring, and these lands are cultivated by the inhabitants of the following villages: Sorek, Atmanli, and Keri.</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Til Kşr ، تل كشور، ‏ كشور /275م/:</p>
+<ul>
+<li>تل كاشور: جاء في /قاموس موكرياني/ حول الاسم بأن Kaş نوع من الشجر. كما</li>
+</ul>
+<p>أنه اسم علم كردي محلي.</p>
+<ul>
+<li>هو تل أثري، تنتشر في محيطه السهلي أطلال آثار قديمة تشير إلى تاريخ سكن</li>
+</ul>
+<p>قديم. يقع التل في سهل العمق Le على بعد نحو 1كم - جنوبي قرية شديانلي. وكان الموقع مسكنا مؤقتا لبعض مربي الماشية، فأدرج ضمن التقسيمات الإدارية لنا. راجو. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : تل كاشور : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تتبع لقرية /كمراش/ و تقع على تل أثري و من حولها سهل واسع من جميع الجهات و خصب زراعياً و حالياً لم يبق من القرية أي بيت سوى الآثار المتبقية التي تدل على اندثار القرية قديماً ، يحدها شمالاً مجرى النهر الأسود والحدود التركية على بعد أمتار منها ، وجنوباً سهل و قرية /سورك/ ، وشرقاً سهل خصب مزروع بالخضروات الصيفية من نبع عين بطمان و سلسلة جبلية عالية و /خراب مجيد/ ، وغرباً مجرى النهر الأسود و الحدود التركية مباشرة على بعد أمتار ، لا يتوفر في موقع القرية أي خدمات ، أراضيها خصبة بسبب وقوعها بالقرب من النهر الأسود و عين بطمان و تزرع هذه الأراضي من قبل سكان القرى التالية : سورك _ عطمانلي _ كري . مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -151,7 +218,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <div class="p-4 italic subtext">No data provided.</div>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20tal%20kashor.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20tal%20kashor.htm</a></li></ul>
             </div>
 
             
@@ -161,7 +228,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -279,6 +346,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

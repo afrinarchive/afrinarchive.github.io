@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,6 +205,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">&#x27;Edema, Adh Manli, Edema, أده, أده مانلي / اده, أده، ادمانلي, اده مانلي</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Edemanlî</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -211,22 +233,71 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Edema</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Edemanlî: Name of a Kurdish tribe found to the north of Lake Wan.</p>
+<p><strong>Foundation Date/Period:</strong> 350 years</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Bilalîko</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çemê Reş</span>, <span class="internal-link">Deşta Amiq</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Edema</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds (Afrin)</span> Geographic Study:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Edema</span> (اده مانلي) (أده)</strong> /1142n - 174h - 18km - 570m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Edema</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-adh%20manle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-adh%20manle.htm</a></p>
+<p>It is stated in the book <span class="internal-link">Çiyayê Kurmênc</span> (Efrîn) A Geographical Study: <span class="internal-link">Edema</span>, <span class="internal-link">Edemanlî</span>, <span class="internal-link">Ede</span> /1142 inhabitants, 174 hectares, 18km, 570m/:</p>
+<p>Edemanlî: The name of a Kurdish tribe found to the north of Lake <span class="internal-link">Wan</span> /Zekî Vol 1 p407/. The Arabized name &quot;Ede&quot; is part of the name and has no linguistic meaning.</p>
+<p>It is a small village located on the western side of <span class="internal-link">Çiyayê Bilalîko</span>. The <span class="internal-link">Çemê Reş</span> and the railway line pass to its west, and it is a distance of 2km from the Turkish border.</p>
+<p>It is stated in the book <span class="internal-link">Efrîn</span>... Her River and Her Green Hills: Edemanlî is a village in Çiyayê Kurmênc following the district of <span class="internal-link">Reco</span>, Efrîn region, Heleb governorate. It is a medium sized village located in the northwestern part of Çiyayê Kurmênc and the Heleb plateau on the summit of a limestone elevation that slopes steeply toward the west, overlooking <span class="internal-link">Deşta Amiq</span> and the Çemê Reş which is 2km away, running parallel to the <span class="internal-link">Xeta Trêna Heleb-Meydan Ekbez</span> (Heleb-Meydan Ekbez railway). It is 18km away from the town of Reco toward the north.</p>
+<p>It is bordered to the north by a mountain range and harsh slopes planted with oak trees, the plain of <span class="internal-link">Meydan Ekbez</span>, and the village. To the south, it is bordered by a high mountain range planted with oak and acorn trees and the village of <span class="internal-link">Elî Beskî</span>. To the east, it is bordered by a deep and harsh ravine and the village of <span class="internal-link">Sîmalk Reco</span>. To the west, it is bordered by a rugged mountain slope, Deşta Amiq, and the Turkish Çemê Reş directly.</p>
+<p>The number of its houses amounts to about 65 houses, and its age is about 350 years. Its dwellings are stone and mud with flat wooden roofs, and modern cement dwellings are extending toward the north and south. An electricity network, a primary school, and a paved road up to the center of the village are available in it. The village drinks from cisterns in which rainwater is collected in winter. The residents work in rain fed agriculture (olives, grains, legumes, grapes) on an area of 175 hectares, and they raise sheep and goats.</p>
+<p>Village Mukhtar: <span class="internal-link">Ekrem Osman</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">Adh Manli</span> (اده مانلي): Name of a Kurdish tribe found north of <span class="internal-link">Lake Van</span> (بحيرة وان) /Zaki J1 p.407/. The Arabic name &quot;<span class="internal-link">Adh</span>&quot; (أده) is part of the name and has no linguistic meaning.</li>
-<li>A small village located on the western side of <span class="internal-link">Bilaliko</span> (بلاليكو) mountain, with the <span class="internal-link">Black River</span> (النهر الأسود) and railway line passing west of it, 2 km from the <span class="internal-link">Turkish</span> (تركية) border.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span>:</p>
-<p><strong>Adh Manli (اده مانلي)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (راجو), Afrin (عفرين), Aleppo Governorate (حلب).</p>
-<p>It is a medium-sized village located in the northwestern part of Kurdish Mountain (جبل الكرد) and <span class="internal-link">Aleppo Plateau</span> on a calcareous heights summit descending sharply westward, overlooking the <span class="internal-link">Al-Amq Plain</span> (العمق) and the Black River (النهر الأسود) which is 2 km parallel to the railway (<span class="internal-link">Aleppo</span> - <span class="internal-link">Medan Ekbas</span> (ميدان اكباس)). It is 18 km north of Rajo (راجو) town. To the north lies a mountain chain and harsh slopes planted with oak trees and Al-Amq Plain (العمق) and the village. To the south lies a high mountain chain planted with oak and acorn trees and <span class="internal-link">Ali Beski</span> (علي بسكي) village. To the east lies a deep harsh stream and <span class="internal-link">Simalk Rajo</span> (سمالك راجو) village. To the west lies a mountain slope and Al-Amq Plain (العمق) and the Black River (النهر الأسود) and direct Turkish (تركية) borders. The number of houses is approximately 65, and its age is approximately 350 years. Its dwellings are stone-clay with flat wooden roofs and modern concrete houses extend north and south. It has electricity and elementary school and paved road to the village center. The village drinks from cisterns that collect rainwater in winter. The residents work in rain-fed agriculture (olives, grains, legumes, grapes) on an area of 175 hectares, and they raise sheep and goats.</p>
-<p>Village mayor: <span class="internal-link">Akram Othman</span> (أكرم عثمان)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>THE VILLAGE OF EDEMA</p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the site Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : &#x27; Edema ، اده مانلي ، أده /1142ن - 174هـ - 18كم - 570م/:</p>
+<ul>
+<li>اده مانلي: اسم قبيلة كردية يوجد منها شمالي بحيرة وان /زكي ج1 ص407/.</li>
+</ul>
+<p>والاسم المعرب &quot; أده &quot; هو جزء من الاسم، وليس له أي معنى لغوي.</p>
+<ul>
+<li>قرية صغيرة تقع على الجهة الغربية لجبل بلاليكو، يمر النهر الأسود وخط</li>
+</ul>
+<p>الحديد من غربها، وتبعد مسافة 2كم عن الحدود التركية. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : اده مانلي : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية متوسطة تقع في الجزء الشمالي الغربي من جبل الكرد و هضبة حلب على قمة مرتفع كلسي ينحدر بشدة نحو الغرب ، مشرفة على سهل العمق و النهر الأسود الذي يبعد 2 كم محاذياً خط حديد ( حلب _ ميدان إكبس ) ، تبعد عن بلدة راجو 18 كم نحو الشمال ، يحدها شمالاً سلسلة جبلية و منحدرات قاسية مزروعة بأشجار السنديان و سهل /ميدان إكبس/ والقرية ، وجنوباً سلسلة جبلية عالية مزروعة بأشجار السنديان والبلوط وقرية /علي بسكي/ ، وشرقاً مسيل عميق وقاسي وقرية /سيمالك راجو/ ، و غرباً منحدر جبلي وعر وسهل العمق والنهر الأسود التركية مباشرة ، يبلغ عدد بيوتها حوالي 65 بيتاً وعمرها حوالي 350 عاماً ، مساكنها حجرية طينية ذات سقوف خشبية مستوية و تمتد المساكن الأسمنتية الحديثة نحو الشمال والجنوب ، تتوفر فيها شبكة كهرباء و مدرسة ابتدائية و طريق مزفت حتى وسط القرية ، تشرب القرية من صهاريج التي تجمع فيها مياه الأمطار شتاءاً ، يعمل السكان بالزراعة البعلية ( الزيتون ، الحبوب ، البقول ، الكرمة ) على مساحة 175 هـ ، ويربون الأغنام والماعز .</p>
+<p>مختار القرية : أكرم عثمان</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>THE VILLAGE OF EDEMA</p>
 <p>19/8/2016</p>
 <p>The village of Edema is affiliated with the Reco district of the Efrîn canton. It is located 21 km north of the city of Reco and 50 km north of the city of Efrîn, and also 3 km from the border of Northern Kurdistan.</p>
 <p>The village&#x27;s name comes from the first person who settled in the village. It is said that there were two brothers named &#x27;Edem and Cela, and Cela founded the village of Cela, and Edem also settled here and the village&#x27;s name became Edema.</p>
@@ -262,7 +333,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-adh%20manle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-adh%20manle.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=XB2qkXNwfTQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=XB2qkXNwfTQ</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-adh%20manle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-adh%20manle.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=XB2qkXNwfTQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=XB2qkXNwfTQ</a></li></ul>
             </div>
 
             
@@ -272,7 +343,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -390,6 +461,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

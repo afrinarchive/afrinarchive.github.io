@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Basilê, Baslahaya, باصلحايا, باصلحي, بوصليه</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ebdo, Hecî, Kenco, Miqdad, Mûsa, Nebo, Osman, Osso, Rûbarî, Îbîş, Îsa, Şebabo, Şêxo</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -208,22 +230,80 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Basilê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The origin of the popular name Basîlê is unknown. As for Basilhaya, in Aramaic it means: house of the woodcutters, or: the wooden board</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 700 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Lîlon</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Wadî Seraqib</span>, <span class="internal-link">Mezreya Zirîqat</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Basilê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin) geographical study</span>&#x27; by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Basilê, باصلحايا</strong> /2956N - 400H - 25KM - 505M/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Basilê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-basile.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-basile.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Basîlê</span>, Basilhaya /2956 people - 400 hectares - 25km - 505m/:</p>
+<p>Village Name</p>
+<p>The name &quot;Basîlê&quot;: We were unable to determine the origin of its popular name. As for Basilhaya, in Aramaic it means: the house of the woodcutters, or in the sense of: the wooden board /Al-Asadi, Vol 2, p 37/.</p>
+<p>General Description and History</p>
+<p>It is a medium-sized village located on <span class="internal-link">Çiyayê Lîlon</span> (Mount Lîlon) - the <span class="internal-link">Rûbarî</span> section. It is one of the ancient Rûbarî villages, and it contains a residence for the Rûbarî family dating back more than 150 years.</p>
+<p>Geography and Location</p>
+<p>As stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Basilhaya is a village in Çiyayê Lîlon, administratively belonging to the sub-district of the villages of the <span class="internal-link">Efrîn</span> center and district, Heleb governorate.</p>
+<p>It is a large village located at the end of the southeastern slope of a limestone plateau east of the <span class="internal-link">Lîlon</span> mountain chain, northwest of <span class="internal-link">Wadî Seraqib</span>, 30km southeast of the city of Efrîn. It is bordered to the north by a valley, a rugged mountain chain of rocks, the farm of <span class="internal-link">Zirîqat</span>, and <span class="internal-link">Kûbelê</span>; to the south by a slope, a valley, and the nearby village of <span class="internal-link">Eqîbê</span>; to the east by a slope, a wide fertile agricultural plain, and the villages of <span class="internal-link">Ibîn</span> and <span class="internal-link">Cilbil</span>; and to the west by a valley, a rugged mountain chain of rocks, and the village of <span class="internal-link">Dêr Mişmiş</span>.</p>
+<p>Demographics and Architecture</p>
+<p>The number of its houses reaches 250, and its age is approximately 700 years according to the account of one of the village residents. It is one of the ancient villages in Çiyayê Lîlon and the <span class="internal-link">Xubarî</span> region. Its old houses are made of stone, mud, and wooden ceilings, while the modern ones are made of stone and reinforced concrete.</p>
+<p>Services and Infrastructure</p>
+<p>A municipality center was recently established there two years ago. An electricity network and drinking water are available, as well as a primary school, and a middle school is under construction. It contains a mosque and a paved road connecting with the neighboring villages and the <span class="internal-link">Riya Heleb</span> (Aleppo road).</p>
+<p>Agriculture and Economy</p>
+<p>The residents of the village work in the cultivation of grains, legumes, and olives via rain-fed farming on an area of 400 hectares, alongside livestock breeding.</p>
+<p>Families and Notable People</p>
+<p>Among the families in the village are: <span class="internal-link">Îbîş</span>, <span class="internal-link">Mûsa</span>, <span class="internal-link">Hecî</span>, <span class="internal-link">Ebdo</span>, <span class="internal-link">Miqdad</span>, <span class="internal-link">Şebabo</span>, <span class="internal-link">Kenco</span>, <span class="internal-link">Osso</span>, <span class="internal-link">Şêxo</span>, <span class="internal-link">Osman</span>, <span class="internal-link">Nebo</span>, and <span class="internal-link">Îsa</span>.</p>
+<p>Among the PhD holders from this village is Dr. <span class="internal-link">Ednan Îbîş</span>, who holds a PhD in Mathematics from the former Soviet Union, in addition to many university degree holders. The village mukhtar is Mr. <span class="internal-link">Mihemed Hesen Ebdo</span>.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and Execution:</p>
+<p>Manager of <span class="internal-link">Navenda Tirej Efrîn</span>: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Basil ، باصلحايا /2956ن - 400هـ - 25كم - 505م/:</p>
 <ul>
-<li>The name &quot;Basile&quot;: We were unable to determine the origin of its popular name. As for Baslahaya in <span class="internal-link">Aramaic</span>, it means: house of woodcutters, or means: wooden board, /<span class="internal-link">Al-Asadi</span>, J 2, p.37/.</li>
-<li>A medium village, located on <span class="internal-link">Lilon Mountain</span> - <span class="internal-link">Robari</span> section. It is one of the old <span class="internal-link">Robari</span> villages, and has a residence for the <span class="internal-link">Al-Robari</span> family dating back more than 150 years.</li>
+<li>الاسم &quot;باسلي&quot;: لم نتمكن من معرفة أصل اسمها الشعبي. أما باصلحايا في</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from Qatma village</p>
-<p><strong>Baslahaya</strong>: A village in <span class="internal-link">Lilon Mountain</span>, belonging to the <span class="internal-link">Central District</span> and Afrin, Aleppo Governorate.</p>
-<p>A large village located at the end of the southeastern slope of a <span class="internal-link">limestone plateau</span> east of Lilon Mountain chain, northwest of <span class="internal-link">Saraqib Valley</span> 30km southeast of Afrin City. It is bordered to the north by a valley, rugged mountain chain of rocks and <span class="internal-link">Zariqat</span>, <span class="internal-link">Kobla</span> farms, and to the south by a slope, valley and nearby <span class="internal-link">Aqiba</span> village, and to the east by a slope, wide fertile plain and <span class="internal-link">Abein</span> village and Jalbal, and to the west by a valley, rugged mountain chain of rocks and <span class="internal-link">Deir Mashmash</span> village. The number of its houses is 250 houses and its age is about 700 years according to the narrative of one of the village inhabitants and it is one of the old villages in Lilon Mountain and the <span class="internal-link">Ghabariya</span> region. Its old houses are made of stones, clay and wooden roofs and the modern ones are made of stones and reinforced cement. A municipal building was recently built in it two years ago. It has an electricity network, drinking water, a primary and preparatory school under construction. The village inhabitants work in agriculture of grains, legumes and rain-fed olives on an area of /400/ hectares alongside livestock breeding and it has a mosque and a paved road connecting with neighboring villages and the Aleppo road.</p>
-<p>Among the families in the village are (<span class="internal-link">Al-Aibash</span> - <span class="internal-link">Al-Musa</span> - <span class="internal-link">Al-Haji</span> - <span class="internal-link">Al-Abdo</span> - <span class="internal-link">Al-Miqdad</span> - <span class="internal-link">Al-Shababo</span> - <span class="internal-link">Al-Kanjo</span> - <span class="internal-link">Al-Awso</span> - <span class="internal-link">Al-Sheikho</span> - <span class="internal-link">Al-Othman</span> - <span class="internal-link">Al-Nabo</span> - <span class="internal-link">Al-Issa</span>), and among the doctorate degree holders from this village is <span class="internal-link">Dr. Adnan Aibash</span> who holds a doctorate degree in mathematics from the former <span class="internal-link">Soviet Union</span> - and many university degree holders. The village mayor is <span class="internal-link">Mr. Mohammed Hassan Abdo</span>.</p></div></details></div>
+<p>الآرامية فهو بمعنى: بيت الحطابين، أو بمعنى: لوح الخشب، /الأسدي، ج 2، ص37/.</p>
+<ul>
+<li>قرية متوسطة، تقع على جبل ليلون - قسم روباري. وهي من قرى الروباريين</li>
+</ul>
+<p>القديمة، وفيها دار سكن لآل روباري تعود لأكثر من 150 عاما. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه باصلحايا : قرية في جبل ليلون , تتبع ناحية قرى مركز ومنطقة عفرين ، محافظة حلب . قرية كبيرة تقع في نهاية السفح الجنوبي الشرقي لهضبة كلسية شرقي سلسلة جبل ليلون ,شمال غرب وادي سراقب على بعد 30كم جنوب شرقي مدينة عفرين , يحدها شمالاً وادي وسلسلة جبلية وعرة من الصخور ومزرعة زريقات وكوبلة , وجنوباً منحدر ووادي وقرية عقيبة القريبة وشرقاً منحدر وسهل واسع زراعي وخصب وقرية إبين وجلبل وغرباً وادي وسلسلة جبلية وعرة من الصخور وقرية دير مشمش . يبلغ عدد بيوتها 250بيتاً وعمرها حوالي700عام حسب رواية أحد سكان القرية وهي من القرى القديمة في جبل ليلون ومنطقة الغبارية . بيوتها القديمة من الأحجار والطين والأسقف الخشبية والحديثة من الأحجار والإسمنت المسلح أحدث فيها حديثاً منذ عامين دارا للبلدية . تتوفر فيها شبكة الكهرباء ومياه الشرب ومدرسة ابتدائية وإعدادية قيد الإنجاز يعمل سكان القرية بزراعة الحبوب والبقول والزيتون بعلاً على مساحة /400/ هـ إلى جانب تربية المواشي وفيها جامع وطريق مزفت يصل مع القرى المجاورة وطريق حلب . ومن العائلات في القرية ( آل ايبش - آل موسى</p>
+<ul>
+<li>آل حجي - آل عبدو - آل مقداد - آل شبابو - آل كنجو - آل اوسو - آل شيخو -</li>
+</ul>
+<p>آل عثمان - آل نبو - آل عيسى ) ، ومن حاملي شهادة الدكتوراه من هذه القرية الدكتور عدنان ايبش الحائز على شهادة الدكتواره في الرياضيات من الاتحاد</p>
+<p>السوفياتي سابقاً - والعديد من حملة الشهادات الجامعية . مختار القرية السيد</p>
+<p>محمد حسن عبدو .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -241,7 +321,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-basile.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-basile.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-basile.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-basile.htm</a></li></ul>
             </div>
 
             
@@ -251,7 +331,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -369,6 +449,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

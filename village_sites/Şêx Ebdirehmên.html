@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Zareta Şêx Ebdirehmên, Sheikh Abdulrahman, Zareta Şêx Ebdirehmen, شيخ عبد الرحمن, شيخ عبدالرحمن</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Hac Ebdo, Hemade, Mirad, Sîdo Mîmî</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -201,27 +223,71 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Şêx Ebdirehmên</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The name Kanî Gewrk means &quot;The White Spring&quot; (kanî + gewrk); Şêx Ebdulrehman is named after the nearby shrine of Ebdulrehman bin Ewf</p>
+<p><strong>Foundation Date/Period:</strong> Approx. 100 years (early 20th century)</p>
+<p><strong>Springs:</strong> <span class="internal-link">Kanî Gewrk</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Şêx Ebdulrehman</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Geliyê Şêx Ebdulrehman</span>, <span class="internal-link">Geliyê Kanî Gewrk</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Şêx Ebdirehmên</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) Geographic Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Kanî Gewrkê</span></strong> (شيخ عبدالرحمن), <strong><span class="internal-link">Sheikh Abdulrahman</span></strong> (شيخ عبدالرحمن) /1040n - 7km - 270m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Şêx Ebdirehmên</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20kani%20gewrke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20kani%20gewrke.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc (Efrîn): A Geographical Study by <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Kanî Gewrk</span>, <span class="internal-link">Şêx Ebdulrehman</span> /1040 inhabitants 7km 270m/:</p>
+<p>Kanî Gewrk: Meaning &quot;The White Spring&quot; (kanî + gewrk). As for Şêx Ebdulrehman: It is the name of the shrine located near it, and it is known by the name of the Companion <span class="internal-link">Ebdulrehman bin Ewf</span>.</p>
+<p>It is a medium sized village located on the eastern bank of the <span class="internal-link">Geliyê Şêx Ebdulrehman</span> (Valley of Sheikh Abdulrahman) coming from the north. It is one of the villages of the Aghas of <span class="internal-link">Sîdo Mîmî</span> and they still inhabit it.</p>
+<p>According to the book: Efrîn... Her River and Her Green Hills by the writer <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Şêx Ebdulrehman: A village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Cindirês</span> township, <span class="internal-link">Efrîn</span> district, Heleb governorate. It is a small and modern village located at the northeastern edge of the <span class="internal-link">Geliyê Kanî Gewrk</span> (Valley of Kanî Gewrk spring), which heads south to feed into the <span class="internal-link">Çemê Efrîn</span> (River Afrin) at a distance of 2km. The village is 8km away from the town of Cindirês towards the northeast.</p>
+<p>It is bordered to the north by a fertile agricultural plain, the Geliyê Kanî Gewrk, the shrine of Şêx Ebdulrehman, and the villages of <span class="internal-link">Qerebaş</span> and <span class="internal-link">Colaqan</span>. To the south by the Geliyê Kanî Gewrk, the <span class="internal-link">Riya Efrîn-Cindirês</span> (Efrîn Cindirês road), and the villages of <span class="internal-link">Tel Hemo</span> and <span class="internal-link">Frêriye</span>. To the west by the Geliyê Kanî Gewrk, an archaeological hill, and the villages of <span class="internal-link">Qorbe</span> and <span class="internal-link">Qoceman</span>. To the east by a fertile plain planted with olive trees, the <span class="internal-link">Enderiye</span> farm, and the village of <span class="internal-link">Tellif</span>.</p>
+<p>The number of its houses is about 60 houses and its age is about 100 years. Its old houses are stone and mud with flat wooden roofs, and the modern ones are cement and have expanded north and south. An electricity network is available, as well as a water network connected to the well drilled in the neighboring village of <span class="internal-link">Miskê Jorîn</span>. It has a primary school.</p>
+<p>There is an olive press located on the western side of the village belonging to Mr. <span class="internal-link">Hesen Hemade</span> and his children, and their origin is from the village of Qetme. It connects to the center of the township and the district by a paved road. Most of its inhabitants work in the cultivation of olives, grains, and legumes via rain fed and irrigated methods on an area of 665 hectares, and summer vegetables via irrigation from wells (10 hectares), alongside raising sheep and goats. In the western side of the village, there is a small farm belonging to its owner Hesen Hemade and next to it is a modern olive press; it was previously a farm for the peasants of the <span class="internal-link">Sîdo Mîmî Axa</span> family from the nearby village of Colaqan.</p>
+<p>Among the scientific and cultural figures are Dr. <span class="internal-link">Mistefa Sîdo</span>, Engineer <span class="internal-link">Kemal Hac Ebdo</span>, Dr. <span class="internal-link">Bêrîvan Sîdo</span>, and many intellectuals and holders of scientific degrees. The village mukhtar is <span class="internal-link">Mirad Izet Mirad</span>.</p>
+<p>Sources:</p>
 <ul>
-<li><strong><span class="internal-link">Kanî Kawrk</span></strong> (كاني كاورك): meaning &quot;the white spring&quot;, while <strong><span class="internal-link">Sheikh Abdulrahman</span></strong> (شيخ عبدالرحمن): is the name of the shrine near it, known by the name of the companion <span class="internal-link">Abdulrahman ibn Awf</span> (عبدالرحمن بن عوف).</li>
-<li>A medium-sized village located on the eastern bank of <span class="internal-link">Sheikh Abdulrahman valley</span> (وادي شيخ عبدالرحمن) coming from the north. It is one of the villages of <span class="internal-link">Sido Mimi aghas</span> (آغوات سيدو ميمي) and they still inhabit it.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: &#x27;عفرين&#x27; &#x27;Afrin&#x27;.... Its River and Green Hills by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Sheikh Abdulrahman</span></strong> (شيخ عبدالرحمن): A village in <span class="internal-link">Kurdish mountain</span> (جبل الكرد) belonging to <span class="internal-link">Cindires sub-district</span> (ناحية جندرس), Afrin (منطقة عفرين), <span class="internal-link">Aleppo governorate</span> (محافظة حلب).</p>
-<p>It is a small and modern village located in the northeastern part of <span class="internal-link">Kane Kurk spring valley</span> (وادي نبع كعنكورك) which flows south to feed <span class="internal-link">Afrin river</span> (نهر عفرين) at 2km distance. The village is 8km northeast of <span class="internal-link">Cindires town</span> (بلدة جندرس).</p>
-<p>It is bordered to the north by fertile agricultural plains and <span class="internal-link">Kane Kurk valley</span> (وادي كعنكورك) and <span class="internal-link">Sheikh Abdulrahman shrine</span> (مزار الشيخ عبد الرحمن) and <span class="internal-link">Qara Bash village</span> (قرية قرة باش) and <span class="internal-link">Julqan</span> (جولقان), to the south by <span class="internal-link">Kane Kurk valley</span> (وادي كعنكورك) and the road (Afrin City (عفرين) - <span class="internal-link">Cindires</span> (جندرس)) and <span class="internal-link">Tell Hemo village</span> (قرية تل حمو) and <span class="internal-link">Faririye</span> (الفريرية), to the west by <span class="internal-link">Kane Kurk valley</span> (وادي كعنكورك) and <span class="internal-link">Tell Athri</span> (تل أثري) and <span class="internal-link">Qurba village</span> (قرية قوربه) and <span class="internal-link">Qujha Man</span> (قوجه مان), and to the east by fertile plains planted with olive trees and <span class="internal-link">Andriye farm</span> (مزرعة العندرية) and <span class="internal-link">Tillif village</span> (قرية تلليف).</p>
-<p>The number of houses is about 60 houses and its age is about <span class="internal-link">100 years</span> (100عاماً). Its old houses are stone and clay with flat wooden roofs, and the modern ones are concrete that expanded northward and southward. It has an electricity network and a water network connected to wells dug in the neighboring <span class="internal-link">Miske Upper village</span> (قرية مسكة فوقانية). It has an elementary school and an olive press located in the western part of the village belonging to <span class="internal-link">Mr. Hassan Hamada</span> (السيد حسن حمادة) and his sons and their roots from <span class="internal-link">Qatma village</span> (قرية قطمة). It connects with the sub-district center and the region by paved road.</p>
-<p>Most of its residents work in olive, grain and legume cultivation rain-fed and irrigated on an area of (665 hectares) and summer vegetables irrigated from wells (10 hectares), in addition to raising sheep and goats. There is a small farm in the western part of the village belonging to <span class="internal-link">Hassan Hamada</span> (حسن حمادة) and next to it a modern olive press. It was previously a farm for farmers of the <span class="internal-link">Sido Mimi agha family</span> (عائلة سيدو ميمي آغا) from the nearby <span class="internal-link">Julqan village</span> (قرية جولقان).</p>
-<p>Among the scientific and cultural figures are <span class="internal-link">Dr. Mustafa Sido</span> (الدكتور مصطفى سيدو) - <span class="internal-link">Engineer Kamal Haj Abdo</span> (المهندس كمال حاج عبدو) - <span class="internal-link">Dr. Brivana Sido</span> (الدكتورة بريفان سيدو) - and many intellectuals and holders of scientific degrees. The village mayor is <span class="internal-link">Murad Izzat Murad</span> (مراد عزت مراد).</p>
-<p>Preparation and implementation: Director of <span class="internal-link">Afrin Heritage website</span> (موقع تيريج عفرين): <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Navenda Tirej Efrîn / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Kan Gewrk ، شيخ عبدالرحمن /1040ن - 7كم - 270م/:</p>
+<p>-</p>
+<p>كاني كاورك: بمعنى &quot;النبعة البيضاء&quot; ، أما شيخ عبدالرحمن: فهو اسم المزار الموجود بالقرب منها، ويعرف باسم الصحابي عبدالرحمن بن عوف.</p>
+<ul>
+<li>قرية متوسطة الحجم تقع على الضفة الشرقية لوادي شيخ عبدالرحمن القادم من</li>
+</ul>
+<p>الشمال. وهي من قرى آغوات سيدو ميمي ولازالوا يسكنونها. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه شيخ عبدالرحمن : قرية في جبل الكرد تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية صغيرة و حديثة تقع في الطرف الشمالي الشرقي من وادي نبع كعنكورك الذي يتجه جنوباً ليرفد نهر عفرين على بعد 2كم ، تبعد القرية عن بلدة جنديرس 8كم باتجاه الشمال الشرقي ، يحدها شمالاً سهل خصب زراعياً و وادي كعنكورك ومزار الشيخ عبد الرحمن وقرية قره باش وجولقان ، وجنوباً وادي كعنكورك وطريق (عفرين _جنديرس) وقرية تل حمو والفريرية ، وغرباً وادي كعنكورك وتل أثري وقرية قوربه وقوجه مان ، وشرقاً سهل خصب مزروع بأشجار الزيتون ومزرعة العندرية وقرية تللف . يبلغ عدد بيوتها حوالي 60بيتاً وعمرها حوالي 100عاماً ، بيوتها القديمة حجرية طينية بسقوف خشبية مستوية ، والحديثة منها إسمنتية توسعت شمالاً وجنوباً ، تتوفر فيها شبكة للكهرباء و شبكة مياه متصلة بالبئر المحفورة في قرية مسكة فوقانية المجاورة فيها مدرسة ابتدائية ومعصرة للزيتون تقع في الجهة الغربية للقرية عائدة للسيد حسن حمادة وأولاده وأصلهم من قرية قطمة ، تتصل مع مركز الناحية والمنطقة بطريق مزفت . يعمل معظم سكانها بزراعة الزيتون والحبوب و البقول بعلاً ورياً على مساحة ( 665 هـ ) والخضار الصيفية سقياً من الآبار (10 هـ) ، إلى جانب تربية الأغنام والماعز ، يوجد في الجهة الغريبة من القرية مزرعة صغيرة لصاحبها حسن حمادة وبجوارها معصرة حديثة للزيتون، وكان سابقاً مزرعة للفلاحين عائلة سيدو ميمي آغا من قرية جولقان القريبة . ومن الوجوه العلمية والثقافية الدكتور مصطفى سيدو - المهندس كمال حاج عبدو - الدكتورة بريفان سيدو - والعديد من المثقفين وحاملي الشهادات العلمية . مختار القرية مراد عزت مراد .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -239,7 +305,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20kani%20gewrke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20kani%20gewrke.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=Wgd5Xal-LvI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Wgd5Xal-LvI</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20kani%20gewrke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20kani%20gewrke.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=Wgd5Xal-LvI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Wgd5Xal-LvI</a></li></ul>
             </div>
 
             
@@ -249,7 +315,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -367,6 +433,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

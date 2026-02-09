@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,7 +205,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Taqiyah, Komreş, Kum Reşê, Kumraşê, Kumreşê, Kûrê Reş, الطاقية, كمراش, كُمْرَش, ‏الطاقية</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ebdkê Hemed, Hasko, Kûrê Ehmed, Zozan</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ebdkê Hemed, Hasko, Hesko, Kûrê Ehmed, Zozan</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -227,23 +248,58 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kum Reşê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
-<p><strong>Kumreşê, كمـرش, الطاقية</strong> /695n – 5km - 760m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kum Reşê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kum%20resh.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kum%20resh.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Kumreş</span>, meaning &quot;The Cap&quot; / 695 inhabitants - 5km - 760m /:</p>
+<p>Kumreş: Means &quot;The Black Cap&quot; (kum + reş).</p>
+<p>It is a small village located on the western slopes of the <span class="internal-link">Etmana</span> mountain massif. It overlooks <span class="internal-link">Deşta Amûqê</span> (Amq Plain) to the west. Its location is forested, mountainous, steep, and possesses picturesque nature.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Kumreş is a village in <span class="internal-link">Çiyayê Kurmênc</span> (Mountain of the Kurds) that follows the <span class="internal-link">Reco</span> district, <span class="internal-link">Efrîn</span> area, Aleppo governorate. It is a small village located in the central part of Çiyayê Kurmênc, on the western slope of a steep limestone height called <span class="internal-link">Ne&#x27;na&#x27;e</span>. It overlooks the lands of Deşta Amûqê to the west, and its soil is clay. It is 7 km away from the town of Reco towards the southwest.</p>
+<p>It is bounded to the north by a harsh rugged slope, a deep watercourse, and the village of <span class="internal-link">Girê</span>; to the south by a rugged mountain chain planted with oak trees and the village of <span class="internal-link">Omer Uşaxî</span>; to the west by a very harsh slope planted with forest trees such as oak and terebinth, a deep valley, and the village of <span class="internal-link">Şadiyanlî</span> in the far west; and to the east, at a distance of 500 m, is the village of <span class="internal-link">Hesen Kelkawî</span>.</p>
+<p>The number of its houses is about 35 houses, and its age, according to the account of one of the elderly residents, is 350 years; it is one of the old villages in the region. The village is divided into two sections: (Southern and Northern), separated by a winding watercourse. Its old dwellings are made of stone and mud with flat wooden roofs, while modern ones made of cement have spread in the southern and western sides. An electricity network and a primary school are available in the village. The village drinks from cistern water where rainwater is collected in winter.</p>
+<p>The residents work in rain-fed agriculture (olives, grains, legumes) on an area amounting to 415 hectares, and irrigated agriculture from the waters of <span class="internal-link">Çemê Reş</span> (Black River) in the <span class="internal-link">Qere Taş</span> plain (cotton, vegetables, sunflowers, fruit trees) on a small area amounting to 15 hectares. They also work in raising sheep and goats. It is connected to the district center by a dirt road. The farms of (<span class="internal-link">Tel Kişûr</span> _ <span class="internal-link">Sûrk</span> _ Girê) follow it. Among its most important families is <span class="internal-link">Hesko</span>.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Hemo Husên</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li>كم رش: means &quot;the black cap&quot;.</li>
-<li>A small village located on the western slopes of <span class="internal-link">Atmana</span> (عتمانا) mountain mass. It overlooks <span class="internal-link">Al-Amq</span> (العمق) plain in the west. Its location is a steep mountainous forest slope with rugged nature.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها ورواب يها الخضراء&#x27; &#x27;<span class="internal-link">Afrin City .... Its Rivers and Green Hills</span>&#x27;:</p>
-<p><strong>كمرش</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد) belonging to Rajo (راجو) district, Afrin City (عفرين) region, <span class="internal-link">Aleppo</span> (حلب) governorate.</p>
-<p>It is a small village located in the middle section of <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد), on the western slope of a limestone elevation with steep slopes called (<span class="internal-link">Na&#x27;na&#x27;ah</span>) (نعناعة). It overlooks west on the lands of <span class="internal-link">Al-Amq</span> (العمق) plain, its soil is clayey. It is 7 km away from Rajo (راجو) town in the southwestern direction. It is bordered to the north by a steep and rough slope and deep stream and village <span class="internal-link">Kuri</span> (كري), to the south by a rough mountainous chain planted with oak trees and village <span class="internal-link">Omar Abu Shaghi</span> (عمر أو شاغي), to the west by a very steep slope planted with forest trees such as oak and terebinth and deep valley and village <span class="internal-link">Shadyanli</span> (شاديانلي) in the far west, and to the east at 500m distance village <span class="internal-link">Hassan Kalkawi</span> (حسن كلكاوي). The number of houses is about 35 houses and its age according to the narration of one of the elderly residents is 350 years, and it is one of the old villages in the region. The village is divided into two sections: (southern and northern), separated by a winding stream. Its old dwellings are stone-clay with flat wooden roofs and the modern concrete ones spread in the southern and western directions. It has electricity network and elementary school. The village drinks from cistern water that collects rainwater in winter. The residents work in rainfed agriculture (olives, grains, legumes) on an area of 415 hectares, and irrigation from <span class="internal-link">Black River</span> (النهر الأسود) waters in <span class="internal-link">Qara Dash</span> (قره داش) plain (cotton, vegetables, sunflowers, fruit trees) on a small area of 15 hectares. They also work in raising sheep and goats. It connects with the district center by earthen roads. It has subsidiary farms (<span class="internal-link">Tell Kashur</span> - <span class="internal-link">Surk</span> - <span class="internal-link">Kuri</span>) (تل كشور _ سورك _ كري) and among its most important families are <span class="internal-link">Hasko</span> (حسكو).</p>
-<p>Village mayor: <span class="internal-link">Mohammed Hamo Hussein</span> (محمد حمو حسين)</p>
-<p>Information Sources:</p>
-<p>1 - Book <span class="internal-link">Mountain of the Kurds</span> (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (د. محمد عبدو علي).</p>
-<p>2 - Book: <span class="internal-link">Afrin City .... Its Rivers and Green Hills</span> (عفرين .... نهرها ورواب يها الخضراء) by writer Abdulrahman Mohammed (عبدالرحمن محمد) from village <span class="internal-link">Qatmah</span> (قطمه).</p>
-<p>3 - Studies by <span class="internal-link">Tirij Soft Center</span> / <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>4- Some village residents.</p>
-<p>Prepared and executed by: <span class="internal-link">Tirij Afrin</span> website director: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kum Reşê from Afrin Flo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=_JUweItXgvc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=_JUweItXgvc</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Director of the Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Kumreş ، كُمْرَش ، ‏الطاقية /695ن 5كم - 760م/:</p>
+<ul>
+<li>كُم رَش: بمعنى &quot;الطاقية السوداء&quot;.</li>
+</ul>
+<ul>
+<li>قرية صغيرة تقع على السفوح الغربية لكتلة جبل &quot;عَتمانا &quot;. تشرف على سهل</li>
+</ul>
+<p>العمق في الغرب. موقعها حراجي جبلي شديد الانحدار وذات طبيعة خلابة. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : كمرش : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . و هي قرية صغيرة تقع في القسم الأوسط من جبل الكرد ، على السفح الغربي لمرتفع كلسي شديد الانحدار يدعى ( نعناعة ) ، تطل غرباً على أراضي سهل العمق ، تربتها غضارية ، تبعد عن بلدة راجو 7 كم باتجاه الجنوب الغربي ، يحدها شمالاً منحدر قاسي وعر و مسيل عميق و قرية /كري/ ،و جنوباً سلسلة جبلية وعرة مزروعة بأشجار البلوط و قرية /عمر أو شاغي/ ، وغرباً منحدر قاسي جداً مزروعة بالأشجار الحراجية كالبلوط و البطم و وادي عميق و قرية /شاديانلي/ في أقصى الغرب ، و شرقاً على بعد 500 م قرية /حسن كلكاوي/ ، يبلغ عدد بيوتها حوالي 35 بيتاً و عمرها حسب رواية أحد الأهالي المعمرين 350 عاماً ، و هي من القرى القديمة في المنطقة ، تنقسم القرية إلى قسمين : ( جنوبي و شمالي ) ، يفصل بينهما مسيل متعرج ، مساكنها القديمة حجرية طينية بسقوف خشبية مستوية والحديثة أسمنتية انتشرت في الجهتين الجنوبية والغربية ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية و تشرب القرية من مياه الصهاريج التي تجمع فيها مياه الأمطار شتاءاً ، يعمل الأهالي بالزراعة البعلية ( الزيتون ، الحبوب ، البقول ) على مساحة تبلغ 415 هـ ، و رياً من مياه النهر الأسود في سهل /قره داش/ ( قطن ، خضر ، عباد الشمس ، أشجار مثمرة ) على مساحة صغيرة تبلغ 15 هـ ، كما يعملون في تربية الأغنام و الماعز ، تتصل بمركز الناحية بطريق ترابية ، تتبعها مزارع ( تل كشور _ سورك _ كري ) ومن أهم عوائلها حسكو .</p>
+<p>مختار القرية : محمد حمو حسين</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kum Reşê from Afrin Flo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=_JUweItXgvc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=_JUweItXgvc</a></p>
 <p>The village of <span class="internal-link">Kumreş</span>, occasionally referred to as <span class="internal-link">Qumraş</span>, is situated in the <span class="internal-link">Reco</span> district of the Afrin region, approximately seven kilometers from the town of Reco itself. According to local oral history, the name of the village possesses a descriptive etymology. Elders explain that the settlement was originally called <span class="internal-link">Konê Reş</span>, which translates to &quot;Black Tent.&quot; This name stemmed from the time when the ancestors of the current residents pitched black tents in the area before permanent stone structures were built. Over time, the pronunciation shifted from Konê Reş to the current Kumreş.</p>
 <p>Geographically, the village is split into two distinct sections: the Upper Village and the Lower Village. These two parts are physically separated by a rocky, elevated natural feature known as <span class="internal-link">Delîb</span>. This area serves as a central landmark, and residents identify specific stones there, such as the <span class="internal-link">Kevirê Reş</span>, which mark the boundary between the upper and lower sections. Another named locality within the village terrain is <span class="internal-link">Biniyê Xênê</span>. While there is no running water network, the community relies on a communal well known as <span class="internal-link">Bîra gund</span>, which is used for both domestic needs and watering livestock.</p>
 <p>The history of Kumreş is deeply connected to its natural heritage and sacred sites. The village contains an ancient tree called <span class="internal-link">Kevndar</span>, which residents estimate to be between 200 and 250 years old. This tree is located in an area historically known as <span class="internal-link">Berzîyaret</span>, a name indicating it was once considered a shrine or a place of visitation, though the specific religious practices associated with it are attributed to previous generations. Additionally, a tree known as <span class="internal-link">Dara Sicê</span> stands near the village graves.</p>
@@ -334,7 +390,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kum%20resh.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kum%20resh.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=G1OM7C5bEP0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=G1OM7C5bEP0</a><br><a href="https://www.youtube.com/watch?v=dyq82JZR7EY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=dyq82JZR7EY</a></li><li>Afrin Flo:<br><a href="https://www.youtube.com/watch?v=_JUweItXgvc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_JUweItXgvc</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kum%20resh.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kum%20resh.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=G1OM7C5bEP0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=G1OM7C5bEP0</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=dyq82JZR7EY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=dyq82JZR7EY</a></li><li>Afrin Flo:<br><a href="https://www.youtube.com/watch?v=_JUweItXgvc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_JUweItXgvc</a></li></ul>
             </div>
 
             
@@ -344,7 +400,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -462,6 +518,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

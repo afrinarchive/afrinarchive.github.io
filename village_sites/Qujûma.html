@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -176,7 +197,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Qijuma, Qijûma, Qojoman, Qoşîma, Qujman, Qujûma, الضخم, قوجمان, قوجه مانلي, قجيمو</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Mellî</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Elî Jiko, Elûş, Hemê Şêx, Mihemed Hesen, Ogula, Osê, Sîwaro</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Elî Jiko, Elûş, Hemê Şêx, Mihemed Hesen, Ogula, Osê, Sîdo Mîmî, Sîwaro</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -218,18 +239,56 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qujûma</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Qujûma, قوجه مانلي, الضخم</strong> /1208n - 1286he - 7km - 300m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qujûma</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qujman.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qujman.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Qujma</span> <span class="internal-link">Qocemanlî</span> <span class="internal-link">El-Dexim</span></p>
+<p>/1208 inhabitants - 1286 hectares - 7 km - 300 m/</p>
+<p>The folk name implies something fluffed up. It is also the name of a Kurdish tribe mentioned by /Lerch - p. 19/, which resides around the city of <span class="internal-link">Qers</span> in northern Kurdistan. The Arabizer translated its old name and called it &quot;The Huge&quot; (El-Dexim).</p>
+<p>In the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme, it is stated:</p>
+<p><span class="internal-link">Qoceman</span> is a village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Cindirês</span> district of the <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a medium-sized village located at the northeastern edge of the Cindirês plain. It is penetrated by a torrent that heads south to feed the Efrîn river. Its lands have fertile alluvial soil rich in groundwater. It is 7 km away from the town of Cindirês toward the northeast.</p>
+<p>It is bordered to the north by a fertile agricultural plain, a mountainous rise, the village of <span class="internal-link">Eşkan Şerqî</span>, and the village of <span class="internal-link">Xerzan</span>. To the south, it is bordered by an agricultural plain planted with olive trees and the village of <span class="internal-link">Qurbe</span>. To the west, there is a fertile agricultural plain planted with olive trees, the village of <span class="internal-link">Burc Kemoş</span>, and <span class="internal-link">Qîlê</span>. To the east, there is an agricultural plain fertile for farming and planted with olive trees, and the village of <span class="internal-link">Şêx Ebdulrehman</span>.</p>
+<p>The number of its houses reaches approximately 65, and its age is about 250 years. Its old houses are made of stone and mud with flat wooden roofs, but they have been overwhelmed by modern concrete residences which have begun to spread eastward and westward. There are several modern villas in the center of the village; among the most important is the villa of Mr. <span class="internal-link">Behcet Sîdo Mîmî</span>. They are the original owners of the village and the first to inhabit it.</p>
+<p>An electricity network, a primary school, and a modern mosque are available in the village. The village drinks from artesian wells located next to the houses. Most of its residents work in the cultivation of olives and grains, both rainfed and irrigated from artesian wells, in addition to summer vegetables, walnuts, and apricots, alongside raising sheep and goats. It connects to the district center and neighboring villages via an asphalt road that passes through its center up to Xerzan.</p>
+<p>Village Mukhtar: <span class="internal-link">Hesen Fehmî Husên</span></p>
+<p>Sources:</p>
 <ul>
-<li>The folk name indicates something inflated, and it is also a name for a Kurdish tribe mentioned by /ليرخ - p. 19/, living around قارص (<span class="internal-link">Qars</span>) city in northern كردستان (<span class="internal-link">Kurdistan</span>). The Arabs have translated its ancient name and called it &quot;الضخم&quot; (<span class="internal-link">Al-Dakhm</span>).</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: عفرين .... Her River and Green Hills by writer عبدالرحمن محمد from قطمه (Qatma) village</p>
-<p><strong>قوجمان</strong>: A village in جبل الكرد (<span class="internal-link">Jabal al-Kurd</span>) that follows جندريس (<span class="internal-link">1 - PhD/Villages/Cindirês</span>) district, عفرين (Afrin) region, حلب (<span class="internal-link">Aleppo</span>) governorate.</p>
-<p>It is a medium-sized village located at the northeastern edge of جندريس (<span class="internal-link">1 - PhD/Villages/Cindirês</span>) plain, crossed by a stream flowing south to feed عفرين (Afrin) river. Its lands have fertile loamy soil rich in groundwater, 7km from جندريس (<span class="internal-link">1 - PhD/Villages/Cindirês</span>) town to the northeast. It is bounded to the north by a fertile agricultural plain and mountainous highlands and اشكان شرقي (<span class="internal-link">Ishkan Sharqi</span>) village and خرزان (Kharzan) village, to the south by an agricultural plain planted with olive trees and قوربه (<span class="internal-link">1 - PhD/Villages/Qurbê</span>) village, to the west by a fertile agricultural plain planted with olive trees and برج كموش (<span class="internal-link">Burj Kamush</span>) and قيلة (<span class="internal-link">Qila</span>) villages, and to the east by a fertile agricultural plain planted with olive trees and الشيخ عبد الرحمن (<span class="internal-link">Sheikh Abd al-Rahman</span>) village.</p>
-<p>It has about 65 houses and is about 250 years old. Its old houses are stone and clay with flat wooden roofs, overwhelmed by modern concrete houses that spread east and west. There are several modern villas in the village center, the most important being the villa of Mr. بهجت سيدو ميمي (<span class="internal-link">Bahjat Sido Mimi</span>) who are the original owners of the village and the first to inhabit it. It has electricity network, primary school and a modern mosque. The village drinks from artesian wells adjacent to the houses. Most of its residents work in olive and grain cultivation both rain-fed and irrigated from artesian wells in addition to summer vegetables, walnuts and apricots, alongside raising sheep and goats. It connects with the district center and neighboring villages by a paved road that passes through its center to خرزان (Kharzan).</p>
-<p>Village mayor: حسن فهمي حسين (<span class="internal-link">Hassan Fahmi Hussein</span>)</p>
-<p>Prepared and implemented by: <span class="internal-link">Tirej Afrin</span> website director: عبدالرحمن حاجي عثمان (<span class="internal-link">Abdulrahman Haji Othman</span>)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qujûma from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=p-LHjHSNIBs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=p-LHjHSNIBs</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and execution:</p>
+<ul>
+<li>Manager of the Tirej Efrîn website: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Qujma ، قوجه مانلي ، الضخم /1208ن - 1286هـ - 7كم - 300م/:</p>
+<ul>
+<li>يدل الاسم الشعبي على الشيء المنفوش، كما أنه اسم لعشيرة كردية يذكرها</li>
+</ul>
+<p>/ليرخ - ص 19/، وتقيم حول مدينة قارص من شمالي كردستان. وقد ترجم المعرب اسمها القديم وسماها &quot;الضخم&quot;. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه قوجمان : قرية في جبل الكرد تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية متوسطة نقع في الطرف الشمالي الشرقي لسهل جنديرس ، يخترقها مسيل يتجه نحو الجنوب ليرفد نهر عفرين ، أراضيها ذات تربة لحقية خصبة غنية بالمياه الجوفية ، تبعد عن بلدة جنديرس 7كم باتجاه الشمال الشرقي ، يحدها شمالاً سهل زراعي خصب ومرتفع جبلي وقرية اشكان شرقي وقرية خرزان ، وجنوباً سهل زراعي مزروع بأشجار الزيتون وقرية قوربه ، وغرباً سهل زراعي خصب مزروع بأشجار الزيتون و قرية برج كموش وقيلة ، وشرقاً سهل خصب زراعياً مزروع بأشجار الزيتون وقرية الشيخ عبد الرحمن . يبلغ عدد بيوتها حوالي 65بيتاً وعمرها حوالي 250عاماً ، بيوتها القديمة حجرية طينية بسقوف خشبية مستوية ، طغت عليها المساكن الإسمنتية الحديثة التي أخذت بالانتشار شرقاً وغرباً ، يوجد فيها عدة فيلات حديثة في وسط القرية ، ومن أهمها فيلا السيد بهجت سيدو ميمي وهم أصحاب القرية الأصليين وأول من سكنها. تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وجامع حديث ، تشرب القرية من آبار ارتوازية الموجودة بجوار البيوت . يعمل معظم سكانها بزراعة الزيتون والحبوب بعلاً ورياً من الآبار الارتوازية إضافة للخضر الصيفية والجوز والمشمش إلى جانب تربية الأغنام والماعز ، تتصل مع مركز الناحية والقرى المجاورة بطريق مزفت يمر في وسطها حتى خرزان .</p>
+<p>مختار القرية :  حسن فهمي حسين</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qujûma from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=p-LHjHSNIBs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=p-LHjHSNIBs</a></p>
 <p>The village of <span class="internal-link">Qûjûma</span>, also referred to as <span class="internal-link">Xwejima</span> by some residents, is situated in the <span class="internal-link">Cindirês</span> district of the <span class="internal-link">Efrîn</span> region. Located at the foothills of <span class="internal-link">Çiyayê Lêlûn</span> within the fertile <span class="internal-link">Deşta Cûmê</span>, the village lies approximately 17 kilometers east of Cindirês and 20 kilometers west of Efrîn. The settlement was established between 400 and 500 years ago by migrants who descended from <span class="internal-link">Xarza</span> to the plain in search of better grazing lands for their livestock. The first settler was <span class="internal-link">Mihemed Hesen</span> from the <span class="internal-link">Mellî</span> tribe. Historically, the residents initially lived in caves found in the area before constructing homes from mud and reeds, and eventually transitioning to modern stone structures.</p>
 <p>The social structure of Qûjûma is predominantly defined by the Mellî tribe. Key families residing in the village include <span class="internal-link">Elî Jiko</span>, <span class="internal-link">Sîwaro</span>, <span class="internal-link">Osê</span>, <span class="internal-link">Elûş</span>, <span class="internal-link">Ogula</span>, and <span class="internal-link">Hemê Şêx</span>. While the majority of the village follows the <span class="internal-link">Sunni</span> Muslim faith, the Hemê Şêx family is identified as <span class="internal-link">Êzîdî</span>. The village has a strong reputation for education and culture. It was home to <span class="internal-link">Xelîl Edîb</span>, also known as <span class="internal-link">Xelîl Efendî</span>, an early intellectual who established a school there in 1937. Another prominent figure was <span class="internal-link">Selahedîn Mihemed</span>, a critic, writer, and architect who worked in <span class="internal-link">Şam</span> and authored books on culture and art, including works on the artist <span class="internal-link">Luay Kayyali</span>. The village also produced artists like <span class="internal-link">Cemê</span>, a singer in <span class="internal-link">Koma Armanc</span>, and <span class="internal-link">Adnan Beyan</span>.</p>
 <p>The local economy is driven by olive cultivation, with the region boasting millions of trees. Qûjûma hosts small industries, including the <span class="internal-link">Sezer</span> charcoal and soap workshops, which export products as far as <span class="internal-link">Erbîl</span>. Geographically, the village is surrounded by natural landmarks such as <span class="internal-link">Geliyê Komroviyê</span>, <span class="internal-link">Geliyê Xerîcê</span>, <span class="internal-link">Geliyê Tobaqa</span>, and the plain of <span class="internal-link">Deşta Bêrganiyê</span>. To the east lies the sacred site <span class="internal-link">Ziyaretgeha Ebdirehman</span>. A unique contemporary feature of the village is the hand dug cave of <span class="internal-link">Apê Xelîl</span>, a resident who spent twenty years carving a living space into the rock to live a solitary life connected to nature. The village currently contains over 100 households, with public institutions named after local martyrs such as the <span class="internal-link">Şehîd Biharîn</span> school and the <span class="internal-link">Şehîd Hesen</span> commune.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 2</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>26</p>
@@ -319,7 +378,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qujman.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qujman.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=p-LHjHSNIBs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=p-LHjHSNIBs</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=lP6NQ-ACWYw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lP6NQ-ACWYw</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=tvyudwN4d5k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tvyudwN4d5k</a><br><a href="https://www.youtube.com/watch?v=9PauoSZKds0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9PauoSZKds0</a><br><a href="https://www.youtube.com/watch?v=FlQ6XIQXzZg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FlQ6XIQXzZg</a><br><a href="https://www.youtube.com/watch?v=DmjWh67ytVI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=DmjWh67ytVI</a><br><a href="https://www.youtube.com/watch?v=p-LHjHSNIBs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=p-LHjHSNIBs</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qujman.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qujman.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=p-LHjHSNIBs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=p-LHjHSNIBs</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=lP6NQ-ACWYw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lP6NQ-ACWYw</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=tvyudwN4d5k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tvyudwN4d5k</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=9PauoSZKds0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9PauoSZKds0</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=FlQ6XIQXzZg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FlQ6XIQXzZg</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=DmjWh67ytVI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=DmjWh67ytVI</a></li></ul>
             </div>
 
             
@@ -329,7 +388,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -447,6 +506,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

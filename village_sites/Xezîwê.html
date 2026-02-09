@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Xezîwê, Ĝezîwê, غزاوية, غزاويه</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Mala Elî Axa, Mala Kîfo, Mala Mistefa Axa, Mala Silêman, Mala Tatar, Mala Ĝez, Mala Şêx Husên</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -208,27 +230,81 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Xezîwê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Derived from a Kurdish proper name; there are families in the village and neighboring villages named Mala Ĝez or Ĝez</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 500 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Lêlûn</span>, <span class="internal-link">Çiyayê Seman</span>, <span class="internal-link">Tûr</span>, <span class="internal-link">Şêx Berekat</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Wadiyê Efrîn</span>, <span class="internal-link">Deşta Cûmê</span>, <span class="internal-link">Wadiyê Şêx Riqaq</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Xezîwê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Ĝezîwê, غزاوية</strong> /2176n - 102h - 18km - 240m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Xezîwê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Ĝezawiyê</span> / <span class="internal-link">Ĝezw</span></p>
+<p>(2176 inhabitants - 102 houses - 18 km - 240 m)</p>
+<p>I believe the name is derived from a Kurdish proper name, as there are families in the same village and some neighboring villages called <span class="internal-link">Mala Ĝez</span>, <span class="internal-link">Ĝez</span>, etc.</p>
+<p>It is a large and prosperous village, located on the northern slope of a height of <span class="internal-link">Çiyayê Lêlûn</span> with an elevation of 355 meters. There are those who follow the <span class="internal-link">Êzîdî</span> faith, constituting about half of the village&#x27;s population, and <span class="internal-link">Şêx Husên</span>, the Sheikh of the Êzîdî in the <span class="internal-link">Efrîn</span> region, resides there. The village contains shops, a fuel station, and some beautiful buildings extending along the paved road passing through it.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Ĝezawiyê is a village in <span class="internal-link">Wadiyê Efrîn</span> and <span class="internal-link">Deşta Cûmê</span>, administratively belonging to the villages of the center and region of Efrîn and the governorate of <span class="internal-link">Heleb</span>. It is a large village located on the lower northern slope of <span class="internal-link">Tûr</span> mountain (355 m), at its convergence with the flood plain of Wadiyê Efrîn. Its lands slope towards the northwest of the Efrîn river valley.</p>
+<p>It is bordered to the north by a wide, fertile agricultural plain, the Efrîn river valley, and the village of <span class="internal-link">Kefer Zît</span> north of the river. To the south, it is bordered by the <span class="internal-link">Çiyayê Seman</span> chain and <span class="internal-link">Şêx Berekat</span>. To the west, it is bordered by <span class="internal-link">Wadiyê Şêx Riqaq</span>, the plain, and the village of <span class="internal-link">Şêx Dêr</span>. To the east, it is bordered by the Çiyayê Seman and Çiyayê Lêlûn chains, and the crossroads of Efrîn-<span class="internal-link">Daret Ize</span>-Heleb, <span class="internal-link">Berad</span>, <span class="internal-link">Baê</span>, and <span class="internal-link">Burc Ebdale</span>.</p>
+<p>The number of houses reaches approximately 200 to 250, and the age of the village, according to the narration of its residents, is approximately 500 years. An electricity network is available, as well as drinking water from the village well on the eastern side. It has two schools (primary and preparatory), a mosque, and telephone lines. A municipality house was established there, which includes a group of villages: Şêx Dêr, <span class="internal-link">Îska</span>, in addition to Ĝezawiyê.</p>
+<p>Its old houses are made of stone and mud with wooden roofs, while the modern ones are made of stone and reinforced concrete, spread along the sides of the <span class="internal-link">Riya Heleb-Efrîn-Celemê-Daret Ize</span> (Aleppo-Efrîn-Celemê-Daret Ize road). A paved road connects it, passing through its center, to several neighboring villages. Its residents work in cultivating irrigated and rain-fed lands. Its most important crops are cotton, grains, sugar beets, vegetables, pomegranates (which are widely spread), apples, walnuts, peaches, and pears. Water comes to it from the Efrîn river and artesian wells. Residents also work in raising sheep, goats, and cows.</p>
+<p>There is a spring of water at the end of the western slope of Çiyayê Seman overlooking Wadiyê Efrîn to the east of the village of Ĝezawiyê; it is 17 km away from Efrîn towards the southwest, and its water flows northward through the village&#x27;s orchards. The state also dug three artesian wells east of the village to feed the network that irrigates the village and its crops.</p>
+<p>Among its most important families are: <span class="internal-link">Mala Mistefa Axa</span>, <span class="internal-link">Mala Elî Axa</span>, <span class="internal-link">Mala Şêx Husên</span> (Sheikh of the Êzîdî sect), <span class="internal-link">Mala Kîfo</span>, <span class="internal-link">Mala Tatar</span>, and <span class="internal-link">Mala Silêman</span>.</p>
+<p>Among those with higher degrees in the village is Mr. <span class="internal-link">Mihemed Enwer Elî</span> (Master&#x27;s in Philosophy) and many holders of university degrees in various specializations. Among the social figures in the village are: Şêx Husên, Mr. Mihemed Enwer Elî, and Mr. <span class="internal-link">Ziyad Silêman</span>. The village Mukhtar is Mr. <span class="internal-link">Semîr Mistefa</span>.</p>
+<p>The village of Ĝezawiyê is a socially cohesive village. There are also more than 150 families from Ĝezawiyê in countries around the world (Europe).</p>
+<p>Sources:</p>
 <ul>
-<li>I believe the name is derived from a Kurdish proper name, as there are families in the same village and some neighboring villages called غزي Ĝez Mala, Ĝezê...</li>
-<li>A large and populated village, located on the northern slope of an elevation from <span class="internal-link">Lilon Mountain</span> with height /355m/. In it are those who follow the <span class="internal-link">Yezidi</span> faith and they constitute about half the village population, and <span class="internal-link">Sheikh Hussein</span> the <span class="internal-link">Yezidi</span> sheikh in Afrin region lives in it. In the village are commercial shops and a gas station and some beautiful buildings that extend on both sides of the paved road passing through it.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>And it came in the book: Afrin.... its river and green hills by writer Abdulrahman Mohammed from <span class="internal-link">Qatma village</span></p>
-<p><strong>غزاوية</strong>: A village in <span class="internal-link">Afrin valley</span> and <span class="internal-link">Jum plain</span> belonging to the center villages district and Afrin region and <span class="internal-link">Aleppo</span> governorate.</p>
-<p>It is a large village located on the lower northern slope of <span class="internal-link">Tur</span> mountain 355m, at the meeting with the flood plain of <span class="internal-link">Afrin valley</span>. Its lands slope toward the northwest of Afrin river valley. It is bordered to the north by a wide fertile agricultural plain and Afrin river valley and <span class="internal-link">Kafr Zeit village</span> north of the river and to the south by <span class="internal-link">Sam&#x27;an mountain</span> chain and <span class="internal-link">1 - PhD/Villages/Sheikh Barakat</span> and to the west by <span class="internal-link">Sheikh Raqqaq valley</span> and plain and <span class="internal-link">Sheikh Deir village</span> and to the east by <span class="internal-link">Sam&#x27;an</span> and <span class="internal-link">Lilon mountain</span> chain and Afrin <span class="internal-link">Dartazza</span> <span class="internal-link">Aleppo</span> and <span class="internal-link">Brad</span> and <span class="internal-link">Ba&#x27;i</span> and <span class="internal-link">Burj Abdullah</span> roads junction. The number of its houses reaches about 200 to 250 houses and the village age according to its inhabitants&#x27; narration is about 500 years. It has electricity network and drinking water from the village well from the eastern side and two elementary and preparatory schools and mosque and telephone lines and recently a municipal building was established in it and it includes a group of villages/<span class="internal-link">Sheikh Deir</span>, <span class="internal-link">Iskan</span>, in addition to <span class="internal-link">Ghazawiya</span>/, its old houses are stone of mud with wooden roofs while the modern ones are of stone and reinforced cement spread on both sides of <span class="internal-link">Aleppo</span> Afrin <span class="internal-link">Julmaa</span> and <span class="internal-link">Dartazza</span> road and a paved road connects passing through its center to several neighboring villages. Its inhabitants work in cultivating irrigated and rain-fed lands and their most important crops are cotton and grains and sugar beet and vegetables and widely spread pomegranates and apples and walnuts and peaches and pears. Water comes to it from Afrin river and artesian wells. The residents also work in livestock and goats and cattle raising. There is also a water spring at the end of the western slope of <span class="internal-link">Sam&#x27;an mountain</span> overlooking Afrin river valley to the east of <span class="internal-link">Ghazawiya village</span> 17km away from Afrin toward the southwest, while its water flows northward through the village orchards. The state also dug three artesian wells east of the village to feed the network that irrigates the village and its farms.</p>
-<p>Among its most important families is <span class="internal-link">Mustafa Agha family</span> - <span class="internal-link">Al Ali Agha</span> - <span class="internal-link">Al Sheikh Hussein</span>/<span class="internal-link">Yezidi sect sheikh</span>/ - <span class="internal-link">Al Keifo</span> - <span class="internal-link">Al Tatar</span> - <span class="internal-link">Al Sleiman</span>, and among the higher degrees in the village is Mr. <span class="internal-link">Mohammed Anwar Ali</span>/Master&#x27;s in Philosophy/ and many holders of university degrees in various specializations.</p>
-<p>Among the social figures in the village: <span class="internal-link">Sheikh Hussein</span> - Mr. <span class="internal-link">Mohammed Anwar Ali</span> - Mr. <span class="internal-link">Ziad Sleiman</span>.</p>
-<p>Village mayor: Mr. <span class="internal-link">Samir Mustafa</span>.</p>
-<p><span class="internal-link">Ghazawiya village</span> is a socially cohesive village, and there are more than 150 families from <span class="internal-link">Ghazawiya</span> in world countries/<span class="internal-link">Europe</span>/.</p>
-<p>Preparation and implementation: Director of <span class="internal-link">Tireij Afrin</span> website: <span class="internal-link">Abdulrahman Haji Othman</span></p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>THE VILLAGE OF XEZEWÊ</p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and execution:</p>
+<ul>
+<li>Manager of Tirej Efrîn website: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Ĝezw ، غزاويه /2176ن - 102هـ - 18كم - 240م/:</p>
+<ul>
+<li>أعتقد أن الاسم مشتق من اسم علم كردي، فهناك عائلات في نفس القرية وبعض</li>
+</ul>
+<p>القرى المجاورة تسمى غَزي Ĝez Mala, Ĝez ...</p>
+<ul>
+<li>قرية كبيرة وعامرة، تقع على السفح الشمالي لمرتفع من جبل ليلون ارتفاعه</li>
+</ul>
+<p>/355م/. فيها من يدينون بالإيزيدية ويشكلون حوالي نصف سكان القرية، ويسكن فيها شيخ حسين شيخ الإيزيديين في منطقة عفرين. في القرية محلات تجارية ومحطة وقود وبعض الأبنية الجميلة التي تمتد على جانبي الطريق المعبد المار عبرها. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه غزاويه : قرية في وادي عفرين و سهل جوم تتبع ناحية قرى مركز ومنطقة عفرين و محافظة حلب . وهي قرية كبيرة تقع على السفح الشمالي الأدنى لجبل طور355 م ، عند التقائه مع السهل الفيضي لوادي عفر ين تنحدر أراضيها باتجاه الشمال الغربي لوادي نهر عفر ين يحدها شمالا سهل واسع خصب زراعي ووادي نهر عفر ين و قرية كفر زيت شمال النهر و جنوبا سلسلة جبل سمعان وشيخ بركات و غربا وادي شيخ رقاق و سهل و قرية شيح دير و شرقا سلسلة جبل سمعان و ليلون و مفرق طرق عفر ين دارتعزة حلب و براد وباعي وبرج عبد الله يبلغ عدد بيوتها حوالي 200 إلى250 بيتاً وعمر القرية براوية سكانها 500عاماً تقريباً . تتوفر فيها شبكة الكهرباء ومياه الشرب من بئر القرية من الجهة الشرقية ومدرستين ابتدائية وإعدادية وجامع و خطوط هاتف وأحدث فيها دار للبلدية وتضم مجموعة من القرى/ شيح دير , إسكان ، بالإضافة للغزاوية/ ، بيوتها القديمة حجرية من الطين ذات السقوف الخشبية أما الحديثة فهي من الأحجار والأسمنت المسلح المنتشرة على جانبي الطريق حلب عفر ين جلمة ودارتعزة وتصل طريق مزفت يمر في وسطها إلى عدة قرى مجاورة . يعمل سكانها بزراعة الأراضي المروية والبعلية وأهم زراعاتها القطن والحبوب والشمندر السكري والخضار والرمان المنتشر بشكل كبير والتفاح والجوز والدراق والأجاص تأتي المياه إليها من نهر عفرين والآبار الارتوازية كما يعمل السكان بتربية الأغنام والماعز والأبقار كما يوجد نبع من الماء عند نهاية السفح الغربي لجبل سمعان المشرف على وادي نهر عفر ين إلى الشرق من قرية الغزاوية يبعد عن عفر ين 17كم باتجاه الجنوب الغربي ، أما مياهه فيجري شمالاً عبر بساتين القرية. كما أن الدولة قامت بحفر ثلاث آبار ارتوازية شرق القرية لتغذي الشبكة التي تسقي القرية ومزروعاتها. ومن أهم عوائلها عائلة مصطفى آغا</p>
+<ul>
+<li>آل علي آغا - آل شيخ حسين / شيخ الطائفة اليزيدية / - آل كيفو - آل تاتار -</li>
+</ul>
+<p>آل سليمان ، ومن الشهادات العليا في القرية السيد محمد أنور علي / ماجستير في الفلسفة / والعديد من حاملي الشهادات الجامعية في مختلف الاختصاصات . ومن الوجوه الاجتماعية في القرية : الشيخ حسين - السيد محمد أنور علي - السيد زياد سليمان .</p>
+<p>مختار القرية : السيد سمير مصطفى .</p>
+<p>وقرية الغزاوية قرية متماسكة اجتماعياً ، كما أن هناك أكثر من 150 عائلة من الغزاوية في دول العالم / اوروبا / .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>THE VILLAGE OF XEZEWÊ</p>
 <p>16.2.2016</p>
 <p>The village of Xezewê is affiliated with the Şêrewa district of Efrîn canton, located about 17 km south of the city of Efînê, and at the same time is one of the villages of the Cûmê plain.</p>
 <p>The name of the village comes from the name (Xeza Menda). This is also the name of an old woman from the village from the Şêxler family, which is known by that name as one of the main families in the village.</p>
@@ -273,7 +349,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xezawe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xezawe.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=2XMWyPVpdKc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=2XMWyPVpdKc</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=p9Fhp1wr0KU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=p9Fhp1wr0KU</a><br><a href="https://www.youtube.com/watch?v=whC_AcmUWCg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=whC_AcmUWCg</a></li><li>Local FB page:<br><a href="https://www.facebook.com/Xeziwe" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Xeziwe</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=pwWOU4h69b8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=pwWOU4h69b8</a><br><a href="https://www.youtube.com/watch?v=-uzKiUVHA_s" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=-uzKiUVHA_s</a><br><a href="https://www.youtube.com/watch?v=-dFujDY1ERc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=-dFujDY1ERc</a><br><a href="https://www.youtube.com/watch?v=3nuVmGGGygE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3nuVmGGGygE</a><br><a href="https://www.youtube.com/watch?v=7c-b_WSFYDw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=7c-b_WSFYDw</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xezawe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xezawe.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=2XMWyPVpdKc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=2XMWyPVpdKc</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=p9Fhp1wr0KU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=p9Fhp1wr0KU</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=whC_AcmUWCg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=whC_AcmUWCg</a></li><li>Local FB page:<br><a href="https://www.facebook.com/Xeziwe" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Xeziwe</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=pwWOU4h69b8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=pwWOU4h69b8</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=-uzKiUVHA_s" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=-uzKiUVHA_s</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=-dFujDY1ERc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=-dFujDY1ERc</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=3nuVmGGGygE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3nuVmGGGygE</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=7c-b_WSFYDw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=7c-b_WSFYDw</a></li></ul>
             </div>
 
             
@@ -283,7 +359,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -401,6 +477,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

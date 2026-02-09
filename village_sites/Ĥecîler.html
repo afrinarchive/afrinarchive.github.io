@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Hajjaj, Hajiler, الحجاج, حاجيلار, حاجيلر, Ḧecilerê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Hoto, Mistefa Betal Axa</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -201,27 +223,69 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Ĥecîler</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The name means the plural of &#x27;Pilgrims&#x27; (Hacî + ler) in Turkish</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 75 years (as of 2013)</p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Hesîrkê</span>, <span class="internal-link">Sîlê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Ĥecîler</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) Geographic Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong><span class="internal-link">Ḧecîler</span></strong> (حاجيلر), <strong><span class="internal-link">Hajiler</span></strong> (حاجيلار), <strong><span class="internal-link">Al-Hajjaj</span></strong> (الحجاج) /1409n - 7km - 195m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Ĥecîler</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hecilere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hecilere.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Hacîler</span>, Al-Hajjaj / 1409 inhabitants, 7km, 195m.</p>
+<p>The name means the plural of &quot;The Pilgrims&quot; (Hacî + ler) in Turkish.</p>
+<p>It is a small village. The valley of <span class="internal-link">Hesîrkê</span> passes to the east of it, descending southward toward the river <span class="internal-link">Efrîn</span>.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Hacîler is a village in <span class="internal-link">Çiyayê Kurmênc</span> that follows the district of <span class="internal-link">Cindirês</span>, area of Efrîn, governorate of <span class="internal-link">Heleb</span>. It is a small village located on the edges of the plain of Cindirês and the <span class="internal-link">Cûm</span>. It is 4km away from the town of Cindirês. Its soil is fertile alluvial soil.</p>
+<p>It is bordered to the north by a fertile plain, a stream, and the village of <span class="internal-link">Hemîlk</span>. It is bordered to the south by a fertile plain, the course of the Efrîn river valley, and the village of <span class="internal-link">Til Silor</span>. It is bordered to the west by an agricultural plain fertile with olive trees and the town of Cindirês directly. It is bordered to the east by a fertile plain planted with olive trees and grains, and the village of <span class="internal-link">Ebû Kaêb Xerbî</span>.</p>
+<p>The valley of <span class="internal-link">Sîlê</span> passes through the middle of the village heading south toward the Efrîn river valley. The number of its houses covers approximately 75 houses, and its age is approximately 75 years. It was previously a farm (mezra) for the village of <span class="internal-link">Celemê</span>, and now it has become independent. Its old houses are made of stone and mud with wooden ceilings and two sloped zinc sheets, while modern concrete houses have spread around the old site.</p>
+<p>An electricity network, telephone, and drinking water are available from a well belonging to the state or from artesian wells dug next to the homes. It contains a mosque, a primary school, and a paved road to the town of Cindirês. It belongs to the municipality of Celemê. Formerly, it consisted of houses for the family of <span class="internal-link">Mistefa Betal Axa</span> and farmers from the village of Celemê.</p>
+<p>The residents work in rain fed agriculture (olives, grains) and irrigated agriculture from artesian wells or by pumping from the river Efrîn for summer vegetables and sugar beets, alongside raising sheep and cows.</p>
+<p>Mukhtar of the village: <span class="internal-link">Ednan Hoto</span></p>
+<p>Preparation and execution:</p>
+<p>Manager of the site <span class="internal-link">Tîrêj Efrîn</span>: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Ĥecler ، حاجيلر ، الحجاج /1409ن - 7كم</p>
 <ul>
-<li>The name means plural of &quot;<span class="internal-link">pilgrims</span>&quot; (الحجاج) in Turkish.</li>
-<li>A small village, the &quot;<span class="internal-link">Ḧesîrkî valley</span>&quot; (وادي حَسيريكي) passes from its east, descending south toward <span class="internal-link">Afrin river</span> (نهر عفرين).</li>
+<li>195م/:</li>
 </ul>
-<p>According to the book: &#x27;عفرين&#x27; &#x27;Afrin&#x27;.... Its River and Green Hills by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Hajiler</span></strong> (حاجيلار): A village in <span class="internal-link">Kurdish mountain</span> (جبل الكرد) belonging to <span class="internal-link">Cindires sub-district</span> (ناحية جندرس), Afrin (منطقة عفرين), <span class="internal-link">Aleppo governorate</span> (محافظة حلب).</p>
-<p>It is a small village located on the edges of <span class="internal-link">Cindires plain</span> (سهل جندرس) and the Jom. It is 4km from <span class="internal-link">Cindires town</span> (بلدة جندرس), with fertile alluvial soil. It is bordered to the north by fertile plains and a stream and <span class="internal-link">Hamilk village</span> (قرية حميلك), to the south by fertile plains and the course of <span class="internal-link">Afrin river valley</span> (مجرى وادي نهر عفرين) and <span class="internal-link">Tell Silur village</span> (قرية تل سلور), to the west by fertile agricultural plains planted with olive trees and <span class="internal-link">Cindires town</span> (بلدة جندرس) directly, and to the east by fertile plains planted with olive trees and grains and <span class="internal-link">Abu Kaab Western village</span> (قرية أبوكعب غربي).</p>
-<p><span class="internal-link">Sili valley</span> (وادي سيلي) passes through the center of the village heading south toward <span class="internal-link">Afrin river valley</span> (وادي نهر عفرين). The number of houses is about 75 houses and its age is about <span class="internal-link">75 years</span> (75عاماً). It was previously a farm for <span class="internal-link">Jalma village</span> (قرية جلمة) and now it has become independent. Its old houses are stone and clay with wooden roofs and galvanized iron with two slopes, and the modern ones are concrete spread around the old site.</p>
-<p>It has an electricity network and telephone and drinking water from a state well or from artesian wells dug beside the houses. It has a mosque and an elementary school and a paved road to <span class="internal-link">Cindires town</span> (بلدة جندرس) and it belongs to <span class="internal-link">Jalma municipality</span> (بلدية جلمة). It was previously houses for the <span class="internal-link">Mustafa Batal Agha family</span> (عائلة مصطفى بطال آغا) and farmers from <span class="internal-link">Jalma village</span> (قرية جلمة).</p>
-<p>The residents work in rain-fed agriculture (olives, grains) and irrigated from artesian wells or by pumping from <span class="internal-link">Afrin river</span> (نهر عفرين) with summer vegetables and sugar beet in addition to raising sheep and cattle.</p>
-<p>Village mayor: <span class="internal-link">Adnan Houto</span> (عدنان حوطو)</p>
-<p>Preparation and implementation: Director of <span class="internal-link">Afrin Heritage website</span> (موقع تيريج عفرين): <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>الاسم بمعنى جمع &quot;الحجاج&quot; بالتركية.</li>
+</ul>
+<ul>
+<li>قرية صغيرة، يمر من شرقها وادي &quot;حَسيركي&quot; المنحدر جنوبا نحو نهر عفرين.</li>
+</ul>
+<p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه حاجيلار : قرية في جبل الكرد تتبع ناحية جنديرس ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع على أطراف سهل جنديرس والجوم ، تبعد عن بلدة جنديرس 4كم ، تربتها لحقية خصبة ، يحدها شمالاً سهل خصب ومسيل وقرية حميلك ، وجنوباً سهل خصب ومجرى وادي نهر عفرين وقرية تل سلور ، وغرباً سهل خصب زراعياً مزروع بأشجار الزيتون وبلدة جنديرس مباشرة ، وشرقاً سهل خصب مزروع بأشجار الزيتون والحبوب وقرية أبوكعب غربي ، يمر وادي سيلي في وسط القرية باتجاه الجنوب نحو وادي نهر عفرين ، يبلغ عدد بيوتها حوالي 75بيتاً وعمرها حوالي 75عاماً وكانت سابقاً مزرعة لقرية جلمة والآن أصبحت مستقلة ، بيوتها القديمة حجرية طينية ذات سقوف خشبية والتوتياء بميلين و الحديثة إسمنتية انتشرت حول الموقع القديم ، تتوفر فيها شبكة كهرباء و هاتف ومياه شرب من بئر عائد للدولة أومن الآبارالارتوازية المحفورة بجانب المنازل , فيها جامع ومدرسة ابتدائية وطريق مزفت حتى بلدة جنديرس وهي عائدة لبلدية جلمة وكانت سابقاً بيوتاً لعائلة مصطفى بطال آغا والفلاحين من قرية جلمة ، يعمل السكان بالزراعة البعلية (الزيتون ، الحبوب) ورياً من الآبار الارتوازية أو ضخاً من نهر عفرين بالخضروات الصيفية والشوندر السكري إلى جانب تربية الأغنام والأبقار .</p>
+<p>مختار القرية :  عدنان حوطو</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -239,7 +303,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hecilere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hecilere.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hecilere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hecilere.htm</a></li></ul>
             </div>
 
             
@@ -249,7 +313,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -367,6 +431,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

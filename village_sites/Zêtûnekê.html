@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -168,6 +189,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şera</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Zaytun, Zaytunak, Zêtûnekê, الزيتون, زيتوناك, زيتونكه</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Şêx Îsmaîl Zade</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
@@ -194,21 +216,69 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Zêtûnekê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The name comes from the olive tree (<em>zeytûn</em>)</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 200 years ago</p>
+<p><strong>Shrines:</strong> <span class="internal-link">Mezara Nebî Hûrî</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Kelha Nebî Hûrî</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çemê Sabûn</span>, <span class="internal-link">Çemê Efrîn</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Zêtûnekê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &quot;جبل الكرد&quot; &quot;<span class="internal-link">Mountain of the Kurds</span>&quot; / عفرين (Afrin) / geographical study:</p>
-<p><strong>Zêtûnek, زيتوناك, الزيتون</strong> /864n, 595h - 18km - 470m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Zêtûnekê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20zatonak.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20zatonak.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc (Efrîn): A Geographical Study: <span class="internal-link">Ztnek</span> Zeytûnak The Olive: 864 inhabitants, 595 hectares, 18km distance, 470m altitude.</p>
+<p>The name comes from the olive tree (zeytûn).</p>
+<p>It is a medium sized village located west of <span class="internal-link">Çemê Efrîn</span> (Afrin River). It contains old houses belonging to the aghas of the <span class="internal-link">Şêx Îsmaîl Zade</span> family, and it is one of their main centers.</p>
+<p>It is stated in the book Efrîn... Her River and Her Green Hills: Zeytûnak is a village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Şera</span> district of the <span class="internal-link">Efrîn</span> region in the Heleb governorate (845 inhabitants). It is a small village located on a limestone plateau with clay soil. It is approximately 25km away from the town of Şera in a northeastern direction. It is surrounded by olive trees on all sides.</p>
+<p>The village is bordered to the north by a valley and a plain planted with olive trees, the <span class="internal-link">Riya Kelha Nebî Hûrî</span> (Nebî Hûrî castle road), and the village of <span class="internal-link">Umer Simo</span>. To the south, it is bordered by a slope and a valley planted with olive trees, the course of <span class="internal-link">Çemê Sabûn</span> (Sabun river) and Çemê Efrîn (Afrin river), the village of <span class="internal-link">Wêrkan</span> on the eastern bank of the river, and the village of <span class="internal-link">Bilûrsenk</span>. To the west, there is a deep watercourse 100m away, followed by a plain of olive trees and the village of <span class="internal-link">Se&#x27;rincik</span>. To the east, there is a slope planted with olive trees, and 500m away lies the old <span class="internal-link">Mezara Nebî Hûrî</span> (Shrine of Prophet Huri) from the Roman era.</p>
+<p>The settlement of the area is very old due to its proximity to the archaeological zone. The number of houses reaches 50, and its age is approximately 200 years. Its old houses include two old, luxurious, and beautiful homes belonging to the Şêx Îsmaîl Zade family, while the modern ones are made of stone and cement. An electricity network and drinking water from the state are available. The village has a primary school and a small mosque. The road leading to it is paved with dirt and asphalted up to the center of the village. There are also three old villas in the center of the village inhabited by the family of <span class="internal-link">Mihemed Şêx Îsmaîl Zade</span> and his brothers.</p>
+<p>The residents of the village work in the cultivation of olives, vineyards, vegetables, and grains due to its proximity to the south of the course of Çemê Efrîn (Afrin River), alongside raising sheep and goats.</p>
+<p>Sources of Information:</p>
 <ul>
-<li>The name comes from the olive tree.</li>
-<li>A medium village located west of <span class="internal-link">Afrin River</span>. It has old houses of the Aghas of <span class="internal-link">Sheikh Ismail Zadeh</span> family, and it is one of their basic centers.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book عفرين.... نهرها ورواييها الخضراء &quot;Afrin.... <span class="internal-link">Her River and Green Hills</span>&quot;:</p>
-<p><strong>زيتوناك</strong> (Zaytunak): A village in <span class="internal-link">Kurdish Mountain</span> belonging to <span class="internal-link">Sheran</span> district, Afrin region, <span class="internal-link">Aleppo</span> governorate, (845 n).</p>
-<p>It is a small village located on a limestone plateau, with calcareous soil. It is about 25km from the town of <span class="internal-link">Sheran</span> in the northeastern direction, surrounded by olive trees from all directions. To the north it is bordered by a valley and plain planted with olive trees and the road to <span class="internal-link">Qal&#x27;at al-Nabi Houri</span> fortress and <span class="internal-link">Omar Samo</span> village. To the south by a slope and valley planted with olive trees and the course of <span class="internal-link">Al-Saboun</span> and Afrin rivers and <span class="internal-link">Wireh Kan</span> village on the eastern bank of the river and <span class="internal-link">Ballorsink</span> village. To the west by a deep stream at a distance of 100m and after it a plain of olive trees and <span class="internal-link">Sa&#x27;ranjik</span> village. To the east by a slope planted with olive trees and at a distance of 500m is located the old shrine of النبي هوري (Al-Nabi Houri) from the Roman era. The settlement of the region is very ancient due to its proximity to the archaeological area. The number of its houses is 50 houses and its age is about 200 years. Its old houses are two old magnificent houses belonging to the family of <span class="internal-link">Sheikh Ismail Zadeh</span> and the modern ones are concrete stone. It has electricity network and drinking water from the state. It has an elementary school and a small mosque. The road leading to it is paved dirt and asphalted to the center of the village. There are also three old villas in the center of the village inhabited by the family of <span class="internal-link">Mohammed Sheikh Ismail Zadeh</span> and his sisters. The village inhabitants work in cultivating olives, grapes, vegetables, and grains due to its proximity south of <span class="internal-link">Afrin River</span> course in addition to raising sheep and goats.</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the Tirej Efrîn website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Ztnek ، زيتوناك ، الزيتون /864ن، 595هـ - 18كم - 470م/:</p>
+<ul>
+<li>الاسم من شجرة الزيتون.</li>
+</ul>
+<ul>
+<li>قرية متوسطة تقع غربي نهر عفرين. فيها بيوت قديمة لآغوات آل شيخ إسماعيل</li>
+</ul>
+<p>زاده، وهي من مراكزهم الأساسية. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : زيتوناك : قرية في جبل الكرد تتبع ناحية شران منطقة عفرين محافظة حلب ، ( 845 ن ) . وهي قرية صغيرة تقع على هضبة كلسية , تربتها غضارية ,تبعد عن بلدة شران حوالي 25كم باتجاه الشمال الشرقي محاطة بأشجار الزيتون من جميع الجهات ، يحدها شمالا وادٍ وسهل مزروع بأشجار الزيتون وطريق قلعة النبي هوري وقرية عمر سمو وجنوبا منحدر وواد مزروع بأشجار الزيتون ومجرى نهر الصابون وعفرين وقرية ويره كان على الضفة الشرقية للنهر وقرية بللورسنك وغربا مسيل عميق على بعد /100/م وبعدها سهل من أشجار الزيتون وقرية سعرنجك وشرقا منحدر مزروع بأشجار الزيتون وعلى بعد /500/م يقع مزار النبي هوري القديم من العهد الروماني .إعمار المنطقة قديم جدا بسبب قربها من المنطقة الأثرية يبلغ عدد بيوتها50 بيت وعمرها حوالي200عام بيوتها القديمة بيتين قديمين فخمين جميلين لعائلة شيخ اسماعيل زادة والحديثة حجرية إسمنتية تتوفر فيها شبكة الكهرباء ومياه الشرب من الدولة فيها مدرسة ابتدائية وجامع صغير والطريق الواصل إليها معبد ترابي ومزفت حتى وسط القرية كما توجد ثلاث فيلات قديمة في وسط القرية تسكنها عائلة محمد شيخ اسماعيل زادة وأخوته . يعمل سكان القرية بزراعة الزيتون والكرم والخضروات والحبوب بسبب قربها جنوبا من مجرى نهر عفرين إلى جانب تربية الأغنام والماعز . مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -226,7 +296,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20zatonak.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20zatonak.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20zatonak.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20zatonak.htm</a></li></ul>
             </div>
 
             
@@ -236,7 +306,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -354,6 +424,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

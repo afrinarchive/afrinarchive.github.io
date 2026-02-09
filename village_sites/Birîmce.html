@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -167,7 +188,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Birimce, Birîmce, Bremcê, Brimaja, Brimajah, Brîmce, برماجه, برمجة, بريمجه</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Qidran, Xidriya</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Birîmce, Fîlik, Hemcan, Mala Ehmo, Mala Mixtêr, Mala Usê, Mala Şêxî Fîlik, Malê Arifî, Malê Kekû, Malê Meyrê, Malê Mihemed, Malê Reşîkerê, Malê Tarî, Malê Torî, Malê Şewket, Momlera</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Berimce, Birîmce, Emo, Eyşe, Fîlik, Hemcan, Kosa, Koşkar, Mala Ehmo, Mala Mixtêr, Mala Usê, Mala Şêxî Fîlik, Malê Arifî, Malê Kekû, Malê Meyrê, Malê Mihemed, Malê Reşîkerê, Malê Tarî, Malê Torî, Malê Şewket, Memlar, Momlera, Sokel Kase</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -217,22 +238,58 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Birîmce</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; - A Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Birîmce</span> (بريمجه), <span class="internal-link">Brimajah</span> (برماجه)</strong> /1990n - 940h - 5km - 660m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Birîmce</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20brimce.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20brimce.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span> regarding <span class="internal-link">Berimce</span>:</p>
+<p>Berimce /1990 inhabitants, 940 hectares, 5km from center, 660m altitude/:</p>
+<p><span class="internal-link">Berîmce</span>: The name is derived from the name Ibrahim, and the Kurds pronounce it in the form &quot;<span class="internal-link">Berîm</span>&quot; and &quot;<span class="internal-link">Brim</span>&quot;. This refers to <span class="internal-link">Ibrahîm Bekir</span>, who was the representative of the <span class="internal-link">Çiyayê Kurmênc</span> district in the municipality of <span class="internal-link">Kilis</span> in the middle of the nineteenth century. He was literate and one of the enlightened people of that time, so the village became known by him. As for the priest <span class="internal-link">Barsoum</span>, he says that its origin is Syriac from &quot;love of mung bean&quot; (hub al-mash), but this is naturally incorrect. It is a large village located on the southeastern slope of a limestone plateau.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Berimce: A village in Çiyayê Kurmênc, administratively following the township of <span class="internal-link">Mabeta</span>, in the <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a large village located in the middle section of Çiyayê Kurmênc on the southeastern slope of a marly limestone plateau, furrowed by streams descending in all directions. It lies to the southwest of the town of Mabeta and is 5km away from it. Its soil is clay, covered by forests and pastures.</p>
+<p>It is bordered to the north by a harsh slope, two streams, the village of <span class="internal-link">Xaziyanlî Jorîn</span>, and <span class="internal-link">Mezra Silo</span>. To the south, it is bordered by a slope, two streams, a high mountain range planted with olive trees, and the village of <span class="internal-link">Mîrkanlî</span>. To the west, it is bordered by a slope, a deep valley, a high mountain range planted with forest trees and olives, and the village of <span class="internal-link">Cumazanlî</span>. To the east, it is bordered by a harsh slope and several streams planted with olive, walnut, and grape trees, and the village of <span class="internal-link">Darkîr Mezin</span>.</p>
+<p>The number of its houses is about 100, and its age is about 400 years. Its houses are of stone and mud with flat wooden roofs, while modern ones are cement and have begun to dominate the overall construction. The village spreads over the slopes of the high mountain plateau to the south and east. An electricity network is available, as well as a water network from a well near Mezra Silo on the main road. The village contains a primary and preparatory school, a telephone, an old mosque in the center of the village, two olive presses, and an agricultural cooperative society.</p>
+<p>The residents farm 940 hectares of rain fed land with olives, vines, and other fruit trees, and irrigated land from artesian wells (pomegranates, walnuts, and summer vegetables), alongside raising sheep and goats. A section of them works in a center for dairy derivatives and jams (apricot). An asphalt road connects it to the district center and passes through several villages.</p>
+<p>Among the families present in the village: The Berimce family, who constitute 70 percent of the village population; the <span class="internal-link">Memlar</span> family (comprising <span class="internal-link">Kako</span>, <span class="internal-link">Kare</span>, and <span class="internal-link">Tarî</span>); the <span class="internal-link">Eyşe</span> family; the <span class="internal-link">Koşkar</span> family (who came from the village of Koliyan); the <span class="internal-link">Kosa</span> family (who came from the village of Emranlî); the <span class="internal-link">Emo</span> family (who came from the village of Qermitlîq); and the <span class="internal-link">Sokel Kase</span> family. Naturally, there are many holders of university degrees and institute diplomas in the village.</p>
+<p>Village Mukhtar: <span class="internal-link">Luqman Fîlk</span>.</p>
+<p>Preparation and execution:</p>
+<p>Manager of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li><strong>Brimjah</strong>: A name derived from <span class="internal-link">Ibrahim</span>, and Kurds pronounce it as &quot;Brim&quot;. This <span class="internal-link">Brim</span> is <span class="internal-link">Ibrahim Bakr</span> who was a representative of <span class="internal-link">J. Al-Kurd District</span> in <span class="internal-link">Kilis</span> municipality in the mid-nineteenth century, and he was literate and one of the enlightened of that time, so the village became known by him. As for <span class="internal-link">Al-Khouri Barsoum</span>, he says that its origin is Syriac from &quot;Love of Mash&quot; /p.69/, and this is naturally incorrect.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A large village located on the southeastern southern slope of a limestone plateau.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>And according to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmah</span> village:</p>
-<p><strong>Brimjah - Brimajah</strong>: A village in <span class="internal-link">Kurd Mountain</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located in the central part of Kurd Mountain on the southeastern southern slope of a limestone marine plateau, crossed by streams flowing in all directions, to the southwest of Mabetli town, 5km away from it. Its fertile land is covered with groves and pastures. It is bordered to the north by a harsh slope and two streams and <span class="internal-link">Khaziyanli Foqani</span> village and <span class="internal-link">Salu</span> farm, and to the south by a slope and two streams and a high mountain chain planted with olive trees and <span class="internal-link">Mirkanli</span> village, and to the west by a slope and deep valley and high mountain chain planted with forestry and olive trees and <span class="internal-link">Jomazanli</span> village, and to the east by a harsh slope and several streams planted with olive trees, walnuts and grapes and <span class="internal-link">Darkir Kabir</span> village. It has approximately 100 houses and is about 400 years old. Its houses are stone and clay with flat wooden roofs, and the modern cement ones have taken over the entire building complex, spreading on the slopes of the high mountain plateau to the south and east. It has an electricity network and water network from a well near Salu farm on the public road. It has a primary and preparatory school, telephone, and old mosque in the village center, two olive presses and an agricultural cooperative. The inhabitants cultivate rainfed crops on an area of 940 hectares: olives, grapes and other fruit trees, and irrigated crops from artesian wells (pomegranates, walnuts and summer vegetables), in addition to raising sheep and goats. A section of them works in a dairy and jam factory (Mashmash). It connects to the district center by a paved road passing through several villages.</p>
-<p>Among the families in the village: <span class="internal-link">Al Brimjah</span> constituting 70% of the village&#x27;s population - <span class="internal-link">Al Mamalar</span> (<span class="internal-link">Kako</span>, <span class="internal-link">Kareh</span>, <span class="internal-link">Tari</span>) - <span class="internal-link">Al Isha</span> - <span class="internal-link">Al Koshkar</span> (they came from <span class="internal-link">Kuliyan</span> village) - <span class="internal-link">Al Kosa</span> (they came from <span class="internal-link">Omranli</span> village) - <span class="internal-link">Al Amo</span> (they came from <span class="internal-link">Qarmatlaq</span> village) - <span class="internal-link">Al Sukl Kasah</span> - ...</p>
-<p>Naturally, the village has many holders of university degrees and institutes.</p>
-<p>Village headman: <span class="internal-link">Luqman Felk</span></p>
-<p>Preparation and implementation: Director of <span class="internal-link">Afrin Heritage</span> website: Abdul Rahman Haji Othman</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Birîmce from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=618VFo8mnUM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=618VFo8mnUM</a></p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Birmce ، برمجه، برماجه /1990ن - 940هـ - 5كم - 660م/:</p>
+<ul>
+<li>بريمجه: اسم مشتق من اسم إبراهيم، ويلفظه الأكراد على شكل &quot;بريم&quot;، وبريم</li>
+</ul>
+<p>هذا هو إبراهيم بكر الذي كان ممثلا لناحية ج.الكرد في بلدية كلس في أواسط القرن التاسع عشر، وكان يجيد القراءة والكتابة، ومن المتنورين في ذلك الزمان، فعرفت القرية به. أما الخوري برصوم فيقول أن أصلها سرياني من &quot;حب الماش&quot; /ص69/، وهذا غير صحيح طبعا.</p>
+<ul>
+<li>قرية كبيرة تقع على السفح الجنوبي الشرقي لهضبة كلسية</li>
+</ul>
+<p>. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه بريمجه - برماجه : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع في القسم الأوسط من جبل الكرد على السفح الجنوبي الشرقي لهضبة كلسية مارنية ، تخددها مسيلات تنحدر نحو جميع الاتجاهات ، إلى الجنوب الغربي من بلدة المعبطلي ، وتبعد عنها 5كم ، تربتها غضارية تغطيها أحراج ومراعي ، يحدها شمالاً منحدر قاسي ومسيلان وقرية خازيانلي فوقاني ومزرعة سلو ، وجنوباً منحدر ومسيلان وسلسلة جبلية عالية مزروعة بأشجار الزيتون وقرية ميركانلي ، وغرباً منحدر ووادي عميق وسلسلة جبلية عالية مزروعة بالأشجار الحراجية والزيتون وقرية جومازانلي ، وشرقاً منحدر قاسي وعدة مسيلات مزروعة بأشجار الزيتون والجوز والكرمة قرية داركيركبير ، يبلغ عدد بيوتها حوالي 100بيتاً وعمرها حوالي 400عاماً ، بيوتها حجرية طينية ذات سقوف خشبية مستوية والحديثة منها إسمنتية أخذت تغطي على مجمل البناء ، وتنتشر على سفوح الهضبة الجبلية العالية جنوباً وشرقاً ، تتوفر فيها شبكة كهرباء وشبكة مياه من بئر قرب مزرعة سلو على الطريق العام ، فيها مدرسة إبتدائية وإعدادية وهاتف وجامع قديم في وسط القرية ومعصرتان للزيتون وجمعية تعاونية فلاحية ، يزرع السكان بعلاً على مساحة 940 هـ الزيتون والكرمة والأشجار المثمرة الأخرى ورياً من الآبار الارتوازية (الرمان و الجوز والخضار الصيفية ) ، إلى جانب تربية الأغنام والماعز ، ويعمل قسم منهم في مركز لمشتقات الألبان والمربيات (المشمش) ، تصلها بمركز الناحية طريق مزفت ويمر إلى عدة قرى . من العائلات الموجودة في القرية : آل بريمجه ويشكلون  70 % من سكان القرية  - آل مملار ( كاكو - كاره - طاري ) - آل عيشه - آل كوشكار ( قدموا من قرية كوليان ) - آل كوسا ( قدموا من قرية عمرانلي ) - آل عمو ( قدموا من قرية قرمتلق ) - آل سوكل كاسه -  ... طبعاً في القرية العديد من حملة الشهادات الجامعية والمعاهد</p>
+<p>مختار القرية :  لقمان فيلك</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Birîmce from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=618VFo8mnUM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=618VFo8mnUM</a></p>
 <p>The village of <span class="internal-link">Birimce</span>, historically known as <span class="internal-link">Bêker</span>, is located in the <span class="internal-link">Xastiya</span> mountain chain within the region of <span class="internal-link">Çiyayê Kurmênc</span>, approximately five kilometers from the district of <span class="internal-link">Mabeta</span>. Local oral history suggests the settlement was established between 700 and 800 years ago. The village was founded by <span class="internal-link">Mela Mihemed</span> and the <span class="internal-link">Qidran</span> tribe. Its original name, Bêker, was chosen to honor the founder&#x27;s son, a man renowned for his bravery. The modern name Birimce is attributed to a later descendant named <span class="internal-link">Îbrahîm</span>. According to local narratives, this change occurred either because Turkish officials referred to him as &quot;Birinci,&quot; meaning &quot;First,&quot; or because he generously distributed &quot;ce&quot; (barley) during a period of famine, leading to the designation &quot;Birim Ce.&quot;</p>
 <p>A significant portion of the village population traces its lineage to the <span class="internal-link">Xidriya</span> tribe, originally from <span class="internal-link">Wêranşar</span> and <span class="internal-link">Orfa</span>. Before settling in the current location of Birimce, these families inhabited a nearby site known as <span class="internal-link">Xitirka</span> or <span class="internal-link">Xidirko</span>. This area contains the ruins of approximately 15 caves where the ancestors lived for centuries alongside their flocks. Around 280 years ago, families such as <span class="internal-link">Momlera</span>, <span class="internal-link">Malê Tarî</span>, <span class="internal-link">Malê Reşîkerê</span>, and <span class="internal-link">Malê Kekû</span> migrated from the caves of Xitirka to the main village. The village social structure was historically led by figures like <span class="internal-link">Hemcan</span> and his nephew <span class="internal-link">Fîlik</span>. The Fîlik family was noted for promoting education and peace among neighbors, advising against conflict with the Ottomans while maintaining local autonomy. In the 20th century, <span class="internal-link">Şêx Mihemed Fîlik</span> became a prominent nationalist figure, helping found the <span class="internal-link">Şebîbe el Kurdiye</span> in 1935 and later joining the <span class="internal-link">Xoybûn</span> movement.</p>
 <p>The landscape of Birimce is defined by ancient water sources and agriculture. The most prominent landmark is <span class="internal-link">Bîra Gûzê</span>, a well estimated to be centuries old, which historically supplied water to multiple surrounding villages. Other notable wells include <span class="internal-link">Bîra Berbeûş</span> near the ruins and <span class="internal-link">Bîra Gêlem</span>. The village maintains a 400 year old guest house, known as the <span class="internal-link">Oda</span>, which served as a cultural center where residents gathered to listen to epics like <span class="internal-link">Derwêşê Evdî</span> and host renowned musicians such as <span class="internal-link">Cemîl Horo</span> and <span class="internal-link">Baqî Xidir</span>. Economically, the village is a hub for agriculture, boasting over 25,000 olive trees and producing almonds, raisins, and traditional grape products like &quot;bastiq&quot; and &quot;sinciq.&quot; During the Syrian conflict, displaced residents returned to Birimce, establishing new industries such as a workshop for manufacturing vehicle filters.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Birîmce from Khalil Sino</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=sNhXeP3zm70" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=sNhXeP3zm70</a></p>
@@ -305,7 +362,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20brimce.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20brimce.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=M_KQJWb9BBs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=M_KQJWb9BBs</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=_14Pr0eTAe8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_14Pr0eTAe8</a><br><a href="https://www.youtube.com/watch?v=618VFo8mnUM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=618VFo8mnUM</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=sNhXeP3zm70" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sNhXeP3zm70</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20brimce.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20brimce.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=M_KQJWb9BBs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=M_KQJWb9BBs</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=_14Pr0eTAe8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_14Pr0eTAe8</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=618VFo8mnUM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=618VFo8mnUM</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=sNhXeP3zm70" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sNhXeP3zm70</a></li></ul>
             </div>
 
             
@@ -315,7 +372,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -433,6 +490,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

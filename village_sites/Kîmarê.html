@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Kîmarê, كيمار</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Al Ebdulhemîd, Al Mîrza Dado, Al Nibo, Al Xelîl</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -222,24 +244,73 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kîmarê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; geographical study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong>Kîmar, كيمار</strong> /2214n - 400ha - 15km - 555m/:</p>
-<p>Kî - or key or keye means master in the Median language, and Mar = saint in Syriac, so the origin of the word would be &quot;Master Saint&quot;. There is another opinion saying it is in Syriac meaning the hermit, ascetic, sad one /<span class="internal-link">Abdullah Hajjar</span> (عبدالله حجار), p.177/.</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kîmarê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20K%C3%AEmar.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20K%C3%AEmar.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc (Efrîn): A Geographical Study by <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Kîmar</span> / 2214 inhabitants - 400 hectares - 15 km - 555 m /: &quot;K&quot;, &quot;key&quot;, or &quot;keye&quot; means &quot;Master&quot; or &quot;Lord&quot; in the Median language, and &quot;Mar&quot; means &quot;Saint&quot; in Syriac, so the origin of the word is &quot;The Saint Master.&quot; There is another opinion stating that in Syriac, it means the hermit, the ascetic, or the sad one (source:- Ebdullah Hecar, p. 177).</p>
 <ul>
-<li>It is a large village located on a rocky plateau in the middle part of <span class="internal-link">Mount Sherwan</span> (جبل شيروان), overlooking from the west <span class="internal-link">Afrin river valley</span> (وادي نهر عفرين) and <span class="internal-link">Basuta village</span> (ق.باسوطة) with a spectacular view. It contains remains of church walls, palaces, markets, cemeteries and tanks carved in rock, and a large number of columns, crowns, capitals and remains of a large quarry, all dating to the Greek periods. Its air is abundant and pure and its location is beautiful.</li>
+<li>It is a large village located on a rocky plateau in the central part of Çiyayê Şêrwan. It overlooks the valley of Çemê Efrîn (Efrîn River) and the village of Basûte from the west with a captivating view. It contains the remains of church walls, palaces, a market, tombs, and cisterns carved into the rock, as well as a large number of columns, capitals, lintels, and the remains of a large quarry, all dating back to the Greek eras. Its air is abundant and fresh, and its location is beautiful.</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin.... Its River and Green Hills</span> (عفرين .... نهرها وروابيها الخضراء) by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatmah village</span> (قرية قطمه)</p>
-<p><strong>Kimar</strong> (كيمار): A village in <span class="internal-link">Mount Lilon</span> (جبل ليلون), belonging to the <span class="internal-link">central villages district</span> (ناحية قرى مركز) and Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>A large village located on a limestone rocky plateau in the center of <span class="internal-link">Mount Lilon</span> (جبل ليلون). It is surrounded by three mountain peaks from the east, south and west and overlooks <span class="internal-link">Afrin valley</span> (وادي عفرين), <span class="internal-link">Basuta village</span> (قرية باسوطة) and <span class="internal-link">Afrin river</span> (نهر عفرين) from south of Afrin City (مدينة عفرين).</p>
-<p>It is bordered to the north by a rough mountainous chain called <span class="internal-link">Mount Lilon</span> (جبل ليلون) and <span class="internal-link">Deir Mashmash village</span> (قرية ديرمشمش). To the south by <span class="internal-link">Mount Samaan</span> (جبل سمعان) rocky chain and <span class="internal-link">Brad village</span> (قرية براد). To the east by <span class="internal-link">Mount Lilon</span> (جبل ليلون) chain and <span class="internal-link">Soghanah village</span> (قرية صوغانة) and <span class="internal-link">Zarnitiya</span> (زعرنتيا). To the west by <span class="internal-link">Mount Samaan</span> (جبل سمعان) chain, deep harsh valley and slope, <span class="internal-link">Basuta al-Siyahiya town</span> (بلدة باسوطة السياحية) and <span class="internal-link">Afrin river</span> (نهر عفرين) course.</p>
-<p>The settlement of the area is ancient, evidenced by remains of church walls, palaces, markets, cemeteries and rocky tanks, and a large number of archaeological columns, crowns, capitals and quarry remains dating to the Roman period. Its houses are stone with wooden roofs and currently the roofs have become reinforced concrete. The number of its houses is approximately 100 and the village age is approximately 700 years. Its houses are stone and clay with flat wooden roofs and it has a few modern houses spreading north and south.</p>
-<p>It has an elementary school and paved roads connecting to <span class="internal-link">Basuta village</span> (قرية باسوطة), Afrin (عفرين) and <span class="internal-link">Aleppo</span> (حلب). Electricity network and modern telephone are available. The inhabitants depend in their lives on rainfed agriculture on an area of 400 hectares of grains, fruit trees and olives, and sheep and cattle herding. Village people drink from tanks and rainwater collection.</p>
-<p>The village has a mosque located on the western side and it is one of the old and archaeological villages in the area.</p>
-<p>Among the families in the village: <span class="internal-link">Al Nabo</span> (آل نبو), <span class="internal-link">Al Mirza Dado ibn Khidr ibn Hassan ibn Dawud</span> (آل ميرزا دادو بن خضر بن حسن بن داود), <span class="internal-link">Al Khalil ibn Juma ibn Yusuf ibn Abdo ibn Hussein</span> (آل خليل بن جمعة بن يوسف بن عبدو بن حسين), <span class="internal-link">Al Abdulhamid</span> (آل عبدالحميد).....</p>
-<p>There is a sycamore tree in the village that is more than five hundred years old.</p>
-<p>Village Mukhtar: <span class="internal-link">Shareezad Nabo</span> (شاريزاد نبو)</p>
-<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin Heritage</span>: <span class="internal-link">Abdulrahman Haji Osman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kîmarê from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Skx8fB6syT8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Skx8fB6syT8</a></p>
+<ul>
+<li>It is stated in the book Efrîn... Her River and Her Green Hills by the writer Ebdulrehman Mihemed from the village of Qetme: Kîmar is a village in Çiyayê Lêlûn, following the sub-district of the Center villages of the Efrîn region, Heleb governorate. It is a large village located on a rocky limestone plateau in the middle of Çiyayê Lêlûn. It is surrounded by three mountain peaks from the east, south, and west, and it overlooks the Efrîn valley, the village of Basûte, and the Çemê Efrîn (Efrîn River) south of the city of Efrîn.</li>
+</ul>
+<ul>
+<li>It is bordered to the north by a rugged mountain chain called Çiyayê Lêlûn and the village of Dêr Mişmiş; to the south by the rocky Çiyayê Seman chain and the village of Berad; to the east by the Çiyayê Lêlûn chain and the villages of Soxanekê and Zer&#x27;entiyê; and to the west by the Çiyayê Seman chain, a deep and harsh valley and slope, the tourist town of Basûte, and the course of the Çemê Efrîn.</li>
+</ul>
+<ul>
+<li>The habitation of the area is ancient, evidenced by the remains of church walls, palaces, a market, tombs, rock cisterns, a large number of archaeological columns and capitals, lintels, and remains of quarries dating back to the Roman era. Its houses are stone with wooden roofs, and currently, the roofs have become reinforced concrete. The number of its houses is approximately 100, and the age of the village is about 700 years. Its houses are made of stone and clay with flat wooden roofs, and there are a few modern dwellings.</li>
+</ul>
+<ul>
+<li>The village spreads to the north and south. It has a primary school and an asphalt road that connects to the village of Basûte, Efrîn, and Heleb. A modern electricity and telephone network is available. The residents rely on rain-fed agriculture for their livelihood on an area of 400 hectares, growing grains, fruit trees, and olives. They also raise sheep and cattle. The people of the village drink from cisterns and collected rainwater. There is a mosque in the village located on the western side. It is one of the old and archaeological villages in the region.</li>
+</ul>
+<ul>
+<li>Among the families present in the village are: Al Nibo, Al Mîrza Dado bin Xidir bin Hesen bin Dawûd, Al Xelîl bin Cum&#x27;e bin Yûsif bin Ebdo bin Husên, and Al Ebdulhemîd. There is an oak tree (Dara Sindiyan) in the village that is more than five hundred years old.</li>
+</ul>
+<ul>
+<li>Village Mukhtar: Şarîzad Nibo.</li>
+</ul>
+<ul>
+<li>Sources:</li>
+</ul>
+<ul>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
+</ul>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tîrêj Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Manager of Tîrêj Efrîn website: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Kmar ، كيمار /2214ن - 400هـ - 15كم - 555م/: K - أو key أو keye بمعنى السيد باللغة الميدية، وMar = القديس بالسريانية، فيكون أصل الكلمة &quot;السيد القديس&quot;. وهناك رأي آخر يقول بأنها في السريانية بمعنى الناسك، الزاهد، الحزين، /عبدالله حجار، ص177/.</p>
+<ul>
+<li>وهي قرية كبيرة تقع على منبسط صخري في الجزء الأوسط من جبل شيروان، تشرف من</li>
+</ul>
+<p>الغرب على وادي نهر عفرين وعلى ق.باسوطة بمنظر خلاب. فيها بقايا جدران كنائس وقصور وسوق ومدافن وصهاريج منقورة في الصخر، وعدد كبير من الأعمدة والتيجان والسواكف وبقايا مقلع كبير تعود جمعيها للعهود الإغريقية. هواؤها كثير وعليل وموقعها جميل. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كيمار : قرية في جبل ليلون, تتبع ناحية قرى مركز ومنطقة عفرين ,محافظة حلب . قرية كبيرة تقع على منبسط صخري كلسي في وسط جبل ليلون . تحيط بها ثلاث قمم جبلية من الشرق والجنوب والغرب وتشرف على وادي عفر ين وقرية باسوطة ونهر عفر ين من جنوب مدينة عفر ين . يحدها شمالاً سلسلة جبلية وعرة تسمى جبل ليلون وقرية ديرمشمش وجنوباً سلسلة جبل سمعان الصخرية وقرية براد وشرقاً سلسلة جبل ليلون وقرية صوغانه و زعرنتيا وغرباً سلسلة جبل سمعان ووادي ومنحدر عميق وقاسي وبلدة باسوطة السياحية ومجرى نهر عفر ين . إعمار المنطقة قديم , تدل عليها بقايا جدران كنائس وقصور وسوق ومدافن وصهاريج صخرية وعدد كبير من الأعمدة والتيجان الأثرية والسوا كف وبقايا مقالع وتعود للعهد الروماني . بيوتها حجرية وذات سقوف خشبية وحاليا أصبحت السقوف من البيتون المسلح ويبلغ عدد بيوتها حوالي100 تقريباً وعمر القرية حوالي 700 عام بيوتها حجرية طينية ذات سقوف خشبية مستوية وفيها عدد قليل من المساكن الحديثة تنتشر شمالاً وجنوباً فيها مدرسة ابتدائية وطريق مزفتة يصل إلى قرية باسوطة وعفرين وحلب وتتوفر فيها شبكة الكهرباء والهاتف الحديثة . يعتمد السكان في حياتهم على الزراعة البعليةعلى مساحة 400 هكتار الحبوب والأشجار المثمرة والزيتون . وتربية الأغنام والأبقار ويشرب أهالي القرية من صهاريج وتجميع مياه الأمطار . وفي القرية جامع يقع في الجهة الغربية وهي من القرى القديمة والأثرية في المنطقة . ومن العائلات الموجودة في القرية : آل نبو - آل ميرزا دادو بن خضر بن حسن بن داود - آل خليل بن جمعة بن يوسف بن عبدو بن حسين - آل عبدالحميد - ..... توجد في القرية شجرة سنديان عمرها أكثر من خمسمائة سنة</p>
+<p>مختار القرية : شاريزاد نبو</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kîmarê from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Skx8fB6syT8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Skx8fB6syT8</a></p>
 <p>The village of Kîmarê, located in the <span class="internal-link">Şêrawa</span> district of the <span class="internal-link">Efrîn</span> region, stands as a settlement deeply layered with history and antiquity. While the documentary does not specify an exact founding date for the current habitation, the village is built directly upon and amidst extensive ruins from ancient eras. Speakers identify these ruins variously as <span class="internal-link">Romani</span> (Roman) and <span class="internal-link">Bîzentîn</span> (Byzantine). However, one villager disputes the sole attribution to these empires, pointing to sun symbols (<span class="internal-link">ro</span>) carved into the stone as evidence that Kurds were present in the region before the arrival of Romans or Byzantines.</p>
 <p>The architectural landscape of Kîmarê is defined by its massive stone structures. Notable historical landmarks include a high structure referred to as <span class="internal-link">Birc</span> (the Tower) and the remains of a fortress known as <span class="internal-link">Kelê</span>. Residents have integrated these ancient stones into their daily lives, using the solid masonry for their own homes and stables. One prominent ruin is a church (<span class="internal-link">Kinîsê</span>), which the locals call <span class="internal-link">Tawus</span> because of a peacock relief carved into the stone. The village also features extensive underground cisterns and ancient wells carved into the rock, which were historically used for water storage and keeping livestock.</p>
 <p>Water scarcity played a significant role in the oral history of the village. An elderly woman recounts the severe hardships faced in the past, describing how women had to travel great distances to fetch water from <span class="internal-link">Kaniya Kîliya</span> or sources in <span class="internal-link">Geliyê Lûlkê</span> (also associated with <span class="internal-link">Geliyê Kerzêlê</span> and located at the foot of <span class="internal-link">Çiyayê Midîye</span>). Clothes and lentils were washed at <span class="internal-link">Kaniya Bosûtê</span>. Despite these hardships, the elder generation speaks of a strong communal bond.</p>
@@ -291,7 +362,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20K%C3%AEmar.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20K%C3%AEmar.htm</a></li><li>Kimar:<br><a href="https://www.youtube.com/watch?v=4T8MqcC5ENc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=4T8MqcC5ENc</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=Skx8fB6syT8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Skx8fB6syT8</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20K%C3%AEmar.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20K%C3%AEmar.htm</a></li><li>Kimar:<br><a href="https://www.youtube.com/watch?v=4T8MqcC5ENc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=4T8MqcC5ENc</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=Skx8fB6syT8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Skx8fB6syT8</a></li></ul>
             </div>
 
             
@@ -301,7 +372,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -419,6 +490,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Kora / Koran / Kore / Kouran, كوران جنديريس</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Elûş, Hac Birîm, Hac Mecîd, Kedûr, Xurşîd, Çawîş</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -203,28 +225,76 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Kora</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Derived from its low-lying location. It is also the name of a Kurdish tribe in Kirmaşan in Eastern Kurdistan and near Qers.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 500 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Qaziqlî</span>, <span class="internal-link">Çiyayê Domûq</span></p>
+<p><strong>Wells:</strong> <span class="internal-link">Bîra Romanî</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kora</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong>Kora</strong> (كوران), <strong>Koran</strong> (كوران) /1861n - 315ha - 6km - 410m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kora</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Kora.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Kora.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Kora</span>, <span class="internal-link">Koran</span> /1861 inhabitants - 315 hectares - 6km - 410m altitude/:</p>
+<p>Kora: The village derived its name from its low-lying location. It is also the name of a Kurdish tribe in <span class="internal-link">Kirmaşan</span> in Eastern Kurdistan /Zekî, Vol 1, p. 430/. There is a tribe by the same name around <span class="internal-link">Qers</span> /Lerx, p. 61/.</p>
+<p>It is a large village located at the end of the southeastern slope of <span class="internal-link">Çiyayê Qaziqlî</span>. It contains archaeological remains in the form of walls, columns, foundations, and an old water well.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Koran: A village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Cindirês</span> subdistrict, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a large village located at the end of the southeastern edge of <span class="internal-link">Çiyayê Domûq</span> and the beginning of the Cindirês plain, which possesses fertile alluvial soil and abundant groundwater. It is located 6km north of the town of Cindirês. The construction of the area is ancient, evidenced by archaeological remains represented by walls, columns, and foundations distributed in the village, and a well from the Roman era.</p>
+<p>It is bordered to the north by mountainous heights planted with olive trees and the villages of <span class="internal-link">Çobana</span> and <span class="internal-link">Tatara</span>; to the south by the agriculturally fertile Cindirês plain planted with olive trees and pomegranate orchards, and the villages of <span class="internal-link">Zindakan</span> and <span class="internal-link">Yalanqoz</span>; to the west by an agriculturally fertile plain planted with olive trees and the village of <span class="internal-link">Kefer Sefrê</span> at a distance of 1km; and to the east by a valley and mountainous height planted with olive trees and the villages of <span class="internal-link">Miskê Jêrîn</span>, <span class="internal-link">Fofana</span>, and <span class="internal-link">Burc Kemoş</span>.</p>
+<p>The number of its houses reaches 160, and its age is approximately 500 years. Its traditional houses are made of stone and mud with flat wooden roofs, while the modern ones are cement and have expanded towards the west, north, and east, avoiding agricultural lands. Some modern villas exist there. It has an electricity network and a water network supplied by local artesian wells via a state-owned water network or from the old <span class="internal-link">Bîra Romanî</span> (Roman well). The village contains a primary school and a mosque in the center of the village, as well as a telephone network from the Cindirês center. It has five modern presses for pressing olives.</p>
+<p>The road from the village to the subdistrict center and neighboring villages is paved. Most of its residents work in olive cultivation, with a small amount of grains and legumes on an area of 299 hectares. Irrigated agriculture from artesian wells covers 16 hectares, producing summer vegetables, cotton, sugar beets, pomegranates, apples, and apricots, alongside the raising of sheep and goats. The village is considered famous for olive cultivation since ancient times due to the abundance of olive trees and both old and modern presses. It is a beautiful village in terms of location and the buildings scattered on both sides of the road. The farm of Çobana follows it administratively.</p>
+<p>Among the families present are: <span class="internal-link">Xurşîd</span>, <span class="internal-link">Kedûr</span> (among them Dr. <span class="internal-link">Mihemed Kedro</span> / Dentist), <span class="internal-link">Hac Mecîd</span>, <span class="internal-link">Hac Birîm</span>, <span class="internal-link">Çawîş</span>, and <span class="internal-link">Elûş</span>.</p>
+<p>The village Mukhtar is Mr. <span class="internal-link">Mihemed Xurşîd</span>. Among the artistic personalities are the late <span class="internal-link">Adîk Ebdulrehman Ehmed</span>, the plastic artist <span class="internal-link">Farûq Mihemed</span>, and the buzuq player <span class="internal-link">Cihad</span>.</p>
+<p>Sources:</p>
 <ul>
-<li><strong>Kora</strong> (كورا): The village derived its name from its low location. It is also the name of a <span class="internal-link">Kurdish</span> tribe in <span class="internal-link">Kermanshah</span> (كرمنشاه) in eastern <span class="internal-link">Kurdistan</span> (كردستان) /Zaki, J1, p.430/. There is also a tribe with the same name around <span class="internal-link">Qars</span> (قارص) /Lerkh, p.61/.</li>
-<li>A large village located at the end of the southeastern slope of <span class="internal-link">Qazqali mountain</span> (جبل قازقلي). It contains archaeological remains in the form of walls, columns, foundations and an ancient water well.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong>Koran</strong> (كوران): A village in <span class="internal-link">Kurdish mountain</span> (جبل الكرد), belonging to <span class="internal-link">Cindires Sub-district</span> (ناحية جندرس), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located at the end of the southeastern tip of <span class="internal-link">Dumuq mountain</span> (جبل دموق) and the beginning of <span class="internal-link">Cindires plain</span> (سهل جندرس) with its fertile alluvial soil and abundant groundwater. It is 6km north of <span class="internal-link">Cindires town</span> (بلدة جندرس). The region&#x27;s construction is ancient as evidenced by archaeological remains represented by walls, columns and distributed foundations in the village and a well from the <span class="internal-link">Roman era</span> (العهد الروماني).</p>
-<p>It is bordered to the north by mountainous heights planted with olive trees and <span class="internal-link">Jubanlı village</span> (قرية جوبانلي) and <span class="internal-link">Tataranlı</span> (تاتارانلي), to the south by the fertile Cindires plain (سهل جندرس) planted with olive trees and pomegranate orchards and <span class="internal-link">Zindkanli village</span> (قرية زندكانلي) (<span class="internal-link">Sindiyanka</span>) (سندياناك) and <span class="internal-link">Yalanqoz</span> (يلانقوز), to the west by fertile agricultural plains planted with olive trees and <span class="internal-link">Kefr Safra village</span> (قرية كفر صفرة) at 1km distance, and to the east by a valley and mountainous heights planted with olive trees and <span class="internal-link">Miske Lower</span> (مسكة تحتاني) and <span class="internal-link">Upper villages</span> (فوقاني) and <span class="internal-link">Burj Kamush</span> (برج كموش).</p>
-<p>The number of houses is 160 houses and its age is about <span class="internal-link">500 years</span> (500عاماً). Its traditional houses are stone and clay with flat wooden roofs, and the modern ones are concrete that expanded westward, northward and eastward avoiding agricultural lands. It has some modern villas. It has an electricity network and a water network from local artesian wells through a water network belonging to the state or from the ancient <span class="internal-link">Roman well</span> (البئر الروماني). It has an elementary school and a mosque in the village center and a telephone network from <span class="internal-link">Cindires center</span> (مركز جندرس). It has five modern olive presses.</p>
-<p>The road from it to the sub-district center and neighboring villages is paved. Most of its residents work in olive cultivation and few grains and legumes on 299 hectares irrigated from 16 hectares of artesian wells for summer vegetables, cotton, sugar beet, pomegranate, apples and apricots, in addition to raising sheep and goats.</p>
-<p>The village is famous for olive cultivation since ancient times due to the abundance of olive trees and old and modern presses, and it is a beautiful village in terms of location and buildings spread along both sides of the road. It is followed by <span class="internal-link">Jubanlı farm</span> (مزرعة جوبانلي). Among the existing families are (<span class="internal-link">Khurshid</span> (خورشيد) - <span class="internal-link">Kaddur</span> (كدور)/ including <span class="internal-link">Dr. Mohammed Kaddur</span> (الدكتور محمد كدرو) / <span class="internal-link">Dr. Asnan</span> (د أسنان) / - <span class="internal-link">Haj Majid</span> (حاج مجيد) - <span class="internal-link">Haj Barim</span> (حاج بريم) - <span class="internal-link">Al Jawbash</span> (آل جاوبش) - <span class="internal-link">Al Alush</span> (آل علوش)).</p>
-<p>The village mayor is <span class="internal-link">Mr. Mohammed Khurshid</span> (السيد محمد خورشيد). Among the artistic personalities are (the late <span class="internal-link">Adik</span> (آديك) - <span class="internal-link">Abdulrahman Ahmed</span> (عبدالرحمن أحمد) - sculptor <span class="internal-link">Farouk Mohammed</span> (فاروق محمد) - oud player <span class="internal-link">Jihad</span> (جهاد) .....).</p>
-<p>Preparation and implementation: Director of <span class="internal-link">Afrin Heritage website</span> (موقع تيريج عفرين): Abdulrahman Haji Othman (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Manager of Tirej Efrîn site: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Kora ، كوران /1861ن - 315هـ - 6كم - 410م/:</p>
+<ul>
+<li>كورا: استمدت القرية اسمها من موقعها المنخفض. كما أنه اسم لعشيرة كردية في</li>
+</ul>
+<p>كرمنشاه شرقي كردستان /زكي، ج1، ص430/. وتوجد عشيرة بنفس الاسم حول قارص /ليرخ، ص61/.</p>
+<ul>
+<li>قرية كبيرة، تقع عند نهاية السفح الجنوبي الشرقي لجبل قازقلي. فيها بقايا</li>
+</ul>
+<p>آثار على هيئة جدران وأعمدة وأساسات وبئر ماء قديم. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كوران : قرية في جبل الكرد ، تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع عند نهاية الطرف الجنوبي الشرقي لجبل دموق وبداية سهل جنديرس ذو التربة اللحقية الخصبة والمياه الجوفية الوفيرة ، تبعد عن بلدة جنديرس 6كم باتجاه الشمال ، بناء المنطقة قديم بدلالة البقايا الأثرية المتمثلة بالجدران والأعمدة والأساسات الموزعة في القرية وبئر من العهد الروماني . يحدها شمالاً مرتفعات جبلية مزروعة بأشجار الزيتون وقرية جوبانلي وتاتارانلي ، وجنوباً سهل جنديرس الخصب زراعياً مزروعة بأشجار الزيتون وبساتين الرمان وقرية زندكانلي (سندياناك) و يلانقوز ، وغرباً سهل خصب زراعياً مزروع بأشجار الزيتون وقرية كفر صفرة على بعد 1كم ، وشرقاً وادي و مرتفع جبلي مزروع بأشجار الزيتون وقريتي مسكة تحتاني و فوفاني وبرج كموش . يبلغ عدد بيوتها 160بيتاً وعمرها حوالي 500عاماً ، بيوتها التقليدية حجرية طينية بسقوف خشبية مستوية ، و الحديثة إسمنتية توسعت باتجاه الغرب والشمال والشرق متحاشية الأراضي الزراعية ، يوجد فيها بعض الفيلات الحديثة ، تتوفر فيها شبكة كهرباء وشبكة مياه من آبار ارتوازية محلية بواسطة شبكة مائية عائدة للدولة أو من البئر الروماني القديم ، فيها مدرسة إبتدائية وجامع حيث في وسط القرية وشبكة هاتف من مركز جنديرس ، فيها خمس معاصر حديثة لعصر الزيتون . الطريق منها إلى مركز الناحية والقرى المجاورة مزفتة ، يعمل معظم سكانها بزراعة الزيتون والقليل من الحبوب والبقول على مساحة 299 هـ وسقياً من آبار ارتوازية 16هـ الخضر الصيفية والقطن والشوندر السكري والرمان و التفاح والمشمش ، إلى جانب تربية الأغنام والماعز , وتعتبر القرية مشهورة بزراعة الزيتون منذ القدم بسبب كثرة أشجار الزيتون والمعاصر القديمة والحديثة ، و هي قرية جميلة من حيث الموقع والأبنية المنتشرة على جانبي الطريق ، تتبعها مزرعة جوبانلي .ومن العائلات الموجودة ( خورشيد  كدور/ منهم الدكتور محمد كدرو / د أسنان /   حاج مجيد  حاج بريم</p>
+<p>-</p>
+<p>آل جاوبش - آل علوش )</p>
+<p>مختار القرية السيد محمد خورشيد ، ومن الشخصيات الفنية ( الراحل آديك</p>
+<p>عبدالرحمن أحمد  التشكيلي فاروق محمد  عازف البزق جهاد ..... ) .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -242,7 +312,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Kora.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Kora.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=hiTBBtVq11E" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=hiTBBtVq11E</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=rBHM0hUJ0gw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=rBHM0hUJ0gw</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=C0_yEKPMLso" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=C0_yEKPMLso</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=3d73RLxApOU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3d73RLxApOU</a><br><a href="https://www.youtube.com/watch?v=gaJpf_Ls-EE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=gaJpf_Ls-EE</a><br><a href="https://www.youtube.com/watch?v=fYEgsG7TqC4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=fYEgsG7TqC4</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Kora.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Kora.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=hiTBBtVq11E" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=hiTBBtVq11E</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=rBHM0hUJ0gw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=rBHM0hUJ0gw</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=C0_yEKPMLso" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=C0_yEKPMLso</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=3d73RLxApOU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3d73RLxApOU</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=gaJpf_Ls-EE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=gaJpf_Ls-EE</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=fYEgsG7TqC4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=fYEgsG7TqC4</a></li></ul>
             </div>
 
             
@@ -252,7 +322,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -370,6 +440,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

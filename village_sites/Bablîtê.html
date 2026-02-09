@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,8 +203,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Bablit, Bablitê, Bablîtê, بابليت</p></div>
-<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Amîrat, Barazî, Bûzikî, Rûbarîn, Şêxîn</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Berî, Birîm Ehmed, Ebdo Ecac, Ebdulla, Ebdê Hesen, Ehmed Elêwî, Ehmed Hesen, Ehmed Naso, Ehmo, Essaf, Fadil Mosa, Hec Ibrahîm, Hec Istîf, Hec Sitî, Hemdê Elî, Hemdî Elêwî, Heskê ji Ehmed, Leqaf, Mamo, Mehmed Leqîf, Mhemed El Fadil, Mistefayê Celemê, Nûrî, Omer Inco, Riffet, Seydî Memî, Taha, Tofan, Welo, Xezal, Xezêl, Yaqûb, Îso, Îso Ehmed, Şêx, Şêx Osman</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Amîrat, Barazî, Bûzikî, Omêrat, Rûbarîn, Şêxîn</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Berî, Birîm Ehmed, Ebdo Ecac, Ebdulla, Ebdê Hesen, Ehmed Elêwî, Ehmed Hesen, Ehmed Naso, Ehmo, Essaf, Fadil Mosa, Hec Ibrahîm, Hec Istîf, Hec Sitî, Hemdê Elî, Hemdî Elêwî, Heskê ji Ehmed, Leqaf, Mamo, Mehmed Leqîf, Mhemed El Fadil, Mistefayê Celemê, Nûrî, Omer Inco, Riffet, Seydî Memî, Taha, Tofan, Tûfan, Umer, Welo, Xezal, Xezêl, Yaqûb, Yeqûb, Îso, Îso Ehmed, Şêx, Şêx Osman</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -227,20 +248,66 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Bablîtê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin) geographical study</span>&#x27; by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Bablîtê, بابليت</strong> /2251N - 4KM - 265M/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Bablîtê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-bablit.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-bablit.htm</a></p>
+<p>According to the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p>Bablît / 2251 inhabitants - 4km - 265m /:</p>
+<p>It is believed that the name is Syriac, derived from &quot;Ba&quot; and &quot;Blit&quot;. It is a small village located on the northern side of <span class="internal-link">Wadiya Me&#x27;rate</span>. In the early twentieth century, the family of <span class="internal-link">Şêx Ebdulqadir</span>, the Imam of the Rifa&#x27;i order in <span class="internal-link">Çiyayê Kurmênc</span>, lived there.</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Bablît: A village in Çiyayê Kurmênc, administratively belonging to the villages of the central district of the <span class="internal-link">Efrîn</span> region, Aleppo governorate. It is a small village located at the end of the northeastern slope of <span class="internal-link">Çiyayê Qereç</span> (Black Qereç Mountain), on both sides of <span class="internal-link">Wadiya Bablît</span>, which cuts through it from the northwest to the southeast and terminates at <span class="internal-link">Çemê Efrînê</span>.</p>
+<p>It is situated on a fertile agricultural plain. It is bordered to the north by an elevation and plateau planted with olive trees, the village of <span class="internal-link">Me&#x27;rate</span>, and <span class="internal-link">Keferşîl</span>. To the south, it is bordered by a slope, a fertile plain, the <span class="internal-link">Riya Efrîn-Cindirês</span> (Efrîn-Cindirês road), the village of <span class="internal-link">Betîte</span>, and the farm of <span class="internal-link">Mezreya Bozîkê</span>. To the west lie a plateau planted with olive trees, the village of <span class="internal-link">Keferdela Jêrîn</span>, and the nearby farm of <span class="internal-link">Mezreya Enderiyê</span>. To the east lie a wide and fertile plain, the <span class="internal-link">Riya Cindirês-Efrîn</span> (Cindirês-Efrîn road), the farm of <span class="internal-link">Mezreya Cedîde Kersan Taş</span>, the city of Efrîn, and its river.</p>
+<p>The number of houses reaches about 30, and its age is approximately 150 years. Its old houses are made of stone and mud with wooden ceilings, while the modern ones are of reinforced concrete. The village is surrounded by olive trees on all sides. It has an electricity network, an asphalt road leading up to the village, a primary school, and a water network drawing from <span class="internal-link">Bîra Me&#x27;rate</span> (Me&#x27;rate well) belonging to the state.</p>
+<p>Its residents work in the cultivation of grains, olives, and vegetables on an area of 489 hectares, and primarily in sheep raising. There are three modern olive presses in the village. The village soil is black clay, and it is considered one of the modern villages in the region.</p>
+<p>Among the families present in the village are: <span class="internal-link">Yeqûb</span>, <span class="internal-link">Xezal</span> (<span class="internal-link">Mihemed Ebd el-Xezal</span>, sheikh of the <span class="internal-link">Omêrat</span> tribe), <span class="internal-link">Tûfan</span>, and <span class="internal-link">Umer</span>.</p>
+<p>Holders of higher degrees in the village include: <span class="internal-link">Ednan Yeqûb</span> son of <span class="internal-link">Mihemed</span> (PhD in Mechanical Engineering/Metallurgy from Egypt), <span class="internal-link">Dr. Xalid Şêx Hesen</span> (PhD in Architecture), and many university graduates. The village Mukhtar is <span class="internal-link">Hemûd el-Xezal</span>.</p>
+<p>Social figures include <span class="internal-link">Şêx Mehmûd Ebd el-Xezal</span>, who holds a law degree from the University of Aleppo, and <span class="internal-link">Şêx Ebdulqadir Yeqûb</span> son of <span class="internal-link">Ebdulhenan</span>, sheikh of the Rifa&#x27;i order in the region.</p>
+<p>Sources:</p>
 <ul>
-<li>It is believed that the name is <span class="internal-link">Syriac</span> from &quot;Ba&quot; and &quot;Bleit&quot;.</li>
-<li>A small village located on the northern side of <span class="internal-link">Maaratah Valley</span>. The family of <span class="internal-link">Sheikh Abdul Qader</span>, imam of the <span class="internal-link">Rifai</span> path in the Afrin, lived there in the early twentieth century.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from Qatma village</p>
-<p><strong>Bablit</strong>: A village in the Afrin, belonging to the Central District and Afrin Region, Aleppo Governorate.</p>
-<p>It is a small village located at the end of the northeastern slope of <span class="internal-link">Karaj Al-Aswad Mountain</span> on the edge of <span class="internal-link">Bablit Valley</span> which crosses it from northwest to southeast, and ends at <span class="internal-link">Afrin River</span> and is located on a fertile agricultural plain. It is bordered to the north by a hill and plateau planted with olive trees and Maaratah, Kafr Sheil villages, and to the south by a slope, fertile plain, Afrin-Jindires road and Bteitah village and <span class="internal-link">Bozika</span> farm, and to the west by a plateau planted with olive trees and Kafr Dallah Al-Tahtani village and nearby <span class="internal-link">Al-Andariya</span> farm, and to the east by a wide and fertile plain, Jindires-Afrin road and the new <span class="internal-link">Karsan Tash</span> farm and Afrin city and its river. The number of its houses is about 30 houses and its age is about 150 years. Its old houses are stone and clay with wooden roofs and the modern ones are made of reinforced cement and the village is surrounded by olive trees from all sides. It has an electricity network and a paved road to the village, a primary school and a water network taken from Maaratah well belonging to the state. Its inhabitants work in agriculture of grains, olives and vegetables on an area of 489 hectares and raising sheep mainly. There are three modern olive presses in the village. The village soil is black fertile soil and it is one of the modern villages in the region.</p>
-<p>Among the families existing in the village: <span class="internal-link">Al-Yaqoub</span> - <span class="internal-link">Al-Ghazal</span> (<span class="internal-link">Mohammed Abdul Ghazal</span> / sheikh of <span class="internal-link">Al-Amiran</span> tribe / - <span class="internal-link">Al-Tufan</span> - <span class="internal-link">Al-Omar</span>.</p>
-<p>Among the holders of higher degrees in the village: Adnan Yaqoub bin Mohammed / doctorate in mechanical engineering in metallurgy / Egypt</p>
-<p>Dr. Khaled Sheikh Hassan / doctorate in architectural engineering</p>
-<p>And many university degree holders.</p>
-<p>Village mayor: Hamoud Al-Ghazal - And among the social figures Sheikh Mahmoud Abdul Ghazal holder of a law degree from Aleppo University and <span class="internal-link">Sheikh Abdul Qader Yaqoub bin Abdul Hanan</span> sheikh of the <span class="internal-link">Rifai path</span> in the region.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Bablîtê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=K-pLvWB0wdU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=K-pLvWB0wdU</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Manager of Navenda Tirej Efrîn: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Bablt ، بابليت /2251ن - 4كم - 265م/:</p>
+<ul>
+<li>يعتقد أن الاسم سرياني من &quot;با&quot; و &quot; بليت&quot;.</li>
+</ul>
+<ul>
+<li>قرية صغيرة تقع على الجهة الشمالية لوادي معراته. سكن فيها في أوائل القرن</li>
+</ul>
+<p>العشرين عائلة شيخ عبدالقادر إمام الطريقة الرفاعية في جبل الكرد. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه بابليت : قرية في جبل الكرد ، تتبع قرى مركز و منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع عند نهاية السفح الشمالي الشرقي لجبل كراج الأسود على طرفي وادي بابليت الذي يخترقها من الشمال الغربي إلى الجنوب الشرقي ، و ينتهي إلى نهر عفرين وهي واقعة على سهل خصب زراعياً يحدها شمالاً مرتفع وهضبة مزروعة بأشجار الزيتون وقرية معراتة و كفرشيل وجنوباً منحدر وسهل خصب وطريق عفرين جند يرس وقرية بتيتة ومزرعة بوزيكة وغرباً هضبة مزروعة بأشجار الزيتون وقرية كفردلة التحتاني ومزرعة العندرية القريبة وشرقاً سهل واسع وخصب وطريق جند يرس عفرين ومزرعة جديدة كرسان طاش ومدينة عفرين ونهرها . يبلغ عدد بيوتها حوالي30بيتاً وعمرها حوالي150عاماً بيوتها القديمة حجرية طينية ذات سقوف خشبية والحديثة من الأسمنت المسلح وقرية محاطة بأشجار الزيتون من كل الجهات تتوفر فيها شبكة الكهرباء وطريق مزفت حتى القرية ومدرسة ابتدائية وشبكة المياه المأخوذة من بئر معراته العائدة للدولة . يعمل سكانها بزراعة الحبوب والزيتون والخضروات على مساحة 489هـ وتربية الأغنام بشكل ريئسي يوجد في القرية ثلاث معاصر زيتون حديثة ، تربة القرية تربة سوداء غضارية وهي من القرى الحديثة في المنطقة . ومن العائلات الموجودة في القرية : آل يعقوب - آل غزال ( محمد عبد الغزال / شيخ عشيرة العميرات / -  آل طوفان -  - آل عمر</p>
+<p>-</p>
+<p>ومن حاملي الشهادات العليا في القرية : عدنان يعقوب بن محمد / دكتوراه في الهندسة الميكانيكية في علم المعادن / مصر الدكتور خالد شيخ حسن / دكتوارة في الهندسة المعمارية والعديد من حملة الشهادات الجامعية .</p>
+<p>مختار القرية :  حمود الغزال</p>
+<ul>
+<li>ومن الوجوه الاجتماعية</li>
+</ul>
+<p>الشيخ محمود عبد الغزال الحائز على شهادة الحقوق من جامعة حلب والشيخ عبدالقادر يعقوب بن عبدالحنان شيخ الطريقة الرفاعية في المنطقة  .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Bablîtê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=K-pLvWB0wdU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=K-pLvWB0wdU</a></p>
 <p>The village of <span class="internal-link">Bablîtê</span> is situated near the city of <span class="internal-link">Efrîn</span> and is renowned for the deep historical coexistence between <span class="internal-link">Kurd</span> and <span class="internal-link">Arab</span> residents. The village was not always located at its current site; elders recount that the original settlement was situated approximately two kilometers away &quot;li jor&quot; (up above) near a ridge and a now-dry spring. The modern village is estimated to be around two hundred years old. There are differing accounts regarding the etymology of the name Bablîtê. Some residents believe it derives from <span class="internal-link">Baba Gît</span> or <span class="internal-link">Baba Agît</span>, translating to &quot;Father Egîd&quot; or &quot;Father Hero,&quot; referring to a historical figure of righteousness. Alternatively, it is suggested the name may have <span class="internal-link">Syriac</span> origins, potentially meaning <span class="internal-link">Mala Pît</span> or &quot;House of Letters.&quot;</p>
 <p>The social structure of Bablîtê is a blend of <span class="internal-link">Kurdish</span> and Arab lineages who share a communal life, intermarrying and celebrating holidays together. The first family to settle in the village was the <span class="internal-link">Hemdê Elî</span> (or <span class="internal-link">Hemdî Elêwî</span>) family from the Arab tribe of <span class="internal-link">Amîrat</span>. They were followed by other families from the Amîrat tribe, including the <span class="internal-link">Xezal</span>, <span class="internal-link">Tofan</span>, <span class="internal-link">Essaf</span>, <span class="internal-link">Fadil Mosa</span>, and <span class="internal-link">Hec Istîf</span>. Kurdish families such as <span class="internal-link">Şêx Osman</span>, <span class="internal-link">Mamo</span>, <span class="internal-link">Heskê ji Ehmed</span>, <span class="internal-link">Yaqûb</span> of the <span class="internal-link">Şêxîn</span> tribe, and the Mamo family of the <span class="internal-link">Rûbarîn</span> tribe also established themselves there. Historical agrarian relations were defined by local Aghas, specifically <span class="internal-link">Seydî Memî</span>, <span class="internal-link">Riffet</span>, and <span class="internal-link">Mistefayê Celemê</span>, who employed families like <span class="internal-link">Barazî</span>, <span class="internal-link">Bûzikî</span>, and <span class="internal-link">Ehmed Naso</span> as sharecroppers before those families largely moved away.</p>
 <p>Geographically, Bablîtê is bordered by the <span class="internal-link">Deşta Efrînê</span> to the east, the <span class="internal-link">Geliyê Heftê Rişkê</span> valley, the village of <span class="internal-link">Tîtê</span> to the south, and <span class="internal-link">Qeracêreş</span> and <span class="internal-link">Kaniya Xezalê</span> to the west. To the north lie <span class="internal-link">Maratê</span> and <span class="internal-link">Girê Bergirê</span>. Historical infrastructure includes remains of a Roman canal, known as <span class="internal-link">Qenaya Romane</span>, and ancient wells like <span class="internal-link">Keferşîlê</span>. Today, the village utilizes water from the <span class="internal-link">Sedê Meydankê</span> for agriculture, primarily cultivating olives and lentils.</p>
@@ -320,7 +387,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-bablit.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-bablit.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=EW1GhPiNKv0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=EW1GhPiNKv0</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=QbY1xGkp71Q" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=QbY1xGkp71Q</a><br><a href="https://www.youtube.com/watch?v=VY4Uxit2fzM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VY4Uxit2fzM</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=K-pLvWB0wdU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=K-pLvWB0wdU</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-bablit.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-bablit.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=EW1GhPiNKv0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=EW1GhPiNKv0</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=QbY1xGkp71Q" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=QbY1xGkp71Q</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=VY4Uxit2fzM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VY4Uxit2fzM</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=K-pLvWB0wdU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=K-pLvWB0wdU</a></li></ul>
             </div>
 
             
@@ -330,7 +397,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -448,6 +515,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

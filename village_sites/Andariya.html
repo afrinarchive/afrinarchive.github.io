@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -126,15 +147,49 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Andariya</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Foundation Date/Period:</strong> approximately 75 years ago</p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Andariya</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book: Afrin.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong>Endarê (عندريه)</strong>: A farm in the <span class="internal-link">Cindirês plain</span> (سهل جندیرس) (<span class="internal-link">Joum</span> (جوم)), belonging to <span class="internal-link">Cindirês subdistrict</span> (ناحية جندیرس), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small farm located in a fertile plain with loamy soil and abundant groundwater near the farm. To the north, there is an agricultural plain and the <span class="internal-link">Sili valley</span> (وادي سيلي) planted with olive trees and <span class="internal-link">Keferdali Tahtani village</span> (قرية كفردلي تحتاني). To the south, there is a fertile agricultural plain and <span class="internal-link">Tillif village</span> (قرية تللف). To the west, there is a wide plain planted with olive trees and <span class="internal-link">Sheikh Abdul Rahman village</span> (قرية الشيخ عبد الرحمن). To the east, there is a wide plain planted with olive trees and <span class="internal-link">Kefar Batra village</span> (قرية كفر بطرة). It has about 6 houses and its age is about 75 years. Its modern houses are made of stone and reinforced concrete. The first to inhabit it were the people of <span class="internal-link">Iki Akhour village</span> (قرية إيكي آخور). It has an electricity network and a paved road passing through its center to Cindirês (جندیرس) and Afrin City (عفرين). The village drinks from artesian well water located beside the houses. Its residents work in olive and grain cultivation rainfed and irrigated from artesian wells with summer vegetables, in addition to raising sheep and goats.</p></div></details></div>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Andariya</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20andarya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20andarya.htm</a></p>
+<p>And it was stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Neherha we Rewabîha el-Xedra</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p><span class="internal-link">Enderiyê</span>: A farm (hamlet) in the <span class="internal-link">Cindirês</span> plain (<span class="internal-link">Cûm</span>), affiliated with the Cindirês subdistrict, <span class="internal-link">Efrîn</span> district, Heleb governorate. It is a small farm located in a fertile plain with alluvial soil and abundant groundwater near the farm.</p>
+<p>It is bordered on the north by an agricultural plain, a seasonal valley planted with olive trees, and the village of <span class="internal-link">Keferdelê Jêrîn</span>; on the south by a fertile agricultural plain and the village of <span class="internal-link">Tilef</span>; on the west by a wide plain planted with olive trees and the village of <span class="internal-link">Şêx Ebdurehman</span>; and on the east by a wide plain planted with olive trees and the village of <span class="internal-link">Kefer Betra</span>.</p>
+<p>The number of its houses reaches approximately 6 houses and its age is about 75 years. Its modern houses are built of stone and reinforced cement. The first to inhabit it were the people of the village of <span class="internal-link">Îkî Axûr</span>.</p>
+<p>An electricity network is available there, as well as an asphalted road passing through its center to Cindirês and Efrîn. The village drinks from artesian well water found next to the homes. Its residents work in the cultivation of olives and grains via rainfed farming, and irrigated summer vegetables from artesian wells, alongside raising sheep and goats.</p>
+<p>Preparation and execution:</p>
+<p>Director of <span class="internal-link">Tirej Efrîn</span> website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Neherha we Rewabîha el-Xedra by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه عندريه : مزرعة في سهل جنديرس ( جوم ) ، تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي مزرعة صغيرة تقع في سهل خصب ذو تربة لحقية وفيرة المياه الجوفية بالقرب من المزرعة ، يحدها شمالاً سهل زراعي ووادي سيلي مزروع بأشجار الزيتون وقرية كفردلي تحتاني ، وجنوباً سهل خصب زراعياً وقرية تللف ، وغرباً سهل واسع مزروع بأشجار الزيتون وقرية الشيخ عبد الرحمن ، وشرقاً سهل واسع مزروع بأشجار الزيتون وقرية كفر بطرة ، يبلغ عدد بيوتها حوالي 6بيوت وعمرها حوالي 75عاماً ، بيوتها الحديثة من الحجر والإسمنت المسلح , أول من سكنها أهالي قرية إيكي آخور ، تتوفر فيها شبكة كهرباء وطريق مزفت يمر في وسطها إلى جنديرس وعفرين ، تشرب القرية من مياه الآبار الارتوازية الموجودة بجانب المنازل ، يعمل سكانها بزراعة الزيتون والحبوب بعلاً ورياً من الآبار الارتوازية الخضر الصيفية ، إلى جانب تربية الأغنام والماعز .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -149,7 +204,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20andarya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20andarya.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20andarya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20andarya.htm</a></li></ul>
             </div>
 
             
@@ -159,7 +214,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -277,6 +332,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

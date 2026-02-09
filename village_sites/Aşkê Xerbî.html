@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Ashkan West, Aşkê Xerbî, آشكان, اشكان غربي</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Aşkan</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -201,24 +223,90 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Aşkê Xerbî</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Named after the Aşkan tribe (mentioned as Aşkî by Şerefxan). Linked by Diakonoff to the ancient Eskît (Scythian) people derived from &quot;Aşkîda&quot; (meaning: the ancient archaeological one).</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 500 years ago</p>
+<p><strong>Shrines:</strong> <span class="internal-link">Şêx Bêreqdar</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çamli Bêl</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Aşkê Xerbî</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin) geographical study</span>&#x27; by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Aşka (آشكان), Ashkan (آشكان):</strong></p>
-<p>Ashkan (آشكان): The name of a Kurdish tribe mentioned by <span class="internal-link">Sharafkhan</span> (شرفخان) under the name <span class="internal-link">Ashki</span> (آشكي) /Lerkh, p.75/. The <span class="internal-link">Soviet</span> orientalist <span class="internal-link">Diakonov</span> (دياكونوف) /p.229/ mentions the name of the people &quot;<span class="internal-link">Askit</span>&quot; (اسكيت) as being from the word &quot;<span class="internal-link">Ashkida</span>&quot; (آشكيدا), which means &quot;the ancient archaeological&quot;, and this people or tribe are from the peoples of the Kurdistan mountains (جبال كردستان) in the eighth century BC, and are considered among the ancestors of the Kurds (الأكراد). I believe there is great similarity between the name of this people and the name of the &quot;Ashkan&quot; (آشكان) tribe.</p>
-<p><strong>Aşkê Xerbî (آشكان غربي), Ashkan West (آشكان غربي)</strong> /1138N - 764E - 7km - 310m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Aşkê Xerbî</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20ashkan%20xerbi.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20ashkan%20xerbi.htm</a></p>
+<p>According to the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Aşka</span>, <span class="internal-link">Aşkan</span>:</p>
+<p>Aşkan: The name of a Kurdish tribe mentioned by <span class="internal-link">Şerefxan</span> under the name <span class="internal-link">Aşkî</span> (Source:- Sharafnama, p. 75). The Soviet Orientalist Diakonoff (p. 229) mentions the name of the &quot;Scythian&quot; (Eskît) people as coming from the word &quot;Aşkîda,&quot; which means &quot;the ancient archaeological one.&quot; This people or tribe is among the peoples of the mountains of Kurdistan in the eighth century BC and is considered among the ancestors of the Kurds. I believe there is a great similarity between the name of this people and the name of the Aşkan tribe.</p>
 <ul>
-<li>A medium village. Its houses spread on a height in the middle of wide olive fields.</li>
+<li>Aşkan Xerbî /1138 inhabitants - 764 hectares - 7km - 310m altitude/:</li>
+<li>It is a medium-sized village. Its houses are spread on a rise amidst wide olive fields.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed (عبدالرحمن محمد) from Qatma village (قرية قطمة):</p>
-<p><strong>Ashkan West (اشكان غربي)</strong>: A village in the Kurdish Mountain (جبل الكرد), belonging to Cindirês District (ناحية جندیرس), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located at the bottom of the southeastern slope of the Kurdish Mountain (جبل الكرد) where the transitional lands between the mountainous pastures and the agricultural plain lands to the west of the water course. It is 7km west of the town of Cindirês (جندیرس). To the north, there are mountainous heights and the shrine of <span class="internal-link">Sheikh Beirqdar</span> (الشيخ بيرقدار) on the highest mountainous height and Marwaneh Foqani village (قرية /مروانه فوقاني/). To the south, there is a slope and a wide, fertile agricultural plain and the road (Afrin City (عفرين) - Al-Hamam (الحمام)) and Haj Iskender village (قرية /حاج اسكندر/). To the west, there is a fertile plain planted with olive trees and mountainous and forest heights and Al-Hamam village (قرية /الحمام/). To the east, a valley runs from the village starting from the north and ending in the south in the Cindirês plain (سهل جندیرس) and the nearby Baflllor village (قرية /بافللور/) and Kefar Safra (كفر صفرة).</p>
-<p>Its dwellings are stone and clay, and most of them have been demolished and modern construction has been built in their place, which spreads towards the west and south and along the transportation roads and on the slope of the adjacent mountain, and it has become dominant over the old construction. It has 150 houses and its age is about 500 years according to the words of one of the village&#x27;s elderly residents. It was previously caves inhabited by the village people. It has an electricity network, an elementary school, and a mosque in the center of the village. The road connecting to the subdistrict is paved. Most of its residents work in olive cultivation, which forms 90% of the cultivated areas, then grains and legumes rainfed and raising sheep and goats. It secures drinking water from the well located east of the village and from cisterns that collect rainwater. It is followed by the farm <span class="internal-link">Jamili Bil</span> (جاميلي بيل).</p>
-<p>Village Headman: Mohammed Hassan Hamdoush (محمد حسن حمدوش)</p></div></details></div>
+<ul>
+<li>According to the book عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by the writer عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme:</li>
+</ul>
+<ul>
+<li>Aşkan Xerbî:</li>
+<li>A village in Çiyayê Kurmênc, administratively belonging to the Cindirês district of the Efrîn region, Heleb governorate. It is a large village located at the bottom of the southeastern slope of Çiyayê Kurmênc, where the transitional lands between mountain pastures and agricultural plains are located, to the west of a watercourse.</li>
+</ul>
+<ul>
+<li>It is 7km west of the town of Cindirês. It is bordered to the north by mountain heights, the shrine of Şêx Bêreqdar on the highest mountain peak, and the village of Merwanê Jorîn. To the south, there is a slope and a wide, agriculturally fertile plain, the Riya Efrîn-Hemam (Efrîn-Hemam road), and the village of Hac Îskender. To the west, a fertile plain planted with olive trees, mountain and forest heights, and the village of Hemam. To the east, a valley passes through the village starting from the north and ending in the south in the Cindirês plain, along with the nearby village of Baflûr and Kefer Sefrê.</li>
+</ul>
+<ul>
+<li>Its residences were stone and mud; most have been demolished, and modern construction has been erected in their place, spreading towards the west and south, adjacent to the transportation road and on the slope of the neighboring mountain. Modern buildings have become predominant over the old ones. The number of its houses reaches 150, and its age is approximately 500 years, according to the statements of one of the elderly residents of the village. Previously, it consisted of caves inhabited by the people of the village.</li>
+</ul>
+<ul>
+<li>An electricity network, a primary school, and a mosque in the center of the village are available. The road connecting to the district center is paved. Most of its inhabitants work in olive cultivation, which constitutes 90% of the cultivated areas, followed by rain-fed grains and legumes, and the raising of sheep and goats. Drinking water is secured from the well located east of the village and from cisterns that collect rainwater. The farm of Çamli Bêl is attached to it.</li>
+</ul>
+<ul>
+<li>Village Mukhtar: Mihemed Hesen Hemdûş</li>
+</ul>
+<ul>
+<li>Sources:</li>
+</ul>
+<ul>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
+</ul>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and execution:</p>
+<ul>
+<li>Director of the Tirej Efrîn website: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Aşka ، آشكان: آشكان: اسم عشيرة كردية يذكرها شرفخان تحت اسم آشكي /ليرخ، ص75/. ويذكر المستشرق السوفييتي /دياكونوف - ص229/ اسم شعب &quot;اسكيت&quot; بأنه من كلمة &quot;آشكيدا&quot;، والذي يعني &quot;الأثري القديم&quot;، وهذا القوم أو القبيلة هم من أقوام جبال كردستان في القرن الثامن قبل الميلاد، ويعتبر من أسلاف الأكراد، وأعتقد أن هناك تشابها كبيرا بين اسم هذا القوم واسم قبيلة &quot;آشكان&quot;. Aşk Xerb ، آشكان غربي /1138ن - 764هـ</p>
+<ul>
+<li>7كم - 310م/:</li>
+</ul>
+<ul>
+<li>قرية متوسطة. تنتشر بيوتها على مرتفع وسط حقول الزيتون الواسعة.</li>
+</ul>
+<p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه اشكان غربي : قرية في جبل الكرد ، تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع عند أسفل السفح الجنوبي الشرقي لجبل الكرد حيث الأراضي الانتقالية بين المراعي الجبلية والأراضي السهلية الزراعية إلى الغرب من مسيل ماء . تبعد عن بلدة جنديرس 7كم غرباً ، يحدها شمالاً مرتفعات جبلية ومزار شيخ بيرقدار في أعلى مرتفع جبلي وقرية / مروانه فوقاني/ ، وجنوباً منحدر و سهل واسع وخصب زراعياً وطريق ( عفرين _ الحمام ) وقرية /حاج اسكندر/ ، وغرباً سهل خصب مزروع بأشجار الزيتون ومرتفعات جبلية وحراجية وقرية /الحمام/ ، وشرقاً وادي يمر من القرية بدءاً من الشمال وينتهي في الجنوب في سهل جنديرس وقرية /بافللور/ القريبة و/ كفر صفرة/ . مساكنها حجرية طينية وقد هدم معظمها وأقيم مكانها البناء الحديث الذي ينتشر باتجاه الغرب و الجنوب وبمحاذاة طريق المواصلات وعلى سفح الجبل المجاور لها وأصبح غالباً على البناء القديم ، يبلغ عدد بيوتها 150بيتاً وعمرها حوالي 500عاماً حسب أقوال أحد سكان القرية المعمرين , كانت سابقاً عبارة عن كهوف يسكنها أهل القرية ، تتوفر فيها شبكة للكهرباء ومدرسة إبتدائية وجامع في وسط القرية , الطريق الواصل إلى الناحية مزفتة . يعمل معظم سكانها بزراعة الزيتون ، التي تشكل 90%من المساحات المزروعة ثم الحبوب والبقول بعلاً وتربية الأغنام و الماعز ، تؤمن مياه الشرب من البئر الواقع شرقي القرية و من الصهاريج التي تجمع مياه الأمطار تتبعها مزرعة /جاملي بيل/ .</p>
+<p>مختار القرية :  محمد حسن حمدوش</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -236,7 +324,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20ashkan%20xerbi.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20ashkan%20xerbi.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20ashkan%20xerbi.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20ashkan%20xerbi.htm</a></li></ul>
             </div>
 
             
@@ -246,7 +334,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -364,6 +452,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

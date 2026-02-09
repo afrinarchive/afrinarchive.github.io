@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -166,6 +187,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Ashour, Masto Ashour, Mist&#x27;ešûra, عاشور, مستو عاشور</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Xastiyan</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -192,25 +214,104 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Mist&#x27;eşûra</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> A local Kurdish proper name formed by merging the two names Mistefa and &#x27;Aşûr. The Arabized version took the second half of the name.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 250 years ago</p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Sîlî</span>, <span class="internal-link">Cercim</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Mist&#x27;eşûra</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد (عفرين)</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin City)</span>&#x27; geographical study by Dr. Mohammed Abdo Ali (محمد عبدو علي):</p>
-<p><strong><span class="internal-link">Mist&#x27;ešûra</span> (مستو عاشور), عاشور</strong> /508n - 14km - 620m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Mist&#x27;eşûra</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mist%20ashora.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mist%20ashora.htm</a></p>
+<p><span class="internal-link">Mist&#x27;eşra</span> / <span class="internal-link">Mistû &#x27;Aşûr</span></p>
+<p>According to the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>, the village is named Mist&#x27;eşra, Mistû &#x27;Aşûr, or <span class="internal-link">&#x27;Aşûr</span>. There are 508 inhabitants, and it is located at an altitude of 620m, approximately 14km away. The name is a local Kurdish proper name formed by merging the names <span class="internal-link">Mistefa</span> and &#x27;Aşûr, while the Arabized version adopted the second half of the name. It is a small village of the <span class="internal-link">Xastiyan</span> tribe, located on both sides of a valley that cuts through it from the northwest toward the southeast. Oak and pine trees, as well as olive groves, are spread around it.</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme, Mistû &#x27;Aşûr is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Mabeta</span> district of the <span class="internal-link">Efrîn</span> region in the Aleppo governorate. It is a small village situated in the middle section of the mentioned mountain, on the western slope of a marly limestone plateau that overlooks the south and east. It overlooks the valley of <span class="internal-link">Sîlî</span>, which heads south, passing through the center of the village toward the valley of <span class="internal-link">Cercim</span>.</p>
+<p>The village is bordered to the north by a high mountain range planted with olive trees, several watercourses, and the village of <span class="internal-link">Elî Caro</span>. To the south, it is bordered by a slope, the valley of Sîlî (which divides the village into two sections: western and eastern), the valley of Cercim, and the village of <span class="internal-link">Rotanlî</span> located on a high mountain peak. To the west, there is a high mountain range planted with forest trees and olives, along with the villages of <span class="internal-link">Maxarcik</span> and <span class="internal-link">Turmişkanlî</span>. To the east, there is a high mountain ridge, a very deep valley, and the village of <span class="internal-link">Şêrkanlî</span>.</p>
+<p>The number of houses reaches approximately 55, and the village is about 250 years old. Its houses are made of stone and mud with flat wooden roofs, though modern cement dwellings have begun to spread around them, replacing the old houses. An electricity network and a primary school are available in the village. The village gets its drinking water from cisterns that collect rainwater in winter. The residents work in rain-fed agriculture such as olives, grains, and apricots, alongside raising sheep and goats. It is located about 17km southwest of the town of Mabeta, and it is connected to the district center by a paved road reaching the center of the village.</p>
+<p>Village Mokhtar: <span class="internal-link">Remzî Heqî</span></p>
+<p>Sources:</p>
 <ul>
-<li>A local Kurdish proper name formed by combining the names <span class="internal-link">Mustafa</span> (مصطفى) and <span class="internal-link">Ashour</span> (عاشور), with the Arab speakers taking the second half of the name.</li>
-<li>A small Kurdish village located on the edge of a valley that cuts through it from the northwest toward the southeast. Oak and pine trees spread around it along with olive groves.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: &#x27;<span class="internal-link">عفرين.... نهرها ورواbiها الخضراء</span>&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27; by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Masto Ashour</span></strong> (مستو عاشور): A village in <span class="internal-link">Kurd Mountain</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), <span class="internal-link">Afrin City Region</span> (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the central section of the mentioned mountain, on the western slope of a calcareous marine plateau extending south and east and on two stream valleys heading south passing through the center of the village toward the <span class="internal-link">Jarjam valley</span> (وادي جرجم). To the north it is bordered by a high mountain range planted with olive trees and several streams and <span class="internal-link">Ali Jarou village</span> (قرية علي جارو), and to the south by a slope and stream valley. The village is divided into two parts: western and eastern, with the <span class="internal-link">Jarjam valley</span> (وادي جرجم) and <span class="internal-link">Rutanli village</span> (قرية روطانلي) at the highest mountain elevation, and to the west a high mountain range planted with forest trees and olives and <span class="internal-link">Magharjiq village</span> (قرية مغارجق) and <span class="internal-link">Tormashkanli village</span> (طورمشكانلي), and to the east a high mountain elevation and very deep valley and <span class="internal-link">Shirkanli village</span> (قرية شيركانلي). It contains approximately 55 houses (بيتاً) and is 250 years old (عاماً). Its houses are stone and clay with flat wooden roofs. Modern cement residences have begun to spread around it replacing the old houses. It has an electricity network and a primary school. The village drinks from cisterns that collect rainwater in winter. The residents work in rain-fed agriculture such as olives, grains, and apricots, alongside raising sheep and goats. It is about 17km from <span class="internal-link">Mabetli town</span> (بلدة معبطلي) toward the southwest, connected to the district center by a paved road to the center of the village.</p>
-<p>Village headman: <span class="internal-link">Ramzi Haqqi</span> (رمزي حقي)</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Manager of Tirej Efrîn site: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Mist&#x27;eşra ، مستو عاشور ، عاشور /508ن - 14كم - 620م/:</p>
+<ul>
+<li>اسم علم كردي محلي من دمج الاسمين مصطفى وعاشور، وقد أخذ المعرب النصف</li>
+</ul>
+<p>الثاني من الاسم.</p>
+<ul>
+<li>قرية خاستيانية صغيرة تقع على طرفي واد يخترقها من الشمال الغربي نحو</li>
+</ul>
+<p>الجنوب الشرقي. وتنتشر حولها أشجار السنديان والصنوبر وحقول الزيتون. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه مستو عاشور : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في القسم الأوسط من الجبل المذكور ، على السفح الغربي لهضبة كلسية مارنية تطل جنوباً وشرقاً وعلى وادي سيلي يتجه نحو الجنوب مروراً من وسط القرية باتجاه وادي جرجم ، يحدها شمالاً سلسلة جبلية عالية مزروعة بأشجار الزيتون وعدة مسيلات وقرية علي جارو ، وجنوباً منحدر ووادي سيلي وتنقسم القرية إلى قسمين : غربي وشرقي ووادي جرجم وقرية روطانلي في أعلى مرتفع جبلي ، وغرباً سلسلة جبلية عالية مزروعة بالأشجار الحراجية والزيتون وقرية مغارجق وطورمشكانلي ، وشرقاً مرتفع جبلي عالي ووادي عميق جداً وقرية شيركانلي ، يبلغ عدد بيوتها حوالي 55 بيتاً ، وعمرها 250 عاماً ، بيوتها حجرية طينية ذات سقوف خشبية مستوية ، بدأت تنتشر حولها المساكن الإسمنتية الحديثة مكان البيوت القديمة ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وتشرب القرية من صهاريج تجمع فيها مياه الأمطار شتاءً ، يعمل السكان بالزراعة البعلية كالزيتون والحبوب والمشمش ، إلى جانب تربية الأغنام والماعز ، تبعد عن بلدة معبطلي حوالي 17كم باتجاه الجنوب الغربي ، تصلها بمركز الناحية بطريق مزفت حتى وسط القرية .</p>
+<p>مختار القرية : رمزي حقي</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Mist&#x27;eşûra from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=F25V9dqaZ3k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=F25V9dqaZ3k</a></p>
+<p>The documentary focuses on the village of <span class="internal-link">Mist Eşûra</span>, which is located within the administrative jurisdiction of the <span class="internal-link">Mabatoyê</span> region. The village is inhabited by approximately sixty to seventy households. Geographically, Mist Eşûra is described as sitting within a &quot;kort&quot; (a hollow or depression), surrounded by a natural landscape distinguished by the presence of <span class="internal-link">Merx</span> trees.</p>
+<p>Regarding the village&#x27;s infrastructure, the transcript notes the existence of a school and a mosque. However, the roads leading into and through the settlement are highlighted as being particularly rough and difficult to navigate. During the visit, the host enters the home of a resident referred to as <span class="internal-link">Apô Azad</span>, exchanging greetings with him and other locals like <span class="internal-link">Meyo Cemal</span>.</p>
+<p>A substantial portion of the record documents a chance encounter with a mobile vaccination team operating in the area, specifically mentioning their work near <span class="internal-link">Sikêniyê</span> as well. The medical personnel discuss their efforts to immunize the local population against &quot;şelel el atfal&quot; (polio) and &quot;surka&quot; (measles). They address the difficulties of combating false rumors regarding vaccine safety and explain their process of issuing &quot;bitaqa spî&quot; (white cards) to track the health records of the children.</p>
+<p>Throughout the footage, a song dedicated to the <span class="internal-link">Efrîn</span> region provides a cultural backdrop, referencing significant regional landmarks such as <span class="internal-link">Deşta Cûmê</span>, <span class="internal-link">Çiyayê Hawar</span>, and <span class="internal-link">Kel a Horî</span>, as well as symbolic names like <span class="internal-link">Eynûne</span> and <span class="internal-link">Zeytûne</span>. These references situate Mist Eşûra within the broader emotional and geographical context of the region, even though those specific landmarks are not located within the village itself.</p></div></details></div>
                 </div>
 
-            
+            <div class="card p-6 rounded-xl">
+            <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcriptions and Subtitles</h2>
+            <div class="p-4 prose-compact max-w-none">
+    <div class="mb-4">
+        <a href="../village_subtitles/how_to_use_substital.html" target="_blank" class="text-base font-medium external-link hover:underline">Need help with using this subtitles on Youtube? (Click here)</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b-2 themed-border">
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Source</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Video</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Subtitles</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Transcript</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Afrin 366 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=F25V9dqaZ3k" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/afrin366_videos_125_Mist'esura.srt" download="afrin366_videos_125_Mist'esura.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Mist'eşûra_Afrin 366_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    </div>
+        </div>
 
             <div class="card p-6 rounded-xl space-y-6">
                 
@@ -222,7 +323,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mist%20ashora.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mist%20ashora.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mist%20ashora.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mist%20ashora.htm</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=F25V9dqaZ3k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=F25V9dqaZ3k</a></li></ul>
             </div>
 
             
@@ -232,7 +333,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -350,6 +451,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

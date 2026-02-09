@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,6 +205,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Nasr, Kuri, Kurê, النصر, كري, كريه</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ewnî Beg</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -211,27 +233,73 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Kurê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The name Kur means the clipped, the shaven, or the barren. It is a name given to a high place that is treeless, or where the trees are at a single level. The Arabized name El-Nesr has no connection to the original name.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 300 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Ekaş</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Semaq</span>, <span class="internal-link">Old house of Ewnî Beg</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Valley of Sarisn</span>, <span class="internal-link">Deşta Amûqê</span>, <span class="internal-link">Çemê Reş</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kurê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin / Geographic Study:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Kurê</span> (كوري), <span class="internal-link">Al-Nasr</span> (النصر)</strong> /494N - 674m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kurê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kure.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kure.htm</a></p>
+<p>Based on the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Kur</span>, <span class="internal-link">Kurê</span>, <span class="internal-link">El-Nesr</span> /494 inhabitants, 674m altitude/:</p>
+<p>Kur: Meaning the clipped, the shaven, the barren. It is a name given to a high place that is treeless, or where the trees are at a single level. This description fits the location of the village. Kurds usually call such mountainous places Kur. As for El-Nesr, it is an Arabized name that has no connection to the original name of the village.</p>
+<p>It is a small village located on a high, steep, forested mountainous hill that is difficult to climb except from the eastern side via the valley of <span class="internal-link">Sarisn</span>. The location of the village is extremely beautiful.</p>
+<p>Based on the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Kurê: A village in <span class="internal-link">Çiyayê Kurmênc</span> belonging to the <span class="internal-link">Reco</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village located in the middle section of the mentioned mountain on the slope of a mountainous elevation overlooking the lands of <span class="internal-link">Deşta Amûqê</span>. It is 9 km away from the town of Reco towards the southwest.</p>
+<p>It is bordered to the north by a rugged and harsh slope, a deep valley, the ruins of <span class="internal-link">Semaq</span>, and the mountain of <span class="internal-link">Ekaş</span>. It is bordered to the south by a harsh slope planted with forest trees, oak, and terebinth, and the village of <span class="internal-link">Şediya</span>. It is bordered to the east by a harsh slope and two deep watercourses, then a very high and rugged mountain range and the villages of <span class="internal-link">Kumreş</span> and <span class="internal-link">Hesen Kelkawî</span>. It is bordered to the west by a slope, Deşta Amûqê, <span class="internal-link">Çemê Reş</span> (Black River), and the Turkish border directly.</p>
+<p>The number of its houses is about 10 houses, and its age is about 300 years. It is one of the old villages and was inhabited by old families in the region, such as the family of (<span class="internal-link">Ewnî Beg</span>) during the Ottoman occupation of the region. Slopes are located around the village from all directions. Its old dwellings are made of stone and mud with flat wooden roofs, while the modern ones are cement.</p>
+<p>A electricity network, a dirt mountain road, and a primary school shared with the village of Şediya are available in the village. There is also an old archaeological house on the eastern side of the village belonging to the previously mentioned family. The village drinks water from cisterns where rainwater is collected in winter.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Hemo</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">Kuri</span> (كوري): Means the trimmed, shaved, bald. It is a name given to a high place that is not forested, or whose trees are at one level, and this description suits the village location. Usually Kurds call such mountainous places <span class="internal-link">1 - PhD/Villages/Kurê</span> (كوري). &quot;<span class="internal-link">Al-Nasr</span>&quot; (النصر) is an Arabized name that has no connection to the original name of the village.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A small village located on a high forest mountain hill with steep slopes, difficult to climb except from the eastern side through <span class="internal-link">Sarisînê Valley</span> (وادي ساريسينه). The village location is extremely beautiful.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin .... Its Rivers and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Kuri</span> (كري)</strong>: A village in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the middle part of the mentioned mountain on the slope of a mountainous elevation overlooking the lands of <span class="internal-link">Al-Amq Plain</span> (سهل العمق). It is 9km southwest of <span class="internal-link">Rajo Town</span> (بلدة راجو).</p>
-<p>To the north, a rough and steep slope and deep valley with <span class="internal-link">Kharab Samaq</span> (خراب سماق) and <span class="internal-link">Akash Mountain</span> (جبل عكاش). To the south, a steep slope planted with forest trees, oak, and pistachio with <span class="internal-link">Shadianli Village</span> (قرية شديانلي). To the east, a steep slope and two deep streams then a very high and rough mountain chain with <span class="internal-link">Kamrash Village</span> (قرية كمراش) and <span class="internal-link">Hassan Kalkawi Village</span> (قرية حسن كلكاوي). To the west, a slope and <span class="internal-link">Al-Amq Plain</span> (سهل العمق) and the <span class="internal-link">Black River</span> (النهر الأسود) and direct <span class="internal-link">Turkish border</span> (حدود تركيا).</p>
-<p>It has approximately 10 houses and is about 300 years old. It is one of the old villages and was inhabited by old families in the region like the (<span class="internal-link">Awni Bik Family</span> (عائلة عوني بك)) during the <span class="internal-link">Ottoman occupation</span> (الاحتلال العثماني) of the region. Around the village are slopes from all directions.</p>
-<p>Its old dwellings are stone and clay with flat wooden roofs, and modern cement houses. It has an electrical network and a rough mountain road and an elementary school shared with <span class="internal-link">Shadianli Village</span> (قرية شديانلي). There is also an old archaeological house on the eastern side of the village belonging to the aforementioned family.</p>
-<p>The village drinks water from cisterns that collect rainwater in winter.</p></div></details></div>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Manager of the site Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Kur ، كوري ، النصر /494ن - 674م/:</p>
+<ul>
+<li>كوري: بمعنى المقصوصة، الحليقة، الجرداء. وهو اسم يطلق على المكان المرتفع</li>
+</ul>
+<p>غير المشجر، أو التي أشجارها بمستوى واحد، وهذا الوصف يلائم موقع القرية، وعادة ما يسمي الأكراد مثل تلك الأماكن الجبلية بـ Kur. أما &quot;النصر&quot; فهو اسم تعريب ليس له صلة بالاسم الأصلي للقرية.</p>
+<ul>
+<li>قرية صغيرة تقع على تلة جبلية حراجية عالية شديدة الانحدار، يصعب تسلقها</li>
+</ul>
+<p>إلا من الجهة الشرقية عبر وادي Sarisn. موقع القرية غاية في الجمال. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : كري : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في القسم الأوسط من الجبل المذكور على السفح لمرتفع جبلي تشرف على أراضي سهل العمق ، تبعد عن بلدة راجو 9 كم باتجاه الجنوب الغربي ، يحدها شمالاً منحدر وعر و قاسي و وادي عميق و خراب /سماق/ و جبل /عكاش/ ، وجنوباً منحدر قاسي مزروع بالأشجار الحراجية والبلوط و البطم و قرية /شديانلي/ ، و شرقاً منحدر قاسي ومسيلين عميقين ثم سلسلة جبلية عالية جداً و وعرة و قرية /كمراش/ و /حسن كلكاوي/ ، وغرباً منحدر وسهل العمق و النهر الأسود وحدود تركيا مباشرة ، يبلغ عدد بيوتها حوالي 10 بيوت و عمرها حوالي 300 عاماً وهي من القرى القديمة و كانت تقطنها العائلات القديمة في المنطقة كعائلة ( عوني بك ) أثناء الاحتلال العثماني للمنطقة و من حول القرية تقع منحدرات من كافة الجهات ، مساكنها القديمة حجرية طينية ذات سقوف خشبية مستوية و الحديثة أسمنتية ، تتوفر فيها شبكة كهرباء و طريق ترابي جبلي و مدرسة ابتدائية مشتركة مع قرية /شديانلي/ كما يوجد دار أثري قديم في الجهة الشرقية من القرية عائدة للعائلة المذكورة سابقاً ، تشرب القرية المياه من الصهاريج التي تجمع فيها مياه الأمطار شتاءاً .</p>
+<p>مختار القرية : محمد حمو</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -249,7 +317,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kure.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kure.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kure.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kure.htm</a></li></ul>
             </div>
 
             
@@ -259,7 +327,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -377,6 +445,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

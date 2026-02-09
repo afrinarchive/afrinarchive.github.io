@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Turindê, الظريفة, ترندة, ترنده, طرندة</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ebdulo, Hemke, Mala Ebû Şiyar, Mala Hesen Cefo, Mala Hesen Elî Qido, Qedo, Qehwe, Reşo, Sîdo, Şêx Hes</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -208,23 +230,77 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Turindê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Afrin 366</h5>
+<p><strong>Ruins:</strong> <span class="internal-link">Dîwarê Qoban</span></p>
+<p><strong>Wells:</strong> <span class="internal-link">Bîra Hesen Cefo</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Sehê Tirindê</span>, <span class="internal-link">Parka Surê</span>, <span class="internal-link">Firnê Zer</span>, <span class="internal-link">Mefreqa Cûqê</span>, <span class="internal-link">Cisrê Efrînê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Turindê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Turindê, ترندة, الظريفة</strong> /3330n - 3km - 260m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Turindê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20turinde.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20turinde.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Turind</span>, Trinde, <span class="internal-link">Al-Zerîfe</span> /3330 inhabitants - 3km - 260m/:</p>
+<p>The Popular Name &quot;Trinde&quot;</p>
+<p>Trinde is also the name of an ancient city located southwest of the city of <span class="internal-link">Meletî</span> in Turkey. It was an important Byzantine center, then controlled by Muslims in the early period of their era in the year 83 AH/702 AD. They destroyed it and displaced its people during the reign of the Umayyad Caliph <span class="internal-link">Omer bin Ebdulezîz</span>, and perhaps some of the current inhabitants of the village of Trinde are descendants of those people. Also, &quot;<span class="internal-link">Derende</span>&quot; or &quot;Trinde&quot; in Kurdish means &quot;the vagabond or the wild.&quot; In addition to what was mentioned, there is a resemblance of the name to Syriac names if written in the form &quot;<span class="internal-link">Turinde</span>&quot; or &quot;<span class="internal-link">Tûrinde</span>&quot;, as &quot;<span class="internal-link">Tûr</span>&quot; means &quot;mountain.&quot; Furthermore, &quot;nd&quot; is a Hittite suffix for geographical names. However, it is certain that the name is not Arabic, and the Arabized name &quot;Al-Zerîfe&quot; has no connection to the ancient name of the village; the translators believed that Trinde meant &quot;nice or beautiful&quot; (zarîf) in the Kurdish language, and it was translated in light of that.</p>
+<p>It is a large village that was included in the zoning plan of the city of <span class="internal-link">Efrîn</span> in 2002. Its inhabitants work in agriculture, and they were the first to plant potatoes in the Efrîn region. Its deep valley passes to its south, and at its end was the Trinde spring (<span class="internal-link">Kaniya Tirindê</span>), known for its sacred fish and its abundance (2 liters/second). Next to the spring site is the shrine of <span class="internal-link">Ebdulqadir Kêlanî</span> and the village cemetery. Huge building stones appear through excavation works at the top of the hill where the village threshing floors are located, indicating ancient habitation at this site.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Trinde: A village in the <span class="internal-link">Cûme</span> plain and Efrîn valley, administratively belonging to the villages of the center and the Efrîn district, Heleb governorate. It is large, situated on the eastern bank of the Efrîn river and on a plateau with black basalt soil. It is bordered to the north by a mountain range, a fertile plain, and the villages of <span class="internal-link">Erşqîbar</span> and <span class="internal-link">Cûmkê</span>; to the south by a wide and fertile plain and the tourist village of <span class="internal-link">Eyn Dara</span>; to the east by the mountain range of <span class="internal-link">Çiyayê Siman</span> and <span class="internal-link">Çiyayê Lêlûn</span> and the village of <span class="internal-link">Xaldiye</span>; and to the west by a plain, the course of the Efrîn river, and the city of Efrîn.</p>
+<p>The number of its houses is about 100, and its age is about 400 years. Its old houses are of stone and mud with wooden roofs, while the modern ones are spread along the Efrîn road. An electricity network and drinking water via the state are available. Its paved road passes through its center to <span class="internal-link">Basûte</span> and neighboring villages. It has a primary school, a modern mosque, and a telephone center. There is a shrine west of the village (<span class="internal-link">Mezarê Ebdulqadir Kêlanî</span>) next to the spring. The village of Trinde is one of the ancient villages, evidenced by the presence of archaeological sites from ancient times at the village location. Its inhabitants work in the cultivation of cereals, cotton, and sugar beet, irrigated via the Efrîn river and artesian wells, as well as raising sheep and goats. Currently, it has become one of the southern neighborhoods of the city of Efrîn.</p>
+<p>Among its most important families are the families of: <span class="internal-link">Ebdulo</span>, <span class="internal-link">Qedo</span>, <span class="internal-link">Qehwe</span>, <span class="internal-link">Şêx Hes</span>, <span class="internal-link">Hemke</span>, <span class="internal-link">Reşo</span>, and <span class="internal-link">Sîdo</span>. The mukhtar of the village is <span class="internal-link">Kenco Ehmed Sîdo</span> (it is mentioned that the first mukhtar of the village was the late <span class="internal-link">Kemal Silo Ebdulo</span>).</p>
+<p>Sources:</p>
 <ul>
-<li>The popular name &quot;ترندة&quot;: ترندة is also a name for an ancient city located southwest of &quot;<span class="internal-link">Malatya</span>&quot; city in <span class="internal-link">Turkey</span>, and it was an important Byzantine center, then the Muslims conquered it in the early period of their era in <span class="internal-link">83H</span>/<span class="internal-link">702AD</span>, and they destroyed it and displaced its people during the reign of <span class="internal-link">Umayyad</span> Caliph <span class="internal-link">Omar ibn Abdul Aziz</span>, and perhaps some inhabitants of current <span class="internal-link">Q. Taranda</span> were descendants of those people. Also &quot;درندة&quot; Derende or &quot;ترندة&quot; in Kurdish means &quot;the refugee or the displaced&quot;. In addition to what was mentioned, there is a resemblance of the name to Syriac names if written as &quot;ترندة – طورندة&quot;, so &quot;طور = mountain&quot;. Also &quot;ند&quot; is a grammatical suffix for geographical names. But it is certain that the name is not Arabic, and there is no connection of the Arabized name &quot;الظريفة&quot; to the old name of the village, where the translators believed that ترندة means &quot;nice or beautiful&quot; in Kurdish, and it was translated accordingly.</li>
-<li>It is a large village that was annexed to the organizational plan of Afrin city in 2002. Its inhabitants work in agriculture, and they were the first to cultivate potatoes in Afrin region. Its deep valley passes from the south, and at its end was <span class="internal-link">Taranda</span> water spring known for its sacred fish and production &quot;2l/sec&quot;. Beside the spring site is a shrine for <span class="internal-link">Abdul Qadir al-Kilani</span> and the village cemetery. Large building stones appear through excavation works at the hill top where the village threshing floors are located, indicating ancient habitation at this site.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>And it came in the book: Afrin.... its river and green hills by writer Abdulrahman Mohammed from <span class="internal-link">Qatma village</span></p>
-<p><strong>ترندة</strong>: A village in <span class="internal-link">Juma plain</span> and <span class="internal-link">Afrin valley</span> belonging to the center villages district and Afrin region, <span class="internal-link">Aleppo</span> governorate</p>
-<p>It is large located on the eastern bank of Afrin river and on a hill of black basaltic soil. It is bordered to the north by a mountain chain and fertile plain and <span class="internal-link">Arshqibar village</span> and <span class="internal-link">Jumka</span> and to the south by a wide fertile plain and tourist <span class="internal-link">Ein Dara village</span> and to the east by <span class="internal-link">Sam&#x27;an</span> and <span class="internal-link">Lilon mountain</span> chain and <span class="internal-link">Khalidiya village</span> and to the west by a plain and Afrin river course and Afrin city. The number of its houses reaches about 100 houses and its age is about 400 years. Its old houses are stone mud with wooden roofs and the modern ones spread on Afrin road. It has electricity and safe drinking water network through the state and its paved road passes through its center to <span class="internal-link">Basuta</span> and neighboring villages. In it is an elementary school and modern mosque and telephone center and shrine west of the village (<span class="internal-link">Abdul Qadir al-Kilani shrine</span>) beside the spring. <span class="internal-link">Turanda village</span> is one of the ancient villages in the region, evidenced by the existence of archaeological sites since ancient times at the village location. Its inhabitants work in grain and cotton cultivation and sugar beet irrigated through Afrin river and artesian wells and livestock and goats raising. Currently it has become a neighborhood of Afrin city&#x27;s southern neighborhoods. Among its most important families (<span class="internal-link">Al Abdalwa</span> – <span class="internal-link">Al Qado</span> - <span class="internal-link">Al Qahwa</span> - <span class="internal-link">Al Sheikh Has</span> - <span class="internal-link">Al Hamka</span> - <span class="internal-link">Al Rasho</span> - <span class="internal-link">Al Seido</span>) Village mayor <span class="internal-link">Kanjo Ahmed Seido</span> (it is mentioned that the first mayor of the village was the late <span class="internal-link">Kamal Salw Abdalwa</span>).</p>
-<p>Preparation and implementation: Director of <span class="internal-link">Tireij Afrin</span> website: <span class="internal-link">Abdulrahman Haji Othman</span></p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>21</p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Manager of the Tirej Efrîn site: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Turind ، ترنده ، الظريفة /3330ن - 3كم - 260م/:</p>
+<ul>
+<li>الاسم الشعبي &quot;ترنده&quot;: ترنده، هو أيضاً اسم لمدينة قديمة تقع جنوب غربي</li>
+</ul>
+<p>مدينة &quot;ملاتيه&quot; في تركيا، وكانت مركزاً بيزنطياً هاماً، ثم سيطر عليها المسلمون في أوائل عهدهم عام 83هـ/702م، وخربوها وهجروا أهلها في عهد الخليفة الأموي عمر بن عبد العزيز، ولربما كان بعض سكان ق.ترنده الحاليون أحفاداً لهؤلاء. كما أن &quot;درنده&quot; Derende أو &quot;ترنده&quot; في الكردية تعني &quot;المشرد أو المتوحش&quot;. إضافة إلى ما ذكر، هناك شبه للاسم بالأسماء السريانية إذا كتب على شكل &quot;طرنده  طورنده&quot;، فـ &quot;طور = جبل&quot;. كما أن &quot;ند&quot; لاحقة حثية للتسميات الجغرافية. ولكن الثابت أن الاسم ليس عربيا، ولاصلة للاسم المعرب &quot;الظريفة&quot; بالاسم القديم للقرية، حيث اعتقد المترجمون أن ترنده هو بمعنى &quot;ظريف أو جميل&quot; في اللغة الكردية، وترجم على ضوء ذلك.</p>
+<ul>
+<li>وهي قرية كبيرة ضمت إلى المخطط التنظيمي لمدينة عفرين عام 2002. يعمل</li>
+</ul>
+<p>سكانها بالزراعة، وهم أول من زرعوا البطاطا في منطقة عفرين( ). يمر واديها العميق من جنوبها، وكان في نهايته نبع ماء ترنده المعروف بأسماكه المقدسة وغزارته &quot;2ل/ث&quot;. بجانب موقع النبع مزار لعبدالقادر كيلاني ومقبرة القرية. تظهر من خلال أعمال الحفر في قمة الرابية حيث بيادر القرية، أحجار بناء ضخمة تدل على سكن قديم في هذا الموقع. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه طرنده : قرية في سـهل جومـة ووادي عفريـن تتبع ناحـية قرى المركز ومنطقة عفريـن , محـافظة حـلب وهي كبيرة تقع على ضفة نهر عفرين الشرقية وعلى هضبة تربتها السوداء البازلتية و يحدها شمالا سلسلة جبلية وسهل خصب وقرية عرشقيبار وجومكة وجنوباً سهل واسع وخصب وقرية عين دارة السياحية وشرقاً سلسلة جبلية لجبل سمعان وليلون وقرية الخالدية وغرباً سهل ومجرى نهر عفر ين ومدينة عفر ين ، يبلغ عدد بيوتها حوالي100بيتاً وعمرها حوالي 400عاماً ,بيوتها القديمة حجرية طينية ذات أسقف خشبية والحديثة المنتشرة على طريق عفر ين ,تتوفر فيها شبكة الكهرباء والمياه الصالحة للشرب عن طريق الدولة . وطريقها المزفت يمر في وسطها إلى باسوطة والقرى المجاورة وفيها مدرسة ابتدائية وجامع حديث ومركزاً للهاتف ومزار غربي القرية ( مزار عبدالقادر الكيلاني ) بجانب النبع , وقرية طورندة من القرى القديمة بدلالة وجود مواقع أثرية منذ القدم في موقع القرية ,يعمل سكانها بزراعة الحبوب والقطن و الشمندر السكري المروية عن طريق نهر عفر ين والآبار الارتوازية وتربية الأغنام والماعز ,وحالياً أصبحت حياً من أحياء مدينة عفرين الجنوبية .ومن أهم عوائلها عائلة ( آل عبدالو  آل قدو - آل قهوة - آل شيخ حس</p>
+<ul>
+<li>آل حمكه - آل رشو - آل سيدو  )  مختار القرية كنجو أحمد سيدو (</li>
+</ul>
+<p>يذكر أن أول مختار للقرية كان المرحوم كمال سلو عبدالو ) .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Turindê from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=aL2McAwgs-Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=aL2McAwgs-Y</a></p>
+<p>The documentary focuses on the locality of <span class="internal-link">Tirinde</span>, specifically an area referred to as <span class="internal-link">Sehê Tirindê</span>, situated on the immediate outskirts of the city of <span class="internal-link">Efrîn</span>. The narrative serves as both a social visit and a travelogue, documenting the lives of remaining residents and the changing landscape of the region. While the transcript does not provide a specific foundation date for the village, it highlights the area&#x27;s close connection to the broader Efrîn region, mentioning nearby villages such as <span class="internal-link">Basûtê</span>, <span class="internal-link">Kerzêlê</span>, and <span class="internal-link">Kîmor</span>.</p>
+<p>The social structure depicted in the footage centers on the household of <span class="internal-link">Mala Hesen Elî Qido</span>. The host specifically visits <span class="internal-link">Mala Ebû Şiyar</span>, where he interviews an elderly couple who represent the older generation of <span class="internal-link">Kurmanc</span> residents. A significant portion of the conversation revolves around the impact of migration and displacement; the matriarch of the family laments that her five children (three sons and two daughters) have been living abroad in places like Europe and Iraq for over a decade. The host also sends greetings to a sponsor, <span class="internal-link">Mafruşat Ibo</span>, noting his origins in the nearby village of <span class="internal-link">Dêrsewan</span>.</p>
+<p>Daily life in Tirinde is shown to be challenging but resilient. The residents discuss the scarcity of water, noting that &quot;company water&quot; arrives only once a week. There is a specific mention of a local well, <span class="internal-link">Bîra Hesen Cefo</span>, which has unfortunately gone dry (&quot;heş kû ye&quot;), symbolizing the agricultural difficulties facing the community. Despite this, the host notes the greenery of the courtyard and the persistence of the residents.</p>
+<p>The documentary also captures the physical transformation of the area between Tirinde and the city center of Efrîn. The host observes a rapid shift from traditional orchards and single-story homes to multi-story concrete buildings (&quot;bînayet&quot;). As the crew travels toward the city market (&quot;Çarşî&quot;), they pass several notable landmarks. These include <span class="internal-link">Dîwarê Qoban</span> (The Wall of Qoban), the main bridge (<span class="internal-link">Cisr</span>), and the <span class="internal-link">Firnê Zer</span> (Yellow Bakery). The tour concludes near the <span class="internal-link">Mefreqa Cûqê</span> (Cûqê Intersection), marked by a statue of an olive, emphasizing the region&#x27;s agricultural identity even amidst heavy urbanization.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>21</p>
 <p>THE VILLAGE OF TIRINDÊ</p>
 <p>19/4/2016</p>
 <p>The village of Tirindê has been a neighborhood attached to the city of Efrînê since 1990, located on the southern side of the city. The name of the village means ((High Hill)) as specified in the KURDISTAN dictionary.</p>
@@ -259,7 +335,36 @@
 <p>It is worth remembering that on that day, eggs are colored, because the egg is a symbol of the roundness of the earth, and because all the components of the earth are present in the egg, as well as the life that emerges from it, and the coloring of the egg is also a sign of the richness and diversity of nature in the month of abundance.</p></div></details></div>
                 </div>
 
-            
+            <div class="card p-6 rounded-xl">
+            <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcriptions and Subtitles</h2>
+            <div class="p-4 prose-compact max-w-none">
+    <div class="mb-4">
+        <a href="../village_subtitles/how_to_use_substital.html" target="_blank" class="text-base font-medium external-link hover:underline">Need help with using this subtitles on Youtube? (Click here)</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b-2 themed-border">
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Source</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Video</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Subtitles</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Transcript</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Afrin 366 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=aL2McAwgs-Y" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/afrin366_videos_132_Turinde.srt" download="afrin366_videos_132_Turinde.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Turindê_Afrin 366_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    </div>
+        </div>
 
             <div class="card p-6 rounded-xl space-y-6">
                 
@@ -271,7 +376,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20turinde.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20turinde.htm</a></li><li>Local FB page:<br><a href="https://www.facebook.com/Tirindii" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Tirindii</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=J_sGw5JeU_I" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=J_sGw5JeU_I</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=lWApHJeIXFQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lWApHJeIXFQ</a><br><a href="https://www.youtube.com/watch?v=hWOik-QVXL4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=hWOik-QVXL4</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20turinde.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20turinde.htm</a></li><li>Local FB page:<br><a href="https://www.facebook.com/Tirindii" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Tirindii</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=J_sGw5JeU_I" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=J_sGw5JeU_I</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=lWApHJeIXFQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lWApHJeIXFQ</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=hWOik-QVXL4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=hWOik-QVXL4</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=aL2McAwgs-Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=aL2McAwgs-Y</a></li></ul>
             </div>
 
             
@@ -281,7 +386,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -399,6 +504,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

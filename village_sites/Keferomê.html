@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -168,6 +189,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şera</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Keferom, Keferomê, كفر روم</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Şêx Ismaîl Zade (Kûr Reşîd)</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
@@ -194,22 +216,73 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Keferomê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Believed to be Greek-Syriac meaning &#x27;Farm of the Romans&#x27; or Aramaic meaning &#x27;Village of the Height&#x27; (Kefer = village, Rûm = height)</p>
+<p><strong>Foundation Date/Period:</strong> 300 years</p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Keferomê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
-<p><strong><span class="internal-link">Keferom</span></strong> (كفر روم) /705N - 352E - 8km - 366m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Keferomê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafr%20rom.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafr%20rom.htm</a></p>
+<p>Based on the book Çiyayê Kurmênc (Efrîn): A Geographical Study: Keferrûm / 705 inhabitants - 352m altitude - 8km.</p>
+<p>Etymology and Name</p>
+<p>Keferrûm: It is believed to be a Greek-Syriac name meaning &quot;Farm of the Romans.&quot; However, <span class="internal-link">Xurî Bersûm</span> says it is Aramaic, meaning &quot;Village of the Height,&quot; and this is likely correct as the village is situated on a high cliff on the eastern bank of the <span class="internal-link">Efrîn</span> river.</p>
+<p>Location and Geography</p>
+<p>It is a medium-sized village located on the southwestern slope of a plateau, west on the Efrîn river. The village was among the properties of the well-known Agha <span class="internal-link">Kûr Reşîd Şêx Ismaîl Zade</span>, who resides there.</p>
+<p>According to the book Efrîn... Her River and Her Green Hills: Keferrûm is a village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Şeran</span> sub-district, Efrîn area, Heleb governorate (682 inhabitants). It is a small village situated in the northern part of <span class="internal-link">Çiyayê Semen</span> (Mount Simeon) on the southwestern slope of a limestone plateau and near the Efrîn river from the eastern side. It is 8km away from the town of Şeran towards the southwest.</p>
+<p>Boundaries</p>
+<p>It is bordered to the north by a mountain range, the Efrîn river valley, and the village of <span class="internal-link">Hulubiya Biçûk</span>. To the south by a slope, a deep valley, the course of the Efrîn river, a plain of olive trees, and the villages of <span class="internal-link">Eyn Hecerê Mezin</span> and <span class="internal-link">Estêr</span>. To the west by the course of the Efrîn river, a wide plain, the village of Eyn Hecerê Mezin, a deep valley, a mountain range planted with forest trees and olives, and the village of <span class="internal-link">Qurtqulaqa Mezin</span>.</p>
+<p>Infrastructure and Housing</p>
+<p>The number of its houses reaches 50, and its age is 300 years. An electricity network is available. Regarding drinking water, the residents drink from artesian wells and water collection cisterns. It has a primary school, and the paved road reaches the center of the village. Its old dwellings are of mud and stone with wooden roofs, surrounded by modern concrete houses expanding specifically towards the northeast along the public road.</p>
+<p>Agriculture and Economy</p>
+<p>The residents work in rain-fed agriculture (grains and olives) and in irrigated agriculture from the Efrîn river, such as vegetables, fruit trees, and fruits. It is a village with a beautiful location given its proximity to the Efrîn river.</p>
+<p>Families and Social Structure</p>
+<p>Among its most important old families is the <span class="internal-link">Şêx Ismaîl Zade</span> (<span class="internal-link">Kûr Reşîd</span>) family, for they are the real owners of the village.</p>
+<p>Administration</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Henan</span>.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme.</p>
+<p>Studies of <span class="internal-link">Navenda Tirej Soft</span> / <span class="internal-link">Ebdulrehman Hacî Osman</span>.</p>
+<p>Some residents of the villages.</p>
+<p>Preparation and Execution: Manager of <span class="internal-link">Tirej Efrîn</span> site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Keferom ، كفر روم /705ن - 352هـ - 8كم</p>
 <ul>
-<li>Keferom (كفروم): It is believed to be a Greek-Syriac name meaning &quot;farm of the Romans&quot;. However, <span class="internal-link">al-Khouri Barsoum</span> says it is Aramaic meaning &quot;village of elevation&quot;, and perhaps this is correct since the village is located on a high cliff on the eastern bank of the <span class="internal-link">Afrin River</span> (نهر عفرين).</li>
-<li>A medium-sized village located on the southwestern slope of a plateau west of the Afrin River (نهر عفرين). The village was among the properties of the well-known Agha &quot;<span class="internal-link">Kor Rashid Sheikh Ismail Zadeh</span>&quot; (كور رشيد شيخ إسماعيل زاده) who lived there.</li>
+<li>366م/:</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span>:</p>
-<p><strong>Kafr Rom</strong> (كفر روم): A village in Jabal al-Kurd (جبل الكرد) belonging to <span class="internal-link">Sheran District</span> (ناحية شران), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب) (682 N)</p>
-<p>It is a small village located in the northern part of <span class="internal-link">Jabal Sam&#x27;an</span> (جبل سمعان) on the southwestern slope of a limestone plateau near the Afrin River (نهر عفرين) from the eastern side. It is 8km away from the town of Sheran (شران) in the southwest direction. It is bounded to the north by a mountain chain and the Afrin River (نهر عفرين) valley and the village of <span class="internal-link">Haloubi Small</span> (حلوبي صغير). To the south by a slope and deep valley and the course of the Afrin River (نهر عفرين). And a plain of olive trees and the village of <span class="internal-link">Ain Hajar al-Kabir</span> (عين حجر الكبير) and <span class="internal-link">Astaro</span> (استارو). To the west the course of the Afrin River (نهر عفرين) and a wide plain and the village of <span class="internal-link">Ain Hajar Kabir</span> (عين حجر كبير) and a deep valley and a mountain chain planted with forest trees and olives and the village of <span class="internal-link">Qurt Qolaq Kabir</span> (قورت قولاق كبير). The number of its houses reaches 50 houses and its age is 300 years. It has an electricity network, but for drinking water the residents drink from artesian wells and a pool that collects water. It has an elementary school and the connecting road is paved reaching the center of the village. Its old dwellings are clay-stone with wooden roofs surrounded by modern concrete houses that are expanding especially toward the northeast along the public road. The residents work in rainfed agriculture/grains and olives/and irrigated agriculture from the Afrin River (نهر عفرين) such as vegetables and fruit trees. It is a village with a beautiful location due to its proximity to the Afrin River (نهر عفرين), and among its most important old families is the family of Sheikh Ismail Zadeh (شيخ اسماعيل زاده) (Kor Rashid كور رشيد) as they are the real owners of the village.</p>
-<p>Village mayor: <span class="internal-link">Mohammed Hanan</span> (محمد حنان)</p></div></details></div>
+<ul>
+<li>كفروم: يعتقد أنه اسم يوناني - سرياني بمعنى &quot;مزرعة الروم&quot;. ولكن الخوري</li>
+</ul>
+<p>برصوم يقول أنه آرامي بمعنى &quot; قرية الارتفاع &quot;، وربما كان ذلك هو الصحيح حيث تقع القرية على جرف عالٍ للضفة الشرقية لنهر عفرين.</p>
+<ul>
+<li>قرية متوسطة تقع على السفح الجنوبي الغربي لهضبة غربا على نهر عفرين. وكانت</li>
+</ul>
+<p>القرية من أملاك الآغا المعروف &quot; كوررشيد شيخ إسماعيل زاده&quot; ويسكن فيها. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : كفر روم : قرية في جبل الكرد تتبع ناحية شران منطقة عفرين ، محافظة حلب (682 ن) وهي قرية صغيرة واقعة في الجزء الشمالي من جبل سمعان على السفح الجنوبي الغربي لهضبة كلسية وقرب نهر عفرين من الجهة الشرقية . تبعد عن بلدة شران 8كم باتجاه الجنوب الغربي ,يحدها شمالا سلسلة جبلية ووادي نهر عفرين وقرية حلوبي صغير . وجنوبا منحدر ووادي عميق ومجرى نهر عفرين . وسهل من أشجار الزيتون وقرية عين حجر الكبير و استارو وغربا مجرى نهر عفرين وسهل واسع وقرية عين حجر كبير ووادي عميق وسلسلة جبلية مزروعة بالأشجار الحراجية والزيتون وقرية قورت قولاق كبير . ويبلغ عدد بيوتها 50بيتاً وعمرها300عاماً تتوفر فيها شبكة الكهرباء أما مياه الشرب فيشرب الأهالي من الآبار الارتوازية وبرك تجمع المياه. فيها مدرسة ابتدائية والطريق الواصل مزفت يصل إلى وسط القرية مساكنها القديمة طينية حجرية ذات سقوف خشبية تحيط بها البيوت الإسمنتية الحديثة التي تتوسع بشكل خاص نحو الشمال الشرقي على امتداد الطريق العام يعمل السكان بزراعة البعلية/الحبوب والزيتون/وبالزراعة المروية من نهر عفرين كالخضروات وأشجار المثمرة والفواكة وهي قرية ذات موقع جميل نظرا لقربها من نهر عفرين ، و من أهم عوائلها القدماء عائلة شيخ اسماعيل زاده ( كور رشيد ) فهم أصحاب القرية الحقيقيون .</p>
+<p>مختار القرية : محمد حنان</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -227,7 +300,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafr%20rom.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafr%20rom.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=iXe3B42OwAU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=iXe3B42OwAU</a><br><a href="https://www.youtube.com/watch?v=ovXKYAj9x2c" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ovXKYAj9x2c</a><br><a href="https://www.youtube.com/watch?v=k3s29J2etpw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=k3s29J2etpw</a><br><a href="https://www.youtube.com/watch?v=cySdY0bK2SU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=cySdY0bK2SU</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafr%20rom.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafr%20rom.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=iXe3B42OwAU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=iXe3B42OwAU</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=ovXKYAj9x2c" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ovXKYAj9x2c</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=k3s29J2etpw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=k3s29J2etpw</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=cySdY0bK2SU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=cySdY0bK2SU</a></li></ul>
             </div>
 
             
@@ -237,7 +310,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -355,6 +428,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -185,7 +206,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Hac Xalîl, Haj Khalil, Hec Xelîl, Hecxelîl, Heç Xelîl, Heşxelîl, Me&#x27;emik, Sirtê Korê, Xec Xelîl, Ĥec Xelîl, حاج خليل, Darbaz</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Gûlîjêrin, Şaxçaliyan</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">&#x27;Erûys, Biliş, Bilê, Ehdo, Elwîtê, Elşêr, Girû, Gunêş, Hec Xelîl, Hecû, Kûsa, Ma&#x27;mik, Ma&#x27;mûk, Mala Bekir, Mala Bekû, Mala Biliş, Mala Bilê, Mala Ehmed, Mala Ehmû, Mala Elwîtê, Mala Erûs, Mala Fir&#x27;ê Reşo, Mala Girû, Mala Gûnês, Mala Hanîf Axa, Mala Hecû, Mala Kûsa, Mala Mehmê, Mala Memik, Mala Mist Kûşkar, Mala Misxerîbê, Mala Reşo, Mala Tekû, Mala Xecwînê, Mala Ûsê, Mehmed, Miskûşko, Misxarîbê, Tekû, Tetû, Xecwînê, Ûsê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">&#x27;Erûys, Biliş, Bilê, Ehdo, Elwîtê, Elşêr, Girû, Gunêş, Hec Xelîl, Hecû, Kûsa, Ma&#x27;mik, Ma&#x27;mûk, Mala Bekir, Mala Bekû, Mala Biliş, Mala Bilê, Mala Ehmed, Mala Ehmû, Mala Elwîtê, Mala Erûs, Mala Fir&#x27;ê Reşo, Mala Girû, Mala Gûnês, Mala Hanîf Axa, Mala Hecû, Mala Kûsa, Mala Mehmê, Mala Memik, Mala Mist Kûşkar, Mala Misxerîbê, Mala Reşo, Mala Tekû, Mala Xecwînê, Mala Ûsê, Malbata Ale, Malbata Hibo, Malbata Mihemed Henîf, Malbata Reşo, Malbata Selman, Mehmed, Miskûşko, Misxarîbê, Tekû, Tetû, Xecwînê, Ûsê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -234,21 +255,83 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Ĥec Xelîl</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of <span class="internal-link">Rajo District</span> (راجو) / Reco</p>
-<p><strong>Haj Khalil (حاج خليل) - Ĥec Xelîl</strong></p>
-<p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
-<p><strong>Ĥec Xelîl, Haj Khalil (حج خليل)</strong> /4033N – 267ha - 2km - 640m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Ĥec Xelîl</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20haj%20xalil.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20haj%20xalil.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc / Efrîn / A Geographical Study: <span class="internal-link">Xec Xell</span> (<span class="internal-link">Hec Xelîl</span>): /4033 inhabitants - 267 hectares - 2 km - 640 m/:</p>
+<p>Etymology</p>
+<p>The origin of the name &quot;Xec Xell&quot; is a compound of two names: the first is female, &quot;<span class="internal-link">Xec</span>&quot; (from <span class="internal-link">Xedîce</span>), and the second is &quot;<span class="internal-link">Xelîl</span>&quot;; they were the first inhabitants of the village. The letter &quot;X&quot; in Xec changed to &quot;H&quot; to facilitate pronunciation, but residents of the neighboring villages and the people of the village still pronounce the name in its old form, meaning Xec Xell.</p>
+<p>Geography and Location</p>
+<p>It is a large village located on a limestone plateau, and it is a prosperous village. To its northwest, in <span class="internal-link">Çiyayê Mîra</span>, iron ore exists.</p>
+<p>It is stated in the book Efrîn... Her River and Her Green Hills: Hec Xelîl is a village in <span class="internal-link">Çiyayê Kurmênc</span> that follows the sub-district of <span class="internal-link">Reco</span>, district of <span class="internal-link">Efrîn</span>, governorate of <span class="internal-link">Heleb</span>. It is a large village located atop a wide, undulating summit of a limestone plateau, overlooking agricultural lands with alluvial soil to the east. It is 5 km away from the town of Reco towards the east.</p>
+<p>Boundaries</p>
+<p>It is surrounded by slopes on three sides (Western, Eastern, Southern). On the northern side, it is bordered by a high mountain range and the villages of <span class="internal-link">Mamalî</span> and <span class="internal-link">Holîlo</span>. To the south, there is a slope, a fertile plain, the <span class="internal-link">Xeta Trênê</span> (railway line), and the village of <span class="internal-link">Mûsêk Obasî</span>. To the east, there is a slope, a valley, and at a distance of 1 km, the village of <span class="internal-link">Kûranlî</span>. To the west, there is a slope, a plain, a <span class="internal-link">Otoştrad</span> (highway) (round trip), and the town of Reco.</p>
+<p>Infrastructure and Services</p>
+<p>The number of its houses is approximately 250, and its age is about 500 years. Its houses are stone-mud with wooden roofs, while the modern ones are cement; it has developed architecturally such that the construction of modern villas dominates the center of the village. It has an electricity network, drinking water, two schools (primary and preparatory), an old mosque in the center of the village, some shops, and a telephone network taken from the town of Reco. The municipality was established there in 1983. In the center of the village, there is a square called <span class="internal-link">Gorepana Serok Hafiz el-Esed</span> (President Hafez al-Assad Square).</p>
+<p>Economy</p>
+<p>There are several presses for pressing olives in the village. Its residents work in rain-fed agriculture on an area of 267 hectares (with olives, grains, legumes, and vineyard trees) alongside raising sheep and goats. It is connected to the sub-district by an asphalted Otoştrad (highway) up to the center of the village. On the western side of the village, there is a Victory Arch, considered the most beautiful entrance in the Efrîn region. Currently, most of its residents are present in the cities of Heleb and Efrîn and come to the village for summer vacationing and harvesting the olive crop.</p>
+<p>Social Structure and Notable People</p>
+<p>Among its most important families are: (<span class="internal-link">Malbata Mihemed Henîf</span>, <span class="internal-link">Malbata Reşo</span>, <span class="internal-link">Malbata Selman</span>, <span class="internal-link">Malbata Hibo</span>, <span class="internal-link">Malbata Ale</span>), and they were the first to inhabit the village. The village of Hec Xelîl is considered one of the old villages in the region. The mukhtar of the village is <span class="internal-link">Mihemed Elî Reşîd Bilal</span>.</p>
+<p>Among the holders of higher degrees in the village:</p>
+<p><span class="internal-link">Selah Şêxo</span> (PhD in Orthopedic Surgery / Russia)</p>
+<p>Dr. <span class="internal-link">Elya Mihemed Xelîl</span></p>
+<p>It is mentioned that the artist <span class="internal-link">Semîr Elî</span> is one of the sons of this village. Among the people of the village working in the artistic field are:</p>
+<p>The artist <span class="internal-link">Berwar</span></p>
+<p>The buzuq player <span class="internal-link">Lawend</span></p>
+<p>The buzuq player <span class="internal-link">Heval Hibo</span></p>
+<p>The buzuq player <span class="internal-link">Mistefa Hibo</span></p>
+<p>One of the first makers of the buzuq instrument in the region, Mr. <span class="internal-link">Mamo</span></p>
+<p>The poet <span class="internal-link">Nezîr Palo</span> (<span class="internal-link">Hibo</span>)</p>
+<p>The buzuq player <span class="internal-link">Kemîran Hibo</span></p>
+<p>The organ player <span class="internal-link">Ehmed Reşîd</span> (<span class="internal-link">Ehmed Net</span>)</p>
+<p><span class="internal-link">Ehmed Rengîn</span></p>
+<p>Mrs. <span class="internal-link">Nazliye Xelîl</span> (<span class="internal-link">Um Fuad</span>) undertook the printing of the diwan of the poet <span class="internal-link">Hamid Bedirxan</span> at her own private expense.</p>
+<p>Sources of Information:</p>
 <ul>
-<li>The origin of the name &quot;<span class="internal-link">Xec Xelîl</span>&quot; (خَجّ خليل) Xec Xelîl, is a compound of two names: the first feminine &quot;<span class="internal-link">Xaj</span>&quot; (خج) from <span class="internal-link">Khadija</span> (خديجة) and the second &quot;<span class="internal-link">Khalil</span>&quot; (خليل), both first residents of the village. The letter &quot;خ&quot; in Xec changed to &quot;ح&quot; for ease of pronunciation, though residents of neighboring villages and village inhabitants still pronounce the name in its old form, i.e., <span class="internal-link">Xaj Khalil</span> (خج خليل).</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A large village located on a calcareous plateau, it is a prosperous village. Near its northwest in <span class="internal-link">Mîra Mountain</span> (جبل ميرا) there is iron ore.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book &#x27;عفرين.... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin... Its River and Green Hills</span>&#x27;:</p>
-<p><strong>Haj Khalil (حاج خليل)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), Afrin City region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located on a wide, undulating summit of a calcareous plateau, overlooking to the east agricultural lands with alluvial soil. It is 5 km from the town of Rajo (راجو) towards the east, surrounded by slopes from three directions (western, eastern, southern) except the northern direction which is bounded by a high mountain chain and the villages of <span class="internal-link">Mamalî</span> (مامالي) and <span class="internal-link">1 - PhD/Villages/Holîlê</span> (هوليلو), to the south by a slope, fertile plain, railway line and the village of <span class="internal-link">Musik Oba Si</span> (موسيك أوبه سي), to the east by a slope, valley and 1 km away the village of <span class="internal-link">Kuranli</span> (كورانلي), and to the west by a slope, plain and highway (going and coming) and the town of Rajo (راجو). The number of its houses is about 250 houses and its age is about 500 years. Its houses are stone-clay with wooden roofs, while the modern ones are concrete that developed urbanistically so that modern villa construction predominates in the village center. It has an electricity network, drinking water, elementary and preparatory schools, old mosque in the village center, some commercial shops and telephone network taken from the town of Rajo (راجو). The municipality was established in 1983. In the village center there is a square called <span class="internal-link">President Hafez Al-Assad Square</span> (ساحة الرئيس حافظ الأسد), and it has several olive oil presses. Its residents work in rainfed agriculture on an area of 267 hectares (olives, grains, legumes and grape trees) in addition to raising sheep and goats. It connects to the district by a paved highway to the village center. There is an <span class="internal-link">Arc of Triumph</span> (قوس النصر) on the western side of the village, considered the most beautiful entrance in the Afrin City region. Currently most of its residents are present in the cities of <span class="internal-link">Aleppo</span> (حلب) and Afrin City (عفرين) and come to the village for vacation and olive harvest. Among its most important families: (<span class="internal-link">Mohammed Hanif family</span> (عائلة محمد حنيف) - <span class="internal-link">Al Rashoo</span> (آل رشو) - <span class="internal-link">Al Salman</span> (آل سلمان) - <span class="internal-link">Al Habbo</span> (آل حبو) - <span class="internal-link">Al Aala</span> (آل عاله)) and they are the first to inhabit the village. The village of <span class="internal-link">Haj Khalil</span> (حاج خليل) is considered one of the old villages in the region.</p>
-<p><strong>Village Mukhtar:</strong> <span class="internal-link">Mohammed Ali Rashid Bilal</span> (محمد علي رشيد بلال).</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Salah Sheikho</span> (صلاح شيخو) / PhD in Orthopedic Surgery / <span class="internal-link">Russia</span> (روسيا) - <span class="internal-link">Dr. Aliya Mohammed Khalil</span> (الدكتورة علياء محمد خليل). It is mentioned that artist <span class="internal-link">Samir Ali</span> (سمير علي) is from the sons of this village and among the village people working in the artistic field: artist <span class="internal-link">Barwar</span> (بروار) - oud player <span class="internal-link">Laound</span> (لاوند) - oud player <span class="internal-link">Hafal Habbo</span> (هفال حبو) - oud player <span class="internal-link">Mustafa Habbo</span> (مصطفى حبو) - among the first oud makers in the region <span class="internal-link">Mr. Mamo</span> (السيد مامو) - poet <span class="internal-link">Nadir Balow (Habbo)</span> (نذير بالو (حبو)) - oud player <span class="internal-link">Kamiran Habbo</span> (كميران حبو) - organ player <span class="internal-link">Ahmad Rashid (Ahmad Net)</span> (أحمد رشيد (أحمد نت)) - <span class="internal-link">Ahmad Rankin</span> (أحمد رنكين) - <span class="internal-link">Mrs. Nazlia Khalil (Um Fuad)</span> (السيد نازلية خليل (أم فؤاد)) who printed the divan of poet <span class="internal-link">Hamid Badrukhan</span> (حامد بدرخان) at her own expense.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥec Xelîl from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=G6nz9XLdbCY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=G6nz9XLdbCY</a></p>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Manager of Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Ĥec Xell ، حج خليل /4033ن  267هـ - 2كم - 640م/:</p>
+<p>-أصل الاسم &quot;خَجْ خليل&quot; Xec Xell، وهو مركب من اسمين، الأول مؤنث &quot;خج&quot; من</p>
+<p>خديجة و الثاني &quot;خليل&quot;، وهما أوائل سكان القرية، وقد تحول حرف &quot; خ &quot; في خَج إلى &quot; ح &quot; تسهيلا للفظ، ولايزال سكان القرى المجاورة وأهالي القرية يلفظون الاسم بشكله القديم أي خج خليل.</p>
+<ul>
+<li>قرية كبيرة تقع فوق هضبة كلسية، وهي قرية مزدهرة. يوجد بجوارها الشمالي</li>
+</ul>
+<p>الغربي في جبل Mra &quot;ميرا&quot; خام الحديد. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : حاج خليل : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع فوق قمة واسعة متموجة لهضبة كلسية ، تطل شرقاً على أراض زراعية ذات تربة لحقية ، تبعد عن بلدة راجو 5 كم نحو الشرق ، من حولها منحدرات من ثلاث جهات (الغربية ـ الشرقية ـ الجنوبية ) عدا الجهة الشمالية فتحدها سلسلة جبلية عالية و قرية /مامالي/ و /هوليلو/ ، و جنوباً منحدر وسهل خصب و خط حديدي و قرية موسيك أوبه سي ، وشرقاً منحدر و وادي و على بعد 1 كم قرية /كورانلي/ ، وغرباً منحدر و سهل و اوتوستراد ( ذهاباً و إياباً ) و بلدة راجو ، يبلغ عدد بيوتها حوالي 250 بيتاً وعمرها حوالي 500 عاماً ، بيوتها حجرية ــ طينية ذات سقوف خشبية أما الحديثة فهي أسمنتية تطورت عمرانياً بحيث غلب عليها بناء الفيلات الحديثة في وسط القرية ، تتوفر فيها شبكة كهرباء و مياه الشرب و مدرستين ابتدائية وإعدادية وجامع قديم في وسط القرية و بعض المحلات التجارية وشبكة هاتف مأخوذة من بلدة راجو ، أحدثت فيـها البلدية عام 1983 ، يوجد في وسط القرية ساحة تسمى / ساحة الرئيس حافظ الأسد /، وفيها عدة معاصر لعصر الزيتون ، يعمل سكانها بالزراعة البعلية على مساحة 267 هـ ( بالزيتون والحبوب و البقول وأشجار الكرمة ) إلى جانب تربية الأغنام والماعز ، تتصل مع الناحية باوتوستراد مزفت حتى وسط القرية ويوجد في الجهة الغربية للقرية قوس النصر وتعتبر أجمل مدخل في منطقة عفرين، و حالياً أغلب سكانها موجودون في مدينتي حلب و عفرين و يقدمون إلى القرية للاصطياف و جني محصول الزيتون ، ومن أهم عوائلها : ( عائلة محمد حنيف</p>
+<ul>
+<li>آل رشو - آل سلمان - آل حبو - آل عاله ) وهم أول من سكن القرية و</li>
+</ul>
+<p>تعتبر قرية حاج خليل من القرى القديمة في المنطقة ، مختار  القرية محمد علي رشيد بلال -  . ومن حاملي الشهادات العليا في القرية : صلاح شيخو / دكتوراة في الجراحة العظمية / روسيا</p>
+<ul>
+<li>الدكتورة علياء محمد خليل ، يذكر أن الفنان سمير علي من أبناء هذه القرية</li>
+</ul>
+<p>ومن أشخاص القرية الذين يعملون في الوسط الفني : الفنان بروار- عازف البزق لاوند - عازف البزق هفال حبو - عازف البزق مصطفى حبو - ومن أوئل صانعي آلة البزق في المنطقة السيد مامو - الشاعر نذير بالو ( حبو ) - عازف البزق كميران حبو - عازف الأورغ أحمد رشيد ( أحمد نت ) - أحمد رنكين - السيد نازلية خليل ( أم فؤاد ) التي قامت بطبع ديوان الشاعر حامد بدرخان على حسابها الخاص . مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥec Xelîl from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=G6nz9XLdbCY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=G6nz9XLdbCY</a></p>
 <p>The village of <span class="internal-link">Darbaz</span>, located in the Afrin region, is characterized by its agricultural lifestyle and the presence of traditional community figures who fill gaps in modern services. The transcript focuses heavily on the life and work of a prominent resident known as <span class="internal-link">Meta Zeyneb</span> (Aunt Zeyneb), who serves as the village&#x27;s traditional ophthalmologist or &quot;toxtor.&quot; While the specific founding date of Darbaz is not mentioned, the narrative highlights the social connectivity between villages in the region, particularly through marriage and specialized labor.</p>
 <p><span class="internal-link">Zeyneb</span> describes her origins in the village of <span class="internal-link">Çençelî</span> before moving to Darbaz upon marriage. She identifies her lineage through her father, <span class="internal-link">Reşîdê Ehdo</span>, and her uncle, <span class="internal-link">Hebeşê Ehdo</span>, indicating the presence of the <span class="internal-link">Ehdo</span> family line in her native village. This connection illustrates the movement of families between the settlements of the region. Zeyneb has lived in Darbaz for decades, having started her practice as a healer when she was a young girl, approximately ten or twelve years old. She is now the mother of seven children.</p>
 <p>The social structure of Darbaz and the surrounding area is depicted as deeply agrarian. The residents are primarily farmers (&quot;cotkar&quot;), and their labor exposes them to occupational hazards such as dust, chaff, and metal shards entering their eyes. Zeyneb treats these ailments using traditional methods, often utilizing a cloth or paper placed on her tongue to extract foreign objects. Her reputation extends well beyond Darbaz. She describes obtaining supplies, specifically clean cloths, from larger urban centers like <span class="internal-link">Heleb</span> (Aleppo) and <span class="internal-link">Efrîn</span>, linking the rural village to the major cities of the wider region.</p>
@@ -356,7 +439,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20haj%20xalil.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20haj%20xalil.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=zY990bDOFVw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zY990bDOFVw</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=SS8sQEoknJM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SS8sQEoknJM</a></li><li>Videos:<br><a href="https://www.youtube.com/watch?v=bazvy5yMFnk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=bazvy5yMFnk</a><br><a href="https://www.youtube.com/watch?v=dSSsfsfB0Go" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=dSSsfsfB0Go</a><br><a href="https://www.youtube.com/watch?v=9mXuU16okks" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9mXuU16okks</a><br><a href="https://www.youtube.com/watch?v=D053Y3Xyce0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=D053Y3Xyce0</a><br><a href="https://www.youtube.com/watch?v=nmyw8LpGvns" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=nmyw8LpGvns</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=G6nz9XLdbCY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=G6nz9XLdbCY</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=jHnUk3BGXUw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=jHnUk3BGXUw</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20haj%20xalil.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20haj%20xalil.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=zY990bDOFVw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zY990bDOFVw</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=SS8sQEoknJM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SS8sQEoknJM</a></li><li>Videos:<br><a href="https://www.youtube.com/watch?v=bazvy5yMFnk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=bazvy5yMFnk</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=dSSsfsfB0Go" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=dSSsfsfB0Go</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=9mXuU16okks" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9mXuU16okks</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=D053Y3Xyce0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=D053Y3Xyce0</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=nmyw8LpGvns" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=nmyw8LpGvns</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=G6nz9XLdbCY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=G6nz9XLdbCY</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=jHnUk3BGXUw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=jHnUk3BGXUw</a></li></ul>
             </div>
 
             
@@ -366,7 +449,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -484,6 +567,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

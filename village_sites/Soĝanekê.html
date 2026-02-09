@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Soxĝanekê, al-Basaliya, البصلية, صوغانه, صوغانكه</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Soĝan</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Berekat</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -208,22 +231,66 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Soĝanekê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Derived from Soĝan, the name of a Kurdish Êzîdî tribe belonging to the Qatanî group; erroneously translated to Turkish as onion or shelter (Siĝinak)</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 400 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Lêlûn</span>, <span class="internal-link">Çiyayê Sem‘an</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Wadî</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Soĝanekê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27;, a geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Soxĝanekê, صوغانه, البصلية</strong> /935n - 400e - 16km - 545m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Soĝanekê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20soxaneka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20soxaneka.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Soĝanek</span> <span class="internal-link">Soĝane</span> <span class="internal-link">Al-Basaliya</span> /935 inhabitants, 400 hectares, 16 km, 545 m/:</p>
+<p><span class="internal-link">Soĝan</span>: In Turkish, it means &quot;onion&quot; or &quot;shelter&quot; (Siĝinak), so the Arabizer translated it to &quot;Al-Basaliya&quot; (The Onion Place). However, the truth is that the origin of the name is Soĝan, which is the name of a Kurdish <span class="internal-link">Êzîdî</span> tribe belonging to the <span class="internal-link">Qatanî</span> group of the Êzîdî rank hierarchy /Dr. <span class="internal-link">Xelîl Cindî</span>, p.52/. The residents of Soĝane were Êzîdî in the late nineteenth century.</p>
+<p>It is a small village among the villages of <span class="internal-link">Çiyayê Lêlûn</span>. It contains remains of numerous antiquities such as building walls, churches, tombs, wells, massive stones, and scattered lintels dating back to the Roman and Byzantine eras. Among its people is the writer and poet <span class="internal-link">Merwan Berekat</span>.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Soĝane: A village in Çiyayê Lêlûn belonging to the subdistrict of the villages of the center and region of <span class="internal-link">Efrîn</span>, Heleb governorate. It is a small village located in Çiyayê Lêlûn and the northern chain of <span class="internal-link">Çiyayê Sem‘an</span>. It is bordered to the north by the Çiyayê Lêlûn chain, a deep and rugged valley, and the village of <span class="internal-link">Dêr Mişmiş</span>; to the south by a rugged and rocky mountain chain and the villages of <span class="internal-link">Zer‘a</span> (Zar&#x27;antaya) and <span class="internal-link">Berad</span>; to the west by a rocky mountain chain, a valley, and the nearby village of <span class="internal-link">Kîmar</span>; and to the east by a rocky chain of Çiyayê Lêlûn and the town of <span class="internal-link">Eqîbe</span>.</p>
+<p>The reconstruction of the area is ancient, indicated by the remains of old Roman walls and towers. Its houses are made of stone with wooden roofs for the old ones, while the new ones are made of stone and reinforced concrete. The number of its houses is 60, and its age is approximately 400 years. There are many archaeological columns in the center of the village and in the southeast direction dating back to the Roman era. An electricity network is available, as well as a paved road passing through its center to the village of <span class="internal-link">Basûte</span> and Efrîn. It has a primary school and a mosque. The people of the village drink from cisterns and collected rainwater.</p>
+<p>The villagers work in the cultivation of grains and the raising of sheep and some cows. It is an ancient area that predates the current village in age. One of its most important families is the <span class="internal-link">Berekat</span> family.</p>
+<p>Village Mukhtar: <span class="internal-link">Xelîl Berekat Hemo</span></p>
+<p>Preparation and execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Soĝanek ، صوغانه ، البصلية /935ن - 400هـ - 16كم - 545م/:</p>
 <ul>
-<li>Soughan: In Turkish means &quot;onion or bulb&quot; Soğanak, so the Arabs translated it to &quot;al-Basaliya&quot; (the onion place). But the truth is that the origin of the name is Soxĝanê, which is the name of a Kurdish Yazidi tribe belonging to the Qatani group from the hierarchical chain of Yazidi ranks, /<span class="internal-link">Dr. Khalil Jindi</span>, p.52/, and the inhabitants of <span class="internal-link">Soughaneh</span> were Yazidis in the late 19th century.</li>
-<li>A small village among the villages of <span class="internal-link">Jebel Leiloun</span>. It contains numerous archaeological remains such as building walls, churches, cemeteries, wells, massive stones, and scattered columns dating to the Roman and Byzantine eras. From it comes the writer and poet <span class="internal-link">Marwan Barakat</span>.</li>
+<li>سوغان: في التركية بمعنى &quot;البصل أو المخبأ&quot; Siĝinak، فترجمها المعرب إلى</li>
 </ul>
-<p>According to the book: Afrin.... its river and green hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qutmeh</span> village:</p>
-<p><strong>صوغانه</strong>: A village in <span class="internal-link">Jebel Leiloun</span> belonging to the central villages district and Afrin region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p>A small village located in <span class="internal-link">Jebel Leiloun</span> and the northern <span class="internal-link">Jebel Samaan</span> chain. It is bordered to the north by the <span class="internal-link">Jebel Leiloun</span> chain and a deep, rugged valley and <span class="internal-link">Deir Mashmash</span> village, to the south by a mountainous, rugged, rocky chain and <span class="internal-link">Zarnita</span> and <span class="internal-link">Brad</span> villages, to the west by a rocky mountainous chain and valley and the nearby <span class="internal-link">Kimar</span> village, and to the east by a rocky chain from <span class="internal-link">Jebel Leiloun</span> and <span class="internal-link">Aqibeh</span> town. The region&#x27;s construction is ancient, evidenced by the remains of walls and ancient Roman towers. Its houses are stone with wooden roofs - the old ones, while the newer ones are made of stone and reinforced cement. The number of its houses is 60 houses and its age is approximately 400 years. There are many archaeological columns in the village center and toward the southeast dating to the Roman era. It has an electricity network and paved roads passing through its center to <span class="internal-link">Basuta</span> and Afrin villages. It has an elementary school and a mosque. The village residents drink from cisterns and rainwater collection. The village residents work in grain cultivation and sheep raising and some cattle. It is an ancient region that predates the current village in its antiquity. Among its most important families is the <span class="internal-link">Barakat</span> family.</p>
-<p>Village headman: <span class="internal-link">Khalil Barakat Hamou</span></p></div></details></div>
+<p>&quot;البصلية&quot;. أما الحقيقة فهو أن أصل الاسم Soĝan، وهو اسم عشيرة إيزيدية كردية تابعة للمجموعة القاتانية من التسلسل الهرمي للمراتب الإيزيدية، /د. خليل جندي، ص52/، وكان سكان صوغانه إيزيديون في أواخر القرن التاسع عشر.</p>
+<ul>
+<li>قرية صغيرة من قرى جبل ليلون. فيها بقايا آثار عديدة مثل جدران أبنية</li>
+</ul>
+<p>وكنائس ومدافن وآبار وحجارة ضخمة وسواكف مبعثرة تعود للعصرين الروماني والبيزنطي. ومنها الكاتب والشاعر مروان بركات. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه صوغانه : قرية في جبل ليلون تتبع ناحية قرى مركز و منطقة عفرين ، محافظة حلب . قرية صغيرة تقع في جبل ليلون وسلسلة جبل سمعان الشمالية ، يحدها شمالاً سلسلة جبل ليلون ووادي عميق ووعر وقرية ديرمشمش وجنوباً سلسلة جبلية وعرة وصخرية وقرية زعرنتيا وبراد وغرباً سلسلة جبلية صخرية ووادي وقرية كيمار القريبة منها . وشرقاً سلسلة صخرية من جبل ليلون وبلدة عقيبة . إعمار المنطقة قديم, تدل على بقايا جدران وأبراج رومانية قديمة بيوتها حجرية وذات سقوف خشبية القديمة منها آما الخشبية فهي من الحجر والإسمنت المسلح عد د بيوتها 60 بيتاً وعمرها حوالي400 عام يوجد فيها الكثير من الأعمدة الأثرية في وسط القرية وبالاتجاه الجنوب الشرقي تعود للعهد الروماني . تتوفر فيها شبكة الكهرباء وطريق مزفتة ويمر في وسطها إلى قرية باسوطة وعفرين فيها مدرسة ابتدائية وجامع ويشرب أهالي القرية من الصهاريج وتجمع مياه الأمطار . ويعمل أهالي القرية بزراعة الحبوب وتربية الأغنام وبعض الأبقار . وهي منطقة قديمة تسبق في قدمها القرية الحالية .ومن أهم عوائلها عائلة بركات.</p>
+<p>مختار القرية :  خليل بركات حمو</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -241,7 +308,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20soxaneka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20soxaneka.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=a2yaAhjsa3k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=a2yaAhjsa3k</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20soxaneka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20soxaneka.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=a2yaAhjsa3k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=a2yaAhjsa3k</a></li></ul>
             </div>
 
             
@@ -251,7 +318,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -369,6 +436,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

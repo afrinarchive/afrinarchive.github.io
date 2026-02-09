@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Qurbe, Qurbê, قوربه, قربه</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Xelîl Sîdo Mêmî Axa</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -201,27 +223,74 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Qurbê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The name means the bend or &quot;the elbow&quot; (qurb) in the Kurdish language. It is believed the village took its name from its location in the inner angle of a sharp bend in the valley and the road passing to its west.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 100 years old (became independent in 1930)</p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Geliyê Sîlê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qurbê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Qurbê, قوربه</strong> /288n - 5km - 305m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qurbê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qurbe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qurbe.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Qurbe</span>, /288 inhabitants, 5km, 305m/:</p>
+<p>Qurbe: Meaning the bend or &quot;the elbow&quot; in the Kurdish language. The village is situated on the western side of the sharp bend of the valley and the road that passes to its west. We believe that the village took its name from its location in the inner angle of the bend.</p>
+<p>It is a small village belonging to the aghas of <span class="internal-link">Sîdo Mêmî</span>. The valley coming from the village of Qoceman passes to its west, and there is an archeological hill on its western side.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Qurbe is a village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Cindirês</span> subdistrict, <span class="internal-link">Efrîn</span> area, Heleb governorate. It is a small village located on the northeastern edge of the Cindirês plain and atop a fertile plateau with alluvial soil. A stream cuts through it heading towards the south to feed the Efrîn river. The village has a small area situated on a hill and plateau surrounded by olive trees from all sides. On the western side, there is an archeological hill near the village.</p>
+<p>It is bordered to the north by a fertile plain planted with olive trees and the village of Qoceman. To the south, it is bordered by a slight slope, the <span class="internal-link">Riya Cindirês-Efrîn</span> (Cindirês-Efrîn road), and the village of <span class="internal-link">Remadiye</span>. To the east, it is bordered by a fertile plain planted with olive trees and the village of <span class="internal-link">Şêx Ebdulrehman</span>. To the west, it is bordered by <span class="internal-link">Geliyê Sîlê</span> (Sîlê valley), an archeological hill 500 meters away, and the village of <span class="internal-link">Qîlê</span>.</p>
+<p>The number of its houses amounts to about 20 houses, and its age is approximately 100 years. It was a farm for the village of Qoceman, and currently, it has become an independent village. An electricity network, a primary school, and a modern technical olive press belonging to the state Ministry of Agriculture and Agrarian Reform are available in it.</p>
+<p>Most of its residents work in the cultivation of olives and grains, both rain fed and irrigated from artesian wells, as well as summer vegetables and fruit trees, alongside raising sheep and cattle. It is connected to the subdistrict center by a paved road.</p>
+<p>Among its most important families is the family of <span class="internal-link">Xelîl Sîdo Mêmî Axa</span>. It previously consisted of houses for the aghas and the peasants belonging to them, and the village became independent since 1930 AD.</p>
+<p>Among the holders of higher degrees in the village:</p>
+<p><span class="internal-link">Welîd Şêxo</span> / PhD in Information Technology Engineering / Russia</p>
+<p>Village Mukhtar: <span class="internal-link">Hesen Fehmî Mihemed</span></p>
+<p>Sources:</p>
 <ul>
-<li>قوربه Qurbe: means the bend &quot;the elbow&quot; in Kurdish, and the village is located on the western side of the sharp bend of the valley and the road that passes from its west, and we believe that the village took its name from its location in the inner bend corner.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A small village among the villages of <span class="internal-link">Sido Mimi</span> aghas. The valley coming from قوجمان (Qujman) village passes to its west and there is an archaeological tell on its western side.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed.</li>
 </ul>
-<p>According to the book: عفرين .... Her River and Green Hills by writer عبدالرحمن محمد from قطمه (Qatma) village</p>
-<p><strong>قوربه</strong>: A village in جبل الكرد (<span class="internal-link">Jabal al-Kurd</span>) that follows جندريس (<span class="internal-link">1 - PhD/Villages/Cindirês</span>) district, عفرين (Afrin) region, حلب (<span class="internal-link">Aleppo</span>) governorate.</p>
-<p>It is a small village located at the northeastern edge of جندريس (<span class="internal-link">1 - PhD/Villages/Cindirês</span>) plain on a fertile plateau with loamy soil, crossed by a stream flowing south to feed عفرين (Afrin) river. The village has a small area on a hill and plateau surrounded by olive trees from all directions. On the western side there is an archaeological tell near the village. It is bounded to the north by a fertile plain planted with olive trees and قوجه مان (<span class="internal-link">Qujeh Man</span>) village, to the south by a gentle slope and the (جندريس - عفرين) (<span class="internal-link">Cindirês - Afrin</span>) road and الرمادية (<span class="internal-link">Al-Ramadiya</span>) village, to the east by a fertile plain planted with olive trees and الشيخ عبد الرحمن (<span class="internal-link">Sheikh Abd al-Rahman</span>) village, and to the west by سيلي (<span class="internal-link">Sili</span>) valley and an archaeological tell 500m away and قيلة (<span class="internal-link">Qila</span>) village. It has about 20 houses and is about 100 years old. It was formerly a farm for قوجه مان (<span class="internal-link">Qujeh Man</span>) village, but now it has become an independent village with electricity network, primary school and a modern technical olive mill belonging to the state Ministry of Agriculture and Agricultural Reform. Most of its residents work in olive and grain cultivation both rain-fed and irrigated from artesian wells and summer vegetables and fruit trees, in addition to raising sheep and cattle. It connects with the district center by a paved road. Among its most important families is the خليل سيدو ميمي (<span class="internal-link">Khalil Sido Mimi</span>) agha family, which was formerly homes for the aghas and farmers who returned to them, and the village became independent since 1930.</p>
-<p>Among the holders of higher degrees in the village: وليد شيخو (<span class="internal-link">Walid Shikho</span>) / Doctorate in Information Technology Engineering / <span class="internal-link">Russia</span></p>
-<p>Village mayor: حسن فهمي محمد (<span class="internal-link">Hassan Fahmi Mohammed</span>)</p>
-<p>Prepared and implemented by: <span class="internal-link">Tirej Afrin</span> website director: عبدالرحمن حاجي عثمان (<span class="internal-link">Abdulrahman Haji Othman</span>)</p>
-<p>20/12/2013</p></div></details></div>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Manager of Tirej Efrîn website: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Qurb ، قوربه /288ن - 5كم - 305م/:</p>
+<ul>
+<li>قوربه Qurbe: بمعنى المنعطف &quot;الكوع &quot; باللغة الكردية، وتقع القرية على</li>
+</ul>
+<p>الجانب الغربي من الانعطاف الحاد للوادي والطريق الذي يمر من غربها، ونعتقد أن القرية أخذت اسمها من موقعها في الزاوية الداخلية المنعطف.</p>
+<ul>
+<li>قرية صغيرة من قرى آغوات سيدو ميمي. يمر من غربها الوادي القادم من قرية</li>
+</ul>
+<p>قوجمان ويوجد على جهته الغربية على تل أثري. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه قوربه : قرية في جبل الكرد تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في الطرف الشمالي الشرقي لسهل جنديرس وفوق هضبة خصبة ذات تربة لحقية ، يخترقها مسيل يتجه نحو الجنوب ليرفد نهر عفرين والقرية ذات مساحة صغيرة على تل وهضبة محاطة بأشجار الزيتون من كافة الجهات وفي الطرف الغربي هناك تل أثري قرب القرية ، يحدها شمالاً سهل خصب مزروع بأشجار الزيتون وقرية قوجه مان ، وجنوباً منحدر خفيف وطريق (جنديرس - عفرين ) وقرية الرمادية ، وشرقاً سهل خصب مزروع بأشجار الزيتون وقرية الشيخ عبد الرحمن ، وغرباً وادي سيلي وتل أثري على بعد 500م وقرية قيلة ، يبلغ عدد بيوتها حوالي 20بيتاً وعمرها حوالي 100عاماً وكانت مزرعة لقرية قوجه مان , وحالياً أصبحت قرية مستقلة تتوفر فيها شبكة كهرباء ومدرسة ابتدائية ومعصرة زيتون فنية حديثة عائدة للدولة لوزارة الزراعة والإصلاح الزراعي . يعمل معظم سكانها بزراعة الزيتون والحبوب بعلاً ورياً من الآبار الارتوازية والخضر الصيفية والأشجار المثمرة ، إلى جانب تربية الأغنام والأبقار ، تتصل مع مركز الناحية بطريق مزفت ، من أهم عوائلها عائلة خليل سيدو ميمي آغا ,كانت سابقاً بيوتاً للآغوات والفلاحين العائدين لهم وأصبحت القرية مستقلة منذ عام 1930م . ومن حاملي الشهادات العليا في القرية : وليد شيخو / دكتوراة في هندسة تكنولوجيا المعلوماتية / روسيا</p>
+<p>مختار القرية :  حسن فهمي محمد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -239,7 +308,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qurbe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qurbe.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qurbe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qurbe.htm</a></li></ul>
             </div>
 
             
@@ -249,7 +318,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -367,6 +436,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

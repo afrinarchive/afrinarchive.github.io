@@ -201,6 +201,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -225,7 +246,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şiyê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Sati, Alkana, Alkêna, Olkana, Sati Oshaghi, ألكانا, الصاتي, صاتي أوشاغي, صاتي اوشاغي, اولكونه</p></div>
-<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Şêxiya</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Alkana, Şêxiya</p></div>
 <div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ebasî, Hemo, Mala Bateway, Mala Birokî, Mala Weşma Qostî, Malbata Gind, Omerê Hebeş</p></div>
                         </div>
                     </div>
@@ -288,16 +309,64 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Alkana</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin) geographical study</span>&#x27; by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Alkana</span> (الكانا), <span class="internal-link">Sati Oshaghi</span> (صاتي أوشاغي), <span class="internal-link">Al-Sati</span> (الصاتي)</strong> /1357n - 560m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Alkana</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20alkana.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20alkana.htm</a></p>
+<p><span class="internal-link">Alkana</span> / <span class="internal-link">Satî Uşaxî</span></p>
+<p>According to the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p>Alkana, Satî Uşaxî, <span class="internal-link">El-Satî</span> / 1357 inhabitants - 560m altitude /:</p>
+<p>Alkana is the name of a Kurdish tribe found in <span class="internal-link">Hekarî</span> (Lerch, p. 46). The Arabized name &quot;Satî&quot; has no meaning.</p>
+<p>It is a small village located on the western side of a watercourse that slopes steeply southward toward the valley of Alkana. Its site is level and small in area, and its houses are compact.</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme / Satî Uşaxî:</p>
+<p>It is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively following the <span class="internal-link">Şiyê</span> district, <span class="internal-link">Efrîn</span> region, <span class="internal-link">Heleb</span> province. It is a small village situated in the west central part of the mentioned mountain on a rocky flat between two watercourses bordering it to the east and west, which descend toward the south. Its soil is white and thin. It is 14 km away from the town of Şiyê toward the northeast.</p>
+<p>It is bordered to the north by a high mountain range, the television broadcast station at the highest peak of the mountain, and the village of <span class="internal-link">Memal Uşaxî</span>. To the south, it is bordered by a deep watercourse, a high mountain range, and the village of <span class="internal-link">Hecî Bîlal</span>. To the west, it is bordered by a mountain range and the villages of <span class="internal-link">Sewlicik</span> and <span class="internal-link">Umer Uşaxî</span>. To the east, a deep valley separates the village of <span class="internal-link">Xelîl Kolko</span> and Satî Uşaxî.</p>
+<p>The number of its houses is about 55, and its age is about 350 years. Its old dwellings are made of stone and mud with wooden roofs, while modern concrete dwellings dominate and are spreading to the north and south. An electricity network is available. The village drinks from a water network connected to the irrigation network of the villages of the Şiyê district. In the past, they used to drink from a spring at the bottom of the valley beside the old ruined mill. It has a primary and preparatory school shared with the village of Xelîl Kolko.</p>
+<p>The residents work in rain fed agriculture (olives, vines, figs, walnuts, almonds) alongside raising sheep and goats. There is a modern olive press in the village. It is connected to the district center by an asphalt road that passes by the western and northern sides of the village. The farm of Hecî Bîlal follows it administratively. This village is considered one of the old villages in the area and among the neighboring villages.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Xêro Cemîl</span></p>
+<p>Sources:</p>
 <ul>
-<li>Alkana (آلكانا): Name of a Kurdish tribe found in <span class="internal-link">Hakkari</span> (Lerkh, p.46). The Arabized name &quot;Sati&quot; (صاتي) has no meaning.</li>
-<li>A small village located on the western side of a water stream with steep southern decline toward <span class="internal-link">Alkana Valley</span>, its location is level and small in area, with compact houses.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from Qatma village:</p>
-<p><strong>Sati Oshaghi</strong> (صاتي اوشاغي): A village in Kurdish Mountain (جبل الكرد), belonging to <span class="internal-link">Sheikh al-Hadid District</span> (ناحية شيخ الحديد), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the western-central part of the mentioned mountain on a rocky plateau between two streams bordering it east and west and descending south, with thin white soil. It is located 14km northeast of Sheikh al-Hadid town. It is bordered to the north by a high mountain chain and television broadcasting station at the highest mountain peak and Ma&#x27;mal Oshaghi village, to the south by a deep stream and high mountain chain and Haj Bilal village, to the west by a mountain chain and Sa&#x27;uljik and Omar Oshaghi villages, and to the east by a deep valley separating Khalil Kolko and Sati Oshaghi villages. The number of houses is approximately 55 houses and its age is around 350 years. Its old dwellings are stone and clay with wooden roofs, overlaid by modern cement buildings that spread north and south. It has electricity network and the village drinks from a water network connected to the irrigation network of Sheikh al-Hadid District villages. Previously they used to drink from a spring at the bottom of the valley next to the old ruined mill. It has primary and preparatory schools shared with Khalil Kolko village. The inhabitants work in rain-fed agriculture (olives, vines, figs, walnuts, almonds) alongside sheep and goat herding. It has a modern olive press. It is connected to the district center by a paved road passing from the western and northern sides of the village. The Haj Bilal farm is affiliated with it. This village is considered one of the old villages in the region and neighboring villages.</p>
-<p>Village mayor: Mohammed Khayru Jamil (محمد خيرو جميل)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Alkana from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Nly07uiriXE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Nly07uiriXE</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and execution: Manager of Navenda Tirej Soft site / Ebdulrehman Hacî Osman.</p>
+<ul>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Alkana ، صاتي أوشاغي ، الصاتي /1357ن - 560م/:</p>
+<ul>
+<li>آلكانا: اسم عشيرة كردية يوجد منها في هكاري /ليرخ، ص46/. واسم &quot;صاتي&quot;</li>
+</ul>
+<p>المعرب لا معنى له.</p>
+<ul>
+<li>قرية صغيرة تقع على الجانب الغربي من مسيل مائي شديد الانحدار جنوبا باتجاه</li>
+</ul>
+<p>وادي آلكانا Alkana، موقعها مستوي، وقليل المساحة، ومنازلها متراصة. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه صاتي اوشاغي : قرية في جبل الكرد , تتبع ناحية شيخ الحديد , منطقة عفرين , محافظة حلب . وهي قرية صغيرة تقع في الجزء الغربي الأوسط للجبل المذكور على منبسط صخري بين مسيلين يجاورانه شرقاً وغرباً وينحدران نحو الجنوب , تربتها بيضاء رقيقة ، تبعد عن بلدة شيخ الحديد 14كم باتجاه الشمال الشرقي , يحدها شمالاً سلسلة جبلية عالية ومحطة البث التلفزيوني في أعلى قمة الجبل وقرية معمل أوشاغي , وجنوباً مسيل عميق وسلسلة جبلية عالية وقرية حاج بلال , وغرباً سلسلة جبلية وقرية سعولجك و عمر اوشاغي , وشرقاً وادي عميق يفصل بين قرية خليل كولكو و صاتي اوشاغي . يبلغ عدد بيوتها حوالي 55بيتاً وعمرها حوالي 350عاماً ومساكنها القديمة حجرية طينية بسقوف خشبية وتطغى عليها المساكن الإسمنتية الحديثة التي تنتشر شمالاً وجنوباً . تتوفر فيها شبكة الكهرباء كما تشرب القرية من شبكة مائية متصلة مع شبكة ارواء قرى ناحية شيخ الحديد وقديماً كان يشربون من نبع في أسفل الوادي بجانب الطاحونة القديمة المندثرة وفيها مدرسة ابتدائية وإعدادية مشتركة مع قرية خليل كولكو ، يعمل السكان بالزراعة البعلية (الزيتون، الكرمة، التين ، الجوز، اللوز) إلى جانب تربية الأغنام والماعز فيها معصرة حديثة للزيتون ، تتصل بمركز الناحية بطريق مزفت يمر من الجهة الغربية والشمالية للقرية , تتبعها مزرعة حاج بلال ، وهذه القرية تعتبر من القرى القديمة في المنطقة والقرى المجاورة .</p>
+<p>مختار القرية : محمد خيرو جميل</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Alkana from Afrin Flo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=pMN9LdiFGuk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=pMN9LdiFGuk</a></p>
+<p>The village of <span class="internal-link">Olkano</span>, occasionally referred to as <span class="internal-link">Holkono</span>, is situated in the <span class="internal-link">Afrin</span> region of northwestern Syria and falls administratively under the district of <span class="internal-link">Şiyê</span>. The village is located approximately ten to twelve kilometers from Şiyê. According to the village Mukhtar, <span class="internal-link">Feysel</span>, the settlement is ancient (&quot;qedîm&quot;) and its name has deep roots, though the precise etymology remains obscure to the current inhabitants. The village is closely linked socially and geographically with the neighboring villages of <span class="internal-link">Gundê Xelîl</span> and <span class="internal-link">Hecî Belî</span>, also known as <span class="internal-link">Hecbiliwa</span> or <span class="internal-link">Sêgundo</span>.</p>
+<p>The history of Olkano is marked by a diverse past and significant shifts in its landscape and economy. The Mukhtar notes that the village once hosted <span class="internal-link">Armenian</span> residents, specifically pointing out a site known as <span class="internal-link">Hewşê Ermeniya</span> (the Armenian Courtyards). In this area, residents utilized a communal space for crushing wheat and grain, a practice that dates back over a century. The village was historically defined by its abundant water sources and lush agriculture. In the past, the land supported walnuts, apricots, apples, and hazelnuts (<span class="internal-link">findiq</span>), but due to recent droughts and fires, the primary crop remaining is the olive (<span class="internal-link">zeytûn</span>).</p>
+<p>Water management plays a central role in the local oral history. The village contains a historic site called <span class="internal-link">Delîb</span> and a significant water feature known as the <span class="internal-link">Qestel</span>. This stone trough or fountain is located between Olkano and the neighboring Hecî Belî. The Mukhtar attributes the stone structure to the &quot;Time of the Rûm&quot; (Romans or Byzantines) and mentions it was excavated or developed further during the &quot;English time.&quot; Another vital historical landmark is the <span class="internal-link">Xerafe</span>, a water wheel system that functioned until the late 1950s to irrigate gardens. A notable figure from regional memory is <span class="internal-link">Eyneto</span> from Hecî Belî, who is remembered for hand digging a deep well to ensure the community had access to clean water when other sources were scarce or contaminated.</p>
+<p>Culturally, Olkano held a distinct reputation throughout the Afrin region for its weddings and dance (<span class="internal-link">reqs</span>). The Mukhtar recalls that the village was famous for its festivities which would attract guests from surrounding areas. Today, the village consists of approximately sixty to seventy households. Residents like <span class="internal-link">Yûsif</span>, who traces his origins to Gundê Xelîl, emphasize the unity between the surrounding settlements. despite the environmental challenges and the drying of ancient wells like <span class="internal-link">Bîra Olkana</span>, the community maintains a strong connection to its heritage and the remaining historical landmarks that dot the landscape.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Alkana from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Nly07uiriXE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Nly07uiriXE</a></p>
 <p>The village of <span class="internal-link">Alkana</span> is situated in the mountainous terrain of the <span class="internal-link">Şiyê</span> district in <span class="internal-link">Efrîn</span>, located between the neighboring villages of <span class="internal-link">Xelîl</span> and <span class="internal-link">Hec Bilêl</span>. According to local oral tradition, the settlement is approximately eight hundred to nine hundred years old. The name Alkana is said to be a contraction of the words <span class="internal-link">Al</span> (flag) and <span class="internal-link">Kana</span> (spring), derived from the phrase &quot;Rûxê Alê,&quot; meaning the side or edge of the flag. The village is primarily inhabited by members of the <span class="internal-link">Şêxiya</span> tribe, who have resided in the area for at least six or seven generations.</p>
 <p>The history of Alkana is closely tied to regional Kurdish resistance movements. An elder from the village recounts the story of his grandfather, <span class="internal-link">Omerê Hebeş</span>, a literate man also known as &quot;<span class="internal-link">Berê Sipî</span>.&quot; During the rebellion of <span class="internal-link">Şêx Seîd</span> in 1925, Omerê Hebeş received a letter from the leader asking the local Kurds to cut the railway lines to impede the movement of the <span class="internal-link">Osmanla</span> (Ottoman/Turkish) forces. Acting on this request, the villagers destroyed the <span class="internal-link">Kopriya Heşerge</span> (Bridge of Heşerge), successfully blocking the route. Before the establishment of modern borders and the installation of wire fences, the villagers traded primarily in <span class="internal-link">Qiriqxan</span>, traveling by camel to stay in khans and sell their goods. After the borders were closed, their economic center shifted to the markets of Efrîn.</p>
 <p>Daily life in Alkana has historically revolved around the management of water and the cultivation of olives. The village landscape includes notable valleys such as <span class="internal-link">Geliyê Gencan</span> and <span class="internal-link">Geliyê Kaniyê</span>, and water sources like <span class="internal-link">Bîra Alkana</span>, <span class="internal-link">Qestel</span>, and <span class="internal-link">Kene</span>. A local expert, <span class="internal-link">Reşîd Şêx Mihemed Hemo</span>, continues the traditional practice of water dowsing to locate subterranean wells, a skill passed down from his father. The community maintains a deep connection to their heritage through the preservation of old olive presses (<span class="internal-link">delûv</span>), the preparation of traditional foods like <span class="internal-link">Kutayî</span> and <span class="internal-link">Sorme</span>, and the veneration of a local shrine on the village hill known as <span class="internal-link">Ziyareta Şehîdtekî</span>. The cultural identity of the village is further expressed through folk songs that specifically celebrate <span class="internal-link">Kaniya Alkana</span> and the people of the village.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Alkana from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=m6CbXkg5uMM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=m6CbXkg5uMM</a></p>
@@ -339,6 +408,13 @@
                 <td class="px-4 py-3 text-base"><a href="../village_transcripts/Alkana_Afrin 366_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
             </tr>
         
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Afrin Flo 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=pMN9LdiFGuk" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/afrin_flo_videos_7_Olkana.srt" download="afrin_flo_videos_7_Olkana.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Alkana_Afrin Flo_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
             </tbody>
         </table>
     </div>
@@ -370,7 +446,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20alkana.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20alkana.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=XDxXmaPWPvY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=XDxXmaPWPvY</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100052679717662" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100052679717662</a><br><a href="https://www.youtube.com/watch?v=Nly07uiriXE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Nly07uiriXE</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=m6CbXkg5uMM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=m6CbXkg5uMM</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20alkana.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20alkana.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=XDxXmaPWPvY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=XDxXmaPWPvY</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100052679717662" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100052679717662</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=Nly07uiriXE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Nly07uiriXE</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=m6CbXkg5uMM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=m6CbXkg5uMM</a></li></ul>
             </div>
 
             
@@ -380,7 +456,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -498,6 +574,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

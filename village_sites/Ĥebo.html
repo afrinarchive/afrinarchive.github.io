@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -167,7 +188,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Diflah, Gu.Ḧebo, Habo, Hebo, Xabû, الدفلة, حابو, حملورك, Ḧebo, Ḧemlorik</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Atmana</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Gendiso, Habû, Mala &#x27;Utê, Mala Egîd, Mala Guncê Wan, Mala Hêbu, Mala Mihemejono, Mala Pito, Mala Şêxo</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Gendiso, Habû, Hemrok, Mala &#x27;Utê, Mala Egîd, Mala Guncê Wan, Mala Hêbu, Mala Mihemejono, Mala Pito, Mala Şêxo</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -205,6 +226,9 @@
 <p><strong>Trees:</strong> <span class="internal-link">Zeytûna Ehmedê Heskulakê</span>, <span class="internal-link">Darê Dînan</span></p>
 <p><strong>Wells:</strong> <span class="internal-link">Bîra Qirşîliyê</span>, <span class="internal-link">Bîra Mezel</span></p>
 <p><strong>Other Landmarks:</strong> <span class="internal-link">Geliyê Şiyê</span></p>
+<h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Afrin 366</h5>
+<p><strong>Number of Caves:</strong> 1</p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Soryo</span>, <span class="internal-link">Şeytano</span>, <span class="internal-link">Rehmanî</span>, <span class="internal-link">Gundê Xelîl</span></p>
 <h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Khalil Sino</h5>
 <p><strong>Etymology:</strong> Named after a man named Habû who arrived from a workplace or factory (me&#x27;mila) and established the first family there</p>
 <p><strong>Springs:</strong> <span class="internal-link">Kaniya gundê Habû</span>, <span class="internal-link">Kaniya Gundî Hemo</span></p>
@@ -219,30 +243,69 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Ĥebo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) Geographical Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong>Ḧemlorik – Gundî Ḧebo, حملورك, الدفلة /813n - 700m/:</strong></p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Ĥebo</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hebo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hebo.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Ĥemlorik</span> / <span class="internal-link">Gund Ĥebo</span>, Arabicized as &quot;Al-Diflah&quot;. Population: 813. Elevation: 700m.</p>
+<p>Regarding the name <span class="internal-link">Ĥebo</span>: It comes from &quot;<span class="internal-link">Hebeş</span>&quot;, which is an endearing form of the name <span class="internal-link">Mihemed</span>. <span class="internal-link">Ĥem</span>: A shortened name for Mihemed. As for <span class="internal-link">Lorik</span>: It means &quot;curdled&quot; (xaṯir) in Kurdish, and it is also a diminutive for the red spots that appear on the skin during an allergic reaction or exist naturally on fair skin. This was a personal characteristic of its first inhabitant, whose name was <span class="internal-link">Ĥemê Zerî</span> (&quot;Blond Ĥem&quot; or &quot;Ĥem, son of the Blond woman&quot;), considering that the letter in the word <span class="internal-link">Zer</span> acts as a feminine marker for the singular noun. Ĥemlorik is the older name of the village. As for the newer name, Ĥebo, it belongs to a person named <span class="internal-link">Ĥeboyê Qefera</span>, originally from the village of Mamal Uşaxî, who inhabited the village in the middle of the nineteenth century.</p>
+<p>It is a small village situated on a high ground with steep slopes on all sides. Most of its inhabitants have migrated to the cities of <span class="internal-link">Efrîn</span> and <span class="internal-link">Heleb</span>.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Ĥemlorik / Ĥebo: A village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Mabeta</span> sub-district, Efrîn district, Heleb governorate. It is a small village located in the middle section of the mentioned mountain, atop a limestone mountain height. Its northern and western slopes descend steeply towards the <span class="internal-link">Rîşe</span> valley and are furrowed by watercourses heading east. It is 14km away from the town of Mabeta towards the northwest. Its soil is clay-based.</p>
+<p>It is bordered to the north by a steep slope, a torrential valley, rugged mountain heights, and the village of <span class="internal-link">Qudê Koy</span> in the far north. To the south, it is bordered by a slope, several watercourses planted with olive trees, and the village of <span class="internal-link">Xaziyan</span> (lower and upper). To the west, it is bordered by a rugged slope, a torrential valley, mountain heights, and the villages of <span class="internal-link">Xelîl Kalko</span> and Mamal Uşaxî. To the east, it is bordered by a slope and the village of <span class="internal-link">Sarî Uşaxî</span> at a distance of 1km.</p>
+<p>The number of its houses is approximately 38, and its age is about 300 years. Its old dwellings are made of stone and mud with flat wooden roofs, while the modern ones are of stone and cement, spreading towards the east and around the old site. An electricity network is available, as well as a water network connected to the well of the village of <span class="internal-link">Rehmaniya</span> at the bottom of the valley, which has been invested in since 1981. There is a modern primary school on the western side of the village.</p>
+<p>Its population reached 850 people in 2005. Its inhabitants work in rain-fed agriculture (grains, olives, vines, and other fruit trees), alongside raising sheep and goats. A dirt road connects it to the sub-district center, and an asphalt road passes near it on the western side, at a distance of 500m, leading to the villages (Xelîl Kalko and neighboring villages).</p>
+<p>Among its most important families: The <span class="internal-link">Hemrok</span> family (the first to inhabit the village, and the village was named after them). It is mentioned that Judge <span class="internal-link">Ebdulrehman Egîd</span> is one of the sons of this village.</p>
+<p>Village Mukhtar: <span class="internal-link">Ehmed Hebeş Bilal</span></p>
+<p>Preparation and execution:</p>
+<p>Director of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>Sources:</p>
 <ul>
-<li><span class="internal-link">Ḩebo</span> (حبو): From &quot;<span class="internal-link">Habash</span>&quot; (حبش) which is a nickname derived from <span class="internal-link">Mohammed</span>. <span class="internal-link">Ḩem</span> (حم): A shortened name from <span class="internal-link">Mohammed</span>, while <span class="internal-link">Lorik</span>: means the ring in Kurdish, as it is a diminutive of the red spots that appear on the skin during allergy or naturally present on white skin, and it is a personal characteristic of its first inhabitant named <span class="internal-link">Ḩemê Zerê</span> (حمێ زرێ) &quot;<span class="internal-link">Red Ḩem</span> or <span class="internal-link">Son of Blondes</span>&quot;, considering that the letter ê in the word <span class="internal-link">Zerê</span> is a feminine article for the singular name. &quot;<span class="internal-link">Hamlorik</span>&quot; (حملورك) is the older name of the village. The newer name &quot;<span class="internal-link">Ḩebo</span>&quot; (حبو) is for a person called <span class="internal-link">Eboyê Qeferaḧ</span> (ابويێ قفراح), originally from <span class="internal-link">Q. Ma&#x27;mal Oshaghi</span> (ق.معمل أوشاغي), who lived in the village in the mid-nineteenth century.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A small village settled on a steep elevation from all directions, and most of its residents have migrated to Afrin City and <span class="internal-link">Aleppo</span> cities.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin City.... Its Rivers and Green Hills</span>&#x27; by Abdulrahman Mohammed from <span class="internal-link">Qatmah</span> village (عبدالرحمن محمد من قرية قطمه):</p>
-<p><strong>حملورك - حبو</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد), belonging to <span class="internal-link">Mabetli</span> district (ناحية المعبطلي), Afrin City region (منطقة عفرين), <span class="internal-link">Aleppo</span> governorate (محافظة حلب).</p>
-<p>It is a small village located in the middle part of the aforementioned mountain, above a limestone mountain elevation, its northern and western slopes descend steeply toward <span class="internal-link">Reisha Valley</span> (وادي (ريشة)) and are cut by streams heading east. It is 14km from <span class="internal-link">Mabetli</span> town (بلدة المعبطلي) toward the northwest. Its soil is hilly.</p>
-<p>It is bounded to the north by a steep slope and <span class="internal-link">Sili Valley</span> (وادي سيلي) and rugged mountain elevations and <span class="internal-link">Qudah Koy</span> village (قرية قوده كوي) in the far north, to the south by a slope and several streams planted with olive trees and <span class="internal-link">Khaziyan Tahtani</span> (خازيان تحتاني) and <span class="internal-link">Foqani</span> (فوقاني) villages, to the west by a rugged slope and <span class="internal-link">Sili Valley</span> (وادي سيلي) and mountain elevations and <span class="internal-link">Khalil Kolko</span> (خليل كولكو) and <span class="internal-link">Ma&#x27;mal Oshaghi</span> (معمل أوشاغي) villages, and to the east by a slope and <span class="internal-link">Sari Oshaghi</span> village (قرية صاري أوشاغي) 1km away.</p>
-<p>The number of its houses reaches about 38 houses and its age is about 300 years. Its dwellings are stone and clay with flat wooden roofs, and the modern ones are stone and concrete spread eastward and around the old site.</p>
-<p>It has an electricity network and water network connected to the well of <span class="internal-link">Rahmaniya</span> village (قرية رحمانية) in the lower valley, which has been exploited since 1981. It has a modern elementary school on the western side of the village. The number of its residents reaches 850 people in 2005.</p>
-<p>Its residents work in rain-fed agriculture (grains, olives, grapes, other fruit trees), in addition to raising sheep and goats. It connects with the district center by an earth road, and a paved road to villages (<span class="internal-link">Khalil Kolko</span> (خليل كولكو) and neighboring villages) passes nearby from the western side 500m away.</p>
-<p>Among its most important families: <span class="internal-link">Hamruk</span> family (عائلة حمروك) (the first to live in the village and therefore the village was named after them).</p>
-<p>It is mentioned that Judge <span class="internal-link">Abdulrahman Akid</span> (القاضي عبدالرحمن عكيد) is from the sons of this village.</p>
-<p>Village mayor: <span class="internal-link">Ahmed Habash Bilal</span> (أحمد حبش بلال)</p>
-<p>Prepared and executed by: <span class="internal-link">Tirej Afrin</span> website manager: <span class="internal-link">Abdulrahman Haji Othman</span></p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥebo from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=9KMHoMDR_jc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=9KMHoMDR_jc</a></p>
+<ul>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Ĥemlorik  Gund Ĥebo ، حملورك ، الدفلة /813ن - 700م/:</p>
+<ul>
+<li>حَبو Ĥebo: من &quot;حبش&quot; وهو اسم تحبب من محمد. حم Ĥem: اسم مختصر من محمد، أما</li>
+</ul>
+<p>لورك Lorik: فهو بمعنى الخاثر بالكردية، كما أنه تصغير للبقع الحمراء التي تظهر على الجلد أثناء حدوث التحسس أو موجودة على البشرة البيضاء بشكل طبيعي، وهي صفة شخصية لأول ساكن لها وكان اسمه حَمي زَري Ĥem Zer &quot;حَم الأشقر أو حَم ابن الشقراء&quot;، على اعتبار أن حرف  في كلمة Zer، هي أداة تأنيث للاسم المفرد. و&quot;حملورك&quot; هي التسمية الأقدم للقرية. أما الاسم الأحدث أي &quot;حَبو&quot; فهو لشخص يدعى eboy QeferaĤ، أصله من ق.معمل أوشاغي، وسكن القرية في أواسط القرن التاسع عشر.</p>
+<ul>
+<li>قرية صغيرة تستقر على مرتفع شديد الانحدار من جميع الجهات، وقد هجرها أغلب</li>
+</ul>
+<p>سكانها إلى مدينتي عفرين وحلب وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه حملورك - حَبو : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في القسم الأوسط للجبل المذكور ، فوق مرتفع جبلي كلسي ، تنحدر سفوحه الشمالية و الغربية بشدة نحو وادي (ريشة) وتخدده المسيلات المتجهة نحو الشرق ، وهي تبعد عن بلدة المعبطلي 14كم باتجاه الشمال الغربي ، تربتها غضارية ، يحدها شمالاً منحدر شديد الانحدار ووادي سيلي ومرتفعات جبلية وعرة وقرية قوده كوي في أقصى الشمال ، وجنوباً منحدر وعدة مسيلات مزروعة بأشجار الزيتون وقرية خازيان تحتاني وفوقاني ، وغرباً منحدر وعر ووادي سيلي ومرتفعات جبلية وقرية خليل كلكو ومعمل أوشاغي وشرقاً منحدر و قرية صاري أوشاغي على بعد 1كم ، يبلغ عدد بيوتها حوالي 38 بيتاً وعمرها حوالي 300عاماً ، مساكنها حجرية طينية ذات سقوف خشبية مستوية والحديثة حجرية إسمنتية تنتشر باتجاه الشرق وحول الموقع القديم ، تتوفر فيها شبكة كهرباء وشبكة مائية متصلة ببئر قرية رحمانية في أسفل الوادي والذي يستثمر منذ عام 1981م ، فيها مدرسة ابتدائية حديثة في الجهة الغربية من القرية ، يبلغ عدد سكانها 850 نسمة في عام 2005م ، يعمل سكانها بالزراعة البعلية (الحبوب ، الزيتون ، الكرمة ، الأشجار المثمرة الأخرى) ، إلى جانب تربية الأغنام والماعز ، تتصل بمركز الناحية طريق ترابي ويمر بالقرب منها من الجهة الغربية على بعد 500 م طريق مزفتة إلى القرى (خليل كلكو والقرى المجاورة) من أهم عوائلها : عائلة حمروك (أول من سكنوا القرية و لذلك سميت القرية نسبة إليهم) . يذكر أن القاضي عبدالرحمن عكيد من أبناء هذه القرية</p>
+<p>مختار القرية : أحمد حبش بلال</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥebo from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=9KMHoMDR_jc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=9KMHoMDR_jc</a></p>
 <p>The village of <span class="internal-link">Hêbu</span>, also formally known as <span class="internal-link">Hecî Qasima</span>, is situated on a high mountain peak in the <span class="internal-link">Mabeta</span> district of <span class="internal-link">Efrîn</span>. Known for its high altitude and constant cool breeze, the village was established by a figure named <span class="internal-link">Hecî Qasim</span> (also referred to as Hêbu, the original owner of the land). According to oral history, the founder migrated from the village of <span class="internal-link">Me&#x27;mil Uşaxî</span> (or <span class="internal-link">Memila</span>), cleared the brush, and established the settlement. The lineage of the founder is traced through ancestors like <span class="internal-link">Koleyê Hêbu</span>.</p>
 <p>The social structure of Hêbu is defined by a convergence of different families migrating from various locations to join the original settlers. <span class="internal-link">Mala Egîd</span> arrived from <span class="internal-link">Tahîkê</span> and settled alongside the founding family. <span class="internal-link">Mala Pito</span> migrated from <span class="internal-link">Soryê</span>, while <span class="internal-link">Mala &#x27;Utê</span> came from Me&#x27;mil Uşaxî. The <span class="internal-link">Mala Şêxo</span> family traces its origins specifically to the <span class="internal-link">Atmana</span> tribe. There is also mention of <span class="internal-link">Mala Mihemejono</span>, who established ties with the founding lineage by marrying a daughter of Koleyê Hêbu.</p>
 <p>Historically, the village faced significant water scarcity due to its elevation. Residents relied heavily on wells such as <span class="internal-link">Bîra Qirşîliyê</span> and <span class="internal-link">Bîra Mezel</span> (the Cemetery Well). In the era of Koleyê Hêbu, winters were severe with heavy snowfall. Villagers would collect snow in large pits called qopa to melt for water during the dry months. The village is surrounded by specific landmarks, including the spring <span class="internal-link">Kaniya Zerê</span>, the valley <span class="internal-link">Geliyê Şiyê</span>, and hills like <span class="internal-link">Rîşê Kurkê</span> and <span class="internal-link">Çiyayê Hekarê</span>. Notable trees served as markers, such as <span class="internal-link">Zeytûna Ehmedê Heskulakê</span> and <span class="internal-link">Darê Dînan</span>.</p>
-<p>The village maintains a strong spiritual tradition rooted in the <span class="internal-link">Rifaî</span> Sufi order. A community of elders, referred to as şêxler, performs zikir ceremonies on Thursdays and recites religious hymns in both Kurmanji and Arabic. They historically visited the shrine <span class="internal-link">Ziyaretê Henên</span>. Modern developments were championed by figures like <span class="internal-link">Şewket Agid</span>, who helped bring electricity and water infrastructure to the village. The community also honors local martyrs, including <span class="internal-link">Şehîd Çekdar Efrîn</span>, who died in <span class="internal-link">Nînowa</span>, and the village commune is named after <span class="internal-link">Şehîd Viyan Amara</span>. Daily life involves communal traditions, such as the preparation of bulxur and the use of traditional herbal medicine practiced by elders like <span class="internal-link">Merhaba</span>, who learned from her father <span class="internal-link">Bavê Hecî</span>.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥebo from Khalil Sino</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=edRVwffcrSA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=edRVwffcrSA</a></p>
+<p>The village maintains a strong spiritual tradition rooted in the <span class="internal-link">Rifaî</span> Sufi order. A community of elders, referred to as şêxler, performs zikir ceremonies on Thursdays and recites religious hymns in both Kurmanji and Arabic. They historically visited the shrine <span class="internal-link">Ziyaretê Henên</span>. Modern developments were championed by figures like <span class="internal-link">Şewket Agid</span>, who helped bring electricity and water infrastructure to the village. The community also honors local martyrs, including <span class="internal-link">Şehîd Çekdar Efrîn</span>, who died in <span class="internal-link">Nînowa</span>, and the village commune is named after <span class="internal-link">Şehîd Viyan Amara</span>. Daily life involves communal traditions, such as the preparation of bulxur and the use of traditional herbal medicine practiced by elders like <span class="internal-link">Merhaba</span>, who learned from her father <span class="internal-link">Bavê Hecî</span>.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥebo from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=LWE_Re5CBjU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=LWE_Re5CBjU</a></p>
+<p>The documentary footage offers an intimate look at the village of <span class="internal-link">Hebo</span>, situated within the administrative district of <span class="internal-link">Mabeta</span> in the Afrin region. The hosts describe the location as being approximately seven or eight kilometers from the center of Mabeta. Hebo is characterized as a small village (&quot;gundê çûçik e&quot;) rather than a large settlement. The visit takes place under difficult winter conditions, with the hosts noting the fog (&quot;mij&quot;) and rain that have transformed the landscape. Despite the weather, they emphasize the aesthetic appeal of the village&#x27;s natural stone environment, remarking on how the rain has filled the surroundings with water and mud, yet also brought out the beauty of the area.</p>
+<p>A significant portion of the transcript focuses on the geological and natural features found within and immediately around Hebo. The filmmakers explore a rocky area containing a &quot;berqef&quot; (a rock shelter or cave entrance). They engage in a detailed discussion about markings found on the stones, referring to them as &quot;remz&quot; (symbols) and &quot;îşaret&quot; (signs). The host speculates that people knowledgeable in &quot;alim el asar&quot; (the science of antiquities) would recognize these holes and patterns as indicators of something hidden or significant inside the rock, though the hosts admit they lack the expertise to interpret them. This suggests a local belief that the rocky terrain of Hebo holds historical or archaeological secrets.</p>
+<p>Nature is a central theme of the visual narrative. The hosts express wonder at a specific tree that has managed to grow directly out of a solid rock (&quot;tahtê hişk&quot;), viewing it as a marvel of the natural world. They also highlight the abundance of water due to recent rains, noting that the earth has been satiated (&quot;erdê têr av bî&quot;). While the village infrastructure is briefly mentioned, specifically the presence of village water (&quot;ava gundî&quot;) but a lack of electricity cables at the time of filming, the focus remains largely on the landscape.</p>
+<p>In terms of regional geography, the transcript places Hebo in relation to several neighboring localities. Towards the end of the video, the host points out nearby places visible from their location, specifically naming <span class="internal-link">Soryo</span> and <span class="internal-link">Şeytano</span>. He clarifies that Soryo is referred to as <span class="internal-link">Rehmanî</span> in Arabic (&quot;B&#x27;erebî dibên Rehmanî ye&quot;). The road leading to the neighboring village of <span class="internal-link">Gundê Xelîl</span> is also mentioned as being close by. The video was produced in response to requests from viewers, including a specific individual named <span class="internal-link">Kawa</span>, and the hosts mention having previously filmed in the village of <span class="internal-link">Bêgova</span>, linking Hebo to the broader network of Kurdish villages in the region.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥebo from Khalil Sino</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=edRVwffcrSA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=edRVwffcrSA</a></p>
 <p>The documentary features <span class="internal-link">Gundê Habû</span> which is located in the <span class="internal-link">Deşta Xezewiyê</span> plain within the <span class="internal-link">Efrîn</span> region. According to a resident named <span class="internal-link">Şukrî</span> the village derives its name from a founding figure named <span class="internal-link">Habû</span>. Oral history states that Habû arrived in the area from a workplace or factory known as &quot;me&#x27;mila&quot; and settled in the uninhabited plain to raise a family. While there are no written records regarding the exact foundation date local elders believe the village is quite ancient. They estimate that the prominent plane tree known as <span class="internal-link">Darî Çinare</span> and the village well have existed for over 500 years.</p>
 <p>The social structure and demographics of Gundê Habû have shifted dramatically over time. Şukrî explains that the village was historically home to between 200 and 300 households. However migration to cities like <span class="internal-link">Heleb</span> and countries such as <span class="internal-link">Tirkiyê</span> or various nations in <span class="internal-link">Ewrûpa</span> has reduced the population to approximately 28 households. Despite this decline the residents maintain a strong connection to their history. An elder woman named <span class="internal-link">Habîba</span> recalls the &quot;tebeqo&quot; era and the strong communal bonds that existed before families were separated by migration. She describes daily chores such as fetching water and washing clothes at <span class="internal-link">Bîra Qaşliyê</span>.</p>
 <p>Notable landmarks define the geography and memory of the village. The residents highlight specific locations in the surrounding fields including <span class="internal-link">Kaniya Berbîra</span> and <span class="internal-link">Berberxa</span> and <span class="internal-link">Berkara</span>. Within the village there is an ancient olive press referred to as <span class="internal-link">Me&#x27;ser</span> or &quot;Mekbez&quot; which speaks to the agricultural history of the area. A traditional stone roller known as a <span class="internal-link">Delîb</span> sits unused as a relic of past grain processing. The area around the water sources is particularly significant with the host visiting <span class="internal-link">Kaniya gundê Habû</span> and a specific site called <span class="internal-link">Kaniya Gundî Hemo</span> where the ancient Darî Çinare stands. The village also contains a cemetery where the host visits <span class="internal-link">Tirba Ziwara</span> and mentions a specific location called <span class="internal-link">Kofkê Gendiso</span>.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>The Village of Hebo</p>
@@ -300,6 +363,13 @@
             </tr>
         
             <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Afrin 366 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=LWE_Re5CBjU" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/afrin366_videos_169_Hebo.srt" download="afrin366_videos_169_Hebo.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Ĥebo_Afrin 366_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
                 <td class="px-4 py-3 text-base">Khalil Sino 1</td>
                 <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=edRVwffcrSA" target="_blank" class="external-link hover:underline">Watch Video</a></td>
                 <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/khalil_sino_videos_26_Hebo.srt" download="khalil_sino_videos_26_Hebo.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
@@ -333,7 +403,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hebo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hebo.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=WYfd4p5TPRc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=WYfd4p5TPRc</a></li><li>Local FB page:<br><a href="https://www.facebook.com/GUNDEHABO" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/GUNDEHABO</a><br><a href="https://www.youtube.com/watch?v=9KMHoMDR_jc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9KMHoMDR_jc</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=edRVwffcrSA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=edRVwffcrSA</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hebo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hebo.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=WYfd4p5TPRc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=WYfd4p5TPRc</a></li><li>Local FB page:<br><a href="https://www.facebook.com/GUNDEHABO" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/GUNDEHABO</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=9KMHoMDR_jc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9KMHoMDR_jc</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=LWE_Re5CBjU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=LWE_Re5CBjU</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=edRVwffcrSA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=edRVwffcrSA</a></li></ul>
             </div>
 
             
@@ -343,7 +413,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -461,6 +531,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

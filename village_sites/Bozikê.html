@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -104,6 +125,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Bozika, Bozikeh, Bozikê, بوزيكه</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Bozîkan</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Berazî</p></div>
                         </div>
                     </div>
                     
@@ -127,21 +150,66 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Bozikê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Named after one of its first inhabitants. Also, Al-Istakhri mentioned a Kurdish tribe named Bozîkan, and Bozîk is also the name of the mountain on which the village is built.</p>
+<p><strong>Foundation Date/Period:</strong> 75 years</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Bozîke</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Perestgeha Til Eyn Dara</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çemê Efrîn</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Bozikê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds</span> (Afrin) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Bozikê, بوزيكه</strong> /7km - 375m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Bozikê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-bozika.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-bozika.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Bozîk</span>, <span class="internal-link">Bozîke</span> / 7km - 375m /:</p>
+<p>Bozîk: The name of one of its first inhabitants. Also, <span class="internal-link">El-Istexrî</span> /died 951 AD/ mentioned a Kurdish tribe named <span class="internal-link">Bozîkan</span>. Bozîk is also the name of the mountain on which the village was established.</p>
+<p>It is a small village consisting of several residential houses, located on the northwestern peak of Mount Bozîke, which stands in the middle of the <span class="internal-link">Cûme</span> plain. Its northern, western, and southern edges are vast plains, and to the east is the course of the <span class="internal-link">Çemê Efrîn</span>. Many of its inhabitants have abandoned it.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Bozîke: A farm in <span class="internal-link">Çiyayê Kurmênc</span>, belonging to the sub-district of villages in the <span class="internal-link">Efrîn</span> region. It is a farm administratively attached to the village of <span class="internal-link">Kewkebe</span> in the Heleb governorate.</p>
+<p>It is a farm located on a high mountainous elevation surrounded by olive trees from all sides. It is bordered to the north by a steep slope and the village of <span class="internal-link">Betîte</span> at a distance of 500m. To the south, it is bordered by a rise of black stones that separates it from the village of Kewkebe and olive trees. To the west, there is a mountainous rise planted with olives, a fertile plain, the village of <span class="internal-link">Kefer Betre</span> and <span class="internal-link">Tilelf</span>, and the <span class="internal-link">Riya Efrîn-Cindirês</span>. To the east, there is a mountainous rise and a slope planted with olive trees, the course of the Çemê Efrîn at the bottom of the valley, the archaeological <span class="internal-link">Perestgeha Til Eyn Dara</span>, and the village of <span class="internal-link">Eyn Dara</span>.</p>
+<p>The number of its houses reaches 10 houses, and its age is 75 years. Its modern houses are made of stone and reinforced concrete. An electricity network is available, as well as a school shared with the village of Betîte. The road leading to it is a leveled dirt road. The residents drink from artesian wells and water pools. Its inhabitants work in the cultivation of olives, vines, and some other fruit trees, as well as sheep rearing.</p>
+<p>The residents of this village originated from the <span class="internal-link">Eyn el-Ereb</span> region; they came to Kewkebe 100 years ago and then to this farm. They are from the <span class="internal-link">Berazî</span> family from Eyn el-Ereb.</p>
+<p>Preparation and Execution:</p>
+<p>Director of the <span class="internal-link">Tirej Efrîn</span> website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li><span class="internal-link">Bozik</span>: The name of one of its first inhabitants. As mentioned by <span class="internal-link">al-Istakhri</span> /died 951 AH/, a Kurdish tribe named <span class="internal-link">Bozikan</span>. And Bozik is the name of the mountain on which the village was also built.</li>
-<li>A small village consisting of several residential houses, located on the northwestern summit of <span class="internal-link">Bozikeh Mountain</span> standing in the middle of <span class="internal-link">Joumeh</span> plain, its northern, western and southern peripheries are vast plains, and from the east the course of <span class="internal-link">Afrin River</span>. Many of its inhabitants have migrated.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>And according to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmah</span> village:</p>
-<p><strong>بوزيكه</strong>: A farm in <span class="internal-link">Kurdish Mountain</span>, belonging to the villages sub-district of Afrin Region.</p>
-<p>It is a farm belonging to <span class="internal-link">Kaukabah</span> village, Aleppo Governorate. It is a farm located on a high mountainous elevation surrounded by olive trees from all directions. It is bordered to the north by a harsh slope and <span class="internal-link">Bteiteh</span> village at a distance of 500 meters. To the south by an elevation of black stones that separate it from Kaukabah village and olive trees. To the west by a mountainous elevation planted with olives and a fertile plain and <span class="internal-link">Kafr Batrah</span> village and <span class="internal-link">Tellef</span> and the <span class="internal-link">Afrin-Jandaris</span> road. To the east by a mountainous elevation and slope planted with olive trees and the course of Afrin River at the bottom of the valley and the crossing of the archaeological <span class="internal-link">Tell Ayn Darah</span> and <span class="internal-link">Ayn Darah</span> village. The number of its houses is 10 houses and its age is 75 years. Its modern houses are made of stones and reinforced cement. It has electricity network and a joint school with Bteiteh village and the road leading to it is dirt and paved. The residents drink from artesian wells and water pools. The inhabitants work in olive and vine cultivation, and some other fruit trees and raising sheep. The inhabitants of this village originally came from the <span class="internal-link">Ayn al-Arab</span> region, coming to it about 100 years ago to Kaukabah then to this farm, and they are from the <span class="internal-link">Barazi</span> family from Ayn al-Arab.</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Bozik ، بوزيكه /7كم - 375م/:</p>
+<p>-بوزيك: اسم لأحد سكانها الأوائل. كما ذكر الاصطخري /وفاته 951هـ/، عشيرة</p>
+<p>كردية باسم بوزيكان. وبوزيك هو اسم الجبل الذي أقيمت عليه القرية أيضاً.</p>
+<p>-قرية صغيرة تتألف من عدة دور للسكن، تقع على القمة الشمالية الغربية لجبل</p>
+<p>بوزيكه القائم وسط سهل جومه، أطرافهالشمالية والغربية والجنوبية سهول واسعة، ومن الشرق مجرى نهر عفرين. وقد هجرها الكثير من سكانها. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه بوزيكه : مزرعة في جبل الكرد ، تتبع ناحية قرى منطقة عفرين. وهي مزرعة تابعة لقرية كوكبة محافظة حلب . وهي مزرعة تقع في مرتفع جبلي عالي محاطة بأشجار الزيتون من كافة الجهات يحدها شمالاً منحدر قاسي وقرية بتيتة على بعد/500/م. وجنوباً مرتفع من الأحجار السوداء التي تفصلها عن قرية كوكبة وأشجار الزيتون وغرباً مرتفع جبلي مزروع بالزيتون وسهل خصب وقرية كفر بطرة و تللف وطريق عفرين جنديرس وشرقاً مرتفع جبلي ومنحدر مزروع بأشجار الزيتون ومجرى نهر عفرين في أسفل الوادي ومعبد تل عين داره الأثري وقرية عين داره يبلغ عدد بيوتها 10 بيوت وعمرها 75عام. بيوتها الحديثة من الأحجار والإسمنت المسلح تتوفر فيها شبكة الكهرباء ومدرسة مشتركة مع قرية بتيتة والطريق الواصل إليها ترابي معبد .يشرب الأهالي من الآبار الارتوازية وبرك المياه يعمل سكانها بزراعة الزيتون والكرمة , وبعض الأشجار المثمرة الأخرى وتربية الأغنام وسكان هذه القرية أصلهم من منطقة عين العرب قدموا إليها منذ /100/عام إلى كوكبة ثم إلى هذه المزرعة وهم من عائلة البرازي من عين العرب .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -159,7 +227,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-bozika.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-bozika.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-bozika.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-bozika.htm</a></li></ul>
             </div>
 
             
@@ -169,7 +237,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -287,6 +355,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

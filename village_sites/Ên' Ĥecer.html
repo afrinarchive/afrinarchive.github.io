@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -166,7 +187,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">&#x27;Ên Ĥecer Şerq, Kanî Kevirê, Ayn al-Hajar, Ên Hecer, عين الحجر شرقي, عين حجر الوسطى, Ain Al-Hajar Eastern, Ain Hajar Al-Wusta, Ên&#x27; Ĝecer, عين الحجر الشرقي, عين حجر الصغير والشرقي, مزرعة عين الحجر</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Arifê Pîrê, Elxelyo, Seydê Zêbo</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Goçer</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Arifê Pîrê, Elxelyo, Elûş, Elûş Îbiş, Emîr Şêxko, Pîro, Seydê Zêbo</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -180,7 +202,7 @@
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
                 <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
-                    <p class="text-sm">Coordinates: 36.568713, 36.824954</p>
+                    <p class="text-sm">Coordinates: 36.570269, 36.809086</p>
                 </div>
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
@@ -208,29 +230,63 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Ên&#x27; Ĥecer</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><h3 class="font-semibold text-xl mt-6 mb-3">Ain Al-Hajar Eastern</h3>
-<p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; - A Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">Ain Al-Hajar Eastern</span> (عين الحجر شرقي), <span class="internal-link">Ain Al-Hajar Farm</span> (مزرعة عين الحجر)</strong></p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Mala Xelî Pîrê</span> (مالا خلي پيره), <span class="internal-link">Ain Hajar Al-Wusta</span> (عين الحجر الوسطى)</strong>:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Ên&#x27; Ĥecer</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ayin%20hecer%20xerbi.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ayin%20hecer%20xerbi.htm</a></p>
+<p><span class="internal-link">Eyn Elhecer</span> (Ain al-Hajar)</p>
+<p>Based on the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p>Eyn Elhecer (Population: 1339 / Area: 440 hectares / Distance: 8km / Elevation: 430m): There are three small villages known by this name, and they have other local names in circulation. All are located on an elongated plateau extending in a west-east direction, with northern slopes descending steeply towards the valley of <span class="internal-link">Geliyê Zerafkê</span>.</p>
+<p><span class="internal-link">Eyn Elhecer a Rojava</span> (Western Ain al-Hajar) is known by three Kurdish names:</p>
+<p><span class="internal-link">Gundê Omo</span>: A proper noun derived from the name &#x27;Omer&#x27;.</p>
+<p><span class="internal-link">Mala Sinê</span>: Meaning &quot;House of Sinê&quot; (mal + Sinê), where Sinê is also a proper noun.</p>
+<p><span class="internal-link">Goçera</span>: The inhabitants belong to the Kurdish <span class="internal-link">Goçer</span> tribe, and it was named after them.</p>
+<p>Based on the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p><span class="internal-link">Eyn Elhecera Mezin</span> (Big Ain al-Hajar) is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Mabeta</span> sub-district, <span class="internal-link">Efrîn</span> district, Aleppo governorate. It is a medium-sized village located in the central part of the mentioned mountain, atop a limestone plateau. Its northern slopes descend towards the valley of <span class="internal-link">Geliyê Serfetî</span>, and eastward towards the valley of <span class="internal-link">Çemê Efrînê</span>. Its slopes end at undulating plains 8km to the east of the town of Mabeta.</p>
+<p>The village is bordered to the north by a rugged slope, the valley of Geliyê Zerafkê, a fertile agricultural plain, the village of <span class="internal-link">Şêxûtkê</span>, and the village of <span class="internal-link">Embarlî</span>. To the south, it is bordered by a slope and a fertile plain called <span class="internal-link">Deşta Eyn Dîbê</span>, the village of <span class="internal-link">Çewîq</span>, and <span class="internal-link">Tel Tawîl</span>. To the west, there is a slope, a mountainous elevation, and the village of <span class="internal-link">Eyn Elhecera Piçûk</span> (Small Ain al-Hajar). To the east, there is a slope, a plain, the valley of Çemê Efrînê, the village of <span class="internal-link">Estaro</span>, and the village of <span class="internal-link">Qurt Qûlaqa Mezin</span>.</p>
+<p>The number of houses reaches approximately 55, and the village is about 250 years old. The dwellings are built of stone and mud with flat wooden roofs, while modern ones are made of cement; the village has expanded to the west and east. An electricity network is available, as well as a water network supplied by the well of <span class="internal-link">Kokan Jêrîn</span> located next to the public road. The village contains a primary school and a modern mosque in the center. It is connected to the sub-district center by a paved road reaching the middle of the village.</p>
+<p>The inhabitants work in rainfed agriculture on an area of 444 hectares (grains, legumes, olives) and irrigated agriculture pumping from artesian wells for summer vegetables in the southern, western, and northern plains, alongside raising sheep and goats. Among the most important families is the <span class="internal-link">Emîr Şêxko</span> family (they were the first to inhabit the current village).</p>
+<p>Notable holders of higher degrees in the village include:</p>
+<p><span class="internal-link">Adil Elûş</span> (PhD in Economics, Russia).</p>
+<p>Village Mukhtar: <span class="internal-link">Namî Osman</span>.</p>
+<p>Sources:</p>
 <ul>
-<li>The popular Kurdish name meaning: house of <span class="internal-link">Khalil</span> son of the old woman. And &quot;<span class="internal-link">Khalil</span>&quot; is the name of one of its first inhabitants.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>And according to the book: Afrin.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmah</span> village:</p>
-<p><strong><span class="internal-link">Ain Al-Hajar Eastern</span></strong> (عين الحجر الشرقي): A village in <span class="internal-link">Kurd Mountain</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), Afrin City region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the central part of the mentioned mountain above a limestone plateau, gradually descending north toward <span class="internal-link">Zarafkah Valley</span> and crossed by streams ending in <span class="internal-link">Afrin River</span> valley to the west of Afrin river 1km away. It is 7km from <span class="internal-link">Mabetli</span> town. Its fertile agricultural land extends in the north and south. It is bordered to the north by <span class="internal-link">Zarafkah River</span> valley and fertile plain planted with olive trees and <span class="internal-link">Anbarli</span> and <span class="internal-link">Sheikhutka</span> villages, and to the south by a slope and fertile plain and Afrin-Rajo road and <span class="internal-link">Arjum</span> factories and <span class="internal-link">Juwayq</span> village, and to the west by a slope planted with olive trees and <span class="internal-link">1 - PhD/Villages/Omo</span> or <span class="internal-link">Sino</span> farm, and to the east by a medium slope and large <span class="internal-link">Ain Hajar</span> village. It has approximately 65 houses and is about 200 years old. Its dwellings are stone and clay with flat wooden roofs, while the modern cement ones expanded to the south, east and west. It has an electricity network and primary school. The farm drinks from a water network that gets its water from <span class="internal-link">Kokan Al-Tahtaniya</span> well network near the public road. It connects to the district center and neighboring villages by paved roads to the village center. Its inhabitants work in rainfed agriculture on an area of 250 hectares (olives, grains and legumes) and they cultivate irrigated crops from artesian wells water in the southern plain with summer vegetables and fruit trees (walnuts and pomegranates), in addition to raising sheep and goats on the plateau slopes suitable for grazing. Among its most important families are <span class="internal-link">Alush Aybash</span> family and <span class="internal-link">Beit Al-Biro</span> (the first to inhabit the village).</p>
-<h3 class="font-semibold text-xl mt-6 mb-3">En Hecer al-Kabir:</h3>
-<p>From the book Jabal al-Kurd (Afrin) A Geographical Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Ein al-Hajar /1339 inhabitants - 440 hectares - 8 km - 430 m/:</strong></p>
-<p>There are three small villages known by this name, which also have other common local names. All of them are located on an elongated plateau running west to east, and their northern slopes descend steeply towards the Ziravik Valley.</p>
-<p><strong>Gundî Omo - Goçera - Mala Sîno, Ein al-Hajar al-Gharbiya (Western Ein al-Hajar):</strong></p>
 <ul>
-<li>It is known by three Kurdish names: Gundî Omo (Omo&#x27;s village), a proper name derived from Omar; Mala Sîno (Sîno&#x27;s house), and Sîno is also a proper name; and Goçera, because its inhabitants belong to the Kurdish &quot;Goçer&quot; tribe, for which it was named.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>And from the book: Afrin... Its River and Green Hills by the author Abdurrahman Mohammed from the village of Qatmah:</p>
-<p><strong>Ein al-Hajar al-Kabir:</strong> A village in Jabal al-Kurd, belonging to the Maabatli subdistrict, Afrin district, Aleppo Governorate.</p>
-<p>It is a medium-sized village located in the central part of the aforementioned mountain, on a limestone plateau. Its northern slopes descend towards the Sarfati Valley and its eastern slopes towards the valley of the Afrin River. Its slopes terminate in undulating plains 8 km to the east of the town of Maabatli. It is bordered to the north by a rugged slope, the Ziravke River valley, a fertile agricultural plain, and the villages of Shekhutka and Anbarli; to the south by a slope, a fertile plain called the Ein Dibeh Plain, the village of Jwaiq, and Tall Tawil; to the west by a slope, a mountain highland, and the village of Ein al-Hajar Saghir (Lesser Ein al-Hajar); and to the east by a slope, a plain, the valley of the Afrin River, and the villages of Astaro and Qurt Qulaq al-Kabir.</p>
-<p>It has about 55 houses and is approximately 250 years old. Its old dwellings are made of stone and clay with flat, wooden roofs, while the modern ones are concrete and have expanded to the west and east. It is supplied with an electricity network and a water network from the Bir Kukan Tahtani well, located next to the main road. It has a primary school and a modern mosque in the center of the village. It is connected to the subdistrict center by a paved road that reaches the village center.</p>
-<p>Its inhabitants work in rain-fed agriculture on an area of 444 hectares (grains, legumes, olives), and in irrigated agriculture, pumping from artesian wells to grow summer vegetables in the southern, western, and northern plains, in addition to raising sheep and goats. One of its most important families is the Amir Sheikhko family (they were the first to inhabit the current village).</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ên&#x27; Ĥecer from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=7eH6HnNe9mo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=7eH6HnNe9mo</a></p>
+<ul>
+<li>Director of Tirej Efrîn site: Ebdulrehman Hacî Osman.</li>
+</ul>
+<p>Preparation and Execution: Ebdulrehman Hacî Osman</p>
+<ul>
+<li>Date: 20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : عين الحجر شرقي ، مزرعة عين الحجر. Mala Xel Pr ، عين حجر الوسطى :</p>
+<ul>
+<li>الاسم الكردي الشعبي بمعنى : بيت خليل ابن العجوزة. وخليل&quot; هو اسم أحد</li>
+</ul>
+<p>ساكنها الأوائل وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه عين الحجر شرقي : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في الجزء الأوسط من الجبل المذكور فوق هضبة كلسية ، تنحدر ببطء شمالاً نحو وادي زرافكة وتخددها مسيلات تنتهي إلى وادي نهر عفرين إلى الغرب من نهر عفرين بمسافة 1كم ، تبعد عن بلدة معبطلي (7كم ) تربتها لحقية خصبة وتمتد أراضيها الزراعية في الشمال والجنوب ، يحدها شمالاً وادي مياه زرافكة وسهل خصب مزروع بأشجار الزيتون وقرية أنبارلي وشيخوتكة ، وجنوباً منحدر وسهل زراعياً وطريق عفرين راجو و معامل العرجوم وقرية جويق ، وغرباً منحدر مزروع بأشجار الزيتون ومزرعة أومو أوسينو ، وشرقاً منحدر متوسط وقرية عين حجر كبير ، يبلغ عدد بيوتها حوالي 65بيتاً وعمرها حوالي 200عاماً ، مساكنها حجرية طينية ذات سقوف خشبية مستوية أما الحديثة إسمنتية توسعت جنوباً وشرقاً وغرباً ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية ، تشرب المزرعة من شبكة مائية تستمد مياهها من شبكة بئر كوكان التحتانية قرب الطريق العام ، تصلها بمركز الناحية و قرى المجاورة بطريق مزفتة حتى وسط القرية يعمل سكانها بالزراعة البعلية على مساحة 250 هـ (الزيتون والحبوب والبقول) ويزرعون رياً بالضخ من مياه الآبار الارتوازية في السهل الجنوبي الخضار الصيفية والأشجار المثمرة(الجوز والرمان) ، إلى جانب تربية الأغنام و الماعز على سفوح الهضبة الخصبة التي تصلح للرعي ومن أهم عوائلها عائلة علوش ايبش وبيت البيرو (أول من سكنوا القرية) .</p>
+<p>مختار القرية : نامي عثمان</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ên&#x27; Ĥecer from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=7eH6HnNe9mo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=7eH6HnNe9mo</a></p>
 <p>The village of <span class="internal-link">Eyn Hacere</span>, located in the <span class="internal-link">Efrîn</span> region, is historically defined by its relationship to water and stone. The village derives its name, which translates to &quot;Spring of the Stone&quot;, from an ancient water source known locally as <span class="internal-link">Kaniya Kêvir</span> or <span class="internal-link">Eyn el-Hacer</span>. According to village elders, the original settlement was located &quot;li jêr&quot; (down below), directly adjacent to this spring which issued from a <span class="internal-link">zineyr</span> (cliff or rock face). Over time, the residents migrated approximately one to two kilometers away from the water source to establish the current settlement, which is divided into two sections: <span class="internal-link">Eyn Hacere mezin</span> (Big Eyn Hacere) and <span class="internal-link">Eyn Hacere cûcik</span> (Small Eyn Hacere).</p>
 <p>The social history of Eyn Hacere begins with the arrival of the <span class="internal-link">Seydê Zêbo</span> family, who are cited by elders as the first lineage to settle the area &quot;berî giya&quot; (before everyone else). Following this founding period, other families such as <span class="internal-link">Elxelyo</span> arrived. The community is tight-knit, with residents describing themselves as &quot;pismamê hevdune&quot; (cousins of one another). Another prominent household mentioned is <span class="internal-link">Mala Arifê Pîrê</span>, also known as the house of <span class="internal-link">Ebû Fadî</span>. Despite the deep roots of these families, the village faces significant demographic challenges; elders lament that many young people have emigrated to places like <span class="internal-link">Heleb</span> (Aleppo) or <span class="internal-link">Tirkî</span> (Turkey), leaving the older generation to tend the land alone.</p>
 <p>The village contains specific historical remnants of agricultural life. A notable feature is the <span class="internal-link">Delûb</span>, an ancient stone roller used on a threshing floor. Historically, villagers would bring their wheat to this spot, attach animals to the stone, and drive them in circles to crush the grain. While the Delûb remains as a physical testament to the past, the agricultural present is marked by <span class="internal-link">cefaf</span> (drought), with elders noting that the springs and wells are running dry.</p>
@@ -281,7 +337,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ayin%20hecer%20sherbi.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ayin%20hecer%20sherbi.htm</a></li><li>Links:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ayin%20hecer%20xerbi.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ayin%20hecer%20xerbi.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=tjWpomkUNo0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tjWpomkUNo0</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=7eH6HnNe9mo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=7eH6HnNe9mo</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ayin%20hecer%20sherbi.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ayin%20hecer%20sherbi.htm</a></li><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ayin%20hecer%20xerbi.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ayin%20hecer%20xerbi.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=tjWpomkUNo0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tjWpomkUNo0</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=7eH6HnNe9mo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=7eH6HnNe9mo</a></li></ul>
             </div>
 
             
@@ -291,7 +347,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -378,8 +434,8 @@
                 return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
             const mainVillageName = "Ên&#x27; Ĥecer";
-            const villageLat = 36.568713;
-            const villageLng = 36.824954;
+            const villageLat = 36.570269;
+            const villageLng = 36.809086;
             const initialZoom = 14;
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
             const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
@@ -409,6 +465,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

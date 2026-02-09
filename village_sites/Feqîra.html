@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -176,7 +197,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Feqîra, Qara Bash, Ras al-Aswad, رأس الأسود, فقيران, قره باش, فقيرو</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Hekarî, Xaltî</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Elî Lovî, Ormexala, Pîr Mecîd, Pîr Şemo, Îbo Îskanê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Elî Lovî, Eybo Iskan, Ormexala, Pîr Mecîd, Pîr Şemo, Îbo Îskanê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -218,19 +239,57 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Feqîra</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Feqîra, <span class="internal-link">Qara Bash</span>, <span class="internal-link">Ras al-Aswad</span> (قره باش، رأس الأسود)</strong> /1706n - 475h - 11km - 435m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Feqîra</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20faqire.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20faqire.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span> regarding the village of <span class="internal-link">Feqîran</span>, <span class="internal-link">Qerebaş</span>, or <span class="internal-link">Ra&#x27;s al-Aswad</span>: 1706 inhabitants, 475 hectares, 11 km from the center, 435 m altitude.</p>
+<p><span class="internal-link">Feqîr</span> is an <span class="internal-link">Êzîdî</span> religious title. As for Qerebaş, the Êzîdî people used to wear black headgear, so the Ottoman tax collector did not exert himself to distinguish them other than by naming them according to the headwear that characterized the inhabitants. The Arabized name Ra&#x27;s al-Aswad is a translation of the Turkish designation. It is a large village on the southern slope of the <span class="internal-link">Kûrk</span> height, and its inhabitants follow the Êzîdî faith.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Feqîran is a village in <span class="internal-link">Çiyayê Kurmênc</span> that follows the <span class="internal-link">Cindirês</span> subdistrict in the <span class="internal-link">Efrîn</span> region, <span class="internal-link">Heleb</span> province. It is a large village located on the southern slope of <span class="internal-link">Çiyayê Sûtîn</span> at the beginning of the flat lands extending south and east as far as the valley of the Efrîn river, which forms part of the Cindirês plain. Its soil is fertile alluvial clay, and it is located 11 km from the town of Cindirês towards the northeast.</p>
+<p>It is bordered to the north by mountainous highlands planted with olive trees and grapevines, the nearby village of <span class="internal-link">Kewkan</span> at a distance of 500 meters, and <span class="internal-link">Satiyan</span>. To the south, it is bordered by an agriculturally fertile plain planted with olive trees, the <span class="internal-link">Geliyê Sêlê</span> (Sêlê valley), the shrine of <span class="internal-link">Şêx Ebdulrehman</span>, and the village of Şêx Ebdulrehman. To the west, it is bordered by Geliyê Sêlê, a mountainous height, and the village of <span class="internal-link">Çolqa</span> at a distance of 1 km. To the east, it is bordered by a wide and fertile plain planted with olive trees and grapevines and the village of <span class="internal-link">Keferdelê Jêrîn</span>.</p>
+<p>The number of its houses reaches approximately 110 houses, and its age is about 400 years according to the statements of one of the elderly residents of the village. Its old houses are made of stone and mud with flat wooden roofs, while the modern ones are cement and extend towards the east and north. An electricity network is available, as well as a drinking water network derived from the Kewkan well located 200 meters to the western side of the village, which belongs to the state. There is a primary school in the village.</p>
+<p>The village connects with the subdistrict center, the region, and neighboring villages via a paved road that passes through its center up to the <span class="internal-link">Mabeta</span> subdistrict. The village belongs to the Kewkan municipality. There is a modern olive press and a very old olive press in the village. Most of its inhabitants work in the cultivation of olives, grapevines, and grains, both rainfed and irrigated from artesian wells, as well as summer vegetables and fruit trees such as apricots, walnuts, and pomegranates, alongside raising sheep and goats. The religion of the village is entirely Êzîdî.</p>
+<p>One of its most important families is <span class="internal-link">Eybo Iskan</span>, who were the first to inhabit the village from its founding until the present date. Among the holders of higher degrees in the village is <span class="internal-link">Adil Merko</span>, who holds a doctorate in nuclear physics from the Russian Federation.</p>
+<p>Village Mukhtar: <span class="internal-link">Azad Heso</span></p>
+<p>Preparation and Execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li><span class="internal-link">Faqir</span> (فقير): is a religious <span class="internal-link">Yazidi</span> title. As for &quot;Qara Bash&quot; (قره باش): the Yazidis used to wear black headdresses, so the <span class="internal-link">Ottoman</span> tax collector found no trouble for himself and named them after what distinguished their inhabitants from head coverings. The Arabized name is a translation of the Turkish designation.</li>
-<li>A large village on the southern slope of <span class="internal-link">Kurkê</span> elevation (كوركي), whose inhabitants follow <span class="internal-link">Yazidism</span> (الإيزيدية).</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from <span class="internal-link">Qatmeh</span> village:</p>
-<p><strong><span class="internal-link">Faqiran</span> (فقيران)</strong>: A village in the <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Cindires District</span> (جندريس), Afrin (عفرين), Aleppo Governorate (حلب).</p>
-<p>It is a large village located on the southern slope of <span class="internal-link">Sutên Mountain</span> (جبل السوتين) at the beginning of the plain lands extending south and east to the <span class="internal-link">Afrin River</span> valley (وادي نهر عفرين), which forms part of the Cindires plain. Its soil is forest and alluvial fertile. It is 11 km northeast of Cindires town. It is bordered to the north by mountainous heights planted with olive and grape trees and the nearby <span class="internal-link">Kawrkan</span> village (كاوركان) 500 meters away and <span class="internal-link">Satianli</span> (صاتيانلي), and to the south by a fertile agricultural plain planted with olive trees and <span class="internal-link">Sili</span> valley (وادي سيلي) and the shrine of <span class="internal-link">Sheikh Abdulrahman</span> (مزار شيخ عبد الرحمن) and Sheikh Abdulrahman village (قرية شيخ عبد الرحمن), and to the west by Sili valley (وادي سيلي) and a mountain elevation and <span class="internal-link">Jawlqan</span> village (جولقان) 1 km away, and to the east by a wide and fertile plain planted with olive and grape trees and <span class="internal-link">Kefardale Tahtani</span> village (كفردلي تحتاني). The number of its houses is about 110 houses and its age is about 400 years according to one of the village&#x27;s elderly residents. Its old houses are stone and clay with flat wooden roofs, and the modern ones are concrete extending east and north. It has electricity network and drinking water network supplied from the Kawrkan well (بئر كاوركان) 200 meters from the western side of the village belonging to the state. It has an elementary school. It is connected to the district center and region and neighboring villages by a paved road passing through its center to <span class="internal-link">Ma&#x27;batli District</span> (معبطلي), and it belongs to the <span class="internal-link">Kawrkan Municipality</span> (بلدية كاوركان). There is a modern olive press and a very old press. Most of its residents work in growing olives, grapes, grains through dry farming and irrigation from artesian wells for summer vegetables and fruit trees like apricots, walnuts, and pomegranates, in addition to raising sheep and goats. The village&#x27;s religion is completely Yazidi (اليزيدية). One of its most important families is <span class="internal-link">Aybo Iskan</span> family (أيبو اسكان), who were the first to settle in the village, since its establishment until its history.</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Adel Marko</span> / Doctorate in Nuclear Physics / Russian Federation (عادل مركو / دكتوراة في الفيزياء النووية / روسيا الاتحادية)</p>
-<p>Village mayor: <span class="internal-link">Azad Haso</span> (آزاد حسو)</p>
-<p><strong>Prepared and implemented by: Director of Tirej Afrin website: <span class="internal-link">Abdulrahman Haji Othman</span></strong></p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Feqîra from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=mHDj-8bsPkk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=mHDj-8bsPkk</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Feqra ، قره باش ، رأس الأسود /1706ن - 475هـ - 11كم - 435م/:</p>
+<ul>
+<li>فقير: هو لقب ديني إيزيدي. أما &quot;قَرَه باش&quot;: فقد كان الإيزيديون يضعون</li>
+</ul>
+<p>حطاطات رأس سوداء، فلم يجهد جاب الضرائب العثماني نفسه، وسماها بما ميَّز سكانها من لباس الرأس. والاسم المعرب ترجمة للتسمية التركية.</p>
+<ul>
+<li>قرية كبيرة على سفح مرتفع كوركي Kurk الجنوبي، يدين سكانها بالإيزيدية.</li>
+</ul>
+<p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه فقيران : قرية في جبل الكرد تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع على السفح الجنوبي لجبل السوتين عند بداية الأراضي السهلية الممتدة جنوباً وشرقاً حتى واد نهر عفرين والتي تشكل جزءاً من سهل جنديرس . تربتها غضارية لحقية خصبة تبعد عن بلدة جنديرس 11 كم باتجاه الشمال الشرقي , يحدها شمالاً مرتفعات جبلية مزروعة بأشجار الزيتون والكرمة وقرية كاوركان القريبة على بعد 500 متر وصاتيانلي , وجنوباً سهل خصب زراعياً مزروعة بأشجار الزيتون ووادي سيلي ومزار شيخ عبد الرحمن وقرية شيخ عبد الرحمن , وغرباً وادي سيلي ومرتفع جبلي وقرية جولقان على بعد 1 كم , وشرقاً سهل واسع وخصب مزروع بأشجار الزيتون والكرمة وقرية كفردلي تحتاني , يبلغ عدد بيوتها حوالي 110 بيوت وعمرها حوالي 400 عاماً حسب أقوال احد سكان القرية المعمريين , بيوتها القديمة حجرية طينية بسقوف خشبية مستوية والحديثة أسمنتية تمتد باتجاه الشرق والشمال , تتوفر فيها شبكة كهرباء وشبكة مياه الشرب المستمدة من بئر كاوركان على بعد 200 متراً من الجهة الغربية للقرية العائدة للدولة فيها مدرسة ابتدائية , تتصل مع مركز الناحية والمنطقة والقرى المجاورة بطريق مزفت يمر في وسطها حتى ناحية معبطلي وهي عائدة لبلدية كاوركان , يوجد فيها معصرة للزيتون حديثة ومعصرة قديمة جداً يعمل معظم سكانها بزراعة الزيتون والكرمة والحبوب بعلاً ورياً من آبار ارتوازية الخضر الصيفية ولاأشجار المثمرة كالمشمش والجوز والرمان إلى جانب تربية الأغنام والماعز , وديانة القرية بالكامل من اليزيدين. من أهم عوائلها أيبو اسكان وهم أول من سكن القرية , منذ تأسيسها وحتى تاريخه. ومن حاملي الشهادات العليا في القرية : عادل مركو / دكتوراة في الفيزياء النووية / روسيا الاتحادية</p>
+<p>مختار القرية :  آزاد حسو</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Feqîra from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=mHDj-8bsPkk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=mHDj-8bsPkk</a></p>
 <p>The village of <span class="internal-link">Feqîra</span>, located in the <span class="internal-link">Cindirês</span> district of <span class="internal-link">Efrîn</span>, serves as a significant cultural and historical center for the <span class="internal-link">Êzdî</span> community in northwestern Syria. Established approximately 320 years ago, the village is not indigenous to its current location in terms of deep antiquity but was founded by migrants from <span class="internal-link">Bakurê Kurdistan</span> (Northern Kurdistan). The founder, <span class="internal-link">Elî Lovî</span>, led the settlement, and the villagers named their new home after their original village, Feqîra, located near <span class="internal-link">Batman</span>.</p>
 <p>The oral history preserved by the elders describes a migration caused by violence and difficult circumstances in their homeland. When the ancestors of the current residents arrived, they were accompanied by other distinct groups from villages such as <span class="internal-link">Çolaqa</span>, <span class="internal-link">Xerza</span>, and <span class="internal-link">Xalta</span>, who also settled in the region. Today, the village maintains a distinct demographic character, described as a &quot;lonely island&quot; of Êzdî inhabitants surrounded by <span class="internal-link">Muslim</span> villages. The social structure is defined by ancient Êzdî tribal confederations, specifically the <span class="internal-link">Xaltî</span> and <span class="internal-link">Hekarî</span> tribes. Within the village, the religious caste system remains intact, containing all three spiritual classes: Pîr, Mirîd, and Şêx. Prominent lineages include the <span class="internal-link">Ormexala</span> family (serving as Pîrs) and the family of <span class="internal-link">Îbo Îskanê</span>, the late mukhtar whose home has guarded sacred relics for centuries.</p>
 <p>Feqîra is geographically situated on a plateau (tebbaq) extending toward <span class="internal-link">Çiyayê Kurmênc</span> and <span class="internal-link">Çiyayê Lîlonê</span>. The landscape is marked by olive groves and historical remnants, including fifty caves and an ancient well dating back to the <span class="internal-link">Roman</span> era located at the front of the village. The residents also recall specific landmarks from their oral tradition, such as <span class="internal-link">Gêla Amkuy&#x27;a</span>, which served as a reference point for grazing flocks in the past.</p>
@@ -290,7 +349,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20faqire.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20faqire.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=-yMPXbxqKl8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=-yMPXbxqKl8</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=kz0_UCIf40E" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=kz0_UCIf40E</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=BLrxsFTruDY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=BLrxsFTruDY</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100064542648225" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100064542648225</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=XFRAbrGxGIk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=XFRAbrGxGIk</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=mHDj-8bsPkk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=mHDj-8bsPkk</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20faqire.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20faqire.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=-yMPXbxqKl8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=-yMPXbxqKl8</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=kz0_UCIf40E" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=kz0_UCIf40E</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=BLrxsFTruDY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=BLrxsFTruDY</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100064542648225" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100064542648225</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=XFRAbrGxGIk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=XFRAbrGxGIk</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=mHDj-8bsPkk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=mHDj-8bsPkk</a></li></ul>
             </div>
 
             
@@ -300,7 +359,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -418,6 +477,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

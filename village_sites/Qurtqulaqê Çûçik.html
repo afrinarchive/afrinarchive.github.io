@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -194,29 +215,64 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Qurtqulaqê Çûçik</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Turkish word meaning &#x27;Wolf&#x27;s Ear&#x27; (Qurt + Qulaq)</p>
+<p><strong>Foundation Date/Period:</strong> 200 years</p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qurtqulaqê Çûçik</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
-<p><strong>Qurtqulaq, <span class="internal-link">Qurt Qalaq</span></strong> (قورت قلاق), <span class="internal-link">Al-Deeb</span> (الديب):</p>
-<ul>
-<li><span class="internal-link">Qurt Qolaq</span> (قورت قولاق): A Turkish word meaning &quot;wolf&#x27;s ear&quot;. The Arabic name is an inaccurate translation of the Turkish meaning. They are two separate villages:</li>
-</ul>
-<p><strong>Çûçik Qurtqulaqê, <span class="internal-link">Qurt Qalaq Small</span></strong> (قورت قلاق صغير), <span class="internal-link">Al-Deeb Al-Saghir</span> (الديب الصغير) /869n - 285h - 8km - 370m/: A small village located on the eastern bank of the <span class="internal-link">Afrin River</span> (عفرين).</p>
-<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Qurt Qalaq Small</span></strong> (قورت قلاق صغير): A village in <span class="internal-link">Jabal al-Akrad</span> (جبل الكرد) belonging to <span class="internal-link">Sheran District</span> (شران), Afrin (عفرين) region, Aleppo Governorate (حلب), (850 people).</p>
-<p>It is a small village located on a mountainous elevation and fertile plateau with slopes from all directions around it. It is bordered to the north by a valley and elevation planted with olive trees and the village of <span class="internal-link">Qurt Qolaq Large</span> (قورت قولاق كبير), to the south by a slope and deep stream and plain planted with olive, grape, and forest trees and the villages of <span class="internal-link">Qastal Kashk</span> (قسطل كشك) and <span class="internal-link">Qara Tapa</span> (قره تبه), to the east by a mountainous chain planted with forest trees and the village of <span class="internal-link">Kurtak</span> (كورتك), and to the west by a valley planted with olive trees and plain and the course of the Afrin (عفرين) valley and the village of <span class="internal-link">Ain Hajar Large</span> (عين حجر كبير). It has about 25 houses and is 200 years old. Its old residences are stone and clay with wooden roofs, and the modern ones are cement. It has a paved road to the village center. Residents drink from collection pools or from artesian wells dug near the houses. Its residents work in olive and grape cultivation in rain-fed agriculture and irrigation with vegetables and fruit trees irrigated from the <span class="internal-link">Afrin River</span> (عفرين). It is a beautiful and charming village built of beautiful stones.</p>
-<p>Village mayor: <span class="internal-link">Mohammed Miqdad Omar</span> (محمد مقداد عمر)</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qurtqulaqê Çûçik</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20%20s.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20%20s.htm</a></p>
+<p>The following text appears in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Qurtqulaq</span>, <span class="internal-link">Al-Dîb</span>:</p>
+<p>Qurtqulaq: A Turkish word meaning &quot;Wolf&#x27;s Ear.&quot; The Arabized name is an inaccurate translation of the Turkish meaning. They are two separate villages: <span class="internal-link">Qurtqulaqa Biçûk</span> (Little Qurtqulaq, <span class="internal-link">Al-Dîb al-Saghîr</span>) /869 inhabitants, 285 houses, 8km, 370m altitude/. It is a small village located on the eastern bank of the <span class="internal-link">Efrîn</span> river.</p>
+<p>The following appears in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Qurtqulaqa Biçûk is a village in <span class="internal-link">Çiyayê Kurmênc</span> administratively attached to the <span class="internal-link">Şera</span> district, Efrîn region, Heleb governorate (850 inhabitants). It is a small village situated on a mountain rise and a fertile plateau. It is surrounded by slopes on all sides.</p>
+<p>It is bordered to the north by a valley and a rise planted with olive trees and the village of <span class="internal-link">Qurtqulaqa Mezin</span>. It is bordered to the south by a slope, a deep watercourse, a plain planted with olive trees, vines, and forest trees, the village of <span class="internal-link">Qestel Kişk</span>, and the village of <span class="internal-link">Qeretepe</span>. It is bordered to the east by a mountain range planted with forest trees and the village of <span class="internal-link">Kortik</span>. It is bordered to the west by a valley planted with olive trees, a plain, the course of the Efrîn valley, and the village of <span class="internal-link">Eyn Hecerê Mezin</span>.</p>
+<p>The number of its houses is about 25 houses, and its age is 200 years. Its old dwellings are of stone and mud with wooden roofs, while the modern ones are of cement. A paved road is available up to the center of the village. Residents drink from collection pools or from artesian wells dug near the houses. Its inhabitants work in rain fed agriculture of olives and vines, and irrigated cultivation of vegetables and fruit trees watered from the Efrîn river. It is a beautiful and sweet village built of beautiful stones.</p>
+<p>Village Mokhtar: <span class="internal-link">Mihemed Miqdad Omer</span></p>
 <p>Sources of Information:</p>
-<p>1 - Book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (محمد عبدو علي).</p>
-<p>2 - Book: &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27; by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatma Village</span> (قطمه).</p>
-<p>3 - Studies by <span class="internal-link">Tereij Soft Center</span> (تيريج سوفت) / <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>4 - Some village residents.</p>
-<p>Prepared and executed by: Director of <span class="internal-link">Tereij Afrin Website</span> (تيريج عفرين): <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20 / 12 / 2013</p></div></details></div>
+<ul>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
+</ul>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Qurtqulaq، قورت قلاق ، الديب:</p>
+<ul>
+<li>قورت قولاق</li>
+</ul>
+<p>: كلمة تركية بمعنى &quot; أذن الذئب &quot;. والاسم المعرب ترجمة غير دقيقة للمعنى التركي. وهما قريتان منفصلتان: ik Qurtqulaq ، قورت قلاق صغير ، الديب الصغير /869ن - 285هـ - 8كم - 370م/: قرية صغيرة تقع على الضفة الشرقية لنهر عفرين. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : قورت قلاق صغير : قرية في جبل الكرد تتبع ناحية شران منطقة عفرين محافظة حلب ، (850 ن) وهي قرية صغيرة تقع على مرتفع جبلي وهضبة خصبة ومن حولها منحدرات من كافة الجهات يحدها شمالا وادي ومرتفع مزروع بأشجار الزيتون وقرية قورت قولاق كبير وجنوبا منحدر ومسيل عميق وسهل مزروع بأشجار الزيتون والكرمة والأشجار الحراجية وقرية قسطل كشك وقرية قره تبه وشرقا سلسلة جبلية مزروعة بالأشجار الحراجية وقرية كورتك وغربا وادي مزروع بأشجار الزيتون وسهل ومجرى وادي عفرين وقرية عين حجر كبير . يبلغ عدد بيوتها حوالي25بيتا وعمرها200 عام. مساكنها القديمة حجرية طينية ذات سقوف خشبية والحديثة إسمنتية تتوفر فيها طريق مزفت حتى وسط القرية يشرب الأهالي من برك تجمع أو من الآبار الارتوازية المحفورة بالقرب من البيوت يعمل سكانها بزراعة الزيتون والكرمة بعلا والمروية بالخضروات والأشجار المثمرة المروي من نهر عفرين وهي قرية جميلة وحلوة مبنية من الأحجار الجميلة .</p>
+<p>مختار القرية : محمد مقداد عمر</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -231,7 +287,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20%20s.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20%20s.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20%20s.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20%20s.htm</a></li></ul>
             </div>
 
             
@@ -241,7 +297,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -359,6 +415,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

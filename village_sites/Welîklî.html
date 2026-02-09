@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,6 +205,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Wali, Bindarê, Walikli, Welîklî, الولي, واليكلي</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Meydan</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -210,24 +232,70 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Welîklî</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Welîklî is derived from the local Kurdish proper name Welo; Bindarî means under the tree (bin + dar), referring to an ancient tree near the village</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 200 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Biêvê</span>, <span class="internal-link">Çiyayê Qere Bêl</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Deşta Meydanlî</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Welîklî</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p><strong>Villages of Rajo (راجو) District / Reco</strong></p>
-<p><strong><span class="internal-link">Walikli</span> (واليكلي) - Welîklî</strong></p>
-<p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City (عفرين) / Geographical Study:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Welîklî</span>, <span class="internal-link">Bindarê</span> (واليكلي), <span class="internal-link">Al-Wali</span> (الولي)</strong> /419n - 14km - 760m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Welîklî</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20welkle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20welkle.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Welkl</span>, <span class="internal-link">Bindar</span>, <span class="internal-link">Welîklî</span>, <span class="internal-link">El Welî</span> 419 inhabitants, 14 km, 760 m.</p>
+<p>Welîklî: A local Kurdish proper name derived from <span class="internal-link">Welo</span>. <span class="internal-link">Bindarî</span>: Meaning under the tree (bin + dar), which is another name by which the village is known, attributed to a perennial tree located beside the village. As for the Arabized name, it is a verbal distortion of its popular name Welîklî.</p>
+<p>It is a small village on the southwestern slope of the highland <span class="internal-link">Çiyayê Biêvê</span>.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Welîklî: A farmstead in <span class="internal-link">Çiyayê Kurmênc</span> belonging to the <span class="internal-link">Reco</span> subdistrict, <span class="internal-link">Efrîn</span> region, <span class="internal-link">Aleppo</span> governorate.</p>
+<p>It is a small farmstead located on the southwestern slope of a limestone height called Çiyayê Biêvê or the Almond Mountain in the northern section of the mentioned mountain. It overlooks to the west a watercourse that descends southward toward the alluvial <span class="internal-link">Deşta Meydanlî</span>. It is 15 km away from the town of Reco heading northeast.</p>
+<p>It is bordered to the north by a mountain chain and the village of <span class="internal-link">Têbe Kuy</span> and <span class="internal-link">Qestel</span>; to the south by a fertile plain and a high mountain chain called <span class="internal-link">Çiyayê Qere Bêl</span> and the village of <span class="internal-link">Cîlanlî</span>; to the east by a mountain chain and, at a distance of 2 km, the village of <span class="internal-link">Dodo</span> and <span class="internal-link">Kawende</span>; and to the west by the <span class="internal-link">Riya Şêx Mihemedlî</span> (Şêx Mihemedlî highway) which is close to it and the mentioned village, separated by a highway.</p>
+<p>The number of its houses is about 30 houses and its age is about 200 years. Its old dwellings are of stone and mud with flat wooden roofs, while the modern ones are cement and have expanded south and north. An electricity network and drinking water belonging to the state are available, as well as a joint school with the village of <span class="internal-link">Şêx Mihemedlî</span>, and it belongs to the municipality of Şêx Mihemedlî.</p>
+<p>The residents work in rain fed agriculture on mountain slopes (olives, vines, pistachios) and raise sheep and goats. It is one of the seven <span class="internal-link">Meydan</span> villages.</p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">Welikli</span> (وليكلي): A local Kurdish proper name from &quot;<span class="internal-link">Welo</span>&quot; (ولو). <span class="internal-link">Bindarê</span> (بندارێ): meaning (under the tree) and is another name by which the village is known, attributed to an old tree existing beside the village. The Arabized name is a literal corruption of its folk name <span class="internal-link">Welikli</span> (وليكلي).</li>
-<li>A small village on the southwestern slope of <span class="internal-link">Jabal Ba&#x27;ive</span> (جبل بعيڤه) &quot;<span class="internal-link">Çi.Bi&#x27;îvê</span>&quot; (Çi.Bi&#x27;îvê) mountain.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين.... نهرها ورواباتيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin... Its River and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Walikli</span> (وليكلي)</strong>: A farm in the <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to Rajo (راجو) district, Afrin (عفرين) region, <span class="internal-link">Aleppo</span> (حلب) governorate.</p>
-<p>It is a small farm located on the southwestern slope of a limestone elevation called <span class="internal-link">Jabal Ba&#x27;ifa</span> (جبل بعيفة) or the almond trees in the northern part of the mentioned mountain and overlooks westward onto a water course that flows southward toward the <span class="internal-link">Maydanli</span> (ميدانلي) adjoining plain. It is 15 km from Rajo (راجو) town in the northeastern direction. It is bordered to the north by a mountain chain and <span class="internal-link">Taba Kawi</span> (تبة كوي) and <span class="internal-link">Qastal</span> (قسطل) villages, to the south by a fertile plain and high mountain chain called <span class="internal-link">Jabal Qara Bil</span> (جبل قره بيل) and <span class="internal-link">Jilanli</span> (جيلانلي) village, to the east by a mountain chain and 2 km away <span class="internal-link">Dowdow</span> (ضوضو) and <span class="internal-link">Kawinda</span> (كاوندة) villages, and to the west by the <span class="internal-link">Sheikh Mohammedli</span> (شيخ محمدلي) highway close to it and the mentioned village, separated by a highway.</p>
-<p>The number of houses is approximately 30 and its age is about 200 years. Its old dwellings are stone and clay with flat wooden roofs, and the modern concrete ones extended southward and northward. It has an electricity network and drinking water belonging to the state, and a shared school with <span class="internal-link">Sheikh Mohammedli</span> (شيخ محمدلي) village which belongs to <span class="internal-link">Sheikh Mohammedli</span> (شيخ محمدلي) municipality. The population works in rainfed agriculture on mountain slopes (olives, grapes, <span class="internal-link">Aleppo</span> (حلب) pistachios), and raise sheep and goats. It is one of the seven Maydaniyat villages.</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the website Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Welkl , Bindar ، واليكلي ، الولي /419ن - 14كم - 760م/:</p>
+<ul>
+<li>وَليكلي: اسم علم كردي محلي من &quot; وَلو &quot; Welo. بْنْداري: بمعنى (تحت</li>
+</ul>
+<p>الشجرة) وهو اسم آخر تعرف بها القرية، وتنسب إلى شجرة معمرة موجودة بجانب القرية. أما الاسم المعرب فهو تحريف لفظي لاسمها الشعبي وليكلي.</p>
+<ul>
+<li>قرية صغيرة على السفح الجنوبي الغربي لمرتفع &quot;جبل بعيڤه i.Bi&#x27;v&quot;.</li>
+</ul>
+<p>جاء في كتاب عفرين .... نهرها وروابيها الخضراء : وليكلي : مزرعة في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . و هي مزرعة صغيرة تقع على السفح الجنوبي الغربي لمرتفع كلسي يدعى جبل ( بعيفة ) أو اللوز في القسم الشمالي من الجبل المذكور وتطل غرباً على مسيل مائي ينحدر جنوباً نحو سهل /ميدانلي/ اللحقي ، تبعد عن بلدة راجو 15 كم باتجاه الشمال الشرقي ، يحدها شمالاً سلسلة جبلية وقرية / تبة كوي / و/ قسطل/ ، وجنوباً سهل خصب وسلسلة جبلية عالية تسمى بجبل /قره بيل/ وقرية /جيلانلي/ ، وشرقاً سلسلة جبلية و على بعد 2 كم قرية /ضوضو/ و /كاونده/ ، وغرباً اوتوستراد /شيخ محمد لي/ القريبة منه والقرية المذكورة ويفصل بينهما اوتوستراد يبلغ عدد بيوتها حوالي 30 بيتاً و عمرها حوالي 200 عاماً ، مساكنها القديمة حجرية طينية بسقوف خشبية مستوية ، و الحديثة أسمنتية امتدت جنوباً و شمالاً ، تتوفر فيها شبكة كهرباء ومياه شرب عائدة للدولة و مدرسة مشتركة مع قرية /شيخ محمد لي/ وهي عائدة لبلدية /شيخ محمد لي/ ، يعمل السكان بالزراعة البعلية على منحدرات جبلية ( الزيتون ، الكرمة ، فستق حلبي ) ، و يربون الأغنام والماعز ، وهي من القرى الميدانيات السبع . مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -236,7 +304,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20welkle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20welkle.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20welkle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20welkle.htm</a></li></ul>
             </div>
 
             
@@ -246,7 +314,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -364,6 +432,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,7 +205,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Gundê Qopê / Hamshalk / Qopê / Qûbê / Ĥemşelek / حمشلك / حمشو / Ḧemşelek, قوبه</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ebdî Mehoko, Ehson Lero, Heboke, Hecîba, Hecîko, Hecîkê Şîmo, Hesenê Emşê, Heyder, M&#x27;hemedê Henî, Mala Bekir, Mala Evdoyê Elî Sêlim, Mala Hisênê Elî, Mehmûd, Mislim, Mislim Lero, Miştê Hese, Omer, Sebrî Yûsif, Xelefê Derê, Xelîlê Ehmed, Şemdînê Ebdê, Şêxê Elîkê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ebdî Mehoko, Ehson Lero, Elî Palo, Heboke, Hecîba, Hecîko, Hecîkê Şîmo, Hesenê Emşê, Heyder, M&#x27;hemedê Henî, Mala Bekir, Mala Evdoyê Elî Sêlim, Mala Hisênê Elî, Mala Ĥebba, Mehmûd, Mislim, Mislim Lero, Miştê Hese, Omer, Sebrî Yûsif, Xelefê Derê, Xelîlê Ehmed, Şemdînê Ebdê, Şêxê Elîkê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -231,16 +252,59 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qopê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin / Geographic Study:</p>
-<p><strong><span class="internal-link">Ḧemşelek</span> - <span class="internal-link">Gundê Qopê</span> – <span class="internal-link">1 - PhD/Villages/Zivingê - Bilbilê</span> (حَمْشَلَك) (حمشو)</strong> /1627n - 10km - 550m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qopê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-Qopa.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-Qopa.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Ĥemşelek</span> - <span class="internal-link">Gund Qop</span> <span class="internal-link">Ziving</span> / 1627N - 10km - 550m /:</p>
+<p>The village is called by three names. The first is Ĥemşelek, which is composed of two words: &quot;Ĥem,&quot; a proper noun derived from <span class="internal-link">Mihemed</span>, and &quot;Şelek,&quot; meaning &quot;load of straw/wood,&quot; which is also used as an adjective for a large-bodied person. The second is <span class="internal-link">Qop</span>, meaning &quot;boiled piece of meat&quot;; it is said that the owner of the village was generous, slaughtering animals and inviting people to eat, so the village was named &quot;morsel of meat&quot; (Qop). The third is Ziving, meaning &quot;cave&quot; in Kurdish. It is the name of a small village that existed above the current village; its inhabitants abandoned it, descended to the slopes, and established the new village.</p>
+<p>Ĥemşelek was formed from three ancient residential clusters that were adjacent to each other near the mountain peak. These villages were: <span class="internal-link">Elî Palo</span>, <span class="internal-link">Geliyê Zivingê</span>, and <span class="internal-link">Mala Ĥebba</span>. Their inhabitants abandoned them in the second quarter of the twentieth century due to the ruggedness of their locations and the difficulty of reaching them, and most of them settled in the village of Qop.</p>
+<p>It is a small village located on the southern slope of <span class="internal-link">Çiyayê Benê</span>, and on the western side of the southern entrance to the <span class="internal-link">Geliyê Tîra</span> valley. It overlooks the plain of <span class="internal-link">Beçdinê</span>, which is covered with olive trees.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Ĥemşelek is a village in <span class="internal-link">Çiyayê Kurmênc</span> belonging to the <span class="internal-link">Reco</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a large village located on the eastern slope of <span class="internal-link">Çiyayê Beleng</span> in the western section of the northern part of the Çiyayê Kurmênc massif. It overlooks agricultural land towards the south and east and is surrounded by a number of watercourses. It lies southeast of the town of Reco at a distance of 9 km.</p>
+<p>It is bordered to the north by a rugged mountain range, the village of <span class="internal-link">Derwîş Obasî</span>, and the village of <span class="internal-link">Mosik Obasî</span>. To the south, it is bordered by the fertile agricultural <span class="internal-link">Deşta Kitix</span> (Kitix plain) and the village of <span class="internal-link">Ereb Uşaxî</span>. To the east, it is bordered by a slope, the <span class="internal-link">Xeta Trêna Heleb-Meydan Ekbez</span> (Heleb-Meydan Ekbez railway line), the <span class="internal-link">Riya Reco-Efrîn</span> (Reco-Efrîn road), the Geliyê Tîra valley, and the village of <span class="internal-link">Berbend</span>. To the west, at a distance of 500 m, lies the village of Beçdinê.</p>
+<p>The number of its houses is about 100, and its age is approximately 300 years. Its houses are made of stone and mud with flat wooden roofs, while the modern ones are made of cement and have started to spread towards the south and west. An electricity network and a primary school are available. There are two asphalt roads: one connects the village of Beçdinê and Ĥemşelek, and the other connects to the district and the region. The village drinks from a network that draws its water from the Beçdinê well, and there is a mosque in the center of the village. The residents work in rain-fed agriculture on an area of 500 hectares (olives, grains, legumes) and irrigated agriculture from artesian wells for summer vegetables. They also raise sheep and goats.</p>
+<p>Village Mukhtar: <span class="internal-link">Ednan Ĥemo Arif</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li>The village is called by three names. The first <span class="internal-link">Ḧemşelek</span> (حَمْشَلَك): composed of two words: &quot;<span class="internal-link">Ḧem</span>&quot; (حَمْ) a proper noun from <span class="internal-link">Mohammad</span> (محمد), and <span class="internal-link">Şelek</span> (شَلَك) meaning &quot;firewood/wood carrier,&quot; used as a description for a large-bodied person. The second <span class="internal-link">Qop</span> (قوپ): &quot;piece of boiled meat,&quot; and it is said that the village owner was generous, slaughtering animals and inviting people to him, so the village was named &quot;meat piece&quot; <span class="internal-link">Qop</span> (قوپ). The third <span class="internal-link">Zîvîng</span> (زِڤِنْگ): meaning &quot;cave&quot; in Kurdish, which is the name of a small village that existed above the current village, then its inhabitants migrated and came down to the slope and settled in the new village. &quot;<span class="internal-link">Hamshalk</span>&quot; (حمشلك) was formed from three old residential clusters that were neighboring near the mountain peak, which are the villages: <span class="internal-link">Ali Palo</span> (علي پالو), &quot;<span class="internal-link">Wadi Zivng</span>&quot; (وادي زڤنك) <span class="internal-link">Ge.Zivingê</span> (Ge.Zivingê), and &quot;<span class="internal-link">Beit Habib</span>&quot; (بيت حبيب) <span class="internal-link">Mala Ḧebîba</span> (Mala Ḧebîba). Their inhabitants migrated in the second quarter of the twentieth century due to the roughness of their locations and difficulty of access, and most of them settled in <span class="internal-link">1 - PhD/Villages/Qopê</span> (Qopê) village.</li>
-<li>A small village located on the southern slope of <span class="internal-link">Çiyayê Benê</span> (جبل بني) mountain, and on the western side of the southern entrance to &quot;<span class="internal-link">Tira</span>&quot; (تيرا) valley <span class="internal-link">Gelî Tîra</span> (Gelî Tîra), overlooking the <span class="internal-link">Ba&#x27;danli</span> (بعدنلي) plain covered with olive trees.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين نهرها ورواييها الخضراء&#x27; &#x27;<span class="internal-link">Afrin... Its Rivers and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Hamshalk</span> (حمشلك)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to Rajo (راجو) subdistrict, Afrin (عفرين) region, <span class="internal-link">Aleppo</span> (حلب) governorate.</p>
-<p>It is a large village located on the eastern slope of (<span class="internal-link">Belnêk</span> (بَلنَيك)) mountain in the western part of the northern section of the <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) mass. It overlooks agricultural land toward the south and east and is surrounded by several streams to the southeast of Rajo (راجو) town at a distance of 9 km. To the north lies a mountainous chain and rough terrain and <span class="internal-link">Darwish Oba Si</span> (درويش أوبه سي) village and <span class="internal-link">Mousik Oba Si</span> (موسيك أوبه سي) village. To the south lies the fertile agricultural <span class="internal-link">Katkh</span> (كتخ) plain and <span class="internal-link">Arab Oshaghi</span> (عرب أوشاغي) village. To the east lies a slope and the railway (<span class="internal-link">Aleppo</span> - <span class="internal-link">Medan Ekbas</span> (ميدان اكباس)) and the road (Rajo - Afrin) and <span class="internal-link">Tira</span> (الطيرة) valley and <span class="internal-link">Birband</span> (بربند) village. To the west, 500 meters away, lies <span class="internal-link">Ba&#x27;danli</span> (بعدنلي) village. The number of houses is approximately 100, and its age is approximately 300 years. Its houses are stone-clay with flat wooden roofs, and the modern ones are concrete that began spreading south and west. It has electricity and an elementary school and two dirt roads, one connecting <span class="internal-link">Ba&#x27;danli</span> (بعدنلي) and <span class="internal-link">Hamshalk</span> (حمشلك) villages, and the other connects with the subdistrict and region. The village drinks from a network that draws its water from the <span class="internal-link">Ba&#x27;danli</span> (بعدنلي) well and has a mosque in the village center. The residents work in rain-fed agriculture on an area of 500 hectares (olives, grains, legumes) and irrigated by artesian wells for summer vegetable cultivation, and they raise sheep and goats.</p>
-<p>Village mayor: <span class="internal-link">Adnan Hamo Aref</span> (عدنان حمو عارف)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qopê from Afrin Flo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=AXZp_NUrJWY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=AXZp_NUrJWY</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Director of the Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Ĥemşelek - Gund Qop  Ziving ، حَمْشَلَك ، حمشو /1627ن - 10كم - 550م/:</p>
+<ul>
+<li>تسمى القرية بثلاثة أسماء، الأول حَمْشَلَك: وهو مؤلف من كلمتين: &quot;حَمْ&quot;</li>
+</ul>
+<p>اسم العلم من محمد، و شَلَكْ Şelek: بمعنى &quot; حِمْل القش/الحطب &quot;، وتستعمل كصفة للشخص الضخم الجثة. الثاني قوپ Qop: &quot;قطعة اللحم المسلوقة&quot;، ويقال إن صاحب القرية كان كريما، يذبح الذبائح ويدعوا الناس إليه، فسميت القرية باسم &quot; لقمة اللحم&quot; Qop. الثالث زْڤْنْگ: بمعنى &quot;كهف&quot; بالكردية، وهو اسم لقرية صغيرة كانت موجودة أعلى القرية الحالية، ثم هجرها سكانها ونزلوا إلى السفح وأقاموا في القرية الجديدة. وتشكلت &quot;حمشلك&quot; من ثلاث تجمعات سكنية قديمة كانت متجاورة قرب قمة الجبل، وهي قرى: علي پالو، و&quot;وادي زڤنك&quot; Ge.Ziving، و&quot;بيت حبيب&quot; Mala Ĥebba، وهجرها سكانها في الربع الثاني من القرن العشرين لوعورة مواقعها، وصعوبة الوصول إليها، واستقر معظمهم في قرية Qop .</p>
+<ul>
+<li>قرية صغيرة تقع على السفح الجنوبي لجبل iyay Ben، وعلى الجانب الغربي</li>
+</ul>
+<p>للمدخل الجنوبي لوادي &quot;تيرا&quot; Gel Tra، وتشرف على سهل بعدنلي المغطى بأشجار الزيتون. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : حمشلك : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع على السفح الشرقي لجبل ( بَلنْـك ) في القسم الغربي من الجزء الشمالي لكتلة جبل الكرد ، تطل على أرض زراعية نحو الجنوب والشرق و يحيط بها عدد من المسيلات إلى الجنوب الشرقي من بلدة راجو على بعد 9 كم ، يحدها شمالاً سلسلة جبلية وعرة و قرية /درويش أوبه سي/ و قرية /موسيك أوبه سي/ ، وجنوباً سهل كتخ الزراعي الخصب و قرية /عرب أوشاغي/ ، وشرقاً منحدر و سكة حديد ( حلب _ ميدان إكبس ) وطريق ( راجو _ عفرين ) و وادي الطيرة و قرية /بربند/ ، وغرباً على بعد 500 م قرية /بعدنلي/ ، يبلغ عدد بيوتها حوالي100 بيتاً وعمرها حوالي 300 عاماً ، بيوتها حجرية طينية ذات سقوف خشبية مستوية ، و الحديثة منها أسمنتية أخذت تنتشر جنوباً وغرباً ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وطريقي زفت يصل أحدهما بين قرية /بعدنلي/ و /حمشلك/ و الأخرى تتصل مع الناحية والمنطقة ، تشرب القرية من شبكة تستمد مياهها من بئر /بعدنلي/ و جامع في وسط القرية ، يعمل السكان بالزراعة البعلية على مساحة 500 هـ ( الزيتون ، الحبوب ، البقول ) ورياً من آبار ارتوازية لزراعة الخضر الصيفية ، ويربون الأغنام والماعز .</p>
+<p>مختار القرية : عدنان حمو عارف</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qopê from Afrin Flo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=AXZp_NUrJWY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=AXZp_NUrJWY</a></p>
 <p>The village of <span class="internal-link">Qûpê</span>, also known historically as <span class="internal-link">Hemşelek</span>, is situated in the <span class="internal-link">Efrîn</span> region near <span class="internal-link">Çiyayê Hawar</span>. According to local oral history, the village was founded approximately three hundred years ago. Its name implies a history of hospitality and abundance; elders recount that a wealthy ancestor named <span class="internal-link">Hemo</span> kept large storage jars (called qûp) filled with preserved meat to feed guests and travelers. People would say they were going to &quot;Hemo of the meat jars&quot; (Hemo qûpê di goşt), which evolved into the name Qûpê. The alternate name, Hemşelek, is said to derive from Hemo dragging (şelek) provisions.</p>
 <p>The settlement history of Qûpê is complex, involving the consolidation of earlier sites. Residents explain that the village formed from the merger of three distinct entities or nearby hamlets: <span class="internal-link">Elî Bolo</span>, <span class="internal-link">Hecîba</span> (or <span class="internal-link">Hecîko</span>), and Hemşelek. Remnants of these older sites, such as the ruins of <span class="internal-link">Gundê Elî Bolo</span>, are located near the current village. In the past, the inhabitants lived primarily in caves, including a site known as <span class="internal-link">Şikefta mezin</span>, before moving into stone and earth houses which have since largely collapsed or been replaced.</p>
 <p>The village is home to a significant religious site, the shrine of <span class="internal-link">Sifî Pênc</span>, described as a &quot;large tomb.&quot; A foundation legend connects this site to the arrival of storks and the discovery of water near <span class="internal-link">Gundê Xelek</span>, which prompted people to settle there. Historically, the villagers relied on communal wells for water, specifically named landmarks such as <span class="internal-link">Bîra Pilingê</span>, <span class="internal-link">Bîra Elî Teybê</span>, <span class="internal-link">Bîra Sînê</span>, and <span class="internal-link">Bîra dîşko</span>, before the advent of modern cisterns.</p>
@@ -301,7 +365,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-Qopa.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-Qopa.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=Dqw3_kUg-ZI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Dqw3_kUg-ZI</a></li><li>Local FB page:<br><a href="https://www.facebook.com/Hamshalak" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Hamshalak</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=fRaRvQyv3UE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=fRaRvQyv3UE</a></li><li>Afrin Flo:<br><a href="https://www.youtube.com/watch?v=AXZp_NUrJWY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=AXZp_NUrJWY</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=VCX3oFY4sBc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VCX3oFY4sBc</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-Qopa.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-Qopa.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=Dqw3_kUg-ZI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Dqw3_kUg-ZI</a></li><li>Local FB page:<br><a href="https://www.facebook.com/Hamshalak" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Hamshalak</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=fRaRvQyv3UE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=fRaRvQyv3UE</a></li><li>Afrin Flo:<br><a href="https://www.youtube.com/watch?v=AXZp_NUrJWY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=AXZp_NUrJWY</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=VCX3oFY4sBc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VCX3oFY4sBc</a></li></ul>
             </div>
 
             
@@ -311,7 +375,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -429,6 +493,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

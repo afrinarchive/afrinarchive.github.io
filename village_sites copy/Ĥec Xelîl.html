@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Ĥec Xelîl</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1.5rem; } /* Increased Paragraph Spacing */
+        .prose-compact p { margin-bottom: 0.5rem; } /* Compact spacing for Basic Info */
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        /* Basic setup for the map container */
+        #minimap-reco .map-container {
+            position: relative;
+        }
+        #minimap-reco .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /* Styling for the yellow highlight circles */
+        #minimap-reco .highlight-box {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: yellow;
+            opacity: 0.5;
+            border-radius: 50%; /* Makes the highlight a circle */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        /* --- COORDINATES FOR RECO MAP AREAS --- */
+        /* Each class corresponds to a location. The coordinates are calculated from the image map. */
+        #minimap-reco .meydan-ekbez { left: 45.71%; top: 5.63%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .peynereke { left: 61.65%; top: 6.23%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .kosa { left: 62.56%; top: 9.01%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .gaze { left: 52.37%; top: 11.79%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .welikli { left: 59.33%; top: 15.54%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .dodo { left: 62.26%; top: 16.37%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .gewenda { left: 66.19%; top: 18.69%; width: 9.49%; height: 7.06%; }
+        #minimap-reco .sexmihemed { left: 56.51%; top: 17.57%; width: 10.69%; height: 7.96%; }
+        #minimap-reco .semala { left: 53.08%; top: 18.17%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .edema { left: 39.46%; top: 22.89%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .qerebaba { left: 25.33%; top: 30.63%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .elbiske { left: 43.09%; top: 30.86%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .bilelko { left: 47.83%; top: 30.01%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .xerabi-silug { left: 40.97%; top: 34.01%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .firfirke-jerin { left: 36.53%; top: 32.58%; width: 8.88%; height: 6.61%; }
+        #minimap-reco .firfirke-jorin { left: 35.12%; top: 35.89%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .heydar { left: 38.04%; top: 39.26%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .ceinke { left: 44.60%; top: 35.51%; width: 11.70%; height: 8.71%; }
+        #minimap-reco .cela { left: 56.91%; top: 33.86%; width: 11.50%; height: 8.56%; }
+        #minimap-reco .ceqmaqe-mezin { left: 51.06%; top: 43.24%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .ceqmaqe-cucik { left: 59.03%; top: 45.35%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .elendara { left: 64.98%; top: 44.00%; width: 9.49%; height: 7.06%; }
+        #minimap-reco .zerka { left: 68.21%; top: 47.82%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .memala { left: 40.77%; top: 48.72%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .cenceliya { left: 54.89%; top: 47.60%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .cobana { left: 65.19%; top: 49.47%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .holile { left: 49.34%; top: 51.28%; width: 11.50%; height: 8.56%; }
+        #minimap-reco .cerxuta { left: 58.12%; top: 53.53%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .kura { left: 53.38%; top: 54.73%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .qesim { left: 69.43%; top: 54.28%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .dike { left: 79.11%; top: 54.20%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .maseka { left: 35.32%; top: 52.25%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .hopka { left: 29.77%; top: 58.03%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .sorka { left: 5.85%; top: 64.64%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .reco { left: 38.75%; top: 56.08%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .xecxelil { left: 44.90%; top: 56.68%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .ceqilme { left: 62.97%; top: 59.23%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .sex { left: 71.34%; top: 61.56%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .ciye { left: 80.12%; top: 65.54%; width: 10.09%; height: 7.51%; }
+        #minimap-reco .banika { left: 35.42%; top: 62.16%; width: 9.28%; height: 6.91%; }
+        #minimap-reco .etmana { left: 35.12%; top: 63.36%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .sexbila { left: 59.03%; top: 63.06%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .goliye-jerin { left: 63.47%; top: 66.07%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .goliye-jorin { left: 58.73%; top: 67.34%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .muske { left: 42.89%; top: 65.77%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .kure { left: 20.79%; top: 68.70%; width: 11.30%; height: 8.41%; }
+        #minimap-reco .hecika { left: 31.89%; top: 66.89%; width: 10.69%; height: 7.96%; }
+        #minimap-reco .sediya { left: 15.24%; top: 73.72%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .kumrese { left: 22.20%; top: 73.80%; width: 9.69%; height: 7.21%; }
+        #minimap-reco .qude { left: 31.18%; top: 75.75%; width: 10.89%; height: 8.11%; }
+        #minimap-reco .dewris { left: 39.76%; top: 71.02%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .hemseleke { left: 49.85%; top: 72.75%; width: 11.10%; height: 8.26%; }
+        #minimap-reco .berbene { left: 56.61%; top: 71.40%; width: 10.69%; height: 7.96%; }
+        #minimap-reco .bedina { left: 47.23%; top: 76.58%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .dumiliya { left: 42.18%; top: 79.95%; width: 10.49%; height: 7.81%; }
+        #minimap-reco .umera { left: 23.71%; top: 80.63%; width: 9.89%; height: 7.36%; }
+        #minimap-reco .memila { left: 26.44%; top: 83.71%; width: 10.29%; height: 7.66%; }
+        #minimap-reco .hesen { left: 25.63%; top: 72.07%; width: 9.69%; height: 7.21%; }
+    
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Ĥec Xelîl</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
+<div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Hac Xalîl, Haj Khalil, Hec Xelîl, Hecxelîl, Heç Xelîl, Heşxelîl, Me&#x27;emik, Sirtê Korê, Xec Xelîl, Ĥec Xelîl, حاج خليل, Darbaz</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Gûlîjêrin, Şaxçaliyan</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">&#x27;Erûys, Biliş, Bilê, Ehdo, Elwîtê, Elşêr, Girû, Gunêş, Hec Xelîl, Hecû, Kûsa, Ma&#x27;mik, Ma&#x27;mûk, Mala Bekir, Mala Bekû, Mala Biliş, Mala Bilê, Mala Ehmed, Mala Ehmû, Mala Elwîtê, Mala Erûs, Mala Fir&#x27;ê Reşo, Mala Girû, Mala Gûnês, Mala Hanîf Axa, Mala Hecû, Mala Kûsa, Mala Mehmê, Mala Memik, Mala Mist Kûşkar, Mala Misxerîbê, Mala Reşo, Mala Tekû, Mala Xecwînê, Mala Ûsê, Mehmed, Miskûşko, Misxarîbê, Tekû, Tetû, Xecwînê, Ûsê</p></div>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
+<img alt="Map of Reco Area" onerror="this.onerror=null; this.src='https://placehold.co/991x1332/ef4444/ffffff?text=IMAGE+NOT+FOUND';" src="../nahiyas/ÇK Map 15.png"/>
+<!-- These divs are the actual highlight elements -->
+<div class="meydan-ekbez highlight-box"></div><div class="peynereke highlight-box"></div><div class="kosa highlight-box"></div><div class="gaze highlight-box"></div><div class="welikli highlight-box"></div><div class="dodo highlight-box"></div><div class="gewenda highlight-box"></div><div class="sexmihemed highlight-box"></div><div class="semala highlight-box"></div><div class="edema highlight-box"></div><div class="qerebaba highlight-box"></div><div class="elbiske highlight-box"></div><div class="bilelko highlight-box"></div><div class="xerabi-silug highlight-box"></div><div class="firfirke-jerin highlight-box"></div><div class="firfirke-jorin highlight-box"></div><div class="heydar highlight-box"></div><div class="ceinke highlight-box"></div><div class="cela highlight-box"></div><div class="ceqmaqe-mezin highlight-box"></div><div class="ceqmaqe-cucik highlight-box"></div><div class="elendara highlight-box"></div><div class="zerka highlight-box"></div><div class="memala highlight-box"></div><div class="cenceliya highlight-box"></div><div class="cobana highlight-box"></div><div class="holile highlight-box"></div><div class="cerxuta highlight-box"></div><div class="kura highlight-box"></div><div class="qesim highlight-box"></div><div class="dike highlight-box"></div><div class="maseka highlight-box"></div><div class="hopka highlight-box"></div><div class="sorka highlight-box"></div><div class="reco highlight-box"></div><div class="xecxelil highlight-box" style="display: block;"></div><div class="ceqilme highlight-box"></div><div class="sex highlight-box"></div><div class="ciye highlight-box"></div><div class="banika highlight-box"></div><div class="etmana highlight-box"></div><div class="sexbila highlight-box"></div><div class="goliye-jerin highlight-box"></div><div class="goliye-jorin highlight-box"></div><div class="muske highlight-box"></div><div class="kure highlight-box"></div><div class="hecika highlight-box"></div><div class="sediya highlight-box"></div><div class="kumrese highlight-box"></div><div class="qude highlight-box"></div><div class="dewris highlight-box"></div><div class="hemseleke highlight-box"></div><div class="berbene highlight-box"></div><div class="bedina highlight-box"></div><div class="dumiliya highlight-box"></div><div class="umera highlight-box"></div><div class="memila highlight-box"></div><div class="hesen highlight-box"></div>
+</div></div>
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.678288, 36.684054</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div><img src="../village_photos/hec Xeli.jpg" alt="Photo of Ĥec Xelîl" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=hec+Xeli.jpg';"></div>
+<div><img src="../village_photos/zarxtirej902.jpg" alt="Photo of Ĥec Xelîl" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=zarxtirej902.jpg';"></div>
+<div><img src="../village_photos/haj kalel.jpg" alt="Photo of Ĥec Xelîl" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=haj+kalel.jpg';"></div>
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Ĥec Xelîl</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Ax û Welat</h5>
+<p><strong>Etymology:</strong> Named after Hec Xelîl, the father of the village founder Ma&#x27;mûk; previously the location was called Sirtê Korê</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 225 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Mîra</span>, <span class="internal-link">Çiyayê Bilêl</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Ziyareta Mehmê Elî</span>, <span class="internal-link">Ziyareta Mehemed Elî</span>, <span class="internal-link">Şêxmûs</span>, <span class="internal-link">Bilîlê Hebeş</span>, <span class="internal-link">Kêlşîr</span>, <span class="internal-link">Gilyaqîb</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Asarê</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Sirtê Korê</span></p>
+<h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Khalil Sino</h5>
+<p><strong>Etymology:</strong> Named after the founder, Hec Xelîl, who migrated from Xeyam</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 250 years ago</p>
+<p><strong>Wells:</strong> <span class="internal-link">Bîra Elwîtê</span>, <span class="internal-link">Bîra Sînê</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Lçê</span>, <span class="internal-link">Sehê Guleyan</span>, <span class="internal-link">Sehê Camiyê</span></p></div>
+            </div>
+
+            
+
+            <div class="card p-6 rounded-xl">
+                    <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Ĥec Xelîl</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of <span class="internal-link">Rajo District</span> (راجو) / Reco</p>
+<p><strong>Haj Khalil (حاج خليل) - Ĥec Xelîl</strong></p>
+<p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
+<p><strong>Ĥec Xelîl, Haj Khalil (حج خليل)</strong> /4033N – 267ha - 2km - 640m/:</p>
+<ul>
+<li>The origin of the name &quot;<span class="internal-link">Xec Xelîl</span>&quot; (خَجّ خليل) Xec Xelîl, is a compound of two names: the first feminine &quot;<span class="internal-link">Xaj</span>&quot; (خج) from <span class="internal-link">Khadija</span> (خديجة) and the second &quot;<span class="internal-link">Khalil</span>&quot; (خليل), both first residents of the village. The letter &quot;خ&quot; in Xec changed to &quot;ح&quot; for ease of pronunciation, though residents of neighboring villages and village inhabitants still pronounce the name in its old form, i.e., <span class="internal-link">Xaj Khalil</span> (خج خليل).</li>
+</ul>
+<ul>
+<li>A large village located on a calcareous plateau, it is a prosperous village. Near its northwest in <span class="internal-link">Mîra Mountain</span> (جبل ميرا) there is iron ore.</li>
+</ul>
+<p>According to the book &#x27;عفرين.... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin... Its River and Green Hills</span>&#x27;:</p>
+<p><strong>Haj Khalil (حاج خليل)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), Afrin City region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
+<p>It is a large village located on a wide, undulating summit of a calcareous plateau, overlooking to the east agricultural lands with alluvial soil. It is 5 km from the town of Rajo (راجو) towards the east, surrounded by slopes from three directions (western, eastern, southern) except the northern direction which is bounded by a high mountain chain and the villages of <span class="internal-link">Mamalî</span> (مامالي) and <span class="internal-link">1 - PhD/Villages/Holîlê</span> (هوليلو), to the south by a slope, fertile plain, railway line and the village of <span class="internal-link">Musik Oba Si</span> (موسيك أوبه سي), to the east by a slope, valley and 1 km away the village of <span class="internal-link">Kuranli</span> (كورانلي), and to the west by a slope, plain and highway (going and coming) and the town of Rajo (راجو). The number of its houses is about 250 houses and its age is about 500 years. Its houses are stone-clay with wooden roofs, while the modern ones are concrete that developed urbanistically so that modern villa construction predominates in the village center. It has an electricity network, drinking water, elementary and preparatory schools, old mosque in the village center, some commercial shops and telephone network taken from the town of Rajo (راجو). The municipality was established in 1983. In the village center there is a square called <span class="internal-link">President Hafez Al-Assad Square</span> (ساحة الرئيس حافظ الأسد), and it has several olive oil presses. Its residents work in rainfed agriculture on an area of 267 hectares (olives, grains, legumes and grape trees) in addition to raising sheep and goats. It connects to the district by a paved highway to the village center. There is an <span class="internal-link">Arc of Triumph</span> (قوس النصر) on the western side of the village, considered the most beautiful entrance in the Afrin City region. Currently most of its residents are present in the cities of <span class="internal-link">Aleppo</span> (حلب) and Afrin City (عفرين) and come to the village for vacation and olive harvest. Among its most important families: (<span class="internal-link">Mohammed Hanif family</span> (عائلة محمد حنيف) - <span class="internal-link">Al Rashoo</span> (آل رشو) - <span class="internal-link">Al Salman</span> (آل سلمان) - <span class="internal-link">Al Habbo</span> (آل حبو) - <span class="internal-link">Al Aala</span> (آل عاله)) and they are the first to inhabit the village. The village of <span class="internal-link">Haj Khalil</span> (حاج خليل) is considered one of the old villages in the region.</p>
+<p><strong>Village Mukhtar:</strong> <span class="internal-link">Mohammed Ali Rashid Bilal</span> (محمد علي رشيد بلال).</p>
+<p>Among the holders of higher degrees in the village: <span class="internal-link">Salah Sheikho</span> (صلاح شيخو) / PhD in Orthopedic Surgery / <span class="internal-link">Russia</span> (روسيا) - <span class="internal-link">Dr. Aliya Mohammed Khalil</span> (الدكتورة علياء محمد خليل). It is mentioned that artist <span class="internal-link">Samir Ali</span> (سمير علي) is from the sons of this village and among the village people working in the artistic field: artist <span class="internal-link">Barwar</span> (بروار) - oud player <span class="internal-link">Laound</span> (لاوند) - oud player <span class="internal-link">Hafal Habbo</span> (هفال حبو) - oud player <span class="internal-link">Mustafa Habbo</span> (مصطفى حبو) - among the first oud makers in the region <span class="internal-link">Mr. Mamo</span> (السيد مامو) - poet <span class="internal-link">Nadir Balow (Habbo)</span> (نذير بالو (حبو)) - oud player <span class="internal-link">Kamiran Habbo</span> (كميران حبو) - organ player <span class="internal-link">Ahmad Rashid (Ahmad Net)</span> (أحمد رشيد (أحمد نت)) - <span class="internal-link">Ahmad Rankin</span> (أحمد رنكين) - <span class="internal-link">Mrs. Nazlia Khalil (Um Fuad)</span> (السيد نازلية خليل (أم فؤاد)) who printed the divan of poet <span class="internal-link">Hamid Badrukhan</span> (حامد بدرخان) at her own expense.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥec Xelîl from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=G6nz9XLdbCY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=G6nz9XLdbCY</a></p>
+<p>The village of <span class="internal-link">Darbaz</span>, located in the Afrin region, is characterized by its agricultural lifestyle and the presence of traditional community figures who fill gaps in modern services. The transcript focuses heavily on the life and work of a prominent resident known as <span class="internal-link">Meta Zeyneb</span> (Aunt Zeyneb), who serves as the village&#x27;s traditional ophthalmologist or &quot;toxtor.&quot; While the specific founding date of Darbaz is not mentioned, the narrative highlights the social connectivity between villages in the region, particularly through marriage and specialized labor.</p>
+<p><span class="internal-link">Zeyneb</span> describes her origins in the village of <span class="internal-link">Çençelî</span> before moving to Darbaz upon marriage. She identifies her lineage through her father, <span class="internal-link">Reşîdê Ehdo</span>, and her uncle, <span class="internal-link">Hebeşê Ehdo</span>, indicating the presence of the <span class="internal-link">Ehdo</span> family line in her native village. This connection illustrates the movement of families between the settlements of the region. Zeyneb has lived in Darbaz for decades, having started her practice as a healer when she was a young girl, approximately ten or twelve years old. She is now the mother of seven children.</p>
+<p>The social structure of Darbaz and the surrounding area is depicted as deeply agrarian. The residents are primarily farmers (&quot;cotkar&quot;), and their labor exposes them to occupational hazards such as dust, chaff, and metal shards entering their eyes. Zeyneb treats these ailments using traditional methods, often utilizing a cloth or paper placed on her tongue to extract foreign objects. Her reputation extends well beyond Darbaz. She describes obtaining supplies, specifically clean cloths, from larger urban centers like <span class="internal-link">Heleb</span> (Aleppo) and <span class="internal-link">Efrîn</span>, linking the rural village to the major cities of the wider region.</p>
+<p>A significant aspect of the village&#x27;s interaction with the broader geography is the weekly market day. Zeyneb travels to <span class="internal-link">Rajo</span> every Saturday (&quot;şemiyê&quot;) to attend the market (&quot;Bozorê Rajo&quot;). This weekly migration to Rajo serves as a central economic and social event where she treats patients from various areas from morning until the call to prayer. Her practice operates on a sliding scale based on the financial status of her patients; while she accepts payments ranging from 50 to 300 units of currency, she emphasizes her willingness to treat the poor and those unable to pay for free. This reflects a communal ethos within Darbaz and the neighboring villages, where specific individuals hold distinct roles that support the collective well-being of the population.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥec Xelîl from Ax û Welat 2</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=D053Y3Xyce0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=D053Y3Xyce0</a></p>
+<p>The village of <span class="internal-link">Hec Xelîl</span>, located in the <span class="internal-link">Raco</span> district of the <span class="internal-link">Efrîn</span> region, was founded approximately 225 years ago. According to the elder <span class="internal-link">Sebrî Hibo</span>, the founder was <span class="internal-link">Ma&#x27;mûk</span>, the son of Hec Xelîl, who migrated from the <span class="internal-link">Dîlok</span> (Antep) area. Upon arrival, they settled at a location originally called <span class="internal-link">Sirtê Korê</span> before renaming the settlement Hec Xelîl. While the Ma&#x27;mûk lineage—which later split into the <span class="internal-link">Bilê</span> and <span class="internal-link">Mehmed</span> families—established the modern village, a single household known as <span class="internal-link">Mala Tekû</span> (later called <span class="internal-link">Tetû</span>) was already present.</p>
+<p>Over time, the village population grew through the arrival of various groups. The <span class="internal-link">Hecû</span> family, originally nomads from the <span class="internal-link">Gûlîjêrin</span> tribe, settled there after a conflict with other villagers. Other arrivals included the <span class="internal-link">&#x27;Erûys</span>, <span class="internal-link">Kûsa</span>, <span class="internal-link">Ûsê</span>, <span class="internal-link">Gunêş</span>, <span class="internal-link">Xecwînê</span>, <span class="internal-link">Misxarîbê</span>, and <span class="internal-link">Biliş</span> families. The <span class="internal-link">Girû</span> and <span class="internal-link">Elwîtê</span> families are noted as being of <span class="internal-link">Şaxçaliyan</span> origin. Following the events of 1914, Armenian families also sought refuge in the village; while most moved on, the <span class="internal-link">Miskûşko</span> family remained, with notable members such as <span class="internal-link">Mistefa Xerîb</span> and his wife <span class="internal-link">Meryem</span>.</p>
+<p>The village is historically significant for its sacred sites. The most prominent is <span class="internal-link">Ziyareta Mehmê Elî</span> (or <span class="internal-link">Mehemed Elî</span>). There is debate regarding his identity; some locals claim he was an Ottoman officer, while others suggest a <span class="internal-link">Yezidi</span> origin, noting that Wednesday is the primary day for visitation. Nearby shrines include <span class="internal-link">Şêxmûs</span> and the mountain-top site of <span class="internal-link">Bilîlê Hebeş</span>. Another site, <span class="internal-link">Kêlşîr</span> (also known as <span class="internal-link">Gilyaqîb</span>), is considered the sister of the other saints; local women visit this spot to pray for lactation or health issues.</p>
+<p>Economically, Hec Xelîl was known for trade rather than extensive agriculture. Residents often worked as merchants traveling to <span class="internal-link">Heleb</span> and <span class="internal-link">Şam</span>. Unlike the wealthy <span class="internal-link">Hanîfe Axa</span>, most villagers did not own vast olive groves. In the 1950s, a <span class="internal-link">Russian</span> company excavated iron mines in the nearby <span class="internal-link">Çiyayê Mîra</span>, leaving behind trenches and ruins known as <span class="internal-link">Asarê</span>.</p>
+<p>The village is also home to unique characters and cultural figures. <span class="internal-link">Meta Zeynep</span>, a traditional healer from the <span class="internal-link">Çençeliya</span> village, is famous for treating eye ailments using her tongue. <span class="internal-link">Apê Ehmed</span>, a blind shopkeeper who returned from <span class="internal-link">Tebqa</span>, is renowned for navigating the village and identifying neighbors solely by voice. Culturally, the village has produced artists such as the poet <span class="internal-link">Nezîr Palo</span> and the singer <span class="internal-link">Semîr Eytan</span>, as well as the artist <span class="internal-link">Perwer</span> (born <span class="internal-link">Farûq</span>).</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥec Xelîl from Ax û Welat 3</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=nmyw8LpGvns" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=nmyw8LpGvns</a></p>
+<p>The village of <span class="internal-link">Hec Xelîl</span> (also referred to as <span class="internal-link">Xaşxelîl</span>), located in the <span class="internal-link">Rajo</span> district of the Afrin region, was established approximately 225 years ago. According to village elder <span class="internal-link">Sebrî Hibo</span>, the founder was a man named <span class="internal-link">Ma&#x27;mik</span>, son of Hec Xelîl. He migrated from <span class="internal-link">Dîlok</span> (Gaziantep) and settled in this wooded area, naming the new settlement after his father. The original lineage of Ma&#x27;mik eventually split into distinct branches, including <span class="internal-link">Mala Bilê</span> and <span class="internal-link">Mala Mehmê</span>. Over time, the village absorbed other families. The <span class="internal-link">Mala Hecû</span>, a group of <span class="internal-link">Koçer</span> (nomads) originally from <span class="internal-link">Gûlî jêrin</span>, were invited to settle by the founders. Other families such as <span class="internal-link">Mala Tekû</span>, <span class="internal-link">Mala Erûs</span>, <span class="internal-link">Mala Kûsa</span>, <span class="internal-link">Mala Girû</span>, and <span class="internal-link">Mala Elwîtê</span> also made Hec Xelîl their home. Notably, the village became a refuge for <span class="internal-link">Armenians</span> during the events of 1914–1915; the family of <span class="internal-link">Mala Mist Kûşkar</span>, specifically <span class="internal-link">Mistefa Xerîb</span> and his wife <span class="internal-link">Meryem</span>, settled there and worked as blacksmiths.</p>
+<p>The geography of Hec Xelîl is defined by its lack of natural water sources; residents historically relied on rainwater cisterns. The area is known as an &quot;iron region.&quot; Between 1956 and 1958, a Russian company excavated trenches in the area to mine iron. To the north lies <span class="internal-link">Çiyayê Mîro</span>, named after a <span class="internal-link">Mîr</span> who used the mountain as a summer residence, and to the east lies <span class="internal-link">Çiyayê Bilil</span>. Despite the water scarcity, the village became a regional hub for education and commerce. In the era before widespread schooling, students from seven or eight surrounding villages, such as <span class="internal-link">Qîsim</span> and <span class="internal-link">Şêx</span>, traveled to Hec Xelîl to attend its mosque and school. The village is noted for producing many doctors, engineers, and intellectuals, including the first local mayor <span class="internal-link">Ehmed Fewzî Elî</span>. Culturally, the village is home to artists like the singer <span class="internal-link">Semîr Elî</span> and poets <span class="internal-link">Nezîr Palo</span> and <span class="internal-link">Perwer</span> (born <span class="internal-link">Farûq</span>).</p>
+<p>Religious life in Hec Xelîl centers around several significant shrines. The most detailed is <span class="internal-link">Ziyareta Mehmê Elî</span> (or <span class="internal-link">Mehemed Elî</span>), shared with the neighboring village of <span class="internal-link">Kûra</span>. Residents debate its origins; some claim <span class="internal-link">Mehmê Elî</span> was an Ottoman officer, while others suggest he was an <span class="internal-link">Êzîdî</span> figure, noting that Wednesday, the shrine&#x27;s visitation day, is sacred in the Êzîdî faith. Next to this shrine lies <span class="internal-link">Şêx Mûs</span>. On the mountaintops, there is a site called <span class="internal-link">Bilîlê Hebeş</span>. Another sacred spot, <span class="internal-link">Gulyaqûb</span> (also known as <span class="internal-link">Kelşîr</span>), is traditionally visited by nursing mothers seeking milk; legend holds that the milk of Gulyaqûb continued to flow for her children even after her death. These sites remain active places of pilgrimage for healing and vows.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥec Xelîl from Khalil Sino</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=jHnUk3BGXUw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=jHnUk3BGXUw</a></p>
+<p>The village of <span class="internal-link">Hec Xelîl</span>, located in the <span class="internal-link">Raco</span> district of the <span class="internal-link">Afrin</span> region, was established approximately 250 years ago. According to local oral history recounted by elder <span class="internal-link">Hisên Henan Reşîd</span>, the village takes its name from its founder, Hec Xelîl, who migrated to the area from <span class="internal-link">Xeyam</span>. Before his arrival, the location was known only as ruins (<span class="internal-link">xirabe</span>). Hec Xelîl arrived with his brother, and the settlement grew from their lineage. The early population expanded through the integration of different families, including <span class="internal-link">Mala Hecû</span>, who became neighbors and eventually merged into the village fabric. The core families identified in the village history include <span class="internal-link">Mala Bilê</span> (also associated with <span class="internal-link">Mala Fir&#x27;ê Reşo</span>), <span class="internal-link">Mala Ehmed</span>, <span class="internal-link">Mala Bekir</span> (or <span class="internal-link">Mala Bekû</span>), <span class="internal-link">Mala Ehmû</span>, and <span class="internal-link">Mala Reşo</span>. The speaker <span class="internal-link">Hisên</span> identifies himself as belonging to the <span class="internal-link">Mala Memik</span> branch, noting a historical figure named <span class="internal-link">Elşêr</span> in their lineage.</p>
+<p>Hec Xelîl is situated roughly 2 to 3 kilometers east of Raco and about 30 kilometers from <span class="internal-link">Bilbil</span>. Historically, the residents were farmers and laborers, but the village underwent significant changes with the introduction of education. Residents emphasize that academic certificates (<span class="internal-link">şehadet</span>) entered the village in the 1940s and 1950s, leading to a high number of doctors, lawyers, and engineers in subsequent generations. The village is currently home to about 240 to 250 households. It serves as a local medical hub due to a well regarded pharmacy that draws patients from neighboring villages like <span class="internal-link">Baedîna</span>.</p>
+<p>Culturally, the village maintains memories of elaborate wedding traditions that have since faded. In the past, weddings lasted seven days, later reduced to three, and finally to just a few hours in modern times. Festivities took place at specific local landmarks such as <span class="internal-link">Sehê Guleyan</span> (Square of Bullets) and <span class="internal-link">Sehê Camiyê</span> (Mosque Square). These events featured horse riding and a theatrical tradition involving a &quot;henekçî&quot; (joker) or <span class="internal-link">Karakoz</span> (a type of clown or shadow puppet character), who would perform comedy.</p>
+<p>Daily life in the past was characterized by hard physical labor and community self sufficiency. Elder <span class="internal-link">Fidan</span> recalls fetching water from specific wells named <span class="internal-link">Bîra Elwîtê</span> and <span class="internal-link">Bîra Sînê</span>, as well as a spot called <span class="internal-link">Lçê</span>, using donkeys before modern infrastructure existed. The community was tight knit, with neighbors contributing food and resources for weddings and funerals, a custom that has diminished due to economic hardship. Today, the village faces challenges common to the region, including water scarcity forcing residents to buy expensive trucked water from <span class="internal-link">Ermîtê</span>, unreliable electricity, and the emigration of youth to places like <span class="internal-link">Germany</span> and <span class="internal-link">Istanbul</span>. Locals refer to these emigrants as &quot;Tuyoor al Muhajira&quot; (migratory birds). Despite these difficulties, the village retains a reputation for its educated population and preserves its history through the stories of elders like Hisên Henan Reşîd and Fidan.</p></div></details></div>
+                </div>
+
+            <div class="card p-6 rounded-xl">
+            <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcriptions and Subtitles</h2>
+            <div class="p-4 prose-compact max-w-none">
+    <div class="mb-4">
+        <a href="../village_subtitles/how_to_use_substital.html" target="_blank" class="text-base font-medium external-link hover:underline">Need help with using this subtitles on Youtube? (Click here)</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b-2 themed-border">
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Source</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Video</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Subtitles</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Transcript</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Ax û Welat 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=G6nz9XLdbCY" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/videos_414_Hec Xelil.srt" download="videos_414_Hec Xelil.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Ĥec Xelîl_Ax û Welat_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Ax û Welat 2</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=D053Y3Xyce0" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/videos_747_Hec Xelil.srt" download="videos_747_Hec Xelil.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Ĥec Xelîl_Ax û Welat_2.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Ax û Welat 3</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=nmyw8LpGvns" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/videos_1080_Hec Xelil.srt" download="videos_1080_Hec Xelil.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Ĥec Xelîl_Ax û Welat_3.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Khalil Sino 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=jHnUk3BGXUw" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><span class="subtext italic opacity-50">Not Available</span></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Ĥec Xelîl_Khalil Sino_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    </div>
+        </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Foundation/Origin Information of Ĥec Xelîl</h2></div><div class="p-4 prose max-w-none"><blockquote>
+<p>The Mohammed Hanif family, Al Rashoo, Al Salman, Al Habbo, and Al Aala were the first to inhabit the village.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>Established by families who migrated from the regions of Amik and Dîlok (Antep). It was founded by a man named Hec Xelîl at a site called Sirtê Korê. The community grew from three primary clans, including those of Mola Bilêl and Mola Mihemed. In 1914, Armenian families passed through, and some integrated into village families.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p>
+<blockquote>
+<p>Founded by Hec Xelîl, who migrated from Dîlok (Antep) with two other families, those of Bilêl and Mihemed. In 1914, an Armenian family of shoemakers known as &quot;Mala Mîsko Kûşkorê&quot; settled in the area.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p>
+<blockquote>
+<p>Founded by a man named Hajj Khalil. Established on the site of old ruins, the village grew through the settlement of various families who became neighbors and intermarried.</p>
+</blockquote>
+<p><strong>Source:</strong> Halil Sino Transcript</p></div>
+                <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Possible Village Name Meaning of Ĥec Xelîl</h2></div><div class="p-4 prose max-w-none"><blockquote>
+<p>The origin of the name &quot;Xec Xelîl&quot; is a compound of two names: the feminine &quot;Xaj&quot; (from Khadija) and &quot;Khalil&quot;, who were both first residents of the village.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>The village was founded by a man named Hec Xelîl. Its previous name was Me&#x27;emik.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p>
+<blockquote>
+<p>The village was originally known as Ma&#x27;emikê or Serto Korê and was founded by Hec Xelîl.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p>
+<blockquote>
+<p>Named after its founder, Hajj Khalil.</p>
+</blockquote>
+<p><strong>Source:</strong> Halil Sino Transcript</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20haj%20xalil.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20haj%20xalil.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=zY990bDOFVw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zY990bDOFVw</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=SS8sQEoknJM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SS8sQEoknJM</a></li><li>Videos:<br><a href="https://www.youtube.com/watch?v=bazvy5yMFnk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=bazvy5yMFnk</a><br><a href="https://www.youtube.com/watch?v=dSSsfsfB0Go" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=dSSsfsfB0Go</a><br><a href="https://www.youtube.com/watch?v=9mXuU16okks" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9mXuU16okks</a><br><a href="https://www.youtube.com/watch?v=D053Y3Xyce0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=D053Y3Xyce0</a><br><a href="https://www.youtube.com/watch?v=nmyw8LpGvns" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=nmyw8LpGvns</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=G6nz9XLdbCY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=G6nz9XLdbCY</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=jHnUk3BGXUw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=jHnUk3BGXUw</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Ĥec Xelîl";
+            const villageLat = 36.678288;
+            const villageLng = 36.684054;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

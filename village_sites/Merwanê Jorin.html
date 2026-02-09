@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Merwanê Jorin, مرونة فوقاني, مروونة فوقاني, مرونيه فوقاني</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Kunc</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -201,29 +223,74 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Merwanê Jorin</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The text states it took its name from its first inhabitant: Xelîl, whose religious title in Kurdish is: Mela</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 300 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Merwanê</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Qesra Kunc</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Cercim</span>, <span class="internal-link">Deveyol</span>, <span class="internal-link">Hemamên Şîfa</span>, <span class="internal-link">Amuq</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Merwanê Jorin</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Merwanê Jorin, مروونة فوقاني</strong> /584n - 12km - 250m/:</p>
-<p>A small village located on the western slope of مروانه (<span class="internal-link">Marwana</span>) mountain highland covered with pine trees, and on the western end of the pass and Deveyol &quot;طريق الجمال&quot; (<span class="internal-link">Camel Road</span>) route. It also overlooks العمق (<span class="internal-link">Al-Amq</span>) plain to the west. It is 1km from مروانة تحتاني (<span class="internal-link">1 - PhD/Villages/Merwanê Jerin</span>), separated by جرجم (<span class="internal-link">Jarjam</span>) valley.</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Merwanê Jorin</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20merwane%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20merwane%20jorin.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Merwanê Jorîn</span> /584 inhabitants - 12km - 250m/: A small village located on the western slope of the <span class="internal-link">Merwanê</span> mountain elevation, which is forested with pines, and at the western end of the known <span class="internal-link">Deveyol</span> (Camel Road) pass and road. It also overlooks the <span class="internal-link">Amuq</span> plain to the west. It is 1km away from <span class="internal-link">Merwanê Jêrîn</span>, and they are separated by the <span class="internal-link">Cercim</span> valley.</p>
+<p>It took its name from the name of its first inhabitant: <span class="internal-link">Xelîl</span>, and his religious title in Kurdish is: <span class="internal-link">Mela</span>.</p>
+<p>A small village located on the southern bank of the <span class="internal-link">Efrîn</span> river. It is a few hundred meters away from the Turkish border. Within it is an uninhabited palace for the Aghas of the <span class="internal-link">Kunc</span> family.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Merwanê Jorîn: A village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Cindirês</span> district, Efrîn region, Heleb governorate. It is located on the western slope of the southwestern extension of the mentioned mountain block. It overlooks to the west the edges of the Amuq plain, which has fertile alluvial soil.</p>
+<p>It is bordered to the north by a deep valley called the Cercim valley, mountainous heights planted with olive trees, and the village of <span class="internal-link">Hêkiçê</span>. To the south, it is bordered by a mountain range planted with forest trees and olives, and the border village of <span class="internal-link">Hemamê</span>. To the west, a deep valley, a slope planted with olive trees, and the village of Merwanê Jêrîn. To the east, a high, rugged mountain range planted with forest trees and olives, the village of <span class="internal-link">Aşkanê Rojava</span>, and the village of <span class="internal-link">Kefer Sefrê</span>.</p>
+<p>The number of its houses is about 20, and its age is about 300 years. Its old houses are made of stone and mud, while the modern ones are cement and have expanded to the outskirts. An electricity network is available, as well as a paved road passing through its center to the districts of <span class="internal-link">Şiyê</span> and Cindirês. A second road passes through the center of Merwanê from the southern side to the village of Hemamê. It contains the <span class="internal-link">Hemamên Şîfa</span> (Healing Baths) and the Cercim valley, in which water flows and pours into the Amuq valley.</p>
+<p>Its residents work in the cultivation of olives, grains, and legumes via rainfed farming on the lands of their village and the lands of the two farms belonging to it (1804 hectares), and the cultivation of cotton and summer vegetables via irrigation from wells (66 hectares), alongside raising sheep and goats. The village drinks from the water of wells and cisterns that collect rainwater. Its lands are generally mountainous and sloping.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Emîn Hesen</span></p>
+<p>Preparation and execution:</p>
+<p>Director of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>It took its name from the name of its first inhabitant: خليل (<span class="internal-link">Khalil</span>), and his religious title in Kurdish: منلا (<span class="internal-link">Manla</span>).</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A small village located on the southern bank of عفرين (Afrin) river. It is several hundred meters from the <span class="internal-link">Turkish border</span>. It contains an uninhabited palace of آل كنج (<span class="internal-link">Al Kunj</span>) aghas.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book: عفرين .... Her River and Green Hills by writer عبدالرحمن محمد from قطمه (Qatma) village</p>
-<p><strong>مروونة فوقاني</strong>: A village in جبل الكرد (<span class="internal-link">Jabal al-Kurd</span>) that follows جندريس (<span class="internal-link">1 - PhD/Villages/Cindirês</span>) district, عفرين (Afrin) region, حلب (<span class="internal-link">Aleppo</span>) governorate.</p>
-<p>Located on the western slope of the southwestern extension of the mentioned mountain mass, overlooking the outskirts of العمق (<span class="internal-link">Al-Amq</span>) plain with fertile loamy soil to the west. It is bounded to the north by the deep valley called جرجم (<span class="internal-link">Jarjam</span>) valley and mountainous highlands planted with olive trees and هيكجة (<span class="internal-link">Haikja</span>) village, to the south by a mountainous chain planted with forest trees and olive trees and the border الحمام (<span class="internal-link">Al-Hamam</span>) village, to the west by a deep valley and slope planted with olive trees and مراونة تحتاني (<span class="internal-link">Marawna Tahtani</span>) village, and to the east by a high and rough mountainous chain planted with forest trees and olive trees and اشكان غربي (<span class="internal-link">Ishkan Gharbi</span>) and كفرصفرة (<span class="internal-link">Kafar Safra</span>) villages.</p>
-<p>It has about 20 houses and is about 300 years old. Its old houses are stone and clay and the modern ones are concrete that expanded in the outskirts. It has electricity network and a paved road passing through its center to شيخ حديد (<span class="internal-link">Sheikh Hadid</span>) and جندريس (<span class="internal-link">1 - PhD/Villages/Cindirês</span>) district. The second road passes through the center of مروانه (<span class="internal-link">Marwana</span>) from the south to الحمام (<span class="internal-link">Al-Hamam</span>) village. It has healing baths and جرجم (<span class="internal-link">Jarjam</span>) valley where water flows and pours into العمق (<span class="internal-link">Al-Amq</span>) valley.</p>
-<p>Its inhabitants work in olive, grain and legume cultivation both rain-fed on their village lands and the two farms belonging to it 1804 hectares, and cotton and summer vegetables irrigated from wells 66 hectares, in addition to raising sheep and goats. The village drinks from well water and cisterns that collect rainwater. Its lands are mountainous and generally sloping.</p>
-<p>Village mayor: محمد أمين حسن (<span class="internal-link">Mohammed Amin Hassan</span>)</p>
-<p>Prepared and implemented by: <span class="internal-link">Tirej Afrin</span> website director: عبدالرحمن حاجي عثمان (<span class="internal-link">Abdulrahman Haji Othman</span>)</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>Ebdulrehman Hacî Osman, director of Tirej Efrîn.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Merwan Jorin ، مرونة فوقاني /584ن - 12كم - 250م/: قرية صغيرة تقع على السفح الغربي لمرتفع جبل مروانه المشجر بالصنوبر، وعلى النهاية الغربية لممر وطريق Deveyol &quot;طريق الجمال&quot; المعروف. كما تشرف غربا على سهل العمق. وهي تبعد عن مروانة تحتاني 1كم، ويفصلهما وادي جرجم</p>
+<ul>
+<li>أخذت اسمها من اسم ساكنها الأول: خليل، ولقبه الديني في الكردية: منلا.</li>
+</ul>
+<ul>
+<li>قرية صغيرة تقع على الضفة الجنوبية لنهر عفرين. تبعد بضع مئات من الأمتار</li>
+</ul>
+<p>عن الحدود التركية. فيها قصر غير مسكون لآغوات آل كنج. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه مرونة فوقاني : قرية في جبل الكرد ، تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . تقع على السفح الغربي للامتداد الجنوبي الغربي لكتلة الجبل المذكور ، تشرف غرباً على أطراف سهل العمق ذو التربة اللحقية الخصبة ، يحدها شمالاً وادي عميق يسمى وادي جرجم ومرتفعات جبلية مزروعة بأشجار الزيتون وقرية /هيكجة/ ، وجنوباً سلسلة جبلية مزروعة بالأشجار الحراجية والزيتون وقرية /الحمام/ الحدودية ، وغرباً وادي عميق ومنحدر مزروع بأشجار الزيتون وقرية /مراونة تحتاني/ , وشرقاً سلسلة جبلية عالية وعرة مزروعة بالأشجار الحراجية والزيتون وقرية /اشكان غربي/ وقرية /كفرصفرة/ . يبلغ عدد بيوتها حوالي 20بيتاً وعمرها حوالي 300عاماً ، بيوتها القديمة حجرية طينية والحديثة منها إسمنتية توسعت في الأطراف. تتوفر فيها شبكة الكهرباء وطريق مزفتة يمر في وسطها إلى ناحية /شيخ حديد وجنديرس . والطريق الثاني يمر في وسط مروانه من الجهة الجنوبية إلى قرية الحمام , فيها حمامات الشفاء و وادي جرجم الذي تجري فيها المياه الذي يصب في وادي العمق . يعمل سكانها بزراعة الزيتون والحبوب والبقول بعلاً في أراضي قريتهم وأراضي المزرعتين التابعتين لها 1804 هـ وزراعة القطن والخضر الصيفية سقياً من الآبار 66 هـ إلى جانب تربية الأغنام والماعز ، تشرب القرية من مياه الآبار والصهاريج التي تجمع مياه الأمطار أراضيها جبلية ومنحدرة عامة .</p>
+<p>مختار القرية :  محمد أمين حسن</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -232,7 +299,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20merwane%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20merwane%20jorin.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=R8Gx6t6dDdM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=R8Gx6t6dDdM</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20merwane%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20merwane%20jorin.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=R8Gx6t6dDdM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=R8Gx6t6dDdM</a></li></ul>
             </div>
 
             
@@ -242,7 +309,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -360,6 +427,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

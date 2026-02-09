@@ -201,6 +201,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -225,7 +246,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şiyê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Kermêtliq, Qara Matlaq, Qermilqê, Qermitlîq, Qermtalqê, Qermîliq, Qermîltiq, Qermîltiqê, Qermîtiq, Qermîtlaq, Qermîtlaqê, Qermîtliq, Qermîtlêq, al-Khazfiya, الخزفية (al-Khazfiyah), قرمتلق, قره متلق</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Mala Beklerê, Mala Bilko, Mala Dewrîş, Mala Ebdilla, Mala Huseynî Têwê, Mala Îbrahîm Yûsiv, Mala Şêx Silêmên, Mala Şêxê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Beklero, Dawûd, Derwîş, Hac Îbrahîm, Mala Beklerê, Mala Bilko, Mala Dewrîş, Mala Ebdilla, Mala Huseynî Têwê, Mala Îbrahîm Yûsiv, Mala Şêx Silêmên, Mala Şêxê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--iy-">
@@ -286,21 +307,56 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qermîtliq</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &quot;<span class="internal-link">Mountain of the Kurds</span>&quot; (جبل الكرد) (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong>Qermîtliq, <span class="internal-link">Qara Matlaq</span>, <span class="internal-link">al-Khazfiya</span></strong> (الخزفية) /2718n, 3km - 230m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qermîtliq</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20qermitliq.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20qermitliq.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Qermitliq</span>, Arabized as <span class="internal-link">Xezfiyê</span> / 2718 inhabitants, 3km, 230m /:</p>
+<p>&quot;Qermît&quot; means ceramics or pottery in Kurdish. The Arabized name is a translation of its Kurdish name.</p>
+<p>It is a large village located west of the town of <span class="internal-link">Şiyê</span>, adjacent to the Turkish border, surrounded by barbed wire from the west. The first Kurdish folk arts group was founded here in the 1960s. Next to it was a camp for Ibrahim Pasha, son of Muhammad Ali Pasha, during his campaigns against Syria in the nineteenth century.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Qermitliq: A village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the Şiyê district of the <span class="internal-link">Efrîn</span> area, Heleb governorate. It is a large village situated at the end of the western slope of the middle part of the mentioned mountain, in a fertile plain with volcanic soil. Its lands slope gently toward the west until they border the edges of the Sanjak of <span class="internal-link">Îskenderûn</span>. It is 7km northwest of Şiyê.</p>
+<p>It is bordered to the north by a fertile plain planted with olive trees and the village of <span class="internal-link">Şêx Çeqelî</span>; to the south by the plain of the Sanjak of Îskenderûn and the Turkish border; to the east by a fertile plain planted with olive trees and the town of Şiyê; and to the west directly by the border strip and the <span class="internal-link">Amûq</span> plain.</p>
+<p>The number of its houses is about 150, and its age is 400 years. Its old dwellings are made of stone and mud with flat wooden roofs, while the modern ones are concrete, except for the southern ones adjacent to Turkish territory. The settlement of the area is ancient, evidenced by the presence of remaining traces of decorated pottery and cisterns built from basalt and limestone rocks. Its roofs are in the form of arches, and there are basalt columns with capitals.</p>
+<p>The village has an electricity network, telephone service, a primary and middle school, and a mosque in its center. The residents work in the cultivation of rain-fed olives, grains, and legumes, as well as irrigated crops from artesian wells, including vegetables, pomegranates, apricots, almonds, and lemons, alongside livestock farming. The people drink water from cisterns and tanks filled with rainwater.</p>
+<p>It is an ancient village dating back to the Ottoman era. The border strip passes on the western side at a distance of 500m. It is connected to the district center by an asphalt road.</p>
+<p>Among the families in the village of Qermitliq are: <span class="internal-link">Hac Îbrahîm</span> (specifically <span class="internal-link">Qertel</span>, one of the founders of the Qermitliq folk heritage group), <span class="internal-link">Beklero</span>, <span class="internal-link">Derwîş</span> (specifically <span class="internal-link">Mehmûd Derwîş</span>, one of the founders of the Qermitliq folk heritage group), and <span class="internal-link">Dawûd</span> (<span class="internal-link">Henîf Kurdî</span>), in addition to many holders of university degrees and institute diplomas.</p>
+<p>Village Mukhtar: <span class="internal-link">Zekerya Hacî Îbrahîm</span></p>
+<p>Preparation and Execution:</p>
+<p>Manager of the Tirej Efrîn website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Studies of <span class="internal-link">Navenda Tirej Soft</span> / Ebdulrehman Hacî Osman.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Qermtliq ، قره متلق ، الخزفية /2718ن ، 3كم - 230م/:</p>
 <ul>
-<li>&quot;Qarmit&quot; (قرميت) means pottery in Kurdish. The Arabic name is a translation of its Kurdish name.</li>
-<li>A large village located west of <span class="internal-link">Sheikh al-Hadid</span> town adjacent to the Turkish borders, surrounded by barbed wire from the west. The first troupe for Kurdish folk arts was established there in the sixties of the twentieth century. Beside it was a camp for <span class="internal-link">Ibrahim Pasha</span> (<span class="internal-link">إبراهيم باشا]) son of [[Mohammed Ali Pasha</span> (محمد علي باشا) during his campaigns on <span class="internal-link">Syria</span> in the nineteenth century.</li>
+<li>&quot; قرميت&quot; الخزف في الكردية. والاسم المعرب ترجمة لاسمها الكردي.</li>
 </ul>
-<p>According to the book: &quot;<span class="internal-link">Afrin.... Its River and Green Hills</span>&quot; (عفرين .... نهرها وروابيها الخضراء) by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatma village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Qarmatlaq</span></strong> (قرمتلق): A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد), belonging to <span class="internal-link">Sheikh al-Hadid</span> sub-district (ناحية شيخ الحديد), Afrin City region (منطقة عفرين), <span class="internal-link">Aleppo</span> governorate (محافظة حلب).</p>
-<p>It is a large village located at the end of the western slope of the middle part of the mentioned mountain, in a fertile plain with volcanic soil and its lands gently slope west until they adjoin the edges of <span class="internal-link">Alexandretta</span> district (لواء اسكندرونة), 7km north-west of <span class="internal-link">Sheikh al-Hadid</span>. It is bordered to the north by fertile plain planted with olive trees and <span class="internal-link">Sheikh Jiqallalli village</span> (قرية شيخ جقاللي), to the south by <span class="internal-link">Alexandretta</span> district plain and Turkish borders, to the east by fertile plain planted with olive trees and <span class="internal-link">Sheikh al-Hadid</span> town, and to the west directly by the border strip and <span class="internal-link">al-Amq</span> plain (سهل العمق).</p>
-<p>The number of its houses reaches about 150 houses and its age is 400 years. Its old dwellings are stone-clay with flat wooden roofs and the modern ones are concrete except the southern ones adjacent to Turkish lands. The region&#x27;s settlement is very ancient as evidenced by the presence of remaining decorated pottery and tanks built of basalt and limestone stones. Its roofs are arch-shaped and the columns are basalt with crowns.</p>
-<p>Electricity network, telephone, elementary and preparatory school and mosque in its center are available. The inhabitants work in olive, grain and legume cultivation rainfed and irrigated from artesian wells including vegetables, pomegranates, apricots, almonds, lemons in addition to raising livestock. The residents drink water from tanks and reservoirs filled with rainwater. It is an old village since the Ottoman era, and the border strip passes 500m west. It connects with the sub-district by paved road.</p>
-<p>Among the families in <span class="internal-link">Qarmatlaq village</span> (قرية قرمتلق) are <span class="internal-link">Haj Ibrahim</span> (حاج ابراهيم) (Qartal, one of the founders of <span class="internal-link">Qarmatlaq</span> folk heritage troupe) – <span class="internal-link">Baklru</span> (بكلرو) – <span class="internal-link">Darwish</span> (درويش) (<span class="internal-link">Mahmoud Darwish</span> (محمود درويش), one of the founders of <span class="internal-link">Qarmatlaq</span> folk heritage troupe) – <span class="internal-link">Dawud</span> (داوود) (Kurdish Hanif), in addition to many holders of university degrees and institute certificates.</p>
-<p><strong>Village Mayor:</strong> <span class="internal-link">Zakariya Haji Ibrahim</span> (زكريا حاجي ابراهيم)</p>
-<p><strong>Prepared and executed by: Site manager of Tireij Afrin: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</strong></p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qermîtliq from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=uBeELpdDr44" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=uBeELpdDr44</a></p>
+<ul>
+<li>قرية كبيرة تقع غربي بلدة شيخ الحديد بمحاذاة الحدود التركية، تحيط بها</li>
+</ul>
+<p>الأسلاك الشائكة من جهة الغرب. تأسست فيها أول فرقة للفنون الشعبية الكردية في ستينات القرن العشرين. كان بجوارها معسكرا لإبراهيم باشا ابن محمد علي باشا أثناء حملاته على سوريا في القرن التاسع عشر. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه قرمتلق : قرية في جبل الكرد ، تتبع ناحية شيخ الحديد منطقة عفرين محافظة حلب . وهي قرية كبيرة تقوم عند نهاية السفح الغربي للجزء الأوسط للجبل المذكور ، في سهل خصيب تربتها بركانية وتميل أراضيه بلطف نحو الغرب حتى تتاخم أطراف لواء اسكندرونة ، تبعد 7كم عن الشمال الغربي من شيخ الحديد يحدها شمالاً سهل خصب مزروعة بأشجار الزيتون وقرية شيخ جقانللي , وجنوباً سهل لواء اسكندرون والحدود التركية , وشرقاً سهل خصب مزروعة بأشجار الزيتون وبلدة شيخ الحديد , وغرباً الشريط الحدودي مباشرة وسهل العمق . يبلغ عدد بيوتها حوالي 150بيتاً وعمرها 400عاماً مساكنها القديمة حجرية طينية ذات سقوف خشبية مستوية والحديثة إسمنتية عدا الجنوبية المتاخمة للأراضي التركية. إعمار المنطقة قديم بدلالة وجود آثار متبقية من الفخار المزخرف والصهاريج المبنية من الحجارة البازلتية وكلسية. سقوفها بشكل أقواس والأعمدة بازلتية ذات تيجان تتوفر فيها شبكة كهرباء والهاتف ومدرسة ابتدائية وإعدادية وجامع في وسطها. يعمل السكان بزراعة الزيتون والحبوب والبقول بعلاً والمروية من الآبار الارتوازية ومنها الخضار والرمان والمشمش واللوز والليمون إلى جانب تربية المواشي , ويشرب الأهالي المياه من الصهاريج والخزانات تملأ من مياه الأمطار. وهي قرية قديمة منذ العهد العثماني , ويمر الشريط الحدودي من الجهة الغربية على مسافة 500م تتصل مع الناحية بطريق مزفت . ومن العائلات في قرية قرمتلق ( حاج ابراهيم ( قرتل من مؤسسي فرقة قرمتلق للتراث الشعبي )  بكلرو  درويش ( محمود درويش من مؤسسي فرقة قرمتلق للتراث الشعبي )  داوود ( حنيف كردي ) ، بالاضافة إلى العديد من حاملي الشهادات الجامعية والمعاهد .</p>
+<p>مختار القرية : زكريا حاجي ابراهيم</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qermîtliq from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=uBeELpdDr44" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=uBeELpdDr44</a></p>
 <p>The village of <span class="internal-link">Qermilq</span>, also referred to as <span class="internal-link">Qermîliq</span> or <span class="internal-link">Qermîx</span>, is situated in the <span class="internal-link">Şiyê</span> district of <span class="internal-link">Çiyayê Kurmênc</span>, approximately 44 kilometers northwest of <span class="internal-link">Efrîn</span>. Nestled near the <span class="internal-link">Amanos</span> and <span class="internal-link">Toros</span> mountains, the village shares a border with the region north of the line drawn in 1938. The name Qermilq is derived from <span class="internal-link">qermît</span>, meaning tiles, as the location was historically a center for manufacturing tiles and bricks from the local soil. Before the current village was established around 500 years ago, the site served as a <span class="internal-link">Xan</span> (caravanserai) on the trade route known as <span class="internal-link">Tarîq el Herîr</span> (Silk Road) or the camel route, where caravans traveling between <span class="internal-link">Heleb</span> and <span class="internal-link">Stenbol</span> would rest. A nearby pass is known as <span class="internal-link">Gedûka Helebê</span> or <span class="internal-link">Bawabet Heleb</span>.</p>
 <p>The village population consists of roughly 300 households. The original settlers were shepherds described as <span class="internal-link">Mala Şêxê</span>. The community is historically anchored by four foundational families: <span class="internal-link">Mala Ebdilla</span>, <span class="internal-link">Mala Îbrahîm Yûsiv</span>, <span class="internal-link">Mala Beklerê</span>, and <span class="internal-link">Mala Dewrîş</span> (also known as <span class="internal-link">Mala Sîsya</span>). Over time, other families such as <span class="internal-link">Mala Bilko</span> and <span class="internal-link">Mala Huseynî Têwê</span> established themselves there. The villagers follow the <span class="internal-link">Rifaî</span> order, gathering for dhikr on Friday evenings at <span class="internal-link">Mala Şêx Silêmên</span>. A significant religious figure, <span class="internal-link">Îbramê Şêxo</span>, began constructing the village mosque in 1344 Hijri (approximately 1925) but passed away before its completion; his tomb bears the Turkish inscription &quot;Gelen û gêten&quot; (Those who come and those who go).</p>
 <p>A defining feature of Qermilq is its water source, <span class="internal-link">Kilsê</span>, located three kilometers east near Şiyê. A local legend dictates that the spring flows for seven years and runs dry for seven years, a cycle mythologically controlled by a girl or a young man sitting upon the source. The village is also famous for a 500 year old wishing tree called <span class="internal-link">Dara Miraza</span>. Visitors from surrounding villages like <span class="internal-link">Erendê</span> and <span class="internal-link">Çaqela</span> come to the tree, particularly on Wednesdays, to tie fabrics and sacrifice black chickens in hopes of curing illnesses or granting wishes.</p>
@@ -359,7 +415,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20qermitliq.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20qermitliq.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=3Y23OLieugk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3Y23OLieugk</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100063528979131" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100063528979131</a><br><a href="https://www.youtube.com/watch?v=uBeELpdDr44" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=uBeELpdDr44</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20qermitliq.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20qermitliq.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=3Y23OLieugk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3Y23OLieugk</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100063528979131" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100063528979131</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=uBeELpdDr44" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=uBeELpdDr44</a></li></ul>
             </div>
 
             
@@ -369,7 +425,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -487,6 +543,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

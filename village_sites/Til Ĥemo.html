@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Tel Hemo, Til Hemo, Til Ĝemo, تل حمو</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Îbo, Şêx Heyder</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -202,28 +224,101 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Til Ĥemo</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Afrin Flo</h5>
+<p><strong>Shrines:</strong> <span class="internal-link">Ziyareta Şêx Ebdurehman</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Til Ĥemo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Til Ĝemo, تل حمو</strong> /258n - 843ha - 8km - 230m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Til Ĥemo</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20til%20hemo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20til%20hemo.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span> regarding <span class="internal-link">Til Ĥemo</span> / <span class="internal-link">Til Hemo</span>: 258 inhabitants, 843 hectares, 8 km from the center, 230 m altitude.</p>
+<p><span class="internal-link">Hemo</span> is a local Kurdish proper name derived from &quot;Muhammad&quot;. It is a small village centered around the archaeological Til Hemo, surrounded by a group of shallow valleys that unite and then head south towards <span class="internal-link">Çemê Efrîn</span> (Afrin River).</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme that Til Hemo is a village in <span class="internal-link">Çiyayê Kurmênc</span> following the township of <span class="internal-link">Cindirês</span>, district of <span class="internal-link">Efrîn</span>, governorate of <span class="internal-link">Heleb</span>. It is a small village located on the outskirts of the small Til Hemo and the plain of Cindirês and eastern <span class="internal-link">Cûm</span>. It is surrounded by a group of valleys that meet to its south, heading south to feed Çemê Efrîn. It is 8 km distant from the town of Cindirês to the east and north. The slopes of Çiyayê Kurmênc overlook it from the west and plateau highlands from the east. Its soil is fertile clay.</p>
+<p>It is bordered to the north by a fertile agricultural plain, <span class="internal-link">Riya Efrîn-Cindirês</span> (Efrîn-Cindirês road), and the village of <span class="internal-link">Şêx Ebdirehman</span>. It is bordered to the south by a fertile plain and the village of <span class="internal-link">Ferîriyê</span>. It is bordered to the west by a fertile agricultural plain and the villages of <span class="internal-link">Remadiyê</span> and <span class="internal-link">Hemîlk</span>. It is bordered to the east by a fertile plain, highlands planted with olive trees, and the villages of <span class="internal-link">Tilelf</span> and <span class="internal-link">Keferzît</span>.</p>
+<p>The number of its houses reaches about 30 houses, and its age is about 200 years. Its old houses are made of mud and stone with flat wooden roofs, while the modern ones are cement, scattered in the center of the village and around the archaeological Til Hemo. Available in the village are an electricity network, a primary school, and an agricultural cooperative society. A paved road passes through its center heading to Cindirês, Efrîn, and Ferîriyê. The village drinks from well water and from rainwater collected in cisterns in winter.</p>
+<p>Residents work in rain fed agriculture on an area of 843 hectares (olives, grains, legumes) and 11 hectares irrigated by artesian well water producing summer vegetables, cotton, and fruit trees like pomegranate, walnut, and apricot, alongside raising sheep and cows. It is mentioned that the writer <span class="internal-link">Ebdo Mihemed</span> is among the sons of this village.</p>
+<p>The mukhtar of the village is <span class="internal-link">Mirad Izet Mirad</span>.</p>
+<p>Sources:</p>
 <ul>
-<li>حَمو: A local Kurdish proper name from &quot;<span class="internal-link">Mohammed</span>&quot;.</li>
-<li>A small village centered around the archaeological &quot;<span class="internal-link">Tel Hemo</span>&quot; (تل حمو), surrounded by a group of shallow valleys that unite and then head south toward the Afrin river.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: Afrin.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from Qatma village</p>
-<p><strong>تل حمو</strong>: A village in the <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Cindires</span> district, Afrin region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p>It is a small village located on the edges of the small <span class="internal-link">Tel Hemo</span> and the eastern <span class="internal-link">Cindires</span> and <span class="internal-link">Jum</span> plain, surrounded by a group of valleys that meet to its south, heading south to feed the Afrin river. It is 8km away from <span class="internal-link">Cindires</span> town to the east and north. It overlooks slopes of the <span class="internal-link">Kurdish Mountain</span> from the west and plateau elevations from the east. Its soil is fertile loamy. It is bordered to the north by fertile agricultural plain and the Afrin-<span class="internal-link">Cindires</span> road and <span class="internal-link">Sheikh Abdul Rahman</span> village, to the south by fertile plain and <span class="internal-link">Al-Freireya</span> village, to the west by fertile agricultural plain and <span class="internal-link">Al-Ramadiya</span> and <span class="internal-link">Hamilik</span> villages, and to the east by fertile plain and elevations planted with olive trees and <span class="internal-link">Tallif</span> and <span class="internal-link">Kafarzit</span> villages. The number of its houses reaches about 30 houses and its age is about 200 years. Its old houses are made of clay and stone with flat wooden roofs, and the modern ones are concrete spread in the village center and around the archaeological <span class="internal-link">Tel Hemo</span>. It has an electricity network, a primary school, an agricultural cooperative association, and a paved road passing through its center heading to <span class="internal-link">Cindires</span>, Afrin City, and <span class="internal-link">Al-Freireya</span>. The village drinks from well water and from rainwater that collects in cisterns in winter. The residents work in rain-fed agriculture on an area of 843 hectares (olives, grains, legumes) and 11 hectares irrigated with well water producing summer vegetables, cotton, and fruit trees such as pomegranates, walnuts, and apricots, in addition to raising sheep and cattle.</p>
-<p>It is mentioned that writer <span class="internal-link">Abdo Mohammed</span> is from the sons of this village.</p>
-<p>Village mayor: <span class="internal-link">Murad Izzat Murad</span></p>
-<p>Prepared and implemented by: Site Manager of <span class="internal-link">Tirej Afrin</span>: Abdul Rahman Haji Othman</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Preparation and execution by Navenda Tirej Efrîn director Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Til Ĥemo ، تل حمو /258ن - 843هـ - 8كم - 230م/:</p>
+<ul>
+<li>حَمو: اسم علم محلي كردي من &quot;محمد&quot;.</li>
+</ul>
+<ul>
+<li>قرية صغيرة يتوسطها &quot;تل حمو&quot; الأثري، تحيط بها مجموعة من الأودية الضحلة</li>
+</ul>
+<p>التي تتحد ثم تتجه جنوبا نحو نهر عفرين. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه تل حمو : قرية في جبل الكرد تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع على أطراف تل حمو الصغير وسهل جنديرس وجوم الشرقي ، تحيط به مجموعة من الأودية تلتقي جنوبه ، تتجه نحو الجنوب لترفد نهر عفرين ، تبعد 8كم عن بلدة جنديرس شرقاً وشمالاً ، تشرف عليها سفوح جبل الكرد من الغرب ومرتفعات هضبية من الشرق ، تربتها غضارية خصبة ، يحدها شمالاً سهل زراعي خصب وطريق عفرين جنديرس وقرية الشيخ عبد الرحمن ، وجنوباً سهل خصب وقرية الفريرية ، وغرباً سهل خصب زراعياً وقرية الرمادية وحميلك ، وشرقاً سهل خصب ومرتفعات مزروعة بأشجار الزيتون وقرية تللف وكفرزيت . يبلغ عدد بيوتها حوالي 30 بيتاً وعمرها حوالي 200 عاماً ، بيوتها القديمة من الطين والحجارة ذات سقوف خشبية مستوية و الحديثة إسمنتية منتشرة في وسط القرية وحول تل حمو الأثري ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وجمعية تعاونية فلاحية وطريق مزفت يمر في وسطها متوجهاً إلى جنديرس وعفرين والفريرية ، تشرب القرية من مياه الآبار ومن مياه الأمطار التي تجمع في الصهاريج شتاءاً ، يعمل السكان بالزراعة البعلية على مساحة 843 هـ ( الزيتون ، الحبوب ، البقول ) و11 هـ مروية بمياه الآبار الارتوازية تنتج الخضار الصيفية والقطن والأشجار المثمرة كالرمان والجوز والمشمش ، إلى جانب تربية الأغنام و الأبقار . يذكر أن الكاتب عبدو محمد من أبناء هذه القرية</p>
+<p>مختار القرية :  مراد عزت مراد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Til Ĥemo from Afrin Flo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=OMMJS3jMus4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=OMMJS3jMus4</a></p>
+<p>The documentary focuses on the village of <span class="internal-link">Telhemo</span> (also referred to as <span class="internal-link">Til Hemû</span>) in the Afrin region. The narrative centers primarily on the religious and social life of the village, specifically highlighting the prominent <span class="internal-link">Ziyareta Şêx Ebdurehman</span>. This shrine serves as a spiritual anchor for the community and contains the tombs of several notable figures. The central figure is <span class="internal-link">Şêx Ebdurehman</span>, alongside <span class="internal-link">Şêx Mihemed</span>, who passed away in 2006. Other individuals interred within the shrine complex include <span class="internal-link">Hacî Îbrahîm Cemîl</span>, <span class="internal-link">Fîdan Mihemed</span>, and <span class="internal-link">Emîna keça Şêx</span>.</p>
+<p>A distinct feature of the Ziyareta Şêx Ebdurehman is a ritual involving a specific stone known as <span class="internal-link">Mrazê Xwedeghazê</span>. Visitors attempt to stick a small stone to a vertical surface within the shrine; it is believed that if the stone adheres to the wall, the supplicant&#x27;s wish or intention (mirad/mraz) will be granted. During the visit, a local man named <span class="internal-link">Semîr</span> attempts this ritual, though the stone does not stick on his attempt.</p>
+<p>The social structure of Telhemo highlighted in the footage revolves largely around the <span class="internal-link">Îbo</span> family. The video is explicitly dedicated to <span class="internal-link">Adnan Cemîl Îbobî</span> (also referred to as <span class="internal-link">Adnanê Cemîlê Îbo</span>), suggesting his family&#x27;s significance in the area. The host visits the grave of <span class="internal-link">Malê Cemîl</span>, identified as Adnan&#x27;s father, located near the shrine.</p>
+<p>The documentary also provides insight into the agricultural life of Telhemo through an interview with a farmer named <span class="internal-link">Ebû Cemîl</span>, who is a member of the Îbo family. He cultivates a garden growing zucchini (<span class="internal-link">kundir</span>), cucumbers (<span class="internal-link">xitek</span>), watermelon (<span class="internal-link">zebeş</span>), and beans (<span class="internal-link">lûbîk</span>). However, the village faces significant environmental challenges. Ebû Cemîl details a severe water shortage, explaining that the groundwater levels have dropped and the rain was insufficient despite early snows. To cope with the lack of electricity and water, the villagers rely on solar power systems, referred to as <span class="internal-link">taqa</span>, to run pumps (<span class="internal-link">xetase</span>), though the output remains low. The video concludes with scenes of the surrounding orchards and general well wishes for the villagers, particularly the Îbo lineage.</p></div></details></div>
                 </div>
 
-            
+            <div class="card p-6 rounded-xl">
+            <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcriptions and Subtitles</h2>
+            <div class="p-4 prose-compact max-w-none">
+    <div class="mb-4">
+        <a href="../village_subtitles/how_to_use_substital.html" target="_blank" class="text-base font-medium external-link hover:underline">Need help with using this subtitles on Youtube? (Click here)</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b-2 themed-border">
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Source</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Video</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Subtitles</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Transcript</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Afrin Flo 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=OMMJS3jMus4" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/afrin_flo_videos_70_Til Hemo.srt" download="afrin_flo_videos_70_Til Hemo.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Til Ĥemo_Afrin Flo_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    </div>
+        </div>
 
             <div class="card p-6 rounded-xl space-y-6">
                 <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Foundation/Origin Information of Til Ĥemo</h2></div><div class="p-4 prose max-w-none"><blockquote>
@@ -238,7 +333,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20til%20hemo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20til%20hemo.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=kqlyvbReFJY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=kqlyvbReFJY</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20til%20hemo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20til%20hemo.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=kqlyvbReFJY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=kqlyvbReFJY</a></li><li>Afrin Flo:<br><a href="https://www.youtube.com/watch?v=OMMJS3jMus4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=OMMJS3jMus4</a></li></ul>
             </div>
 
             
@@ -248,7 +343,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -366,6 +461,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

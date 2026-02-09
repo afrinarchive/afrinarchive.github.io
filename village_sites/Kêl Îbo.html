@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -166,7 +187,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Aqra, Ibrahîm el-Eqre&#x27;, Kelo, Kulêbo, Kêl Îbo, Kêlîbo, الأقرع, كيل ايبو</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Belantîn, Cûcik, Hecî Xaşo, Kur Ehmedo, Mala Ekif, Mala Şewqî, Malê Nebê, Mamkû, Mehrem, Mezin, Miskêk Hemîdî, Najoh, Qicik, Sidqî, Tofan, Zekî</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Belantîn, Cûcik, Hecî Xaşo, Kur Ehmedo, Kêlo, Mala Ekif, Mala Şewqî, Malê Nebê, Mamkû, Mehrem, Mezin, Miskêk Hemîdî, Najoh, Qicik, Sidqî, Tofan, Zekî</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -211,25 +232,52 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kêl Îbo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of Mabetli District (المعبطلي) / Mabeta</p>
-<p><span class="internal-link">1 - PhD/Villages/Kêl Îbo</span> (كيل ايبو) - <span class="internal-link">1 - PhD/Villages/Kêl Îbo</span></p>
-<p>===</p>
-<p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Kêl Îbo</span> (كيل إيبو), <span class="internal-link">Al-Aqra</span> (الأقرع)</strong> /338N - 1145H - 11km - 520m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kêl Îbo</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kel%20ibo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kel%20ibo.htm</a></p>
+<p>The book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span> states that <span class="internal-link">Kel Îbo</span>, also known as Al-Aqra, had 338 inhabitants and covered 1145 hectares. It is located 11 kilometers away at an altitude of 520 meters.</p>
+<p>The name Kel Îbo comes from the proper name Ibrahim and his nickname &quot;Al-Aqra&quot; (The Bald). He was one of the earliest inhabitants of the village, and <span class="internal-link">Îbo</span> was a skilled player of the <span class="internal-link">tembûr</span> instrument. It is a small village situated on the far southwestern slope of <span class="internal-link">Çiyayê Hawar</span>.</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme, Kel Îbo is a village in <span class="internal-link">Çiyayê Kurmênc</span> that administratively follows the <span class="internal-link">Mabeta</span> subdistrict in the <span class="internal-link">Efrîn</span> region of the Heleb governorate.</p>
+<p>It is a small village located in the central part of the mentioned mountain range, on the southern slope of Çiyayê Hawar. It sits on a mountainous elevation with a steep incline and possesses clay soil. The village is 12 kilometers northwest of the town of Mabeta.</p>
+<p>The village boundaries are defined as follows: to the north lies a high mountain elevation and the village of <span class="internal-link">Oksûzlî</span>. To the south lie a slope, the fertile plain of <span class="internal-link">Kitix</span>, the <span class="internal-link">Riya Efrîn-Reco</span> (Efrîn-Reco road), the <span class="internal-link">Xeta Trêna</span> (railway line), the village of <span class="internal-link">Qitranlî</span>, and <span class="internal-link">Ereb Uşaxî</span>. To the west lie a slope, <span class="internal-link">Geliyê Tîra</span> (Tîra valley), the railway, and the villages of <span class="internal-link">Hemşilê</span> and <span class="internal-link">Bedinlî</span>. To the east lie a slope, a plain, and the village of <span class="internal-link">Heyat</span>.</p>
+<p>The village contains approximately 25 houses and is about 150 years old. Its old dwellings are made of stone and mud with wooden roofs, while the modern ones are made of cement. Construction is spreading toward the east and south, except for the northern side which consists of high mountains. The village has an electricity network and a water network connected to a well south of the village.</p>
+<p>Residents work in rain fed agriculture on 250 hectares, cultivating grains, olives, grapes, and almonds. They also practice irrigated farming using artesian wells to grow summer vegetables and fruit trees such as walnuts, almonds, apricots, and cherries. The village is surrounded by trees on all sides and faces the open, fertile plain of Kitix. Among its most important families is the <span class="internal-link">Kêlo</span> family, who were the first to inhabit the village.</p>
+<p>The village mukhtar is <span class="internal-link">Farûq Hisên Menan</span>.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Kl bo ، كيل إيبو ، الأقرع /338ن - 1145هـ - 11كم - 520م/:</p>
 <ul>
-<li><span class="internal-link">1 - PhD/Villages/Kêl Îbo</span> (كيل إيبو): From the name of the scholar <span class="internal-link">Ibrahim</span> (إبراهيم) and his nickname &quot;<span class="internal-link">Al-Aqra</span>&quot; (الأقرع). He was one of the first inhabitants of the village, and <span class="internal-link">Îbo</span> (إيبو) was a skilled player of the tambourine instrument.</li>
-<li>A small village located on the far southwestern slope of <span class="internal-link">Hawar Mountain</span> (جبل هاوار).</li>
+<li>كيل إيبو: من اسم العلم إبراهيم ولقبه &quot;الأقرع&quot;. وهو أحد أوائل سكان</li>
 </ul>
-<p>According to the book: &#x27;عفرين.... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27; by writer Abdulrahman Mohammed from <span class="internal-link">Qitma village</span> (قطمه):</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Kêl Îbo</span> (كيل ايبو)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), <span class="internal-link">Afrin City region</span> (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the central part of the mentioned mountain on the southern slope of <span class="internal-link">Hawari Mountain</span> (جبل هواري) on a mountain elevation and steep slope. Its soil is clay, 12km away from <span class="internal-link">Mabetli town</span> (بلدة المعبطلي) toward the northwest.</p>
-<p>It is bordered to the north by a high mountain elevation and <span class="internal-link">Uksuzli village</span> (قرية أوكسوزلي), to the south by a slope and the fertile <span class="internal-link">Al-Katkh plain</span> (سهل الكتخ) and the <span class="internal-link">Afrin City - Rajo</span> road (طريق عفرين _ راجو) and the railway line and <span class="internal-link">Qitranli village</span> (قرية قطرانلي) and <span class="internal-link">Arab Oshaghi</span> (عرب أوشاغي), to the west by a slope and <span class="internal-link">Al-Tira valley</span> (وادي الطيرة) and railway and <span class="internal-link">Hamshalk village</span> (قرية حمشلك) and <span class="internal-link">Be&#x27;dinli</span> (بعدنلي), and to the east by a slope and plain and <span class="internal-link">Hayat village</span> (قرية حياة).</p>
-<p>The number of houses is about 25, and its age is about 150 years. Its old dwellings are stone and clay with wooden roofs, and the modern ones are concrete spreading east and south except for the northern side which is high mountainous. It has electricity network and water network connected to a well south of the mentioned village.</p>
-<p>Its inhabitants work in rain-fed agriculture on 250 hectares (grains, olives, vineyards, almonds) and irrigation from artesian wells with summer vegetables and fruit trees (walnuts, almonds, apricots, cherries). The village is surrounded by trees from all sides, and in front of it is the exposed plain overlooking the <span class="internal-link">Al-Katkh fertile plain</span> (سهل كتخ الخصب).</p>
-<p>Among its most important families is the <span class="internal-link">Kilo family</span> (عائلة كيلو) (they were the first to inhabit the village).</p>
-<p>Village mayor: <span class="internal-link">Farouk Hussein Minan</span> (فاروق حسين منان)</p>
-<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin City Heritage</span>: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kêl Îbo from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=zMaBXFZeroU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=zMaBXFZeroU</a></p>
+<p>القرية، وكان إيبو عازفا بارعا على آلة الطنبور.</p>
+<ul>
+<li>قرية صغيرة تقع على أقصى السفح الجنوبي الغربي لجبل هاوار.</li>
+</ul>
+<p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كيل ايبو : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في الجزء الأوسط من الجبل المذكور على السفح الجنوبي لجبل هواري على مرتفع جبلي ومنحدر شديد الانحدار ، تربتها غضارية تبعد عن بلدة المعبطلي 12كم باتجاه الشمال الغربي ، يحدها شمالاً مرتفع جبلي عالي وقرية أوكسوزلي ، وجنوباً منحدر وسهل الكتخ الخصب وطريق /عفرين _ راجو/ والخط الحديدي وقرية قطرانلي وعرب أوشاغي ، وغرباً منحدر ووادي الطيرة وسكة حديد وقرية حمشلك وبعدنلي ، وشرقاً منحدر وسهل وقرية حياة ، يبلغ عدد بيوتها حوالي 25بيتاً وعمرها حوالي 150عاماً مساكنها القديمة حجرية طينية ذات سقوف خشبية والحديثة إسمنتية تنتشر شرقاً وجنوباً ماعدا الجهة الشمالية فهي جبلية عالية ، تتوفر فيها شبكة الكهرباء و شبكة مائية متصلة ببئر جنوبي القرية المذكورة ، يعمل سكانها بالزراعة البعلية على 250هـ (الحبوب ، الزيتون ، الكرمة ، اللوز) ورياً من الآبار الارتوازية بالخضار الصيفية والأشجار المثمرة (الجوز واللوز والمشمش والكرز) والقرية محاطة بالأشجار من كافة جهاتها وأمامها السهل المكشوف على سهل كتخ الخصب ، من أهم عوائلها عائلة كيلو (هم أول من سكنوا القرية) .</p>
+<p>مختار القرية :  فاروق حسين منان</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kêl Îbo from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=zMaBXFZeroU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=zMaBXFZeroU</a></p>
 <p>The documentary transcript focuses on the village of <span class="internal-link">Kêlîbû</span> and the adjacent historical site of <span class="internal-link">Qutx</span> in the <span class="internal-link">Rajo</span> district. The narrator explains the origins of the village name. He states that Kêlîbû is named after a large <span class="internal-link">Kêlî</span>, which is a Kurmanji term for a stele or headstone. This distinctive stone marker once stood in the area and became the namesake for the settlement established there.</p>
 <p>A significant portion of the footage records the history of Qutx, also referred to as <span class="internal-link">Qunaq</span>. This location serves as a transit point defined by a massive iron railway bridge called <span class="internal-link">Pira Qutx</span>. A local elder named <span class="internal-link">Ebû Semîr</span> provides historical details about this structure. He explains that the bridge was constructed in the years 1911 and 1912. Although the railway is historically associated with the Berlin to Baghdad project, the speaker explicitly attributes the construction to <span class="internal-link">Fransa</span>. He notes that the date is inscribed directly onto the iron structure. This railway line connected <span class="internal-link">Tirkiyê</span> to Rajo, passing through to <span class="internal-link">Efrîn</span> and eventually reaching <span class="internal-link">Heleb</span> and <span class="internal-link">Şamê</span>.</p>
 <p>The area around Pira Qutx historically functioned as a vital social hub for the region. Ebû Semîr describes a large and reliable spring that flowed beneath the bridge. People from the surrounding areas gathered there to rest, wash clothes, and enjoy the clean water. The narrator laments that this water source has recently dried up due to a lack of rainfall.</p>
@@ -303,7 +351,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kel%20ibo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kel%20ibo.htm</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=zMaBXFZeroU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zMaBXFZeroU</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=3ayfH66xpO0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3ayfH66xpO0</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=Dgvq6gyNOLw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Dgvq6gyNOLw</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kel%20ibo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kel%20ibo.htm</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=zMaBXFZeroU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zMaBXFZeroU</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=3ayfH66xpO0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3ayfH66xpO0</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=Dgvq6gyNOLw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Dgvq6gyNOLw</a></li></ul>
             </div>
 
             
@@ -313,7 +361,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -431,6 +479,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

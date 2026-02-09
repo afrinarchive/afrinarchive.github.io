@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -126,16 +147,55 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Qestela</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Foundation Date/Period:</strong> about 60 years</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Behîvê</span>, <span class="internal-link">Çiyayê Şehîdan</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qestela</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin .... Its Rivers and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Qestela Rajo</span> (قسطل راجو)</strong>: A farm in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a very small farm consisting of a limited number of houses, located near a high mountain called <span class="internal-link">Jabal al-Luz</span> (جبل اللوز) (<span class="internal-link">Ba&#x27;ifa</span> (بعيفة)) or (<span class="internal-link">Al-Shuhada</span> (الشهداء)). In front of it to the north is a steep slope that borders the plain of <span class="internal-link">Medan Ikbas</span> (ميدان إكبس) and <span class="internal-link">Arab Li Farm</span> (مزرعة عرب لي). To the south, a high mountain chain with <span class="internal-link">Taba Koy Village</span> (قرية تبة كوي) and <span class="internal-link">Al-Walikli</span> (الواليكلي). To the east, a high mountain chain called <span class="internal-link">Jabal al-Luz</span> (جبل اللوز). To the west, a mountain chain and valley with <span class="internal-link">Taba Koy Village</span> (قرية تبة كوي).</p>
-<p>It has 5 houses and is about 60 years old. Its dwellings are modern stone and cement construction. It has an electrical network and a paved road passes near it to <span class="internal-link">Medan Ikbas</span> (ميدان إكبس) and <span class="internal-link">Bulbul</span> (بلبل). Residents work in olive and grape cultivation and raising sheep and goats.</p></div></details></div>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qestela</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qestela%20reco.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qestela%20reco.htm</a></p>
+<p>It is stated in the book Efrîn... Her River and Her Green Hills: <span class="internal-link">Qestel Reco</span>: A farm in <span class="internal-link">Çiyayê Kurmênc</span> belonging to the <span class="internal-link">Reco</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate.</p>
+<p>It is a very small farm consisting of a limited number of houses, located near a high mountain called <span class="internal-link">Çiyayê Behîvê</span> or <span class="internal-link">Çiyayê Şehîdan</span>, and in front of it is a harsh slope. It is bordered on the north by the plain of <span class="internal-link">Meydan Ekbez</span> and the farm of <span class="internal-link">Ereblî</span>, and on the south by a high mountain chain and the village of <span class="internal-link">Tepe Koy</span> and <span class="internal-link">Weliklî</span>. It is bordered on the east by a high mountain chain named Çiyayê Behîvê, and on the west by a mountain chain, a valley, and the village of Tepe Koy.</p>
+<p>The number of its houses amounts to 5 houses and its age is about 60 years. Its dwellings are modern stone and cement. An electricity network is available there, and an asphalt road, the <span class="internal-link">Riya Meydan Ekbez-Bilbile</span> (Meydan Ekbez-Bilbile road), passes near it. The residents work in the cultivation of olives and vines and the raising of sheep and goats.</p>
+<p>Sources of Information:</p>
+<ul>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
+</ul>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the site Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب عفرين .... نهرها وروابيها الخضراء : قسطل راجو : مزرعة في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي مزرعة صغيرة جداً تتألف من عدد محدود من البيوت ، تقع بالقرب من جبل عال ٍ يسمى جبل اللوز ( بعيفة ) أو ( الشهداء) ، وأمامها منحدر قاسي يحدها شمالاً سهل /ميدان إكبس/ و مزرعة /عرب لي/ ، وجنوباً سلسلة جبلية عالية و قرية /تبة كوي/ و /الواليكلي/ ، وشرقاً سلسلة جبلية عالية المسماة بجبل اللوز ، وغرباً سلسلة جبلية و وادي و قرية /تبة كوي/ ، يبلغ عدد بيوتها 5 بيوت و عمرها حوالي 60 عاماً ، مساكنها حجرية أسمنتية حديثة ،تتوفر فيها شبكة كهرباء وطريق زفت يمر من قربها إلى /ميدان إكبس/ و/بلبل/ ، يعمل السكان بزراعة الزيتون و الكرمة وتربية الأغنام والماعز . مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -144,7 +204,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qestela%20reco.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qestela%20reco.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qestela%20reco.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qestela%20reco.htm</a></li></ul>
             </div>
 
             
@@ -154,7 +214,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -272,6 +332,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

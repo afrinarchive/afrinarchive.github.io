@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Madaya, Medaya, Midaya, فيلك, مدايا</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Hemîd Axa Fîlk</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -200,25 +222,65 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Medaya</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The name approaches the Arabic pronunciation</p>
+<p><strong>Foundation Date/Period:</strong> 150 years</p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Medaya</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) Geographic Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong><span class="internal-link">Midaya</span></strong> (مدايا), <strong><span class="internal-link">Madaya</span></strong> (مدايا) /38n - 150m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Medaya</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20filik.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20filik.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Gund Flik</span>, village of <span class="internal-link">Feylek</span> /160m/:</p>
+<p>It was founded by the so called <span class="internal-link">Fîlik</span> from the village of Birmice, and he was an agent for the Aghas, so he built several houses for residence on agricultural lands that were belonging to them, and it was named after him.</p>
+<p>It is located opposite <span class="internal-link">Dîwan Tehtanî</span> on the right bank of the river <span class="internal-link">Efrîn</span>, and it was abandoned in the seventies of the last century after the application of the Agrarian Reform Law.</p>
+<p>And it is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Fîlik: A farm in the valley of the river Efrîn near the western <span class="internal-link">Çiyayê Seman</span> range following the township of <span class="internal-link">Cindirês</span>, region of Efrîn, governorate of <span class="internal-link">Heleb</span>.</p>
+<p>It is a small farm located opposite the village of Dîwan Tehtanî on the right bank of the river Efrîn founded by the so called Fîlik from the village of Birmice affiliated with the township of <span class="internal-link">Mabeta</span> and it was named after him.</p>
+<p>It is bordered on the north by a fertile agricultural plain planted with olive trees and the town of Cindirês; and on the south at a distance of 500m the course of the river Efrîn and Dîwan Tehtanî in the far south; and on the west an agricultural plain and the village of <span class="internal-link">Medaya</span>; and on the east the course of the river Efrîn and the village of <span class="internal-link">Tel Selûr</span>.</p>
+<p>Currently, the inhabitants abandoned it in the seventies of the twentieth century and there is no one in it, and it consists of agricultural land near the river Efrîn.</p>
+<p>Preparation and execution:</p>
+<p>Manager of the site <span class="internal-link">Tirej Efrîn</span>: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>The name is close to the Arabic pronunciation.</li>
-<li>A ruin located on the right bank of <span class="internal-link">Afrin river</span> (نهر عفرين) opposite <span class="internal-link">Tell Silur village</span> (ق.تل سللور). It was inhabited in the early last century and was a village belonging to <span class="internal-link">Hamid Agha Vilk</span> (حميد آغا فيلك).</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: &#x27;عفرين&#x27; &#x27;Afrin&#x27;.... Its River and Green Hills by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Madaya</span></strong> (مدايا): A village in <span class="internal-link">Afrin river valley</span> (وادي نهر عفرين), belonging to <span class="internal-link">Cindires sub-district</span> (ناحية جندرس), Afrin (منطقة عفرين), <span class="internal-link">Aleppo governorate</span> (محافظة حلب).</p>
-<p>It is a small and old village located on the right bank and above a fertile plateau of <span class="internal-link">Afrin river</span> (نهر عفرين) with alluvial soil and abundant groundwater. It is bordered to the north by fertile agricultural plains planted with grains and olive trees and <span class="internal-link">Cindires town</span> (بلدة جندرس) directly, to the south at 500m distance by the course of <span class="internal-link">Afrin river valley</span> (مجرى وادي نهر عفرين) and <span class="internal-link">Diwan Fouqani village</span> (قرية ديوان فوقاني) in the far south, to the west by fertile agricultural plains planted with olive trees and <span class="internal-link">Mehmediye Eastern village</span> (قرية محمدية شرقي), and to the east by fertile agricultural plains and the course of <span class="internal-link">Afrin river</span> (نهر عفرين) and <span class="internal-link">Tell Silur village</span> (قرية تل سلور).</p>
-<p>The current number of houses is 5 houses and its age is <span class="internal-link">150 years</span> (150عاماً). Its old houses are clay with wooden roofs and currently not a single house remains from its old houses and it became abandoned. Recently, one of the residents bought it and built three houses on it, building them from stones and cement, and the age of the current houses is about <span class="internal-link">15 years</span> (15عاماً).</p>
-<p>It has a paved road passing near it to <span class="internal-link">Cindires</span> (جندرس), <span class="internal-link">Tell Silur</span> (تل سلور) and <span class="internal-link">Mehmediye</span> (المحمدية). Its residents work in agriculture irrigated from <span class="internal-link">Afrin river</span> (نهر عفرين) or from artesian wells such as cotton, summer vegetables, sugar beet and pomegranate, in addition to raising sheep and goats. It lacks technical and administrative services.</p>
-<p>Preparation and implementation: Director of <span class="internal-link">Afrin Heritage website</span> (موقع تيريج عفرين): <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Midaya ، مدايا /38ن - 150م/:</p>
+<ul>
+<li>يقترب الاسم من اللفظ العربي.</li>
+</ul>
+<ul>
+<li>خربة تقع على الضفة اليمنى من نهر عفرين مقابل ق.تل سللور، كانت مسكونة في</li>
+</ul>
+<p>أوائل القرن الماضي. وكانت قرية لحميد آغا فيلك. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه مدايا : قرية في وادي نهر عفرين ، تتبع ناحية جنديرس ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة و قديمة تقع على الضفة اليمنى و فوق هضبة خصبة لنهر عفرين ذي التربة اللحقية والمياه الجوفية الوفيرة ، يحدها شمالاً سهل خصب زراعي مزروع بالحبوب وأشجار الزيتون وبلدة جنديرس مباشرة ، وجنوباً على بعد 500م مجرى وادي نهر عفرين وقرية ديوان فوقاني في أقصى الجنوب ، وغرباً سهل خصب زراعياً مزروع بأشجار الزيتون و قرية محمدية شرقي ، و شرقاً سهل خصب زراعياً و مجرى نهر عفرين وقرية تل سلور ، يبلغ عدد بيوتها الحالية 5بيوت وعمرها 150عاماً ، بيوتها القديمة طينية ذات سقوف خشبية وحالياً لم يبق بيت من بيوتها القديمة وأصبحت مهجورة ، وحديثاً اشتراها أحد الأشخاص الموقع وبنى عليها ثلاث بيوت ، بناءها من الأحجار و الأسمنت ، وعمر البيوت الحلية حوالي 15عاماً تتوفر فيها طريق مزفت يمر من قربها إلى جنديرس وتل سلور والمحمدية ، يعمل سكانها بالزراعة رياً من نهر عفرين أومن الآبار الارتوازية مثل القطن والخضروات الصيفية والشمندر السكري والرمان , إلى جانب تربية الأغنام والماعز . لا يتوفر فيها خدمات فنية وإدارية .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -236,7 +298,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Medaya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Medaya.htm</a></li><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20filik.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20filik.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Medaya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20Medaya.htm</a></li><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20filik.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20filik.htm</a></li></ul>
             </div>
 
             
@@ -246,7 +308,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -364,6 +426,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

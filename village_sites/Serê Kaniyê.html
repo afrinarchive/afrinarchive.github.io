@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -168,6 +189,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şera</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Kafar Jannah, Kefir Cenê, Serê Kaniyê, كفرجنة, كفرجنه</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Emer, Hask, Hemdûş, Osk, Osman, Tobo, Îbş, Şebab</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
@@ -195,26 +217,77 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Serê Kaniyê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The popular name is Ser Kaniy, meaning &#x27;Head of the Spring&#x27; (ser + kaniy). The name Kefercenê is of Aramaic origin from &#x27;Kefer Cinta&#x27;, meaning &#x27;Village of the Garden&#x27; (kefer + cinta).</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 100 years ago</p>
+<p><strong>Springs:</strong> <span class="internal-link">Kaniya Kefercenê</span></p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Menan</span>, <span class="internal-link">Çiyayê Hemûdê û Sadiq</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Menan</span>, <span class="internal-link">Sadiq</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Xeta Trêna Heleb-Istenbol</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Serê Kaniyê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / عفرين / Geographic Study:</p>
-<p><strong>Serê Kaniyê, كفرجنه (كفرجنه)</strong> /771n - 180h - 7km - 560m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Serê Kaniyê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafrjanh.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafrjanh.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc / Efrîn / A Geographical Study: <span class="internal-link">Ser Kaniy</span>, <span class="internal-link">Kefercenê</span> / 771 inhabitants - 180 houses - 7km - 560m /:</p>
+<p>The popular name is Ser Kaniy &quot;Head of the Spring,&quot; which is a Kurdish designation, and the local inhabitants do not call it by any other name. As for the name Kefercenê, Al-Asadi (Part 6, page 374), quoting Father Shalhat, states that it is an Aramaic name from &quot;Kefer Cinta,&quot; meaning &quot;Village of the Garden.&quot;</p>
+<p>It is a small village located at the bottom of the southern slope of a plateau called <span class="internal-link">Çiyayê Menan</span>. Beside it bursts forth the Kefercenê spring, which supplies a part of the city of <span class="internal-link">Efrîn</span> with drinking water, with a flow rate of 300 liters per second. A train line passes next to it. It is a major transportation node leading to the districts of <span class="internal-link">Şeran</span> and <span class="internal-link">Bilbil</span> towards the Turkish border; therefore, a small market has emerged beside it, along with a number of industrial workshops for the maintenance of agricultural machinery and vehicles, two fuel stations, and restaurants frequented by picnickers. It contains a camp for the Baath Vanguards in the Aleppo governorate and a health center. The location of the village is a beautiful summer resort. The distance between the villages of <span class="internal-link">Qetme</span> and Kefercenê, spanning about 2 km, has turned into a residential tourism area, and a branch of a private university has been opened there.</p>
+<p>It is stated in the book Efrîn... Her River and Her Green Hills: Kefercenê: A village in <span class="internal-link">Çiyayê Kurmênc</span>, following the Şeran district, Efrîn region, Aleppo governorate. It is a small village located between two mountains: the western one is called Çiyayê Menan, named after the <span class="internal-link">Menan</span> shrine at the highest peak of the mountain, while the eastern one is called <span class="internal-link">Çiyayê Hemûdê û Sadiq</span>, named after the <span class="internal-link">Sadiq</span> shrine at the highest eastern point of the mountain.</p>
+<p>It sits at the bottom of the southern slope of a limestone plateau furrowed by torrential valleys and overlooks a low rift valley. It is bordered on the north by <span class="internal-link">Xerabê Şeran</span> and <span class="internal-link">Metîna</span>; on the south by a fertile clay slope, the <span class="internal-link">Xeta Trêna Heleb-Istenbol</span> (Aleppo-Istanbul railway line) passes nearby, along with the village of <span class="internal-link">Mersewa Xetîb</span>; on the east by a mountainous elevation and the high village of Qetme which is close to it; and on the west by a mountain chain, the Kefercenê spring, the Vanguards camp, and the village of <span class="internal-link">Meşelê</span>.</p>
+<p>The number of its houses is about 50, and the age of the village is about 100 years. Its old houses are made of mud and stone with wooden roofs, while the modern ones are of stone and reinforced concrete, spread over the hills up to the <span class="internal-link">Riya Heleb-Efrîn</span> (Aleppo-Efrîn road). An electricity network is available, as well as drinking water from the Kefercenê spring since 1971. It has a primary school, a health center, an extension unit, and a telephone center. It belongs to the Qetme municipality. There are several paved streets in the village, especially the main street extending from the beginning of the railway to the center of the village.</p>
+<p>The residents of the village work in the cultivation of grains, olives, vines, and almonds, as well as irrigated agriculture including vegetables, pomegranates, apricots, and walnuts. In the northern part of the village, the state established a forestry area planted with pine trees, whereas in the southern part, there are a number of orchards and a water spring. Restaurants and cafes are widespread there, frequented by residents of Aleppo and neighboring areas. The restaurant located within the pine forest was converted into a permanent center for the Vanguards camp in Aleppo governorate. The village connects to neighboring areas through the main road coming from Aleppo.</p>
+<p>Its population, according to the civil registry on December 31, 2004, is 750 people. The first to dwell there since the establishment of the village was the <span class="internal-link">Hemdûş</span> family (<span class="internal-link">Osman</span> - <span class="internal-link">Osk</span> - <span class="internal-link">Hask</span> - <span class="internal-link">Şebab</span> - <span class="internal-link">Îbş</span> - <span class="internal-link">Tobo</span> - <span class="internal-link">Emer</span> ...).</p>
+<p>Among the holders of higher degrees in the village: <span class="internal-link">Mistefa Osman</span> / Doctorate in Arabic Literature / Russia.</p>
+<p>Among the literary figures is the poet <span class="internal-link">Axîn Welat</span> (<span class="internal-link">Semîre Şebab</span>), and among the artistic figures is the artist <span class="internal-link">Neîm Şebab</span>.</p>
+<p>Village Mukhtar: <span class="internal-link">Enwer Osman</span>.</p>
+<p>Sources of Information:</p>
 <ul>
-<li>The popular name is Serê Kaniyê &quot;head of the spring&quot; and it is a Kurdish name, and the local residents only call it by this name. As for the name <span class="internal-link">Kafar Jannah</span> (كفرجنه), <span class="internal-link">Al-Asadi</span> (الأسدي) says /Part Six, page 374/ quoting <span class="internal-link">Father Shalhat</span> (الأب شلحت), that it is an Aramaic name from &quot;<span class="internal-link">Kafar Jinta</span>&quot; (كفر جنتا) meaning village of the garden.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>A small village located at the bottom of the southern slope of a plateau called <span class="internal-link">Mount Manan</span> (جبل منان). Near it springs the <span class="internal-link">Kafar Jannah water source</span> (عين ماء كفرجنة) which supplies part of Afrin City (مدينة عفرين) with drinking water, with a flow rate of 300 l/sec. The railway line passes nearby. It is a major transportation hub leading to <span class="internal-link">Sheran</span> (شران) and <span class="internal-link">Bulbul</span> (بلبل) districts toward the Turkish border, so a small market arose beside it, and a number of industrial workshops for maintaining agricultural machinery and vehicles, and two fuel stations, and cafeterias frequented by picnickers. It has a camp for <span class="internal-link">Baath Party</span> (حزب البعث) pioneers in <span class="internal-link">Aleppo governorate</span> (محافظة حلب), and a health center. The village&#x27;s location is beautifully tourist. The distance between Qatma (قطمة) and <span class="internal-link">Kafar Jannah</span> (كفرجنة) villages, about 2km long, has been transformed into a residential tourist area, and a branch of a private university has been opened in it.</p>
-<p>According to the book &#x27;عفرين .... نهرها ورواببيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong>كفرجنه (كفرجنه)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Sheran district</span> (ناحية شران), Afrin (منطقة عفرين), <span class="internal-link">Aleppo governorate</span> (محافظة حلب).</p>
-<p>It is a small village located between two mountains: the western one is called <span class="internal-link">Mount Manan</span> (جبل منان) in relation to <span class="internal-link">Manan shrine</span> (مزار منان) at the top of the mountain, while the eastern one is called <span class="internal-link">Mount Hamodah and Sadiq</span> (جبل حمودة وصادق) in relation to <span class="internal-link">Sadiq shrine</span> (مزار صادق) at the top east of the mountain. It is located at the bottom of the southern slope of a limestone plateau crossed by seasonal watercourses and overlooks a collapsing valley. It is bordered to the north by <span class="internal-link">Khirbet Sheran</span> (خربة شران) and <span class="internal-link">Matinli</span> (ماتينلي). To the south are fertile agricultural slopes and the railway line <span class="internal-link">Aleppo Istanbul</span> (حلب استانبول) and <span class="internal-link">Ma&#x27;rasat al-Khatib village</span> (قرية معرسة الخطيب). To the east are a mountain elevation and the elevated nearby <span class="internal-link">Qatma village</span> (قرية قاطمة المرتفعة). To the west are mountain chains and the <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة) and a camp for pioneers and <span class="internal-link">Mash&#x27;ala village</span> (قرية مشعلة).</p>
-<p>The number of its houses is about 50 houses and the village&#x27;s age is about 100 years. Its old houses are of clay and stone with wooden roofs, and the modern ones are of stone and reinforced cement spread on the hills to the <span class="internal-link">Aleppo-Afrin road</span> (طريق حلب-عفرين). It has an electrical network and drinking water from the <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة) since 1971, an elementary school, a health center, guidance unit, and telephone center. It belongs to <span class="internal-link">Qatma municipality</span> (بلدية قاطمة).</p>
-<p>The village has several paved streets, especially the main street extending from the railway beginning to the village center. The village residents work in grain, olive, vineyard, and almond cultivation and irrigated agriculture from vegetables, pomegranates, apricots, walnuts. Those that were irrigated from the <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة), but currently after the water reached Afrin City (عفرين) through channels, these orchards suffer from drought. In the northern part of the village, the state has established a forest area planted with pine trees. In the southern part there are several orchards and a water spring. Cafeterias and coffee shops frequented by residents of <span class="internal-link">Aleppo</span> (حلب) and neighboring areas are spread in it. The existing kiosk within the pine forest has been converted into a permanent center for the pioneer camp in <span class="internal-link">Aleppo governorate</span> (محافظة حلب).</p>
-<p>The village connects to neighboring areas through the main road coming from <span class="internal-link">Aleppo</span> (حلب). The number of its population according to the civil registry dated <span class="internal-link">31/12/2004</span> is (750 n) and the first to inhabit since the village&#x27;s establishment was the <span class="internal-link">Hamdoush family</span> (عائلة حمدوش) (<span class="internal-link">Othman</span> (عثمان) - <span class="internal-link">Osk</span> (اوسك) - <span class="internal-link">Hasik</span> (حاسك) - <span class="internal-link">Shabab</span> (شباب) - <span class="internal-link">Aybesh</span> (ايبش) - <span class="internal-link">Tobo</span> (توبو) - <span class="internal-link">Omar</span> (عمر) - ......)</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Mustafa Othman</span> (مصطفى عثمان) / Doctorate in Arabic Literature / <span class="internal-link">Russia</span> (روسيا), and among the literary figures the poetess <span class="internal-link">Akhin Walat</span> (آخين ولات) (<span class="internal-link">Samira Shabab</span> (سميرة شباب)) - and among the artistic figures the artist <span class="internal-link">Na&#x27;im Shabab</span> (نعيم شباب)</p>
-<p>Village mayor: <span class="internal-link">Anwar Othman</span> (أنور عثمان)</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the Tirej Efrîn website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Ser Kaniy ، كفرجنة /771ن - 180هـ - 7كم - 560م/:</p>
+<ul>
+<li>الاسم الشعبي هو Ser Kaniy &quot; رأس النبع &quot; وهي تسمية كردية، والسكان</li>
+</ul>
+<p>المحليون لا يسمونها إلا بهذا الاسم. أما عن اسم كفرجنة، يقول الأسدي /الجزء السادس، صفحة 374/ نقلا عن الأب شلحت، أنه اسم آرامي من &quot;كفر جنتا&quot; أي ق.البستان. قرية صغيرة تقع أسفل السفح الجنوبي لهضبة تسمى جبل منان. يتفجر بجوارها عين ماء كفرجنة الذي يمد قسما من مدينة عفرين بمياه الشرب، وغزارته 300 ل/ثا. يمر بجوارها خط القطار. وهي عقدة مواصلات رئيسية تؤدي إلى نواحي شران وبلبل باتجاه الحدود التركية، ولذلك نشأ بجانبها سوق صغير، وعدد من الورشات الصناعية لصيانة الآليات الزراعية والمركبات، ومحطتين للمحروقات، ومقاصف يرتادها المتنزهون. فيها معسكر لطلائع البعث في محافظة حلب، ومركز صحي. وموقع القرية اصطيافي جميل. وقد تحولت المسافة بين قريتي قطمة وكفرجنة وبطول نحو 2كم، إلى منطقة سكنية سياحية، كما تم فتح فرع لجامعة خاصة فيها. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : كفرجنه : قرية في جبل الكرد , تتبع ناحية شران , منطقة عفرين, محافظة حلب . وهي قرية صغيرة تقع بين جبلين الغربي يسمى جبل منان نسبة إلى مزار منان في أعلى قمة الجبل أما الشرقي يسمى جبل حموده وصادق نسبة إلى مزار صادق أعلى شرقي الجبل وهي تقع في أسفل السفح الجنوبي لهضبة كلسية تخددها أودية سيلية وتشرف على وادي انهدامي منخفض ، يحدها شمالاً خربة شران وماتنلي, وجنوباً منحدر غضاري خصب ويمر بجوارها الخط الحديدي حلب استانبول وقرية معرستة الخطيب , وشرقاً مرتفع جبلي وقرية قاطمة المرتفعة والقريبة منها وغرباً سلسلة جبلية ونبع كفرجنة ومعسكر للطلائع وقرية مشعلة . يبلغ عدد بيوتها حوالي50 بيت وعمر القرية حوالي100عام بيوتها القديمة من الطين والحجر ذات سقوف خشبية , والحديثة من الحجارة والإسمنت المسلح منتشرة على التلال حتى طريق حلب- عفرين. تتوفر فيها شبكة للكهرباء ومياه الشرب من نبع كفرجنة منذ عام 1971 ومدرسة ابتدائية ومركزاً صحيا ًووحدة إرشادية ومركزاً للهاتف وهي عائدة لبلدية قاطمة ,في القرية عدة شوارع مزفّـتة وخاصة الشارع الرئيسي الممتد من أول سكة الحديد حتى وسط القرية ، يعمل سكان القرية بزراعة الحبوب والزيتون والكرمة واللوز والزراعة المروية من خضروات ورمان والمشمش والجوز أما في القسم الشمالي من القرية فقد أقامت الدولة منطقة حراجية مزروعة بالصنوبر أما في القسم الجنوبي فهناك عدد من البساتين ونبع للماء. وتنتشرفيها المقاصف والمقاهي التي يرتادها سكان حلب والمناطق المجاورة كما تم تحويل المقصف القائم ضمن غابة الصنوبر إلى مركز دائم لمعسكر الطلائع في محافظة حلب تتصل القرية بالمناطق المجاورة من خلال الطريق الرئيسي القادم من حلب، يبلغ عدد نفوسها حسب السجل المدني بتاريخ 31/12/2004م (750 ن) وأول من سكن منذ إنشاء القرية عائلة حمدوش ( عثمان - اوسك - حاسك - شباب - ايبش - طوبو - عمر - ...... ) ومن حاملي الشهادات العليا في القرية : مصطفى عثمان / دكتوراة في الأدب العربي / روسيا</p>
+<ul>
+<li>,</li>
+</ul>
+<p>ومن الوجوه الأدبية الشاعرة آخين ولات ( سميرة شباب ) - وم الوجوه الفنية الفنان نعيم شباب</p>
+<p>مختار القرية : أنور عثمان</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -232,7 +305,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafrjanh.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafrjanh.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=jBFnRK8Et-k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=jBFnRK8Et-k</a><br><a href="https://www.youtube.com/watch?v=FI4jzdfZz2g" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FI4jzdfZz2g</a><br><a href="https://www.youtube.com/watch?v=StrpOjsX580" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=StrpOjsX580</a><br><a href="https://www.youtube.com/watch?v=V9PYijW7wCk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=V9PYijW7wCk</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafrjanh.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kafrjanh.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=jBFnRK8Et-k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=jBFnRK8Et-k</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=FI4jzdfZz2g" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FI4jzdfZz2g</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=StrpOjsX580" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=StrpOjsX580</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=V9PYijW7wCk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=V9PYijW7wCk</a></li></ul>
             </div>
 
             
@@ -242,7 +315,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -360,6 +433,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

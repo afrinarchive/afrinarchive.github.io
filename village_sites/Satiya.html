@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -104,6 +125,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Atiya, Sati, Satiranli, Satiya, العطية, صاتي, صاتيان, صاتيانلي</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Berîmo, Ebdo, Elkûre, Qere Col, Sîdo</p></div>
                         </div>
                     </div>
                     
@@ -127,27 +149,67 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Satiya</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Named Satiya, which is the name of a Kurdish tribe found in Hekarî. Some sources suggest a Turkish origin meaning &#x27;selling&#x27; due to an ancient market at the site.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 400 years</p>
+<p><strong>Caves:</strong> <span class="internal-link">Ancient dwelling caves</span></p>
+<p><strong>Hills:</strong> <span class="internal-link">Şiwte</span>, <span class="internal-link">Çiyayê Kurmênc</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Ancient foundations</span>, <span class="internal-link">Bath</span>, <span class="internal-link">Oven</span>, <span class="internal-link">Destroyed cemetery</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Geliyê Sîlê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Satiya</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Satiya</span> (صاتيانلي), <span class="internal-link">Satiranli</span> (صاتيانلي), <span class="internal-link">Sati – Al-Atiya</span> (صاتي – العطية)</strong> /981n - 580m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Satiya</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20satiya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20satiya.htm</a></p>
+<p>In the book Çiyayê Kurmênc (Efrîn): A Geographical Study by Dr. <span class="internal-link">Mihemed Ebdo Elî</span>: Satiya, <span class="internal-link">Satiyanlî</span>, <span class="internal-link">Satî</span>, <span class="internal-link">El-Etiye</span>. Population: 981. Altitude: 580m.</p>
+<p>Satiya: The name of a Kurdish tribe found in <span class="internal-link">Hekarî</span> (Lerkh, p. 46). Some say that the name is of Turkish origin meaning &quot;selling,&quot; because there was an ancient market for buying and selling at the site of the village during the days of the Greeks? El-Etiye: An inaccurate translation of the Turkish designation.</p>
+<p>This small village is located on the lower southern end of the steep <span class="internal-link">Şiwte</span> highland. The houses of the village are attached to one another, forming an amphitheater shape. Foundations of archaeological buildings appear at its site, and traces of a bath, an oven, and other archaeological structures have been found. About 2 km south of the village, there is an area of ancient ruins consisting of caves worked in a manner suitable for habitation; it appears they were dwellings in ancient times. Next to those caves is a destroyed cemetery.</p>
+<p>In the book Efrîn... Her River and Her Green Hills by the writer <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Satiyanlî is a village in <span class="internal-link">Çiyayê Kurmênc</span>, following the <span class="internal-link">Mabeta</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate.</p>
+<p>It is a small village located in the north-central part of the mentioned mountain, on both sides of a valley that penetrates it from the northwest toward the southeast. It is 12 km southeast of the town of Mabeta. Its soil is clay. It is bordered to the north by high mountain highlands planted with olive and forest trees and the village of <span class="internal-link">Îkî Axûr</span>; to the south by <span class="internal-link">Geliyê Sîlê</span>, mountain highlands, and the villages of <span class="internal-link">Gawirkan</span> and <span class="internal-link">Xalta</span>; to the west by high mountain highlands planted with olive and forest trees and the village of <span class="internal-link">Rutanlî</span>; and to the east by high mountain highlands planted with olive trees and the village of <span class="internal-link">Kefer Delê Jorîn</span>.</p>
+<p>The number of its houses is about 40, and its age is about 400 years. Its old houses are made of stone and mud with flat wooden roofs, around which modern cement construction has spread, especially from the north and west sides. The village is divided into a western and eastern section due to a valley passing through its center. A primary school is available. The village drinks from cisterns where rainwater is collected in winter. It is connected to the district center and neighboring villages by a paved road passing through its center up to the Mabeta district and the villages of the <span class="internal-link">Cindirês</span> district.</p>
+<p>Its residents work in rain-fed agriculture (olives, grains, vines, legumes) alongside raising sheep and goats. Among the families present in the village are: <span class="internal-link">Qere Col</span> family, <span class="internal-link">Sîdo</span> family, <span class="internal-link">Elkûre</span> family, <span class="internal-link">Ebdo</span> (<span class="internal-link">Zêno</span>) family, and <span class="internal-link">Berîmo</span> (<span class="internal-link">Ebdike</span>) family.</p>
+<p>It is mentioned that Mr. <span class="internal-link">Nûrî Berîmo</span> and the children of the late <span class="internal-link">Xelîl Hesen Sîdo</span>, who had a role in reviving the honoring ceremonies of the annual Tirej Efrîn website shield and their love for serving the Efrîn region, are sons of this village. Among the holders of higher degrees in the village: <span class="internal-link">Mehmûd Berîmo</span> (PhD in Agriculture, Germany).</p>
+<p>Village Mukhtar: <span class="internal-link">Neşet Hebeş</span>.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and execution: <span class="internal-link">Ebdulrehman Hacî Osman</span> (Director of Tirej Efrîn website).</p>
+<p>Date: 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Satiya ، صاتيانلي ، صاتي  العطية /981ن - 580م/:</p>
 <ul>
-<li><span class="internal-link">1 - PhD/Villages/Satiya</span> (ساتيا): Name of a Kurdish tribe that exists in <span class="internal-link">Hakkari</span> (هكاري) /<span class="internal-link">Lerkh, p. 46</span> (ليرخ، ص 46)/. Some say that the name is of Turkish origin meaning &quot;sale&quot;, because there were ancient markets for buying and selling at the village site during the Greek days. And <span class="internal-link">Al-Atiya</span> (العطية): An inaccurate translation of the Turkish naming.</li>
-<li>This small village is located at the lower southern end of the steep <span class="internal-link">Šiwête elevation</span> (مرتفع شيويته). The village houses are closely connected forming a terrace. Archaeological building foundations appear at its site, as well as traces of baths, ovens, and other archaeological buildings. There is an ancient archaeological area about 2km south of the village, consisting of caves carved in a way suitable for habitation. It appears they were dwellings in ancient times, and beside those caves there is a collapsed cemetery.</li>
+<li>ساتيا: اسم عشيرة كردية يوجد منها في هكاري /ليرخ، ص 46/. ويقول بعضهم أن</li>
 </ul>
-<p>According to the book: Afrin... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmah village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Satiranli</span> (صاتيانلي)</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), Afrin City region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the north-central part of the mentioned mountain, on the edge of a valley that crosses it from northwest to southeast. It is 12km away from <span class="internal-link">Mabetli</span> town toward the southeast. Its soil is fertile clay. It is bounded to the north by high mountain elevations planted with olive trees and forest trees and <span class="internal-link">Iki Akhur village</span> (قرية إيكي آخور), and to the south by <span class="internal-link">Sili valley</span> (وادي سيلي) and mountain elevations and <span class="internal-link">Kawrkan village</span> (قرية كاوركان) and <span class="internal-link">Khaltan villages</span> (خالطان), and to the west by high mountain elevations planted with olive trees and forest trees and <span class="internal-link">Rutanli village</span> (قرية روطانلي), and to the east by high mountain elevations planted with olive trees and <span class="internal-link">Kefr Dali Foqani village</span> (قرية كفر دلي فوقاني). The number of its houses is about 40 houses and its population is about 400 people. Its old houses are stone-clay with flat wooden roofs. Modern cement construction has spread around them, especially from the north and west sides. The village is divided by a valley running through its center into two parts, western and eastern. It has an elementary school. The village drinks from cisterns that collect rainwater in winter. It is connected to the district center and neighboring villages by a paved road that passes through its center to Mabetli District (ناحية معبطلي) and the villages of <span class="internal-link">Jindires District</span> (قرى ناحية جندريس). Its inhabitants work in rain-fed agriculture (olives, grains, vines, legumes) in addition to raising sheep and goats.</p>
-<p>Among the existing families in the village: <span class="internal-link">Al Qara Jul</span> (آل قره جول) - <span class="internal-link">Al Sido</span> (آل سيدو) - <span class="internal-link">Al Alkura</span> (آل علكوره) - <span class="internal-link">Al Abdu (Zinu)</span> (آل عبدو (زينو)) - <span class="internal-link">Al Brimo (Abdka)</span> (آل بريمو (عبدكه))</p>
-<p>It is mentioned that <span class="internal-link">Professor Nuri Brimo</span> (الأستاذ نوري بريمو) - sons of the late <span class="internal-link">Khalil Hassan Sido</span> (خليل حسن سيدو) - had a role in reviving celebrations honoring the annual <span class="internal-link">Tire Afrin website</span> (موقع تيريج عفرين) shield and their love in serving the Afrin City region (منطقة عفرين) from the sons of this village.</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Mahmoud Brimo</span> (محمود بريمو) / Doctorate in Agriculture / Germany</p>
-<p>Village mayor: <span class="internal-link">Nashat Habash</span> (نشأت حبش)</p>
-<p>Prepared and implemented by: <span class="internal-link">Tire Afrin website manager</span>: Abdul Rahman Haji Othman (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details></div>
+<p>الاسم تركي الأصل بمعنى &quot;البيع&quot;، لأنه كان في موقع القرية أيام الإغريق سوقٌ قديمة للبيع والشراء؟ والعطية: ترجمة غير دقيقة للتسمية التركية.</p>
+<ul>
+<li>تقع هذه القرية الصغيرة على النهاية السفلى الجنوبية لمرتفع Şiwte الشديد</li>
+</ul>
+<p>الانحدار. وتتلاصق منازل القرية مشكلة مدرجا. تظهر في موقعها أساسات لأبنية أثرية، كما عثر على آثار حمَّام وفرن وأبنية أثرية أخرى. وتوجد على بعد نحو 2كم جنوبي القرية، منطقة آثار قديمة مؤلفة من كهوف مشغولة بطريقة تناسب السكن، ويبدو أنها كانت مساكن في غابر الأزمان، ويوجد بجوار تلك المغاور مقبرة مندثرة. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه صاتيانلي : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في القسم الشمالي الأوسط من الجبل المذكور، على طرفي واد يخترقها من الشمال الغربي نحو الجنوب الشرقي ، تبعد عن بلدة معبطلي 12كم نحو الجنوب الشرقي ، تربتها غضارية ، يحدها شمالاً مرتفعات جبلية عالية مزروعة بأشجار الزيتون والحراجية وقرية إيكي آخور ، وجنوباً وادي سيلي و مرتفعات جبلية وقرية كاوركان وخالطان ، وغرباً مرتفعات جبلية عالية مزروعة بأشجار الزيتون والحراجية وقرية روطانلي ، وشرقاً مرتفعات جبلية عالية مزروعة بأشجار الزيتون و قرية كفر دلي فوقاني ، يبلغ عدد بيوتها حوالي40بيتاً وعمرها حوالي400عاماً ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية انتشرت من حولها البناء الأسمنتي الحديث وبخاصة من جهتي الشمال والغرب وتنقسم القرية بسبب وادي يمر في وسطها إلى قسمين غربي وشرقي ، تتوفر فيها مدرسة ابتدائية ، تشرب القرية من صهاريج تجمع فيها مياه الأمطار شتاءاً ، تصلها بمركز الناحية والقرى المجاورة طريق مزفتة يمر في وسطها حتى ناحية معبطلي وقرى ناحية جنديرس ، يعمل سكانها بالزراعة البعلية (الزيتون ، الحبوب ، الكرمة ، البقول) إلى جانب تربية الأغنام والماعز . ومن العائلات الموجودة في القرية : آل قره جول - آل سيدو - آل علكوره - آل عبدو ( زينو ) - آل بريمو ( عبدكه ) يذكر أن الاستاذ نوري بريمو  - أولاد المرحوم خليل حسن سيدو الذين كان لهم دور في إحياء حفلات تكريم درع موقع تيريج عفرين السنوي وحبهم في خدمة منطقة عفرين من أبناء هذه القرية ومن حاملي الشهادات العليا في القرية : محمود بريمو / دكتوراة في الزراعة / المانيا</p>
+<p>مختار القرية :  نشأت حبش</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -165,7 +227,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20satiya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20satiya.htm</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=FDQPoBjloQ0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FDQPoBjloQ0</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=x2nW_BIbPyc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=x2nW_BIbPyc</a><br><a href="https://www.youtube.com/watch?v=x2nW_BIbPyc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=x2nW_BIbPyc</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20satiya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20satiya.htm</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=FDQPoBjloQ0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FDQPoBjloQ0</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=x2nW_BIbPyc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=x2nW_BIbPyc</a></li></ul>
             </div>
 
             
@@ -175,7 +237,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -293,6 +355,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

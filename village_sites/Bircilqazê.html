@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,7 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Nubl</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Qaz, Birc Qaws, Erdê Hêşîn, Bircilqas, Bircilqazê, Birckê Terpê, Birckê Weqês, Bircqasê, Birj al-Qas, القاز, برج القاص, برج قاص, Birca Spî</p></div>
-<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Menqurî, Şerqiyan</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Menqurî, Şerqiyan, Şêrawa</p></div>
 <div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Elî, Hemo, Hemû, Hesen, Nasir, Naso, Nebûkê</p></div>
                         </div>
                     </div>
@@ -228,15 +249,54 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Bircilqazê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds (Afrin)</span> geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Birckê Weqês- Birckê Terpê, برج القاص, القاظ</strong> /40km - 530m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Bircilqazê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20qes.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20qes.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Birck Weqs</span> <span class="internal-link">Birck Terp</span>, <span class="internal-link">Burj el-Qas</span>, <span class="internal-link">el-Qaz</span> / 40km 530m /:</p>
+<p>The name consists of the word: &#x27;Birck&#x27; (tower), and from: &#x27;Weqas&#x27;, which is a Kurdish proper name. As for the second name of the village, &#x27;Terp&#x27;, it is a nickname for one of its early Kurdish residents, and the residents of the <span class="internal-link">Şêrawa</span> villages are known for the abundance of nicknames. As for X. El-Esedî, he says that the origin of the name &quot;Burj el-Qas <span class="internal-link">Burj el-Qiss</span>&quot; is from <span class="internal-link">Burja Diqsha</span>: Tower of the Sheikh, /El-Esedî, Vol 2, p. 85/.</p>
+<p>It is a small village, located within the rocky terrain of <span class="internal-link">Çiyayê Lêlûn</span>, and it is considered the furthest village in the administrative perimeter of the <span class="internal-link">Efrîn</span> region on its southeastern borders, and it is closer to <span class="internal-link">Heleb</span> than to Efrîn. In the village, there are traces of buildings and ancient architecture from the Greek eras. It is worth mentioning that this village was attached to the <span class="internal-link">Nubl</span> sub district in 1975.</p>
+<p>The following is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Burj el-Qas: A village in Çiyayê Lêlûn, it follows the sub district of the villages of the Efrîn center and region, Heleb governorate. It is a large village located on the slopes of the central section of Çiyayê Lêlûn. It follows the villages of the Efrîn center sub district. It is bordered to the north by a rugged mountain chain of rocks and the village of <span class="internal-link">Mayêsa</span>; to the south by a slope and a valley planted with some pomegranate, almond, and olive trees and the village of <span class="internal-link">Kalûte</span>; as for the east, a rugged mountain chain and the town of Nubl; and to the west it is bordered by a high mountain chain of Çiyayê Lêlûn, a valley, and the village of <span class="internal-link">Kefêr Nebo</span>.</p>
+<p>The number of its houses is 175 houses and the age of the village is about 400 years. Its residences are old, made of mud domes, and modern construction of stone and reinforced concrete has extended from all sides of the village. An electricity network is available, as well as drinking water from the well of <span class="internal-link">Zûq el-Kebîr</span>. The paved road reaches the middle of the village and the town of Nubl. It contains a primary school and a mosque located in the center of the village.</p>
+<p>The habitation of the area is ancient, indicated by its old antiquities, including a tower in the western side of the village, archaeological columns, a tower in the western side of the village, and wells dug into the rocks dating back to the Roman and Byzantine eras. The residents of the village work in grain cultivation and the raising of sheep and cows. There are some green patches in the northern and southern sides at the spillway of the drilled artesian wells. It was administratively annexed to the <span class="internal-link">Ezaz</span> region since 1980 due to the creation of the Nubl sub district.</p>
+<p>Preparation and Execution:</p>
+<p>Manager of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>The name is composed of the word: tower, and: <span class="internal-link">Weqas</span> which is a Kurdish proper name. As for the second name of the village <span class="internal-link">Terpê</span>, it is a nickname for one of its first noble inhabitants, and the inhabitants of <span class="internal-link">Shirwa</span> villages are known for their many nicknames. As for <span class="internal-link">Kh. al-Asadi</span>, he says that the origin of the name &quot;<span class="internal-link">Birj al-Qas</span>&quot; is from <span class="internal-link">Borja d&#x27;Qasha</span>: the tower of the sheikh, /Kh. al-Asadi, vol. 2, p. 85/.</li>
-<li>A small village, located between the rocky terraces of Leiloun Mountain, and is considered the farthest village in the administrative vicinity of Afrin in its southeastern borders, and it is closer to <span class="internal-link">Aleppo</span> than to Afrin. In the village there are antiquities for buildings and ancient settlement from the Greek eras. It is worth mentioning that this village belonged to <span class="internal-link">Nabul</span> sub-district in 1975.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmah</span> village:</p>
-<p><strong>برج القاص</strong>: A village in <span class="internal-link">Leiloun Mountain</span>, belonging to the central villages sub-district and Afrin Region, Aleppo Governorate.</p>
-<p>A large village located on the slopes of Leiloun Mountain middle section belonging to the central villages sub-district of Afrin Region. It is bordered to the north by a rough rocky mountainous chain and <span class="internal-link">Miyasah</span> village, and to the south by a slope and valley planted with some pomegranate, almond and olive trees and <span class="internal-link">Kaluteh</span> village. To the east by a rough mountainous chain and Nabul town. To the west it is bordered by a high mountainous chain of Leiloun Mountain and valley and <span class="internal-link">Kafr Nabo</span> village. The number of its houses is 175 houses and the village&#x27;s age is about 400 years. Its dwellings are old clay domes and modern construction has extended from all sides of the village with stones and reinforced cement. It has electricity network and drinking water from the large artesian well and paved road to the center of the village and Nabul town. It has an elementary school and a mosque in the center of the village. Settlement of the region is ancient, evidenced by its ancient antiquities including a tower in the western side of the village with archaeological columns and a tower in the western side of the village and wells carved in rocks dating to the Roman and Byzantine eras. The village inhabitants work in grain cultivation and raising sheep and cattle, and there are some green plots in the northern and southern sides when artesian wells are drilled. It was annexed to <span class="internal-link">Azaz Region</span> administratively since 1980 due to the establishment of <span class="internal-link">Nabul Sub-district</span>.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Bircilqazê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=1E3jCYi3i_0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=1E3jCYi3i_0</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Birck Weqs- Birck Terp، برج القاص ، القاز /40كم - 530م/:</p>
+<ul>
+<li>الاسم مؤلف من كلمة: برج، ومن: وقاس Weqas وهو اسم علم كردي. أما الاسم</li>
+</ul>
+<p>الثاني للقرية Terp فهو لقب لأحد سكانها الأكراد الأوائل، وسكان قرى شيروا معروفون بكثرة الألقاب. أما خ.الأسدي فيقول إن أصل اسم &quot; برج القاص- برج القس&quot; هو من بورجا دْقشا: برج الشيخ، /الأسدي، ج 2، ص85/.</p>
+<ul>
+<li>قرية صغيرة، تقع بين التضاريس الصخرية لجبل ليلون، وتعتبر أبعد قرية في</li>
+</ul>
+<p>المحيط الإداري لمنطقة عفرين في حدودها الجنوبية الشرقية، وهي أقرب إلى حلب منها إلى عفرين. في القرية آثار لأبنية وعمران قديم من العهود الإغريقية. ومن الجدير بالذكر أن هذه القرية اتبعت لناحية نبل عام 1975. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه برج القاص : قرية في جبل ليلون , تتبع ناحية قرى مركز و منطقة عفرين ، محافظة حلب . قرية كبيرة تقع على سفوح جبل ليلون القسم الأوسط تتبع قرى ناحية مركز عفر ين يحدها شمالاً سلسلة جبلية وعرة من الصخور وقرية المياسة وجنوباً منحدر ووادي مزروع فيها بعض أشجار الرمان واللوز والزيتون وقرية كالوته أما شرقاً سلسلة جبلية وعرة وبلدة نبل أما في الغرب فيحدها سلسلة جبلية عالية من جبل ليلون ووادي وقرية كفر نابو.عدد بيوتها 175بيتاً وعمر القرية حوالي400عام مساكنها قديمة من القبب الطينية وامتد البناء الحديث من جميع جهات القرية من الأحجار والأسمنت المسلح تتوفر فيها شبكة الكهرباء ومياه الشرب من بئر الذوق الكبير والطريق المزفت حتى وسط القرية وبلدة نبل فيها مدرسة ابتدائية وجامع يتوسط القرية إعمار المنطقة قديم , تدل عليها آثارها القديمة من برج في الجهة الغربية للقرية من أعمدة أثرية وبرج في الجهة الغربية من القرية وأبار محفورة في الصخور تعود للعهدين الروماني والبيزنطي يعمل سكان القرية بزراعة الحبوب وتربية الأغنام والأبقار ويوجد فيها بعض البقع الخضراء في الجهة الشمالية والجنوبية عند مسيل الآبار الارتوازية المحفورة . ضمت إلى منطقة إعزاز إدارياً منذ عام 1980 بسبب إحداث ناحية نبل .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Bircilqazê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=1E3jCYi3i_0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=1E3jCYi3i_0</a></p>
 <p>The village of <span class="internal-link">Birc Qas</span>, locally known as <span class="internal-link">Bircika Têrpê</span>, is situated on <span class="internal-link">Çiyayê Lêlûn</span> within the <span class="internal-link">Şêrawa</span> district of <span class="internal-link">Efrîn</span>. The settlement sits amidst a landscape rich in ancient history, with roots tracing back to the <span class="internal-link">Hûrîgîn</span> civilization and the Roman era. The village name has undergone several evolutions. It was originally called <span class="internal-link">Birca Spî</span> due to a white watchtower that once stood there. Later, it was known as <span class="internal-link">Birj el-Qaws</span> because of eight distinctive arches found in the ruins, which eventually shortened to Birc Qas. The alternative name, Bircika Têrpê, honors <span class="internal-link">Têrpê Kal</span>, who is cited as the first individual to settle the modern village site.</p>
 <p>According to oral history narrated by the elders, the location was previously a ruin known as <span class="internal-link">Xirabê Kîmarê</span>. A figure named <span class="internal-link">Mensûrê Kal</span> from <span class="internal-link">gundê Mezin</span> initiated the settlement, sending his son <span class="internal-link">Xidir</span> to establish a foundation. The current population is primarily composed of the <span class="internal-link">Menqurî</span> tribe, which is affiliated with the <span class="internal-link">Şerqiyan</span> confederation. The main families identified in the village include <span class="internal-link">Hesen</span>, <span class="internal-link">Elî</span>, <span class="internal-link">Nasir</span>, and <span class="internal-link">Hemû</span>, all of whom share common ancestry tracing back to settlers like <span class="internal-link">Hemo</span> and <span class="internal-link">Naso</span> from gundê Mezin.</p>
 <p>The religious history of Birc Qas reflects a significant transition. Residents note that until roughly eighty years ago, the entire village adhered to the <span class="internal-link">Êzdî</span> faith before converting to becoming <span class="internal-link">Misilman</span>. One elderly resident, originally from <span class="internal-link">Qitmê</span>, remains the sole <span class="internal-link">Êzdî</span> in the village, preserving the memory of the older traditions. The community maintains a deep connection to sacred sites, particularly the shrine of <span class="internal-link">Şêx Qesab</span>, also referred to as <span class="internal-link">Nebî Qesab</span> or <span class="internal-link">Gulî Sor</span>. Located in a cave south of the village, this site is visited on Wednesdays by Êzdî devotees and Thursdays by Misilman residents to light candles and offer sacrifices for blessings and fertility.</p>
@@ -364,7 +424,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20qes.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20qes.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=1E3jCYi3i_0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=1E3jCYi3i_0</a><br><a href="https://www.youtube.com/watch?v=1E3jCYi3i_0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=1E3jCYi3i_0</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20qes.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-bircke%20qes.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=1E3jCYi3i_0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=1E3jCYi3i_0</a></li></ul>
             </div>
 
             
@@ -374,7 +434,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -492,6 +552,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

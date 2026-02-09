@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">&#x27;Inabkê, Anab, أناب</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekrî, Ebûd, Hecî Omer, Hemdûş, Hemze, Qedûr, Sibat</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -207,23 +229,68 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Inabkê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Enab: Name of a wild fruit-bearing tree</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 500 years ago</p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Inabkê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>&#x27;Inabkê, Anab</strong> /4447 inhabitants - 20km - 545m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Inabkê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-inabka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-inabka.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Enab</span> / 4447 inhabitants, 20km distance, 545m altitude.</p>
+<p>Enab: Name of a wild fruit bearing tree.</p>
+<p>It is a large village located next to the village of <span class="internal-link">Meryemîn</span>, and the two villages have expanded such that they have connected to one another. The language of its inhabitants is Arabic.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme regarding Enab: It is a village in <span class="internal-link">Çiyayê Lêlûn</span>, belonging to the sub district of the central villages and the <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a large village located in an agriculturally fertile plain with volcanic soil, to the east of the city of Efrîn at a distance of 9km.</p>
+<p>The settlement of the area is ancient, evidenced by the presence of buildings, scattered pieces of columns, and a number of tombs. It is bordered to the north by the town of Meryemîn, to the south by the nearby village of <span class="internal-link">Jilbul</span> at a distance of 500m, to the east by a wide plain and the village of <span class="internal-link">Şewarxa El-Erz</span> and <span class="internal-link">Malikiye</span>, and to the west by <span class="internal-link">Mezrea Xalidiye</span> and <span class="internal-link">Kefer Mêz</span>.</p>
+<p>The number of its houses is approximately 300 houses and its age is approximately 500 years. Its houses are made of stone and mud with flat wooden roofs, and the modern ones are concrete which have begun to spread along the road. It has an electricity network and water taken from Malikiye close to it. A paved road passes through its center connecting to several villages, Heleb, <span class="internal-link">Kefer Cenê</span>, and <span class="internal-link">Dêr El-Cemal</span>.</p>
+<p>Its lands are agriculturally fertile. It contains a primary and preparatory school, an old mosque situated in the middle of the village, and a recently built municipality hall. The residents work in the cultivation of olives, vines, legumes, and walnuts on an area of 540 hectares. The village drinks from a water network connected to a well located next to <span class="internal-link">Mezrea Malikiye</span> from the eastern side of the village, in addition to raising livestock. It has a telephone network from the Meryemîn center and contains an old shrine.</p>
+<p>Among the families present in the village are: <span class="internal-link">Sibat</span>, <span class="internal-link">Hemdûş</span>, <span class="internal-link">Qedûr</span>, <span class="internal-link">Bekrî</span>, <span class="internal-link">Ebûd</span>, <span class="internal-link">Hecî Omer</span>, and <span class="internal-link">Hemze</span>. Among the holders of higher degrees in the village is Dr. <span class="internal-link">Cuma Şibat</span>, holder of a PhD in International Law, and many holders of university degrees in various specializations. The mukhtar of the village is Mr. <span class="internal-link">Mihemed Cuma Hemze</span>.</p>
+<p>Preparation and Execution:</p>
+<p>Manager of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>Sources:</p>
 <ul>
-<li>Anab: Name of a wild fruit tree.</li>
-<li>A large village located near <span class="internal-link">Mreymen village</span>, and the two villages expanded so that they connected to each other. The language of its inhabitants is Arabic.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>And according to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmeh village</span></p>
-<p><strong>Anab</strong>: A village in <span class="internal-link">Mount Liloun</span>, belonging to the central villages district and Afrin, Aleppo Governorate.</p>
-<p>It is a large village located in a fertile agricultural plain with volcanic soil, to the east of Afrin city at a distance of 9km. The region&#x27;s construction is ancient as evidenced by the presence of scattered buildings and column pieces and a number of tombs. It is bounded to the north by the town of Mreymen, to the south by <span class="internal-link">Jalbul village</span> close at a distance of 500m, to the east by a wide plain and <span class="internal-link">Shawarghah al-Arz village</span> and Al-Malikiyah, and to the west by <span class="internal-link">Al-Khalidiya farm</span> and <span class="internal-link">Kafr Mez</span>. The number of its houses is about 300 houses and its age is about 500 years. Its houses are stone and clay with flat wooden roofs and the modern ones are concrete. They began to spread along the road. There is an electricity network and water taken from nearby Al-Malikiyah. A paved road passes through its center connecting to several villages of Aleppo and <span class="internal-link">Kafr Jannah</span> and <span class="internal-link">Deir al-Jamal</span>. Its lands are fertile agricultural. It has an elementary and preparatory school and an old mosque in the village center and a municipal building recently. The residents work in cultivating olives and vines and legumes and nuts on an area of 540 hectares. The village drinks from a water network connected to a well located near Al-Malikiyah farm from the eastern side of the village in addition to livestock raising, and it has a telephone network from Mreymen center and it has an old shrine. Among the families present in the village (<span class="internal-link">Al Sabbat family</span> - <span class="internal-link">Al Hamdoush family</span> - <span class="internal-link">Al Qadour family</span> - <span class="internal-link">Al Bakri family</span> - <span class="internal-link">Al Aboud family</span> - <span class="internal-link">Al Haji Omar family</span> - <span class="internal-link">Al Hamzah family</span>) and among the holders of higher degrees in the village is Dr. <span class="internal-link">Jumah Sabbat</span> holder of a doctorate degree in international law, and many holders of university degrees in various specializations. Village Mukhtar is Mr. <span class="internal-link">Mohammed Jumah Hamzah</span>.</p>
-<p>Preparation and implementation: <span class="internal-link">Tirij Afrin</span> website director: Abdul Rahman Haji Othman</p>
-<p>20 / 12 / 2013</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : &#x27; Inabk ، أناب /4447ن - 20كم - 545م/:</p>
+<ul>
+<li>أناب: اسم شجرة برية مثمرة.</li>
+</ul>
+<ul>
+<li>قرية كبيرة تقع بجوار ق.مريمين، واتسعت القريتان بحيث اتصلتا ببعضهما. ولغة</li>
+</ul>
+<p>سكانها العربية وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه اناب : قرية في جبل ليلون, تتبع ناحية قرى مركز ومنطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع في سهل خصب زراعياً تربته بركانية , إلى الشرق من مدينة عفرين على بعد 9كم إعمار المنطقة قديم بدلالة وجود أبنية وقطع أعمدة مبعثرة وعدد من المدافن يحدها شمالاً بلدة مريمين , وجنوباً قرية جلبل القريبة لمسافة500م , وشرقاً سهل واسع وقرية شوارغة الأرز والمالكية , وغرباً مزرعة الخالدية وكفر ميز عدد بيوتها حوالي300بيتاً وعمرها حوالي500عام بيوتها حجرية طينية ذات سقوف خشبية مستوية والحديثة منها إسمنتية أخذت تنتشر بمحاذاة الطريق فيها شبكة الكهرباء والماء المأخوذة من المالكية القريبة منها يمر في وسطها طريق مزفت يصل لعدة قرى حلب وكفر جنة ودير الجمال أراضيها زراعية خصبة فيها مدرسة ابتدائية وإعدادية وجامع قديم يتوسط القرية ودار للبلدية حديثاً يعمل الأهالي بزراعة الزيتون والكرمة والبقول والجوز على مساحة /540/ هـ , تشرب القرية من شبكة مائية متصلة ببئر يقع بجوار مزرعة المالكية من الجهة الشرقية للقرية إلى جانب تربية المواشي وفيها شبكة هاتف من مركز مريمين وفيها مزار قديم . ومن العائلات الموجودة في القرية ( آل سباط - آل حمدوش - آل قدور - آل بكري - آل عبود - آل حجي عمر - آل آل حمزة  ) ومن حملة الشهادات العليا في القرية الدكتور جمعة شباط الحائز على شهادة دكتوراه في القانون الدولي ، والعديد من حملة</p>
+<p>الشهادات الجامعية في مجمل الاختصاصات ، مختار القرية السيد محمد جمعة حمزة .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -241,7 +308,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-inabka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-inabka.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=ZjCo1u0_tNA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZjCo1u0_tNA</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-inabka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-inabka.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=ZjCo1u0_tNA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZjCo1u0_tNA</a></li></ul>
             </div>
 
             
@@ -251,7 +318,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -369,6 +436,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

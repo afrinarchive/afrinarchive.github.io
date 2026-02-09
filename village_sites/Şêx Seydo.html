@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -126,15 +147,48 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Şêx Seydo</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Foundation Date/Period:</strong> about 100 years</p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çemê Efrînê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Şêx Seydo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book: Afrin.... its river and green hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qutmeh</span> village:</p>
-<p><strong>شيخ سيدو</strong>: A farmstead in <span class="internal-link">Jebel al-Kurd</span>, belonging to the central villages district of Afrin, <span class="internal-link">Aleppo</span> governorate.</p>
-<p>It is a small farmstead located on a slope facing a vast, fertile plain. It is bordered to the north by a mountainous elevation planted with olive trees and <span class="internal-link">Qastal Kashk</span> and <span class="internal-link">Qarh Tabah</span> villages, to the south by a fertile plain and Afrin river and the city, to the east by a mountainous elevation and <span class="internal-link">Arshqibar</span> village, and to the west by <span class="internal-link">Jomkeh</span> village and Afrin river valley and <span class="internal-link">Tal Tawil</span> village. The number of its houses is approximately 5 houses only and its age is about 100 years. Its old houses are stone and clay with flat wooden roofs, and the modern ones are cement. It has an electricity network and a dirt unpaved road. The residents work in grain and olive cultivation and it follows <span class="internal-link">Jomkeh</span> village.</p></div></details></div>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Şêx Seydo</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20sex%20Shx%20Seydo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20sex%20Shx%20Seydo.htm</a></p>
+<p><span class="internal-link">Şêx Sîdo</span> is a farm in <span class="internal-link">Çiyayê Kurmênc</span>, belonging to the subdistrict of villages of <span class="internal-link">Efrîn</span> center, Heleb governorate. It is a small farm situated on a slope, with a wide and fertile plain in front of it.</p>
+<p>It is bordered to the north by a mountainous elevation planted with olive trees and the village of <span class="internal-link">Qestel Kişk</span> and <span class="internal-link">Qere Tepê</span>, to the south by a fertile plain and <span class="internal-link">Çemê Efrînê</span> and the city, to the east by a mountainous elevation and the village of <span class="internal-link">Erşqîbar</span>, and to the west by the village of <span class="internal-link">Cumkê</span> and the valley of Çemê Efrînê and the village of <span class="internal-link">Tel Tewîl</span>.</p>
+<p>The number of its houses reaches about 5 houses only, and its age is about 100 years. Its old houses are stone and mud with flat wooden roofs, and the modern ones are cement. An electricity network is available there, as well as a paved dirt road. The residents work in growing grains and olives, and it belongs to the village of Cumkê.</p>
+<p>Sources</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme.</p>
+<p>Preparation and execution</p>
+<p>Director of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه شيخ سيدو : مزرعة في جبل الكرد, تتبع ناحية قرى مركز عفرين , محافظة حلب . وهي مزرعة صغيرة تقع على منحدر وأمامه سهل واسع وخصب يحدها شمالاً مرتفع جبلي مزروعة بأشجار الزيتون وقرية قسطل كشك وقره تبه , وجنوباً سهل خصب ونهر عفرين والمدينة , وشرقاً مرتفع جبلي وقرية عرشقيبار, وغرباً قرية جومكة ووادي نهر عفرين وقرية تل طويل . يبلغ عدد بيوتها حوالي 5 بيوت فقط وعمرها حوالي100عاماً بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية والحديثة أسمنتية تتوفر فيها شبكة كهرباء وطريق ترابي معبد يعمل السكان بزراعة الحبوب والزيتون وهي تتبع لقرية جومكة .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -143,7 +197,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20sex%20Shx%20Seydo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20sex%20Shx%20Seydo.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20sex%20Shx%20Seydo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20sex%20Shx%20Seydo.htm</a></li></ul>
             </div>
 
             
@@ -153,7 +207,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -271,6 +325,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

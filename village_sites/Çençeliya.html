@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,6 +205,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Janjalah, Çençeliya, Çençelî, Çençêlê, جنجلة, جنجلي, چنچلي, جنجليا</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Qember</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -211,29 +233,73 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Çençeliya</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The author suggests the name is from <em>çençel</em> meaning &quot;the ladle or the worn-out vessel&quot;.</p>
+<p><strong>Foundation Date/Period:</strong> approximately 400 years</p>
+<p><strong>Hills:</strong> <span class="internal-link">Bilal Heracî</span>, <span class="internal-link">Bilal Hebeş</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Çençeliya</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
-<p><strong>Çençelî, چنچلي, جنجلة</strong> /1347n – 69h - 8km - 800m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Çençeliya</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jencliya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jencliya.htm</a></p>
+<p>Stated in the book <span class="internal-link">Çiyayê Kurmênc</span> <span class="internal-link">Efrîn</span> Geographical Study: <span class="internal-link">Çençelî</span>, <span class="internal-link">Cencile</span> / 1347 people, 69 houses / 8km from the center, 800m altitude.</p>
+<p>Çençelî: I see that the name is from çençel &quot;the ladle or the worn-out vessel&quot;. It is said that the oldest family in this village is of <span class="internal-link">Armenian</span> origin. The Arabized name is a verbal corruption of the old name. It is a medium village located on the northwestern slope of Mount <span class="internal-link">Bilal Heracî</span>.</p>
+<p>Stated in the book Efrîn... Her River and Her Green Hills: <span class="internal-link">Cencelî</span>: A village in Çiyayê Kurmênc following the township of <span class="internal-link">Reco</span>, region of Efrîn, governorate of <span class="internal-link">Heleb</span>. It is a large village, located in the middle section of the mentioned mountain, on the northern slope of a limestone height. It overlooks agricultural lands with red and white soil to the west. As for in front of the village, there are two watercourses heading towards the west and the south.</p>
+<p>It is bordered on the north by a plain planted with olive trees, the village of <span class="internal-link">Çeqmeqa Mezin</span>, and the <span class="internal-link">Riya Bilbil-Reco</span> (Bilbil-Reco road). On the south, by a high mountain range called Mount <span class="internal-link">Bilal Hebeş</span> and the village of <span class="internal-link">Çobana</span> located at the bottom of the mountain to the south. On the east, by a high mountain range and the village of <span class="internal-link">Çeqmeqa Piçûk</span>. On the west, by a watercourse, a plain, and the village of <span class="internal-link">Holîlo</span>.</p>
+<p>The number of its houses reaches 80 houses, and its age is approximately 400 years, and it is among the old villages. Its old residences are stone and mud with flat wooden roofs, while the modern ones are cement, spread towards the west and the east. An electricity network, a modern primary school, and a mosque are available in it. It belongs to the municipality of Çeqmeqa Mezin. It connects with the public road Riya Bilbil-Reco (Bilbil-Reco road) via a leveled dirt road that is not paved.</p>
+<p>The residents work in rain-fed agriculture on an area of 90 hectares (olives, vines, and other fruit trees) alongside raising sheep and goats. The village drinks from cisterns dug next to the houses in which rainwater is collected in winter, and currently, some artesian wells have been dug in the courtyards of the houses.</p>
+<p>Village Mokhtar: <span class="internal-link">Bilal Mihemed Qember</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li>چنچلي: I believe the name comes from Çençûl &quot;the rake or the broken pot&quot;. It is said that the oldest family in this village is of Armenian origin. The Arabized name is a verbal corruption of the old name.</li>
-<li>A medium village located on the northwestern external slope of <span class="internal-link">Bilal</span> (بلال) mountain.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها ورواب يها الخضراء&#x27; &#x27;<span class="internal-link">Afrin City .... Its Rivers and Green Hills</span>&#x27;:</p>
-<p><strong>جنجلي</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد) belonging to Rajo (راجو) district, Afrin City (عفرين) region, <span class="internal-link">Aleppo</span> (حلب) governorate.</p>
-<p>It is a large village located in the middle section of the aforementioned mountain, on the northern slope of a limestone elevation and overlooking westward agricultural lands with red and white soil. In front of the village there are two streams heading toward the west and south. It is bordered to the north by a plain planted with olive trees and village <span class="internal-link">Çeqmaq Large</span> (جقمق كبير) and the (<span class="internal-link">Bulbul</span> - Rajo) (بلبل _ راجو) road, to the south by a high mountainous chain called <span class="internal-link">Bilal Habash</span> (بلال حبش) mountain and village <span class="internal-link">Jobanli</span> (جوبانلي) located at the bottom of the mountain to the south, to the east by a high mountainous chain and village <span class="internal-link">Çeqmaq Small</span> (جقمق صغير), and to the west by a stream and plain and village <span class="internal-link">Hulilo</span> (هوليلو). The number of houses is 80 houses, and its age is about 400 years and it is one of the old villages. Its old dwellings are stone-clay with flat wooden roofs and the modern concrete ones spread toward the west and east. It has electricity network and a modern elementary school and a mosque, and it is a mother village to municipality <span class="internal-link">Çeqmaq Large</span> (جقمق كبير). It connects with the main road (<span class="internal-link">Bulbul</span> - Rajo) (بلبل _ راجو) by an unpaved earthen road. The residents work in rainfed agriculture on an area of 90 hectares (olives, vines, and other fruit trees) in addition to raising sheep and goats. The village drinks from cisterns dug next to houses which collect rainwater in winter, and currently some artesian wells have been dug in house courtyards.</p>
-<p>Village mayor: <span class="internal-link">Bilal Mohammed Qambar</span> (بلال محمد قمبر)</p>
-<p>Information Sources:</p>
-<p>1 - Book <span class="internal-link">Mountain of the Kurds</span> (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (د. محمد عبدو علي).</p>
-<p>2 - Book: <span class="internal-link">Afrin City .... Its Rivers and Green Hills</span> (عفرين .... نهرها ورواب يها الخضراء) by writer Abdulrahman Mohammed (عبدالرحمن محمد) from village <span class="internal-link">Qatmah</span> (قطمه).</p>
-<p>3 - Studies by <span class="internal-link">Tirij Soft Center</span> / <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>4- Some village residents.</p>
-<p>Prepared and executed by: <span class="internal-link">Tirij Afrin</span> website director: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Director of the Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : enel ، چنچلي ، جنجلة /1347ن  69هـ</p>
+<ul>
+<li>8كم - 800م/:</li>
+</ul>
+<ul>
+<li>چنچلي: أرى أن الاسم منenl &quot;المغرافة أو الآنية المهترئة&quot;. ويقال أن</li>
+</ul>
+<p>أقدم عائلة في هذه القرية أرمنية الأصل. والاسم المعرب تحريف لفظي للاسم القديم.</p>
+<ul>
+<li>قرية متوسطة تقع على السفح الشمالي الغربي لجبل بلال الحراجي.</li>
+</ul>
+<p>جاء في كتاب عفرين .... نهرها وروابيها الخضراء : جنجلي : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية كبيرة ، تقع في القسم الأوسط من الجبل المذكور ، على السفح الشمالي لمرتفع كلسي وتشرف غرباً على أراض ٍ زراعية ذات تربة حمراء و بيضاء ، أما أمام القرية يوجد مسيلان يتجهان نحو الغرب والجنوب ، يحدها شمالاً سهل مزروع بأشجار الزيتون و قرية /جقمق كبير/ وطريق ( بلبل _ راجو ) ، وجنوباً سلسلة جبلية عالية يسمى جبل /بلال حبش/ و قرية /جوبانلي/ الواقعة أسفل الجبل جنوباً ، وشرقاً سلسلة جبلية عالية و قرية /جقمق صغير/ ، و غرباً مسيل وسهل و قرية /هوليلو/ ، يبلغ عدد بيوتها 80 بيتاً ، وعمرها حوالي 400 عاماً وهي من القرى القديمة ، مساكنها القديمة حجرية طينية ذات سقوف خشبية مستوية و الحديثة أسمنتية انتشرت باتجاه الغرب والشرق ، تتوفر فيها شبكة كهرباء و مدرسة ابتدائية حديثة وجامع و هي عائدة لبلدية /جقمق كبير/ ، تتصل مع الطريق العام ( بلبل _ راجو ) بطريق ترابي مسوى غير مزفت ، يعمل السكان بالزراعة البعلية على مساحة 90 هـ ( الزيتون ، الكرمة ، والأشجار المثمرة الأخرى ) إلى جانب تربية الأغنام والماعز ، تشرب القرية من الصهاريج المحفورة بجوار المنازل و التي تجمع فيها مياه الأمطار شتاءاً و حالياً تم حفر بعض الآبار الارتوازية في ساحات البيوت .</p>
+<p>مختار القرية : بلال محمد قمبر</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -251,7 +317,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jencliya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jencliya.htm</a></li><li>Videos:<br><a href="https://www.youtube.com/watch?v=fAdi6-9K5cA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=fAdi6-9K5cA</a><br><a href="https://www.youtube.com/watch?v=1YBn0GTnNq0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=1YBn0GTnNq0</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jencliya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jencliya.htm</a></li><li>Videos:<br><a href="https://www.youtube.com/watch?v=fAdi6-9K5cA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=fAdi6-9K5cA</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=1YBn0GTnNq0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=1YBn0GTnNq0</a></li></ul>
             </div>
 
             
@@ -261,7 +327,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -379,6 +445,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

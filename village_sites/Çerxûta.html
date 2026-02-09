@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,6 +205,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Masnah, Çerxûta, المسنة, جرختلي, چرختلي, جرخيتو</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Berazî</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -211,28 +233,75 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Çerxûta</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The name Çerxut means worn out or shabby (çerxût) in Kurdish, which was a nickname for one of its early inhabitants. The Arabized name El-Musena was derived because the official believed the root was the Kurdish word for wheel (çerx), meaning a grinding stone (al-masanah).</p>
+<p><strong>Foundation Date/Period:</strong> about 300 years</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Bilêl</span>, <span class="internal-link">Çiyayê Bilêl Hebeş</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Çerxûta</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
-<p><strong>Çerxûta, چرختلي, المسنة</strong> /364n – 61h - 6km - 700m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Çerxûta</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jarxtle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jarxtle.htm</a></p>
+<p>It is stated in the book <span class="internal-link">Çiyayê Kurmênc</span> (Efrîn) Geographical Study: <span class="internal-link">Çerxeta</span>, <span class="internal-link">Çerxetlî</span>, <span class="internal-link">El-Musena</span>. 364 inhabitants, 61 hectares.</p>
+<p>6 km, 700 m.</p>
+<p><span class="internal-link">Çerxut</span>: This means worn out or shabby (çerxût) in Kurdish, and it was a nickname for one of its early inhabitants.</p>
+<p>The Arabizer believed that its source was from (çerx), meaning &quot;the grinding machine&quot; (al-masanah), so he translated it as such (El-Musena).</p>
+<p>It is a small village located on the southern slope of <span class="internal-link">Çiyayê Bilêl</span>.</p>
+<p>It is stated in the book <span class="internal-link">Efrîn</span>... Her River and Her Green Hills:</p>
+<p>Çerxetlî: A village in Çiyayê Kurmênc belonging to the <span class="internal-link">Reco</span> district, Efrîn region, Heleb governorate. It is a small village located at the end of the southeastern slope of a limestone height covered in scattered thickets of oak trees. It overlooks clay agricultural lands to the south and east that incline towards the south. It is 6 km away from the town of Reco heading northeast.</p>
+<p>It is bordered to the north by a high, rugged mountain chain and the village of <span class="internal-link">Cencelî</span>, and this mountain is called <span class="internal-link">Çiyayê Bilêl Hebeş</span>. To the south, it is bordered by a fertile plain planted with olive trees and grapevines, and the village of <span class="internal-link">Şêx Bilal</span> and <span class="internal-link">Celqemê</span>. To the east, it is bordered by a rugged mountain chain and the village of <span class="internal-link">Çobanlî</span>. To the west, it is bordered by a rugged mountain chain, a valley, and the village of <span class="internal-link">Kuranlî</span>.</p>
+<p>The number of its houses reaches about 5 houses only, and its age is about 300 years. It is inhabited by one family from the <span class="internal-link">Berazî</span> family. Its houses are stone with wooden roofs, and the modern ones are cement. There are no public facilities or services in the village. A dirt road connects it to the <span class="internal-link">Riya Kûtanlî-Reco</span> (Kûtanlî-Reco road).</p>
+<p>The residents work in rain fed agriculture (olives, legumes, vines) on an area of 61 hectares. They raise sheep and goats, and a section of them works in the industry of making charcoal from oak wood. The village drinks from cisterns dug next to the houses, in which water collects during the winter season.</p>
+<p>Sources of Information:</p>
 <ul>
-<li>چرخوت: means &quot;the spinning wheel&quot; or &quot;the inheritance&quot; in Kurdish, and it is a nickname for one of its first inhabitants. I believe the Arabized form believes that its source is from &quot;چرخ&quot; Çerx meaning &quot;grinding machine&quot; so they translated it as such.</li>
-<li>A small village located on the southern slope of <span class="internal-link">Bilal</span> (بلال) mountain Çi.Bilêl.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها ورواب يها الخضراء&#x27; &#x27;<span class="internal-link">Afrin City .... Its Rivers and Green Hills</span>&#x27;:</p>
-<p><strong>جرختلي</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد) belonging to Rajo (راجو) district, Afrin City (عفرين) region, <span class="internal-link">Aleppo</span> (حلب) governorate.</p>
-<p>It is a small village located at the end of the southeastern slope of a limestone elevation covered with scattered oak trees and overlooks south and east on agricultural clay lands sloping toward the south. It is 6 km away from Rajo (راجو) town in the northeastern direction. It is bordered to the north by a high and rough mountainous chain and village <span class="internal-link">Janjali</span> (جنجلي) and this mountain is called <span class="internal-link">Bilal Habash</span> (بلال حبش) mountain, to the south by a fertile plain planted with olive and vine trees and villages <span class="internal-link">Sheikh Bilal</span> (شيخ بلال) and <span class="internal-link">Jeqlmah</span> (جقلمة), to the east by a rough mountainous chain and village <span class="internal-link">Jobanli</span> (جوبانلي), and to the west by a rough mountainous chain and valley and village <span class="internal-link">Kuranli</span> (كورانلي). The number of houses is about 5 houses only, and its age is about 300 years. It is inhabited by one family from the <span class="internal-link">Barazi</span> (البرازي) family. Its houses are stone with wooden roofs and the modern ones are concrete. There are no public facilities and no services in the village and it has an earthen road connecting it to the main road (<span class="internal-link">Kutanli</span> - Rajo) (كوتانلي ـ راجو). The residents work in rainfed agriculture (olives, legumes, vines) on an area of 61 hectares and they raise sheep and goats. Some of them also work in charcoal making from oak wood. The village drinks from cisterns dug next to houses which collect water during winter season.</p>
-<p>Information Sources:</p>
-<p>1 - Book <span class="internal-link">Mountain of the Kurds</span> (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (د. محمد عبدو علي).</p>
-<p>2 - Book: <span class="internal-link">Afrin City .... Its Rivers and Green Hills</span> (عفرين .... نهرها ورواب يها الخضراء) by writer Abdulrahman Mohammed (عبدالرحمن محمد) from village <span class="internal-link">Qatmah</span> (قطمه).</p>
-<p>3 - Studies by <span class="internal-link">Tirij Soft Center</span> / <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>4- Some village residents.</p>
-<p>Prepared and executed by: <span class="internal-link">Tirij Afrin</span> website director: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Manager of the website</p>
+<p>Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : erxta ، چرختلي ، المسنة /364ن  61هـ</p>
+<ul>
+<li>6كم - 700م/:</li>
+</ul>
+<ul>
+<li>چَرخوت: بمعنى المهلهل أو الرث بالكردية، وهو لقب لأحد سكانها الأوائل.</li>
+</ul>
+<p>وأعتقد المعرب أن مصدره من &quot; ﭽَرْخ &quot; erx بمعنى &quot;آلة المَسَنه &quot; فترجمها كذلك.</p>
+<ul>
+<li>قرية صغيرة تقع على السفح الجنوبي لجبل بلال i.Bill.</li>
+</ul>
+<p>جاء في كتاب عفرين .... نهرها وروابيها الخضراء : جرختلي : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . و هي قرية صغيرة تقع عند نهاية السفح الجنوبي الشرقي لمرتفع كلسي تكسوه حراج متناثرة من أشجار السنديان وتطل جنوباً وشرقاً على أراض زراعية صلصالية التربة تميل نحو الجنوب ، تبعد عن بلدة راجو 6 كم باتجاه الشمال الشرقي ، يحدها شمالاً سلسلة جبلية عالية وعرة و قرية /جنجلي/ و هذا الجبل يسمى بجبل ( بلال حبش ) ، و جنوباً سهل خصب مزروع بأشجار الزيتون و الكرمة و قرية /شيخ بلال/ و /جلقمة/ ، وشرقاً سلسلة جبلية وعرة وقرية /جوبانلي/ ، وغرباً سلسلة جبلية وعرة و وادي و قرية /كورانلي/ ،يبلغ عدد بيوتها حوالي 5 بيوت فقط ، وعمرها حوالي 300 عام ، تسكنها عائلة واحدة من عائلة البرازي ، بيوتها حجرية ذات سقوف خشبية و الحديثة أسمنتية ، لا تتوفر في القرية مرافق عامة و لا خدمات و لها طريق ترابي يصلها إلى الطريق العام ( كوتانلي ـ راجو) ، يعمل السكان بالزراعة البعلية ( الزيتون ، البقول ، الكرمة ) على مساحة 61 هـ و يربون الأغنام والماعز كما يعمل قسم منهم بصناعة الفحم من أخشاب السنديان ، تشرب القرية من الصهاريج المحفورة بجوار المنازل والتي تجمع فيها المياه خلال فصل الشتاء مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -247,7 +316,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jarxtle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jarxtle.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jarxtle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20jarxtle.htm</a></li></ul>
             </div>
 
             
@@ -257,7 +326,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -375,6 +444,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -166,6 +187,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Sarrah, Gobakê, Gobek, Gulika, Gulîka, Gobekê, الصرة, كوبك, كوباكه</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Koçer</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -192,29 +214,67 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Gulîka</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The village consists of two parts. The eastern part is Gobek, meaning &quot;the center&quot; or &quot;the navel&quot; (gobek), referring to the site where it was built; the Arabized name is a translation of the Kurdish. The western part is Gulîka, a descriptive name derived from the long sideburns or braids (gulî) characteristic of its inhabitants from the Koçer tribe, who used to grow their hair long.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 200 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Hawar</span>, <span class="internal-link">Dax Obasî</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Gulîka</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds</span> (Afrin) Geographical Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong>Gobekê, كوبك, الصرة /1407n – 540m/:</strong></p>
-<p>This village has two parts: The eastern part <span class="internal-link">Gobek</span> (كوبك): which is a name for the location where the village was established, meaning the center or core. The Arabic name is a translation from the Kurdish name. The western part <span class="internal-link">1 - PhD/Villages/Gulîka</span> (گلیكا): which is a personal characteristic of long hair, and it is a characteristic of its residents from the <span class="internal-link">Goçer</span> tribe (عشيرة الكوچر) who used to grow their hair long.</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Gulîka</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-gobeke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-gobeke.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Gobek</span> / <span class="internal-link">Gulîka</span>, &quot;The Navel&quot; / 1407 inhabitants, 540m altitude: This village consists of two parts. The eastern part is Gobek: this is the name of the site where the village was established, and its meaning is &quot;the center&quot; or &quot;the navel&quot; (gobek). The Arabized name is a translation of the Kurdish name. The western part is Gulîka: this is a personal characteristic derived from the elongation of sideburns or braids (gulî), which was one of the characteristics of its inhabitants from the <span class="internal-link">Koçer</span> tribe, as they used to grow their hair long.</p>
+<p>It is a medium-sized village, located on both sides of a valley on the southern slopes of <span class="internal-link">Çiyayê Hawar</span>; its location is adjacent to Çiyayê Hawar from the north.</p>
+<p>It is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Gobek is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the sub-district of <span class="internal-link">Mabeta</span>, district of <span class="internal-link">Efrîn</span>, governorate of <span class="internal-link">Heleb</span>. It is a small village located in the central part of the mentioned mountain, on the southern slope of the limestone Çiyayê Hawar. It is 13km away from the town of Mabeta towards the northeast.</p>
+<p>It is bordered to the north by the high mountain chain of Çiyayê Hawar and the village of <span class="internal-link">Dax Obasî</span> at the highest peak of the mountain. It is bordered to the south, 800m away, by the nearby village of <span class="internal-link">Şêx Kêlo</span>. To the west, it is bordered by mountainous heights planted with olive trees and the village of <span class="internal-link">Heyat</span> and the village of <span class="internal-link">Oksuzlî</span>. To the east is the nearby village of <span class="internal-link">Ebrez</span>, 500m away.</p>
+<p>The number of its houses is about 25, and its age is approximately 200 years. Its old houses are made of stone and mud with flat wooden roofs, while the modern ones are concrete, spreading east, west, and south. An electricity network is available, as well as a school shared with the village of Ebrez. The village drinks from cisterns that collect rainwater in winter, and currently from artesian wells drilled next to the houses. Its inhabitants rely on rainfed agriculture on an area of 255 hectares, cultivating grains and olive trees, alongside raising sheep and goats. A newly paved road connects it to the sub-district center, reaching the center of the village and the village of Ebrez.</p>
+<p>Among the holders of higher degrees in the village:</p>
+<p><span class="internal-link">Mihemed Emîn Hemo</span> / Doctorate in Engineering / Pumps Department / Russia</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Hemîd Husên</span></p>
+<p>Preparation and execution:</p>
+<p>Director of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>A medium village, located on both sides of a valley from the southern slopes of <span class="internal-link">Mount Hawar</span> (جبل هاوار), its location adjacent to Mount Hawar from the north.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by Abdulrahman Mohammed from Qatmah village (عبدالرحمن محمد من قرية قطمه):</p>
-<p><strong>كوبك</strong>: A village in Mountain of the Kurds (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the middle part of the aforementioned mountain, on the southern slope of limestone <span class="internal-link">Mount Hawari</span> (جبل هواري الكلسي). It is 13km from Mabetli town (بلدة معبطلي) toward the northeast.</p>
-<p>It is bounded to the north by a high mountain chain of Mount Hawari (جيل هواري) and <span class="internal-link">Tag Oba Si</span> village (قرية طاغ أوبه سي) on the highest summit of the mountain, to the south by 800m Sheikh Kilo village (قرية شيخ كيلو) nearby, to the west by mountain elevations planted with olive trees and <span class="internal-link">Hayat</span> (حياة) and <span class="internal-link">Oksozli</span> (أوكسوزلي) villages, and to the east by nearby Abraz village (قرية أبرز) 500m away.</p>
-<p>The number of its houses reaches about 25 houses and its age is about 200 years. Its old houses are stone and clay with flat wooden roofs, and the modern ones are concrete spread east, west, and south.</p>
-<p>It has an electricity network and a school shared with Abraz village (قرية أبرز). The village drinks from cisterns that collect rainwater in winter and currently from artesian wells dug next to houses.</p>
-<p>Its residents depend on rain-fed agriculture on an area of 255 hectares with grains and olive trees in addition to raising sheep and goats. It connects with the district center by a recently paved road to the village center and Abraz village (قرية أبرز).</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Mohammed Amin Hamo</span> (محمد أمين حمو) / Doctorate in Engineering / Pumps Department / <span class="internal-link">Russia</span>.</p>
-<p>Village mayor: <span class="internal-link">Mohammed Hamid Hussein</span> (محمد حميد حسين)</p>
-<p>Prepared and executed by: <span class="internal-link">Tirej Afrin</span> website manager: Abdulrahman Haji Othman</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>THE VILLAGES OF GULÎKA AND GOBEKÊ</p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Preparation by Navenda Tirej Efrîn / Ebdulrehman Hacî Osman.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Gobek ، كوبك ، الصرة /1407ن  540م/: هذه القرية قسمان: القسم الشرقي كوبَك Gobek: وهو اسم للموقع الذي أقيمت عليها القرية، ومعناها المركز أو الصرة. والاسم المعرب ترجمة من الاسم الكردي. والقسم الغربي گٌليكاGulka : وهي صفة شخصية من إطالة الزوالف، وهي من صفات سكانها من عشيرة الكوﭽر Goer وكانوا يطيلون شعرهم.</p>
+<ul>
+<li>قرية متوسطة، تقع على جانبي واد من السفوح الجنوبية لجبل هاوار، موقعها</li>
+</ul>
+<p>ملاصق لجبل هاوار من الشمال. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كوبك : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في القسم الأوسط من الجبل المذكور ، على السفح الجنوبي لجبل هواري الكلسي ، تبعد عن بلدة معبطلي 13كم باتجاه الشمال الشرقي ، يحدها شمالاً سلسلة جبلية عالية لجيل هواري وقرية طاغ أوبه سي في أعلى قمة الجبل ، وجنوباً على بعد 800م قرية شيخ كيلو القريبة ، و غرباً مرتفعات جبلية مزروعة بأشجار الزيتون وقرية حياة و قرية أوكسوزلي ، وشرقاً قرية أبرز القريبة على بعد 500م ، يبلغ عدد بيوتها حوالي 25بيتاً وعمرها حوالي200عاماً ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية والحديثة إسمنتية تنتشر شرقاً وغرباً وجنوباً ، تتوفر فيها شبكة كهرباء ومدرسة مشتركة مع قرية أبرز ، تشرب القرية من الصهاريج التي تجمع فيها مياه الأمطار شتاءاً وحالياً من الآبار الارتوازية المحفورة بجانب المنازل ، يعتمد سكانها على زراعة البعلية على مساحة 255هـ بالحبوب وأشجار الزيتون إلى جانب تربية الأغنام والماعز ، تصلها بمركز الناحية بطريق مزفتة حديثاً حتى وسط القرية وقرية أبرز . ومن حاملي الشهادات العليا في القرية : محمد أمين حمو / دكتوراة في الهندسة / قسم المضخات / روسيا</p>
+<p>مختار القرية : محمد حميد حسين</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>THE VILLAGES OF GULÎKA AND GOBEKÊ</p>
 <p>2.2.2016</p>
 <p>The villages of Gulîka and Gobekê are affiliated with the Mabeta district of the Efrîn canton. They are located 4 km north of the town of Mabeta and 18 km northwest of the city of Efrîn.</p>
 <p>The villages of Gulîka and Gobekê are surrounded on 3 sides by the slopes of the Hawarê mountain. To the east is Pozê Hêştir, to the north is Zinarê Sor, and to the west is Pozê Dukun. All the mountains are of blue stone; the villagers used to build their houses with this stone because it is a solid type and very good for houses.</p>
@@ -253,7 +313,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-gobeke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-gobeke.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=32JqVUCyepQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=32JqVUCyepQ</a></li><li>Videos:<br><a href="https://www.youtube.com/watch?v=5qlMVkSThaI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=5qlMVkSThaI</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-gobeke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-gobeke.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=32JqVUCyepQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=32JqVUCyepQ</a></li><li>Videos:<br><a href="https://www.youtube.com/watch?v=5qlMVkSThaI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=5qlMVkSThaI</a></li></ul>
             </div>
 
             
@@ -263,7 +323,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -381,6 +441,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

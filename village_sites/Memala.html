@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,7 +205,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Mamila, Memala Western, Memala Xerbî, Memola, Western Mamanli, الثدي, مامالي, مامانلي غربي</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ce&#x27;fera, Elî Beg, Haşaşa, Mala Heydû, Mala Ibrahîm, Mala Simo, Mala Xolo, Zibara</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Mamaliye, Memala, Memaliye</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Camû, Ce&#x27;fera, Ebdo, Elî Beg, Fire Hesen, Haşaşa, His Qût, Kîl Osib, Mala Bilal, Mala Fûçik, Mala Hebeş (Qadir), Mala Hesen Fotke, Mala Heydû, Mala Ibrahîm, Mala Keşat, Mala Qember, Mala Simo, Mala Sîno, Mala Xelfan, Mala Xolo, Mala Şoro, Mala Şêxo, Nebû, Yûsiv, Zehû, Zibara</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -199,7 +221,7 @@
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
                 <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
-                    <p class="text-sm">Coordinates: 36.697927, 36.665092</p>
+                    <p class="text-sm">Coordinates: 36.701703, 36.670977</p>
                 </div>
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
@@ -229,7 +251,85 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Memala from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=GT0g8SnuGc8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=GT0g8SnuGc8</a></p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Memala</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-memala%20xarbe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-memala%20xarbe.htm</a></p>
+<p>The following is stated in the book Çiyayê Kurmênc (Efrîn): A Geographical Study: Memala, <span class="internal-link">Mamalî</span>, The Breast. /1813 inhabitants - 218 hectares - 3km - 740m/:</p>
+<p>Etymology and History</p>
+<p>Memala: A Kurdish tribe found in <span class="internal-link">Milazgirt</span> (Malazgirt) in Northern Kurdistan (Lerch, p. 48). Istakhri says: The &quot;Mamaliye&quot; are one of the Kurdish tribes in Fars (Musilli, p. 455).</p>
+<p>Geography and Location</p>
+<p>It is located on the southwestern slope of <span class="internal-link">Çiyayê Bilalîko</span> (Mount Bilalîko) at the site of <span class="internal-link">Qiliq</span> or <span class="internal-link">Kelacik</span> or the Fort (named for the ruins found upon it). The village consists of two parts: Eastern and Western, separated by a valley through which a paved road passes.</p>
+<p>The book Efrîn... Her River and Her Green Hills states: <span class="internal-link">Memala Rojjava</span> (West Memala): A village in <span class="internal-link">Çiyayê Kurmênc</span> belonging to the <span class="internal-link">Reco</span> district, <span class="internal-link">Efrîn</span> region, <span class="internal-link">Heleb</span> province. It is a large village located on the southeastern slope of the Qiliq limestone height, on whose slopes oak forests and pastures are scattered. It overlooks agricultural land with fertile red soil to the east and south.</p>
+<p>It is located 3 km from the town of Reco heading north. It is bordered to the north by a high mountain range planted with oak trees and the village of <span class="internal-link">Heyder Oba</span>; to the south by a slope and a plain planted with olive trees, the town of Reco, and <span class="internal-link">Hecî Xelîl</span>; to the east by a rugged mountain range, a deep valley, the asphalt road heading to <span class="internal-link">Bilalîko</span>, the Memala farm (mezre), and the village of <span class="internal-link">Hecmanlî</span>; and to the west by a valley and the village of <span class="internal-link">Maskanlî</span>.</p>
+<p>Housing and Infrastructure</p>
+<p>The number of houses is approximately 35, and its age is about 300 years according to the statements of one of the elderly residents. Its dwellings are stone and mud with flat wooden roofs, while the modern ones are cement.</p>
+<p>A stricture of electricity is available, as well as a primary school, a leveled dirt road (unpaved), and a telephone network derived from the town of Reco. The residents drink from a well belonging to the state.</p>
+<p>Economy</p>
+<p>The residents work in rain-fed agriculture (olives, grains, legumes, vines) on an area amounting to 218 hectares. They raise sheep and goats. A portion of the residents works in the charcoal industry using oak wood, alongside raising sheep and goats. The mentioned village is beautiful due to its elevated location and the wide plain planted with olive trees in front of it extending to the town of Reco.</p>
+<p>Families</p>
+<p>Among the families present in the village are:</p>
+<p><span class="internal-link">Mala Hesen Fotke</span></p>
+<p><span class="internal-link">Mala Şoro</span></p>
+<p><span class="internal-link">Mala Şêxo</span></p>
+<p><span class="internal-link">Mala Xelfan</span></p>
+<p><span class="internal-link">Mala Bilal</span></p>
+<p><span class="internal-link">Mala Fûçik</span></p>
+<p><span class="internal-link">Mala Qember</span></p>
+<p><span class="internal-link">Mala Hebeş (Qadir)</span></p>
+<p><span class="internal-link">Mala Sîno</span></p>
+<p><span class="internal-link">Mala Keşat</span></p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Qehreman</span></p>
+<p>Information Source:- Ehmed bin Arif</p>
+<ul>
+<li>Sources</li>
+</ul>
+<ul>
+<li>كتاب جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
+</ul>
+<ul>
+<li>كتاب : عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Director of the Tirej Efrîn website: Ebdulrehman Hacî Osman</p>
+<ul>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Memala ، مامالي ، الثدي /1813ن - 218هـ</p>
+<ul>
+<li>3كم - 740م/:</li>
+</ul>
+<ul>
+<li>مَمالا: عشيرة كردية يوجد منها في ملاذكرد شمالي كردستان /ليرخ، ص48/.</li>
+</ul>
+<p>ويقول الاصطخري: إن الـ &quot;ممالية&quot; من العشائر الكردية بفارس /موصللي، ص455/.</p>
+<ul>
+<li>تقع على السفح الجنوبي الغربي لجبل بلاليكو في موقع قلچق Qiliq أو</li>
+</ul>
+<p>&quot;Kelacik&quot; أو الحصن /نسبة إلى الآثار الموجودة عليه/. وتتألف القرية من قسمين: شرقي وغربي، يفصلهما واد يمر منه طريق معبد. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : مامانلي شرقي : مزرعة في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي مزرعة صغيرة تقع على السفح الجنوبي الشرقي لمرتفع كلسي الذي تتبعثر على سفوحه حراج السنديان و المراعي و تطل شرقاً و جنوباً على أرض زراعية ذات تربة حمراء خصبة ، تبعد عن بلدة راجو 4 كم باتجاه الشمال الشرقي ، وتفصل بين القريتين مسيل عميق وطريق مزفت ، يحدها شمالاً سلسلة جبلية عالية و قرية /حيدر أوبه سي/ ، وجنوباً منحدر وسهل وقرية /حاج خليل/ ، وشرقاً سلسلة جبلية و قرية /حجمانلي/ ، وغرباً مسيل وقرية /مامالي غربي/ ، يبلغ عدد بيوتها حوالي 15 بيتاً وعمرها حوالي 100 عاماً وأصل أهالي هذه القرية من قرية /مامالي غربي/ القرية الأم ، مساكنها حديثة حجرية أسمنتية ، تتوفر فيها الكهرباء ومدرسة مشتركة مع الغربية و شبكة هاتف طريق ترابي ، تشرب الأهالي من البرك والصهاريج التي تجع مياه الأمطار شتاءاً . ومن العائلات الموجودة في القرية : آل زحو - آل نبو - آل فره حسن - آل جامو - آل يوسف ( كيل أوسب ) - آل حس قوت - آل عبدو _ .... والعديد من حملة الشهادات الجامعية</p>
+<p>مختار القرية : محمد قهرمان</p>
+<p>أحمد بن عارف مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Memala from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=GT0g8SnuGc8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=GT0g8SnuGc8</a></p>
 <p>The village of <span class="internal-link">Memala</span>, also referred to by residents as <span class="internal-link">Memolê</span>, is located in the <span class="internal-link">Çiyayê Kurmênc</span> region. The settlement is geographically divided into two distinct sections known as <span class="internal-link">Memolê Xerbî</span> and <span class="internal-link">Memolê Şerqî</span>. The community comprises approximately seventy households. The social structure is described as highly cohesive, with residents stating they are all relatives and neighbors who originate from the same stock, though they do not specify a particular tribe or family name during the proceedings.</p>
 <p>Daily life in Memala is deeply connected to the agricultural cycles of the region, specifically the reliance on rainfall. The villagers preserve an ancient collective ritual called the rain prayer to combat drought. During this event, men and children form a procession through the village streets. They chant supplications such as &quot;Ellah baran, Xwedê baran&quot; and specific verses describing the environmental distress, chanting that the &quot;earth and sky have cracked&quot; and &quot;servants and animals have suffocated.&quot; A central part of this custom involves <span class="internal-link">zarkê koplê</span>, where participants splash water on each other to mimick the falling rain. The procession moves from house to house and eventually leads to a sacred site simply called the <span class="internal-link">Ziyaret</span>. At this shrine, the community shares a meal of <span class="internal-link">bulxur</span> and an elder recites prayers including verses from the <span class="internal-link">Quran</span>.</p>
 <p>The culinary culture of Memala is distinct and relies on local produce. Women in the village prepare traditional dishes such as <span class="internal-link">semîsemka</span>, a type of pastry, and <span class="internal-link">kutayiyê</span>. Other foods prepared for communal gatherings include <span class="internal-link">dolma sarma</span>, <span class="internal-link">şorbeşîr</span>, <span class="internal-link">şberek</span>, and <span class="internal-link">kufte</span>. One villager details the preparation of <span class="internal-link">pincar</span>, a wild plant dish cooked with onions and olive oil, which is seasoned with lemon.</p>
@@ -321,7 +421,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-memala%20xarbe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-memala%20xarbe.htm</a></li><li>Links:<br><a href="https://www.youtube.com/watch?v=GT0g8SnuGc8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=GT0g8SnuGc8</a></li><li>Afrin Flo:<br><a href="https://www.youtube.com/watch?v=nHVVf9J4Wgs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=nHVVf9J4Wgs</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=tFTYibXN5H4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tFTYibXN5H4</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=rtShNNkq2yo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=rtShNNkq2yo</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-memala%20xarbe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-memala%20xarbe.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=GT0g8SnuGc8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=GT0g8SnuGc8</a></li><li>Afrin Flo:<br><a href="https://www.youtube.com/watch?v=nHVVf9J4Wgs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=nHVVf9J4Wgs</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=tFTYibXN5H4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tFTYibXN5H4</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=rtShNNkq2yo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=rtShNNkq2yo</a></li><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-memala%20shexe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-memala%20shexe.htm</a></li></ul>
             </div>
 
             
@@ -331,7 +431,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -418,8 +518,8 @@
                 return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
             const mainVillageName = "Memala";
-            const villageLat = 36.697927;
-            const villageLng = 36.665092;
+            const villageLat = 36.701703;
+            const villageLng = 36.670977;
             const initialZoom = 14;
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
             const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
@@ -449,6 +549,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

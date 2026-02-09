@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -167,7 +188,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Safraa, Sari Oshaghi, Sariya, Soriya, الصفراء, صاري أوشاغي, صاري اوشاغي</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Şêxiyan</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekir Xûce, Cewher, Haskerzê, Hecî, Heskelekê, Kûze, Minanî Heso, Seyid Xaje, Çîlo, Çûyê Xozyana</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekir Xûce, Cewher, Haskerzê, Hecî, Heskelekê, Kûze, Minanî Heso, Osman Elek, Seyid Xaje, Çîlo, Çûyê Xozyana</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -211,18 +232,60 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Sariya</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Sariya</span> (صاري أوشاغي), <span class="internal-link">Sari Oshaghi</span> (صاري أوشاغي), <span class="internal-link">Al-Safraa</span> (الصفراء)</strong> /1166n - 500ha - 13km - 700m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Sariya</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20sariya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20sariya.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Sariya</span>, <span class="internal-link">Sari Uşaxî</span>, <span class="internal-link">Safra</span>. The village statistics are: 1166 inhabitants, 500 hectares of land, 13 kilometers from the center, and 700 meters in elevation.</p>
+<p>Sariya: The name is of Turkish origin from the word &quot;Sari,&quot; meaning &quot;the blond&quot; or &quot;the yellow.&quot; It was a nickname for the first resident of the village, who was a blond man with red skin. The Arabized name is a translation of the Turkish name. It is a small village located atop the summit of <span class="internal-link">Çiyayê Hemo</span>. It is adjacent to the village of <span class="internal-link">Rehmaniyê</span>.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Sari Uşaxî is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Mabeta</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village located in the central part of the mentioned mountain, atop the summit of Çiyayê Hemo, which slopes steeply in its northwest towards <span class="internal-link">Geliyê Rîşa</span>. It is 13 kilometers away from the town of Mabeta towards the northwest. Its soil is clay like.</p>
+<p>The village is bordered to the north by a steep slope, <span class="internal-link">Geliyê Sîlê</span>, mountainous highlands, and the village of <span class="internal-link">Qudê Koy</span> at the highest mountain peak to the north. To the south, it is bordered by the nearby village of Rehmaniyê at a distance of 500 meters. To the west, it is bordered by the village of <span class="internal-link">Hemilka</span> at a distance of 1 kilometer in the western direction. To the east, there is a slope and the village of <span class="internal-link">Kurka Jorîn</span>. The number of its houses is about 45 houses, and its age is about 350 years. Its dwellings are made of stone and mud with flat wooden roofs, while modern concrete dwellings are spreading around it and extending towards the west.</p>
+<p>The village has an electricity network and a water network connected to the Rehmaniyê well in the bottom of the valley. It contains a primary school and a small mosque. A paved road connects it to the district center, passing through the middle of the village to several neighboring villages. Its residents work in rain fed agriculture on an area of 500 hectares, cultivating grains, legumes, and olives. They also practice irrigated agriculture from artesian wells in the southern plain of the village of Rehmaniyê, growing summer vegetables and fruit trees, alongside raising sheep and goats. Among its most important families is the family of <span class="internal-link">Osman Elek</span>, who were the first to inhabit the village. There are several villas on the western side of the village on the public road.</p>
+<p>Village Mukhtar: <span class="internal-link">Ehmed Hebeş Bilal</span></p>
+<p>Preparation and Execution:</p>
+<p>Director of the <span class="internal-link">Tirej Efrîn</span> website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li><span class="internal-link">1 - PhD/Villages/Sariya</span> (ساريا): The name is of Turkish origin from blonde or yellow <span class="internal-link">Sari</span> (صاري), and it was the title of the first inhabitant of the village, who was a blonde man with a red complexion. The Arabic name is a translation of the Turkish name.</li>
-<li>A small village located on top of &quot;<span class="internal-link">Hamo mountain</span>&quot; (جبل حمو). It is adjacent to <span class="internal-link">Rahmanieh village</span> (قرية رحمانية).</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: Afrin... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmah village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Sari Oshaghi</span> (صاري اوشاغي)</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), Afrin City region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the central part of the mentioned mountain, on top of (<span class="internal-link">Hamo mountain</span>) (جبل حمو) which slopes steeply in its northwest toward (<span class="internal-link">Risha valley</span>) (وادي (ريشة)). It is 13km away from <span class="internal-link">Mabetli</span> town toward the northwest. Its soil is fertile clay. It is bounded to the north by a steep slope and <span class="internal-link">Sili valley</span> (وادي سيلي) and mountain elevations and <span class="internal-link">Quda Koy village</span> (قرية قوده كوي) at the highest mountain elevation to the north, and to the south by <span class="internal-link">Rahmanieh village</span> (قرية الرحمانية) nearby at a distance of 500m, and to the west by <span class="internal-link">Hamlurik village</span> (قرية حملوريك) at a distance of 1km in the western direction, and to the east by a slope and <span class="internal-link">Kurkan Foqani village</span> (قرية كوركان فوقاني). The number of its houses is about 45 houses and its population is about 350 people. Its dwellings are stone-clay with flat wooden roofs. Modern cement houses spread around them extending toward the west. It has an electricity network and water network connected to a well in <span class="internal-link">Rahmanieh village</span> (قرية الرحمانية) at the bottom of the valley. It has an elementary school and small mosque. It is connected to the district center by a paved road that passes through its center to several neighboring villages. Its inhabitants work in rain-fed agriculture on an area of 500 hectares with grains, legumes, and olives, and irrigated from artesian wells in the southern plain of <span class="internal-link">Rahmanieh village</span> (قرية الرحمانية), summer vegetables and fruit trees, in addition to raising sheep and goats. Among its most important families is the family of <span class="internal-link">Othman Alik</span> (عثمان عليك), they were the first to inhabit the village. It has several villas on the western side of the village on the main road.</p>
-<p>Village mayor: <span class="internal-link">Ahmed Habash Bilal</span> (أحمد حبش بلال)</p>
-<p>Prepared and implemented by: <span class="internal-link">Tire Afrin website manager</span>: Abdul Rahman Haji Othman (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Sariya and Şêtana from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=oWc7vZetDuk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=oWc7vZetDuk</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Ebdulrehman Hacî Osman, Director of Tirej Efrîn.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Sariya ، صاري أوشاغي ، الصفراء /1166ن</p>
+<ul>
+<li>500هـ - 13كم - 700م/:</li>
+</ul>
+<ul>
+<li>ساريا: الاسم تركي الأصل من الأشقر أو الأصفر Sari، وهو لقب لأول ساكن</li>
+</ul>
+<p>للقرية، وكان رجلا أشقرا ذو بشرة حمراء. والاسم المعرب هو ترجمة للاسم التركي.</p>
+<ul>
+<li>قرية صغيرة تقع فوق قمة جبل &quot;حمو&quot;. وهي ملاصقة لقرية رحمانية.</li>
+</ul>
+<p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه صاري اوشاغي : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في الجزء الأوسط من الجبل المذكور ، فوق قمة جبل (حمو) الذي ينحدر بشدة في شماله الغربي باتجاه وادي (ريشة) وهي تبعد 13كم عن بلدة معبطلي باتجاه الشمال الغربي ، تربتها غضارية ، يحدها شمالاً منحدر شديد الانحدار و وادي سيلي و مرتفعات جبلية وقرية قوده كوي في أقصى مرتفع جبلي شمالاً ، وجنوباً قرية الرحمانية القريبة على بعد 500م ، وغرباً قرية حملورك على بعد 1كم بالاتجاه الغربي ، وشرقاً منحدر و قرية كوركان فوقاني ، يبلغ عدد بيوتها حوالي 45 بيتاً وعمرها حوالي 350عاماً ، مساكنها حجرية طينية ذات سقوف خشبية مستوية ، تنتشر من حولها المساكن الإسمنتية الحديثة وتمتد باتجاه الغرب ، تتوفر فيها شبكة الكهرباء وشبكة مائية متصلة في بئر قرية الرحمانية في أسفل الوادي فيها مدرسة ابتدائية وجامع صغير ، تصلها بمركز الناحية بطريق مزفت ويمر في وسطها إلى عدة قرى مجاورة يعمل سكانها بالزراعة البعلية على مساحة 500هـ بالحبوب والبقول والزيتون ورياً من الآبار الارتوازية في السهل الجنوبي لقرية الرحمانية ، الخضار الصيفية و الأشجار المثمرة ، إلى جانب تربية الأغنام والماعز ، ومن أهم عوائلها عائلة عثمان علك ، هم أول من سكن القرية ، فيها عدة فيلات من الجهة الغربية للقرية على الطريق العام .</p>
+<p>مختار القرية : أحمد حبش بلال</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Sariya and Şêtana from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=oWc7vZetDuk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=oWc7vZetDuk</a></p>
 <p>The village of <span class="internal-link">Sorya</span>, also known as <span class="internal-link">Sariya</span>, is located in the <span class="internal-link">Mabata</span> district of the <span class="internal-link">Efrîn</span> region. Situated at the foot of <span class="internal-link">Çiyayê Açolo</span> within the <span class="internal-link">Çiyayê Qîbê</span> mountains, the village has a history spanning approximately 400 to 450 years. The name originates from its founder <span class="internal-link">Mihme Soru</span> (or simply <span class="internal-link">Soro</span>), whose nickname &quot;Sor&quot; referred to his red or fair complexion. Locals explain that during the Ottoman era the name was adapted to Sorya or Sariya, which bears a resemblance to the Turkish word for &quot;yellow&quot; or &quot;blond.&quot; In later periods, the Baathist regime attempted to rename the village <span class="internal-link">Saruşağı</span> or <span class="internal-link">Safra</span>, but the original name persisted among the residents.</p>
 <p>The community is historically rooted in the <span class="internal-link">Şêxiyan</span> tribe. Oral history recounts that Soro and his brother <span class="internal-link">Ala</span> were the initial figures, with Soro settling in the village while Ala established himself in <span class="internal-link">Mabeta</span>. The village social structure was originally built around four primary families: <span class="internal-link">Heskelekê</span>, <span class="internal-link">Hecî</span>, <span class="internal-link">Çîlo</span>, and <span class="internal-link">Haskerzê</span>. Over time, other families such as <span class="internal-link">Seyid Xaje</span>, <span class="internal-link">Kûze</span>, and <span class="internal-link">Cewher</span> immigrated from nearby locations like <span class="internal-link">Şêx Bil</span> and <span class="internal-link">Senarê</span>. Conversely, some lineages such as <span class="internal-link">Bekir Xûce</span> and <span class="internal-link">Minanî Heso</span> migrated away to villages like <span class="internal-link">Çaqala</span> and <span class="internal-link">Xozyana</span>. A particularly notable figure in village history was <span class="internal-link">Êma Osê</span>, a woman from the Heskelekê family who served as the village mukhtar around 1850, taking over the role from her father <span class="internal-link">Osê Soro</span>. In the 20th century, residents such as <span class="internal-link">Elî Çîlo</span>, <span class="internal-link">Ahmedê Heskûlek</span>, and <span class="internal-link">Şêx Henîf</span> were known for participating in uprisings against the French occupation.</p>
 <p>The landscape around Sorya features several significant water sources that supported its agricultural life, primarily olive cultivation. These include the spring <span class="internal-link">Kaniya Sêvê</span> and wells such as <span class="internal-link">Bîra Xoziana</span>, <span class="internal-link">Bîra Qerşîlê</span>, and <span class="internal-link">Bîra Xurşînê</span>. A communal pond known as <span class="internal-link">Gola Sariya</span> traditionally provided water for livestock and served as a shared point between Sorya and the neighboring villages of <span class="internal-link">Hebû</span> and <span class="internal-link">Şêytana</span>. The village preserves the ruins of traditional olive presses known as <span class="internal-link">Ma&#x27;ser</span>, with one historic press located beneath the Heskelekê house dating back over a century.</p>
@@ -303,7 +366,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20sariya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20sariya.htm</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=vVkgTvWzdUg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=vVkgTvWzdUg</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=Z3jh45G7Iak" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Z3jh45G7Iak</a><br><a href="https://www.youtube.com/watch?v=oWc7vZetDuk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=oWc7vZetDuk</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20sariya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20sariya.htm</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=vVkgTvWzdUg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=vVkgTvWzdUg</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=Z3jh45G7Iak" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Z3jh45G7Iak</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=oWc7vZetDuk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=oWc7vZetDuk</a></li></ul>
             </div>
 
             
@@ -313,7 +376,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -431,6 +494,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

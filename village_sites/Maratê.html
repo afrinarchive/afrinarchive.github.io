@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,7 +203,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Ma&#x27;retê, Maratê, Me&#x27;erta, Me&#x27;ratê, معراته</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Cenciya, Cirnasa, Ehmî Zênê, Hec Elî, Henî Emîn, Malê Henî Elê, Malê Hesen Şindî, Malê Mistefayî Heydû, Malê Nehsê, Malê Walî Elqestûn, Malê Çeqelî, Meşayix, Mistê Heydo, Mistî Zikû, Omer Sefûna, Qilîça, Reştî Kolê, Salera, Seydînê Sird, Xelûtlera, Çawîş</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Berîk</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Cenciya, Cirnasa, Ehmî Zênê, Hec Elî, Henî Emîn, Mala Bêd Xidir, Mala Elî Tijo, Mala Erê, Mala Hecî &#x27;Izzet, Mala Henan Elî, Mala Ose, Mala Reşo, Mala Çawîşler, Mala Şêx Zekeriya, Malbata Reşîd Rîbî, Malê Henî Elê, Malê Hesen Şindî, Malê Mistefayî Heydû, Malê Nehsê, Malê Walî Elqestûn, Malê Çeqelî, Meşayix, Mistê Heydo, Mistî Zikû, Omer Sefûna, Omer Sîvona, Qilîça, Reştî Kolê, Salera, Seydînê Sird, Xelûtlera, Çawîş</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -229,22 +251,62 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Maratê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; geographical study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong>Maratê, معراته</strong> /4671n - 995ha - 5km - 380m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Maratê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Marate.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Marate.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Maratê</span> / 4671 inhabitants - 995 houses - 5km - 380m /:</p>
+<p>Al-Asadi mentioned, citing Father Armaleh, that the name is of Aramaic origin: &quot;Ma&#x27;rasta,&quot; meaning the Cave of the Vine.</p>
+<p>It is a large village located on the lower slope of a mountainous height, surrounded by it from the west, north, and south. <span class="internal-link">Wadi Maratê</span> passes through it from west to east. The village spring is located in its northwestern corner, and its waters are distributed to most of its homes. It is a center for the <span class="internal-link">Omer Sîvona</span> family, which is known in <span class="internal-link">Çiyayê Kurmênc</span>.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Maratê is a village in Çiyayê Kurmênc, belonging to the villages of the central district and region of <span class="internal-link">Efrîn</span>, Heleb governorate. It is a very large village located on the lower slope of the limestone Mount <span class="internal-link">Hecî</span>. It is penetrated by Wadi Maratê from the northwest to the southeast, which feeds into <span class="internal-link">Wadi Sêl</span> heading east toward the Efrîn river.</p>
+<p>It is bordered to the north by a mountainous height planted with olive trees and the village of <span class="internal-link">Xelnêr</span>; to the south by a valley planted with olive and walnut trees and the village of <span class="internal-link">Babîlît</span>; to the east by a wide, agriculturally fertile plain and the city of Efrîn directly; and to the west by a high mountain chain planted with olive trees and vines, <span class="internal-link">Biyûk Edbe</span>, <span class="internal-link">Tel Xazî</span>, and <span class="internal-link">Keferdêlê Jêrîn</span>.</p>
+<p>Its lands are mountainous, plain, and agricultural. The number of its houses is approximately 600, and its age is 700 years. Its dwellings are of stone and mud with wooden roofs, though currently, modern cement and stone dwellings have overwhelmed it and started spreading from the eastern side. An electricity network is available, as well as drinking water from the well and the spring located in the village. It contains a primary and preparatory school. A municipality building, a telephone center, and a modern mosque have been established in it. An asphalt road reaches the center of the village and the city of Efrîn.</p>
+<p>The residents work in rain-fed agriculture on an area of 965 hectares (grains, legumes, olive trees, walnuts, and pomegranates) and extensively in irrigated agriculture from artesian wells, where they also grow summer vegetables. They also raise sheep and goats. There are three modern olive presses in the village. It is one of the old villages in the region.</p>
+<p>Among the holders of higher degrees in the village:</p>
+<p><span class="internal-link">Celal Begdaş</span> / PhD in Archaeology / Germany.</p>
+<p><span class="internal-link">Idrîs Xelîl Mihemed</span> / PhD in Food Industries / Under completion / Germany.</p>
+<p>Village Mukhtar: <span class="internal-link">Elî Cawîş Mihemed</span>.</p>
+<p>Preparation and Execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Marat، معراته /4671ن - 995هـ - 5كم - 380م/:</p>
 <ul>
-<li><span class="internal-link">Al-Asadi</span> (الأسدي) mentioned from <span class="internal-link">Father Armila</span> (الأب أرملة) that the name is from Aramaic: Ma&#x27;rasat: the vineyard cave.</li>
-<li>A large village located on the lower slope of a mountain elevation, surrounded from the west, north and south, and <span class="internal-link">Marateh valley</span> (وادي معراته) passes through it from west to east. The village spring is located in its northwestern corner, and its water is distributed to most of its houses. It is a center for the family of <span class="internal-link">Omar Safouna</span> (عمر سفونا), known in <span class="internal-link">Jabal al-Kurd</span> (ج.الكرد).</li>
+<li>ذكر الأسدي عن الأب أرملة بأن الاسم من الأرامية: معرستا: مغارة الكرمة.</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin.... Its River and Green Hills</span> (عفرين .... نهرها وروابيها الخضراء) by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatmah village</span> (قرية قطمه)</p>
-<p><strong>Ma&#x27;rateh</strong> (معراته): A village in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد), belonging to the <span class="internal-link">central villages</span> (قرى مركز) and Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a very large village located on the lower slope of a calcareous mountain (hijri), crossed by <span class="internal-link">Ma&#x27;ratah valley</span> (وادي معراتة) from northwest to southeast which feeds <span class="internal-link">al-Sayl valley</span> (وادي السيل) heading east toward <span class="internal-link">Afrin river</span> (نهر عفرين).</p>
-<p>It is bordered to the north by a mountain elevation planted with olive trees and <span class="internal-link">Khalnir village</span> (قرية خلنير). To the south by a valley planted with olive and walnut trees and <span class="internal-link">Bablit village</span> (قرية بابليت). To the east by a wide fertile plain and directly Afrin City (مدينة عفرين). To the west by a high mountainous chain planted with olive and grape trees: <span class="internal-link">Buyuk Oba</span> (بيوك أدبه), <span class="internal-link">Tal Ghazi</span> (تل غازي) and <span class="internal-link">Kafardallah</span> (كفردلة).</p>
-<p>Its lands are mountainous, plain and agricultural. The number of its houses is approximately 600 houses and its age is 700 years. Its dwellings are stone and clay with wooden roofs, and currently modern cement stone houses have been added and are spreading from the eastern side. Electricity network and drinking water from wells and springs located in the village are available. It has elementary and preparatory schools, a modern municipal building, telephone center, and modern mosque. A paved road to the village center and Afrin City (مدينة عفرين) is available.</p>
-<p>Its people work in rainfed agriculture on an area of 965 hectares (grains, legumes, olive and walnut trees and pomegranates) in intensive irrigation from artesian wells. They also cultivate summer vegetables and raise sheep and goats. There are three modern olive oil presses in the village. It is one of the old villages in the area.</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Jalal Bakdash</span> (جلال بكداش) / PhD in Archaeology / Germany - <span class="internal-link">Idris Khalil Mohammed</span> (ادريس خليل محمد) / PhD in Food Industries / under study / Germany</p>
-<p>Village Mukhtar: <span class="internal-link">Ali Jawish Mohammed</span> (علي جاويش محمد)</p>
-<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin Heritage</span>: <span class="internal-link">Abdulrahman Haji Osman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Maratê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=TnKcW8LAymA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=TnKcW8LAymA</a></p>
+<ul>
+<li>قرية كبيرة تقع على السفح الأدنى لمرتفع جبلي، يحيط بها من الغرب والشمال</li>
+</ul>
+<p>والجنوب، ويمر عبرها وادي معراته من الغرب إلى الشرق. يقع نبع القرية في الزاوية الشمالية الغربية منها، وتتوزع مياهه على معظم منازلها. وهي مركز لعائلة عمر سفونا المعروفة في ج.الكرد. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه معراته : قرية في جبل الكرد ، تتبع قرى مركز و منطقة عفرين ، محافظة حلب . وهي قرية كبيرة جداً تقع على السفح الأدنى لجبل /حجي/ الكلسي يخترقها وادي معراتة من الشمال الغربي إلى الجنوب الشرقي الذي يرفد وادي السيل المتجه شرقاً نحو نهر عفرين. يحدها شمالاً مرتفع جبلي مزروع بأشجار الزيتون وقرية خلنير وجنوباً وادي مزروع بأشجار الزيتون والجور وقرية بابليت وشرقاً سهل واسع وخصب زراعياً ومدينة عفرين مباشرة وغرباً سلسلة جبلية عالية مزروعة بأشجار الزيتون والكرمة بيوك أدبه وتل غازي وكفردلة تحتاني أراضيها جبلية وسهلية وزراعية يبلغ عدد بيوتها حوالي600بيتاً وعمرها 700عاماً مساكنها حجرية طينية ذات سقوف خشبية وحالياً طفت عليها المساكن الإسمنتية الحجرية الحديثة وأخذت تنتشر من الجهة الشرقية تتوفر فيها شبكة الكهرباء ومياه الشرب من البئر والنبع الواقع في القرية وفيها مدرسة ابتدائية وإعدادية وأحدث فيها دار للبلدية ومركز للهاتف وجامع حديث وطريق مزفت حتى وسط القرية ومدينة عفرين . يعمل الأهالي بالزراعة البعلية على مساحة 965 هـ (الحبوب والبقول وأشجارالزيتون والجوزوالرمان) بشكل كثيف رياً من الآبار الارتوازية كما يزرعون الخضراوات الصيفية ويقومون بتربية الأغنام والماعز .كما يوجد في القرية ثلاث معاصر حديثة للزيتون .وهي من القرى القديمة في المنطقة .ومن حاملي الشهادات العليا في القرية : جلال بكداش / دكتوراة في الآثار / المانيا</p>
+<ul>
+<li>ادريس خليل محمد / دكتوراة في الصناعات الغذائية / قيد التحصيل / المانيا</li>
+</ul>
+<p>مختار القرية : علي جاويش محمد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Maratê from Afrin Zeyton</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=0cTNrtYja4M" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=0cTNrtYja4M</a></p>
+<p>The village of <span class="internal-link">Maratê</span>, located approximately 5 kilometers from the city of <span class="internal-link">Afrin</span>, carries a history deeply rooted in antiquity. The name itself is the subject of two prevailing theories: historical texts suggest it derives from a Syriac word meaning &quot;the cave,&quot; while local oral tradition attributes it to a Roman ruler named <span class="internal-link">Maratinus</span> who once governed the area. The village&#x27;s deep historical footprint was previously attested to by an inscribed rock located in <span class="internal-link">Şikefta Ereban</span> (Cave of the Arabs), which dated the settlement to at least 720 years ago, though this artifact has been lost for decades. Elders believe the village is much older, pointing to ancient dwellings and nearby archaeological sites like <span class="internal-link">Qaziqlê</span> and <span class="internal-link">Xilnêr</span>.</p>
+<p>Maratê played a significant role in the regional resistance against colonial powers. During the Great Syrian Revolt, the nationalist leader <span class="internal-link">Ibrahim Hananu</span> visited the village to coordinate with the revolutionaries of Afrin. The village is geographically defined by its position on the slopes of two facing mountains and its proximity to <span class="internal-link">Galyê Kûr</span> (The Deep Valley). It was historically renowned for its abundant water sources, specifically <span class="internal-link">Kaniya Mezin</span> (The Big Spring). Elders recall when this spring produced enough water to irrigate the village&#x27;s once-famous pomegranate orchards and flow all the way to Afrin city. However, over the years, the water levels have drastically diminished, and the agricultural focus has shifted primarily to olive cultivation.</p>
+<p>The social fabric of Maratê began with three primary households: <span class="internal-link">Mala Henan Elî</span>, <span class="internal-link">Mala Bêd Xidir</span>, and <span class="internal-link">Mala Erê</span>. Over time, the population expanded, and the village is now home to various lineages, including members of the <span class="internal-link">Berîk</span> tribe. Notable historical residences include the homes of <span class="internal-link">Şêx Zekeriya</span> and <span class="internal-link">Hecî &#x27;Izzet</span>. The village is also culturally distinguished by the <span class="internal-link">Mala Çawîşler</span> family, known for their musical heritage, and the <span class="internal-link">Malbata Reşîd Rîbî</span>, known for traditional dance. Residents like <span class="internal-link">Şiyar Mihemed Şêxo</span> actively preserve this heritage by collecting agricultural tools and household artifacts to ensure the &quot;turas&quot; (heritage) of their ancestors is not lost.</p>
+<p>Spiritual and natural landmarks anchor the village&#x27;s identity. A massive oak tree known as <span class="internal-link">Darê Gelberiyê</span> stands in the village; it is estimated to be centuries old and is so thick that it requires several men to encircle it. The village also contains <span class="internal-link">Ziyareta Xidir Êlyasî</span>, a sacred site associated with <span class="internal-link">Xidir Êlyas</span>. In times of drought, villagers would gather there on Fridays to sacrifice animals and pray for rain, a ritual that elders recall bringing immediate relief from the skies. Historically, the village utilized caves not only for shelter but for industry, with ancient olive presses installed directly inside them.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Maratê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=TnKcW8LAymA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=TnKcW8LAymA</a></p>
 <p>The village of <span class="internal-link">Maratê</span>, located five kilometers from <span class="internal-link">Efrîn</span>, is a historic settlement with origins tracing back approximately 915 years. According to local oral history and an inscription found in a nearby cave, the village was known in the Roman era as <span class="internal-link">Miratiyan</span> before the name evolved into its current form. The village was founded by seven original households, including <span class="internal-link">Malê Henî Elê</span>, <span class="internal-link">Seydînê Sird</span>, <span class="internal-link">Malê Walî Elqestûn</span>, and <span class="internal-link">Malê Hesen Şindî</span>. These early inhabitants were originally <span class="internal-link">Êzîdî</span> migrants from <span class="internal-link">Şengal</span> who practiced <span class="internal-link">Zoroastrianism</span> before eventually converting to Islam over the centuries. Following the founding families, other lineages such as <span class="internal-link">Cenciya</span>, <span class="internal-link">Qilîça</span>, <span class="internal-link">Cirnasa</span>, and <span class="internal-link">Meşayix</span> arrived, settling in the village where they now live as a cohesive community.</p>
 <p>The spiritual life of Maratê centers on the ancient shrine of <span class="internal-link">Xidir Balî</span>, also known as <span class="internal-link">Xizir Îlyas</span>. Although the villagers are now Muslim, they maintain practices tied to this site that date back to their Êzîdî ancestors. Villagers light fires at the site nightly and tie fabrics to a sacred tree to ask Xidir Balî for intercession, particularly for fertility or relief from calamities. In times of drought, the community traditionally gathered there to sacrifice animals and pray for rain.</p>
 <p>The landscape around Maratê is defined by its rugged terrain and numerous caves, with elders estimating there are 100 caves in the area. The most famous is <span class="internal-link">Şikefta Tingê</span>, named for the ringing sound (tingînî) that echoes within its 40 meter length. Another significant site is <span class="internal-link">Şikefta Ereba</span>, located near a large spring and an ancient tree known as <span class="internal-link">Darê Gûlberiyê</span>. A historical account provided by <span class="internal-link">Elî Çawîş</span> details how Armenian visitors once identified a stone with Latin inscriptions near this cave which dated the village&#x27;s founding, though the stone was stolen shortly after its discovery.</p>
@@ -286,6 +348,13 @@
                 <td class="px-4 py-3 text-base"><a href="../village_transcripts/Maratê_Khalil Sino_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
             </tr>
         
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Afrin Zeyton 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=0cTNrtYja4M" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/afrinzeyton_videos_8_Ma'rete.srt" download="afrinzeyton_videos_8_Ma'rete.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Maratê_Afrin Zeyton_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
             </tbody>
         </table>
     </div>
@@ -321,7 +390,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Marate.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Marate.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=TnKcW8LAymA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TnKcW8LAymA</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=Aso1PlCPYB4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Aso1PlCPYB4</a><br><a href="https://www.youtube.com/watch?v=BF-Uxyamr-A" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=BF-Uxyamr-A</a></li><li>Local FB page:<br><a href="https://www.facebook.com/gundemarate" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/gundemarate</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=DsMBmMRbBsA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=DsMBmMRbBsA</a><br><a href="https://www.youtube.com/watch?v=w8nPOg-0EVw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=w8nPOg-0EVw</a><br><a href="https://www.youtube.com/watch?v=ZTGPFr3WXcc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZTGPFr3WXcc</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=LYNa4o020RI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=LYNa4o020RI</a><br><a href="https://www.youtube.com/watch?v=Yw4xTc7eZIk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Yw4xTc7eZIk</a><br><a href="https://www.youtube.com/watch?v=zQl5BrV-hPA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zQl5BrV-hPA</a><br><a href="https://www.youtube.com/watch?v=wi5kdO0tsCo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=wi5kdO0tsCo</a><br><a href="https://www.youtube.com/watch?v=PmHEl1KwLKE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=PmHEl1KwLKE</a><br><a href="https://www.youtube.com/watch?v=djObbmK4QCE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=djObbmK4QCE</a><br><a href="https://www.youtube.com/watch?v=TXQR1PFGnYQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TXQR1PFGnYQ</a><br><a href="https://www.youtube.com/watch?v=bGwKQPsk4W4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=bGwKQPsk4W4</a><br><a href="https://www.youtube.com/watch?v=tQBy3RZtYWc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tQBy3RZtYWc</a><br><a href="https://www.youtube.com/watch?v=T1nE9gaLzdU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T1nE9gaLzdU</a><br><a href="https://www.youtube.com/watch?v=aJPmEhqfkNQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=aJPmEhqfkNQ</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=l4a1z6FA5Tw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=l4a1z6FA5Tw</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Marate.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Marate.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=TnKcW8LAymA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TnKcW8LAymA</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=Aso1PlCPYB4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Aso1PlCPYB4</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=BF-Uxyamr-A" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=BF-Uxyamr-A</a></li><li>Local FB page:<br><a href="https://www.facebook.com/gundemarate" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/gundemarate</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=DsMBmMRbBsA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=DsMBmMRbBsA</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=w8nPOg-0EVw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=w8nPOg-0EVw</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=ZTGPFr3WXcc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZTGPFr3WXcc</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=LYNa4o020RI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=LYNa4o020RI</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=Yw4xTc7eZIk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Yw4xTc7eZIk</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=zQl5BrV-hPA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zQl5BrV-hPA</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=wi5kdO0tsCo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=wi5kdO0tsCo</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=PmHEl1KwLKE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=PmHEl1KwLKE</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=djObbmK4QCE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=djObbmK4QCE</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=TXQR1PFGnYQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TXQR1PFGnYQ</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=bGwKQPsk4W4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=bGwKQPsk4W4</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=tQBy3RZtYWc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tQBy3RZtYWc</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=T1nE9gaLzdU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T1nE9gaLzdU</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=aJPmEhqfkNQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=aJPmEhqfkNQ</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=l4a1z6FA5Tw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=l4a1z6FA5Tw</a></li></ul>
             </div>
 
             
@@ -331,7 +400,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -449,6 +518,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

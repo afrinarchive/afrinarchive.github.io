@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Qila, Qîlê, قيله</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Mihemed Xelîl Sîdo Mîmî Axa</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -201,27 +223,66 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Qîlê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> According to the Goranî dictionary, &quot;Qîl&quot; means the udder of an animal, or the tusk of an elephant, camel, or dog. The name in local Kurdish means: the bright one. Some sources state it is a Syriac-Greek name meaning the house of the monk.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 150 years ago</p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Newala Xeltan</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qîlê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Qîlê, قيلة</strong> /547n – 5km - 270m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qîlê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qela.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qela.htm</a></p>
+<p>The following details appear in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p>Qîlê / 547 inhabitants - 5km - 270m /</p>
+<p>According to the <span class="internal-link">Goranî</span> dictionary, &quot;Qîl&quot; means the udder of an animal, or the tusk of an elephant, camel, or dog. The name in local Kurdish means: the bright one. It has also appeared in some sources as a Syriac-Greek name meaning the house of the monk.</p>
+<p>It is a small village situated on a site of low elevation, which represents an archaeological site. It is one of the villages that flourished after the Agrarian Reform, and it is located on the western bank of the <span class="internal-link">Xeltan</span> valley.</p>
+<p>The following details appear in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Qîlê is a village in <span class="internal-link">Çiyayê Kurmênc</span> that follows the <span class="internal-link">Cindirês</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village located on the northeastern edge of the undulating Cindirês plain, which possesses fertile alluvial soil. It lies 3km east of the town of Cindirês.</p>
+<p>The village is bordered to the north by a waterway and a fertile plain planted with olive trees and the village of <span class="internal-link">Komuş Burc</span>. To the south, it is bordered by a fertile plain planted with olive trees, the <span class="internal-link">Riya Efrîn-Cindirês</span> (Efrîn-Cindirês road), and the village of <span class="internal-link">Hemîlk</span>. To the west, there is a wide and agriculturally fertile plain planted with olive trees and the villages of <span class="internal-link">Zindikan</span> and <span class="internal-link">Yalanqoz</span>. To the east, there is a wide and agriculturally fertile plain planted with olive trees and the village of <span class="internal-link">Qurbê</span>.</p>
+<p>The number of houses reaches approximately 20, and the village is about 150 years old. The origin of this village goes back to the family of <span class="internal-link">Mihemed Xelîl Sîdo Mîmî Axa</span>, and they are the owners of the village. Its modern houses are made of cement and stone. An electricity network is available, as well as a paved road up to the center of the village and from there to several neighboring villages.</p>
+<p>The residents work in the cultivation of cereals, olives, and legumes through rain fed farming, and irrigation from artesian wells for the cultivation of summer vegetables, alongside the raising of sheep and goats. The village gets its drinking water from artesian wells drilled next to the homes.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Êbo</span></p>
+<p>Preparation and execution:</p>
+<p>Manager of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Ql ، قيلة /547ن  5كم - 270م/:</p>
 <ul>
-<li>According to the &#x27;قاموس كوراني&#x27; (<span class="internal-link">Kurdish Dictionary</span>), &quot;قيل&quot; Qîl means animal teat, or elephant, camel or dog tusk. The name in local Kurdish means: the protruding. It also appeared in some sources as a Syriac-Greek name meaning monk&#x27;s house.</li>
+<li>جاء في /قاموس كوراني/، بأن &quot;قيل&quot; Ql تعني ضرع الحيوان، أو ناب الفيل أو</li>
 </ul>
+<p>الجمل أو الكلب. والاسم في الكردية المحلية بمعنى: الناصع. كما وردت في بعض المصادر بأنه اسم سرياني- يوناني وتعني بيت الراهب.</p>
 <ul>
-<li>A small village located on a slightly elevated site expressing an archaeological location. It is among the villages that flourished after agricultural reform, and is located on the western bank of خالتان (<span class="internal-link">Khaltan</span>) valley.</li>
+<li>قرية صغيرة تقع على موقع قليل الارتفاع يعبر عن موقع أثري. وهي من القرى</li>
 </ul>
-<p>According to the book: عفرين .... Her River and Green Hills by writer عبدالرحمن محمد from قطمه (Qatma) village</p>
-<p><strong>قيله</strong>: A village in جبل الكرد (<span class="internal-link">Jabal al-Kurd</span>) that follows جندريس (<span class="internal-link">1 - PhD/Villages/Cindirês</span>) district, عفرين (Afrin) region, حلب (<span class="internal-link">Aleppo</span>) governorate.</p>
-<p>It is a small village located at the northeastern edge of the undulating جندريس (<span class="internal-link">1 - PhD/Villages/Cindirês</span>) plain with fertile loamy soil, 3km east of جندريس (<span class="internal-link">1 - PhD/Villages/Cindirês</span>) town. It is bounded to the north by a stream and fertile plain planted with olive trees and كموش برج (<span class="internal-link">Kamush Burj</span>) village, to the south by a fertile plain planted with olive trees and the عفرين - جندريس (<span class="internal-link">Afrin - Cindirês</span>) road and حميلك (<span class="internal-link">Himilek</span>) village, to the west by a wide and fertile agricultural plain planted with olive trees and زندكان (<span class="internal-link">Zindkan</span>) and يلانقوز (<span class="internal-link">Yalanqoz</span>) villages, and to the east by a wide and fertile agricultural plain planted with olive trees and قوربه (<span class="internal-link">1 - PhD/Villages/Qurbê</span>) village. It has about 20 houses and is about 150 years old. The origin of this village goes back to محمد خليل سيدو ميمي (<span class="internal-link">Mohammed Khalil Sido Mimi</span>) agha family, who are the village owners.</p>
-<p>Its modern houses are concrete and stone. It has electricity network and a paved road to the village center and from there to several neighboring villages. The inhabitants work in grain, olive and legume cultivation both rain-fed and irrigated from artesian wells for growing summer vegetables, in addition to raising sheep and goats. The village drinks from artesian wells dug beside the houses.</p>
-<p>Village mayor: محمد ايبو (<span class="internal-link">Mohammed Ibo</span>)</p>
-<p>Prepared and implemented by: <span class="internal-link">Tirej Afrin</span> website director: عبدالرحمن حاجي عثمان (<span class="internal-link">Abdulrahman Haji Othman</span>)</p>
-<p>20/12/2013</p></div></details></div>
+<p>التي ازدهرت بعد الإصلاح الزراعي، وتقع على الضفة الغربية من وادي خالتان. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه قيله : قرية في جبل الكرد تتبع ناحية جنديرس ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في الطرف الشمالي الشرقي لسهل جنديرس المتموج ذي التربة اللحقية الخصبة و تبعد عن بلدة جنديرس 3كم شرقاً ، يحدها شمالاً مسيل وسهل خصب مزروع بأشجار الزيتون وقرية كموش برج ، وجنوباً سهل خصب مزروع بأشجار الزيتون وطريق عفرين جنديرس وقرية حميلك ، وغرباً سهل و اسع وخصب زراعياً مزروع بأشجار الزيتون وقرية زندكان و يلانقوز ، وشرقاً سهل واسع و خصب زراعياً مزروعة بأشجار الزيتون وقرية قوربه ، يبلغ عدد بيوتها حوالي 20بيتاً وعمرها حوالي 150عاماً ، يعود أصل هذه القرية إلى عائلة محمد خليل سيدو ميمي آغا , وهم أصحاب القرية. بيوتها الحديثة إسمنتية حجرية , تتوفر فيها شبكة للكهرباء وطريق مزفت حتى وسط القرية ومنه إلى عدة قرى مجاورة , يعمل السكان بزراعة الحبوب والزيتون والبقول بعلاً ورياً من الآبار الارتوازية لزراعة الخضراوات الصيفية إلى جانب تربية الأغنام والماعز , تشرب القرية من الآبار الارتوازية المحفورة بجانب المنازل.</p>
+<p>مختار القرية :  محمد ايبو</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -239,7 +300,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qela.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qela.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qela.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20qela.htm</a></li></ul>
             </div>
 
             
@@ -249,7 +310,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -367,6 +428,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

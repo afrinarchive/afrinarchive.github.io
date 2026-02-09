@@ -140,6 +140,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -164,6 +185,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Bilbilê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Ras Al-Ahmar, Qizilbash, Qizilbaşa, الرأس الأحمر (AR translation), قزلباش, قزل باشه</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Êmer</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-bilbil-">
@@ -190,27 +212,75 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Qizilbaşa</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The name means &quot;The Red Headed One&quot; (qizil + baş). Historically, it was a metonym for the soldiers of Shah Ismail Safavi in the late 15th century, whom the Turks called this due to their red headgear. Locally, the name was given to one of the village&#x27;s early residents who was cruel and rude, so the locals nicknamed him &quot;Qizilbaşa&quot; as a metonym for those traits.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 125 years ago (Late 19th century)</p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qizilbaşa</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City (عفرين) / Geographical Study:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Qizilbaşa</span> (قزلباش), <span class="internal-link">Qizilbash</span> (قزلباش), <span class="internal-link">Al-Ras Al-Ahmar</span> (الرأس الأحمر)</strong> /859N - 347H - 19km - 620m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qizilbaşa</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20xzal%20bash.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20xzal%20bash.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc (Efrîn): A Geographical Study: Qizilbaşa <span class="internal-link">Qizilbaş</span> The Red Head / 859 inhabitants - 347 hectares - 19 km - 620 m altitude /:</p>
+<p>Qizilbaş: Meaning &quot;The Red Headed One&quot; (qizil + baş), a metonym for the soldiers of <span class="internal-link">Şah Ismaîl</span> the Safavid in the late fifteenth century. The Turks used to apply this name to <span class="internal-link">Shiite</span> Persians in general, describing them as cruel and atheistic. There is a story behind this naming: one of the early residents of the village was cruel and rude, so the locals gave him the nickname &quot;Qizilbaş&quot; as a metonym for those traits. The Arabized name is a literal translation of the popular name.</p>
+<p>It is a small village located on the southwestern edge of the surface of a high plateau. Its houses are spread over three small adjacent hills.</p>
+<p>It is stated in the book Efrîn... Her River and Her Green Hills:</p>
+<p>Qizilbaşa: A village in <span class="internal-link">Çiyayê Kurmênc</span> following the district of <span class="internal-link">Bulbul</span>, in the <span class="internal-link">Efrîn</span> region of the Heleb governorate. It is a small village located north of the middle section of the mentioned mountain, on the southwestern edge of the surface of a limestone plateau covered with clay soil. The Efrîn river passes to the east of it at a distance of 50 km. It is 19 km away from the town of Bulbul towards the southeast. Its houses are spread over three small adjacent hills.</p>
+<p>It is bordered to the north by a high mountain range planted with forest trees and the village of <span class="internal-link">Şêx Xoroz</span>; to the south by a deep flood valley, a high mountain range planted with olive trees, and the village of <span class="internal-link">Naza Uşaxî</span>; to the west by a slope and a flood valley, at a distance of 500 m, is the village of <span class="internal-link">Bêlankê</span>; and to the east by a slope, several watercourses, and the village of <span class="internal-link">Qarqîne</span> (or <span class="internal-link">El-Qara</span>).</p>
+<p>The number of its houses is about 45, and its age is approximately 125 years. It is a modern village. Its old houses are made of stone and mud with wooden roofs, while the modern ones are cement and have spread to the south and north. An electricity network and a modern primary school are available. The village drinks water from a well belonging to the state or from cisterns that collect rainwater in winter.</p>
+<p>Its residents work in rain-fed agriculture on an area of 347 hectares, cultivating olives, vines, and fruit trees, alongside raising sheep and goats. The road from the village to the town of Bulbul is paved up to the center of the village. Its lands are mountainous and sloping on three sides: the western, southern, and eastern. There is also a farm (mezre) on the western side consisting of approximately ten houses belonging to the mentioned village.</p>
+<p>Among the families present in the village: The <span class="internal-link">Êmer</span> family.</p>
+<p>It is mentioned that the writer and researcher Professor <span class="internal-link">Heyder Omer</span>, who resides in Germany, is from the people of this village.</p>
+<p>Village Mukhtar: <span class="internal-link">Ehmed Reşîd Omer</span>.</p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">Qizil bash</span> (قزل باش): means &quot;those with red heads,&quot; referring to the soldiers of <span class="internal-link">Shah Ismail Al-Safawi</span> (الشاه إسماعيل الصفوي) in the late fifteenth century. The Turks used to call this name to all Shiite Persians, describing them as harsh and atheistic. This naming has a story: one of the village&#x27;s first inhabitants was harsh and cruel, so the locals gave him the title &quot;<span class="internal-link">Qizilbash</span>&quot; (قزلباش) as a reference to those qualities. The Arabic name is a literal translation of the popular name.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A small village located on the southwestern edge of the surface of an elevated plateau. Its houses are spread over three small adjacent hills.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها ورواطيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Qizilbash</span> (قزلباش)</strong>: A village in <span class="internal-link">Kurdistan Mountain</span> (جبل الكرد) that belongs to <span class="internal-link">Bulbul District</span> (ناحية بلبل), Afrin City region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located north of the central section of the mentioned mountain on the southwestern edge of the surface of a calcareous plateau covered with clayey soil. <span class="internal-link">Afrin River</span> (نهر عفرين) passes to the east of it at a distance of 50km. It is 19km southeast of <span class="internal-link">Bulbul Town</span> (بلدة بلبل). Its houses are spread over three small adjacent hills. To the north it is bordered by a high mountain chain planted with forest trees and <span class="internal-link">Sheikh Khuros Village</span> (قرية شيخ خوروس), to the south by a deep torrent valley and a high mountain chain planted with olive trees and <span class="internal-link">Naza Oshaghi Village</span> (قرية نازا أوشاغي), to the west by a slope and torrent valley 500m away from <span class="internal-link">Bilan Koy Village</span> (قرية بيلان كوي), and to the east by a slope and several water streams and <span class="internal-link">Qarqin Village</span> (قرية قارقين) or <span class="internal-link">Al-Qara</span> (القارة).</p>
-<p>The number of its houses is about 45 houses, age about 125 years. It is a village of recent era. Its old houses are stone-clay with wooden roofs and the modern ones are concrete stone that spread south and north. It has an electricity network and a modern elementary school. The village drinks from a state well or from cisterns that collect rainwater in winter. Its inhabitants work in rainfed agriculture on an area of 347 hectares of olives, vines, and fruit trees in addition to sheep and goat raising. The road from it to <span class="internal-link">Bulbul Town</span> (بلدة بلبل) is paved up to the village center. Its lands are mountainous and sloped from three directions: western, southern, and eastern. There is also a farm consisting of about ten houses on the western side belonging to the mentioned village.</p>
-<p>Among the families present in the village: <span class="internal-link">Al Amir</span> (آل ايمر).</p>
-<p>It is mentioned that the writer and researcher <span class="internal-link">Professor Haider Omar</span> (الأستاذ حيدر عمر) residing in <span class="internal-link">Germany</span> (المانيا) is from the people of this village.</p>
-<p>Village Mayor: <span class="internal-link">Ahmad Rashid Omar</span> (أحمد رشيد عمر)</p></div></details></div>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the Tirej Efrîn website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Qizilbaşa ، قزلباش ، الرأس الأحمر /859ن - 347هـ - 19كم - 620 م/:</p>
+<ul>
+<li>قْزْل باش: بمعنى &quot; ذو الرؤوس الحمراء&quot;، كناية عن جنود الشاه إسماعيل</li>
+</ul>
+<p>الصفوي في أواخر القرن الخامس عشر، وكان الأتراك يطلقون هذا الاسم على عموم الفرس الشيعة، ويوصفونهم بالقسوة والإلحاد. ولهذه التسمية قصة، وهي أن أحد سكان القرية الأوائل كان قاسيا وفظا، فأطلق عليه الأهالي لقب &quot; قزلباش&quot; كناية لصفاته تلك. والاسم المعرب ترجمة حرفية للاسم الشعبي.</p>
+<ul>
+<li>قرية صغيرة تقع على الطرف الجنوبي الغربي من سطح هضبة مرتفعة. تنتشر بيوتها</li>
+</ul>
+<p>على ثلاثة تلال صغيرة متجاورة. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : قزلباش : قرية في جبل الكرد تتبع ناحية بلبل ، منطقة عفرين محافظة حلب .وهي قرية صغيرة تقع شمال القسم الأوسط من الجبل المذكور في الطرف الجنوبي الغربي من سطح هضبة كلسية تغطيها التربة الغضارية ، يمر نهر عفرين إلى الشرق منها بمسافة 50 كم ، تبعد عن بلدة بلبل 19كم باتجاه الجنوب الشرقي ، تنتشر بيوتها على ثلاثة تلال صغيرة متجاورة ، يحدها شمالا سلسلة جبلية عالية مزروعة بالأشجار الحراجية وقرية &quot;شيخ خوروز &quot; ، وجنوباً واد سيلي عميق وسلسلة جبلية عالية مزروعة بأشجار الزيتون وقرية &quot; نازا أوشاغي &quot;، وغربا ًمنحدر وواد سيلي على بعد /500/م قرية &quot; بيلان كوى &quot; ، وشرقاً منحدر وعدة مسيلات مائية وقرية &quot; قارقين &quot; أو &quot; القارة &quot; ، يبلغ عدد بيوتها حوالي 45 بيتاً وعمرها حوالي 125عاما ، وهي قرية حديثة العهد ، بيوتها القديمة حجرية طينية ذات سقوف خشبية و الحديثة أسمنتية انتشرت جنوبا و شمالا ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية حديثة ، تشرب القرية من مياه بئر عائد للدولة أو من الصهاريج التي تجمع فيها مياه الأمطار شتاء ، يعمل سكانها بالزراعة البعلية على مساحة /347/ هـ الزيتون والكرمة و الأشجار المثمرة إلى جانب تربية الأغنام و الماعز ، الطريق منها إلى بلدة بلبل مزفتة حتى وسط القرية ، أراضيها جبلية ومنحدرة من ثلاث جهات الغربية، الجنوبية و الشرقية ، كما يوجد من الجهة الغربية مزرعة مكونة من عشرة بيوت تقريبا عائدة للقرية المذكورة . ومن العائلات الموجودة في القرية : آل ايمر</p>
+<p>-</p>
+<p>يذكر أن الكاتب والباحث الأستاذ حيدر عمر المقيم بالمانيا من آهالي هذه القرية</p>
+<p>مختار القرية : أحمد رشيد عمر</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -225,7 +295,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20xzal%20bash.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20xzal%20bash.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=Wc9LnQI6hfo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Wc9LnQI6hfo</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20xzal%20bash.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20xzal%20bash.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=Wc9LnQI6hfo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Wc9LnQI6hfo</a></li></ul>
             </div>
 
             
@@ -235,7 +305,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -353,6 +423,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

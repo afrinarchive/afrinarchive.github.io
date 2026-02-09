@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Mêremînê, مريمين</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Rûbarî</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ebdo, El-Bekrî, El-Xetîb, Hacî Hesen, Hesen Meryemînî, Qasim, Qedûr, Xelîfe, Yasîn</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -207,28 +230,68 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Mêremînê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Named after the &quot;Meryemîn&quot; tree</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Lêlûn</span>, <span class="internal-link">Çiyayê Seman</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Ancient mosque from the era of Omar bin al-Khattab</span>, <span class="internal-link">Old shrine (mazar)</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Mêremînê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; geographical study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong>Mêremîn, مريمين</strong> /6320n - 680ha - 17km - 580m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Mêremînê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Meremin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Meremin.htm</a></p>
+<p>According to the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p>Meryemîn (Mremn) / 6320 inhabitants - 680 hectares - 17km - 580m /:</p>
+<p>It took its name from the &quot;Meryemîn&quot; tree. Yaqut al-Hamawi says about it: It is one of the famous villages of <span class="internal-link">Heleb</span> (Part 2, p. 326). It used to contain an important fortress.</p>
+<p>It is a large village located in the area of the <span class="internal-link">Rûbarî</span> tribe on <span class="internal-link">Çiyayê Lêlûn</span>. In the village, there are remains of ancient building walls and tombs carved into the rock from the Roman and Byzantine eras. Some beautiful dwellings have started to appear there. Its inhabitants speak Arabic.</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Meryemîn: A village in Çiyayê Lêlûn, administratively following the Central Villages sub-district of the <span class="internal-link">Efrîn</span> area, Heleb governorate. It is a large town located in the far south of a limestone plateau, at the end of the northern part of <span class="internal-link">Çiyayê Seman</span> and <span class="internal-link">Lêlûn</span>. It is covered by limestone and volcanic soil and is about 9km away from the city of Efrîn towards the northeast.</p>
+<p>The habitation of the area is ancient, indicated by the presence of remains of massive limestone building walls and tombs carved into the rock, all dating from the Roman and Byzantine eras.</p>
+<p>It is bordered to the north by the village of <span class="internal-link">Şewarxa Guz</span> and <span class="internal-link">Me&#x27;erset el-Xetîb</span>, to the south by the village of <span class="internal-link">Enab</span> at a distance of 200m, to the west by a wide fertile plain and the villages of <span class="internal-link">Kefêr Mêz</span> and <span class="internal-link">Xalidiye</span>, and to the east by a wide plain and the villages of <span class="internal-link">Şewarxa Erz</span> and <span class="internal-link">Malikiye</span>. Limestone rocks are available there, indicated by its buildings from the ancient Roman and Byzantine eras.</p>
+<p>The number of houses in the village reaches about 600, and its age is about 800 years or more. Its dwellings are made of stone and mud with wooden roofs, while the modern ones are concrete, spreading on both sides of the public road to the city of Efrîn.</p>
+<p>An electricity network is available, as well as water taken from Malikiye, primary and preparatory schools, and currently, a modern police station and a modern municipality house have been built. There is an ancient mosque from the era of <span class="internal-link">Omar bin al-Khattab</span>, other modern mosques, and a new telephone center. It has 3 main streets.</p>
+<p>Its inhabitants work in rain-fed agriculture on an area of 680 hectares, producing grains, olives, vines, and cherries. Its people drink from a network that derives its water from the well located next to the Malikiye farm in the northeast of the village. An asphalted road reaches it from Efrîn and Heleb, passing through its center. There is an old shrine (mazar) in the center of the village.</p>
+<p>Among the families present in the village are: <span class="internal-link">Hacî Hesen</span>, <span class="internal-link">Qedûr</span>, <span class="internal-link">El-Bekrî</span>, <span class="internal-link">Ebdo</span>, <span class="internal-link">Hesen Meryemînî</span>, <span class="internal-link">El-Xetîb</span>, <span class="internal-link">Yasîn</span>, <span class="internal-link">Xelîfe</span>, and <span class="internal-link">Qasim</span>. Among the holders of higher degrees in the village is Dureid El-Xetîb (PhD in Economics), and there are many holders of university degrees. The Mukhtar of the village is Zekerya El-Bekrî.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and Execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Mremn ، مريمين /6320ن - 680هـ - 17كم - 580م/:</p>
 <ul>
-<li>It took its name from the &quot;al-Marimeen&quot; tree, and <span class="internal-link">Yaqut al-Hamawi</span> (ياقوت الحموي) says about it: that it is one of the famous villages of <span class="internal-link">Aleppo</span> (حلب) /Part 2, p.326/. There was an important fortress in it.</li>
-<li>A large village located in the <span class="internal-link">Roubarai tribe</span> (عشيرة روباري) area on <span class="internal-link">Mount Lilon</span> (جبل ليلون). The village contains remains of archaeological building walls and tombs carved in rock from the Roman and Byzantine periods. Some beautiful houses began to appear in it. Its inhabitants speak Arabic.</li>
+<li>أخذت اسمها من شجرة &quot;المريمين&quot;، ويقول عنها ياقوت الحموي: أنها من قرى حلب</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin.... Its River and Green Hills</span> (عفرين .... نهرها وروابيها الخضراء) by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatmah village</span> (قرية قطمه)</p>
-<p><strong>Marimeen</strong> (مريمين): A village in <span class="internal-link">Mount Lilon</span> (جبل ليلون), belonging to the <span class="internal-link">central villages district</span> (ناحية قرى مركز) and Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large town located in the far south of <span class="internal-link">Kilsia plateau</span> (هضبة كلسية), at the end of the northern part of <span class="internal-link">Mount Samaan and Lilon</span> (جبل سمعان وليلون), covered by limestone and volcanic soil. It is about 9km from Afrin City (مدينة عفرين) in the northeastern direction. The settlement of the area is ancient, evidenced by the remains of building walls made of massive limestone blocks and tombs carved in rock, all from the Roman and Byzantine periods.</p>
-<p>It is bordered to the north by <span class="internal-link">Shwarghat al-Joz village</span> (قرية شوارغة الجوز) and <span class="internal-link">Ma&#x27;rasat al-Khatib</span> (معرسة الخطيب). To the south by <span class="internal-link">Anab village</span> (قرية عناب) at a distance of 200m. To the west by a wide fertile plain and <span class="internal-link">Kafr Mayz village</span> (قرية كفر ميز) and <span class="internal-link">al-Khalidiya</span> (الخالدية). To the east by a wide plain and <span class="internal-link">Shwarghat al-Arz village</span> (قرية شوارغة الأرز) and <span class="internal-link">al-Malikiya</span> (المالكية).</p>
-<p>Limestone stones are available indicating its construction from the ancient Roman and Byzantine period. The number of village houses is approximately 600 houses and its age is approximately 800 years or more. Its dwellings are stone and clay with wooden roofs, and the modern ones are cement buildings spreading on both sides of the public road to Afrin City (مدينة عفرين). Electricity network and water taken from <span class="internal-link">al-Malikiya</span> (المالكية) are available, as well as elementary and preparatory schools. Recently a police station, modern municipal building, an old mosque from the time of <span class="internal-link">Omar ibn al-Khattab</span> (عمر بن الخطاب) and other modern mosques, and a new telephone center were built. It has 3 main streets.</p>
-<p>Its inhabitants work in rainfed agriculture on an area of 680 hectares - grains, olives, grapes and cherries. Its people drink from a network that gets its water from wells located near <span class="internal-link">al-Malikiya farm</span> (مزرعة المالكية) northeast of the village. A paved road from Afrin (عفرين) and <span class="internal-link">Aleppo</span> (حلب) passes through its center. It has an old shrine in the village center.</p>
-<p>Among the families in the village: <span class="internal-link">Al Haji Hassan</span> (آل حاجي حسن), <span class="internal-link">Al Qadour</span> (آل قدور), <span class="internal-link">Al Bakri</span> (آل البكري), <span class="internal-link">Al Abdo</span> (آل عبدو), <span class="internal-link">Al Hassan Marimini</span> (آل حسن مريميني), <span class="internal-link">Al Khatib</span> (آل الخطيب), <span class="internal-link">Al Yassin</span> (آل ياسين), <span class="internal-link">Al Khalifa</span> (آل خليفة), <span class="internal-link">Al Qasim</span> (آل قاسم).....</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Dreid al-Khatib</span> (دريد الخطيب) / PhD in Economics, and many university degree holders. Village Mukhtar: <span class="internal-link">Zakaria al-Bakri</span> (زكريا البكري).</p>
-<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin Heritage</span>: <span class="internal-link">Abdulrahman Haji Osman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details></div>
+<p>المشهورة، /قسم2، ص326/. وكان فيها حصن هام.</p>
+<ul>
+<li>قرية كبيرة تقع في منطقة عشيرة روباري على جبل ليلون. في القرية بقايا</li>
+</ul>
+<p>جدران أبنية أثرية، ومقابر منحوتة في الصخر من العهدين الروماني والبيزنطي. وبدأت تظهر فيها بعض المساكن الجميلة. سكانها يتحدثون العربية. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه مريمين : قرية في جبل ليلون , تتبع ناحية قرى مركز ومنطقة عفرين ، محافظة حلب . وهي بلدة كبيرة تقع في أقصى جنوب هضبة كلسية , في نهاية الجزء الشمالي لجبل سمعان وليلون , تغطيها تربة كلسية وبركانية تبعد عن مدينة عفرين حوالي 9كم باتجاه الشمال الشرقي إعمار المنطقة قديم يدل عليه وجود بقايا جدران أبنية من الحجارة الكلسية الضخمة ومقابر منحوتة في الصخر وكلها من العهدين الروماني والبيزنطي يحدها شمالاً قرية شوارغة الجوز ومعرسة الخطيب وجنوباً قرية عناب على بعد200م وغرباً سهل واسع خصب وقرية كفر ميز و الخالدية وشرقاً سهل واسع وقرية شوارغة الأرز والمالكية . تتوفر فيها الأحجار الكلسية تدل عليها أبنيتها من العهد القديم الروماني والبيزنطي . يبلغ عدد بيوت القرية حوالي600 بيتاً وعمرها حوالي800 عام أو أكثر مساكنها حجرية طينية بسقوف خشبية , والحديثة منها إسمنتية تنتشر على جانبي الطريق العام إلى مدينة عفرين . تتوفر فيها شبكة الكهرباء والمياه المأخوذة من المالكية ومدراس ابتدائية وإعدادية وحالياً تم بناء مخفر للشرطة حديثاً ودار للبلدية حديثة وجامع قديم من عهد عمر بن الخطاب وجوامع أخرى حديثة ومركز هاتف جديد وفيها 3 شوارع رئيسية يعمل سكانها بالزراعة البعلية على مساحة680 هـ الحبوب والزيتون والكرامة والكرزيشرب أهاليها من شبكة تستمد مياهها من البئر الواقعة بجوار مزرعة المالكية في شمال شرق القرية ويصل إليها من عفرين وحلب طريق مزفت يمر في وسطها فيها مزار قديم في وسط القرية . ومن العائلاتالموجودة في القرية ( آل حاجي حسن - آل قدور - آل البكري - آل عبدو - آل حسن مريميني - آل الخطيب - آل ياسين - آل خليفة - آل قاسم ..... ) ومن حملة الشهادات العليا في القرية دريد الخطيب / دكتوراه في الاقتصاد ،</p>
+<p>والعديد من حملة الشهادات الجامعية ، مختار القرية زكريا البكري .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -246,7 +309,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Meremin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Meremin.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=u4VQLrx-v88" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=u4VQLrx-v88</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=RTgSpOQNRRM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=RTgSpOQNRRM</a><br><a href="https://www.youtube.com/watch?v=re8_URpBy-k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=re8_URpBy-k</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Meremin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Meremin.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=u4VQLrx-v88" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=u4VQLrx-v88</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=RTgSpOQNRRM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=RTgSpOQNRRM</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=re8_URpBy-k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=re8_URpBy-k</a></li></ul>
             </div>
 
             
@@ -256,7 +319,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -374,6 +437,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

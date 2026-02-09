@@ -201,6 +201,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -226,7 +247,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şiyê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Sa&#x27;ul, Ceqalo, Jiqallali Foqani, Xelê, Xelê، جقلا فوقاني، السهلية. تل الثعالب, Çaqalo, Çeqela, Çeqelê Jorin, Çeqelê Me&#x27;mikê, السعول, سعولجك, شيخ جقاللي, چقللي فوقاني, جقالو, جقاليه جورن</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Milli, Reşwan, Çeqela</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekir, Fîlê, Huseyn, Mistefa</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekir, Fîlê, Huseyn, Me&#x27;mo, Mistefa, Xoce</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--iy-">
@@ -282,19 +303,69 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Çeqelê Jorin</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">Çeqelê Me&#x27;mikê</span> - <span class="internal-link">Gundî Xelê</span> - <span class="internal-link">1 - PhD/Villages/Çeqelê Jorin</span> (سعولجك), <span class="internal-link">Al-Sa&#x27;ul</span> (السعول)</strong> /1039n - 310h - 9km - 540m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Çeqelê Jorin</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20ceqele%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20ceqele%20jorin.htm</a></p>
+<p><span class="internal-link">Ceqel Me&#x27;mik</span> <span class="internal-link">Gundê Xelo</span> <span class="internal-link">Ceqelê Jorîn</span></p>
+<p>According to the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>, the village is located 9km from the center. It has 1039 inhabitants, covers an area of 310 hectares, and sits at an altitude of 540m.</p>
+<p>The first two names, <span class="internal-link">Me&#x27;mik</span> and <span class="internal-link">Xelo</span>, belong to people who inhabited the village in ancient times. The residents of the villages of <span class="internal-link">Ceqellî Westa</span> and <span class="internal-link">Ceqellî Tehtanî</span> originate from this village. It is also the highest in location relative to the two aforementioned villages.</p>
+<p>It is a medium sized village located on the western slope of a limestone height. In the area, there are remains of carved stones dating back to the Roman era. There is an old water well that irrigates the village.</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme, <span class="internal-link">Ceqellî Jorîn</span> is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Şêx El Hedîd</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate.</p>
+<p>It is a small village located on the western slope of the mentioned mountain, and on a limestone height penetrated by a valley from the north to the west. It is bordered to the north by a high mountain chain planted with forest trees and olives, the TV broadcasting station, and the village of <span class="internal-link">Me&#x27;mel Uşaxî</span>. To the south lies the village of <span class="internal-link">Şêx Ceqanlî</span>. To the west lie a valley, a mountain height, and the village of <span class="internal-link">Ceqanlî Tehtanî</span> /Valley of Foxes/. To the east is a very high mountain chain and the village of <span class="internal-link">Hec Bîlal</span>.</p>
+<p>A paved road is available that passes through the center to the town of Şêx El Hedîd and neighboring villages. The number of houses is 35, and the age of the village is approximately 250 years according to the accounts of the elderly in the village. As for its dwellings, they are of mud and stone with flat wooden roofs, while the modern ones are cement and spread around the public road.</p>
+<p>The village drinks from rainwater collected in cisterns dug next to the houses. Its inhabitants work in rain fed agriculture (olives, walnuts, vines) alongside raising livestock. Its lands are mountainous and rugged, not very suitable for agriculture. An electricity network and telephone service have recently become available.</p>
+<p>Among the families present in the village are: the <span class="internal-link">Xoce</span> family and the <span class="internal-link">Me&#x27;mo</span> family.</p>
+<p>The village mukhtar is <span class="internal-link">Cuma Betal Mihemed</span>.</p>
+<p>Sources:</p>
 <ul>
-<li>The first two names &quot;<span class="internal-link">Me&#x27;mik</span>&quot; (معمك) and &quot;<span class="internal-link">Xelo</span>&quot; (خلو) are for people who lived there in ancient times. The inhabitants of <span class="internal-link">Jiqallali Wustani</span> and <span class="internal-link">Tahtani</span> villages belong to this village. It is also the highest in location relative to the two previous villages.</li>
-<li>A medium-sized village located on the western slope of a calcareous elevation. In the area there are remnants of carved stones dating back to the Roman era. There is an old water well that serves the village.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: Afrin.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from Qatma village:</p>
-<p><strong><span class="internal-link">Jiqallali Foqani</span></strong> (جقلللي فوقاني): A village in <span class="internal-link">Mount Kurdistan</span> (جبل الكرد), belonging to <span class="internal-link">Sheikh al-Hadid</span> subdistrict (ناحية شيخ الحديد), Afrin region (منطقة عفرين), <span class="internal-link">Aleppo</span> governorate (محافظة حلب).</p>
-<p>It is a small village located on the western slope of the mentioned mountain, on a calcareous elevation intersected by a valley from north to west. It is bordered to the north by a high mountain chain planted with forest trees and olives and a television broadcasting station and <span class="internal-link">Ma&#x27;mal Oshaghi</span> village, to the south by <span class="internal-link">Sheikh Jiqanli</span> village, to the west by a valley and mountain elevation and <span class="internal-link">Jiqanli Tahtani</span> village (<span class="internal-link">Wadi al-Tha&#x27;alib</span>) (وادي الثعالب), and to the east by a very high mountain chain and <span class="internal-link">Haj Bilal</span> village. It has a paved road passing through its center to <span class="internal-link">Sheikh al-Hadid</span> town and neighboring villages. The number of houses is 35 houses and the village&#x27;s age is around 250 years according to elderly residents&#x27; accounts. Its dwellings are stone and clay with flat wooden roofs, while the modern ones are cement scattered around the main road. The village drinks from rainwater collected in cisterns dug near houses. Its inhabitants work in rain-fed agriculture (olives, walnuts, vines) alongside livestock herding. Its lands are mountainous and rough, not very suitable for agriculture. It has electricity and telephone networks recently installed.</p>
-<p>Among the families present in the village: <span class="internal-link">Al Khuja</span> (آل خوجه) - <span class="internal-link">Al Ma&#x27;mu</span> (آل معمو).</p>
-<p>Village mayor: <span class="internal-link">Juma Battal Mohammed</span> (جمعة بطال محمد)</p>
-<p>Prepared and implemented by: Director of <span class="internal-link">Tirrej Afrin</span> website: Abdul Rahman Haji Othman (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Çeqelê Jêrin and Çeqelê Jorin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=lsXnePr7HtQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=lsXnePr7HtQ</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<p>Preparation and execution:</p>
+<ul>
+<li>Manager of Tirej Afrin website: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : eqel Me&#x27;mik - Gund Xel - eqel Jorin ، سعولجك، السعول /1039ن - 310هـ - 9كم</p>
+<ul>
+<li>540م/:</li>
+</ul>
+<ul>
+<li>الاسمين الأولين &quot; مَعمك Me&#x27;mik و خَلو Xelo&quot; هما لأشخاص سكنوها قديما.</li>
+</ul>
+<p>وينتمي سكان قريتي چقللي وسطى وتحتاني إلى هذه القرية. كما أنها الأعلى موقعاً نسبة إلى القريتين السابقتين.</p>
+<ul>
+<li>قرية متوسطة الحجم تقع على السفح الغربي لمرتفع كلسي. في المنطقة بقايا</li>
+</ul>
+<p>أحجار منحوتة تعود إلى العهد الروماني. وتوجد فيها بئر ماء قديم تروي القرية. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه جقللي فوقاني : قرية في جبل الكرد , تتبع ناحية شيخ الحديد, منطقة عفرين , محافظة حلب . وهي قرية صغيرة تقع على السفح الغربي للجبل المذكور, وعلى مرتفع كلسي يخترقها وادي من الشمال إلى الغرب, يحدها شمالاً سلسلة جبلية عالية مزروعة بأشجار حراجية والزيتون ومحطة البث التلفزيوني وقرية معمل أوشاغي , وجنوباً قرية شيخ جقانلي , وغرباً واد ومرتفع جبلي وقرية جقانلي تحتاني /وادي الثعالب/ , وشرقاً سلسلة جبلية عالية جداً وقرية حاج بلال . تتوفر فيها طريق مزفت يمر في وسطها إلى بلدة شيخ الحديد والقرى المجاورة ، وعدد بيوتها 35بيتاً وعمر القرية حوالي 250عاماً حسب رواية المسنين في القرية أما مساكنها حجرية طينية ذات سقوف خشبية مستوية والحديثة منها إسمنتية منتشرة حول الطريق العام . تشرب القرية من مياه الأمطار التي تجمع في صهاريج محفورة بجوار البيوت. ويعمل سكانها بالزراعة البعلية (الزيتون, الجوز, الكرمة) إلى جانب تربية المواشي . أراضيها جبلية وعرة لا تصلح للزراعة كثيراً وتتوفر فيها شبكة كهرباء والهاتف حديثاً ومن العائلات الموجودة في القرية : آل خوجه</p>
+<ul>
+<li>آل معمو ......</li>
+</ul>
+<p>مختار القرية : جمعة بطال محمد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Çeqelê Jêrin and Çeqelê Jorin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=lsXnePr7HtQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=lsXnePr7HtQ</a></p>
 <p>The village of <span class="internal-link">Çeqela</span>, located in the <span class="internal-link">Efrîn</span> region (specifically <span class="internal-link">Çiyayê Kurmênc</span>), is a historically significant settlement comprising three distinct sections: <span class="internal-link">Çeqela Jorîn</span>, <span class="internal-link">Çeqela Jêr</span>, and a third section implied by the &quot;three Çeqelas&quot; reference. The village derives its name from the Çeqela tribe, which serves as the primary kinship group in the area. According to local oral history, the Çeqela are a branch of the <span class="internal-link">Milli</span> tribal confederation, specifically linked to the <span class="internal-link">Reşwan</span> branch, who migrated from <span class="internal-link">Bakurê Kurdistanê</span> and the <span class="internal-link">çiyayê Reşwan</span> region.</p>
 <p>The founding of the current settlement dates back approximately 300 years. The village origin story centers on two brothers, <span class="internal-link">Mamoste Xelîl Bekir</span> and <span class="internal-link">Osmanê Xelîl Bekir</span>, who migrated from <span class="internal-link">Amed</span> with a massive flock of 10,000 sheep. Arriving in a rugged, waterless terrain, their discovery of water was miraculous; a goat (k&#x27;erik) returned to the herd with a wet mouth, leading the shepherds to a hidden spring. Mamoste Xelîl Bekir sacrificed the goat as an offering and dug a well at the spot. This well, known as <span class="internal-link">Bîra Xelîl Bekir</span>, became the nucleus of the village. The residents note that an older well once existed but was sealed after an old woman fell into it.</p>
 <p>The village has a deep connection to the geopolitical history of the Syria-Turkey border. Elders recount the era when <span class="internal-link">Îngilîz</span> and <span class="internal-link">Fransa</span> forces drew the borders (sînor), effectively separating the community from their kin in Bakurê Kurdistanê, where another village named Çeqela still exists near <span class="internal-link">Qerexan</span>. Residents describe the hardship under the French Mandate, including forced labor (şixre) and the requisitioning of grain. This era also saw resistance from the <span class="internal-link">Mirûd</span>, a group of Kurds who took up arms against the French forces in the village.</p>
@@ -354,7 +425,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20ceqele%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20ceqele%20jorin.htm</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=SRGPgc-sw2Q" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SRGPgc-sw2Q</a><br><a href="https://www.youtube.com/watch?v=IRZV9741_6Q" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=IRZV9741_6Q</a><br><a href="https://www.youtube.com/watch?v=lsXnePr7HtQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lsXnePr7HtQ</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20ceqele%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20ceqele%20jorin.htm</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=SRGPgc-sw2Q" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SRGPgc-sw2Q</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=IRZV9741_6Q" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=IRZV9741_6Q</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=lsXnePr7HtQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lsXnePr7HtQ</a></li></ul>
             </div>
 
             
@@ -364,7 +435,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -482,6 +553,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

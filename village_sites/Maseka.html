@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,7 +205,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Maseka, Masika, Masikan, Maskanli, Mûsako, Mûsakê, ماسكانلي, ماسيكان, موساكو</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekir Ce&#x27;don, Bildirêjê, Dirdê, Ekaşî Qapê, Elî Qere, Hecî Şiketko, Hewîdî, Kenîn, Mala Bekir Cadan, Mala Bildirêjê, Mala Durdu, Mala Ecko şeqe pî, Mala Elî Qere, Mala Hecî Şikeftka, Mala Hevidî, Mala Kenîn, Mala Mistik Xedê, Mala Misî Yûsiv, Mala Şêxê Bilkê, Mistê Xedê, Mîso Yisiv, Xadînan, Şêxî Bilkê</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Maseka</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekir Ce&#x27;don, Bildirêjê, Cabro, Dirdê, Ekaşî Qapê, Elî Qere, Hecî Şiketko, Hewîdî, Kenîn, Mala Bekir Cadan, Mala Bildirêjê, Mala Durdu, Mala Ecko şeqe pî, Mala Elî Qere, Mala Hecî Şikeftka, Mala Hevidî, Mala Kenîn, Mala Mistik Xedê, Mala Misî Yûsiv, Mala Şêxê Bilkê, Mistê Xedê, Mîso Yisiv, Mûsa, Qabe, Qere, Xadînan, Şêxî Bilkê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -227,22 +249,62 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Maseka</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin / Geographic Study:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Maseka</span> (ماسكانلي), <span class="internal-link">Masikan</span> (ماسيكان)</strong> /2068N - 166H - 2km - 620m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Maseka</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Maseka</span>, <span class="internal-link">Masekanlî</span>, <span class="internal-link">Masîkan</span> / 2068 inhabitants, 166 hectares, 2km, 620m /:</p>
+<p>Maseka: The name of a Kurdish tribe found in <span class="internal-link">Botan</span> (Lerx, p. 48). <span class="internal-link">Şerefxan</span> mentions it in the form of &quot;Masik&quot;.</p>
+<p>It is a medium sized village located on the southwestern slope of <span class="internal-link">Bilalîko</span> mountain, bordered to the west by the <span class="internal-link">Xeta Trêna Heleb-Meydan Ekbez</span> (Heleb-Meydan Ekbez railway line). It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Masekanlî: A village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Reco</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a large village located on the southeastern slope of a limestone plateau covered with oak forests, and it overlooks agricultural land with red soil to the east and south. It is 2 km away from the town of Reco towards the northwest.</p>
+<p>It is bordered to the north by a mountain range planted with oak trees, several watercourses, the archaeological bridge (<span class="internal-link">Heşrek</span>), and the village of <span class="internal-link">Ferferîk</span>. To the south, it is bordered by a fertile agricultural plain and the town of Reco directly. To the east, it is bordered by a valley, a mountain range, the village cemetery, and the village of <span class="internal-link">Mamalî</span>. To the west, it is bordered by a high and rugged mountain range, the <span class="internal-link">Riya Reco-Meydan Ekbez</span> (Reco-Meydan Ekbez road), the <span class="internal-link">Xeta Trêna Reco-Meydan Ekbez</span> (Reco-Meydan Ekbez railway line) heading from Reco to <span class="internal-link">Meydan Ekbez</span>, the first train tunnel, the very high <span class="internal-link">Ekaş</span> mountain, the village of <span class="internal-link">Surk</span>, and <span class="internal-link">Xerab Mecîd</span>.</p>
+<p>The number of its houses reaches about 100 houses, and the age of the village, according to the account of one of the elderly residents of the village, is about 500 years, making it one of the old villages in the region. Its old dwellings are made of stone and mud with flat wooden roofs, while the modern concrete ones have spread in its north on the adjacent slopes and in its south. A electricity network is available there, and the village drinks from a water network connected to the Reco water network. There is a telephone, a mosque, and the road between it and the town of Reco is paved, in addition to several streets in the village. It belongs to the Reco municipality.</p>
+<p>The residents work in rain fed agriculture (olives, vines) on an area amounting to 166 hectares, and they raise sheep and goats. The village of Masekanlî is considered one of the beautiful villages due to its location and its view over the town of Reco and Ekaş mountain, which is surrounded on all sides by oak trees and forests.</p>
+<p>Among the most important families of the village are (<span class="internal-link">Mûsa</span>, <span class="internal-link">Qabe</span>, <span class="internal-link">Qere</span>, <span class="internal-link">Cabro</span>) and many holders of university degrees. Among the well known cultural figures in the village and at the level of Syria are the writer <span class="internal-link">Cadan Cadan</span> and the artist and buzuq player <span class="internal-link">Mihemed Belko</span>.</p>
+<p>Village Mukhtar: <span class="internal-link">Mistefa Yûsif Hesen</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">1 - PhD/Villages/Maseka</span> (ماسكا): Name of a Kurdish tribe found in <span class="internal-link">Botan</span> (بوتان) /<span class="internal-link">Lerkh</span> (ليرخ), p. 48/. <span class="internal-link">Sharafkhan</span> (شرفخان) mentions it as &quot;<span class="internal-link">Mask</span>&quot; (ماسك).</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A medium-sized village located on the southwestern slope of &quot;<span class="internal-link">Bilaliku Mountain</span>&quot; (جبل بلاليكو), bordered to the west by the <span class="internal-link">Aleppo</span> (حلب) - <span class="internal-link">Medan Akbas</span> (ميدان أكبس) railway.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin .... Its Rivers and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Maskanli</span> (ماسكانلي)</strong>: A village in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located on the southeastern slope of a limestone plateau covered with oak forests. It extends eastward and southward over agricultural land with red soil. It is 2km northwest of <span class="internal-link">Rajo Town</span> (بلدة راجو).</p>
-<p>To the north, a mountain chain planted with oak trees and several streams and the archaeological bridge (<span class="internal-link">Hashraq</span> (حشرق)) and <span class="internal-link">Firfirik Village</span> (قرية فرفريك). To the south, an agricultural fertile plain and <span class="internal-link">Rajo Town</span> (بلدة راجو) directly. To the east, a valley and mountain chain and the village cemetery and <span class="internal-link">Mamali Village</span> (قرية مامالي). To the west, a high and rough mountain chain and the road (Rajo (راجو) - <span class="internal-link">Medan Ikbas</span> (ميدان إكبس)) and the railway line from Rajo (راجو) to <span class="internal-link">Medan Ikbas</span> (ميدان إكبس) and the first train tunnel and <span class="internal-link">Akash Mountain</span> (جبل عكاش) very high and <span class="internal-link">Surk Village</span> (قرية سورك) and <span class="internal-link">Kharab Majid</span> (خراب مجيد).</p>
-<p>It has approximately 100 houses and the village age according to one of the elderly village residents is about 500 years. It is one of the old villages in the region. Its old dwellings are stone and clay with flat wooden roofs, and modern cement houses have spread in its north on the adjacent slopes and south. It has an electrical network and the village drinks from a water network connected to <span class="internal-link">Rajo water network</span> (شبكة مياه راجو) and telephone and a mosque. The road between it and <span class="internal-link">Rajo Town</span> (بلدة راجو) is paved in addition to several streets in the village and it belongs to <span class="internal-link">Rajo Municipality</span> (بلدية راجو).</p>
-<p>Residents work in rain-fed agriculture (olives, grapes) over 166 hectares and raise sheep and goats. <span class="internal-link">Maskanli Village</span> (قرية ماسكانلي) is considered one of the beautiful villages due to its location and its views of <span class="internal-link">Rajo Town</span> (بلدة راجو) and <span class="internal-link">Akash Mountain</span> (جبل عكاش) which surround it from all directions with oak and forest trees.</p>
-<p>Among the village&#x27;s most important families: (<span class="internal-link">Musa</span> (موسى) - <span class="internal-link">Qaba</span> (قابه) - <span class="internal-link">Qere</span> (قره) - <span class="internal-link">Jabiru</span> (جابرو)) and many holders of university degrees. Among the known cultural figures in the village and at the <span class="internal-link">Syria</span> (سوريا) level are the writer <span class="internal-link">Ja&#x27;dan Ja&#x27;dan</span> (جعدان جعدان) and the buzuq player <span class="internal-link">Muhammad Bilku</span> (محمد بلكو).</p>
-<p>Village Head: <span class="internal-link">Mustafa Yusuf Hassan</span> (مصطفى يوسف حسن)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Maseka from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=nlhvXgPoZj8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=nlhvXgPoZj8</a></p>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Maseka ، ماسكانلي ، ماسيكان /2068ن - 166هـ - 2كم - 620م/:</p>
+<ul>
+<li>ماسَكا: اسم عشيرة كردية موجود منها في بوتان /ليرخ، ص 48/. ويذكرها شرفخان</li>
+</ul>
+<p>على شكل &quot;ماسك&quot;.</p>
+<ul>
+<li>قرية متوسطة تقع على السفح الجنوبي الغربي لجبل &quot;بلاليكو&quot;، تجاورها غربا</li>
+</ul>
+<p>سكة حديد حلب - ميدان أكبس. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : ماسكانلي : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع على السفح الجنوبي الشرقي لهضبة كلسية مغطاة بحراج السنديان ، و تطل شرقاً و جنوباً على أرض زراعية ذات تربة حمراء ، تبعد عن بلدة راجو 2 كم باتجاه الشمال الغربي ،يحدها شمالاً سلسلة جبلية مزروعة بأشجار السنديان وعدة مسيلات و الجسر الأثري ( حشرك ) و قرية /فرفريك/ ، وجنوباً سهل زراعي خصب و بلدة راجو مباشرة ، وشرقاً وادي و سلسلة جبلية و مقبرة القرية و قرية / مامالي / و غرباً سلسلة جبلية عالية وعرة وطريق ( راجو _ ميدان إكبس ) و خط حديدي المتجه من راجو إلى /ميدان إكبس/ والنفق الأول للقطار و جبل /عكاش/ العالي جداً وقرية /سورك/ ، وخراب مجيد ، يبلغ عدد بيوتها حوالي 100 بيتاً وعمر القرية حسب رواية أحد سكان القرية المعمرين حوالي 500 عاماً وهي من القرية القديمة في المنطقة ، مساكنها القديمة حجرية طينية ذات سقوف خشبية مستوية و الحديثة أسمنتية انتشرت في شمالها على السفوح المجاورة و جنوبها ، تتوفر فيها شبكة كهرباء وتشرب القرية من شبكة مائية متصلة مع شبكة مياه راجو و هاتف و جامع و الطريق بينها وبين بلدة راجو مزفتة بالإضافة إلى عدة شوارع في القرية و هي عائدة إلى بلدية راجو ، يعمل السكان بالزراعة البعلية ( الزيتون ، الكرمة ) على مساحة تبلغ 166 هـ ، ويربون الأغنام والماعز ، تعتبر قرية /ماسكانلي/ من القرى الجميلة بسبب موقعها وإطلالتها على بلدة راجو و جبل /عكاش/ والتي تحيط بها من جميع الجهات أشجار السنديان و الحراجية . من أهم عائلات القرية ( موسى  قابه  قره</p>
+<ul>
+<li>جابرو ) والعديد</li>
+</ul>
+<p>من حملة الشهادات الجامعية ، ومن الوجوه الثقافية المعروفة في القرية وعلى مستوى سوريا الكاتب جعدان جعدان  والفنان عازف البزق محمد بلكو</p>
+<p>مختار القرية : مصطفى يوسف حسن</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Maseka from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=nlhvXgPoZj8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=nlhvXgPoZj8</a></p>
 <p>The village of <span class="internal-link">Maseka</span> is located in the <span class="internal-link">Recû</span> district of the <span class="internal-link">Efrîn</span> region. According to local oral history, the village was established approximately 400 years ago. An elder, <span class="internal-link">Apê Mihemed</span>, recounts that the original inhabitants came from <span class="internal-link">Gewrkan</span> and established their families here. However, the history of the settlement was interrupted roughly 300 years ago when a sickness described as &quot;wêran&quot; caused the population to abandon the site. Eventually, the residents returned to rebuild. Today, the village is home to over 300 families, including lineages such as <span class="internal-link">Mala Ecko şeqe pî</span>, <span class="internal-link">Mala Misî Yûsiv</span>, <span class="internal-link">Mala Mistik Xedê</span>, <span class="internal-link">Mala Elî Qere</span>, <span class="internal-link">Mala Kenîn</span>, <span class="internal-link">Mala Durdu</span>, <span class="internal-link">Mala Bildirêjê</span>, <span class="internal-link">Mala Hecî Şikeftka</span>, <span class="internal-link">Mala Şêxê Bilkê</span>, <span class="internal-link">Mala Hevidî</span>, and <span class="internal-link">Mala Bekir Cadan</span>. While many residents migrated to cities like <span class="internal-link">Reqqa</span>, <span class="internal-link">Heleb</span>, and <span class="internal-link">Şam</span> for work, many returned to their land following the onset of the conflict in <span class="internal-link">Sûriyê</span> to cultivate crops like olives, melons, and grain.</p>
 <p>Maseka is distinguished by several unique landmarks and local beliefs. Residents speak of a large stone with a hole in it known as <span class="internal-link">Kevirê Kuxikê</span> (Stone of the Whooping Cough). Historically, before modern medicine was accessible, villagers believed that passing a sick child through the hole in this stone three times at dawn, without looking back, would cure whooping cough. Adjacent to this stone stands an oak tree called <span class="internal-link">Dara Mirazan</span> (Tree of Wishes), where people tie fabrics to the branches in hopes of having their wishes granted.</p>
 <p>Between Maseka and the neighboring village of <span class="internal-link">Mamola</span> lies a historic well known as <span class="internal-link">Bîra Barcûq</span>. The resident <span class="internal-link">Jwara</span> explains that the name may derive from &quot;Pareçûq,&quot; while others interpret it as &quot;the well that lifts heavy loads.&quot; This area serves as a shared space for both villages, featuring a communal cemetery. Local lore suggests this site was once a city named <span class="internal-link">Barcûq</span> containing mosques and water reservoirs, with roots potentially stretching back to the <span class="internal-link">Mîtanî</span> era. For generations, this well was the primary water source for domestic use and livestock, though it has recently been replaced by private cisterns.</p>
@@ -325,7 +387,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Maseka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Maseka.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=nlhvXgPoZj8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=nlhvXgPoZj8</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=lr2zrquVomo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lr2zrquVomo</a><br><a href="https://www.youtube.com/watch?v=xOenOVyreo8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=xOenOVyreo8</a><br><a href="https://www.youtube.com/watch?v=ZzLlgtowmgk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZzLlgtowmgk</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Maseka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Maseka.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=nlhvXgPoZj8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=nlhvXgPoZj8</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=lr2zrquVomo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lr2zrquVomo</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=xOenOVyreo8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=xOenOVyreo8</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=ZzLlgtowmgk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZzLlgtowmgk</a></li></ul>
             </div>
 
             
@@ -335,7 +397,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -453,6 +515,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

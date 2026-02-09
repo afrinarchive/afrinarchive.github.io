@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -169,7 +190,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şera</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Damah, Dû Mal, Dama, Iki Dam, Ikî Damê, Îkidamê, Îkîdamê, ايكي دام, دامه, ايكي دامي</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Reşwan</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Hecûmera, Malê Bûti, Malê Ce&#x27;fer, Malê Cemîl, Malê Egîdê, Malê Ehmed, Malê Çawîş, Malê Çomî Zînê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ekaş, Hecûmera, Malê Bûti, Malê Ce&#x27;fer, Malê Cemîl, Malê Egîdê, Malê Ehmed, Malê Çawîş, Malê Çomî Zînê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
@@ -212,16 +233,62 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Îkîdamê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
-<p><strong><span class="internal-link">Îkîdam</span></strong> (إيكيدام) (<span class="internal-link">Damah</span> دامه) /729N - 350E - 15km - 540m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Îkîdamê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20eke%20dam.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20eke%20dam.htm</a></p>
+<p>It is stated in the book <span class="internal-link">Çiyayê Kurmênc</span> <span class="internal-link">Efrîn</span> A Geographical Study: <span class="internal-link">Kdam</span>, <span class="internal-link">Îkîdam</span>, <span class="internal-link">Dame</span> / 729 inhabitants - 350 hectares - 15km - 540m altitude:</p>
+<p>It is a Turkish name, meaning &quot;The two stones, or the two columns.&quot; Also, &quot;Dam&quot; in Kurdish means &quot;gloomy and sad&quot; / <span class="internal-link">Koranî</span> dictionary. There is no connection between the meaning of the Arabicized name and the original name. The naming may be connected to acts of worship and asceticism in the Christian religion which used to take place in ancient times on stone columns, or on trees or similar things.</p>
+<p>It is a medium-sized village located about 300m from the Turkish border, and about 5km from the city of <span class="internal-link">Sîrus</span> (<span class="internal-link">Nebî Hûrî</span>).</p>
+<p>It is stated in the book Efrîn... Her River and Her Green Hills: <span class="internal-link">Îkî Dam</span>: A village in Çiyayê Kurmênc following the <span class="internal-link">Şera</span> sub-district, Efrîn region, Heleb governorate (708 inhabitants). It is a small village located in the eastern part of the Çiyayê Kurmênc massif near the Turkish border on the northwestern slope of a limestone plateau furrowed by streams descending towards the valley of the Efrîn river. It is bordered to the north and east at a distance of 300m by the current border with <span class="internal-link">Turkey</span>. It is 15km away from the town of Şera towards the northeast.</p>
+<p>It is bordered to the north by a plain and valley planted with olive trees, the Turkish border, the course of the Efrîn river, and the village of <span class="internal-link">Şiltah</span>. To the south, it is bordered by a limestone mountain chain planted with forest trees, fruit trees, and olives, the village of <span class="internal-link">Yazî Bax</span>, and the Syrian-Turkish border. To the west, there is a wide plain and some valleys furrowed by streams and the village of <span class="internal-link">Dêr Sewan</span>. To the east, there is a mountain chain and the Turkish border.</p>
+<p>The number of its houses is about 30 houses, and its age is about 250 years. Its old houses are of stone and mud with wooden roofs, and the modern ones are of stone and reinforced concrete. An electricity network, a paved road, and a primary school are available in the village. They drink water from artesian wells and cisterns within the houses.</p>
+<p>The residents of the village work in rain-fed agriculture on an area of 350 hectares (olives, vines, grains, legumes) and in irrigated agriculture from artesian wells on a limited area, alongside raising sheep and goats. The village drinks from rainwater in winter and from cisterns dug next to the homes. It contains a modern olive press and an agricultural cooperative. It is connected to the sub-district center by a paved road. Its most important family is the <span class="internal-link">Ekaş</span> family.</p>
+<p>Village Mukhtar: <span class="internal-link">Horîk Omer</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li>A Turkish name meaning &quot;the stones, or the columns&quot;. And &quot;<span class="internal-link">Dam</span>&quot; (Dam): in Kurdish means &quot;sad and mournful&quot; also, /Kurdish dictionary/. No connection to the meaning of the Arabized name with the original name. The naming might be related to worship and asceticism in the Christian religion which used to be performed on stone columns, or on trees or similar things...</li>
-<li>A medium-sized village about 300m from the Turkish border, and about 5km from the city of <span class="internal-link">Serous</span> (<span class="internal-link">Nabi Houri</span> نبي هوري).</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين.... نهرها ورواية الخضراء&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Iki Dam</span></strong> (ايكي دام): A village in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) belonging to <span class="internal-link">Sheran district</span> (ناحية شران), <span class="internal-link">Afrin City region</span> (منطقة عفرين), Aleppo Governorate (محافظة حلب), (708 N).</p>
-<p>It is a small village located in the eastern part of the <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) mass near the Turkish border on the northwestern slope of a limestone plateau cut by streams descending toward the <span class="internal-link">Afrin River</span> (نهر عفرين) valley. The current borders with <span class="internal-link">Turkey</span> (تركيا) are adjacent to it from the north and east at a distance of 300m. It is 15km from the town of <span class="internal-link">Sheran</span> (شران) in the northeast direction. It is bounded to the north by plain and valley planted with olive trees and the Turkish border and the course of the <span class="internal-link">Afrin River</span> (نهر عفرين) and the village of <span class="internal-link">Sheltah</span> (شلتاح). To the south by limestone mountain chain planted with forest and fruit trees and olives and the village of <span class="internal-link">Yazi Bagh</span> (يازي باغ) and the Syrian-Turkish border. To the west by wide plain and some valleys cut by streams and the village of <span class="internal-link">Deir Sawan</span> (دير صوان). To the east by mountain chain and the Turkish border. The number of its houses is about 30 houses and its age is about 250 years. Its old houses are stone-clay with wooden roofs and the modern ones are of stone and reinforced cement. It has an electricity network and a paved road and an elementary school and they drink water from artesian wells and cisterns inside the houses. The village residents work in rainfed agriculture on an area of 350 hectares (olives, grapes, grains, legumes) and irrigated agriculture from artesian wells on a limited area, in addition to raising sheep and goats. The village drinks from rainwater in winter and from cisterns dug next to houses. It has a modern olive press and an agricultural association. It is connected to the district center by a paved road and its most important families is the <span class="internal-link">Akkash family</span> (عائلة عكاش).</p>
-<p>Village mayor: <span class="internal-link">Horik Omar</span> (هوريك عمر)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Îkîdamê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Awl-axfYgro" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Awl-axfYgro</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Director of the Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : kdam ، إيكيدام ، دامه /729ن - 350هـ</p>
+<ul>
+<li>15كم - 540م/:</li>
+</ul>
+<ul>
+<li>اسم تركي، بمعنى &quot;الحجران، أو العمودان&quot;. و &quot;دام&quot; Dam: في الكردية بمعنى</li>
+</ul>
+<p>&quot;كئيب وحزين&quot; أيضاً، /قاموس كوراني/. لاصلة لمعنى الاسم المعرب بالاسم الأصلي. وقد تكون للتسمية صلة بالعبادات والتنسكم في الديانة المسيحية والتي كانت تتم قديما على الأعمدة الحجرية، أو على الأشجار أو ما شابه...</p>
+<ul>
+<li>قرية متوسطة تبعد عن الحدود التركية مسافة نحو 300م، وعن مدينة سيروس (نبي</li>
+</ul>
+<p>هوري) نحو 5كم.. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : ايكي دام : قرية في جبل الكرد تتبع ناحية شران ، منطقة عفرين ، محافظة حلب ، (708 ن) . وهي قرية صغيرة تقع في الجزء الشرقي من كتلة جبل الكرد قرب الحدود التركية على السفح الشمالي الغربي لهضبة كلسية تخددها المسيلات المنحدرة نحو وادي نهر عفرين ، تجاورها من الشمال و الشرق على بعد 300م الحدود الحالية مع تركيا ، تبعد عن بلدة شران 15كم باتجاه الشمال الشرقي ، يحدها شمالا سهل ووادي مزروع بأشجار الزيتون والحدود التركية ومجرى نهر عفرين وقرية شلتاح . وجنوبا سلسلة جبلية كلسية مزروعة بالأشجار الحراجية والأشجار المثمرة والزيتون وقرية يازي باغ والحدود السورية التركية وغربا سهل واسع وبعض الوديان تخدها مسيلات وقرية دير صوان وشرقاً سلسلة جبلية والحدود التركية يبلغ عدد بيوتها حوالي30بيت وعمرها حوالي250عام ، بيوتها القديمة حجرية طينية ذات سقوف خشبية والحديثة من الأحجار والأسمنت المسلح ، تتوفر فيها شبكة الكهرباء وطريق مزفت ومدرسة ابتدائية ويشربون المياه من الآبار الارتوازية والصهاريج ضمن البيوت ، يعمل سكان القرية بالزراعة البعلية على مساحة قدرها350هـ(الزيتون ، الكرمة ، الحبوب ، البقول) وبالزراعة المروية من الآبار الارتوازية على مساحة محدودة ، إلى جانب تربية الأغنام و الماعز ، تشرب القرية من مياه الأمطار شتاءً و من الصهاريج المحفورة بجوار المنازل ، فيها معصرة زيتون حديثة و جمعية فلاحية ، تصلها بمركز الناحية بطريق مزفتة وأهم عوائلها عائلة عكاش .</p>
+<p>مختار القرية : هوريك عمر</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Îkîdamê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Awl-axfYgro" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Awl-axfYgro</a></p>
 <p>The village of <span class="internal-link">Ikîdam</span> (also referred to as <span class="internal-link">Ekîdam</span>) is located in the <span class="internal-link">Şerra</span> (Şerawa) district of <span class="internal-link">Efrîn</span>, situated directly on the border with Turkey, approximately 4 to 5 kilometers from the city of <span class="internal-link">Kilis</span>. The name Ikîdam is Turkish in origin, translating to &quot;Du Mal&quot; (Two Houses), a reference to the settlement&#x27;s humble beginnings when the founder constructed just two homes at the site. Although the Baathist regime attempted to Arabize the name to &quot;Dama,&quot; the locals retain the original designation and its historical meaning.</p>
 <p>The village was founded in the late 19th century by <span class="internal-link">Omer Axa</span>, the son of <span class="internal-link">Welî Axa</span>. The family&#x27;s arrival in the region was a result of conflict and subsequent exile by the Ottoman authorities. Omer Axa&#x27;s brother, <span class="internal-link">Zûr Xelîl Axa</span> (also referred to as <span class="internal-link">Xelîl Axa</span>), was a prominent figure who led a force of fighters against the Ottomans between 1865 and 1885 due to a conflict with the governor of Kilis. Following their exile, the family settled in the area, and Omer Axa established Ikîdam. The lineage of the founders, the <span class="internal-link">Hecûmera</span> family, remains the dominant social force in the village; indeed, all residents are cousins belonging to this family, which is part of the larger <span class="internal-link">Reşwan</span> tribe.</p>
 <p>Historically, Ikîdam was administratively connected to Kilis until the drawing of the borders following the fall of the Ottoman Empire (referenced by elders as the time of the &quot;Fransiza&quot; and the dividing line). This division severed the village&#x27;s connection to their lands and relatives in northern villages like <span class="internal-link">Deli Osman</span> and <span class="internal-link">Erganê</span>, which remained on the Turkish side. The border is now only 500 meters away, and elders like <span class="internal-link">Apê Wrig</span> recall a time when the border was open and residents could travel freely to Kilis for trade and daily life before landmines were planted and strict controls were enforced.</p>
@@ -298,7 +365,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20eke%20dam.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20eke%20dam.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=Awl-axfYgro" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Awl-axfYgro</a><br><a href="https://www.youtube.com/watch?v=Awl-axfYgro" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Awl-axfYgro</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20eke%20dam.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20eke%20dam.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=Awl-axfYgro" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Awl-axfYgro</a></li></ul>
             </div>
 
             
@@ -308,7 +375,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -426,6 +493,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,7 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Kefer Safra, Kefer Sefrê, Kefersefrê, Kefirsefrê, كفر صفره, كفرصفرة</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Elî Şêr, Izîd Xelo, Mem, Qudrêş, Xolû</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Elî Şêr, Hac Ebdo, Hacî, Izîd Xelo, Mem, Mirad, Qudrêş, Xolû</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -223,18 +244,64 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kefersefrê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) Afrin City Geographic Study by Dr. Mohammed Abdo Ali (محمد عبدو علي):</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Kefersefrê</span></strong> (كفرصفرة) /4121N - 1320E - 5km - 400m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kefersefrê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-kefersefre.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-kefersefre.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Kefersefr</span>, <span class="internal-link">Kefersefrê</span> /4121 inhabitants - 1320 AH - 5km - 400m/:</p>
+<p>Father <span class="internal-link">Şelhet</span> says that &quot;Sefra&quot; in Aramaic means: Morning or Sparrow, meaning the village of the Morning or the Sparrow (Reference: <span class="internal-link">El Esedî</span>, Vol 6, p 377). And perhaps it is otherwise.</p>
+<p>It is located on the southern slope of <span class="internal-link">Çiyayê Qaziqli</span>, overlooking the olive fields extending south to the town of <span class="internal-link">Cindirês</span>. A valley divides it into two halves. It is one of the large villages in the Cindirês district. It contains a large Aga family. Its houses are spread on the slopes, and it contains beautiful villas.</p>
+<p>It is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Kefersefrê is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the Cindirês district of the <span class="internal-link">Efrîn</span> region, Heleb governorate.</p>
+<p>It is a large village located at the end of the southern slope of the Çiyayê Kurmênc massif. It is approximately 5km away from the town of Cindirês. To the north and west, it overlooks fertile agricultural lands in the eastern part of the Cindirês plain. Several descending watercourses meet from its north to form <span class="internal-link">Geliyê Nîzam</span> (Valley of Nizam), which penetrates the village.</p>
+<p>It is bordered to the north by mountain heights planted with olive trees and forest trees, and the village of <span class="internal-link">Teteran</span>; to the south, it overlooks a wide, agriculturally fertile plain planted with olive and pomegranate trees, the village of <span class="internal-link">Yalanqoz</span>, and the village of <span class="internal-link">Baflûr</span>; to the west, a fertile agricultural plain and some mountain heights planted with olive and forest trees, the village of <span class="internal-link">Aşkan Xerbî</span>, and <span class="internal-link">Merwanê Jorîn</span>; and to the east, a fertile plain planted with olive trees, the village of <span class="internal-link">Kumuşburc</span>, the village of <span class="internal-link">Rindikan</span>, and <span class="internal-link">Koran</span>.</p>
+<p>The number of its houses is approximately 450, and its age is approximately 600 years. Its old houses are of stone and mud with flat wooden roofs, while the modern ones are cement. It has an electricity network and water from an artesian well located in the south. It has several primary and preparatory schools, a telephone center, and a mosque in the center of the village. A municipality building was also established there recently. Additionally, there are modern olive presses and several luxurious houses located in its center belonging to the <span class="internal-link">Hac Ebdo</span> and <span class="internal-link">Mirad Hac Ebdo</span> families and others.</p>
+<p>Kefersefrê is considered one of the old and large villages in the Efrîn region, Cindirês district. Most of its residents work in the cultivation of olives, legumes, and grains through rain-fed farming, as well as pomegranates and vegetables through irrigation from artesian wells, alongside raising sheep and goats. There are several modern villas at the entrance of the village from the southern side. Furthermore, the road connecting it with the district and the region is paved up to the center of the village.</p>
+<p>Among its most important families (the old residents of the village): the Hac Ebdo family, the <span class="internal-link">Hacî</span> family, and the <span class="internal-link">Mirad</span> family. The first school built in the <span class="internal-link">Cûm</span> district and Cindirês currently was in the village of Kefersefrê, dating back to 1930 AD.</p>
+<p>Among the cultural figures in the village: Mr. <span class="internal-link">Hesen Xelîl</span> \ <span class="internal-link">Temûz Şemalî</span>.</p>
+<p>Among the sons of this village: Judge <span class="internal-link">Ebdulhenan Hac Ebdo</span> and Engineer <span class="internal-link">Nebî Mirad</span>.</p>
+<p>Mukhtar of the village: <span class="internal-link">Nebîh Mirad Mirad</span>.</p>
+<p>Preparation and execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>Father <span class="internal-link">Shalhat</span> (الأب شلحت) says that &quot;<span class="internal-link">Safra</span>&quot; (صفرا) in Aramaic means: morning or sparrows, meaning the village of morning or sparrows /<span class="internal-link">Al-Asadi</span> (الأسدي), Vol. 6, p.377/. Perhaps it was something else!</li>
-<li>It is located on the southern slope of <span class="internal-link">Qazqali Mountain</span> (جبل قازقلي), overlooking south to the olive fields extending to <span class="internal-link">Jindires town</span> (بلدة جندريس). It is divided by a valley into two halves. It is one of the large villages in <span class="internal-link">Jindires District</span> (ناحية جندريس). It contains a large <span class="internal-link">Agha family</span> (عائلة آغوات). Its houses spread on the slopes and it has beautiful villas.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong>Kefer Safra</strong> (كفرصفرة): A village in the Kurdish Mountain (جبل الكرد), belonging to Jindires District (ناحية جندريس), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located at the end of the southern slope of the Kurdish Mountain mass, 5km from Jindires town (بلدة جندريس), north and west. It overlooks the fertile agricultural lands in the eastern part of the <span class="internal-link">Jindires plain</span> (سهل جندريس) where several steep channels from its north converge to form the <span class="internal-link">Nazam valley</span> (وادي نظام) that cuts through it. It is bordered to the north by mountainous highlands planted with olive and forest trees and <span class="internal-link">Tataranlı village</span> (قرية /تارتارانلي/); to the south it overlooks a wide fertile plain planted with olive and pomegranate trees, <span class="internal-link">Yılan Qorê village</span> (قرية /يلان نقورة/), and <span class="internal-link">Bafıllor village</span> (قرية /بافللور/); to the west by a fertile plain and some mountainous highlands planted with olive and forest trees, <span class="internal-link">Ashkan Gharbi village</span> (قرية /اشكان غربي/), and <span class="internal-link">Marwana Foqani</span> (مروانه فوقاني); and to the east by a fertile plain planted with olive trees, <span class="internal-link">Kamoush Barj village</span> (قرية /كموش برج/), <span class="internal-link">Randkan village</span> (قرية/رندكان/), and <span class="internal-link">Koran</span> (كوران). It has about 450 houses and its age is about 600 years. Its old houses are stone and clay with flat wooden roofs, and modern ones are concrete. It has an electricity network and water from an artesian well located in the south. It has several elementary and preparatory schools, a telephone center, and a mosque in the village center. A municipality building was recently established, and it has modern olive mills and several luxurious houses in its center belonging to the <span class="internal-link">Haj Abdo family</span> (عائلة حاج عبدو), <span class="internal-link">Murad Haj Abdo</span> (مراد حاج عبدو), and others. Kefer Safra (كفرصفرة) is considered one of the ancient and large villages in the Afrin Region (منطقة عفرين), Jindires District (ناحية جندريس). Most of its residents work in olive, legume, and rainfed grain cultivation, as well as pomegranates and irrigated vegetables from artesian wells, in addition to raising sheep and goats. There are several modern villas at the village entrance from the south, and the road connecting to the district and region is paved to the village center. Among its most important families (old village residents): the Haj Abdo family (عائلة حاج عبدو), the <span class="internal-link">Haji family</span> (عائلة حاجي) - the <span class="internal-link">Murad family</span> (عائلة مراد), and the first school built in <span class="internal-link">Al-Jom</span> (الجوم) and Jindires (جندريس) districts was currently in Kefer Safra village (قرية كفرصفرة), meaning since 1930.</p>
-<p>Among the cultural figures in the village: Professor <span class="internal-link">Hassan Khalil</span> (الاستاذ حسن خليل) \ <span class="internal-link">Tamoz Shamali</span> (تموز شمالي)</p>
-<p>Among the sons of this village: Judge <span class="internal-link">Abdul Hanan Haj Abdo</span> (القاضي عبدالحنان حاج عبدو) - Engineer <span class="internal-link">Nabi Murad</span> (المهندس نبي مراد)</p>
-<p>Village Mukhtar: <span class="internal-link">Nabiha Murad Murad</span> (نبيهة مراد مراد)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kefersefrê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=FKloSj-9ObE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=FKloSj-9ObE</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Kefersefr ، كفرصفرة /4121ن - 1320هـ - 5كم - 400م/:</p>
+<ul>
+<li>يقول الأب شلحت أن &quot;صفرا&quot; في الآرامية تعني: الصباح أو العصفور، أي قرية</li>
+</ul>
+<p>الصباح أو العصفور /الأسدي، ج 6، ص377/. وربما كان غير ذلك !؟.</p>
+<ul>
+<li>تقع على السفح الجنوبي لجبل قازقلي، تشرف جنوبا على حقول الزيتون الممتدة</li>
+</ul>
+<p>إلى بلدة جنديرس. يقسمها وادٍ إلى نصفين. وهي من القرى الكبيرة في ناحية جنديرس. فيها عائلة آغوات كبيرة. تنتشر بيوتها على السفوح، وفيها فيلات جميلة. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كفرصفرة : قرية في جبل الكرد، تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع عند نهاية السفح الجنوبي لكتلة جبل الكرد ، وتبعد عن بلدة جنديرس حوالي 5كم ، شمالاً وغرباً تشرف على الأراضي الزراعية الخصبة في الجزء الشرقي لسهل جنديرس وتلتقي عدة مسيلات منحدرة من شمالها لتشكل وادي نظام الذي يخترقها ، يحدها شمالاً مرتفعات جبلية مزروعة بأشجار الزيتون والأشجار الحراجية وقرية /تارتارانلي/ , وجنوباً تشرف على سهل واسع خصب زراعياً مزروعة بأشجار الزيتون والرمان و قرية /يلا نقور/ و قرية /بافللور/ ، وغرباً سهل خصب زراعياً وبعض المرتفعات الجبلية المزروعة بأشجار الزيتون والأشجار الحراجية وقرية /اشكان غربي/ و/مروانه فوقاني/ ، وشرقاً سهل خصب مزروع بأشجار الزيتون وقرية /كموش برج/ وقرية/رندكان/ و/كوران/ ، يبلغ عدد بيوتها حوالي 450بيتاً وعمرها حوالي 600عاماً ، بيوتها القديمة حجرية طينية بسقوف خشبية مستوية والحديثة إسمنتية تتوفر فيها شبكة الكهرباء و المياه من بئر ارتوازي يقع في الجنوب، فيها عدة مدارس إبتدائية وإعدادية ومركز للهاتف وجامع في وسط القرية , كما أحدثت فيها دار للبلدية منذ وقت قريب , كما يوجد فيها معاصر زيتون حديثة وعدة دور فخمة تقع في وسطها تعود إلى عائلة حاج عبدو ومراد حاج عبدو وغيرهم . تعتبر كفرصفرة من القرى القديمة والكبيرة في منطقة عفرين ناحية جنديرس يعمل معظم سكانها بزراعة الزيتون والبقول والحبوب بعلاً وكذلك الرمان والخضروات سقياً من الآبار الارتوازية ، إلى جانب تربية الأغنام والماعز وتوجد عدة فيلات حديثة في مدخل القرية من الناحية الجنوبية , كما أنّ الطريق الواصل مع الناحية والمنطقة مزفت حتى وسط القرية . من أهم عوائلها (سكان القرية القدماء) : عائلة حاج عبدو وعائلة حاجي</p>
+<ul>
+<li>عائلة مراد ، وأول مدرسة بنيت في ناحية الجوم وجنديرس حالياً</li>
+</ul>
+<p>كانت في قرية كفرصفرة أي منذ عام 1930م . ومن الوجوه الثقافية في القرية : الاستاذ حسن خليل \ تموز شمالي ومن أبناء هذه القرية : القاضي عبدالحنان حاج عبدو - المهندس نبي مراد</p>
+<p>مختار القرية :  نبيه مراد مراد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kefersefrê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=FKloSj-9ObE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=FKloSj-9ObE</a></p>
 <p>The village of <span class="internal-link">Kefer Sefrê</span>, located in the <span class="internal-link">Cindirêsê</span> district about four kilometers from the town center, was established approximately 300 years ago. Its origins are traced back to two <span class="internal-link">Êzîdî</span> brothers named <span class="internal-link">Izîd Xelo</span> and <span class="internal-link">Mem</span>. According to local oral history, these brothers worked for a noblewoman referred to as the <span class="internal-link">xatûn</span> in Cindirêsê. When raiders stole the lady&#x27;s livestock, the brothers joined her guards in pursuit. They intercepted the thieves at a well named <span class="internal-link">Bîrê Rikê</span>, located near the village of <span class="internal-link">Kûra</span>. A skirmish ensued where the bandit leader, <span class="internal-link">Ba Dirle Xelo</span>, was killed. The brothers successfully recovered the livestock and returned them to the xatûn. Impressed by their bravery and integrity, she granted them a vast tract of land stretching from Cindirêsê to <span class="internal-link">Tetera</span>.</p>
 <p>Initially, the land was covered in dense brush and wild trees. The early settlers lived in ancient rock cut dwellings known as <span class="internal-link">şikest</span>, which villagers attribute to the Roman era. Over time, the settlement expanded significantly. One brother&#x27;s lineage eventually moved to <span class="internal-link">Alanqûzê</span> and another to Tetera, while the core village of Kefer Sefrê grew to encompass around 600 households. The population is comprised of descendants of these founders and other families who later arrived from <span class="internal-link">Xêrî</span>, Alanqûzê, and Tetera.</p>
 <p>Agriculture defines the modern identity of Kefer Sefrê. While originally wild terrain, generations of residents cleared the land to plant olive trees. A significant agricultural shift occurred in the 1990s when an engineer named <span class="internal-link">Ehmed Hacî</span> introduced a grafting technique called qelem for olive saplings. This innovation made the village famous throughout the region for its olive cultivation. Residents also grow pomegranates, citrus fruits, pistachios, and decorative trees like the <span class="internal-link">darê zînê</span>.</p>
@@ -302,7 +369,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-kefersefre.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-kefersefre.htm</a><br><a href="https://www.facebook.com/ferid.hajabdo/posts/pfbid028r6AzADvxoSVWzGCiBX8E2xc1oB6n3Nz3iHkzf2Zp2SKq68fM7sabiMPPwq881cBl" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/ferid.hajabdo/posts/pfbid028r6AzADvxoSVWzGCiBX8E2xc1oB6n3Nz3iHkzf2Zp2SKq68fM7sabiMPPwq881cBl</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=FKloSj-9ObE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FKloSj-9ObE</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100063897603460" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100063897603460</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=1KxdRg3jeVA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=1KxdRg3jeVA</a><br><a href="https://www.youtube.com/watch?v=GNVEYfGV5ng" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=GNVEYfGV5ng</a><br><a href="https://www.youtube.com/watch?v=ImRqISvoc38" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ImRqISvoc38</a><br><a href="https://www.youtube.com/watch?v=523htXXRpKY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=523htXXRpKY</a><br><a href="https://www.youtube.com/watch?v=EzL686eFrZ8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=EzL686eFrZ8</a><br><a href="https://www.youtube.com/watch?v=FKloSj-9ObE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FKloSj-9ObE</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=hI_OJJWznJs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=hI_OJJWznJs</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-kefersefre.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-kefersefre.htm</a></li><li>Link:<br><a href="https://www.facebook.com/ferid.hajabdo/posts/pfbid028r6AzADvxoSVWzGCiBX8E2xc1oB6n3Nz3iHkzf2Zp2SKq68fM7sabiMPPwq881cBl" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/ferid.hajabdo/posts/pfbid028r6AzADvxoSVWzGCiBX8E2xc1oB6n3Nz3iHkzf2Zp2SKq68fM7sabiMPPwq881cBl</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=FKloSj-9ObE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FKloSj-9ObE</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100063897603460" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100063897603460</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=1KxdRg3jeVA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=1KxdRg3jeVA</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=GNVEYfGV5ng" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=GNVEYfGV5ng</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=ImRqISvoc38" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ImRqISvoc38</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=523htXXRpKY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=523htXXRpKY</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=EzL686eFrZ8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=EzL686eFrZ8</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=hI_OJJWznJs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=hI_OJJWznJs</a></li></ul>
             </div>
 
             
@@ -312,7 +379,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -430,6 +497,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -128,33 +149,69 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Qestelê Xidiriya</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Qestel means an artificial water source whether ancient or modern, and Xidiriya is the name of the old village that was nearby</p>
+<p><strong>Foundation Date/Period:</strong> 1960s</p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qestelê Xidiriya</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>From the book Jabal al-Kurd (Afrin): A Geographical Study:</p>
-<p><strong>Qestelê Xidiriya, Qastal Khidriyanli /720m/:</strong></p>
-<p>Translator&#x27;s Note: The number likely refers to elevation (m).</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qestelê Xidiriya</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Q%20%20Xidiriya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Q%20%20Xidiriya.htm</a></p>
+<p>It stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Qestel Xidiriyanlî</span>, /720m/:</p>
+<p><span class="internal-link">Qestel</span>: An artificial water source, whether it was ancient or modern. And <span class="internal-link">Xidiriya</span> is the name of the old village that was nearby.</p>
+<p>The village was established in the sixties of the twentieth century through the migration of the population to it from the neighboring villages. Then it expanded, and small professions appeared in it, such as carpentry and blacksmithing, in addition to shops for selling consumer goods.</p>
+<p>It stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Qestel Xidiriyanlî: A farm in <span class="internal-link">Çiyayê Kurmênc</span> belonging to the district of <span class="internal-link">Bilbile</span>, area of <span class="internal-link">Efrîn</span>, governorate of <span class="internal-link">Heleb</span>. It is a small farm located in a fertile agricultural plain on both sides of the <span class="internal-link">Riya Bilbile-Reco</span> (Bilbile-Reco public road). Most of its residents are from the village of Qestel Xidiriyanlî and the villages neighboring it. It is about 7km away from the town of Bilbile towards the southwest.</p>
+<p>It is bordered to the north by mountainous heights planted with olive trees and the village of <span class="internal-link">Sehriyanlî</span>, <span class="internal-link">Hêyamli</span>, and <span class="internal-link">Baxçe Qonax</span>; to the south by a torrential valley and the village of Qestel Xidiriyanlî; to the west by a wide agricultural plain and the village of <span class="internal-link">Gurzêl</span> and <span class="internal-link">Solaqlî</span>; and to the east by a torrential valley and the town of Bilbile.</p>
+<p>The number of its houses reaches about 40 houses, and its age is about 40 years. Its dwellings are of stone and cement, and they are recent. An electricity network and drinking water from artesian wells are available in it, and an asphalt road passes through its center to several neighboring villages. It contains several shops, blacksmithing and machinery repair workshops, and service shops. Most of its residents work in the cultivation of olives and vines alongside raising sheep and goats.</p>
+<p>Village Mukhtar:</p>
+<p>Sources of Information:</p>
 <ul>
-<li>Qastal: An artificial water source, whether ancient or modern. &quot;Khidriya&quot; is the name of the old village that was nearby.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>The village was founded in the 1960s by people migrating to it from neighboring villages. It later expanded, and small professions such as carpentry and blacksmithing appeared, in addition to shops selling consumer goods.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>From the book Afrin... Its River and Green Hills:</p>
-<p><strong>Qastal Khidriyanli:</strong> A farm in Jabal al-Kurd, belonging to the sub-district of Bulbul, Afrin district, Aleppo Governorate.</p>
-<p>It is a small farm located in a fertile agricultural plain on both sides of the main Bulbul-Rajo road. Most of its inhabitants are from the village of &quot;Qastal Khidriyanli&quot; and its neighboring villages. It is located about 7 km southwest of the town of Bulbul.</p>
-<p>It is bordered to the north by mountain highlands planted with olive trees and the villages of &quot;Saariyanli,&quot; &quot;Hiyamli,&quot; and &quot;Baqjeh Qonaq&quot;; to the south by a stream valley and the village of &quot;Qastal Khidriyanli&quot;; to the west by a wide agricultural plain and the villages of &quot;Kurzel&quot; and &quot;Solaqli&quot;; and to the east by a stream valley and the town of Bulbul.</p>
-<p>It has about 40 houses and is approximately 40 years old. Its dwellings are made of stone and cement and are of recent construction. It has an electricity network, drinking water from artesian wells, and a paved road that passes through its center connecting to several neighboring villages. It has several shops, blacksmithing and vehicle repair workshops, and service shops. Most of its residents work in the cultivation of olives and grapevines, alongside raising sheep and goats.</p>
-<p><strong>Sources of Information:</strong></p>
-<ol>
-<li>The book Jabal al-Kurd (Afrin): A Geographical Study by Dr. Muhammad Abdu Ali.</li>
-<li>The book: Afrin... Its River and Green Hills by the author Abd al-Rahman Muhammad from the village of Qatma.</li>
-<li>Studies by the TirêjSoft Center / Abd al-Rahman Haji Othman.</li>
-<li>Some village residents.</li>
-</ol></div></details></div>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Manager of the website Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Qestel Xidiriya ، قسطل خضريانلي /720م/:</p>
+<ul>
+<li>قسطل: منبع ماء اصطناعي أثريا كان أم حديثا. و&quot;خضريا&quot; هو اسم القرية</li>
+</ul>
+<p>القديمة التي كانت بالجوار.</p>
+<ul>
+<li>تأسست القرية في ستينات القرن العشرين بهجرة السكان إليها من القرى</li>
+</ul>
+<p>المجاورة. ثم اتسعت وظهرت فيها مهن صغيرة من نجارة وحدادة إضافة إلى محلات لبيع المواد الاستهلاكية. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : قسطل خضريانلي : مزرعة في جبل الكرد تتبع ناحية بلبل ، منطقة عفرين محافظة حلب . وهي مزرعة صغيرة تقع في سهل زراعي خصب على جانبي طريق عام بلبل - راجو ، معظم سكانها من قرية &quot;قسطل خضريانلي&quot; والقرى المجاورة لها ، تبعد عن بلدة بلبل حوالي7كم باتجاه الجنوب الغربي ، يحدها شمالاً مرتفعات جبلية مزروعة بأشجار الزيتون وقرية &quot;سعريانلي&quot; و&quot;هياملي&quot; و&quot;باقجة قوناق&quot; ، وجنوباً واد سيلي وقرية &quot;قسطل خضريانلي&quot; ، وغرباً سهل واسع زراعي وقرية &quot; كورزيل&quot;و&quot;صولاقلي&quot; ، وشرقاً واد سيلي وبلدة بلبل ، يبلغ عدد بيوتها حوالي 40بيتاً وعمرها حوالي40عاما ، مساكنها حجرية إسمنتية وهي حديثة العهد تتوفر فيها شبكة كهرباء و مياه الشرب من الآبار الارتوازية وطريق مزفت يمر في وسطها إلى عدة قرى مجاورة ، فيها عدة محلات وورش حدادة وتصليح الآليات ومحلات خدمية ، يعمل معظم سكانها بزراعة الزيتون والكرمة إلى جانب تربية الأغنام و الماعز.</p>
+<p>مختار القرية :</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -172,7 +229,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Q%20%20Xidiriya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Q%20%20Xidiriya.htm</a></li><li>video:<br><a href="https://www.youtube.com/watch?v=P-0VIamUJww" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=P-0VIamUJww</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Q%20%20Xidiriya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Q%20%20Xidiriya.htm</a></li><li>video:<br><a href="https://www.youtube.com/watch?v=P-0VIamUJww" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=P-0VIamUJww</a></li></ul>
             </div>
 
             
@@ -182,7 +239,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -300,6 +357,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

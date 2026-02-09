@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -166,6 +187,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Khaziyan Foqani, Xaziyan, Xaziyanê, Xaziyanê Jorin, Xaziyê, Xazyan Jorin, Xozyana, Xwezyana, خازيان فوقاني</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Mizûrî, Xaziyan</p></div>
 <div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekirê Feqe, Birîmê Herîrê, Hemoyê Husên, Hemîşê Usmên, Mala Bazikê Hemedê Zelxê, Mala Bazîkê Hemedê Zexê, Mala Bilkê Şemê, Mala Bilkî Şemê, Mala Emîr, Mala Hemzo, Mala Henanê Ûskê, Mala Hesen Kûrû, Mala Heskî Bilû, Mala Heso Kûrû, Mala Hevîdo, Mala Hewîdo, Mala Iboyê Meyî Kerîke, Mala Ibûyê Kerrîkê, Mala Isbê Feqe, Mala Kelehme, Mala Keleş, Mala Keleş Hemo, Mala Koleyê, Mala Kûr Xelîl, Mala Kûrxelû, Mala Mehmedê Xûce, Mala Menanê Heso, Mala Menanê Hesu, Mala Pûsa, Mala Qirûça, Mala Seydî, Mala Seydî Bilê, Mala Seyîd Xeca, Mala Xûcelera, Mala Ûsivê Feqe, Qilîça, Seyd Xeca</p></div>
                         </div>
                     </div>
@@ -205,24 +227,61 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Xaziyanê Jorin</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) Geographical Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong>Xaziyan, خازيان (خازيان):</strong></p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Xaziyanê Jorin</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20xaziyana%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20xaziyana%20jorin.htm</a></p>
+<p>According to the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p>Xaziyan is the name of a Kurdish clan from the large <span class="internal-link">Mizûrî</span> tribe.</p>
+<p>They are two separate villages, Upper and Lower (<span class="internal-link">Jorîn</span> and <span class="internal-link">Jêrîn</span>).</p>
+<p><span class="internal-link">Xaziyan Jorîn</span> (Upper Xaziyan)</p>
+<p>/658 inhabitants - 300 hectares - 5 km - 680 m/</p>
+<p>It is a small village near the lower village (<span class="internal-link">Xaziyan Jêrîn</span>).</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Xaziyan Jorîn is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the district of <span class="internal-link">Mabeta</span>, in the region of <span class="internal-link">Efrîn</span>, Heleb governorate. It is a small village located in the middle section of the aforementioned mountain, to the south of an elongated limestone plateau extending from the northwest to the southeast. It is furrowed by watercourses and scattered with oak scrub trees. Its soil is clay like. It is located 6 km away from the town of Mabeta towards the west.</p>
+<p>It is bordered to the north by the village of Xaziyan Jêrîn at a distance of 100 meters. To the south, it is bordered by a slope, a seasonal valley, mountainous highlands planted with olive trees, and the village of <span class="internal-link">Qişlê</span>. To the west, it is bordered by a slope, a seasonal valley, mountainous highlands planted with olive trees, and the nearby village of <span class="internal-link">Kelanlî</span>. To the east, it is bordered by a slope and a seasonal valley planted with walnut, apple, and olive trees, mountainous highlands, and the village of <span class="internal-link">Ereb Uşaxî</span>.</p>
+<p>The number of houses in the village is approximately 45, and its age is approximately 350 years. Its residences are made of stone and mud with flat wooden roofs, while modern cement construction extends towards the northwest. A electricity network, a primary school, and a mosque are available in the village.</p>
+<p>The residents cultivate 300 hectares of rainfed land with olives and legumes. Using irrigation from artesian wells, they cultivate summer vegetables and fruit trees, alongside raising sheep and goats. They derive drinking water from cisterns where rainwater collects in winter and from a well dug about 2 km north of the village. A paved road connects the village to the district center, passing near its eastern side to several neighboring villages.</p>
+<p>Village Mukhtar: <span class="internal-link">Ismet Ekaş Sîdo</span>.</p>
+<p>Sources:</p>
 <ul>
-<li><span class="internal-link">Khaziyan</span> (خازيان): Name of a Kurdish tribe from the large &quot;<span class="internal-link">Mizuri</span>&quot; (مزوري) tribe.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>They are two separate villages, upper and lower <span class="internal-link">Jorin û Jêrin</span> (فوقاني وتحتاني):</p>
-<p><strong>Xaziyanê Jorin, خزيان فوقاني /658n - 300ha - 5km - 680m/:</strong></p>
-<p>A small village near the lower village.</p>
-<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin City.... Its Rivers and Green Hills</span>&#x27; by Abdulrahman Mohammed from <span class="internal-link">Qatmah</span> village (عبدالرحمن محمد من قرية قطمه):</p>
-<p><strong>خازيان فوقاني</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد), belonging to <span class="internal-link">Mabetli</span> district (ناحية المعبطلي), Afrin City region (منطقة عفرين), <span class="internal-link">Aleppo</span> governorate (محافظة حلب).</p>
-<p>It is a small village located in the middle part of the aforementioned mountain, south of a limestone irregular plateau, extending from northwest to southeast, cut by streams with oak forests scattered above it. Its soil is hilly. It is 6km from <span class="internal-link">Mabetli</span> town (بلدة معبطلي) toward the west.</p>
-<p>It is bounded to the north by <span class="internal-link">Khazyanli Tahtani</span> village (قرية خازيانلي تحتاني) 100m away, to the south by a slope and <span class="internal-link">Sili Valley</span> (وادي سيلي) and mountain elevations planted with olive trees and <span class="internal-link">Qashla</span> village (قرية قشلة), to the west by a slope and <span class="internal-link">Sili Valley</span> (وادي سيلي) and mountain elevations planted with olive trees and nearby <span class="internal-link">Kalanli</span> village (قرية كلانلي), and to the east by a slope and <span class="internal-link">Sili Valley</span> (وادي سيلي) planted with walnut, apple, and olive trees and mountain elevations and <span class="internal-link">Arab Oshaghi</span> village (قرية عرب أوشاغي).</p>
-<p>The number of its houses reaches about 45 houses and its age is about 350 years. Its dwellings are stone and clay with flat wooden roofs, and the modern concrete construction extends toward the northwest.</p>
-<p>It has an electricity network, elementary school, and mosque. The residents cultivate rain-fed 300 hectares of olives and legumes, and irrigation from artesian wells of summer vegetables and fruit trees, in addition to raising sheep and goats.</p>
-<p>They get drinking water from cisterns that collect rainwater in winter and from a well dug north of the village about 2km away. It connects with the district center to the village center by a paved road passing near it from the eastern side to several neighboring villages.</p>
-<p>Village mayor: <span class="internal-link">Ismat Akash Sido</span> (عصمت عكاش سيدو)</p>
-<p>Prepared and executed by: <span class="internal-link">Tirej Afrin</span> website manager: <span class="internal-link">Abdulrahman Haji Othman</span></p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Xaziyanê Jorin and Xazyanê Jêrin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=iBEaEWY-H1E" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=iBEaEWY-H1E</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<p>Preparation and execution:</p>
+<ul>
+<li>Manager of Tirej Efrîn site: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Xaziyan ، خازيان:</p>
+<ul>
+<li>خازيان: اسم عشيرة كردية من قبيلة &quot;مزوري&quot; الكبيرة.</li>
+</ul>
+<p>وهما قريتان منفصلتان، فوقاني وتحتاني Jorin  Jrin: Xaziyan Jorin ، خزيان فوقاني /658ن - 300هـ - 5كم - 680م/: قرية صغيرة بالقرب من القرية التحتانية. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه خازيان فوقاني : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب. وهي قرية صغيرة تقع في القسم الأوسط من الجبل المذكور ، إلى الجنوب من هضبة كلسية متطاولة ، تمتد من الشمال الغربي إلى الجنوب الشرقي ، تخددها المسيلات وتتناثر فوقها أشجار حراج السنديان ، تربتها غضارية ، تبعد عن بلدة معبطلي 6كم باتجاه الغرب ، يحدها شمالاً قرية خازيانلي تحتاني على بعد100م ، وجنوباً منحدر ووادي سيلي ومرتفعات جبلية مزروعة بأشجار الزيتون وقرية قشلة ، وغرباً منحدر ووادي سيلي ومرتفعات جبلية مزروعة بأشجار الزيتون وقرية كلانلي القريبة وشرقاً منحدر ووادي سيلي مزروعة بأشجار الجوز و التفاح و الزيتون ومرتفعات جبلية وقرية عرب أوشاغي ، يبلغ عدد بيوتها حوالي 45بيتاً وعمرها حوالي 350عاماً ، مساكنها حجرية طينية ، سقوفها خشبية مستوية ويمتد البناء الأسمنتي الحديث محو الشمال الغربي ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وجامع ، يزرع السكان بعلاً 300 هـ الزيتون والبقول ، ورياً من الآبارالارتوازية الخضار الصيفية والأشجار المثمرة ، إلى جانب تربية الأغنام والماعز ، ويستمدون مياه الشرب من الصهاريج التي تجمع فيها مياه الأمطار شتاءً ومن البئر المحفور شمال القرية بنحو 2كم ، تصلها بمركز الناحية حتى وسط القرية طريق مزفت يمر من قربها من الجهة الشرقية إلى عدة قرى مجاورة .</p>
+<p>مختار القرية : عصمت عكاش سيدو</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Xaziyanê Jorin and Xazyanê Jêrin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=iBEaEWY-H1E" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=iBEaEWY-H1E</a></p>
 <p>The settlement known collectively as <span class="internal-link">Xaziyana</span> is comprised of two distinct villages located in the highlands of the <span class="internal-link">Efrîn</span> region, specifically situated on <span class="internal-link">Çiyayê Xastiya</span> within the broader <span class="internal-link">Mabeta</span> mountain range. The village sits at an elevation of roughly 740 meters, offering views that stretch across the borders of the region. Nearby, the well-known valley <span class="internal-link">Geliya Şiyê</span> runs adjacent to the area, and the stream <span class="internal-link">Çayê Xastiya</span> flows through the landscape. The name Xaziyana is the subject of local debate; some believe it stems from xeza, implying beauty or sweetness, while others suggest it comes from hêvî, meaning a wish or desire.</p>
 <p>Historically, the settlement is divided into an upper and a lower village. <span class="internal-link">Xaziyana Jûrin</span> (the Upper Village) is the older of the two. It was founded by two primary families: <span class="internal-link">Mala Bazikê Hemedê Zelxê</span> and <span class="internal-link">Mala Henanê Ûskê</span>. Oral history recounts that <span class="internal-link">Hemedê Zelxê</span> was a patriarch with one son named <span class="internal-link">Bilale</span> and a wife named <span class="internal-link">Helîme</span>. Over time, other families migrated to the upper village and integrated into the community, including <span class="internal-link">Mala Mehmedê Xûce</span> (also referred to as <span class="internal-link">Mala Xûcelera</span>), <span class="internal-link">Mala Ûsivê Feqe</span>, <span class="internal-link">Mala Keleş Hemo</span>, <span class="internal-link">Mala Heso Kûrû</span>, and <span class="internal-link">Mala Seyîd Xeca</span>. Another group, <span class="internal-link">Mala Hevîdo</span>, includes figures such as <span class="internal-link">Silêman</span> and <span class="internal-link">Tacê Selîm</span>.</p>
 <p>The lower village, <span class="internal-link">Xaziyana Jêrin</span>, was established later. It was originally called <span class="internal-link">Xaziyana Pûzê Zinêr</span>, named after a prominent black rock cliff (<span class="internal-link">parçek zinar</span>) located to the north of the settlement. The residents of the lower village maintain close ties with the upper village, sharing a cemetery and communal administration. Families in the lower village include <span class="internal-link">Qilîça</span> (later called <span class="internal-link">Mala Ibûyê Kerrîkê</span>), <span class="internal-link">Mala Seydî</span>, <span class="internal-link">Mala Heskî Bilû</span>, <span class="internal-link">Mala Keleş</span>, <span class="internal-link">Mala Kûr Xelîl</span>, and <span class="internal-link">Mala Emîr</span>. Notably, <span class="internal-link">Mala Menanê Heso</span> migrated to the village from <span class="internal-link">Soryo</span>.</p>
@@ -281,7 +340,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20xaziyana%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20xaziyana%20jorin.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=iBEaEWY-H1E" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=iBEaEWY-H1E</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=441KeLJvdo0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=441KeLJvdo0</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=-Ycz6o34LVE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=-Ycz6o34LVE</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=cjaHwkjJH8Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=cjaHwkjJH8Y</a><br><a href="https://www.youtube.com/watch?v=oR1TZGJ12ew" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=oR1TZGJ12ew</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20xaziyana%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20xaziyana%20jorin.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=iBEaEWY-H1E" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=iBEaEWY-H1E</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=441KeLJvdo0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=441KeLJvdo0</a></li><li>Drone:<br><a href="https://www.youtube.com/watch?v=-Ycz6o34LVE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=-Ycz6o34LVE</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=cjaHwkjJH8Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=cjaHwkjJH8Y</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=oR1TZGJ12ew" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=oR1TZGJ12ew</a></li></ul>
             </div>
 
             
@@ -291,7 +350,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -409,6 +468,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

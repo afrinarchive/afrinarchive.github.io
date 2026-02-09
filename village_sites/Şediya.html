@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,6 +205,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Shadyan, Shadyanli, Şediya, الشديان، شديا, شديانلي, شاديه</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Şadya</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bilal Misto, Emîr Axa, Zade</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -211,27 +234,75 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Şediya</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Kurdish in form and pronunciation from &quot;Şadya&quot; (joy and happiness). It is the name of a Kurdish tribe inhabiting the Maden region in Northern Kurdistan.</p>
+<p><strong>Foundation Date/Period:</strong> 1700</p>
+<p><strong>Ruins:</strong> <span class="internal-link">Gûmît</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Geliyê Sarîsîn</span>, <span class="internal-link">Çemê Reş</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Şediya</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p><strong>Villages of Rajo (راجو) District / Reco</strong></p>
-<p><strong><span class="internal-link">Shadyanli</span> (شديانلي) - Şediya</strong></p>
-<p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City (عفرين) / Geographical Study:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Şediya</span> (شديانلي), <span class="internal-link">Al-Shadyan</span> (الشديان)</strong> /440n - 198h - 8km - 420m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Şediya</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20shedyan.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20shedyan.htm</a></p>
+<p>Based on the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Şediya</span>, <span class="internal-link">Şedyanlî</span>, <span class="internal-link">Şedyan</span> / 440 inhabitants - 198 hectares - 8km - 420m /:</p>
+<p>Şediya: A Kurdish name in form and pronunciation, derived from &quot;Şadya&quot; meaning joy and happiness. It is the name of a Kurdish tribe inhabiting the <span class="internal-link">Maden</span> region in northern Kurdistan, to which the famous Kurdish personality <span class="internal-link">Nureddîn Zaza</span> belongs. The Arabicized name &quot;Şedyan&quot; is a verbal manipulation of the old name.</p>
+<p>It is a small village located on a forestry slope overlooking the lands of the <span class="internal-link">Lîçe</span> plain on the Turkish border. It is reached via the <span class="internal-link">Geliyê Sarîsîn</span> (Sarîsîn valley) by a paved road. Its lands and its warm location on the edges of the <span class="internal-link">Amik</span> plain are characterized by the production of early vegetables. The village consists of two parts: the Upper Village, which is the old one, and the Lower Village, which is the modern one. The village is distinguished by a beautiful geographical location, surrounded by dense oak forests.</p>
+<p>Based on the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Şediya: A village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Reco</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate.</p>
+<p>It is a small village located in the middle section of the mentioned mountain on the slope, overlooking the lands of the Amik plain near the current borders of the Sanjak of Alexandretta. It is 8 km away from the town of Reco towards the southwest. It is bordered to the north by a mountain range, the village of <span class="internal-link">Girê</span>, and the farm of <span class="internal-link">Sorkê</span>. To the south, it is bordered by a slope, a mountain range, the village of <span class="internal-link">Sewlcik</span>, the abandoned village of <span class="internal-link">Gûmît</span>, and a castle. To the east, it is bordered by a deep ravine, a very high mountain range planted with oak and terebinth trees, and the village of <span class="internal-link">Gemruş</span>. To the west, it is bordered by a harsh slope, the Amik plain, the <span class="internal-link">Çemê Reş</span> (Black River), and the Turkish border directly.</p>
+<p>The number of its houses is about 30, and its age is about 400 years according to the account of the village Mukhtar, because there is a house with its construction date written as 1700 AD. It is one of the very old villages in the Efrîn region. Its dwellings are made of stone and mud with wooden roofs sloping on both sides covered with cane (tamat). As for the modern ones, they are cement and have extended in the southern and eastern directions.</p>
+<p>A continuous electricity network and a modern primary school are available, as well as a paved dirt road (not asphalted). The village drinks from cisterns where rainwater is collected. The residents work in rain-fed agriculture (olives, grains, legumes) on an area of 198 hectares, and in irrigated agriculture from the waters of the Çemê Reş (vegetables) and fruit trees on small areas. They also raise sheep and goats in large numbers.</p>
+<p>In the center of the village, there are three old archaeological architectural buildings, while the modern ones are in the northern side. There is also an archaeological castle southwest of the village, and the Çemê Reş passes near it on the western side of the village. Among its most important families are: <span class="internal-link">Bilal Misto</span>, <span class="internal-link">Zade</span>, and <span class="internal-link">Emîr Axa</span>, who were the first to inhabit the village.</p>
+<p>Village Mukhtar: <span class="internal-link">Hesen Emîr Rifet</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">1 - PhD/Villages/Şediya</span> (شديا): A Kurdish name in form and pronunciation from &quot;<span class="internal-link">Shadiya</span>&quot; (شاديا) meaning joy and happiness. It is the name of a Kurdish tribe living in the <span class="internal-link">Madan-Ma&#x27;dan</span> (مادن-معدان) region in northern <span class="internal-link">Kurdistan</span> (كردستان) and to which the well-known Kurdish personality &quot;<span class="internal-link">Nuraldin Zaza</span>&quot; belongs, and the Arabized name &quot;<span class="internal-link">Al-Shadyan</span>&quot; (الشديان) is a verbal manipulation of the old name.</li>
-<li>A small village located on a forest slope overlooking the lands of the &quot;<span class="internal-link">Liçe</span>&quot; (ليچه) plain on the Turkish border. It is connected via the &quot;<span class="internal-link">Sar Sini</span>&quot; (ساريسيني) <span class="internal-link">Sarisînê</span> valley by a paved road. Its lands and warm location on the edges of the <span class="internal-link">Amaq</span> (العمق) plain are distinguished by producing early vegetables. The village consists of two parts: the upper village, which is the old one, and the lower one, which is the modern one. The village is distinguished by its beautiful geographical location where it is surrounded by dense oak forests.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين.... نهرها ورواباتيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin... Its River and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Shadyan</span> (شديان)</strong>: A village in the <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to Rajo (راجو) district, Afrin (عفرين) region, <span class="internal-link">Aleppo</span> (حلب) governorate.</p>
-<p>It is a small village located in the central part of the mentioned mountain on the slope, overlooking the lands of the <span class="internal-link">Amaq</span> (العمق) plain near the current borders of <span class="internal-link">Alexandretta</span> (الاسكندرونة) district. It is 8 km from Rajo (راجو) town in the southwestern direction. It is bordered to the north by a mountain chain and <span class="internal-link">Kari</span> (كري) village and <span class="internal-link">Surk</span> (سورك) farm, to the south by a slope and mountain chain and <span class="internal-link">Sa&#x27;uljak</span> (سعولجك) village and <span class="internal-link">Komit</span> (كوميت) village which is abandoned and <span class="internal-link">Qal&#x27;a</span> (قلعة), to the east by a deep waterway and very high mountain chain planted with oak and terebinth trees and <span class="internal-link">Kamrash</span> (كمراش) village, and to the west by a steep slope and the <span class="internal-link">Amaq</span> (العمق) plain and the <span class="internal-link">Black River</span> (النهر الأسود) and Turkish border directly.</p>
-<p>The number of houses is approximately 30 and its age is about 400m according to the village chief&#x27;s account as there is a house with the date of its construction written as 1700 CE, and it is one of the very old villages in the Afrin (عفرين) region. Its dwellings are stone and clay with wooden roofs sloping from both sides covered with reeds (mud), while the modern concrete ones extended in the southern and eastern directions. It has an electricity network and a modern primary school and a paved dirt road that is not asphalted.</p>
-<p>The village drinks from cisterns that collect rainwater in winter. The population works in rainfed agriculture (olives, grains, legumes) on an area of 198 hectares and irrigated agriculture from the <span class="internal-link">Black River</span> (النهر الأسود) waters (vegetables) and fruit trees on small areas and raising sheep and goats in large numbers. There are three very old archaeological buildings in the center of the village, and the modern ones in the northern side. There is also an archaeological castle southwest of the village and the <span class="internal-link">Black River</span> (النهر الأسود) passes nearby from the western side of the village.</p>
-<p>Among its most important families: <span class="internal-link">Bilal Mastaw</span> (بلال مستو), <span class="internal-link">Zada</span> (زادة), and <span class="internal-link">Amir Agha</span> (أمير آغا), and they are the first to inhabit the village.</p>
-<p>Village chief: <span class="internal-link">Hassan Amir Rif&#x27;at</span> (حسن أمير رفعت)</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Manager of the Tirej Efrîn website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Şediya ، شديانلي ، الشديان /440ن - 198هـ - 8كم - 420م/:</p>
+<ul>
+<li>شَديا: اسم كردي شكلا ولفظا من &quot; شاديا &quot; الفرح والسرور. وهي اسم قبيلة</li>
+</ul>
+<p>كردية تسكن منطقة (مادن-معدان) في شمالي كردستان وينتمي إليها الشخصية الكردية لمعروفة &quot;نورالدين زازا&quot;( )، والاسم المعرب &quot;الشديان&quot; هو تلاعب لفظي بالاسم القديم.</p>
+<ul>
+<li>قرية صغيرة تقع على سفح حراجي يشرف على أراضي سهل &quot;ليچه&quot; على الحدود</li>
+</ul>
+<p>التركية. تصلها عبر وادي &quot; سار سيني &quot;Sarisn طريق معبدة. تمتاز أراضيها وموقعها الدافئ على أطراف سهل العمق، بإنتاج البواكير من الخضار. تتألف القرية من قسمين: القرية العليا، وهي القديمة، والسفلى وهي الحديثة. تمتاز القرية بموقع جغرافي جميل حيث تحيط بها أحراج كثيفة من السنديان. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : شديان : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في القسم الأوسط من الجبل المذكور على السفح ، يشرف على أراضي سهل العمق قرب الحدود الحالية للواء الاسكندرونة ، تبعد عن بلدة راجو 8 كم باتجاه الجنوب الغربي ، يحدها شمالاً سلسلة جبلية و قرية /كري/ و مزرعة /سورك/ ، و جنوباً منحدر وسلسلة جبلية و قرية /سعولجك/ و قرية /كوميت/ المهجورة و قلعة ، و شرقاً مسيل عميق وسلسلة جبلية عالية جداً مزروعة بأشجار البلوط و البلوط والبطم و قرية /كمراش/ ، و غرباً منحدر قاسي و سهل العمق و النهر الأسود وحدود تركيا مباشرة ، يبلغ عدد بيوتها حوالي 30 بيتاً وعمرها</p>
+<p>حوالي 400 م حسب رواية مختار القرية لأنه يوجد دار مكتوب تاريخ إنشاءها عام</p>
+<p>1700 م ، و هي من القرى القديمة جداً في منطقة عفرين ، مساكنها حجرية طينية ذات سقوف خشبية مائلة من الجانبين مغطاة بالقصب ( طامات ) ، أما الحديثة أسمنتية امتدت بالاتجاهين الجنوبي والشرقي ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية حديثة و طريق ترابي معبد غير مزفت ، تشرب القرية من صهاريج التي تجمع فيها مياه الأمطار ، يعمل السكان بالزراعة البعلية ( الزيتون ، الحبوب ، البقول ) على مساحة تبلغ 198 هـ و بالزراعة المروية من مياه النهر الأسود ( خضر ) أشجار مثمرة على مساحات صغيرة وبتربية الأغنام والماعز بأعداد كبيرة ، يوجد في وسط القرية ثلاث أبنية معمارية قديمة أثرية ، و الحديثة في الجهة الشمالية كما يوجد قلعة أثرية جنوبي غربي القرية و يمر النهر الأسود بالقرب منها من الجهة الغربية للقرية ، ومن أهم عوائلها : / بلال مستو/ و / زادة / و / أمير آغا / ، و هم أول من سكن القرية .</p>
+<p>مختار القرية : حسن أمير رفعت</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -249,7 +320,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20shedyan.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20shedyan.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=19chrrJTx4Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=19chrrJTx4Y</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20shedyan.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20shedyan.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=19chrrJTx4Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=19chrrJTx4Y</a></li></ul>
             </div>
 
             
@@ -259,7 +330,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -377,6 +448,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

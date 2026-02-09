@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Gazê - Erfîn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1.5rem; } /* Increased Paragraph Spacing */
+        .prose-compact p { margin-bottom: 0.5rem; } /* Compact spacing for Basic Info */
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
+        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
+        .leaflet-popup-close-button { color: var(--text-color) !important; }
+        .leaflet-popup-content b { font-weight: 600; }
+        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
+        .leaflet-control-layers-toggle {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+            background-size: 20px 20px !important;
+        }
+        .dark .leaflet-control-layers-toggle {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
+        }
+        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- START MINIMAP --- */
+        
+        .map-container { position: relative; width: 100%; max-width: 500px; }
+        .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+        .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
+        /* --- END MINIMAP --- */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Gazê - Erfîn</h1>
+        </header>
+
+        <main class="space-y-6">
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">General Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
+<div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Gazê, Kaza, Xazê, تل غازي, غازي تبه, كازه</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Reşkeş</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Brîmo, Brîmê Hecî, Ehmedê Îbiş, Evdî Gênco, Hesen Efendî, Imrûdê Hecî, Mihemedê Evdek, Okçerîn, Îbo, Îbram Axa</p></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
+                <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
+                    <p class="text-sm">Coordinates: 36.50943, 36.767332</p>
+                </div>
+                 <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
+            </div>
+            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Photos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div><img src="../village_photos/xaze tabh.jpg" alt="Photo of Gazê - Erfîn" class="lightbox-trigger rounded-lg w-full h-auto object-cover border themed-border cursor-pointer" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=xaze+tabh.jpg';"></div>
+</div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Gazê - Erfîn</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Ax û Welat</h5>
+<p><strong>Etymology:</strong> Derived from &#x27;Gaz&#x27; meaning &#x27;high&#x27; or &#x27;ridge&#x27; (bilind), specifically implying a high and long place, as it is situated on Çiyayê Hişyan</p>
+<p><strong>Foundation Date/Period:</strong> 250 years ago</p>
+<p><strong>Number of Caves:</strong> 1</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Hişyan</span>, <span class="internal-link">Sirtê Gazê</span>, <span class="internal-link">Çiyayê Şêx Mîrê</span>, <span class="internal-link">Girê Mûsa</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Ziyaretgeha Hemedê</span></p>
+<p><strong>Wells:</strong> <span class="internal-link">Bîra Hecî Mîra</span>, <span class="internal-link">Bîra Keferdelê</span>, <span class="internal-link">Bîra Hecî Mîrêd</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Geliyê Bîrê</span>, <span class="internal-link">Geliyê Çêtê</span>, <span class="internal-link">Geliyê Ecûre</span>, <span class="internal-link">Geliyê Bîra Hecî Mîrêd</span></p></div>
+            </div>
+
+            
+
+            <div class="card p-6 rounded-xl">
+                    <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
+                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Gazê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds</span> geographical study by Dr. Mohammed Abdo Ali:</p>
+<p><strong>Gazê, غازي تبه, تل غازي</strong> /548n - 177h - 9km - 670m/:</p>
+<ul>
+<li>Gaz &quot;غاز&quot; or &quot;غاز as written in Arabic&quot;, it is in Kurdish meaning &quot;the long elevation&quot;, and the village is located on a long hill in an east-west direction. The Arabized name is an incorrect Arabic translation of the old name, as well as the Ottoman Turkish name, where the translators believed that &quot;غازي&quot; is a Turkish word meaning &quot;hero&quot;, so they called it &quot;in Turkish غازي تبه, and in Arabic تل غازي&quot;.</li>
+<li>A small village located on one of the limestone peaks of <span class="internal-link">Heshtya mountain</span>, its slopes are very steep. It is one of the villages with a large migration rate, and there is also a high percentage of holders of university and higher academic degrees.</li>
+</ul>
+<p>And it came in the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from Qatma village</p>
+<p><strong>غازي تبه / كازه</strong>: A village in Mountain of the Kurds, belonging to the center villages and Afrin, Aleppo Governorate.</p>
+<p>It is a small village located at the highest mountainous elevation, and around it are slopes from all directions except the northern direction. It is bordered to the north by a mountain chain planted with trees and vineyards and <span class="internal-link">Dar Kir</span> large village and <span class="internal-link">Ma&#x27;batli</span> and to the south by a harsh slope and deep stream and rough terrain and high mountain chain planted with olive trees and <span class="internal-link">Kafr Dali Fouqani</span> and <span class="internal-link">Tahtani</span> villages and to the west by a harsh slope and deep stream and rough terrain and high mountain chain planted with olive trees and <span class="internal-link">Satianli Village</span> and to the east by a slope and deep stream and <span class="internal-link">Buyuk Oba</span> or <span class="internal-link">al-Kabir</span> village. A deep stream separates the two villages. The number of its houses reaches about 30 houses and its age is 500 years. Its old houses are stone mud with flat wooden roofs and the modern ones are cement. It is one of the ancient villages in the region. It has electricity network and a paved road to the village center and they drink water from pools and artesian wells. Its old houses are stone and mud and wood while the modern ones are of reinforced cement. The village residents work in agriculture and olives and vineyards and fruit trees and other fruit-bearing trees like almonds and pomegranates and apricots. It is a village distinguished by its beautiful location on a high elevation and the first to inhabit the village was <span class="internal-link">Hassan Afandi family</span>.</p>
+<p>Among the holders of higher degrees in the village: <span class="internal-link">Adnan Abdi bin Abdo</span>/doctorate in petrochemistry/<span class="internal-link">Russia</span> - <span class="internal-link">Kalstan Murad Ibrahim</span>/doctorate in gynecological surgery/Russia - <span class="internal-link">Mohammed Abdo</span>/doctorate in agriculture/Russia</p>
+<p>Village mayor: <span class="internal-link">Mohammed Abdo Othman</span></p>
+<p>Preparation and implementation: Director of <span class="internal-link">Tireij Afrin</span> website: Abdulrahman Haji Othman</p>
+<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Gazê - Erfîn from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=2weZQvWl0sQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=2weZQvWl0sQ</a></p>
+<p>The village of <span class="internal-link">Gazê</span> is located in the <span class="internal-link">Cindirês</span> district of the <span class="internal-link">Efrîn</span> region, situated approximately 15 kilometers northwest of Cindirês and 15 kilometers west of the city of Efrîn. Perched at an altitude of 670 meters on <span class="internal-link">Çiyayê Hişyan</span> (Hişyan Mountain), the village&#x27;s name reflects its geography, meaning &quot;high&quot; or &quot;ridge.&quot; It overlooks a landscape defined by valleys such as <span class="internal-link">Geliyê Bîrê</span>, <span class="internal-link">Geliyê Çêtê</span>, and <span class="internal-link">Geliyê Ecûre</span>.</p>
+<p>The village was founded by <span class="internal-link">Hesen Efendî</span>, whose family lineage has been present in the region for approximately 250 years. While the village itself is described as old, its population expanded from a small core of about 20 households. The primary inhabitants descend from the Hesen Efendî line, branching into several key families: <span class="internal-link">Evdî Gênco</span>, <span class="internal-link">Ehmedê Îbiş</span>, <span class="internal-link">Mihemedê Evdek</span>, and <span class="internal-link">Îbram Axa</span> (which further includes <span class="internal-link">Imrûdê Hecî</span> and <span class="internal-link">Îbo</span>). Other residents include the <span class="internal-link">Brîmê Hecî</span> family, the <span class="internal-link">Okçerîn</span> family, and the <span class="internal-link">Reşkeş</span>, who are described as a tribe (<span class="internal-link">aşîret</span>) with nomadic origins. The <span class="internal-link">Brîmo</span> family is noted to have migrated from <span class="internal-link">Darkirê</span>. In the mid-20th century (1940s-50s), a branch of the Hesen Efendî family moved to settle in <span class="internal-link">Têlif</span> and <span class="internal-link">Til Hemû</span>.</p>
+<p>Gazê has a rich history of resistance and cultural preservation. Ehmedê Îbiş was a notable figure who rebelled against the French mandate in 1938, serving prison time in <span class="internal-link">Heleb</span> and <span class="internal-link">Beyrût</span> alongside companions like <span class="internal-link">Mehmed</span>, <span class="internal-link">Kaş</span>, and <span class="internal-link">Weqas</span>. The village is also proud of its educational achievements, boasting a high number of university graduates, doctors, and engineers, despite originally lacking a formal school until the community built one themselves in 1967. It holds the distinction of lighting the first Newroz fire in the area on the mountain of Gazê in 1961, an act for which local residents faced persecution by the Syrian state.</p>
+<p>A central social and historical landmark is the well known as <span class="internal-link">Bîra Hecî Mîra</span> (or <span class="internal-link">Bîra Hecî Mîrêd</span>), located in the valley of the same name. Historically, this site served as a vital water source and a gathering place for surrounding villages like <span class="internal-link">Koxre</span>, <span class="internal-link">Şîtka</span>, <span class="internal-link">Huse</span>, <span class="internal-link">Dargirê</span>, and <span class="internal-link">Maratê</span>. Elders describe how the water originally flowed as a spring before being contained into a well due to decreasing water levels. The area around the well features ancient trees and is near the <span class="internal-link">Ziyaretgeha Hemedê</span> shrine and <span class="internal-link">Çiyayê Şêx Mîrê</span>.</p>
+<p>Economically, the village relies on olive cultivation, as well as walnuts, almonds, and vineyards producing grape varieties such as <span class="internal-link">Frensî</span>, <span class="internal-link">Dukulgan</span>, <span class="internal-link">Zehlawî</span>, and <span class="internal-link">Şihê</span>. While sheep herding was once a major part of life, with shepherds using the <span class="internal-link">Girê Mûsa</span> market, it has declined in favor of agriculture. The village is also the home of the artist and agricultural engineer <span class="internal-link">Dr. Muhamed Abdo</span>, who preserves Kurdish musical traditions. A local commune is named in honor of <span class="internal-link">Şehîd Şêro</span>, a martyr from the village.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 2</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>17</p>
+<p>GAZÊ</p>
+<p>1.5.2017</p>
+<p>[Image of the village of Gazê]</p>
+<p><em>Ax û Welat</em></p>
+<p><em>Gazê</em></p>
+<p>The village of Gazê is affiliated with the Cindirêsê district of the Efrîn canton, located 15 km northeast of the city of Cindirêsê and 15 km west of the city of Efrîn. The village&#x27;s elevation is 670 meters above sea level.</p>
+<p>The name of the village of Gazê means ((High and long)) because it was built on Heştiya mountain; this mountain starts from the village of Çolaqa and ends at the village of Xerza.</p>
+<p>There is a village with the same name in the Reco district near the villages of Meydana, but they have no connection to each other.</p>
+<p>Hesen Efendî was the first person to settle in the village, and he is from the Heştiyan tribe, and it is said that they are connected to the Bedirxaniyan</p>
+<p>18</p>
+<p>e. Afterward, other families came. Hesen Efendî himself was a ruler or an Ottoman governor in the surrounding region.</p>
+<p>It is worth remembering that Hesen Efendî&#x27;s properties are around the village of Tilifê, and some people from Hesen Efendî&#x27;s family settled in the village of Tilifê in 1945.</p>
+<p>To the north of the village are the Bîrê valley and the village of Mezin; to the east, the Çetê valley and the village of Maratê; to the south, Bîra Keferdelê and the village of Keferdelê; to the west, the well of Hec Murad, the Hemedê shrine, the Ekûrê valley, and Şêx Mîrê mountain, where there is a water well, a cave, and old ruined houses.</p>
+<p>There are 7 families in the village:</p>
+<p>The families of Ebdê Gênco, Îbo, Ehmedê Îbiş, Mihemedê Ebdik are all from one root, from the family of Hesen Efendî; the family of Birîmê Hecî, Ukêş who are nomads, and the family of Birîmo came from the village of Dargirê.</p>
+<p>33 houses and nearly 900 people live in the village, but around 30 families live in the city of Efrîn.</p>
+<p>The people of the village make their living from agriculture, from olive groves, vineyards, apricots, walnuts, almonds, and sumac. In addition to agriculture, nearly 10 people work in various factories in Efrîn, and around 5 people work in the institutions and bodies of the Autonomous Administration. Some families raise sheep.</p>
+<p>There is one martyr from the village named Martyr Şêro, and the village&#x27;s commune is named after Martyr Şêro. There is no school in the village due to a lack of students.</p>
+<p>19</p>
+<p>Ehmedê Îbiş was a rebel against the French. In 1938, along with his friends, he worked extensively against the French and was imprisoned for 4 years in Aleppo and Beirut with Mihemed Ukaş Weqas.</p>
+<p>Cemîlê Osê was the mukhtar of the village and provided many services to the village.</p>
+<p>Xelîlê Hemdo, Muradê Hec Murad, and Xelîlê Hafiz were elders of the village and provided many services to the village, encouraging people to pursue education and resolving social problems.</p>
+<p>Ferîde Hisko delivered all the children of the village.</p>
+<p>The literacy rate in the village is high, and nearly 40 people have graduated from university, 10 of whom are doctors and pharmacists.</p>
+<p>The first Newroz fire was lit in 1961 on the mountains of Gazê village, and the people who lit the fire were subjected to torture and imprisonment by the Syrian state.</p>
+<p>Dr. Mihemed Ebdo, as an agricultural engineer who has obtained a Doctorate in agricultural engineering, also practices the art of being a dengbêj (bard).</p></div></details></div>
+                </div>
+
+            <div class="card p-6 rounded-xl">
+            <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcriptions and Subtitles</h2>
+            <div class="p-4 prose-compact max-w-none">
+    <div class="mb-4">
+        <a href="../village_subtitles/how_to_use_substital.html" target="_blank" class="text-base font-medium external-link hover:underline">Need help with using this subtitles on Youtube? (Click here)</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b-2 themed-border">
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Source</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Video</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Subtitles</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Transcript</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Ax û Welat 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=2weZQvWl0sQ" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/videos_556_Gaze - Erfin.srt" download="videos_556_Gaze - Erfin.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Gazê - Erfîn_Ax û Welat_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    </div>
+        </div>
+
+            <div class="card p-6 rounded-xl space-y-6">
+                <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Foundation/Origin Information of Gazê - Erfîn</h2></div><div class="p-4 prose max-w-none"><blockquote>
+<p>The first to inhabit the village was Hassan Afandi family.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>Founded in 1945 by the family of Hesen Efendî.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p></div>
+                <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Possible Village Name Meaning of Gazê - Erfîn</h2></div><div class="p-4 prose max-w-none"><blockquote>
+<p>Gaz in Kurdish means &#x27;the long elevation&#x27;, as the village is located on a long hill. The Arabized and Turkish names (Ghazi Tepe) came from a mistranslation, believing &#x27;Gazê&#x27; was the Turkish word for &#x27;hero&#x27;.</p>
+</blockquote>
+<p><strong>Source:</strong> TirejAfrin Site</p>
+<blockquote>
+<p>Its name means &#x27;high and long&#x27; in Kurmanji, reflecting its location on a mountain ridge.</p>
+</blockquote>
+<p><strong>Source:</strong> Ax û Walat Transcript</p></div>
+            </div>
+
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xaze.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xaze.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=2weZQvWl0sQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=2weZQvWl0sQ</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=tYlsrnBfBuA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=tYlsrnBfBuA</a><br><a href="https://www.youtube.com/watch?v=BCStI1mrHKg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=BCStI1mrHKg</a><br><a href="https://www.youtube.com/watch?v=VXnrQwc_0dQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VXnrQwc_0dQ</a><br><a href="https://www.youtube.com/watch?v=4MI-M2RdDQI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=4MI-M2RdDQI</a></li></ul>
+            </div>
+
+            
+
+            
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="">
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    lightboxImage.src = trigger.src;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+            function closeLightbox() { lightbox.classList.add('hidden'); }
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); }});
+
+            const iconConfig = {
+                shrine: { pinColor: '#28a745', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' },
+                landmark: { pinColor: '#ffc107', iconColor: '#ffffff', svg: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+                transport: { pinColor: '#007bff', iconColor: '#ffffff', svg: '<path d="M12 2c-4 0-8 3.5-8 8v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-4.5-4-8-8-8zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 8h12v4H6v-4z"/>' },
+                settlement: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
+                historical_site: { pinColor: '#6f42c1', iconColor: '#ffffff', svg: '<path d="M12 2L2 7v2h20V7L12 2zM4 10v10h2V10H4zm5 0v10h2V10H9zm5 0v10h2V10h-2zm5 0v10h2V10h-2z"/>' },
+                infrastructure: { pinColor: '#6c757d', iconColor: '#ffffff', svg: '<path d="M20.5 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-17 0c.83 0 1.5-.67 1.5-1.5S4.33 13.5 3.5 13.5 2 14.17 2 15s.67 1.5 1.5 1.5zm17-13C21.33 3.5 22 4.17 22 5s-.67 1.5-1.5 1.5S19 5.83 19 5s.67-1.5 1.5-1.5zM3.5 5c.83 0 1.5-.67 1.5-1.5S4.33 2 3.5 2 2 2.67 2 3.5 2.67 5 3.5 5zm9.45 2.55L5.71 11.29c-.39.39-.39 1.02 0 1.41l8.49 8.49c.39.39 1.02.39 1.41 0l7.24-7.24c.39-.39.39-1.02 0-1.41L14.37 5.29c-.39-.39-1.03-.39-1.42 0z"/>' },
+                military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
+                default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
+            };
+            function createCustomIcon(type, isMain) {
+                const config = iconConfig[type] || iconConfig.default;
+                const iconSize = isMain ? [36, 36] : [30, 30];
+                const iconAnchor = isMain ? [18, 36] : [15, 30];
+                const popupAnchor = [0, -iconSize[1] + 4];
+                const iconInnerSize = isMain ? 20 : 16;
+                const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
+                const html = `
+                    <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
+                        <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                            <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
+                            ${config.svg}
+                        </svg>
+                    </div>`;
+                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+            }
+            const mainVillageName = "Gazê - Erfîn";
+            const villageLat = 36.50943;
+            const villageLng = 36.767332;
+            const initialZoom = 14;
+            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
+            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
+            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
+                maxZoom: 22
+            });
+            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
+            L.control.layers(baseMaps).addTo(map);
+            esriImagery.addTo(map);
+            L.control.scale({ imperial: false }).addTo(map);
+            fetch('afrin_locations.json')
+                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then(locations => {
+                    locations.forEach(location => {
+                        const isMainVillage = location.name === mainVillageName;
+                        const customIcon = createCustomIcon(location.type, isMainVillage);
+                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
+                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                        if (isMainVillage) { marker.openPopup(); }
+                    });
+                })
+                .catch(err => {
+                    console.error('Error loading location data:', err);
+                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                });
+        });
+    </script>
+</body>
+</html>

@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -104,6 +125,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Khaltan Eastern, Xalta ، خالتان, Xaltan Shrqe, Xeltê Şerqî, خالطان شرقي</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Xalta</p></div>
                         </div>
                     </div>
                     
@@ -127,24 +149,68 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Xeltê Şerqî</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Xalta is the name of a region and a known Kurdish tribe in Kurdistan, found in Behdînan in southern Kurdistan. It is also the name of the Xaltî or Xaldî people, one of the ancestors of the Kurdish people.</p>
+<p><strong>Foundation Date/Period:</strong> 250 years</p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Wadî Xeltan</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Xeltê Şerqî</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Xalta, خالتان, خلطان</strong> /550m - 575ha - 15km/:</p>
-<p><strong>- خالتا:</strong> Name of a region and well-known Kurdish tribe in <span class="internal-link">Kurdistan</span>, found in <span class="internal-link">Bahdinan</span> from southern <span class="internal-link">Kurdistan</span> /<span class="internal-link">Lirikh</span>, p. 52/, and it is also the name of the &quot;خالتي، خالدي&quot; people, one of the grandsons of the Kurdish people.</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Xeltê Şerqî</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xaltan%20shrqe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xaltan%20shrqe.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Xalta</span>, <span class="internal-link">Xaltan</span>, <span class="internal-link">Xeltan</span> /550m altitude - 575 hectares? - 15km/:</p>
+<p>Xalta: This is the name of a region and a known Kurdish tribe in <span class="internal-link">Kurdistan</span>. Members of it are found in <span class="internal-link">Behdînan</span> in southern Kurdistan (Layard, p. 52). It is also the name of the <span class="internal-link">Xaltî</span> or <span class="internal-link">Xaldî</span> people, one of the ancestors of the Kurdish people.</p>
+<p>It is a medium sized village located at the beginning of the valley of <span class="internal-link">Wadî Xeltan</span>, which splits the village into two parts: a northeastern part /1206 inhabitants - 565m altitude/ and a southwestern part /977 inhabitants - 560m altitude/. Both are surrounded by mountainous heights covered in pine forests and olive fields. The site of the village is rich in ruins, indicated by huge building stones, numerous archaeological finds, and pieces of pottery. Its location is also rich in groundwater and surface springs.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p><span class="internal-link">Xaltan Şerqî</span> (East): A farm in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Cindirês</span> district of the <span class="internal-link">Efrîn</span> region, <span class="internal-link">Heleb</span> province. It is a small farm located on the southern slope of a rocky tongue with a medium slope, furrowed by water streams and covered by oak forests. Its soil is clay like. It is 1km away from <span class="internal-link">Xeltan Xerbî</span> (West) towards the northeast, and 14km from the district center.</p>
+<p>It is bordered to the north by a stream and Xeltan Xerbî, to the south by <span class="internal-link">Miske Tehtanî</span> and <span class="internal-link">Miske Foqanî</span>, to the east by the village of <span class="internal-link">Colqan</span>, and to the west by <span class="internal-link">Kûrdanlî</span>. The number of its houses is 70 houses and the age of the village is 250 years. Its old houses are made of stone and mud with wooden ceilings, while the modern ones are made of cement and are spreading increasingly on the outskirts of the farm.</p>
+<p>Its residents rely on the cultivation of grains and olive trees, alongside raising sheep and goats. Some of them work in making charcoal from oak wood. The village drinks from cisterns in which rainwater is collected. It is connected to Xeltan Xerbî and the district center by the paved <span class="internal-link">Riya Xeltan-Cindirês</span> (Xeltan Cindirês road).</p>
+<p>Mukhtar of the village: <span class="internal-link">Tahir Silêman Mihemed</span></p>
+<p>Preparation and execution:</p>
+<p>Manager of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>A medium village located at the beginning of <span class="internal-link">Khaltan Valley</span> (وادي خلطان). The village is divided into two parts: northeastern /1206n - 565m/, and southwestern /977n - 560m/, surrounded by mountain elevations covered with pine forests and olive groves. The village site is rich in antiquities, evidenced by massive building stones and numerous archaeological finds and pottery pieces. Its location is also rich in groundwater and surface springs.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: Afrin.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from Qatma village</p>
-<p><strong>خالتان شرقي</strong>: A farm in the <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Cindires</span> district, Afrin region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p>It is a small farm located on the southern slope of a rocky tongue of medium gradient crossed by water channels and covered with oak forests. Its soil is loamy and it is 1km away from western <span class="internal-link">Khaltan</span> toward the northeast and 14km from the district center. It is bordered to the north by a ravine and western <span class="internal-link">Khaltan</span>, to the south by <span class="internal-link">Tahtani</span> and <span class="internal-link">Fuqani</span> hamlets, to the east by <span class="internal-link">Julqan</span> village, and to the west by <span class="internal-link">Kurdanli</span>. The number of its houses is 70 houses and the village age is 250 years. Its old houses are stone and clay with wooden roofs, and the modern ones are concrete spreading increasingly on the farm&#x27;s edges. Its residents depend on grain cultivation and olive trees in addition to raising sheep and goats. Some of them work in charcoal production from oak wood. The village drinks from cisterns that collect rainwater. It connects with western <span class="internal-link">Khaltan</span> and the district center by a paved road.</p>
-<p>Village mayor: <span class="internal-link">Taher Sulaiman Mohammed</span></p>
-<p>Prepared and implemented by: Site Manager of <span class="internal-link">Tirej Afrin</span>: Abdul Rahman Haji Othman</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Xalta ، خالتان ، خلطان /550م - 575هـ - 15كم/:</p>
+<ul>
+<li>خالتا:</li>
+</ul>
+<p>اسم منطقة وعشيرة كردية معروفة في كردستان، يوجد منها في بهدينان من جنوبي كردستان /ليرخ، ص 52/، كما انه اسم شعب &quot;خالتي، خالدي&quot; أحد أحفاد الشعب الكردي.</p>
+<ul>
+<li>قرية متوسطة تقع في بداية وادي خلطان ويشطر القرية إلى قسمين: شمالي شرقي</li>
+</ul>
+<p>/1206ن - 565م/، وجنوبي غربي /977ن - 560م/، وتحيط بهما مرتفعات جبلية تغطيها حراج الصنوبر وحقول الزيتون. موقع القرية غني بالآثار، وتدل عليها أحجار البناء الضخمة واللقى الأثرية الكثيرة وقطع الفخار، كما أن موقعها غني بالمياه الجوفية والينابيع السطحية. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه خالتان شرقي : مزرعة في جبل الكرد تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب. وهي مزرعة صغيرة تقع على السفح الجنوبي للسان صخري متوسط الانحدار تخدده المسيلات المائية وتغطيه حراج السنديان ، تربتها غضارية وهي تبعد عن خلطان غربي مسافة 1كم نحو الشمال الشرقي وعن مركز الناحية 14كم يحدها شمالاً مسيل وخلطان غربي ، وجنوباً مسكة تحتاني وفوقاني , وشرقاً قرية جولقان ، وغرباً كوردانلي ، عدد بيوتها 70بيتاً وعمر القرية 250عاماً ، بيوتها القديمة حجرية طينية سقوفها خشبية والحديثة منها إسمنتية تنتشر متزايدة على أطراف المزرعة . يعتمد سكانها على زراعة الحبوب وأشجار الزيتون إلى جانب تربية الأغنام والماعز ، يعمل بعضهم في صنع الفحم من خشب السنديان ، تشرب القرية من صهاريج تجمع فيها مياه الأمطار ، تتصل مع خلطان غربي ومركز الناحية بطريق مزفت .</p>
+<p>مختار القرية :  طاهرسليمان محمد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -159,7 +225,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xaltan%20shrqe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xaltan%20shrqe.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xaltan%20shrqe.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xaltan%20shrqe.htm</a></li></ul>
             </div>
 
             
@@ -169,7 +235,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -287,6 +353,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

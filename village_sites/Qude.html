@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -185,7 +206,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Murtafa&#x27;a, Murtfa&#x27;a, Qada, Qedê, Qude, المرتفعة, قوده كوي, قداه</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Şêxa</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Elî Bili, Ereb, Fato, Henan, Miso, Nano, Qudê, Siyamendo</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Elî Bili, Ereb, Fato, Gurfa, Haco, Hec Mûsa, Hecî Hecûm, Henan, Hevşo, Heyder, Kirmû, Mala Ebû Faiq, Mala Sebrî, Mala Sebrî Mûsa, Miso, Mist Kêle, Nano, Qudê, Siyamendo</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -221,6 +242,12 @@
 <p><strong>Springs:</strong> <span class="internal-link">Kaniya Kûkila</span></p>
 <p><strong>Trees:</strong> <span class="internal-link">Merx</span></p>
 <p><strong>Wells:</strong> <span class="internal-link">Bîra Hejîrkê</span>, <span class="internal-link">Bîra Kûkila</span></p>
+<h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Afrin 366</h5>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Gewr</span>, <span class="internal-link">Bûzî Kûl</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Meqbeza Hecer</span></p>
+<p><strong>Trees:</strong> <span class="internal-link">Darê Hacîka</span></p>
+<p><strong>Wells:</strong> <span class="internal-link">Bîra Hacîka</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Benê Ne&#x27;meto</span>, <span class="internal-link">Deşta Sûrke</span>, <span class="internal-link">Kalmon</span></p>
 <h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Khalil Sino</h5>
 <p><strong>Foundation Date/Period:</strong> 400 to 500 years ago</p></div>
             </div>
@@ -229,27 +256,69 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qude</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin / Geographic Study:</p>
-<p><strong><span class="internal-link">Gundî Qude</span> (قوده كوي), <span class="internal-link">Al-Murtafa&#x27;a</span> (المرتفعة)</strong> /1794N - 373H - 7km - 920m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qude</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qude.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qude.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Gund Qude</span>, <span class="internal-link">Qude Koy</span>, &quot;The High&quot;. Population: 1794. Houses: 373. Distance: 7km. Altitude: 920m.</p>
+<p><span class="internal-link">Qude</span>: In Kurdish, it means &quot;the high/tall stature.&quot; This was the nickname of the first inhabitant of the village. His origin was from the village of Eqîlme, and most of the village residents descend from him.</p>
+<p>It is a small village located on the peak of a mountainous elevation with steep slopes on its four sides. Its beautiful location, surrounded by natural forests and facing <span class="internal-link">Çiyayê Amanos</span> to the west, is suitable for establishing wonderful summer resorts.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Qude Koy: A village in <span class="internal-link">Çiyayê Kurmênc</span> following the district of <span class="internal-link">Reco</span>, <span class="internal-link">Efrîn</span> area, Heleb governorate. It is a large village located on the middle slope of the mentioned mountain. It is bordered to the north by a harsh slope, a deep valley, a mountain range after the valley, the village of <span class="internal-link">Hesen Kelkewî</span>, and the village of <span class="internal-link">Hecîk</span>. To the south, it is bordered by a deep valley, a rugged mountain range, and the village of <span class="internal-link">Memala</span>. To the west, a high mountain range and the village of <span class="internal-link">Omera</span>. To the east, a rugged mountain range, several watercourses, and the village of <span class="internal-link">Dêrwîş Oba</span>.</p>
+<p>The number of its houses reaches about 200, and its age is about 500 years according to the account of one of the elderly people in the village. Its houses are stone and mud with flat wooden roofs, while modern cement ones have spread east and west. An electricity network is available, and the residents drink rainwater stored in pools or cisterns dug into the houses. The village has a primary and preparatory school, and a mosque in the center of the village.</p>
+<p>The residents work in rain-fed agriculture (olives, vines, legumes, grains) and some fruit trees, alongside raising sheep and goats due to the mountainous nature surrounding the village from all sides. The village connects to the district and neighboring villages via newly asphalted roads reaching the center of the village. The village is considered one of the old villages in the Efrîn region.</p>
+<p>Among the families of the village are: the <span class="internal-link">Hec Mûsa</span> family (branches: <span class="internal-link">Bekir</span>/<span class="internal-link">Bakîr</span>, <span class="internal-link">Osman</span> (<span class="internal-link">Memo</span>), <span class="internal-link">Silêman</span>, <span class="internal-link">Mihemed</span>); the <span class="internal-link">Mist Kêle</span> family (<span class="internal-link">Mûsa</span>); and the <span class="internal-link">Haco</span> family. It is mentioned that Dr. <span class="internal-link">Iqbal Xelîl Ereb</span>, who holds a PhD in Informatics from France, and (Dr. <span class="internal-link">Fethî Osman</span>, <span class="internal-link">Şukrî Osman</span>, <span class="internal-link">Ebdulezîz Bakîr</span>), who hold higher degrees in their medical specializations, are children of this village, in addition to the presence of many university degree holders.</p>
+<p>Village Mokhtar: <span class="internal-link">Ehmed Silêman Omer</span>.</p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">1 - PhD/Villages/Qude</span> (قوده): In Kurdish it means &quot;the high elevated stature&quot;, and it is the title of the first inhabitant of the village, originally from <span class="internal-link">Çeqilme</span> village (چقلمه), and most of the village&#x27;s inhabitants descend from him.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A small village located on the summit of a mountainous elevation with steep slopes from all four directions. Its beautiful location, surrounded by natural forests and facing the <span class="internal-link">Amanos Mountains</span> (جبال الآمانوس) in the west, is suitable for establishing wonderful resorts.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin .... Its Rivers and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Qude Koy</span> (قوده كوي)</strong>: A village in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located on the middle slope of the mentioned mountain. To the north, it borders a steep slope and deep valley, and a mountain chain beyond the valley with <span class="internal-link">Hasan Kalkawi Village</span> (قرية حسن كلكاوي) and <span class="internal-link">Hajik Village</span> (قرية حجيك). To the south, a deep valley and rough mountain chain with <span class="internal-link">Me&#x27;mal Oshaghi Village</span> (قرية معمل أوشاغي). To the west, a high mountain chain with <span class="internal-link">Omar Oshaghi Village</span> (قرية عمر أوشاغي). To the east, a rough mountain chain with several streams and <span class="internal-link">Darwish Oba Si Village</span> (قرية درويش أوبه سي).</p>
-<p>The village has approximately 200 houses and is about 500 years old according to one of the elderly residents. The houses are stone and clay with flat wooden roofs, and modern cement houses have spread to the east and west. It has an electrical network and residents drink from rainwater stored in pools or cisterns dug in houses. It has an elementary and preparatory school and a mosque in the village center.</p>
-<p>Residents work in rain-fed agriculture (olives, grapes, legumes, grains) and some fruit trees, alongside raising sheep and goats due to the mountainous nature surrounding the village from all directions. The village connects to the district and neighboring villages by recently paved roads to the village center. The village is considered one of the old villages in Afrin City region.</p>
-<p>Village families include: <span class="internal-link">Âl Haj Musa</span> (آل حاج موسى) (<span class="internal-link">Bakr</span>/<span class="internal-link">Bakir</span> (بكر/باكير) - <span class="internal-link">Othman</span>/<span class="internal-link">Memo</span> (عثمان/معمو) - <span class="internal-link">Suleiman</span> (سليمان) - <span class="internal-link">Muhammad</span> (محمد)) - <span class="internal-link">Âl Must Kila</span> (آل مست كيله) (<span class="internal-link">Musa</span> (موسى)) - <span class="internal-link">Âl Hajo</span> (آل حاجو).</p>
-<p>It should be noted that <span class="internal-link">Dr. Iqbal Khalil Arab</span> (الدكتورة اقبال خليل عرب), holder of a doctorate in informatics from <span class="internal-link">France</span> (فرنسا), and <span class="internal-link">Dr. Fathi Othman</span> (الدكتور فتحي عثمان), <span class="internal-link">Shukri Othman</span> (شكري عثمان), <span class="internal-link">Abdul Aziz Bakir</span> (عبدالعزيز باكير), holders of higher degrees in their medical specializations, are sons of this village, in addition to many holders of university degrees.</p>
-<p>Village Head: <span class="internal-link">Ahmad Suleiman Omar</span> (أحمد سليمان عمر)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qude from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=T7mENt26n8Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=T7mENt26n8Y</a></p>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the website Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Gund Qude ، قوده كوى ، المرتفعة /1794ن - 373هـ - 7كم - 920م/:</p>
+<ul>
+<li>قوده: في الكردية بمعنى &quot;القامة العالية المرتفعة &quot;، وهو لقب أول ساكن</li>
+</ul>
+<p>للقرية، وأصله من قرية eqilme، وينحدر معظم سكان القرية منه.</p>
+<ul>
+<li>قرية صغيرة تقع على قمة مرتفع جبلي ذات انحدارات شديدة من جهاته الأربعة.</li>
+</ul>
+<p>يصلح موقعها الجميل المحاط بالحراج الطبيعية والمقابل لجبال الآمانوس في الغرب لإقامة مصايف رائعة فيها. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : قوده كوي : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع على السفح الأوسط للجبل المذكور يحدها شمالاً منحدر قاسي و وادي عميق و سلسلة جبلية بعد الوادي و قرية /حسن كلكاوي/ و /قرية حجيك/ ، وجنوباً وادي عميق و سلسلة جبلية وعرة و قرية / معمل أوشاغي / ، و غرباً سلسلة جبلية عالية و قرية /عمر أوشاغي/ و شرقاً سلسلة جبلية وعرة و عدة مسيلات و قرية /درويش أوبه سي/ يبلغ عدد بيوتها حوالي 200 بيتاً و عمرها حوالي 500 عاماً حسب رواية أحد الأشخاص المعمرين في القرية ، بيوتها حجرية طينية ذات سقوف خشبية مستوية و الحديثة أسمنتية انتشرت شرقاً وغرباً ، تتوفر فيها شبكة كهرباء و تشرب الأهالي من مياه الأمطار المخزنة في البرك أو الصهاريج المحفورة في البيوت ، فيها مدرسة ابتدائية واعدادية و جامع في وشط القرية يعمل السكان بالزراعة البعلية ( الزيتون ، الكرمة ، البقول ، الحبوب ) و بعض الأشجار المثمرة إلى جانب تربية الأغنام والماعز نظراً للطبيعة الجبلية المحيطة بالقرية من الكافة الجهات ، تتصل القرية مع الناحية و القرى المجاورة بطرق مزفت حديثاً حتى وسط القرية ، تعتبر القرية من القرى القديمة في منطقة عفرين . ومن عائلات القرية : آل حاج موسى ( بكر/ باكير  عثمان ( معمو ) سليمان  محمد )  آل مست كيله ( موسى )  آل حاجو. يذكر أن الدكتورة اقبال خليل عرب الحائزة على شهادة الدكتوراه في المعلوماتية من فرنسا  و ( الدكتور فتحي عثمان  شكري عثمان  عبدالعزيز باكير ) الحائزون على دراسات عليا في اختصاصاتهم الطبية من أبناء هذه القرية بالاضافة إلى وجود العديد من الحائزين على الشهادات الجامعية .</p>
+<p>مختار القرية : أحمد سليمان عمر</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qude from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=T7mENt26n8Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=T7mENt26n8Y</a></p>
 <p>The village of <span class="internal-link">Qudê</span>, located in the <span class="internal-link">Afrin</span> region (specifically linked to the <span class="internal-link">Reco</span> district), is a settlement with a history spanning approximately four centuries. According to village elders like <span class="internal-link">Apê Mihemed</span>, the village was founded by an individual named Qudê, a wealthy and noble man (&quot;xanedan&quot;) from the <span class="internal-link">Şêxa</span> tribe. The founder arrived in this specific location after conflicts arose in other Kurdish territories, seeking a place with sufficient pasture and water for his livestock. While the village has always been known as Qudê to its inhabitants, the state authorities attempted to Arabize the name to <span class="internal-link">El Murtefe&#x27;a</span>, meaning &quot;The High One,&quot; referencing the village&#x27;s high elevation.</p>
 <p>The social fabric of Qudê is composed of several distinct families. Apart from the lineage of the founder Qudê, the village is home to the families of <span class="internal-link">Miso</span>, <span class="internal-link">Henan</span>, <span class="internal-link">Nano</span>, <span class="internal-link">Elî Bili</span>, <span class="internal-link">Siyamendo</span>, <span class="internal-link">Fato</span>, and <span class="internal-link">Ereb</span>. Apê Mihemed notes that not all current residents are direct descendants of the founder; specifically, five of these families originated elsewhere before settling in the village.</p>
 <p>Water scarcity and management played a significant role in the village&#x27;s history. The community relies on historical water sources such as <span class="internal-link">Kaniya Kûkila</span> (also referred to as <span class="internal-link">Bîra Kûkila</span>) and <span class="internal-link">Bîra Hejîrkê</span>, the latter located approximately two kilometers away. These water sources were vital not only for Qudê but were also used by the neighboring village of <span class="internal-link">Dêrîş</span>, and occasionally led to conflicts with the village of <span class="internal-link">Hesen</span> over access. In the past, water had to be laboriously transported by back or draft animal from these distant points.</p>
 <p>A central feature of the village&#x27;s cultural landscape is a massive, ancient tree known as the <span class="internal-link">Merx</span>. Estimated to be over two hundred years old, this tree serves as a communal gathering spot. It functions as a natural sanctuary where villagers of all ages, from elders like <span class="internal-link">Apê Elî</span> to children, gather during holidays and celebrations to rest in its shade, swing on ropes, and maintain social bonds.</p>
-<p>The village preserves many traditional aspects of rural Kurdish life. Elders describe the use of the <span class="internal-link">Cercer</span>, a traditional threshing sled used on the threshing floors (&quot;bêder&quot;) for months at a time during the harvest season. Residents also maintain culinary traditions, preparing specific dishes such as <span class="internal-link">Sermîsok</span>, <span class="internal-link">Lûrk</span>, and a sweet made from grape molasses called <span class="internal-link">Vişvişk</span> or <span class="internal-link">Zengilûk</span>. The community is also known for preserving ancient games like <span class="internal-link">Tûş</span>, played by women and children in the pastures, and for their localized craftsmanship, such as farriery work traditionally learned in <span class="internal-link">Heleb</span> and practiced in Reco.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qude from Khalil Sino</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=q4EYBjDzcRI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=q4EYBjDzcRI</a></p>
+<p>The village preserves many traditional aspects of rural Kurdish life. Elders describe the use of the <span class="internal-link">Cercer</span>, a traditional threshing sled used on the threshing floors (&quot;bêder&quot;) for months at a time during the harvest season. Residents also maintain culinary traditions, preparing specific dishes such as <span class="internal-link">Sermîsok</span>, <span class="internal-link">Lûrk</span>, and a sweet made from grape molasses called <span class="internal-link">Vişvişk</span> or <span class="internal-link">Zengilûk</span>. The community is also known for preserving ancient games like <span class="internal-link">Tûş</span>, played by women and children in the pastures, and for their localized craftsmanship, such as farriery work traditionally learned in <span class="internal-link">Heleb</span> and practiced in Reco.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qude from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=WTN5wE60Cuc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=WTN5wE60Cuc</a></p>
+<p>Gundê Qudê, also referred to simply as <span class="internal-link">Qudê</span> or <span class="internal-link">Qada</span>, is a high-altitude village located in the <span class="internal-link">Raco</span> district of the Afrin region. The village is characterized by its elevation and rugged terrain, offering expansive views of the surrounding geography, including <span class="internal-link">Çiyayê Gewr</span> and the <span class="internal-link">Deşta Sûrke</span>. It borders the villages of <span class="internal-link">Dêwirîş</span> (also called <span class="internal-link">Gundê Dêwirîş</span>), <span class="internal-link">Hecîko</span>, and <span class="internal-link">Hesen</span>.</p>
+<p>The social structure of Gundê Qudê is comprised of several distinct lineages. The current population is estimated between 200 and 275 households. One resident notes that the community includes a mix of people, stating &quot;<span class="internal-link">Ereb</span> nav man da ne&quot; (Arabs are among us), while identifying his own group as <span class="internal-link">Hevşo</span> (or <span class="internal-link">Hevş</span>). Prominent families mentioned include <span class="internal-link">Mala Sebrî</span>, <span class="internal-link">Mala Sebrî Mûsa</span>, and <span class="internal-link">Mala Ebû Faiq</span>. The <span class="internal-link">Hecî Hecûm</span> family is particularly notable for their economic role in the village; <span class="internal-link">Evdînê Hecî Hecûm</span>, also known as <span class="internal-link">Ebû Receb</span>, is identified as the former mukhtar and owner of the local olive press. Other mentioned residents include <span class="internal-link">Seîdê Kirmû</span> and <span class="internal-link">Mistefa Gurfa</span> (also referred to as <span class="internal-link">Kado Gurfa</span>).</p>
+<p>The village entrance is marked by a significant landmark pairing: <span class="internal-link">Bîra Hacîka</span> (The Well of Hacîka) and the adjacent <span class="internal-link">Darê Hacîka</span> (The Tree of Hacîka). This site serves as a gathering point, though speakers note that many trees in the area have been cut down. Another specific location within the village territory is <span class="internal-link">Benê Ne&#x27;meto</span>, a high point described as a sirt (ridge), and <span class="internal-link">Bûzî Kûl</span>, a hill or mound that overlooks the village boundaries.</p>
+<p>Economy and daily life in Gundê Qudê revolve heavily around olive cultivation. The village contains a modern olive press built in 1985, managed by the Hecî Hecûm family. There are also ruins of an older stone press, referred to as <span class="internal-link">Meqbeza Hecer</span>, which is now dilapidated (xarabî). The documentary highlights the practice of afarê, gleaning leftover olives after the main harvest, as a traditional activity, particularly for children.</p>
+<p>Culturally, the village is home to <span class="internal-link">Gîvara Heyder</span>, a dengbêj (singer) who performs songs celebrating the region&#x27;s geography, mentioning places like <span class="internal-link">Çiyayê Hawarê</span>, <span class="internal-link">Cindêrêsê</span>, and <span class="internal-link">Geliyê Tîra</span>. The village also possesses a school (<span class="internal-link">Mekteb</span>) but lacks a bakery, relying on Raco for bread. The residents describe the village as having a &quot;popular&quot; (şe&#x27;bî) and lively atmosphere during the olive harvest season.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qude from Khalil Sino</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=q4EYBjDzcRI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=q4EYBjDzcRI</a></p>
 <p>The village of <span class="internal-link">Qudê</span>, also referred to as <span class="internal-link">Murtefa</span> in Arabic and occasionally pronounced as <span class="internal-link">Qederê</span> by the host, is situated in the <span class="internal-link">Raco</span> district of the <span class="internal-link">Efrîn</span> region. It is located approximately 7 to 8 kilometers from the center of Raco. The village sits at a high altitude, estimated by residents to be between 1000 and 1200 meters, offering expansive views that reach as far as <span class="internal-link">Lîwa Skenderûn</span> and <span class="internal-link">Heleb</span>. According to an elder named <span class="internal-link">Sewle</span>, the village was founded on this mountain peak approximately 400 to 500 years ago. A resident named <span class="internal-link">Hemîd</span> suggests the name Qudê is derived from the history of their ancestors first settling or &quot;sitting&quot; in that specific spot.</p>
 <p>The social structure of Qudê is comprised of approximately 300 households. The documentary highlights the return of residents from the diaspora; specifically, Hemîd returned to his ancestral home after living in <span class="internal-link">Stenbol</span> for 22 years. Hemîd belongs to a family of traditional bone-setters (<span class="internal-link">mucebir</span>) who have practiced this healing art for over a century, inheriting the skill from their fathers and grandfathers. He expressed that the clean air of Qudê cured the breathing difficulties he suffered in the city. Other residents interviewed include <span class="internal-link">Zuwêr Ebdilmihemed</span>, <span class="internal-link">Mihyedîn Reşîd</span>, and his wife Sewle, as well as <span class="internal-link">Zeyneb</span>, a mother of eight.</p>
 <p>Historically, the agricultural identity of Qudê was defined by a specific type of pear known locally as <span class="internal-link">qeşermît</span> or <span class="internal-link">hirmê</span>, which grew abundantly in the vineyards. However, these trees have largely disappeared, replaced by orchards of cherries (<span class="internal-link">keras</span>), apricots (<span class="internal-link">mişmiş</span>), almonds (<span class="internal-link">be&#x27;îv</span>), and olives (<span class="internal-link">zeytûn</span>). The residents maintain a strong connection to their past; Zeyneb recalled a time when life was materially harder but socially richer, characterized by safety and communal activities like fetching water from the springs and children playing late into the night.</p>
@@ -279,6 +348,13 @@
                 <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=T7mENt26n8Y" target="_blank" class="external-link hover:underline">Watch Video</a></td>
                 <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/videos_1126_Qude.srt" download="videos_1126_Qude.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
                 <td class="px-4 py-3 text-base"><a href="../village_transcripts/Qude_Ax û Welat_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Afrin 366 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=WTN5wE60Cuc" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/afrin366_videos_131_Qude.srt" download="afrin366_videos_131_Qude.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Qude_Afrin 366_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
             </tr>
         
             <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
@@ -331,7 +407,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qude.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qude.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=lL_WvXwysjU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lL_WvXwysjU</a><br><a href="https://www.youtube.com/watch?v=T7mENt26n8Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T7mENt26n8Y</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=q4EYBjDzcRI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=q4EYBjDzcRI</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qude.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qude.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=lL_WvXwysjU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lL_WvXwysjU</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=T7mENt26n8Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T7mENt26n8Y</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=WTN5wE60Cuc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=WTN5wE60Cuc</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=q4EYBjDzcRI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=q4EYBjDzcRI</a></li></ul>
             </div>
 
             
@@ -341,7 +417,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -459,6 +535,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -167,7 +188,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Jamrakiya, Gemrikê, Gemrukê, Gemrûgê, Gemrûk, Gemrûkê, Kamrok, الجمركية, كمروك, گمروك</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Maqostina, Şîkakan</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Dedişka, Ebû Xelîl, Elkêla, Elmişka, Hafizê Dmol, Hesendêro, Hesensêydî, Heymûnî, Kera, Mala Cûmî, Mala Dayê, Mala Dwana, Mala Ehmo, Mala Ehû, Mala Elî Sûd, Mala Emdînê, Mala Hesenî Şêxû, Mala Hesfeqîre, Mala Hesko, Mala Mehmedî Xaçkê, Mala Mehûyê Begjî, Mala Mela Yûsiv, Mala Meştî Salehê, Mala Moşûka, Mala Nasif, Mala Qamê, Mala Qurt&#x27;ele, Mala Rindik, Mala Xaçkê, Mala Çîçek, Mala Îso, Mala Şukrî Evdê, Mala Şêx Elî, Mala Şêx Hemadê, Malêd Ereba, Miheme Molo, Mêrdox, Qurbe, Xorato, Yehmo, Çamraka, Çemroka</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Dedişka, Ebû Xelîl, Elkêla, Elkîlo, Elmişka, Hafizê Dmol, Hesendêro, Hesensêydî, Heymûnî, Karo, Kera, Mala Cûmî, Mala Dayê, Mala Dwana, Mala Ehmo, Mala Ehû, Mala Elî Sûd, Mala Emdînê, Mala Hesenî Şêxû, Mala Hesfeqîre, Mala Hesko, Mala Mehmedî Xaçkê, Mala Mehûyê Begjî, Mala Mela Yûsiv, Mala Meştî Salehê, Mala Moşûka, Mala Nasif, Mala Qamê, Mala Qurt&#x27;ele, Mala Rindik, Mala Xaçkê, Mala Çîçek, Mala Îso, Mala Şukrî Evdê, Mala Şêx Elî, Mala Şêx Hemadê, Malêd Ereba, Miheme Molo, Mêrdox, Qurbe, Xorato, Yehmo, Çamraka, Çemroka, Îbrahîm Xelîl</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -216,25 +237,59 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Gemrûkê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of Mabetli District (المعبطلي) / Mabeta</p>
-<p><span class="internal-link">1 - PhD/Villages/Gemrûkê</span> (كمروك) - <span class="internal-link">1 - PhD/Villages/Gemrûkê</span></p>
-<p>===</p>
-<p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds</span> (Afrin) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Gemrûk (گمروك), Al-Jamrakiya (الجمركية)</strong> /2791N - 640H - 12km - 390m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Gemrûkê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20gemruke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20gemruke.htm</a></p>
+<p>Stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Gemrk</span>, <span class="internal-link">Kumruk</span>, <span class="internal-link">El-Cumrukiyê</span> /2791 inhabitants - 640 hectares - 12km - 390m altitude/:</p>
+<p>There was a main road passing through the current village of Gemrk, connecting the villages of <span class="internal-link">Bilbil</span> and its surroundings with the plain of <span class="internal-link">Deşta Cûmê</span>. The Ottoman customs used to stand on that road near the village, so it was named <span class="internal-link">Gumrik</span> &quot;Customs,&quot; then it was Arabized and became El-Cumrukiyê. As for the old village, it was in a location called <span class="internal-link">Qk</span> beside the <span class="internal-link">Çemê Efrînê</span> (Afrin River), and its inhabitants ascended to its current elevated location approximately 150 years ago.</p>
+<p>It is a large village located atop a wide plateau, distant from the Çemê Efrînê by a distance of 2km. Beautiful waterfalls exist near its southeastern side on the Çemê Efrînê, and they are called by its name. The village site is a beautiful tourist spot frequented by summer vacationers.</p>
+<p>Stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Gemrk: A village in <span class="internal-link">Çiyayê Kurmênc</span>, following the district of <span class="internal-link">Mabeta</span>, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a large village located in the central part of the mentioned mountain, on a mountainous elevation and limestone plateau furrowed by several watercourses sloping towards the valley of the Çemê Efrînê. It is 15km away from the town of Mabeta towards the northeast.</p>
+<p>Its soil is clay. It is bordered on the north by a slope and several watercourses planted with olive trees, the village of <span class="internal-link">Şorbe</span> and <span class="internal-link">Sîmalik</span>; on the south by a slope planted with olive trees, <span class="internal-link">Geliyê Sîlê</span>, and the nearby village of <span class="internal-link">Ereb Şêxo</span> at a distance of 1km; on the west by a slope, Geliyê Sîlê, mountainous highlands planted with olive trees, and the village of <span class="internal-link">Şêx Hûtko</span>; and on the east by a slope, Geliyê Sîlê, the course of the valley of the Çemê Efrînê, the village of <span class="internal-link">Meydankê</span>, the <span class="internal-link">Benda 17 Nîsanê</span> (17 April Dam), and the village of <span class="internal-link">Helûbiyê Mezin</span>.</p>
+<p>The number of its houses reaches about 200 houses. Its age is about 500 years, and it is among the old villages in the region. Its old houses are stone and mud with flat wooden roofs, while the modern ones are cement, spread to the west, north, and south. Available in it are an electricity network, a primary and preparatory school, and an old mosque in the center of the village. It contains a modern press for pressing olives. A paved road connects it to the district center, passing through its center to several neighboring villages.</p>
+<p>The village drinks from a water network from a well present in the village and from cisterns in which winter rain water is collected. The residents work in rain fed agriculture on an area of 300 hectares with grains, olives, vines, and legumes. They cultivate via irrigation from artesian wells or by pumping from the Çemê Efrînê summer vegetables, cotton, and sugar beet, alongside raising sheep and goats.</p>
+<p>Among its most important families are the family of <span class="internal-link">Îbrahîm Xelîl</span>, the first to inhabit the village, and the family of <span class="internal-link">Elkîlo</span> and <span class="internal-link">Karo</span>. It is mentioned that Doctor <span class="internal-link">Yûsif Hesen</span>, holder of a doctorate degree in media psychology from France and currently teaching at the University of Qatar, is one of the sons of this village.</p>
+<p>Mukhtar of the village: <span class="internal-link">Mihemed Menan Menan</span></p>
+<p>Sources:</p>
 <ul>
-<li>There was a main road passing through the current Gemrûk village (قرية گمروك), connecting the villages of <span class="internal-link">Balbal</span> (بلبل) and its surroundings with <span class="internal-link">Jouma Plain</span> (سهل جومه). Ottoman customs used to stop on that road near the village, so it was named <span class="internal-link">Gumrik</span> &quot;گمرك وگمروك&quot; (گمرك وگمروك), then it was Arabized and became Al-Jamrakiya (الجمركية). As for the old village, it was in a location called <span class="internal-link">Qûçkê</span> (قوچكه) beside <span class="internal-link">Afrin River</span> (نهر عفرين). Its inhabitants moved to their current elevated location about 150 years ago.</li>
-<li>It is a large village located on a wide plateau, 2km away from Afrin River (نهر عفرين). There are beautiful waterfalls on Afrin River near its southeastern side, named after it. The village location is beautifully scenic and attracts vacationers.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from Qitma village (قطمه):</p>
-<p><strong>Kamrok (كمروك)</strong>: A village in Kurdish Mountain (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located in the central part of the mentioned mountain, on a mountain elevation and limestone plateau crossed by several streams sloping toward Afrin River valley (وادي نهر عفرين), 15km away from <span class="internal-link">Mabetli</span> town (بلدة معبطلي) toward the northeast. Its soil is clay.</p>
-<p>It is bordered to the north by a slope and several streams planted with olive trees and <span class="internal-link">Shorba Oghli</span> village (قرية شوربه أوغلي) and <span class="internal-link">Semalak</span> (سيمالك), to the south by a slope planted with olive trees and <span class="internal-link">Sili Valley</span> (وادي سيلي) and <span class="internal-link">Arab Sheikho</span> village (قرية عرب شيخو) nearby at 1km distance, to the west by a slope and Sili Valley (وادي سيلي) and mountain elevations planted with olive trees and <span class="internal-link">Sheikh Hitko</span> village (qرية شيخ هتكو), and to the east by a slope and Sili Valley (وادي سيلي) and the Afrin River course (مجرى وادي نهر عفرين) and <span class="internal-link">Medanki</span> village (قرية ميدانكي) and <span class="internal-link">17 Nisan Dam</span> (سد 17نيسان) and <span class="internal-link">Haloubi Kabir</span> village (قرية حلوبي كبير).</p>
-<p>The number of houses is about 200, and its age is about 500 years. It is one of the old villages in the region. Its old houses are stone and clay with flat wooden roofs, and the modern concrete ones spread west, north and south. It has electricity network and primary and preparatory school and an old mosque in the village center. It has a modern olive press and connects to the district center by a paved road passing through its center to several neighboring villages.</p>
-<p>The village drinks from a water network from a well located in the village and from cisterns that collect rainwater in winter. The inhabitants work in rain-fed agriculture on an area of 300 hectares with grains, olives, vineyards and legumes, and they cultivate irrigated crops from artesian wells or by pumping from Afrin River (نهر عفرين) with summer vegetables, cotton and sugar beet, in addition to raising sheep and goats.</p>
-<p>Among its most important families is the <span class="internal-link">Ibrahim Khalil</span> family (عائلة إبراهيم خليل), the first to inhabit the village, and the <span class="internal-link">Alkilo - Karo</span> family (عائلة علكيلو – كارو). It is mentioned that <span class="internal-link">Dr. Yusuf Hassan</span> (الدكتور يوسف حسن), holder of a doctorate in media psychology from <span class="internal-link">France</span> and now teaching at <span class="internal-link">Qatar University</span> (جامعة قطر), is from the sons of this village.</p>
-<p>Village mayor: <span class="internal-link">Mohammed Minan Minan</span> (محمد منان منان)</p>
-<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin Heritage</span>: Abdulrahman Haji Othman (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Gemrûkê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=jF1HDrGmbmo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=jF1HDrGmbmo</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and execution:</p>
+<ul>
+<li>Manager of the Tirej Efrîn site: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Gemrk ، گمروك ، الجمركية /2791ن - 640هـ - 12كم - 390م/:</p>
+<ul>
+<li>كان هناك طريق رئيسي يمر من ق.گمروك الحالية، ويصل ما بين قرى بلبل وما</li>
+</ul>
+<p>جاورها وسهل جومه، وكانت الجمارك العثمانية تقف على ذلك الطريق بالقرب من القرية، فسميت باسم Gumrik &quot;گمرك وگمروك&quot;، ثم عربت وأصبحت الجمركية. أما القرية القديمة فقد كانت في موقع يسمى Qk بجانب نهر عفرين، وقد صعد سكانها إلى موقعها المرتفع الحالي قبل ما يقارب 150 سنة.</p>
+<ul>
+<li>هي قرية كبيرة تقع فوق هضبة واسعة، تبعد عن نهر عفرين بمسافة 2كم. توجد</li>
+</ul>
+<p>بجوارها الجنوبي الشرقي شلالات جميلة على نهر عفرين، وتسمى باسمها. موقع القرية سياحي جميل ويرتاده المصطافون. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كمروك : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع في الجزء الأوسط للجبل المذكور ، على مرتفع جبلي وهضبة كلسية تخددها عدة مسيلات منحدرة نحو وادي نهر عفرين ، تبعد عن بلدة معبطلي 15كم باتجاه الشمال الشرقي ، تربتها غضارية ، يحدها شمالاً منحدر وعدة مسيلات مزروعة بأشجار الزيتون وقرية شوربه أوغلي وسيمالك ، وجنوباً منحدر مزروع بأشجار الزيتون ووادي سيلي وقرية عرب شيخو القريبة على بعد 1كم ، وغرباً منحدر ووادي سيلي و مرتفعات جبلية مزروعة بأشجار الزيتون وقرية شيخ هتكو ، وشرقاً منحدر ووادي سيلي ومجرى وادي نهر عفرين وقرية ميدانكي وسد 17نيسان وقرية حلوبي كبير ، يبلغ عدد بيوتها حوالي 200بيتاً ، عمرها حوالي 500عاماً وهي من القرى القديمة في المنطقة ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية والحديثة إسمنتية منتشرة غرباً وشمالاً وجنوباً ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وإعدادية وجامع قديم في وسط القرية ، فيها معصرة حديثة لعصر الزيتون ، تصلها بمركز الناحية طريق مزفت يمر في وسطها إلى عدة قرى مجاورة ، تشرب القرية من شبكة مائية من بئر مودجود في القرية ومن صهاريج تجمع فيها مياه الأمطار الشتوية ، يعمل الأهالي بالزراعة البعلية على مساحة 300 هـ بالحبوب والزيتون والكرمة والبقول ويزرعون رياً من الآبار الارتوازية أو بالضخ من نهر عفرين الخضار الصيفية والقطن والشمندر السكري ، إلى جانب تربية الأغنام و الماعز ومن أهم عوائلها عائلة إبراهيم خليل أول من سكن القرية وعائلة ( علكيلو  كارو ) ويذكر أن الدكتور يوسف حسن حائز على شهادة الدكتوارة في علم النفس الاعلامي من فرنسا ويدرس الآن في جامعة قطر من أبناء هذه القرية.</p>
+<p>مختار القرية : محمد منان منان</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Gemrûkê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=jF1HDrGmbmo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=jF1HDrGmbmo</a></p>
 <p>The village of <span class="internal-link">Gemrûkê</span>, located in the <span class="internal-link">Mabeta</span> district of the <span class="internal-link">Efrîn</span> region (also known as <span class="internal-link">Çiyayê Kurmênc</span>), is a historically significant settlement renowned for its water sources and ancient infrastructure. The name of the village is debated among residents; some attribute it to <span class="internal-link">Çem Rûke</span> (meaning &quot;River of Rûke&quot; or &quot;Shaking River&quot;), while others believe it stems from the <span class="internal-link">Çemroka</span> or <span class="internal-link">Çamraka</span> family, who were among the first settlers. This family belonged to the <span class="internal-link">Şîkakan</span> tribe. The village has a rich multicultural past, having been home to <span class="internal-link">Kurds</span>, <span class="internal-link">Arabs</span>, <span class="internal-link">Armenians</span>, <span class="internal-link">Êzîdî</span>, and <span class="internal-link">Jews</span>. While the Armenians and Jews (specifically the <span class="internal-link">Mêrdox</span> and <span class="internal-link">Heymûnî</span> families) have since left, their historical presence is marked by sites like the ruins of a priest&#x27;s mansion, <span class="internal-link">Qonaxa Mêhran</span>. The <span class="internal-link">Hesfeqîre</span> family is noted as being originally Êzîdî but converted to Islam over time.</p>
 <p>The history of Gemrûkê is deeply intertwined with the <span class="internal-link">Aşê Hesen Seydî</span>, a watermill located on the <span class="internal-link">Çemê Efrînê</span>. Residents estimate the mill and the associated dam structure (<span class="internal-link">Sûlava Gemrûkê</span>) to be approximately 700 to 750 years old, constructed with lime rather than cement. The mill was a vital economic hub for the entire region, drawing people from as far as <span class="internal-link">Enqere</span> and <span class="internal-link">Aleppo</span>, as well as local villages like <span class="internal-link">Şiyê</span>, <span class="internal-link">Reco</span>, and <span class="internal-link">Meydanleqê</span>. It was owned and managed by various local figures throughout history, including the <span class="internal-link">Mala Mela Yûsiv</span>, <span class="internal-link">Mala Şêx Elî</span>, and an <span class="internal-link">Armenian</span> named <span class="internal-link">Bêkarê Xelîl</span>. The mill operated until the late 20th century (cited as either 1979 or 1997) when the flow of water was disrupted by the construction of the <span class="internal-link">Bendava Meydankê</span> and actions by the Syrian regime.</p>
 <p>The village is also a center for traditional healing practices centered around the <span class="internal-link">Geliya Zerkê</span> and the <span class="internal-link">Ziyaret</span> shrine. Locals believe this site cures jaundice (known locally as &quot;nexweşiya Zerkê&quot;). The ritual typically takes place on Wednesday mornings before sunrise. Families bring afflicted children to wash them with water from the site, feed them a small amount of soil called <span class="internal-link">tiberk</span>, and leave pieces of the patient&#x27;s clothing on the <span class="internal-link">Dara palîtê</span> (oak tree) as a symbol of leaving the illness behind. Offerings of eggs, bread, and bulgur are also common.</p>
@@ -332,7 +387,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20gemruke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20gemruke.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=YlpzDw1XBFo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=YlpzDw1XBFo</a></li><li>Videos:<br><a href="https://www.youtube.com/watch?v=IZjvyswmOTY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=IZjvyswmOTY</a><br><a href="https://www.youtube.com/watch?v=MBHkfsTl7Xk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=MBHkfsTl7Xk</a><br><a href="https://www.youtube.com/watch?v=2Mgc9A3C164" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=2Mgc9A3C164</a><br><a href="https://www.youtube.com/watch?v=2Mgc9A3C164" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=2Mgc9A3C164</a><br><a href="https://www.youtube.com/watch?v=jF1HDrGmbmo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=jF1HDrGmbmo</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=JSFg1yq8HlM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=JSFg1yq8HlM</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20gemruke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20gemruke.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=YlpzDw1XBFo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=YlpzDw1XBFo</a></li><li>Videos:<br><a href="https://www.youtube.com/watch?v=IZjvyswmOTY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=IZjvyswmOTY</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=MBHkfsTl7Xk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=MBHkfsTl7Xk</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=2Mgc9A3C164" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=2Mgc9A3C164</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=jF1HDrGmbmo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=jF1HDrGmbmo</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=JSFg1yq8HlM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=JSFg1yq8HlM</a></li></ul>
             </div>
 
             
@@ -342,7 +397,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -460,6 +515,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

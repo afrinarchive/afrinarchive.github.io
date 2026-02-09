@@ -201,6 +201,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -225,7 +246,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şiyê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Wardiya, Mile Xelîla, Khalil Kolko, Kolka, Xelîl, الوردية, خليل كولكو, خليل, كونده خليل</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Elî Elcaro, Mala Apê Fîlik, Mala Hecî Xelîl, Mala Hisên, Mala Zêva, Malê Mîşkê, Malê Xoce, Mele Arfî Çolê, Xelîl Gulkê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Delî, Elî Elcaro, Mala Apê Fîlik, Mala Hecî Xelîl, Mala Hisên, Mala Zêva, Malê Mîşkê, Malê Xoce, Mele Arfî Çolê, Xelîl Gulkê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--iy-">
@@ -255,7 +276,7 @@
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
                 <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
-                    <p class="text-sm">Coordinates: 36.579195, 36.643374</p>
+                    <p class="text-sm">Coordinates: 36.341822, 36.639073</p>
                 </div>
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
@@ -284,20 +305,52 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Xelîl</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (عفرين) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">Gundî Xelîl</span> (خليل كولكو), <span class="internal-link">Al-Wardiya</span> (الوردية)</strong> /1455n - 407h - 15km - 831m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Xelîl</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20kalil%20kolko.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20kalil%20kolko.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span> regarding <span class="internal-link">Gund Xell</span>, <span class="internal-link">Xelîl Kolko</span>, <span class="internal-link">El-Werdiyê</span> (1455 inhabitants, 407 hectares, 15km distance, 831m altitude):</p>
+<p><span class="internal-link">Xelîl</span> is a local proper name. As for the word <span class="internal-link">Kolko</span>, it is a diminutive of the word <span class="internal-link">Gul</span> meaning the rose, and it is a nickname for one of its early residents, perhaps in relation to the name of his mother Gul, which is a local female Kurdish proper name. The name was Arabized to El-Werdiyê based on that nickname. It is a large village located on the summit of <span class="internal-link">Çiyayê Ziyaret</span>.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme regarding Xelîl Kolko:</p>
+<p>It is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Şiyê</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a large village located in the western central part of the mentioned mountain block, on a high limestone summit (Çiyayê Ziyaret) and at the beginning of a deep watercourse heading north. It is 15km away from the town of Şiyê towards the northeast.</p>
+<p>It is bordered to the north by a mountain chain, several watercourses, and the village of <span class="internal-link">Memila</span>; to the south by a rugged and harsh slope, a deep watercourse, and the village of <span class="internal-link">Kêla</span>; to the west by a deep valley and the village of <span class="internal-link">Alkana</span> <span class="internal-link">Satiyan</span>; and to the east by a slope planted with olive trees and the village of <span class="internal-link">Hemalîk</span> <span class="internal-link">El-Delfe</span>.</p>
+<p>The number of its houses reaches approximately 125 houses, and its age is approximately 400 years. An electricity network and a state owned water network are available in it, as well as a modern joint primary and preparatory school shared with the village of Satiyan. It contains an old mosque and two modern technical olive presses.</p>
+<p>The residents work in rain fed agriculture (olives, grains, legumes, figs, vines, walnuts, almonds) on an area of 407 hectares. Olive trees constitute 75% of this. In addition, they raise livestock. The water of the village comes from rain collected in cisterns dug next to the houses or from springs neighboring the village. It is connected to the district center and neighboring villages by a winding asphalt road.</p>
+<p>The village mukhtar is <span class="internal-link">Ebdulmelik Delî</span>.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and Execution:</p>
+<p>Director of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Gund Xell ، خليل كولكو ، الوردية /1455ن - 407هـ - 15كم - 831م/:</p>
 <ul>
-<li>&quot;<span class="internal-link">Khalil</span>&quot; (خليل) is a local proper name. The word &quot;<span class="internal-link">Kolko</span>&quot; (كولك) is a diminutive form of the word &quot;<span class="internal-link">Gul</span>&quot; (گل) meaning rose, which is a nickname for one of its early inhabitants, possibly in relation to his mother&#x27;s name <span class="internal-link">Gulê</span> (گولێ), which is a local Kurdish feminine proper name. The name was Arabized to &quot;<span class="internal-link">Al-Wardiya</span>&quot; (الوردية) in reference to that nickname.</li>
+<li>&quot;خليل&quot; هو اسم علم محلي. أما كلمة &quot;كولك&quot; فهي تصغير من كلمة &quot; گُل Gul&quot; أي</li>
 </ul>
+<p>الوردة، وهو لقب لأحد سكانها الأوائل ربما نسبة إلى اسم والدته Gul وهو اسم علم مؤنث كردي محلي. وتم تعريب الاسم إلى &quot;الوردية&quot; نسبة إلى ذلك اللقب.</p>
 <ul>
-<li>It is a large village located on the summit of &quot;<span class="internal-link">Mount Ziyara</span>&quot; (جبل زيارة).</li>
+<li>قرية كبيرة تقع على قمة &quot; جبل زيارة &quot;.</li>
 </ul>
-<p>According to the book: Afrin.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from Qatma village:</p>
-<p><strong><span class="internal-link">Khalil Kolko</span></strong> (خليل كولكو): A village in <span class="internal-link">Mount Kurdistan</span> (جبل الكرد), belonging to <span class="internal-link">Sheikh al-Hadid</span> subdistrict (ناحية شيخ الحديد), Afrin region (منطقة عفرين), <span class="internal-link">Aleppo</span> governorate (محافظة حلب).</p>
-<p>It is a large village located in the central-western part of the mentioned mountain mass, on a high calcareous summit (<span class="internal-link">Mount Ziyara</span>) (جبل زيارة) at the beginning of a deep stream heading north. It is located 15km northeast of <span class="internal-link">Sheikh al-Hadid</span> town. It is bordered to the north by a mountain chain and several streams and <span class="internal-link">Ma&#x27;mal Oshaghi</span> village, to the south by a slope and rough and rocky terrain and a deep stream and <span class="internal-link">Kalanli</span> village, to the west by a deep valley and <span class="internal-link">1 - PhD/Villages/Alkana</span> village (<span class="internal-link">Sati Oshaghi</span>) (ألكانا / صاتي اوشاغي), and to the east by a slope planted with olive trees and <span class="internal-link">Hamlurk</span> village (<span class="internal-link">Al-Dalfa</span>) (حملورك / الدلفة). The number of houses is approximately 125 houses and its age is around 400 years. It has electricity and state water networks, and a modern primary and preparatory school shared with <span class="internal-link">Sati Oshaghi</span> village. It has an old mosque and two modern technical olive presses. The inhabitants work in rain-fed agriculture (olives, grains, legumes, figs, vines, walnuts, almonds) on an area of 407 hectares. Olive trees constitute 75% of the cultivation, in addition to livestock raising. The village&#x27;s water comes from rainwater collected in cisterns dug near houses or from springs adjacent to the village. It is connected to the subdistrict center and neighboring villages by a paved winding road.</p>
-<p>Village mayor: <span class="internal-link">Abdul Malik Dahli</span> (عبدالملك ده لي)</p>
-<p>Prepared and implemented by: Director of <span class="internal-link">Tirrej Afrin</span> website: Abdul Rahman Haji Othman (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Xelîl from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=e8Hmdh3Wwr8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=e8Hmdh3Wwr8</a></p>
+<p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه خليل كولكو : قرية في جبل الكرد , تتبع ناحية شيخ الحديد , منطقة عفرين , محافظة حلب . وهي قرية كبيرة تقع في الجزء الأوسط الغربي من كتلة الجبل المذكور , على قمة عالية (جبل زيارة) الكلسي وعند بداية مسيل عميق يتجه شمالاً تبعد عن بلدة شيخ الحديد 15كم باتجاه الشمال الشرقي . يحدها شمالاً سلسلة جبلية وعدة مسيلات وقرية معمل أوشاغي وجنوباً منحدر وعر وقاسي ومسيل عميق وقرية كيلانلي , وغرباً وادي عميق وقرية ألكانا / صاتي اوشاغي / , وشرقاً منحدر مزروعة بأشجار الزيتون وقرية حملورك / الدلفة/، يبلغ عدد بيوتها حوالي 125بيتاً وعمرها حوالي 400 عاماً ، تتوفر فيها شبكة كهرباء وشبكة مياه عائدة للدولة ومدرسة ابتدائية وإعدادية حديثة مشتركة مع قرية صاتي اوشاغي وفيها جامع قديم ومعصرتي زيتون حديثة فنية . يعمل السكان بزراعة البعلية (زيتون ، حبوب ، بقول ، تين ، كرمة ، الجوز ، اللوز) على مساحة /407/ هـ ، تشكل أشجار الزيتون نسبة 75% , بالإضافة إلى تربية المواشي ، ومياه القرية تأتي من الأمطار التي تجمع في الصهاريج محفورة بجوار البيوت أو من الينابيع المجاورة للقرية ، تتصل بمركز الناحية والقرى المجاورة بطريق مزفت متعرج .</p>
+<p>مختار القرية : عبدالملك ده لي</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Xelîl from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=e8Hmdh3Wwr8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=e8Hmdh3Wwr8</a></p>
 <p>The village of <span class="internal-link">Gundê Xelîl</span>, located on the high peaks of <span class="internal-link">Çiyayê Ziyaretê</span> in the <span class="internal-link">Şiyê</span> district of Afrin, was established approximately 300 to 350 years ago. The village stands at an altitude of 1300 meters, making it one of the highest settlements in the region. Its history begins with two founding figures, <span class="internal-link">Xelîl</span> (specifically <span class="internal-link">Xelîl Gulkê</span>) and his brother or close companion <span class="internal-link">Elî</span> (known as <span class="internal-link">Elî Elcaro</span>). According to village elder <span class="internal-link">Salih Hebîb Cemal</span>, these men originated from <span class="internal-link">Adiyaman</span> and fled following a failed rebellion against the Ottomans during the era of <span class="internal-link">Sultan Selim</span>. After six brothers were captured or killed, the remaining survivors escaped toward the <span class="internal-link">Efrîn</span> region.</p>
 <p>Initially, the founders settled in the low lying plains known as <span class="internal-link">Deşta Şiyê</span> or <span class="internal-link">Deşta Çeqela</span>. However, the area was plagued by insects and illness. A woman named <span class="internal-link">Me&#x27;mela</span> refused to stay in the plains, urging the group to move to the mountaintop for better health and defense. Consequently, Xelîl and Elî established the village on the summit. To protect themselves from bandits and raids, they constructed a defensive housing complex known as <span class="internal-link">Davûheft xonî</span>, where seven houses were interconnected, allowing residents to move between homes without stepping outside. The village eventually took the name of Xelîl, while Elî Elcaro settled beside him. Later waves of migration brought other families, including <span class="internal-link">Malê Xoce</span> from <span class="internal-link">Xarpêt</span> (Harput) and <span class="internal-link">Malê Mîşkê</span> from <span class="internal-link">Kela</span>.</p>
 <p>The spiritual center of the village is the <span class="internal-link">Merqeda Ebdurehman</span>, also referred to as <span class="internal-link">Ziyareta Ebdurehman</span>. This shrine reportedly dates back 350 years, potentially pre dating the village&#x27;s full settlement or established by the founders upon their arrival. Locals believe the shrine emits a deep groaning sound and serves as a site for healing prayers and rain summoning rituals during droughts. Another historical landmark is <span class="internal-link">Bîra Kufarde</span>, an ancient well located between Gundê Xelîl and the neighboring Me&#x27;mela, which served as a vital water source in the past.</p>
@@ -352,7 +405,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20kalil%20kolko.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20kalil%20kolko.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=cPzfHaX_zqE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=cPzfHaX_zqE</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100052679717662" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100052679717662</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=BVZ1qrgpQGI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=BVZ1qrgpQGI</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=e8Hmdh3Wwr8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=e8Hmdh3Wwr8</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20kalil%20kolko.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20kalil%20kolko.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=cPzfHaX_zqE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=cPzfHaX_zqE</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100052679717662" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100052679717662</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=BVZ1qrgpQGI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=BVZ1qrgpQGI</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=e8Hmdh3Wwr8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=e8Hmdh3Wwr8</a></li></ul>
             </div>
 
             
@@ -362,7 +415,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -449,8 +502,8 @@
                 return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
             const mainVillageName = "Xelîl";
-            const villageLat = 36.579195;
-            const villageLng = 36.643374;
+            const villageLat = 36.341822;
+            const villageLng = 36.639073;
             const initialZoom = 14;
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
             const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
@@ -480,6 +533,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -104,6 +125,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Jalaq, Jolqan, Çeqalo, Çolaqa, جلق, جولقان, چولقان, جولوقو</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Sîdo Mêmê, Xelîl Betal Sîdo Mêmê</p></div>
                         </div>
                     </div>
                     
@@ -127,23 +149,77 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Çolaqa - Cindires</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Derived from the Kurdish word for &quot;the one-armed&quot; (çolaq). Named after an early settler named Çolaq who separated from the original cave dwellers to live near the village well.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 400 years ago</p>
+<p><strong>Springs:</strong> <span class="internal-link">Kaniya Çolaqa</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Mazarê Şêx Ebdulrehman</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Four old villas of Sîdo Mêmê</span></p>
+<p><strong>Wells:</strong> <span class="internal-link">Bîra Romî</span>, <span class="internal-link">Bîra Kewirkan</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Geliyê Ĥeftar</span>, <span class="internal-link">Geliyê Sîlê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Çolaqa - Cindires</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; - A Geographical Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Çolaqa - Cindires</span> (چولقان), <span class="internal-link">Jolqan</span> (جولقان), <span class="internal-link">Jalaq</span> (جلق)</strong> /1537N - 480m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Çolaqa - Cindires</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20colaqa.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20colaqa.htm</a></p>
+<p>Etymology and Origins</p>
+<p>According to the book <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: The name Çolaqa means &quot;the one-armed&quot; in Kurdish (çolaq). The early inhabitants lived in caves located north of the village. Later, one of them separated from the group; he was called &quot;<span class="internal-link">Çolaq</span>&quot; and settled beside the well at the current site of the village, so the village was named after him.</p>
+<p>Geography and History</p>
+<p>It is a medium-sized village where residential houses are spread along the sides of a deep valley called the Valley of the Hyena, or <span class="internal-link">Geliyê Ĥeftar</span>. It was a flourishing, beautiful, and important village in the early 20th century. It is inhabited by the Aghas of <span class="internal-link">Sîdo Mêmê</span>, serving as their main center, and some of their descendants still remain there. In the center of the village is an ancient archaeological well that still secures drinking water for the village and overflows during rainy years.</p>
+<p>Location and Boundaries</p>
+<p>According to the book <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Çolaqa is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Cindirês</span> district, <span class="internal-link">Efrîn</span> region, <span class="internal-link">Heleb</span> province. It is a small village situated on mountainous terrain at the confluence of several watercourses, including the stream and channel of the spring of Çolaqa. Its soil is calcareous clay. It is located 14 km northeast of the town of Cindirês.</p>
+<p>It is bordered to the north by a high mountain chain planted with olive trees and grapevines, and the village of <span class="internal-link">Îkî Axûr</span>. To the south, it is bordered by the valley of <span class="internal-link">Sîlê</span> (planted with olive, walnut, and almond trees), the shrine of <span class="internal-link">Şêx Ebdulrehman</span>, and the village of Şêx Ebdulrehman. To the west, it is bordered by a high mountain chain planted with olive trees, and the villages of <span class="internal-link">Xerzan</span> and <span class="internal-link">Eşkan Şerqî</span>. To the east, it is bordered by a high mountain chain planted with olive trees, and the villages of <span class="internal-link">Kewirkan</span> and <span class="internal-link">Qerebaş</span>.</p>
+<p>Infrastructure and Features</p>
+<p>A watercourse passes through the center of the village, coming from the high north toward the south into the valley and plain of Cindirês. Water flows in it, and there is also an old Roman well (<span class="internal-link">Bîra Romî</span>) in the center of the village used by the residents for drinking. The number of houses is approximately 65, and the village is about 400 years old according to one of the elderly residents. The old houses are made of stone with flat wooden roofs, while modern cement houses have spread to the east and south.</p>
+<p>The village has an electricity network and a water network connected to the well of Kewirkan. Previously, the village drank from the Roman well located within it. There is a primary school and an old mosque. It connects to the region and the district via a paved road that passes through its center to the neighboring villages. Administratively, it belongs to the municipality of Kewirkan.</p>
+<p>Economy and Social Structure</p>
+<p>Residents work in the cultivation of olives and grains through rain-fed farming, and irrigated fruit trees (such as walnuts and apricots) and summer vegetables via artesian wells, alongside raising sheep and goats. There are two olive presses located on the eastern side of the village.</p>
+<p>The construction and founding of this village is attributed to a single family that inhabited it: the family of <span class="internal-link">Xelîl Betal Sîdo Mêmê</span>. They are the most famous in the Efrîn region and are the original owners of the village, evidenced by the presence of four old and luxurious villas belonging to them. Two of these are located on the eastern side of the village, and the other two are in the center; they are considered among the most beautiful remaining old buildings in the Efrîn area. The village is generally beautiful in terms of location, surrounded by trees and three mountain heights from all sides.</p>
+<p>Notable People</p>
+<p>Holders of higher degrees from the village include:</p>
+<p><span class="internal-link">Hesen Şêxo</span> (PhD in History / Russia)</p>
+<p><span class="internal-link">Mihemed Husên</span> (PhD in Veterinary Medicine / Russia)</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Arif Osman</span></p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and execution: Director of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span>.</p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : olaqa ، چولقان ، جلق /1537ن - 480م/:</p>
 <ul>
-<li><span class="internal-link">Çolaq</span> (چولاق): means &quot;the lame&quot; in Kurdish. Its first inhabitants used to live in the caves located north of the village, then one of them separated and was called &quot;<span class="internal-link">Çolaq</span>&quot; (چولاق), and he lived by the well at the current location of the village, so the village was named after him.</li>
-<li>A medium village whose residential neighborhoods spread on both sides of a deep valley called the <span class="internal-link">Valley of the Hyena</span> (وادي الضبع) <span class="internal-link">Ĝeftar</span> (Ĝeftar). It was a prosperous, beautiful, and important village in the early twentieth century, inhabited by the <span class="internal-link">Sido Mimi</span> (سيدو ميمي) Aghas, which was their main center, and some of their descendants still live there. In the center of the village is an old archaeological well that still provides drinking water for the village and overflows in rainy years.</li>
+<li>چولاق: بمعنى &quot;الأكتع&quot; بالكردية. كان سكانها الأوائل يسكنون في الكهوف</li>
 </ul>
-<p>According to the book: Afrin.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Jolqan</span> (جولقان)</strong>: A village in the <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Cindirês subdistrict</span> (ناحية جندیرس), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in mountainous land at the confluence of several streams where the stream and watercourse of the <span class="internal-link">Jolqan spring</span> (نبع جولقان) flow. Its soil is grassy and limestone. It is 14km northeast of the town of <span class="internal-link">1 - PhD/Villages/Cindirês</span> (جندیرس). To the north, there is a high mountainous chain planted with olive and vine trees and <span class="internal-link">Iki Akhour village</span> (قرية إيكي آخور). To the south, there is the <span class="internal-link">Sili valley</span> (وادي سيلي) planted with olive, walnut, and almond trees and the shrine of <span class="internal-link">Sheikh Abdul Rahman</span> (الشيخ عبد الرحمن) and <span class="internal-link">Sheikh Abdul Rahman village</span> (قرية الشيخ عبد الرحمن). To the west, there is a high mountainous chain planted with olive trees and <span class="internal-link">Kharzan village</span> (قرية خرزان) and <span class="internal-link">Ashkan East</span> (اشكان شرقي). To the east, there is a high mountainous chain planted with olive trees and <span class="internal-link">Kawrkan village</span> (قرية كاوركان) and <span class="internal-link">Qara Bash village</span> (قرية قره باش). A stream runs through its center coming from the highest north towards the south to the valley and <span class="internal-link">Cindirês plain</span> (سهل جندیرس). Water flows in it as there is an old Roman well in the center of the village used by the locals for drinking. It has about 65 houses and its age is about 400 years according to one of the village&#x27;s elderly residents. Its old houses are stone with flat wooden roofs, and the modern ones are concrete that spread east and south. It has an electricity network and a water network connected to the <span class="internal-link">Kawrkan well</span> (بئر كاوركان). The village previously drank from a Roman well located in the village. It has an elementary school and an old mosque. It connects with the region and subdistrict by paved road passing through its center to the neighboring villages. It administratively belongs to the municipality of <span class="internal-link">Kawrkan</span> (كاوركان). The residents work in olive and grain cultivation rainfed and irrigated from artesian wells with fruit trees such as walnuts, apricots, and summer vegetables, in addition to raising sheep and goats. The construction and establishment of this village is attributed to one family that inhabited it, which is the family of <span class="internal-link">Khalil Batal Sido Mimi</span> (خليل بطال سيدو ميمي), the most famous in the Afrin (منطقة عفرين) and they are the original village owners, as evidenced by the existence of four old and luxurious villas for them: two of them are located on the eastern side of the village, while the other two are located in the center of the village and are considered among the most beautiful old buildings remaining until now in the Afrin (منطقة عفرين) and the village in general is beautiful in terms of location and surrounded by trees and three mountainous heights from all directions. There are two olive mills in it located on the eastern side of the village.</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Hassan Sheikho</span> (حسن شيخو) / Doctorate in History / <span class="internal-link">Russia</span> (روسيا) - <span class="internal-link">Mohammed Hussein</span> (محمد حسين) / Doctorate in Veterinary Medicine / <span class="internal-link">Russia</span> (روسيا)</p>
-<p>Village Headman: <span class="internal-link">Mohammed Aref Othman</span> (محمد عارف عثمان)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>33</p>
+<p>الموجودة شمالي القرية، ثم انفصل عنهم أحدهم وكان يسمى &quot;چولاق&quot;، وسكن بجانب البئر في الموقع الحالي للقرية فسميت القرية باسمه.</p>
+<ul>
+<li>قرية متوسطة تنتشر دورها السكنية على جانبي وادٍ عميق يسمى وادي الضبع</li>
+</ul>
+<p>Ĥeftar. كانت قرية عامرة وجميلة وهامة في أوائل القرن العشرين، ويسكنها آغوات سيدو ميمي وهو مركزهم الرئيسي، ولايزال فيها بعض أحفادهم. في وسط القرية بئر أثرية قديمة لاتزال تؤمن مياه الشرب للقرية، وتفيض في السنوات الماطرة. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه جولقان : قرية في جبل الكرد تتبع ناحية جنديرس ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في أرض جبلية عند التقاء عدة مسيلات يجري فيها مسيل ومجرى نبع جولقان ، تربتها غضارية كلسية ، تبعد عن بلدة جنديرس 14كم باتجاه الشمال الشرقي ، يحدها شمالاً سلسلة جبلية عالية مزروعة بأشجار الزيتون والكرمة وقرية إيكي آخور ، وجنوباً وادي سيلي مزروع بأشجار الزيتون والجوز واللوز ومزار الشيخ عبد الرحمن وقرية الشيخ عبد الرحمن ، وغرباً سلسلة جبلية عالية مزروعة بأشجار الزيتون و قرية خرزان واشكان شرقي ، وشرقاً سلسلة جبلية عالية مزروعة بأشجار الزيتون وقرية كاوركان وقرية قره باش يمر مسيل مخترقاً وسطها قادماً من أعلى الشمال باتجاه الجنوب إلى وادي وسهل جنديرس ، يجري فيها ماء كما يوجد بئر روماني قديم في وسط القرية يستعمله الأهالي للشرب ، يبلغ عدد بيوتها حوالي 65بيتاً وعمرها حوالي 400عاماً حسب أقوال أحد سكان القرية المعمرين ، بيوتها لقديمة حجرية ذات سقوف خشبية مستوية ، والحديثة إسمنتية انتشرت شرقاً وجنوباً ، تتوفر فيها شبكة كهرباء وشبكة مياه متصلة بالبئر كاوركان ، تشرب القرية سابقاً من بئر روماني موجودة في القرية ، فيها مدرسة ابتدائية وجامع قديم ، تتصل مع المنطقة والناحية بطريق مزفت يمر في وسطها إلى القرى المجاورة ، وهي عائدة لبلدية كاوركان إدارياً ، يعمل السكان بزراعة الزيتون والحبوب بعلاً وبالري من الآبار الارتوازية كالأشجار المثمرة كالجوز والمشمش والخضروات الصيفية إلى جانب تربية الأغنام والماعز ، يعود بناء هذه القرية وتأسيسها من قبل عائلة واحدة سكنتها هي عائلة خليل بطال سيدو ميمي الأكثر شهرة في منطقة عفرين وهم أصحاب القرية الأصليين بدلالة وجود أربع فيلات قديمة وفخمة لهم : اثنتان منهما تقعان في الجهة الشرقية للقرية أما الأخرتان فتقعان في وسط القرية وتعتبران من أجمل الأبنية القديمة الباقية حتى الآن في منطقة عفرين والقرية بشكل عام جميلة من حيث الموقع ومحاطة بأشجار وثلاث مرتفعات جبلية من كافة الجهات ، يوجد معصرتين للزيتون فيها تقعان في الجهة الشرقية للقرية . ومن حاملي الشهادات العليا في القرية : حسن شيخو / دكتوراة في التاريخ / روسيا - محمد حسين / دكتوراة في الطب البيطري / روسيا</p>
+<p>مختار القرية :  محمد عارف عثمان</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>33</p>
 <p>THE VILLAGE OF ÇOLAQA</p>
 <p>7/7/2016</p>
 <p>The village of Çolaqa is one of the villages of the Cindirêsê district, located 14 km east of the city of Cindirêsê and 16 km west of the city of Efrînê.</p>
@@ -192,7 +268,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20colaqa.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20colaqa.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=xUA3t3GCwmk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=xUA3t3GCwmk</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=ITDAPDF0CAU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ITDAPDF0CAU</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=OjYaQDBGZwE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=OjYaQDBGZwE</a><br><a href="https://www.youtube.com/watch?v=pd9IA-sSbLw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=pd9IA-sSbLw</a><br><a href="https://www.youtube.com/watch?v=0uGnlBWw9mk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=0uGnlBWw9mk</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20colaqa.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20colaqa.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=xUA3t3GCwmk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=xUA3t3GCwmk</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=ITDAPDF0CAU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ITDAPDF0CAU</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=OjYaQDBGZwE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=OjYaQDBGZwE</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=pd9IA-sSbLw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=pd9IA-sSbLw</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=0uGnlBWw9mk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=0uGnlBWw9mk</a></li></ul>
             </div>
 
             
@@ -202,7 +278,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -320,6 +396,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Cidêdê, Jadida, جديدة</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ebdo Reşo</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -207,22 +229,62 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Cidêdê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> It is believed that the name is Syriac</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 100 years ago</p>
+<p><strong>Ruins:</strong> <span class="internal-link">Eyn Dara</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çemê Efrînê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Cidêdê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds (Afrin)</span> Geographic Study by Dr. Mohammed Abdo Ali (محمد عبدو علي):</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Cidêdê</span></strong> (جديدة) /118N - 3.5km - 220m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Cidêdê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cidede.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cidede.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Cidd</span>, <span class="internal-link">Cedîde</span> / 118 people 3.5km 220m /:</p>
+<p>It is believed that the name is Syriac.</p>
+<p>It consists of several houses for habitation, located on the western bank of the <span class="internal-link">Efrîn</span> river. It was among the properties of the <span class="internal-link">Ebdo Reşo</span> family, one of the wealthy families of the region. It is surrounded by fertile agricultural lands irrigated by the waters of the Efrîn river.</p>
+<p>And it is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Cedîde: A farm in <span class="internal-link">Çiyayê Kurmênc</span>, belonging to the villages of the Efrîn center, Heleb governorate. It is a small farm consisting of five old houses and was a dwelling for the peasants and agents of the Aghas.</p>
+<p>It is bordered to the north by <span class="internal-link">Kersan Taş</span> and Efrîn. And to the south by the course of the Efrîn river, the village of <span class="internal-link">Betîte</span>, the archaeological site of <span class="internal-link">Eyn Dara</span>, the Efrîn river, the <span class="internal-link">Riya Cindirês-Efrîn</span> (Cindirês Efrîn road), and the village of <span class="internal-link">Babîlît</span>. And to the east by the Efrîn river and the village of <span class="internal-link">Tûrendê</span>.</p>
+<p>The number of its houses is about 5 houses and its age is about 100 years. Its old dwellings are of stone and mud with wooden roofs, and the modern ones are of stones and cement. Public facilities are not available in it. It was previously a dwelling for the peasants of the Aghas of the region. Its inhabitants work in the cultivation of grains and vegetables, the cultivation of cotton and sugar beet, and sheep herding.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and execution:</p>
+<p>Director of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Cidd ، جديدة /118ن - 3.5كم - 220م/:</p>
 <ul>
-<li>It is believed the name is Syriac.</li>
-<li>It consists of several residential houses, located on the western bank of the <span class="internal-link">Afrin River</span> (نهر عفرين). It was owned by the <span class="internal-link">Abdo Rasho Family</span> (عائلة عبدو رشو), one of the area&#x27;s wealthy families. It is surrounded by fertile agricultural lands irrigated from the Afrin River (نهر عفرين) waters.</li>
+<li>يعتقد أن الاسم سرياني.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong>Jadida</strong>: A farm in the Kurdish Mountain (جبل الكرد), belonging to <span class="internal-link">Central District</span> (قرى مركز عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small farm consisting of five old houses and was a residence for farmers and livestock agents. It is bordered to the north by <span class="internal-link">Kersan Tash</span> (كرسان طاش) and Afrin City (عفرين); to the south by the Afrin River (مجرى نهر عفرين), <span class="internal-link">Bteitech village</span> (قرية بتيته), the archaeological <span class="internal-link">Ein Dara site</span> (موقع عين دارة الأثري), and the Afrin River (نهر عفرين), the Jindires-Afrin City road (طريق جندريس عفرين), and <span class="internal-link">Bablit village</span> (قرية بابليت); and to the east by the Afrin River (نهر عفرين) and <span class="internal-link">Turinda village</span> (قرية طرندة). It has about 5 houses and its age is about 100 years. Its old dwellings are stone and clay with wooden roofs, and modern ones of stone and concrete.</p>
-<p>Public facilities are not available in it and it was previously a residence for livestock farmers in the region. Its residents work in grain and vegetable cultivation, cotton and sugar beet cultivation, and sheep raising.</p></div></details></div>
+<ul>
+<li>تتألف من عدة دور للسكن، تقع على الضفة الغربية لنهر عفرين. كانت من أملاك</li>
+</ul>
+<p>عائلة عبدو رشو أحد أغنياء المنطقة. تحيط بها أراض زراعية خصبة تروى من مياه نهر عفرين. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه جديدة : مزرعة في جبل الكرد ، تتبع قرى مركز عفرين محافظة حلب. وهي مزرعة صغيرة تتألف من خمس بيوت قديمة وكانت مسكناً للفلاحين ووكلاء الأغوات يحدها شمالا كرسان طاش و عفرين . وجنوباً مجرى نهر عفرين وقرية بتيتة وموقع عين داره الأثري ونهر عفرين , و طريق جنديرس عفرين وقرية بابليت , وشرقاً نهر عفرين وقرية طورندة . عدد بيوتها حوالي 5بيوت وعمرها حوالي 100عام مساكنها القديمة حجرية طينية ذات سقوف خشبية والحديثة من الأحجار والإسمنت . لاتتوفر فيها المرافق العامة وكانت سابقا مسكنا لفلاحي آغوات المنطقة يعمل سكانها بزراعة الحبوب والخضروات وزراعة القطن والشمندر السكري وتربية الأغنام .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -240,7 +302,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cidede.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cidede.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cidede.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cidede.htm</a></li></ul>
             </div>
 
             
@@ -250,7 +312,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -368,6 +430,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

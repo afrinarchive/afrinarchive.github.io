@@ -140,6 +140,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -165,7 +186,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Bilbilê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Deir Hasan, Hasan Deirli, Hasandêrê, Hesen Dêra, Hesen Dêro, Hesendêra, Kefnûre, حسن ديرلي, دير حسن, Ḧesen Dêra, حسن, حسنديراه</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Hesenan</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekira, Diyapiyê, Elî Osman, Heska, Mala Kicikê, Mala Memê Bilbilî, Mala Mihemed Reşo, Mala Usê Elo, Mame Mîsakê, Mehmûd Şevder, Seyîda, Xelema</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bakro, Bekira, Bekra, Diyapiyê, Elî Osman, Hesika, Heska, Kiciklara, Mala Kicikê, Mala Memê Bilbilî, Mala Mihemed Reşo, Mala Usê Elo, Mame Mîsakê, Mehmûd Şevder, Seya, Seyîda, Xalima, Xelema</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-bilbil-">
@@ -218,16 +239,66 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Ĥesen Dêra</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; / &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographical Study:</p>
-<p><strong><span class="internal-link">Ḧesendêra</span> (ḧesendêra), <span class="internal-link">Hasan Deirli</span> (حسن ديرلي), <span class="internal-link">Deir Hasan</span> (دير حسن)</strong> /1947N - 480M150H - 17KM/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Ĥesen Dêra</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20hasan%20derle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20hasan%20derle.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Ĥesendra</span>, <span class="internal-link">Hesen Dêrlî</span>, <span class="internal-link">Deyr Hesen</span> / 1947 inhabitants, 480m elevation, 150 houses, 17km distance /:</p>
+<p><span class="internal-link">Hasan Dêra</span>: <span class="internal-link">Hasan</span> is the name of the first person who resided at the site, so the village was named after him and the archaeological attribute of the place (<span class="internal-link">dêr</span>, meaning monastery).</p>
+<p>It is a medium sized village located at the bottom of the eastern slope of <span class="internal-link">Çiyayê Hawar</span>. It is separated from the mountain by the valley of <span class="internal-link">Geliyê Eşûnê</span>. Near it, on the eastern slope of Çiyayê Hawar, there are caves, drawings engraved in the rock, and obliterated ruins.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Hesen Dêrlî is a village in <span class="internal-link">Çiyayê Kurmênc</span> following the township of <span class="internal-link">Bilbile</span>, district of <span class="internal-link">Efrîn</span>, governorate of <span class="internal-link">Heleb</span>. It is a large and old village located at the bottom of the furrowed eastern slope of the limestone Çiyayê Hawar, where the inclination is slight and the soil is clay, suitable for agriculture and grazing. It is 17km away from the town of Bilbile towards the southeast. It is bordered to the north by Çiyayê Hawar and the village of <span class="internal-link">Qorî Gol</span>; to the south by <span class="internal-link">Geliyê Sîlê</span>, a high mountain range, and the village of <span class="internal-link">Şorbe Oxlî</span>; to the west by Geliyê Sîlê, Çiyayê Hawar, and the village of <span class="internal-link">Şêxler Obasî</span>; and to the east by Geliyê Sîlê and the village of <span class="internal-link">Naza Uşaxî</span>.</p>
+<p>The number of its houses reaches approximately 125 houses, and its age is approximately 400 years. Its old houses are of stone and mud with flat wooden roofs, while the modern ones are cement and are expanding towards the east. An electricity network, a primary school, and a mosque in the center of the village are available. Most of its residents work in the cultivation of olives, grains, and legumes via rain fed agriculture (150 hectares), alongside raising sheep and goats. Its people drink from cisterns in which rainwater collects. The road from it to the town of Bilbile is paved.</p>
+<p>Among the families present in the village are: <span class="internal-link">Bakro</span> (<span class="internal-link">Bekra</span>), <span class="internal-link">Seya</span> (the family of the late artist <span class="internal-link">Elî Tico</span>), <span class="internal-link">Xalima</span>, <span class="internal-link">Kiciklara</span>, and <span class="internal-link">Hesika</span>.</p>
+<p>Among the holders of higher degrees in the village are Miss <span class="internal-link">Zînat Xelîl</span> daughter of <span class="internal-link">Sefer</span> (Master&#x27;s in French Language from the University of Heleb) and <span class="internal-link">Zelûx Xelîl</span> daughter of Sefer (Master&#x27;s in French Language). Among the social figures are <span class="internal-link">Ismet Şêxo</span>, <span class="internal-link">Ebdulkerîm Reşîd</span> (<span class="internal-link">Ebû Rêzan</span>), <span class="internal-link">Mihemed Heso</span> (<span class="internal-link">Ebû Tac</span>), and <span class="internal-link">Ebdulkerîm Heso</span> (<span class="internal-link">Ebû Şivan</span>). Notable figures also include the late artist <span class="internal-link">Mihemed Elî Tico</span>, the poet <span class="internal-link">Berxwedan Ebdulkerîm Heso</span>, and the licentiate in Mathematics (Informatics) and educational qualification diploma holder Mr. Mihemed Heso son of <span class="internal-link">Arif</span> (owner of the Yasmin Computer Office). Among the early strugglers was the late <span class="internal-link">Ebdulhemîd Mistefa Ete</span>. Among the skilled tradesmen is Mr. <span class="internal-link">Xelîl Reşo</span> (<span class="internal-link">Ebû Behrî</span>), who is considered one of the early weapons repairmen in the region.</p>
+<p>The mukhtar of the village is <span class="internal-link">Mihemed Seîd Heso</span>.</p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">Hasan Daira</span> (حسن ديرا): <span class="internal-link">Hasan</span> (حسن): the name of the first person who settled in the location, so the village was named after him and the archaeological attribute of the place (<span class="internal-link">Deir</span> (دير)).</li>
-<li>A medium village located at the bottom of the eastern slope of <span class="internal-link">Hawar</span> (هاوار) mountain. It is separated from the mountain by <span class="internal-link">Ashuna</span> (عشونة) valley. There are caves and engravings carved in rock and scattered ruins near it on the eastern slope of <span class="internal-link">Hawar</span> (هاوار) mountain.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها ورواديها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Valleys</span>&#x27;:</p>
-<p><strong><span class="internal-link">Hasan Deirli</span> (حسن ديرلي)</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد) belonging to <span class="internal-link">Bilbile</span> (بلبل) district, Afrin City (عفرين) region, <span class="internal-link">Aleppo</span> (حلب) governorate.</p>
-<p>It is a large and ancient village located at the bottom of the notched eastern slope of the limestone &quot;<span class="internal-link">Hawara</span>&quot; (هوارة) mountain, where the slope is gentle and the soil is clay suitable for agriculture and grazing, 17 km southeast of <span class="internal-link">Bilbile</span> (بلبل) town. It is bordered to the north by &quot;<span class="internal-link">Hawari</span>&quot; (هواري) mountain and <span class="internal-link">Quri Kul</span> (قوري كول) village, to the south by a stream valley and high mountain chain and <span class="internal-link">Shorba Oghli</span> (شوربة أوغلي) village, to the west by a stream valley and <span class="internal-link">Hawari</span> (هواري) mountain and <span class="internal-link">Sheikhlir Oba Si</span> (شيخلر أوبة سي) village, and to the east by a stream valley and <span class="internal-link">Naza Oshaghi</span> (نازا أوشاغي) village. The number of houses is about 125 and its age is about 400 years. Its old houses are stone and clay with flat wooden roofs and the modern ones are cement expanding eastward. It has an electricity network and a primary school and a mosque in the center of the village. Most of its residents work in olive, grain and legume cultivation rain-fed (150 hectares) in addition to raising sheep and goats. Its people drink from cisterns that collect rainwater. The road from there to <span class="internal-link">Bilbile</span> (بلبل) town is paved. Among the families in the village are (<span class="internal-link">Bakru</span> (باكرو) (Bakra) – <span class="internal-link">Siya</span> (سَيا) (family of the late artist <span class="internal-link">Ali Tajo</span> (علي تجو)) – <span class="internal-link">Khalma</span> (خَالمَا) – <span class="internal-link">Kajklara</span> (كجكلارا) – <span class="internal-link">Haska</span> (حسكا)) and among the holders of higher degrees in the village are <span class="internal-link">Ms. Zinat Khalil daughter of Safar</span> (الآنسة زينات خليل بنت سفر) (Master&#x27;s in French Language from <span class="internal-link">Aleppo University</span> (جامعة حلب) and <span class="internal-link">Zalukh Khalil daughter of Safar</span> (زلوخ خليل بنت سفر) Master&#x27;s in French Language) and among the social figures (<span class="internal-link">Ismat Sheikho</span> (عصمت شيخو) - <span class="internal-link">Abdul Karim Rashid / Abu Rizan</span> (عبد الكريم رشيد / أبو ريزان) - <span class="internal-link">Mohammed Hasu / Abu Taj</span> (محمد حسو / أبو تاج) - <span class="internal-link">Abdul Karim Hasu / Abu Shafan</span> (عبد الكريم حسو / أبو شفان)) – the late artist <span class="internal-link">Mohammed Ali Tajo</span> (محمد علي تجو) – the poet <span class="internal-link">Barkhdan Abdul Karim Hasu</span> (برخدان عبد الكريم حسو) – and the graduate in Mathematics (Informatics) and educational qualification diploma <span class="internal-link">Professor Mohammed Hasu son of Aref</span> (الاستاذ محمد حسو بن عارف) / owner of <span class="internal-link">Al-Yasmin Computer Office</span> (مكتب الياسمين للكمبيوتر), and among the early fighters the late <span class="internal-link">Abdul Hamid Mustafa Atta</span> (عبد الحميد مصطفى عطة) – and among the professionals <span class="internal-link">Mr. Khalil Rasho Abu Bahri</span> (السيد خليل رشو أبو بحري) who is considered among the first weapon repairers in the region.</p>
-<p>Village mayor: <span class="internal-link">Mohammed Said Hasu</span> (محمد سعيد حسو)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥesen Dêra from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=7Eh-UgUNgIc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=7Eh-UgUNgIc</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by the writer عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Director of the Tirej Efrîn website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Ĥesendra ، حسن ديرلي ، دير حسن /1947ن</p>
+<ul>
+<li>480م150هـ - 17كم/:</li>
+</ul>
+<ul>
+<li>حسن ديرا: حسن: اسم أول شخص أقام في الموقع فسميت القرية به وبالصفة</li>
+</ul>
+<p>الأثرية للمكان (دير).</p>
+<ul>
+<li>قرية متوسطة تقع عند أسفل السفح الشرقي لجبل هاوار. يفصلها عن الجبل وادي</li>
+</ul>
+<p>عشونة. يوجد بالقرب منها على السفح الشرقي لجبل هاوار كهوف ورسوم منقوشة في الصخر وآثار مندثرة. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : حسن ديرلي : قرية في جبل الكرد تتبع ناحية بلبل ، منطقة عفرين ، محافظة حلب . وهي قرية كبيرة و قديمة تقع عند أسفل السفح الشرقي المخدد لجبل &quot;هوارة&quot; الكلسي ، حيث الميل خفيف و التربة غضارية صالحة للزراعة و الرعي ، تبعد عن بلدة بلبل 17كم باتجاه الجنوب الشرقي ، يحدها شمالا جبل &quot;هواري&quot; وقرية &quot;قوري كول&quot; ، وجنوباً واد سيلي و سلسلة جبلية عالية وقرية &quot;شوربة أوغلي&quot; ، وغرباًواد سيلي وجبل هواري وقرية شيخلر أوبة سي ، وشرقاً وادي سيلي وقرية نازا أوشاغي .يبلغ عدد بيوتها حوالي 125بيت وعمرها حوالي/400/عام ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية والحديثة إسمنتية تتوسع باتجاه الشرق ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية و جامع في وسط القرية يعمل معظم سكانها بزراعة الزيتون و الحبوب و البقول بعلا (150 هكتارا) إلى جانب تربية الأغنام و الماعز ، يشرب أهاليها من الصهاريج التي تجمع فيها مياه الأمطار ، الطريق منها إلى بلدة بلبل مزفتة. ومن العائلات الموجودة في القرية ( باكرو ( بكرا )  سَيا ( عائلة الفنان الراحل علي تجو ) خَالمْا  كجكلارا حسكا ) ومن حاملي الشهادات العليا في القرية الآنسة زينات خليل بنت سفر ( ماجستير في اللغة الفرنسية من جامعة حلب وزلوخ خليل بنت سفر ماجستير في اللغة الفرنسية ) ومن الوجوه الاجتماعية ( عصمت شيخو - عبدالكريم رشيد / أبو ريزان</p>
+<ul>
+<li>محمد حسو / أبو تاج - عبدالكريم حسو / أبو شفان )  الفنان الراحل محمد علي</li>
+</ul>
+<p>تجو  الشاعرة برخدان عبدالكريم حسو  والمجاز في الرياضيات ( انفورماتيك ) ودبلوم تأهيل تربوي الاستاذ محمد حسو بن عارف / صاحب مكتب الياسمين للكمبيوتر، ومن المناضلين الأوائل المرحوم عبدالحميد مصطفى عطة  ومن أصحاب المهن السيد خليل رشو أبو بحري الذي يعتبر من أوائل مصلحي الأسلحة في المنطقة .</p>
+<p>مختار القرية : محمد سعيد حسو</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥesen Dêra from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=7Eh-UgUNgIc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=7Eh-UgUNgIc</a></p>
 <p>The village of <span class="internal-link">Hesen Dêra</span> is situated in the <span class="internal-link">Bilbil</span> district within the foothills of <span class="internal-link">Çiyayê Hawarê</span> in northwestern Syria. According to local elders the village was founded between three and four centuries ago by <span class="internal-link">Seyîd Xan</span> a leader from the <span class="internal-link">Hesenan</span> tribe. The name Hesen Dêra reflects this dual heritage combining the tribal name Hesenan with <span class="internal-link">Dêra</span> which refers to the ruins of a <span class="internal-link">Rûm</span> church found at the location when the tribe first settled. The village was originally established in a river valley that once flowed with water from springs and melted snow though these sources have since dried up.</p>
 <p>The social structure of Hesen Dêra remains deeply rooted in its tribal origins. The founding lineage is the <span class="internal-link">Seyîda</span> family named after Seyîd Xan. Over time other families established themselves including <span class="internal-link">Bekira</span>, <span class="internal-link">Xelema</span>, and <span class="internal-link">Heska</span>. Later arrivals who integrated into the community include <span class="internal-link">Mala Mihemed Reşo</span>, <span class="internal-link">Mala Usê Elo</span>, <span class="internal-link">Mala Memê Bilbilî</span>, and <span class="internal-link">Mala Kicikê</span>. Historical disputes and community affairs were traditionally managed by village elders such as <span class="internal-link">Hemîdê Elî Tico</span>, <span class="internal-link">Hûrikê Bekir</span>, <span class="internal-link">Seyîdê Şêxê</span>, <span class="internal-link">Ibîşê Çêwîş</span>, and <span class="internal-link">Şêxê Hemzikê</span>. Education in the past was conducted by a <span class="internal-link">Xoce</span> who taught children reading and the <span class="internal-link">Qur&#x27;an</span> before modern schools were established.</p>
 <p>The landscape around Hesen Dêra is rich with historical and natural landmarks. The village square known as <span class="internal-link">Meydana Bîrê</span> centers around a community well dug in 1957. High in the surrounding Çiyayê Hawarê there are significant archaeological sites including a rock relief locally known as <span class="internal-link">Sûretê Qîzkê</span> or <span class="internal-link">Kela Qîzkê</span>. Visiting archaeologists identified this relief as <span class="internal-link">Şemşûn</span> believing it depicts Samson. Nearby ruins include a site simply called <span class="internal-link">Kela</span>. The area contains numerous caves such as <span class="internal-link">Şkefta Sûr</span> which is also called <span class="internal-link">Şkefta Kafir</span> by local <span class="internal-link">Muslim</span> residents who associate it with non believers. The most significant cavern is <span class="internal-link">Şkefta Bûka</span> a massive space covering 400 square meters. It was historically used for religious rituals by <span class="internal-link">Êzdî</span> people and the <span class="internal-link">Hûriyan</span> civilization and later served as a shelter for sheep and a defensive position during conflicts.</p>
@@ -294,7 +365,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20hasan%20derle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20hasan%20derle.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=DMM7WmwuTCc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=DMM7WmwuTCc</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=-QkSIVzGmF4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=-QkSIVzGmF4</a><br><a href="https://www.youtube.com/watch?v=7Eh-UgUNgIc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=7Eh-UgUNgIc</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=i4p8km0hPHo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=i4p8km0hPHo</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20hasan%20derle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20hasan%20derle.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=DMM7WmwuTCc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=DMM7WmwuTCc</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=-QkSIVzGmF4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=-QkSIVzGmF4</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=7Eh-UgUNgIc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=7Eh-UgUNgIc</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=i4p8km0hPHo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=i4p8km0hPHo</a></li></ul>
             </div>
 
             
@@ -304,7 +375,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -422,6 +493,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

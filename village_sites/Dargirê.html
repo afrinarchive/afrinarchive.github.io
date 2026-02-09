@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -166,7 +187,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Dar Kabir, Dar Kir, Dargirê, Darkir, دار كبير, دار كير</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekirê Elîko, Bekirê Kêlê, Betalê Qere, Eljûja, Hemedê Ejik, Henî Elû, Hevîdê, Ibrîm, Mala Aqîl, Mala Bekî Elî, Mala Ebdê, Mala Şêx, Ocê, Omer Sefîno, Qere, Seydê Hesen, Têwit, Şêx Çîlê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bekirê Elîko, Bekirê Kêlê, Betalê Qere, Ekaş, Eljûja, Elko, Hemedê Ejik, Hemo, Henî Elû, Hevîdê, Ibrîm, Mala Aqîl, Mala Bekî Elî, Mala Ebdê, Mala Şêx, Ocê, Omer Sefîno, Qere, Seydê Hesen, Silêman, Têwit, Şêx Çîlê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -215,20 +236,58 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Dargirê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds (Afrin)</span> - A Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Dargirê</span> (دار كير), <span class="internal-link">Dar Kir</span> (دار كير), <span class="internal-link">Dar Kabir</span> (دار كبير)</strong> /3130n - 595h - 4km - 570m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Dargirê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dargir.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dargir.htm</a></p>
+<p>The following comes from the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Dargir</span>, <span class="internal-link">Dar Kir</span>, <span class="internal-link">Dar Kebîr</span> /3130 inhabitants - 595 hectares - 4km - 570m/:</p>
+<p>Dar Kir: Its literal meaning is &quot;The Big Tree&quot; (Dar + Gir). The Arabicized name is considered an unsuccessful translation of the Kurdish name.</p>
+<p>It is a medium-sized village located on the southern slope of a plateau where caves abound. Its residential houses are spread on both sides of a steep watercourse heading towards the south. The village site is archaeological, indicated by the presence of building stones and ancient hand-dug wells that are used to this day.</p>
+<p>The following comes from the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Dargir - Dar Kebîr: A village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively following the <span class="internal-link">Mabeta</span> sub-district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a large village located in the middle section of the mentioned mountain on the southern slope of a limestone plateau where caves abound and watercourses descend in all directions. It is 4km southeast of the town of Mabeta. Its soil is clay-based, with pastures and oak forests spread above it.</p>
+<p>It is bounded on the north by mountain heights and several watercourses planted with olive trees, the town of Mabeta, and the village of <span class="internal-link">Gokanê Jorîn</span>; on the south by the <span class="internal-link">Sîlî</span> valley planted with olive trees, mountain heights, and the villages of <span class="internal-link">Tiba Xazî</span> and <span class="internal-link">Biyê</span>; on the west by mountain heights planted with olive trees and the villages of <span class="internal-link">Berimce</span> and <span class="internal-link">Mîrkan</span>; and on the east by a slope and a plain planted with olive trees and the nearby village of <span class="internal-link">Çewîq</span>.</p>
+<p>The number of its houses is about 100, and its age is about 400 years. Its old houses are made of stone and mud with flat wooden roofs, while the modern ones are cement and extend towards the south and east. An electricity network, a primary school, a mosque, and an olive press are available in the village. The village drinks from a water network connected to the network of the village of <span class="internal-link">Gokan</span> to its northeast, and from cisterns that collect rainwater in winter. It is connected to the sub-district center by an asphalt road that passes through its center to the town of Mabeta and the village of Çewîq.</p>
+<p>Its residents practice rain-fed agriculture on an area of 591 hectares, growing grains, legumes, olive trees, some fruit trees, walnuts, and almonds. They practice irrigated agriculture on an area of 4 hectares, growing summer vegetables and pomegranate trees, pumped from artesian wells, alongside raising sheep and goats. Among its most important families are (<span class="internal-link">Elko</span> - <span class="internal-link">Hemo</span> - <span class="internal-link">Silêman</span> - <span class="internal-link">Ekaş</span> - ...).</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Ekîl Ehmed</span></p>
+<p>Preparation and Execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li><strong>Dar Kər</strong>: Its literal meaning is &quot;the big tree&quot;. The Arabic name is an inaccurate translation of the Kurdish name.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A medium-sized village located on the southern slope of a plateau abundant with caves. Its residential areas spread on both sides of a steep watercourse sloping southward. The village&#x27;s location is archaeological, evidenced by building stones and ancient manually-dug wells that are still used today.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>And according to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdul Rahman Mohammed from Qatmah village:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Darkir</span> - <span class="internal-link">Dar Kabir</span> (دار كبير)</strong>: A village in <span class="internal-link">Kurd Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Ma&#x27;batli District</span> (ناحية المعبطلي), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located in the central part of the mentioned mountain on the southern slope of a limestone plateau rich in caves from which streams flow in all directions. It is 4km southeast of <span class="internal-link">Mabetli</span> town. Its fertile land spreads above which are pastures and oak tree groves. It is bordered to the north by mountain elevations and several streams planted with olive trees, <span class="internal-link">Mabetli</span> town and <span class="internal-link">Kokan Foqani</span> village, and to the south by a stream valley planted with olive trees and mountain elevations and <span class="internal-link">Taba Ghazi</span> village and <span class="internal-link">Buyuk Oba</span>, and to the west by mountain elevations planted with olive trees and <span class="internal-link">Brimjah</span> village and <span class="internal-link">Mirkanli</span>, and to the east by a slope and plain planted with olive trees and the nearby <span class="internal-link">Juwayq</span> village. It has approximately 100 houses and is about 400 years old. Its old houses are stone and clay with flat wooden roofs, and the modern ones are cement extending in the south and east directions. It has an electricity network, primary school, mosque and olive press. The village drinks from a water network connected to <span class="internal-link">Kokan</span> village network in its northeast, and from cisterns that collect rainwater in winter. It connects to the district center by a paved road passing through its center to <span class="internal-link">Mabetli</span> town and <span class="internal-link">Juwayq</span> village. Its inhabitants cultivate rainfed crops on an area of 595 hectares: grains, legumes, olive trees and some fruit trees, nuts and almonds. They also cultivate irrigated crops on 4 hectares: summer vegetables and pomegranate trees. They pump water from artesian wells for this, in addition to raising sheep and goats. Among its most important families are: (<span class="internal-link">Alko</span>, <span class="internal-link">Hamo</span>, <span class="internal-link">Sulaiman</span>, <span class="internal-link">Akkash</span>, ...).</p>
-<p>Village headman: <span class="internal-link">Mohammed Akil Ahmed</span></p>
-<p>Preparation and implementation: Director of <span class="internal-link">Afrin Heritage</span> website: Abdul Rahman Haji Othman</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Dargirê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=mASawqlEJXc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=mASawqlEJXc</a></p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Dargir ، دار كير ، دار كبير /3130ن - 595هـ - 4كم - 570م/:</p>
+<ul>
+<li>دار كْرْ: معناها الحرفي &quot;الشجرة الكبيرة&quot;. والاسم المعرب ترجمة غير موفقة</li>
+</ul>
+<p>للاسم الكردي.</p>
+<ul>
+<li>قرية متوسطة تقع على السفح الجنوبي لهضبة تكثر فيها المغاور. تنتشر دورها</li>
+</ul>
+<p>السكنية على جانبي مسيل مائي شديد الانحدار نحو الجنوب. موقع القرية أثري بدلالة وجو أحجار بناء وآبار قديمة محفورة يدويا تستعمل إلى يومنا هذا. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه داركير - دار كبير : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع في القسم الأوسط من الجبل المذكور على السفح الجنوبي لهضبة كلسية تكثر فيها المغاور وتنحدر منها المسيلات في كل الاتجاهات ، تبعد 4كم جنوب شرقي بلدة معبطلي ، تربتها غضارية تنتشر فوقها المراعي وحراج أشجار السنديان ، يحدها شمالاً مرتفعات جبلية وعدة مسيلات مزروعة بأشجار الزيتون وبلدة معبطلي وقرية كوكان فوقاني ، وجنوباً وادي سيلي مزروع بأشجار الزيتون ومرتفعات جبلية وقرية تبة غازي وبيوك أوبه ، وغرباً مرتفعات جبلية مزروعة بأشجار الزيتون وقرية بريمجة وميركانلي ، وشرقاً منحدر وسهل مزروع بأشجار الزيتون وقرية جويق القريبة ، يبلغ عدد بيوتها حوالي 100بيتاً وعمرها حوالي 400عاماً ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية والحديثة إسمنتية تمتد في جهتي الجنوب والشرق ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وجامع ومعصرة للزيتون ، تشرب القرية من شبكة مائية متصلة مع شبكة قرية كوكان في شمالها الشرقي ، ومن الصهاريج التي تجمع فيها مياه الأمطار شتاءاً ، تتصل بمركز الناحية بطريق مزفتة ويمر في وسطها إلى بلدة معبطلي وقرية جويق يزرع سكانها بعلاً على مساحة 591هـ الحبوب والبقول وأشجار الزيتون و بعض الأشجار المثمرة والجوز واللوز ويزرعون رياً على مساحة 4 هـ الخضار الصيفية وأشجار الرمان ، تضخ إليها من الآبار الارتوازية إلى جانب تربية الأغنام والماعز ، ومن أهم عائلاتها (علكو  حمو- سليمان - عكاش - .... ).</p>
+<p>مختار القرية : محمد عكيل أحمد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Dargirê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=mASawqlEJXc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=mASawqlEJXc</a></p>
 <p>The village of <span class="internal-link">Dargirê</span>, located in the <span class="internal-link">Mabeta</span> district of the <span class="internal-link">Afrin</span> region, holds a history deeply connected to the natural landscape and ancient dwellings. According to local elders and oral history, the name Dargirê is derived from a solitary, massive tree (&quot;Darek bi tenê&quot;) that once stood on the hill (&quot;gir&quot;) where the village was established. Some accounts suggest the name comes from &quot;Dar girt&quot; or relates to the plane trees (<span class="internal-link">çinar</span>) that historically dotted the area. While the region contains Roman-era wells suggesting ancient habitation, the modern village structure emerged approximately 300 years ago when the population moved out of caves to build stone houses.</p>
 <p>Before this transition, the inhabitants lived in a network of caves known as <span class="internal-link">Şikeftên Kevmar</span>. The narrator notes there are nearly 25 such caves around the village. Interestingly, five of these caves were later converted into olive presses (mehser), utilized by prominent families such as <span class="internal-link">Hemedê Ejik</span>, <span class="internal-link">Betalê Qere</span>, <span class="internal-link">Ibrîm</span>, <span class="internal-link">Seydê Hesen</span>, and <span class="internal-link">Henî Elû</span>. Olive cultivation is central to the village&#x27;s economy, with residents stating that olive trees were planted extensively around 200 years ago, replacing earlier vegetation of scrub and wild trees.</p>
 <p>Socially, Dargirê is distinct within the Mabeta district. While the host notes that Mabeta is predominantly <span class="internal-link">Alevi</span>, the residents of Dargirê identify as <span class="internal-link">Sunni</span> Kurds. Despite this, they maintain syncretic traditions centered around the shrine of <span class="internal-link">Ehmed Dede</span>. Villagers visit this site on Thursdays to light candles and olive oil lamps, seeking cures for illnesses and making wishes. A specific ritual involves the <span class="internal-link">Dara Ziftê</span> (Pitch Tree) near the shrine; those suffering from warts visit on Wednesdays to cut a piece of the tree and place it on their skin without looking back. Another shrine, <span class="internal-link">Şêx Cemaleddîn</span>, located between Dargirê and <span class="internal-link">Cûqê</span>, was historically used for rain prayers during drought years.</p>
@@ -299,7 +358,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dargir.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dargir.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=PeXXBuU_SRU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=PeXXBuU_SRU</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=zndu3XdPLyI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zndu3XdPLyI</a><br><a href="https://www.youtube.com/watch?v=hS_gZ2dSpm8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=hS_gZ2dSpm8</a><br><a href="https://www.youtube.com/watch?v=zYXW-tztybA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zYXW-tztybA</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=mASawqlEJXc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=mASawqlEJXc</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=PmhnHYdMxs4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=PmhnHYdMxs4</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dargir.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20dargir.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=PeXXBuU_SRU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=PeXXBuU_SRU</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=zndu3XdPLyI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zndu3XdPLyI</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=hS_gZ2dSpm8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=hS_gZ2dSpm8</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=zYXW-tztybA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zYXW-tztybA</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=mASawqlEJXc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=mASawqlEJXc</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=PmhnHYdMxs4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=PmhnHYdMxs4</a></li></ul>
             </div>
 
             
@@ -309,7 +368,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -427,6 +486,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

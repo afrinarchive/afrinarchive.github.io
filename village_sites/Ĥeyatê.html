@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -105,7 +126,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Gu.Ĝeyatê, Gundê Heyatê, Hayat, Hayûtiyê, Heyatê, Ĝeyatê, الحياة, حياة, كونده حياته</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Sêwî</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bêremê Huso, Cimo, Emîkê, Hemkûse, Huseynê Ma&#x27;mê, Menanê Henên, Xeleçete, Xelîl Cinê, Şewqî, Şêxê Bêrem</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bêremê Huso, Cimo, Emîko, Emîkê, Hemkûse, Huseynê Ma&#x27;mê, Menanê Henên, Xeleçete, Xelîl Cinê, Şewqî, Şêxê Bêrem</p></div>
                         </div>
                     </div>
                     
@@ -150,25 +171,55 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Ĥeyatê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of Mabetli District (المعبطلي) / Mabeta</p>
-<p><span class="internal-link">Gu.Ĝeyatê</span> (الحياة) - <span class="internal-link">Gu.Ĝeyatê</span></p>
-<p>===</p>
-<p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">Gundî Ĝeyatê</span> (الحياة), <span class="internal-link">Hayat</span> (حياة)</strong> /520N - 8km - 640m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Ĥeyatê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20heyate.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20heyate.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: Village of <span class="internal-link">Heyat</span> / 520 inhabitants 8km 640m /:</p>
+<p>Heyat: A local female given name.</p>
+<p>It is a small village located on the southern slope of <span class="internal-link">Çiyayê Hawar</span>. Some of its families left it and established a small residential gathering beside the <span class="internal-link">Riya Efrîn-Reco</span> (Efrîn Reco public road). It is a modern village whose construction dates back to the year 1963, and the origin of its inhabitants is from the village of Swiya located on the summit of the mountain at a distance of about 2km.</p>
+<p>And it is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Heyat: A village in <span class="internal-link">Çiyayê Kurmênc</span>, following the <span class="internal-link">Mabeta</span> sub district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small, beautiful village located in the middle section of the mentioned mountain, on the southern slope of the limestone Çiyayê Hawar which is furrowed by gullies. Its lands have a slight slope, with forests and pastures spread over its clay soil. It overlooks agricultural lands from the south and east directions. It is 13km away from the town of Mabeta towards the northeast.</p>
+<p>Its construction is modern, dating back to 1963 AD. It is bounded on the north by mountainous heights planted with olive trees and the village of <span class="internal-link">Oksizlî</span>; on the south by a fertile agricultural plain, the Riya Efrîn-Reco (Efrîn Reco road), and the village of <span class="internal-link">Qitranlî</span>; on the west by mountainous heights planted with olive trees and the village of <span class="internal-link">Gulîbo</span>; and on the east by a slope and agricultural plain planted with olive trees and the village of <span class="internal-link">Şêx Kîlo</span>.</p>
+<p>The number of its houses reaches about 35 houses, and its age is about 42 years. It is a village of recent era. Its houses are of stone and cement, spread in all directions. An electricity network and a primary school are available in it. The village drinks from an artesian well next to the village of Gulîbo belonging to the state. Its inhabitants work in the cultivation of olives and legumes, both rain fed and irrigated from artesian wells, summer vegetables, and fruit bearing trees (walnut, pomegranate, apricot, and apple). An asphalt road connects it to the town of Mabeta, reaching the center of the village. This is in addition to raising sheep and goats. Among its most important families is the <span class="internal-link">Emîko</span> family, and from the neighboring villages, their origin is from the village of Oksizlî.</p>
+<p>Village Mukhtar: <span class="internal-link">Sebrî Menan Menan</span></p>
+<p>Preparation and execution:</p>
+<p>Director of <span class="internal-link">Navenda Tirej Soft</span>: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li><span class="internal-link">Hayat</span> (حياة): A local feminine proper name.</li>
-<li>A small village located on the southern slope of <span class="internal-link">Hawar Mountain</span> (جبل هاوار). Some of its families left it and established a small residential gathering beside the public road <span class="internal-link">Afrin City - Rajo</span> (عفرين - راجو). It is a modern village dating back to 1963, and its original inhabitants came from <span class="internal-link">Sêwiya village</span> (قرية سيوية) located on the mountain top at a distance of about 2km.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: &#x27;عفرين.... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27; by writer Abdulrahman Mohammed from <span class="internal-link">Qitma village</span> (قطمه):</p>
-<p><strong><span class="internal-link">Al-Hayat</span> (الحياة)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), <span class="internal-link">Afrin City region</span> (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small beautiful village located in the central part of the mentioned mountain, on the southern slope of <span class="internal-link">Hawari limestone mountain</span> (جبل هواري الكلسي) which is crossed by streams. Its lands have gentle slopes spreading over its clay soil with forests and pastures. It overlooks the agricultural lands from the south and east directions. It is 13km away from <span class="internal-link">Mabetli town</span> (بلدة المعبطلي) toward the northeast.</p>
-<p>Its construction is modern, dating back to 1963. It is bordered to the north by mountain elevations planted with olive trees and <span class="internal-link">Uksuzli village</span> (قرية أوكسوزلي), to the south by the fertile <span class="internal-link">Katkh plain</span> (سهل خصب) and the <span class="internal-link">Afrin City Rajo</span> road (طريق عفرين راجو) and <span class="internal-link">Qitranli village</span> (قرية قطرانلي), to the west by mountain elevations planted with olive trees and <span class="internal-link">Kêl Îbo village</span> (قرية كل إيبو), and to the east by a slope and agricultural plain planted with olive trees and <span class="internal-link">Sheikh Kilo village</span> (قرية شيخ كيلو).</p>
-<p>The number of houses is about 35, and its age is about 42 years. It is a village of modern establishment. Its houses are stone and concrete spreading in all directions. It has electricity network and primary school. The village drinks from an artesian well near <span class="internal-link">Kêl Îbo village</span> (قرية كل إيبو) belonging to the state.</p>
-<p>Its inhabitants work in olive and legume cultivation rain-fed and irrigated from artesian wells with summer vegetables and fruit trees (walnuts, pomegranates, apricots, apples), in addition to raising sheep and goats. Among its most important families is the <span class="internal-link">Amiko family</span> (عائلة عميكو) from neighboring villages, originally from <span class="internal-link">Uksuzli village</span> (قرية أوكسوزلي).</p>
-<p>It connects to <span class="internal-link">Mabetli town</span> (بلدة المعبطلي) by a paved road to the village center.</p>
-<p>Village mayor: <span class="internal-link">Sabri Minan Minan</span> (صبري منان منان)</p>
-<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin City Heritage</span>: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥeyatê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=BGvPri35Qgo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=BGvPri35Qgo</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Gund Ĥeyat ، الحياة ، حياة /520ن - 8كم - 640م/:</p>
+<ul>
+<li>حياة: اسم علم محلي مؤنث.</li>
+</ul>
+<ul>
+<li>قرية صغيرة تقع على السفح الجنوبي لجبل هاوار. وقد تركها بعض عائلاتها،</li>
+</ul>
+<p>وأقاموا تجمعا سكنيا صغيرا بجانب الطريق العام عفرين - راجو. وهي قرية حديثة يعود إعمارها إلى عام 1963، وأصل سكانها من قرية Swiya الواقعة على قمة الجبل بمسافة نحو /2/كم. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه الحياة : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة جميلة تقع في القسم الأوسط من الجبل المذكور ، على السفح الجنوبي لجبل هواري الكلسي الذي تخدده المسيلات ، أراضيها قليلة الانحدار تنتشر فوق تربتها الغضارية الحراج و المراعي ، تشرف على الأراضي الزراعية من جهتي الجنوب و الشرق وهي تبعد عن بلدة المعبطلي 13كم نحو الشمال الشرقي إعمارها حديث ، يرجع إلى عام 1963م ، يحدها شمالاً مرتفعات جبلية مزروعة بأشجار الزيتون وقرية أوكسوزلي ، وجنوباً سهل خصب زراعياً و طريق عفرين راجو و قرية قطرانلي ، وغرباً مرتفعات جبلية مزروعة بأشجار الزيتون وقرية كل إيبو ، وشرقاً منحدر وسهل زراعي مزروعة بأشجار الزيتون و قرية شيخ كيلو ، يبلغ عدد بيوتها حوالي 35بيتاً ، وعمرها حوالي 42عاماً وهي قرية حديثة العهد ، بيوتها حجرية أسمنتية تنتشر في كافة الاتجاهات, تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وتشرب القرية من بئر ارتوازي بجوار قرية كل إيبو العائدة للدولة , يعمل سكانها بزراعة الزيتون والبقول بعلاً ورياً من الآبار الارتوازية الخضار الصيفية والأشجار المثمرة (الجوز والرمان والمشمش والتفاح) ، تصلها ببلدة المعبطلي طريق مزفتة حتى وسط القرية ، إلى جانب تربية الأغنام والماعز ومن أهم عوائلها عائلة عميكو و من القرى المجاورة ، أصلهم من قرية أوكسوزلي .</p>
+<p>مختار القرية :  صبري منان منان</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Ĥeyatê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=BGvPri35Qgo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=BGvPri35Qgo</a></p>
 <p>The village of <span class="internal-link">Heyatê</span>, originally known by its Kurdish name <span class="internal-link">Şiyana</span>, is a relatively modern settlement located in the <span class="internal-link">Mabata</span> district of the <span class="internal-link">Efrîn</span> canton. Situated on the fertile <span class="internal-link">Deşta Kitxê</span> (Kitxê Plain), approximately 15 kilometers north of Mabata, the village was officially founded in 1961. Its origins are deeply tied to the nearby village of <span class="internal-link">Sêwiya</span>. The founders were originally residents of Sêwiya who owned agricultural land in the plain below but struggled with the lack of water and harsh conditions in their mountain home. Seeking a better livelihood near their crops and water sources, three cousins, <span class="internal-link">Huseynê Ma&#x27;mê</span>, <span class="internal-link">Şêxê Bêrem</span>, and <span class="internal-link">Bêremê Huso</span>, along with families like <span class="internal-link">Hemkûse</span>, <span class="internal-link">Menanê Henên</span>, and <span class="internal-link">Bêremê Xelîl Cinê</span>, migrated down to the plain to establish the new village.</p>
 <p>In the early years of the settlement, before permanent stone houses were constructed, the residents lived in approximately six or seven caves (<span class="internal-link">şikeft</span>) that they dug themselves for shelter against the elements. The transition from Sêwiya was marked by a desire for independence and stability; when the government required a registered name, the settlers chose Heyatê to formalize their new existence, though the indigenous name remains Şiyana. Water was initially sourced from springs like <span class="internal-link">Kaniya Basûtê</span> and a site known as <span class="internal-link">Kola Meyî Bêrem</span>, but as the population grew, the villagers dug roughly 15 wells to sustain their community.</p>
 <p>The social structure of Heyatê is cohesive, characterized by close kinship ties, with residents describing themselves as cousins (pismam) without external strangers. Key families include <span class="internal-link">Cimo</span>, <span class="internal-link">Xeleçete</span>, <span class="internal-link">Emîkê</span>, and <span class="internal-link">Şewqî</span>. The village has a strong reputation for education and culture. It established a school early in its history (around 1958, even before full official recognition), and many residents hold university degrees. Culturally, the village is known for its preservation of traditional crafts, such as women weaving <span class="internal-link">Urzelk</span> (ornamental wheat stalks) using plants gathered from <span class="internal-link">Xerabî Şêxkelê</span>, and the specialized trade of wooden ladder making (<span class="internal-link">sêlim</span>) from <span class="internal-link">qapoq</span> trees, a craft maintained by artisans like <span class="internal-link">Neşetê Ehmedê Kîbar</span>.</p>
@@ -267,7 +318,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20heyate.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20heyate.htm</a><br><a href="https://www.youtube.com/watch?v=BGvPri35Qgo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=BGvPri35Qgo</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=I-TWPI5iMuU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=I-TWPI5iMuU</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20heyate.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20heyate.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=BGvPri35Qgo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=BGvPri35Qgo</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=I-TWPI5iMuU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=I-TWPI5iMuU</a></li></ul>
             </div>
 
             
@@ -277,7 +328,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -395,6 +446,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -104,6 +125,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şera</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">خرابة شران</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Celûsî, Dûdqî, Hemdûş, Mala Arif, Mala Ebû Ebdo, Mala Ehmed Neccar, Mala Fewzî Hisên, Mala Hebo, Mala Mihemedê Ke&#x27;to, Mala Şêxa, Sebeb, Xelbaş</p></div>
                         </div>
                     </div>
                     
@@ -127,42 +149,111 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Xirabî Şera</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Afrin 366</h5>
+<p><strong>Springs:</strong> <span class="internal-link">Mirîk</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Mêr</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Xirabî Şera</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>From the book <em>Jabal al-Kurd / Afrin / A Geographical Study</em>:</p>
-<p><strong>Xirabî Şera, Kharabat Sharran /4157p - 520m/:</strong></p>
-<p><em>Translator&#x27;s Note: The numbers likely refer to population (p) and elevation (m).</em></p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Xirabî Şera</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20xirabi%20shra.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20xirabi%20shra.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc <span class="internal-link">Efrîn</span> A Geographical Study: <span class="internal-link">Xirab Şera</span>, (4157 inhabitants - 520m):</p>
+<p>Xirab Şera is an old archaeological site. It is currently a large village and constitutes the southern section of the town of <span class="internal-link">Şeran</span> on the western slope of a limestone plateau. The village has expanded and become an important part of the town of Şeran.</p>
+<p>According to the book Efrîn... Her River and Her Green Hills: Xirab Şera is a village in <span class="internal-link">Çiyayê Kurmênc</span> following the Şeran district, Efrîn region, Heleb governorate (4085 inhabitants). It is a large village situated on a mountainous rise and between two mountains, separated by a deep valley extending from the east toward the west which passes through the center of the village.</p>
+<p>It is bordered to the north by a slope and a valley planted with olive trees and some orchards, and the town of Şeran which is close by at a distance of 200 meters. To the south, it is bordered by a valley and a mountain chain planted with olive trees and vines, and the village of <span class="internal-link">Metînlê</span>. To the east, there is a mountain rise and a rugged valley planted with forest trees and olives, along with the village of <span class="internal-link">Qetme</span> and the village of <span class="internal-link">Sinkerlî</span>. To the west, there is a wide and fertile plain planted with grains, olive trees, and orchards, along with the village of <span class="internal-link">Kûbelik</span>, the village of <span class="internal-link">Xelûbî Kebîr</span>, and the <span class="internal-link">Riya Meydankê-Bilbil-Kefer Cenê</span> (Meydankê-Bilbil-Kefer Cenê road).</p>
+<p>The number of its houses reaches approximately 300 houses, and the age of the village is about 700 years. Its old houses are made of stone and mud with flat wooden roofs, while the modern ones are cement and stone, which have spread westward and southward as far as the valley of Şeran. It is one of the old villages in the Şeran district of the Efrîn region, evidenced by the presence of caves and old grottos in the center of the village.</p>
+<p>An electricity network and state-owned drinking water are available, and a paved road passes through its center to several neighboring villages. It contains a primary and preparatory school and an old mosque. It belongs to the municipality of Şeran. It has modern olive presses, and there are very old residential houses as well as three modern villas belonging to <span class="internal-link">Menan Axa Celûsî</span> and <span class="internal-link">Elî Celûsî</span>.</p>
+<p>The residents of the village work in the cultivation of olives, vines, grains, walnuts, almonds, and some fruit trees, as well as sheep rearing. There is a telephone center taken from the Şeran center, and several streets are paved. There are also some craft shops such as car repair and blacksmithing. Additionally, there is a <span class="internal-link">Qews el-Nesr</span> (Arch of Victory) at the entrance of the village from the southern side of the town of Xirab Şera.</p>
+<p>Among its most important families are: <span class="internal-link">Menan</span> and <span class="internal-link">Ehmed Elî Axa el-Celûsî</span> (<span class="internal-link">Celûsî</span>), <span class="internal-link">Hemdûş</span>, <span class="internal-link">Xelbaş</span>, <span class="internal-link">Sebeb</span>, and <span class="internal-link">Dûdqî</span>. Among the sons of the village are degree holders and artists: PhD in Civil Engineering Engineer <span class="internal-link">Fehmî Ebdo</span>, Sculptor <span class="internal-link">Mihemed Xêr Cefer</span>, and Plastic Artist <span class="internal-link">Ciwan Cefer</span>.</p>
+<p>The mukhtar of the village: <span class="internal-link">Cemal Cabû</span>.</p>
+<p>Sources of Information:</p>
 <ul>
-<li>Kharabat Sharran: An ancient archaeological site.</li>
-<li>It is currently a large village and constitutes the southern part of the town of Sharran, located on the western slope of a limestone plateau. The village has expanded and become an important part of the town of Sharran.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>From the book <em>Afrin... Its River and Green Hills</em>:</p>
-<p><strong>Kharabat Sharran:</strong> A village in Jabal al-Kurd, belonging to the sub-district of Sharran, Afrin district, Aleppo Governorate, (4085 p).</p>
-<p>It is a large village situated on a mountain highland between two mountains, separated by a deep valley that runs from east to west through the center of the village. It is bordered to the north by a slope and a valley planted with olive trees and some orchards, and the nearby town of Sharran, 200 meters away; to the south by a valley and a mountain range planted with olive trees and grapevines, and the village of Matinli; to the east by a mountain highland and a rugged valley planted with forest trees and olive trees, and the villages of Qatma and Sankarli; and to the west by a wide, fertile plain cultivated with grains, olive trees, and orchards, the villages of Kobelek and Halubi Kabir, and the Maydanki-Bulbul-Kafr Jannah road.</p>
-<p>The village has about 300 houses and is approximately 700 years old. Its old houses are made of stone and mud with flat wooden roofs, while the modern ones are of cement and stone, having spread westward and southward to the Sharran valley. It is one of the ancient villages in the Sharran sub-district, Afrin district, as evidenced by the presence of old caves and caverns in the center of the village.</p>
-<p>It is supplied with a state electricity network and drinking water, and a paved road passes through its center to several neighboring villages. It has an elementary school, a middle school, and an old mosque, all under the administration of the Sharran municipality. It has modern olive presses, very old residential houses, and three modern villas belonging to Manan Agha Jalusi and Ali Jalusi.</p>
-<p>The village residents work in the cultivation of olives, grapevines, grains, walnuts, almonds, and some fruit trees, as well as raising sheep. There is a telephone center connected to the Sharran center, and several paved streets. There are also some craft shops, such as car repair and blacksmithing. Additionally, there is a triumphal arch at the village entrance on the southern side of the town of Kharabat Sharran.</p>
-<p>Among its most prominent families are Manan and Ahmad Ali Agha al-Jalusi, the Hamdoush family, the Khalbash family, the Sabab family, and the Dodqi family. Among the village&#x27;s sons who are degree holders and artists are: PhD holder Engineer Fahmi Abdo (PhD in Civil Engineering), the artist and sculptor Muhammad Khair Jaafar, and the visual artist Jwan Jaafar.</p>
-<p><strong>Sources of Information:</strong></p>
-<ol>
-<li>The book <em>Jabal al-Kurd (Afrin): A Geographical Study</em> by Dr. Muhammad Abdu Ali.</li>
-<li>The book: <em>Afrin... Its River and Green Hills</em> by the author Abd al-Rahman Muhammad from the village of Qatma.</li>
-<li>Studies by the TirêjSoft Center / Abd al-Rahman Haji Othman.</li>
-<li>Some village residents.</li>
-</ol></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Manager of the Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Xirab Şera ، خربة شران /4157ن - 520م/:</p>
+<ul>
+<li>خربة شران: موقع أثري قديم.</li>
+</ul>
+<ul>
+<li>هي حالياً قرية كبيرة، وتشكل القسم الجنوبي لبلدة شران على السفح الغربي</li>
+</ul>
+<p>لهضبة كلسية. وقد توسعت القرية وأصبحت جزءاًً مهما من بلدة شران. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : خربة شران : قرية في جبل الكرد تتبع ناحية شران منطقة عفرين محافظة حلب ، (4085 ن) وهي قرية كبيرة تقع على مرتفع جبلي وبين جبلين ويفصل بينهما وادي عميق يمتد من الشرق نحو الغرب يمر في وسط القرية . يحدها شمالا منحدر ووادي مزروع بأشجار الزيتون وبعض البساتين وبلدة شران القريبة على مسافة /200/متر , وجنوباً وادي وسلسلة جبلية مزروعة بأشجار الزيتون والكرمة وقرية ماتينلي وشرقا مرتفع جبلي ووادي وعر مزروع بأشجار الحراجية والزيتون وقرية قاطمة وقرية سنكرلي وغربا سهل واسع وخصب مزروع بالحبوب وأشجار الزيتون والبساتين وقرية كوبه لك وقرية حلوبي كبير وطريق ميدانكي بلبل كفرجنة . يبلغ عدد بيوتها حوالي300بيت وعمر القرية حوالي700 عام ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية و الحديثة أسمنتية حجرية انتشرت غرباً و جنوباً حتى وادي شران وهي من القرى القديمة في ناحية شران منطقة عفرين بدلالة وجود كهوف ومغار قديمة في وسط القرية تتوفر فيها شبكة الكهرباء ومياه الشرب العائدة للدولة وطريق مزفت يمر في وسطها إلى عدة قرى مجاورة فيها مدرسة ابتدائية وإعدادية وجامع قديم وهي عائدة لبلدية شران فيها معاصر حديثة للزيتون ويوجد دور سكن قديم جدا وثلاث فيلات حديثة عائدة لمنان آغا جلوسي وعلي جلوسي . يعمل سكان القرية بزراعة الزيتون والكرمة والحبوب والجوز واللوز وبعض أشجار الفواكة وتربية الأغنام يوجد مركزا للهاتف مأخوذ من مركز شران وعدة شوارع مزفت كما يوجد بعض المحلات الحرفية مثل تصليح السيارات والحدادة كما يوجد قوس للنصر في مدخل القرية من الجهة الجنوبية لبلدة خرابة شران . من أهم عوائلها منان وأحمد علي آغا الجلوسي آل حمدوش  آل خلباش  آل سبب  آل دودقي ، ومن أبناء القرية حملة الشهادات والفنانين : شهادة الدكتوراه المهندس فهمي عبدو / دكتواره في الهندسة المدنية الفنان النحات محمد خير جعفر  الفنان التشكيلي جوان جعفر -</p>
+<p>مختار القرية : جمال جابو</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Xirabî Şera from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=8UVm63ThW_8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=8UVm63ThW_8</a></p>
+<p>The documentary provides a detailed visual and oral account of the village of <span class="internal-link">Xerabê Şehra</span>, situated in the <span class="internal-link">Afrin</span> region. The settlement is defined by its substantial size and architectural solidity. Unlike the neighboring village of <span class="internal-link">Sînka</span>, which the presenters describe as small, Xerabê Şehra is characterized as a large settlement resembling a city. Local elders and the host confirm that the village contains approximately 400 households. The architecture is a point of pride for the residents, with structures built from stone (hacer) that was reportedly brought from the direction of <span class="internal-link">Heleb</span>. One resident remarks that the stones in the village are a thousand years old, suggesting a deep historical presence, even if a specific founding date for the current settlement is not provided.</p>
+<p>The social structure of Xerabê Şehra is composed of several distinct families identified during the tour. The presenters visit or reference the homes of <span class="internal-link">Mala Ehmed Neccar</span> and <span class="internal-link">Mala Fewzî Hisên</span>, where they stop for coffee and rest. During a conversation with an elder, the specific lineage of <span class="internal-link">Mala Mihemedê Ke&#x27;to</span> is clarified when the host inquires about the Neccar family. As the camera moves through the streets, the host points out the properties of <span class="internal-link">Mala Arif</span> and <span class="internal-link">Mala Hebo</span>. Additionally, a crew member is heard asking for directions to <span class="internal-link">Mala Şêxa</span>, indicating the presence of this family within the community. An elder notes that while the physical village remains large, the population has decreased due to migration, stating that many have left the area.</p>
+<p>The geography of the village includes specific named landmarks and sacred sites. The host identifies a location known as <span class="internal-link">Mirîk</span>, which appears to be a small spring or water source near the village entrance. On the higher ground (alî jor), there is a site referred to as <span class="internal-link">Mêr</span>, which serves as a religious or spiritual landmark for the community. The village is also noted for its ancient courtyards (hewşê kevnar) and lush natural environment. To cope with infrastructure challenges, the village utilizes solar panels (lewh şemsî) to generate electricity for the households. The documentary team concludes their tour of Xerabê Şehra with plans to proceed to the village of <span class="internal-link">Elqê</span>, highlighting the interconnected nature of these rural settlements in the region.</p></div></details></div>
                 </div>
 
-            
+            <div class="card p-6 rounded-xl">
+            <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcriptions and Subtitles</h2>
+            <div class="p-4 prose-compact max-w-none">
+    <div class="mb-4">
+        <a href="../village_subtitles/how_to_use_substital.html" target="_blank" class="text-base font-medium external-link hover:underline">Need help with using this subtitles on Youtube? (Click here)</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b-2 themed-border">
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Source</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Video</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Subtitles</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Transcript</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Afrin 366 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=8UVm63ThW_8" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/afrin366_videos_124_Xirabi Sera.srt" download="afrin366_videos_124_Xirabi Sera.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Xirabî Şera_Afrin 366_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    </div>
+        </div>
 
             
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>TirejAfrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20xirabi%20shra.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20xirabi%20shra.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=sPYGZaewJtw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sPYGZaewJtw</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=VIRmQfNCsVk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VIRmQfNCsVk</a><br><a href="https://www.youtube.com/watch?v=wKCPz1scbjo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=wKCPz1scbjo</a><br><a href="https://www.youtube.com/watch?v=njfDLJQh6qA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=njfDLJQh6qA</a><br><a href="https://www.youtube.com/watch?v=3WEDp3h_-Go" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3WEDp3h_-Go</a><br><a href="https://www.youtube.com/watch?v=i5uSBAyukhU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=i5uSBAyukhU</a></li><li>Local FB page:<br><a href="https://www.facebook.com/sharranvillage" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/sharranvillage</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20xirabi%20shra.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20xirabi%20shra.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=sPYGZaewJtw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sPYGZaewJtw</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=VIRmQfNCsVk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VIRmQfNCsVk</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=wKCPz1scbjo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=wKCPz1scbjo</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=njfDLJQh6qA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=njfDLJQh6qA</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=3WEDp3h_-Go" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3WEDp3h_-Go</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=i5uSBAyukhU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=i5uSBAyukhU</a></li><li>Local FB page:<br><a href="https://www.facebook.com/sharranvillage" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/sharranvillage</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=8UVm63ThW_8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8UVm63ThW_8</a></li></ul>
             </div>
 
             
@@ -172,7 +263,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -290,6 +381,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

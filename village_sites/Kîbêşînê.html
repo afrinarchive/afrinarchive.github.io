@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -208,27 +229,70 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Kîbêşînê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The name is believed to be derived from the appearance of Italian monks in Mount Lîlon who wore blue caps; Kub or Kum in Kurdish means cap, while Qub also means dome, and Şn means blue, thus meaning Blue Cap or Blue Dome</p>
+<p><strong>Foundation Date/Period:</strong> approx 400 years</p>
+<p><strong>Hills:</strong> <span class="internal-link">Şêrwan</span>, <span class="internal-link">Lîlon</span>, <span class="internal-link">Simean</span>, <span class="internal-link">Cewber</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Zekiye</span>, <span class="internal-link">Zûq</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kîbêşînê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; geographical study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong>Kibêşîn, كباشين</strong> /953n - 258ha - 37km - 545m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kîbêşînê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kobashen.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kobashen.htm</a></p>
+<p><span class="internal-link">Kibşn</span>, <span class="internal-link">Kibaşîn</span> has 953 inhabitants, covers 258 hectares, is located 37 kilometers away, and sits at an altitude of 545 meters.</p>
+<p>It is stated in the book <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by <span class="internal-link">Dr. Mihemed Ebdo Elî</span> regarding Kibaşîn: It is believed that the name &quot;Kibaşîn&quot; is derived from the appearance of Italian monks who used to worship in Mount <span class="internal-link">Lîlon</span> and put on blue caps. <span class="internal-link">Kub</span> or <span class="internal-link">Kum</span> means cap in Kurdish, while <span class="internal-link">Qub</span> also means dome. <span class="internal-link">Şn</span> is in the sense of the color blue. Thus, the word is Kurdish meaning &quot;Blue Cap&quot; or &quot;Blue Dome.&quot; In news from 1836, Naum Bakhash mentions in his notebooks (Vol 1, p 49) the existence of a monastery for Maronite Capuchin fathers in <span class="internal-link">Heleb</span>. As for Khuri Barsoum, he says that the name is Aramaic meaning &quot;stallions&quot; or &quot;rams&quot; (p 265), but I believe this is far from correct.</p>
+<p>It is a medium sized village among the villages of Mount <span class="internal-link">Şêrwan</span>. It contains archaeological remains including remnants of church walls, lintels, columns, and wells carved into the rock dating back to the Roman and Byzantine eras.</p>
+<p>It is stated in the book <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme that Kibaşîn is a village in Mount Lîlon and <span class="internal-link">Simean</span>. It belongs to the Central Villages subdistrict, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a large village located at the end of the southern slope of Mount <span class="internal-link">Cewber</span> in the southern part of Mount Simean and on the left side of the <span class="internal-link">Zekiye</span> valley which heads from the northwest toward the southeast. It overlooks the <span class="internal-link">Zûq</span> valley from the east and lies to the southeast of Efrîn city at a distance of 30km.</p>
+<p>It is bordered to the north by a rugged mountain range of rocks and the villages of <span class="internal-link">Kefernabo</span> and <span class="internal-link">Kalote</span>; to the south by a slope, a valley, a rugged mountain range, and the villages of <span class="internal-link">Fafertîn</span> and <span class="internal-link">Şêx Eqîl</span>; and to the east by a rugged mountain range of rocks and the village of <span class="internal-link">Zûqa Mezin</span>. The number of its houses reaches approximately 90 houses, and the age of the village is approximately 400 years. The settlement of the area is very old, indicated by the remaining ruins of some church walls, lintels, columns, tombs, and wells carved into the rock. These date back to the Roman and Byzantine eras. Its dwellings are stone and mud with wooden roofs, while currently they are of reinforced concrete and stone.</p>
+<p>Its residents work in grain cultivation on an area of 258 hectares, as well as raising sheep and cows. An electricity network is available in the village. They drink from a public network that draws its water from a well in the south of the village of Zûqa Mezin, located 3km east of the village. The village contains a primary school, a mosque, a modern villa located on the eastern side of the village, and a health center. It is connected to Efrîn city by an asphalt road.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Heyder Ehmed</span></p>
+<p>Sources:</p>
 <ul>
-<li>It is believed that the name &quot;Kabashin&quot; is derived from a group of Italian monks who used to worship in <span class="internal-link">Mount Lilon</span> (جبل ليلون) and wear blue caps. Kub or Kum means cap in Kurdish, and Qub also means dome. Şîn means blue color, so the word is Kurdish meaning &quot;blue caps&quot; or &quot;blue domes&quot;. In news of 1836, <span class="internal-link">Naum Bakhash</span> (نعوم بخاش) mentions in his notebooks /v.1, p.49/, the existence of a monastery for the <span class="internal-link">Kapuchin Fathers</span> (الآباء الكبوشيين) in <span class="internal-link">Aleppo</span> (حلب). As for <span class="internal-link">al-Khouri Barsoum</span> (الخوري برصوم), he says the name is Aramaic meaning: the males, the rams /p.265/, and I believe this is far from correct.</li>
-<li>A medium-sized village from the villages of &quot;<span class="internal-link">Mount Sherwan</span>&quot; (جبل شيروان). It contains archaeological remains including: church wall remains, capitals, columns and wells carved in rock dating to the Roman and Byzantine periods.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin.... Its River and Green Hills</span> (عفرين .... نهرها وروابيها الخضراء) by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatmah village</span> (قرية قطمه)</p>
-<p><strong>Kabashin</strong> (كباشين): A village in <span class="internal-link">Mount Lilon and Samaan</span> (جبل ليلون وسمعان), belonging to the <span class="internal-link">central villages district</span> (ناحية قرى مركز), and Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located at the end of the southern slope of &quot;<span class="internal-link">al-Jobir</span>&quot; mountain (جبل الجوبر) in the southern part of <span class="internal-link">Mount Samaan</span> (جبل سمعان) and on the left side of &quot;<span class="internal-link">Zikiya</span>&quot; valley (وادي زكية) heading from northwest to southeast. It overlooks &quot;<span class="internal-link">al-Zouk</span>&quot; valley (وادي الزوق) from the east and southeast of Afrin City (مدينة عفرين) at a distance of 30km.</p>
-<p>It is bordered to the north by a rough rocky mountainous chain and <span class="internal-link">Kafarnabo village</span> (قرية كفرنابو) and <span class="internal-link">Kaluta</span> (كالوته). To the south by a slope, valley and rough mountainous chain and <span class="internal-link">Fafartin village</span> (قرية فافرتين), <span class="internal-link">Sheikh Aqil</span> (الشيخ عقيل). To the east by a rough rocky mountainous chain and <span class="internal-link">al-Zouk al-Kabir village</span> (قرية الذوق الكبير).</p>
-<p>The number of its houses is approximately 90 houses and the village age is approximately 400 years. The settlement of the area is very ancient, evidenced by the archaeological remains of some church walls, capitals, columns, cemeteries and wells carved in rock dating to the Roman and Byzantine periods. Its dwellings are stone and clay with wooden roofs. Currently of reinforced cement and stone. Its inhabitants work in grain cultivation on an area of 258 hectares, and sheep and cattle herding.</p>
-<p>Electricity network is available and they drink from a public network that gets its water from a well in southern <span class="internal-link">al-Zouk al-Kabir village</span> (قرية الذوق الكبير) located east of the village at 3km distance. It has an elementary school, mosque and modern villas located on the eastern side of the village and health center. It is connected to Afrin City (مدينة عفرين) by paved roads.</p>
-<p>Village Mukhtar: <span class="internal-link">Mohammed Haider Ahmed</span> (محمد حيدر أحمد)</p>
-<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin Heritage</span>: <span class="internal-link">Abdulrahman Haji Osman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Manager of Tirej Efrîn site: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Kibşn ، كباشين /953ن - 258هـ - 37كم - 545م/:</p>
+<ul>
+<li>يعتقد أن الاسم &quot;كباشين&quot; مستمد من هيئة رهبان إيطاليين كانوا يتعبدون في</li>
+</ul>
+<p>جبل ليلون ويضعون طاقيات زرقاء، فـ كوب أو كوم Kub أو Kum تعني في الكردية الطاقية، أما Qub فتعني قبة أيضاً. و Şn هي بمعنى اللون الأزرق، وبذلك تكون الكلمة كردية بمعنى &quot;الطاقية الزرقاء&quot;، أو &quot;القبة الزرقاء&quot;. وفي أخبار عام 1836 يذكر نعوم بخاش في دفاتره /ج1، ص49/، وجود دير للآباء الكبوشيين الموارنة في حلب. أما الخوري برصوم فيقول أن الاسم آرامي بمعنى: الفحول، الأكباش /ص265/، وأعتقد أن هذا بعيد عن الصواب.</p>
+<ul>
+<li>قرية متوسطة الحجم من قرى &quot;جبل شيروان&quot;. فيها آثار منها: بقايا جدران كنيسة</li>
+</ul>
+<p>وسواكف وأعمدة وآبار منقورة في الصخر تعود للعهدين الروماني والبيزنطي. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كباشين : قرية في جبل ليلون وسمعان ، تتبع ناحية قرى مركز ، ومنطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع عند نهاية السفح الجنوبي لجبل &quot;الجوبر&quot; في الجزء الجنوبي لجبل سمعان وعلى الجانب الأيسر لوادي &quot; زكية &quot; المتجه من الشمال الغربي نحو الجنوب الشرقي ، تشرف من الشرق على وادي &quot; الزوق&quot; وإلى الجنوب الشرقي من مدينة عفرين على بعد 30كم ، يحدها شمالاً سلسلة جبلية وعرة من الصخور وقرية كفرنابو وكالوته وجنوباً منحدر ووادي وسلسلة جبلية وعرة وقرية فافرتين والشيخ عقيل وشرقاً سلسلة جبلية وعرة من الصخور وقرية الذوق الكبير . يبلغ عدد بيوتها حوالي90بيتاً وعمر القرية حوالي400عام تقريباً . وإعمار المنطقة قديم جدا يدل عليها الآثار المتبقية لبعض جدران كنيسة وسواكف وأعمدة ومدافن وآبار منقورة في الصخر . تعود للعهدين الروماني والبيزنطي ومساكنها حجرية طينية ذات سقوف خشبية . أما حالياً من الإسمنت المسلح والحجارة . يعمل سكانها بزراعة الحبوب على مساحة 258هكتار، وتربية الأغنام والأبقار . تتوفر فيها شبكة الكهرباء ويشربون من شبكة عامة تستمد ماءها من بئر في جنوبي قرية الذوق الكبير الواقعة شرقي القرية بمسافة3كم . فيها مدرسة ابتدائية وجامع وفيلا حديثة تقع في الجهة الشرقية للقرية ومركز صحي.ترتبط بمدينة عفرين بطريق مزفتة .</p>
+<p>مختار القرية :  محمد حيدر أحمد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -243,7 +307,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kobashen.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kobashen.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=Z-wjWSw2Edg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Z-wjWSw2Edg</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kobashen.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Kobashen.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=Z-wjWSw2Edg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Z-wjWSw2Edg</a></li></ul>
             </div>
 
             
@@ -253,7 +317,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -371,6 +435,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -167,7 +188,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Zahirah al-Tahtaniyah, Korke Jêr, Kurka Jêrin, Kurka Jêrîn, Kurkan Tahtani, Kurkê Jêrin, الظاهرة التحتانية, كوركان تحتاني, كوركه جيرن</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Berazî, Nêimî, Rûbarî</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Mala &#x27;Elî Têne, Mala Altona, Mala Becet, Mala Bekrî Hemçîçê, Mala Ebdikê, Mala Eltûne, Mala Elî Şêrvên, Mala Eynê, Mala Hekîm, Mala Hemçûçê, Mala Hemîtê, Mala Kurê Ehmedo, Mala Opîrê, Mala Orgîta, Mala Têwedê, Mala Çapûk, Mala Çewê, Malê Bozo, Malê Heso, Neşetê Omer, Qerqol Axê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Hemo Bizirke, Mala &#x27;Elî Têne, Mala Altona, Mala Becet, Mala Bekrî Hemçîçê, Mala Ebdikê, Mala Eltûne, Mala Elî Şêrvên, Mala Eynê, Mala Hekîm, Mala Hemçûçê, Mala Hemîtê, Mala Kurê Ehmedo, Mala Opîrê, Mala Orgîta, Mala Têwedê, Mala Çapûk, Mala Çewê, Malê Bozo, Malê Heso, Neşetê Omer, Qerqol Axê, Xelîl Hecî Misto, Şukrî Hemîd Kîlo</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -217,17 +238,52 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kurkê Jêrin</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد (عفرين)</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin City)</span>&#x27; geographical study by Dr. Mohammed Abdo Ali (محمد عبدو علي):</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Kurka</span> (كوركان):</strong></p>
-<p>The abstract name <span class="internal-link">Kurk</span> means the brooding hen. If pronounced as <span class="internal-link">Kurik</span>, it means small boys or young men whose beards have not yet grown. If its root is <span class="internal-link">Kur</span>, it means the small bare hill or elevation, and this latter is the origin of the name, as the two villages are located on two small hills that were formerly bare of trees. The Arab speakers relied on this and translated the name to &quot;<span class="internal-link">al-Zahirah</span>&quot; (الظاهرة).</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kurkê Jêrin</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kurke%20jerin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kurke%20jerin.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Kurka</span>, <span class="internal-link">Kurkan</span>: The abstract noun <span class="internal-link">Kurk</span> means a brooding hen. If pronounced as <span class="internal-link">Kurik</span>, it means small sons or youths whose beards have not yet grown. However, if its root is <span class="internal-link">Kur</span>, it means the small barren hill or highland. This latter meaning is the origin of the name, as the two villages are located on two small hills that were historically devoid of trees. The Arabizers relied on this interpretation and translated the name to <span class="internal-link">Al Zahira</span> (meaning The Phenomenon or The Visible Feature).</p>
+<p>They are two villages: <span class="internal-link">Kurka Jorîn</span> (Upper Kurka) and <span class="internal-link">Kurka Jêrîn</span> (Lower Kurka).</p>
+<p>Kurka Jêrîn, <span class="internal-link">Kurkan Tahtanî</span>, <span class="internal-link">Al Zahira Al Tahtaniya</span> /932 inhabitants, 134 hectares, 14km distance, 550m altitude/: It is a small village located on the northern slope of a limestone height.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Kurkan Tahtanî is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Mabeta</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village situated in the middle section of the mentioned mountain, on the northern slope of the limestone <span class="internal-link">Çiyayê Hemo</span>. It overlooks the agricultural plains of the <span class="internal-link">Kitix</span> plain to the east. It is located to the northwest of the town of Mabeta at a distance of 14km.</p>
+<p>It is bordered to the north by a slope, <span class="internal-link">Newala Sîlê</span> (Sili valley), and the village of <span class="internal-link">Dombilî</span>; to the south by a mountainous height and the nearby village of <span class="internal-link">Sariya</span>; to the west by Newala Sîlê, mountainous heights planted with olive trees, and the village of <span class="internal-link">Memila</span>; and to the east by Newala Sîlê, the Kitix plains, the village of <span class="internal-link">Kelîbo</span>, and Kurka Jorîn.</p>
+<p>The number of its houses is about 35 houses, and its age is approximately 350 years. Its old houses are made of stone and mud with wooden ceilings, while modern concrete buildings are spreading in the south and west. An electricity network is available, as well as a drinking water network connected to an artesian well in the west of the village. It contains a primary school and an olive press. A paved mountain road connects it to the district center.</p>
+<p>Its residents practice rain fed farming over an area of 134 hectares, cultivating grains and olive trees, especially on the mountain slopes in the west and north of the village, alongside raising sheep and goats. Among its most important families are: the <span class="internal-link">Hemo Bizirke</span> family, the <span class="internal-link">Xelîl Hecî Misto</span> family, and the <span class="internal-link">Şukrî Hemîd Kîlo</span> family.</p>
+<p>The village Mukhtar: <span class="internal-link">Zimriya Osman</span>.</p>
+<p>Preparation and execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>They are two villages: <span class="internal-link">Kurkan Foqani</span> <span class="internal-link">1 - PhD/Villages/Kurkê Jorin</span> and <span class="internal-link">Kurkan Tahtani</span> <span class="internal-link">1 - PhD/Villages/Kurkê Jêrin</span>:</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p><strong><span class="internal-link">1 - PhD/Villages/Kurkê Jêrin</span> (كوركان تحتاني), الظاهرة التحتانية</strong> /932n - 134ha - 14km - 550m/: A small village located on the northern slope of a calcareous elevation.</p>
-<p>According to the book: &#x27;<span class="internal-link">عفرين.... نهرها ورواbiها الخضراء</span>&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27; by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Kurkan Tahtani</span></strong> (كوركان تحتاني): A village in <span class="internal-link">Kurd Mountain</span> (جبل الكرد), belonging to Mabetli District (ناحية معبطلي), <span class="internal-link">Afrin City Region</span> (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the central section of the mentioned mountain, on the northern slope of <span class="internal-link">Hamo calcareous mountain</span> (جبل حمو الكلسي). It overlooks the agricultural plains of <span class="internal-link">Katkh plain</span> (سهل كتخ) to the east, to the northwest of <span class="internal-link">Mabetli town</span> (بلدة معبطلي) at a distance of 14km. To the north it is bordered by a slope and stream valley and <span class="internal-link">Donbllali village</span> (قرية دونبلللي), to the south by a mountain elevation and the nearby <span class="internal-link">Sari Oshaghi village</span> (قرية صاري أوشاغي), to the west by a stream valley and mountain elevations planted with olive trees and <span class="internal-link">Ma&#x27;mal Oshaghi village</span> (قرية معمل أوشاغي), and to the east by a stream valley and <span class="internal-link">Katkh plains</span> (سهول كتخ) and <span class="internal-link">Kul Ibo village</span> (قرية كل إيبو) and <span class="internal-link">Kurkan Foqani</span> (كوركان فوقاني). It contains approximately 35 houses (بيتاً) and is about 350 years old (عاماً). Its old houses are stone and clay with wooden roofs, and modern cement buildings spread in the south and west. It has an electricity network and a drinking water network connected to an artesian well in the west of the village. It has a primary school and an olive press. It is connected to the district center by a paved mountain road. Its inhabitants cultivate rain-fed crops on an area of 134ha of grains and olive trees, especially on the mountain slopes in the west and north of the village, alongside raising sheep and goats. Among its most important families: <span class="internal-link">Hamo Bazrkah family</span> (عائلة حمو بزركة) - <span class="internal-link">Al Khalil Haji Masto</span> (آل خليل حجي مستو) - <span class="internal-link">Al Shukri Hamid Kilo</span> (آل شكري حميد كيلو).</p>
-<p>Village headman: <span class="internal-link">Zamriya Othman</span> (زمريا عثمان)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kurkê Jêrin and Kurkê Jorin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=ikTuzI6TJgY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=ikTuzI6TJgY</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Kurka ، كوركان: الاسم المجرد Kurk بمعنى الدجاجة المُفَرِّخَة. وإن لفظت على شكل Kurik فتعني الأبناء الصغار أو الفتيان الذين لم تنبت لحاهم بعد. وإن كان جذرها Kur، فهي تعني الأجرد الصغير من التلال أو المرتفعات، وهذا الأخير هو أصل الاسم، فالقريتان تقعان على تلتين صغيرتين كانتا مجردتين من الشجر قديما. وقد استند المعربون على ذلك وترجموا الاسم إلى &quot; الظاهرة &quot;.</p>
+<ul>
+<li>وهما قريتان: كوركان فوقاني Kurk jorin وكوركان تحتاني Kurk Jrin:</li>
+</ul>
+<p>Kurk Jrin ، كوركان تحتاني ، الظاهرة التحتانية /932ن - 134هـ - 14كم - 550م/: قرية صغيرة تقع على السفح الشمالي لمرتفع كلسي. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كوركان تحتاني : قرية في جبل الكرد ، تتبع ناحية معبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في القسم الأوسط للجبل المذكور ، على السفح الشمالي لجبل حمو الكلسي ، تطل شرقاً على السهول الزراعية لسهل كتخ ، إلى الشمال الغربي من بلدة معبطلي على بعد 14كم ، يحدها شمالاً منحدر ووادي سيلي وقرية دونبللي ، وجنوباً مرتفع جبلي وقرية صاري أوشاغي القريبة ، وغرباً وادي سيلي ومرتفعات جبلية مزروعة بأشجار الزيتون وقرية معمل أو شاغي ، وشرقاً وادي سيلي وسهول كتخ وقرية كل إيبو وكوركان فوقاني ، يبلغ عدد بيوتها حوالي 35بيتاً وعمرها حوالي 350عاماً ، بيوتها القديمة حجرية طينية ذات سقوف خشبية ، و نتشر الأبنية الحديثة الإسمنتية في الجنوب والغرب ، تتوفر فيها شبكة كهرباء و شبكة مياه شرب متصلة ببئر ارتوازي في غرب القرية ، فيها مدرسة ابتدائية ومعصرة للزيتون ، تصلها بمركز الناحية طريق جبلي مزفت ، يزرع سكانها بعلاً فوق مساحة 134 هـ الحبوب وأشجار الزيتون وخاصة فوق السفوح الجبلية في غرب القرية وشمالها ، إلى جانب تربية الأغنام والماعز ، ومن أهم عوائلها : عائلة حمو بزركة - آل خليل حجي مستو - آل شكري حميد كيلو .</p>
+<p>مختار القرية : زمريا عثمان</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kurkê Jêrin and Kurkê Jorin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=ikTuzI6TJgY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=ikTuzI6TJgY</a></p>
 <p>The village of <span class="internal-link">Kurkê Jêrîn</span> (Lower Kurka) is a historical settlement located in the <span class="internal-link">Mabeta</span> district of Afrin (Çiyayê Kurmênc). Situated approximately 22 kilometers north of Afrin city, the village shares a deep connection with its twin village, <span class="internal-link">Kurkê Jorîn</span> (Upper Kurka). According to oral history and local elders, the village was founded over 600 years ago. The name &quot;Kurka&quot; is believed to originate from the Kurdish word for &quot;sons&quot; (kur), referring to two brothers who originally settled the area; one established the lower village while the other moved to the upper site. Another interpretation suggests the name reflects the abundance of &quot;beautiful water&quot; in the region, which historically flowed from <span class="internal-link">Qûpê</span> down to <span class="internal-link">Hecû</span>.</p>
 <p>The village&#x27;s social fabric is woven from various waves of migration and settlement. The founding lineage is identified as <span class="internal-link">Mala Hemîtê</span> (descendants of <span class="internal-link">Mala Hekîm</span>). However, a tragic event involving the death of a child who fell from a tree caused this original family to burn their property and leave the village entirely. Subsequently, other families arrived to repopulate the area. <span class="internal-link">Mala Altona</span> migrated from <span class="internal-link">Deşta Hemqê</span>, followed by <span class="internal-link">Mala Hemçûçê</span>. Later, <span class="internal-link">Mala Kurê Ehmedo</span> arrived from <span class="internal-link">Ba&#x27;dîna</span>, notably led by <span class="internal-link">Mehemed Agha</span>, who established an olive press in the village around 1865. Other notable families include <span class="internal-link">Mala Orgîta</span> (from south of <span class="internal-link">Dimîliya</span>), <span class="internal-link">Mala Ebdikê</span> and <span class="internal-link">Mala Elî Şêrvên</span> (both from <span class="internal-link">Kobaniyê</span> and associated with the <span class="internal-link">Nêimî</span> tribe), and <span class="internal-link">Mala Eynê</span>.</p>
 <p>Kurkê Jêrîn is also known for a significant historical relationship with the <span class="internal-link">Armenian</span> community. Following the events of 1915, Armenian survivors settled in an area of the village now known as <span class="internal-link">Xerabe Temirciya</span> (Ruins of the Blacksmiths). They lived in caves and built structures, providing essential ironworking services to the villagers. Relations were harmonious, leading to intermarriage, such as the union between a villager named <span class="internal-link">Sultan</span> and an Armenian woman. Most Armenian residents eventually moved to <span class="internal-link">Aleppo</span> or <span class="internal-link">Efrîn</span>, but their legacy remains in the ruins and oral histories.</p>
@@ -329,7 +385,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kurke%20jerin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kurke%20jerin.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=8YsZP3s5Gg4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8YsZP3s5Gg4</a><br><a href="https://www.youtube.com/watch?v=ikTuzI6TJgY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ikTuzI6TJgY</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=TIx0FNLEzE8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TIx0FNLEzE8</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=S07YIFtXBvk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=S07YIFtXBvk</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kurke%20jerin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kurke%20jerin.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=8YsZP3s5Gg4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8YsZP3s5Gg4</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=ikTuzI6TJgY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ikTuzI6TJgY</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=TIx0FNLEzE8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TIx0FNLEzE8</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=S07YIFtXBvk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=S07YIFtXBvk</a></li></ul>
             </div>
 
             
@@ -339,7 +395,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -457,6 +513,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

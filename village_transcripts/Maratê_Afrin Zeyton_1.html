@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript | Maratê - Afrin Zeyton</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .jump-btn { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.875rem; transition: all 0.2s; }
+        .jump-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; font-size: 0.75rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .copy-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Maratê</h1>
+            <p class="text-xl subtext mt-2">Transcript from Afrin Zeyton</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- General Info Card -->
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transcript Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Village</h3>
+                        <p class="text-lg">Maratê</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Source Channel</h3>
+                        <p class="text-lg">Afrin Zeyton</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Length</h3>
+                        <p class="text-lg">39:03</p>
+                    </div>
+                    <div class="mt-4">
+                    <a href="https://www.youtube.com/watch?v=0cTNrtYja4M" target="_blank" rel="noopener noreferrer" class="external-link hover:underline flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+                </div>
+                <!-- Jump Buttons -->
+                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t themed-border">
+                    <a href="#english" class="jump-btn">Go to Translation</a>
+                    <a href="#kurdish" class="jump-btn">Biçe Transkrîptê</a>
+                </div>
+            </div>
+
+            <!-- English Translation Card -->
+            <div id="english" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">English Translation</h2>
+                    <button class="copy-btn" onclick="copySection('translation-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Copy
+                    </button>
+                </div>
+                <div id="translation-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31]</span>Host: Yes, dear viewers, our program has started.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35]</span>Host: In this new episode of ours, we will visit the village of Maratê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:40]</span>Host: In this village, we will show you many artists and many artistic things as well.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:46]</span>Host: Stay tuned, our episode has started.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:56]</span>Narrator: According to the book &quot;Jabal al-Kurd: Geographical Studies in Afrin&quot;...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:01]</span>Narrator: ...it is believed that Marata is a Syriac name meaning &quot;the cave.&quot;</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:06]</span>Narrator: As for the villagers, they say that the name goes back to the name of the Roman ruler Maratinus...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:13]</span>Narrator: ...who ruled the area during the Roman rule.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:17]</span>Narrator: The village has been known for more than 720 years...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:22]</span>Narrator: ...indicated by a date recorded on a rock that was located in the Cave of the Arabs, Şikefta Ereban.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:28]</span>Narrator: That rock was lost more than 50 years ago.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:32]</span>Narrator: As for the true history of the village, it is indicated by the archaeological sites spread throughout that village and its suburbs...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:39]</span>Narrator: ...and the surrounding villages, such as Gundê Mazen, Qaziqlê, Xilnêr, Kefir Şîlê and the city of Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:46]</span>Narrator: Administratively, it belongs to the center of Afrin and is 5 km away from it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:51]</span>Narrator: The village had a clear imprint on the Great Syrian Revolution...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:55]</span>Narrator: ...where Ibrahim Hananu came to the village to coordinate with the revolutionaries of Afrin to participate in the revolution.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:52]</span>Guest: Welcome, to you, to your homeland...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:56]</span>Guest: ...and for this love... amongst us...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:00]</span>Guest: ...this visit of yours is most welcome (upon heads and eyes). Welcome to our village, Maratê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:06]</span>Guest: ...from the Afrin region.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:08]</span>Guest: Thank God, we are all good with each other. May God increase our love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:12]</span>Guest: God willing we will be better than this, God willing, God will bring us all out of this distress, Oh Lord.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:16]</span>Guest: Well, our village is famous for agriculture.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:20]</span>Guest: Famous for agriculture, and our age is approximately seventy or eighty years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:25]</span>Guest: Thank God there is always love and always goodness.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:29]</span>Guest: And there is no issue among us, and mostly, thank God, everyone is good with each other.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:34]</span>Guest: Ahmad... The House of Henan Elî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:35]</span>Guest: ...those three villages... three houses were in the village. Maratê was three houses.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:42]</span>Guest: The House of Henan Elî, and the House of Bêd Xidir, the House of Xidir. And the House of Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:47]</span>Guest: These three houses, they... were [here].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:51]</span>Guest: Then they became seven houses.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:53]</span>Guest: From those seven houses they became... meaning slowly they always increased and went on.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:58]</span>Guest: Thank God, until now there are never problems and there is love.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:03]</span>Guest: Our village is an ancient village and is famous for agriculture.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:08]</span>Guest: Famous for... for trees and plants, meaning our agriculture is very good, thank God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:15]</span>Guest: Well, our village... our village is old, very old.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:18]</span>Guest: My age is seventy or eighty years, approximately... what I know...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:23]</span>Guest: It was a hundred years before us, or however much, meaning... our village is very ancient.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:28]</span>Guest: And its spring too... in the past our spring...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:32]</span>Guest: Our spring had seven, eight inches, ten inches of water [flow].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:35]</span>Guest: It would go reach Afrin and we irrigated gardens with it too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:40]</span>Guest: Meaning it&#x27;s a very famous village, a very elegant village, very beautiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:45]</span>Guest: Well, there are many hectares, I mean.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:48]</span>Guest: And the number [population] of the village... approximately... is around a thousand, I mean.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:53]</span>Guest: It&#x27;s old, the village, the village is ancient, the village is very beautiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:58]</span>Guest: Meaning there are no problems in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:00]</span>Guest: Yes, the spring...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:03]</span>Guest: It&#x27;s a famous village, beautiful, meaning regarding agriculture, regarding everything.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:07]</span>Guest: The spring... produced seven or eight inches of water, ten inches of water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:11]</span>Guest: The land in Maratê was all irrigated by it, the water even reached Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:16]</span>Guest: Meaning the water was abundant, it went and joined the water of Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:19]</span>Guest: A very famous village, and its water is very fine. Its water is healthy, the water of the Great Spring, up there they call it the Great Spring.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:26]</span>Guest: It&#x27;s very elegant.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:27]</span>Guest: No, the spring is dead, honestly.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:29]</span>Guest: Before, there was a lot of water.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:31]</span>Guest: They had built it all with stones and... there were three spouts in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:35]</span>Guest: And the water was like a sea, Mashallah. Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:38]</span>Guest: But now... it&#x27;s one inch, an inch and a half, two inches... meaning...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:44]</span>Guest: The rain is also scarce. Yes. The rain is scarce, but before, rain was plentiful, its water was plentiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:51]</span>Guest: The water itself was plentiful, very plentiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:54]</span>Guest: Well, famous... very... very famous for agriculture they were. With livestock.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:01]</span>Guest: The things in Maratê are not like before... they were very [abundant with] grass and such.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:05]</span>Guest: The traces of the past didn&#x27;t remain much.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:07]</span>Guest: Before there were caves, outside... most were in the caves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:11]</span>Guest: Later, after the caves... one, two built houses... they settled in them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:16]</span>Guest: And then the world advanced, progress... development... they built clean courtyard houses...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:22]</span>Guest: And people advanced, it was good, love increased. There were no problems in our village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:31]</span>Guest: And our village, our village is also a very ancient village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:35]</span>Guest: We have a tree, a tree... they call it... the Gelberiyê tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:41]</span>Guest: Its trunk makes ten... [if] five or six men hold each other&#x27;s hands, their hands don&#x27;t reach each other. It&#x27;s very big.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:48]</span>Guest: They say it&#x27;s two hundred years, four hundred years [old]... that tree. It&#x27;s very ancient.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:52]</span>Guest: Some say three hundred years, some say five hundred years. Everyone gives a different explanation.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:05]</span>Narrator: In the village, there are more than 500 houses and its population is approximately 3000 people...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:11]</span>Narrator: ...including those residing in major countries and in the diaspora.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:15]</span>Narrator: A number of old houses made of wood and mud according to the arch system are spread in the village...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:22]</span>Narrator: ...and the oldest of these houses is the house of Mr. Sheikh Zakariya and also Mr. Hajji Izzat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:36]</span>Speaker 1: Well, my name is Shiyar, Shiyar Mihemed Shexo, from the village of Maratê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:41]</span>Speaker 1: And things, those heritage things, belonging to our ancestors, I collect.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:45]</span>Speaker 1: For example, so the heritage of fathers and grandfathers doesn&#x27;t disappear. Old things, like there is the threshing sled...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:50]</span>Speaker 1: Wooden plows, harrows, things, you know, old things. Heritage, belonging to our ancestors. For example, there is the threshing sled.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:58]</span>Speaker 1: There are agricultural tools, there are household ones.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:00]</span>Speaker 1: Like agricultural ones, that they used to work with in the past, for example. Instead of lamps and wood...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:06]</span>Speaker 1: And household ones, old copper things, like wooden things, cartridge belts... they used to go hunting with them in the past.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:14]</span>Speaker 1: That&#x27;s it. And the others... we have animals. Peacocks, chickens, doves, and just small things, animal things like that, we find comfort in them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:23]</span>Speaker 1: We pass our time with them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:25]</span>Speaker 1: And the other thing, thirdly... the courtyard... I have built it for myself, like there is a fountain in it, there is a tandoor I built, an oven, like the shape of the heritage of the past.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:34]</span>Speaker 1: We make bread on wood fire in it. Bringing the meaning of the past to my memory.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:38]</span>Speaker 1: That is what I have.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:39]</span>Speaker 1: Well, this thing we learned from our elder. The passion... my father was also like that, he loved collecting things like this, we also learned.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:48]</span>Speaker 1: So, even if it wasn&#x27;t seen as shameful, we follow our roots.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:52]</span>Speaker 1: Everything is this, our roots, and so the new generation knows. So it isn&#x27;t forgotten, so our Kurmanji heritage isn&#x27;t forgotten, the Afrin region in general isn&#x27;t forgotten.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:59]</span>Speaker 1: And the village of Maratê, in the past, with pomegranates and... also olives and... things like that, vineyards and...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:07]</span>Speaker 1: They did their work with them. Now, most are olives, and they plant the land, for example. Vegetables, wheat, things like that they plant.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:15]</span>Speaker 1: This is the main thing with us, Maratê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:18]</span>Speaker 1: There are many things, about two floors, there are about 1400 pieces with me, old ones.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:22]</span>Speaker 1: I have bought many things. And the others belong to the elders, to my grandfather&#x27;s house, remaining like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:27]</span>Speaker 1: And many friends also brought them for me. Friends saw them with me, knew I had a passion for this, they gave me the things of fathers and ancestors.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:34]</span>Speaker 1: Saying, &quot;Let it be with you, you preserve it.&quot; As for selling, we do not sell.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:37]</span>Speaker 1: We buy, we do not sell. These things, so the meaning doesn&#x27;t get lost.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:41]</span>Speaker 1: I preserve them with me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:43]</span>Speaker 1: Well, things, old ones as I said are many. Secondly, things of my grandfather are very many. Of my grandfather&#x27;s house.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:50]</span>Speaker 1: Like, for example, old roofs and arches and things, I took them out from there.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:54]</span>Speaker 1: And there are some I bought. And some friends gave to me. Like in the village someone has a piece, they give it to me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:00]</span>Speaker 1: And many are... &quot;we give to you&quot;, some ask for money, they give to me for money. If they don&#x27;t give, we buy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:07]</span>Speaker 1: And these tools, we do not sell. We preserve them with me. This is our Afrin heritage we are preserving.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:12]</span>Speaker 1: Like, if we were to sell a piece, we won&#x27;t sell. As long as we can, we collect. We don&#x27;t... sell.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:17]</span>Speaker 1: So that this heritage of ours doesn&#x27;t get lost.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:18]</span>Speaker 1: We follow our roots. You saw, I built a room for myself, a wooden room, we placed them in it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:25]</span>Speaker 1: Like, everywhere, whenever possible we sit in it. We... like it happens a lot, we go very far back.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:31]</span>Speaker 1: Well, this basic wood, and things made of stone, wood and earth, this gives the old feeling, I create its meaning.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:38]</span>Speaker 1: Like this is also like heritage. Like now... stone for example, cut stone...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:43]</span>Speaker 1: No, this wood is better, it also gives an old look. Secondly, I build it myself, this is all my own handiwork.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:48]</span>Speaker 1: For example, like the oven I built, the tandoor... Like this fountain, it is my work now, I build it myself.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:55]</span>Speaker 1: Wood, or stone, this is my work. I work in it myself. Electricity, water, this is my main work basically.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:01]</span>Speaker 1: And the other I produce, with wood, trees... like wood, this is one thing... it gives a very old look, we create its meaning.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:08]</span>Speaker 1: Our passion for wood is great, and it was earth.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:10]</span>Speaker 1: If we build a house, we can build an earthen house like before. Like with pillars and earth.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:14]</span>Speaker 1: Now, our situation isn&#x27;t like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:16]</span>Speaker 1: Well, I said a lot, I make this thing...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:19]</span>Speaker 1: I feel the past life with it. Although we didn&#x27;t see it, but I feel it, having done this work.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:24]</span>Speaker 1: That is its meaning. Like, my desire is this. Like my grandfather before, we hadn&#x27;t gone... they were earthen houses, wooden ones.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:30]</span>Speaker 1: Like I feel it, I lived that day of our living.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:32]</span>Speaker 1: That is mine, that is my great desire.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:34]</span>Speaker 1: There are artists, like singers, lute players in the village, it&#x27;s known, there are some in our village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:39]</span>Speaker 1: But this heritage thing, no one competes with me. I am the only one keeping it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:43]</span>Speaker 1: But otherwise there are in our village, families... of the lute, of songs, these are known, they call them the house of Chawishler.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:49]</span>Speaker 1: Those exist. And there are carpenters in it, they make things.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:52]</span>Speaker 1: But this heritage thing, these old things, no one keeps them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:55]</span>Speaker 1: Whether they keep them now, I don&#x27;t know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:10]</span>Speaker 2: Mistefa Ebdulrehman Ose from Maratê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:14]</span>Speaker 2: In the past, the line that we saw... our side, the western side.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:19]</span>Speaker 2: In its side... it was fifteen inches. Until the saplings of the plain...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:25]</span>Speaker 2: They planted cotton in the summer, and water was plentiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:30]</span>Speaker 2: I&#x27;m going.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:31]</span>Speaker 2: We saw it, now they planted cotton, they sent water, it was good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:37]</span>Speaker 2: Later... there was no water. Like, inside the struggle. Either with wheels, or with buckets, they went and provided water from the side.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:46]</span>Speaker 2: They washed their pots, their outsides, they went with containers, washed their heads.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:51]</span>Speaker 2: They provided water with... either with wheels... or with three heads... or ornaments they placed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:56]</span>Speaker 2: And later... wells were made.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:59]</span>Speaker 2: We put a point, [using] Shahin number three.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:04]</span>Speaker 2: Is the &quot;Mar&quot; still in your memory...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:06]</span>Speaker 2: The press was made, we... this line... we drive this... it was better.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:14]</span>Speaker 2: It was better.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:16]</span>Speaker 2: Ah, I saw, our house was near that big tree, that oak. Our press worked quickly during Eid.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:22]</span>Speaker 2: Morning of Eid, two days, three days, four days of Eid...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:26]</span>Speaker 2: They gave force... until morning came, until midnight, they pulled the line, they brought out, with men&#x27;s hands under the... and the water channels.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:35]</span>Speaker 2: They smoked around Eid.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:37]</span>Speaker 2: Our house was deep, our press was active.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:40]</span>Speaker 2: Like several people worked on it, extracted oil, with the aid of animals.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:44]</span>Speaker 2: There were mules, there were mules, there were horses.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:47]</span>Speaker 2: Their olives were few. Our olives of... like our grandfather, our father, our grandfather, produced olives.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:55]</span>Speaker 2: The olives...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:57]</span>Speaker 2: For example, they went and placed sacks, back then the season was small like this for olives.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:03]</span>Speaker 2: The fathers, for example, brought them, there was a courtyard. And they brought the lines.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:09]</span>Speaker 2: And they ground them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:10]</span>Speaker 2: Then... there was that, the baskets, they brought them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:14]</span>Speaker 2: One hundred, two hundred were by twisting. Manual. Not by pressure.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:19]</span>Speaker 2: Now they extract oil there, then bring it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:22]</span>Speaker 2: Then...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:23]</span>Speaker 2: Humans are skinned. Olives were plenty, harvest was plenty, the presses are better.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:30]</span>Speaker 2: The presses are better...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:32]</span>Speaker 2: The press, a hundred sacks, two hundred sacks, three hundred sacks they put, we brought, it was good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:37]</span>Speaker 2: And we saw like this... like before we saw our press existed, and one in that place, the press had a role.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:44]</span>Speaker 2: Of course, olives also disappeared at that time. Now that oil belonged to the press.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:47]</span>Speaker 2: Separators didn&#x27;t exist. The oil came... the oil... on top they spilled it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:52]</span>Speaker 2: And they extracted the oil. And like the press, the press... olives come to you...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:56]</span>Speaker 2: In that place, oil comes from the separator into your tin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:58]</span>Speaker 2: Like it was very good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Old Man: Meaning, until July, regarding the three grains in the body of the world, they talk about it, it would come and go, that soil of the world, eating by the hand of God, how the grains would form, by the power of the Lord of the World. Today they call it the shrine of Khidr Elias...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:15]</span>Old Man: The shrine of Khidr Ali... meaning it was a shrine. For example, rain would come in the spring... It would come, [but if] rain did not fall... meaning... I remember we used to leave it, for example, on the second Friday, people would go for charity and blessings, [sacrificing] cattle, lambs, the people would slaughter them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:33]</span>Old Man: And they would call upon their Lord, the world [people] would do it... meaning... upon that face [for the sake of that], rain would fall, rain of charity and blessing would fall. Yes, this existed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:42]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:52]</span>Narrator: Ma&#x27;arata, a large village distinguished by its construction rising progressively from the bottom to the top, upon the slopes of two facing mountains.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:02]</span>Narrator: Adjacent to the village is a valley called the Deep Valley, &quot;Galyê Kûr&quot;. In the village, next to the spring, stands an ancient oak tree, nearly four hundred years old.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:13]</span>Narrator: It has a thick trunk that requires four people with outstretched arms holding hands to be able to embrace the entire trunk of the tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:21]</span>Narrator: In the village, there are two old presses, inaugurated inside two of the caves scattered throughout the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:28]</span>Narrator: This village was also known for its artistic, vocational, and heritage figures. Among them, Ali Ramzi, the Buzuq player, and also Muhammad Ramzi, the Buzuq player, carpenter, and barber.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:38]</span>Narrator: Khalid Bakr, a brilliant Buzuq player. Also Maestro Ali, the supervisor of sound equipment at events and weddings. And the heritage singer Abdulraouf. And the brilliant artist Muhammad Jawish.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:54]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:01]</span>Narrator: And also the amateur collector of agricultural and historical heritage, Yashar Ahmed Chaqali. The family brilliant in folklore and solo dancing, the Rashid Ribi family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:14]</span>Ahmed Abdulrahman: Welcome, peace be upon you. I am Ahmed Abdulrahman Abu Shiyar, my number [referring to ID/reg], born in &#x27;56. I was personally an employee in Aleppo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:25]</span>Ahmed Abdulrahman: We worked, and after we retired, we returned and settled in our village. After sitting in the village, we started working, going here and there, we did some pruning/tree work, and we got annoyed [tired].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:39]</span>Ahmed Abdulrahman: At that time there was firewood, olive stumps. We said let&#x27;s do the pruning... well, we had a [dull] saw, we had a hammer. Meaning the work... there wasn&#x27;t even a proper saw itself, we hadn&#x27;t worked on this thing, we hadn&#x27;t worked on it before.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:51]</span>Ahmed Abdulrahman: I brought out the pruning shears and openly faced it, I brought it out, I was fixing it up, I brought these things out. It&#x27;s been like five or six months I&#x27;ve been working on this thing. Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:59]</span>Ahmed Abdulrahman: And we made these things, things originally from the past... our plowing/stubble tools, they used to do that with these things, whether it&#x27;s the wooden roller, the wooden harrow, or the plow beam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:09]</span>Ahmed Abdulrahman: Meaning, in the past, there were no tractors, they plowed with a pair [of animals] and cattle. The harrow... there were no tractors or threshers, again they used cattle to do the harrowing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:19]</span>Ahmed Abdulrahman: Whether wheat, or lentils, they loaded them and brought them to the threshing floor. There was a threshing sled (cercer)... we tied the threshing sled to the cattle, and we crushed [the crops] with it. Meaning wheat, or lentils, or chickpeas, we ground/threshed with it. So, these things existed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:36]</span>Ahmed Abdulrahman: There is a cradle, cradles were made of wood. In the past, they put the small children in it, rocked them, hung them up. With that, they stood/stayed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:45]</span>Ahmed Abdulrahman: There was no... in the past this... that sickle, iron, hand-mill to pound the wheat and extract it. We made sheaves from... [unclear, possibly place name or material]... we pounded it, meaning so the chaff would come off.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:59]</span>Ahmed Abdulrahman: Later we had a delûb [winnowing/cleaning tool], then we had a hand-mill, we ground it, that wheat, after we boiled it, we crushed it, made it into bulgur, meaning, well, for eating.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:10]</span>Ahmed Abdulrahman: Yes, that is one, one of our old things. Well, its own beauty, we just finished with the olive trees. When I cleaned a stump/trunk, what a place, I pruned this, once I cleaned a stump like this, pruned it from the spot, it comes out like a painting.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:25]</span>Ahmed Abdulrahman: I cleaned/polished the olive stump, and from those olive stumps I made these... those things.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:30]</span>Ahmed Abdulrahman: Mara[te]... in the past there were springs. The Spring of Marate was famous, they spoke of the pomegranates of Marate. In the past, they went down to Bassouta, the pomegranates of Marate were famous. Its spring had much water, it remained over, it went and flowed into the Afrin river.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:42]</span>Ahmed Abdulrahman: So there were pomegranates at that time. Later the pomegranates dried up, became wood. So everyone turned their land into olives. In the past, these olives weren&#x27;t there. We planted chickpeas, we planted vegetable gardens, meaning we did this work. We were living in the village, meaning, at that time.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:03]</span>Ahmed Abdulrahman: So, after that happened, there was no land left for chickpeas, it all became olives, and all green, there was no work left. So everyone left, one went to Aleppo to do pruning/work.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:13]</span>Ahmed Abdulrahman: And again friends, neighbors, those who are here, we would come together, we come in the evening, we sit like this, we play cards, meaning... we sit together. Our love [for each other] was better than before. Praise be to God, it is good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:25]</span>Ahmed Abdulrahman: Well, there are. There is another one, he works as a barber himself. He also makes these things, he makes small handles for knives, meaning plows, armrests, etc., they exist, he makes harrows and plows. Meaning he makes bits and bobs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:39]</span>Ahmed Abdulrahman: And there is also another one, Ahmed Abu Shiyar, they call him... There is Ahmed Shiyar. He also [collects] things... steps... our old, essential things. He collects all these things, our heritage, of our grandfathers and... our ancestors. It is with me, these things exist. So, he also collects those things.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:57]</span>Ahmed Abdulrahman: No, the... our interest, we say, meaning let the kids know, this new generation that is coming out, let them know what work we did in the past. With what difficulty we did this work, meaning.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:09]</span>Ahmed Abdulrahman: That implies that our Kurdish heritage should remain, the place where we worked. Whether it&#x27;s the harrow, these things now, or any old thing from the past.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:17]</span>Ahmed Abdulrahman: I wish for us to be good to each other. Like that, that we may all be one with each other. Like that, whether it&#x27;s at a funeral, at a wedding, or during sickness, let us look after each other, let us not forget each other.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:31]</span>Ahmed Abdulrahman: And the things of the past, let us remember [lit: forget, but context implies &#x27;recall&#x27; or he misspoke and meant &#x27;let&#x27;s not forget&#x27;]... whatever existed in the past, let us remember those things. Let us create new things and move forward with them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:37]</span>Musician: I am Jan, father of Remzi, you requested a heritage Maqam, we will play for it/you... &quot;Cruel Sorrow&quot; (Xemê Zalim).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:50]</span>Musician: I present this for... Muhammad Ali Tijo... from the buildings/foundations of the village of Hesen Dêra, a thousand mercies be upon his grave, and upon all the deceased of you who are present.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:07]</span>Musician: He also liked &quot;Xemê Zalim&quot;. If we are able to sing/say it, we give &quot;Xemê Zalim&quot; for him. Oh, Cruel Sorrow...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:16]</span>[Music playing - Buzuq Instrumental]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:37]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:14]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:44]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:15]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:45]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:00]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:00]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:01]</span>Elî Remzî Xaçê: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:05]</span>Elî Remzî Xaçê: You are welcome upon our eyes. I am from the village of Maratê, from the section of the Çiwîş family. I am Ali, son of Remzi Xaçê. Father Remzi.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:15]</span>Elî Remzî Xaçê: You are welcome upon our eyes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:17]</span>Elî Remzî Xaçê: Art among us, meaning among our fathers and grandfathers, we boast of it... our family generally loves art. Because our elders, we listen to art. They made our hands sore [playing].</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:30]</span>Elî Remzî Xaçê: Meaning in our family, some say &#x27;dengbêj&#x27; (bards)... there are... bards... we can say... there are experts.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:40]</span>Elî Remzî Xaçê: Tambur players also come from them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:45]</span>Elî Remzî Xaçê: There are many tambur players in our family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:48]</span>Elî Remzî Xaçê: Uh... it is a hobby... this hobby... this music itself has been planted in our feelings.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:55]</span>Elî Remzî Xaçê: Music as well... people also love music. Music is good, you know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:00]</span>Elî Remzî Xaçê: So I... personally... when I reached [that age], my father was a singer, may God have mercy on him, my father Remzi Xaçê, my father Remzi.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:07]</span>Elî Remzî Xaçê: My grandfather Ehmedê Reşo, my father himself were singers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:10]</span>Elî Remzî Xaçê: I was in the second or third grade going to school... I learned... meaning the interest in the tambur... the hobby of the tambur seized me and I focused on it, it pulled us forward.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:20]</span>Elî Remzî Xaçê: My father used to sing songs... we listened... we learned the traditional songs, we learned music too... we learned art, basically.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:30]</span>Elî Remzî Xaçê: And before us... they were engaged in art and music.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:35]</span>Elî Remzî Xaçê: It&#x27;s a hobby... this is something, in our family, it has been planted in the feelings.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:40]</span>Elî Remzî Xaçê: Did we pick it up by utility? Did we pick it up naturally?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:45]</span>Elî Remzî Xaçê: Meaning... we with many... many gatherings came to us and we went to many gatherings...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:55]</span>Elî Remzî Xaçê: First of all, we learned these traditional songs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:00]</span>Elî Remzî Xaçê: And... an art... from the late Elî Tico too, may his place be paradise, we benefited from him too, some of his things were planted in our feelings. There is love for it, good... meaning... he had good maqams.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:10]</span>Elî Remzî Xaçê: We took from him too, from other people too... from Cemîl Horo we took...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:20]</span>Elî Remzî Xaçê: We listened to him too, we took the tambur [style] from him and we... took the melody of songs from him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:25]</span>Elî Remzî Xaçê: Elî Tico, we sat [together], we sat together a lot, especially lately we sat together... uh... he used to come to Maratê village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:30]</span>Elî Remzî Xaçê: We can even say, we are distant maternal cousins.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:40]</span>Elî Remzî Xaçê: Meaning... art, it opens life for everyone. And it is the atmosphere of your youth.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:45]</span>Elî Remzî Xaçê: Or... to express pain... the air of the wound, the music in it, the song in it... whether from Elî Tico, or from Cemîl Horo, may God have mercy on them... whoever is present in the gathering.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:55]</span>Elî Remzî Xaçê: It is a hobby, an interest.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:00]</span>Elî Remzî Xaçê: Meaning music is always... and your art naturally exists. And the hobby... can happen for anyone.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:10]</span>Elî Remzî Xaçê: As for me, I play at home. Sometimes marriages happen, [people] like you come to me, I play.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:15]</span>Elî Remzî Xaçê: Sometimes there are weddings, they invite me, I go.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:20]</span>Elî Remzî Xaçê: There aren&#x27;t [many] artists... meaning there are artists in our family... otherwise there aren&#x27;t many artists in our village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:30]</span>Elî Remzî Xaçê: Mihemed Şo, Wehîd... my cousin... They are the old ones of Turkey.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:37]</span>Elî Remzî Xaçê: Maratê, we haven&#x27;t seen an owner, we have been in the village. Meaning we haven&#x27;t seen an owner, we were in Maratê. And until today, Marat is ancient. The world is old, you know. And the village, we haven&#x27;t seen an owner, we were with the villagers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:37]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:58]</span>Elî Remzî Xaçê: Oh Vurxûn, Vurxûn...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:05]</span>Elî Remzî Xaçê: Beautiful one, with the sweet face...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:09]</span>Elî Remzî Xaçê: Oh Vurxûn, Vurxûn...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:14]</span>Elî Remzî Xaçê: Beautiful one, with the sweet face...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:20]</span>Elî Remzî Xaçê: I see no good from you...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:29]</span>Elî Remzî Xaçê: Come, cure the wound...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:35]</span>Elî Remzî Xaçê: Pleasant faced, sweet faced...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:42]</span>Elî Remzî Xaçê: I see no good from you...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:50]</span>Elî Remzî Xaçê: Come, cure the wound...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:58]</span>Elî Remzî Xaçê: Oh Vurxûn, Vurxûn...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:05]</span>Elî Remzî Xaçê: Pleasant faced, sweet faced...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:12]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:29]</span>Elî Remzî Xaçê: Oh Vurxûn, Vurxûn...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:35]</span>Elî Remzî Xaçê: Beautiful one, with the sweet face...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:42]</span>Elî Remzî Xaçê: Oh Vurxûn, Vurxûn...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:49]</span>Elî Remzî Xaçê: Beautiful one, with the sweet face...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:55]</span>Elî Remzî Xaçê: I see no good from you...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:00]</span>Elî Remzî Xaçê: Come, cure the wound...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:06]</span>Elî Remzî Xaçê: [You are] honey mixed with butter...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:12]</span>Elî Remzî Xaçê: Your paleness is not deep...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:20]</span>Elî Remzî Xaçê: Slender one, I came to your house...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:24]</span>Elî Remzî Xaçê: I greeted, you did not give me [a reply]...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:29]</span>Elî Remzî Xaçê: I saw the trick you played on me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:33]</span>Elî Remzî Xaçê: She says &quot;Dear, I don&#x27;t know you...&quot;</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:35]</span>Elî Remzî Xaçê: &quot;Why, who is this old man...&quot;</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:38]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:41]</span>Host: Yes, from the countryside of Maratê, from the traditions and ancient things...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:49]</span>Host: Today, in this countryside, we saw many ancient things.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:54]</span>Host: And we met many artists as well.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:57]</span>Host: Stay tuned, in a new episode of our program...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:00]</span>Host: &quot;Yê Gundê Me&quot; (Of Our Village).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:03]</span>[Music]</p>
+                </div>
+            </div>
+
+            <!-- Kurdish Transcript Card -->
+            <div id="kurdish" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transkrîpta bi Kurmancî</h2>
+                    <button class="copy-btn" onclick="copySection('transcript-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Kopî bike
+                    </button>
+                </div>
+                <div id="transcript-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31]</span>Host: Belê, temaşevanên hêja, programa me dest pê kir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35]</span>Host: Di beşa xwaya nû da, em ê serdana gundewarê Maratê bikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:40]</span>Host: Di vî gundî da jî, em ê gelek hunermend û gelek tiştên hunerî jî nîşanî we bidin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:46]</span>Host: Li benda me bin, beşa me dest pê kir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[01:56]</span>Narrator: Bi haseb kitab Jabal al-Kurd, al-dirasat al-jughrafiyah fi Afrin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:01]</span>Narrator: ...yu&#x27;taqad anna Marata ism Suryani wa ta&#x27;ni al-maghara.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:06]</span>Narrator: Amma ahl al-qarya yaqulun anna al-tasmiya ta&#x27;ud ila ism al-hakim al-romani Maratinus...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:13]</span>Narrator: ...allathi hakama al-mantiqa abban al-hukm al-romani.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:17]</span>Narrator: Tem al-ta&#x27;arruf &#x27;ala al-qarya munthu akthar min 720 &#x27;aman...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:22]</span>Narrator: ...yadull &#x27;alayha tarikh mudawwan &#x27;ala sakhra kanat mawjuda fi Kahf al-&#x27;Arab, Şikefta Ereban.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:28]</span>Narrator: Fuqidat tilk al-sakhra munthu akthar min 50 &#x27;aman.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:32]</span>Narrator: Amma al-tarikh al-haqiqi lil-qarya yadull &#x27;alayhi al-mawaqi&#x27; al-athariya al-muntashira fi tilk al-qarya wa dawahiha...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:39]</span>Narrator: ...wa al-qura al-muhita biha, mithl Gundê Mazen, Qaziqlê, Xilnêr, Kefir Şîlê wa madinat Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:46]</span>Narrator: Tatba&#x27; idariyan ila markaz Afrin wa tab&#x27;ud &#x27;anha 5 km.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:51]</span>Narrator: Kanat lil-qarya basma wadiha fi al-thawra al-suriyya al-kubra...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[02:55]</span>Narrator: ...hayth qadima ila al-qarya Ibrahim Hananu lil-tansiq ma&#x27; thuwar Afrin lil-musharaka fi al-thawra.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:52]</span>Guest: Ehlen we sehlen, ji we ra, ji watanê we ra...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[03:56]</span>Guest: ...û ji vê hezkirina... di nav me da...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:00]</span>Guest: ...ev hatina we ser seran û ser çavan. Hûn xêr hatin gundê me Maratê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:06]</span>Guest: ...ji herêma Efrînê ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:08]</span>Guest: Elhemdulilah em gîş hev re rind in. Xwedê hezkirina me zêde bike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:12]</span>Guest: İnşallah em ê ji vê çêtir bibin, inşallah Xwedê me gîş ji vê tengiyê derxîne ya Reb.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:16]</span>Guest: Wele gundê me bi zîraatê meşhûr e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:20]</span>Guest: Bi zîraatê meşhûr e, û teqrîben umrê me bûye heftê heştê sal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:25]</span>Guest: Elhemdulilah tim hezkirin heye û tim rindî heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:29]</span>Guest: Û îşek tune cem me, û zêde elhemdulilah gîş hevdura rind in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:34]</span>Guest: Ehmed... Mala Henan Elî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:35]</span>Guest: ...ewa sê gund... sê mal di gund da bûn. Maratê sê mal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:42]</span>Guest: Mala Henan Elî, û mala Bêd Xidir, mala Xidir. Û mala Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:47]</span>Guest: Evna sê mal, hewa... [unintelligible] bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:51]</span>Guest: Paşê bûn heft mal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:53]</span>Guest: Ji wan heft malan bûn... yani hêdî hêdî tim pê da zêde bûn û çûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[04:58]</span>Guest: Elhemdulilah heta nika tim mişkîlet tunene û hezkirin heye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:03]</span>Guest: Gundê me gundekî qedîm e û meşhûr e bi zîraatê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:08]</span>Guest: Meşhûr e bi... bi dar û bi giya, yani bi zîraata me pir rind e elhemdulilah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:15]</span>Guest: Wele gundê me... gundê me jimej e, pir jimej e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:18]</span>Guest: Umrê me bûye heftê heştê sal, teqrîben... ewa kî ez zanim...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:23]</span>Guest: Berî me bi sed salî ye, bi çi qasî ye, yani... ewa pir qedîm e gundê me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:28]</span>Guest: Û kaniya xwe jî... wextê berê kaniya me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:32]</span>Guest: Kaniya me heft heşt înç, deh înç av hebu.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:35]</span>Guest: Diçû digihîşt Efrîn û me baxçe jî pê av didan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:40]</span>Guest: Yani gundekî pir meşhûr e, gundekî pir kîbar e, pir rind e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:45]</span>Guest: Wele hektar pir e yani.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:48]</span>Guest: Û ededê gund jî... teqrîben... bi hezar heye yani.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:53]</span>Guest: Jimej e, gund, gund qedîm e, gund pir rind e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[05:58]</span>Guest: Yani mişkîlet têda tunene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:00]</span>Guest: Belê, kanî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:03]</span>Guest: Gundekî meşhûr e, rind e yani bi zîraatê, bi gî tiştî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:07]</span>Guest: Kanî... heft heşt înç av çêdikir, deh înç av çêdikir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:11]</span>Guest: Erdê di Maratê gî pê dihat avdan, heta av digihîşt Efrînê jî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:16]</span>Guest: Yani av zêde dibû, diçû digihîşt avê Efrîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:19]</span>Guest: Gundekî pir meşhûr e, û avê xwe jî pir kîbar e. Avê xwe sehî ye, avê kaniya mezin, jor va re dibêjin kaniya mezin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:26]</span>Guest: Pir kîbar e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:27]</span>Guest: Na, kanî mirî ye wele.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:29]</span>Guest: Berê pir bû av.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:31]</span>Guest: Gî çêkiribûn bi kevir û... sê şorik têda bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:35]</span>Guest: Û av behr bû maşallah. Belê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:38]</span>Guest: Bes nika... încek e, înç û nîvek e, du înç in... yani...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:44]</span>Guest: Baran jî kêm e. Belê. Baran jî kêm e, bes berê baran pir bû, avê xwe pir bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:51]</span>Guest: Xwe av pir bû, zêde pir bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[06:54]</span>Guest: Wele bi meşhûrê... ê pir... pir meşhûr bi zîraatê bûn. Bi pêz bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:01]</span>Guest: Tiştî kef di Maratê da ne wek berê... ê pir giya ew bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:05]</span>Guest: Eseret berê pir neman.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:07]</span>Guest: Berê şikeft bûn, der bûn... ê pir di şikeftan da bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:11]</span>Guest: Paşê, ba&#x27;dî şikefta... yek, du de xanî girtin... têda av bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:16]</span>Guest: Û paşê dinya pêşket, qedem... pêşketin... xaniyê hewşê paqij girtin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:22]</span>Guest: Û însan pêşket, rind bû, hezkirin zêde bû. Gundê me mişkîlet têda tunebûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:31]</span>Guest: Û gundekî me, gundekî me jî gundekî pir qedîm e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:35]</span>Guest: Darekî me heye, darekî... vêra dibên... darê Gelberiyê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:41]</span>Guest: Koka xwe dike deh... pênc şeş mêr destê xwe bidin hevdu, destê xwe nagihînin hevdu. Pir mezin e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:48]</span>Guest: Dibê du sed sal e, çar sed sal e... ew dara. Pir qedîm e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[07:52]</span>Guest: De hinek dibên sê sed sal e, hinek dibên pênc sed sal e. Her hinek şurhekî dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:05]</span>Narrator: Fi al-qarya akthar min 500 manzil wa &#x27;adad sukkanuha 3000 nasama taqriban...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:11]</span>Narrator: ...bima fihim al-muqimin fi al-duwal al-kubra wa al-mahjar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:15]</span>Narrator: Tantashir fi al-qarya &#x27;adad min al-manazil al-qadima min al-khashab wa al-tin wafqa nizam al-qantara...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[08:22]</span>Narrator: ...wa aqdam hathihi al-manazil huwa manzil al-sayyid Sheikh Zakariya wa aydan al-sayyid Hajji &#x27;Izzat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:36]</span>Speaker 1: Welle navê min Şiyar e, Şiyar Mihemed Şêxo ji gundê Maratê me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:41]</span>Speaker 1: Û tişt, wanê tiştê turas, ê kalê me ne dihêwinim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:45]</span>Speaker 1: Mesele, heba... turasê bav û kalan henda nebe. Tiştê kevn, wekî carcar heye...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:50]</span>Speaker 1: Melêbêdarî ne, şixre ne, tiştê, ana, tiştê kevn. Ê turasê, ê kalê me ne. Carcar heye meselen.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[10:58]</span>Speaker 1: Edwatê zira&#x27;î hene, ê menzîlî hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:00]</span>Speaker 1: Wekî zira&#x27;î, ê berê pê kar dikirin meselen. Şûnê fatos û dar e...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:06]</span>Speaker 1: Û ê menzîlî, tiştê baqil kevn, wekî tiştê textîn e, fişekî dê we... pê berê dawçê dikirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:14]</span>Speaker 1: Heve. Û ê din jî... heywan cem me heye. Tawûs in, mirîşk in, qumrî ne, hew şokûçik in, tiştê ana heywan e, em pê tesela dibin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:23]</span>Speaker 1: Em ê xwe pê diqetînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:25]</span>Speaker 1: Û ê din jî, sê jî... hewş... min ana çêkiriye ji xwe ra wekî nofûra tê de hene, tenûr heye min çêkiriye, firne, weke şiklê wekî turasê berê ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:34]</span>Speaker 1: Em tê de nanê darê dikin. Me&#x27;neya berê tînim bîra xwe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:38]</span>Speaker 1: Heve li cem me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:39]</span>Speaker 1: Welle vî tiştî em ji kalê xwe elimîn. Meraqê... hewa ji kalê min jî wey bû, hewildana tiştê ana hez dikir, em jî elimîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:48]</span>Speaker 1: Ma, me &#x27;eyb dît nebe jî, em qişkê xwe, pêş qişkê xwe dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:52]</span>Speaker 1: Hem şî heve, qişkê me, û cîlî &#x27;acar zane be. Bîr nebe, turasê me yê Kurmancî bîr nebe, mentîqa &#x27;Efrîn bi şeklê &#x27;am bîr nebe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[11:59]</span>Speaker 1: Û gundê Maratê jî, anê berê da, bi henar û... ew jî zeytûn û... anê tiştê ana, rez û...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:07]</span>Speaker 1: Karê xwe pê dikirin. Noke ê pir zeytûn in, û ard a diçînin meselen. Xidre ye, genim e, tiştê ana diçînin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:15]</span>Speaker 1: Ê esas heve li cem me, Maratê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:18]</span>Speaker 1: Tişt pir e, hema du tebeqe, ben hezar û çarsed qite&#x27; li cem min e, kevn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:22]</span>Speaker 1: Min tişt pir kirîye. Û ê din jî, ê kalê, ê malê kalê min in ma wanînan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:27]</span>Speaker 1: Û pir ehbaba jî ji min ra wanînan. Ehbab dîtine cem min, zanîbûn meraqê min vî şî heye, anê tiştê bav û kal li cem min didan min.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:34]</span>Speaker 1: Niko bile li cem te be te mehfeze bike. Firotanê, em nafiroşin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:37]</span>Speaker 1: Em dikirin, em nafiroşin. Ev o tişta, me&#x27;neya hinda nebe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:41]</span>Speaker 1: Ez li cem xwe mehfeze dikim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:43]</span>Speaker 1: Welle tişt, kevn min got pir e yek. Ê didiyê, tiştê ê kalê min e avayê pir. Ê malê kalê min e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:50]</span>Speaker 1: Wanê meselen, xanîk û qabîk û kevn ebî min ji ê derxist.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[12:54]</span>Speaker 1: Û ê hin hene min kirîn. Û hin hene ehbaba dan min. Wanê cem gunda yek qite&#x27; hene didin min.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:00]</span>Speaker 1: Û pir hene nûfer... anê em didin te, hinek jî xozin jî, pera didin min. Nadin, em dikirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:07]</span>Speaker 1: Û ê tûlê jî em nafiroşin em. Em li cem xwe mehfeze dikin. Ev o turasê me yê &#x27;Efrîn e em mehfeze dikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:12]</span>Speaker 1: Wanê em tikî bifiroşin, em nafiroşin. Heta em kanin, em kom dikin. Em na... bifiroşin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:17]</span>Speaker 1: Habo turasê me ma hinda nebe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:18]</span>Speaker 1: Em ji qişkê xwe ra li dû dirin. Te dît, me yê oda ji xwe ra çêkiriye, oda ji textî ye, me tê da me danînan e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:25]</span>Speaker 1: Wanê em her derê, ewa dibe em tê da rûdinin. Em... wanê pir ewa dibe, em pir dûr darin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:31]</span>Speaker 1: Welle ev o esas text, û tiştê kevir çêkirin, text û axî, ev o tiştê kevn dide, me&#x27;neya wî çêdikim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:38]</span>Speaker 1: Wanê ev jî wek turas e. Wanê e noke gev... kevirê meselen, kevirê nehît e, a...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:43]</span>Speaker 1: Na, ev o text xêr e, ev jî kevn dide. Ê didiyê, ez bi xwe çêdikim, ev o giş şuxulê destê min e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:48]</span>Speaker 1: Meselen wekî firnê min çêkirî, tenûr e... Wanê ev o wekî nofûra, ez noke kora î min e, ez bi xwe çêdikim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[13:55]</span>Speaker 1: Text e, yan ko kevir, ev o karê min e. Ez bi xwe tê de dişuxilim. Keherebe, av, karê min e esasî ye ev o.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:01]</span>Speaker 1: Û ê din berhem çêdikim, bi texta, dara... wanê text, ev o yek şê... wanê pir kevn dide, me&#x27;neya wî çêdikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:08]</span>Speaker 1: Meraqa me ser text pir e, we axê bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:10]</span>Speaker 1: Dayîm xaniyê me çêbî, em kanîn xanîk axî wekî berê çêkin. Wanê dîrekî û axî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:14]</span>Speaker 1: Noke çikî wez&#x27;ê me ne ewa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:16]</span>Speaker 1: Welle min pirr got, evî tiştî çêdikim...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:19]</span>Speaker 1: Eb heyata berê pê dihesim. Se&#x27;a me ne dît, bes ez pê dihesim min kirî vî karî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:24]</span>Speaker 1: Hewa me&#x27;neya wî ye. Wanê, ewa min heve. Wanê wekî kalê min berê em noçûbûn xanêt axî bûn, textî bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:30]</span>Speaker 1: Wanê ez pê dihesim, êş bûm ro &#x27;eyşî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:32]</span>Speaker 1: Ê ewa min, ewa min pir heve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:34]</span>Speaker 1: Fenan hene, wanê klamcî, tembûrcî gunda heye, me&#x27;rûf e, gundê me da hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:39]</span>Speaker 1: Bes vî tiştî turas, kes teneqey min nade hewan. Ê tenê dihewînim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:43]</span>Speaker 1: Bes wekî din hene gundê me da, &#x27;uyla hene... tembûrê, klamê, ma&#x27;rûf in evna, malê Çawîşler fêra dibên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:49]</span>Speaker 1: Havno hene. Û necar tê da hene, tişta çêdikin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:52]</span>Speaker 1: Bes vî tiştî turas, ano tiştî kevn, kesî nade hewan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[14:55]</span>Speaker 1: Da noke dihewînin, ez nizanim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:10]</span>Speaker 2: Mistefa Ebdulrehman Ose ji Maratê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:14]</span>Speaker 2: Berê, xet a em dîtin e... ta&#x27;nîya me ê xerbî dond.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:19]</span>Speaker 2: Ta&#x27;nîya xwe da... ponzeh îçe bû. Heta fidanê destê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:25]</span>Speaker 2: Dikirin pembû havînê, û av pir bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:30]</span>Speaker 2: Dirim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:31]</span>Speaker 2: Em dîtine, îsta pembû diçandin, da şandin av didan, rind bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:37]</span>Speaker 2: Dûra... av tune bû. Yane din di pef da. Ya bi çerxê, ya bi qudusa, diçûn av ji ta&#x27;nê danîyan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:46]</span>Speaker 2: Tincê xwe, deryê xwe disistin, diçûn bi be&#x27;l, de de serê xwe disistin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:51]</span>Speaker 2: Av danîn bi... ya bi çerxa... ya zî bi sê serî... ya zinetê danîya.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:56]</span>Speaker 2: Ê dûra... bîr çêbûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[17:59]</span>Speaker 2: Noqta danî me, çapîn sê du mar e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:04]</span>Speaker 2: Hele mar tê bîra te heye...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:06]</span>Speaker 2: Mebhaza çêbû, me ev o xeta sana ba&#x27;dayê... em vê dixînin, da îstembêt istîxaf tin veda xin daetin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:14]</span>Speaker 2: Çêtir bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:16]</span>Speaker 2: A dîsta me, malê me nêzîkî we darê mezin bû, we palûte. Ma zu darê &#x27;îdê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:22]</span>Speaker 2: Sibê &#x27;îdê, du roj, sê roj, çar roj &#x27;îdê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:26]</span>Speaker 2: Dadî da tin, hêlê da didan, ê sibê ba tana, heta nîvê şevê xwo, xê dikişandin, da tirin, eb wem yanê destê merê li bin tûndûz in û mêrava.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:35]</span>Speaker 2: Didûtan dorê &#x27;îdê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:37]</span>Speaker 2: Malê me rûr bû, ma&#x27;sera me ya zindî bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:40]</span>Speaker 2: Wanê çend nefer lê dixebitîn, zêt derdixistin, bi hewa heywanan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:44]</span>Speaker 2: Bergîr bûn, hêstir bûn, hesp bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:47]</span>Speaker 2: Zeytûnê wan hindik bûn. Zeytûnê me yên... yanî kalê me, babê me, kalê me, zeytûn çêkirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:55]</span>Speaker 2: Ê zeytûna...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[18:57]</span>Speaker 2: Mesele, diçûn çuwal danîyan, de berê mûsim zê hano hindik bû ê zeytûna.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:03]</span>Speaker 2: Ê bavê no, meselen, ditirrin, &#x27;atî &#x27;aresa hebû. Û xota ditirrin e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:09]</span>Speaker 2: Û dihêran.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:10]</span>Speaker 2: Zê sîn da wetî... ewa hebû, zenbîla, ditirrin e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:14]</span>Speaker 2: Seda diwan bi badanê bû. Mandane. Neb dexte bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:19]</span>Speaker 2: Îsta zêt he da derxistin, da ditirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:22]</span>Speaker 2: Dûra...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:23]</span>Speaker 2: Însan ştê pêst e. Zeytûn pir bû, milt pir bû, matbez çêtir in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:30]</span>Speaker 2: Matbez çêtir in...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:32]</span>Speaker 2: Matbez, se çuwal, disê çuwal, sê se çuwal datînê em bên, rind bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:37]</span>Speaker 2: Ê ma hono dî... yanî berê dî ya ma&#x27;serê me hebû, û yek li o cîwê da ma&#x27;sere dewr hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:44]</span>Speaker 2: Teb&#x27;en zeytûn zî hinda t&#x27;in we çaxê. Îsta wa zêt bû ma&#x27;serê bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:47]</span>Speaker 2: Faroze, maroze tune bûn. Ê zêt têtin no benî, zêt tastî tinda sero didirtin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:52]</span>Speaker 2: Ê zê da derxistin. Ê nota ma&#x27;ser, matbez disale vdare zeytûna te lê tê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:56]</span>Speaker 2: Derê we da zêt li farozê te detê teneka to.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[19:58]</span>Speaker 2: Yane pir rind bû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:00]</span>Old Man: Yanî heya tîrmehê sê heban cismê dinê de, behs dikin, dihat û diçû, ew axa doniya, destê Xwedê re xwarin, wek heban çi dibûn, bi qudreta Rebê Alemê. Evro dibêjin ziyareta Xidir Êlyasî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:15]</span>Old Man: Ziyareta Xidir Elî... yanî ziyaret bû. Baran mesela biharê tê da bû... Tê da bû baran ne dibariya... yanî... tê bîra min em dihistine, alemê mesela duwemê roj înê herin xêrûberat, deware, berxa, mîllet ser jê dikirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:33]</span>Old Man: Û ban Rebê xwe, alemê dikirin... yanî... we rûyî ellim baran pê dibariya, xêr û bereket baran dibariya. Haaa, va hebû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:42]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[20:52]</span>Narrator: [Arabic] معراتة، قرية كبيرة تتميز ببنائها بشكل متصاعد من الأسفل إلى الأعلى، فوق سفح جبلين متقابلين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:02]</span>Narrator: [Arabic] يجاور القرية وادي يدعى الوادي العميق، &quot;Galyê Kûr&quot;. وفي القرية وبجوار النبعة شجرة بلوط معمرة، يناهز عمرها الأربعمائة عام.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:13]</span>Narrator: [Arabic] ذات ساق ثخين يحتاج إلى أربعة أشخاص ممدودي الأيادي ومتماسكين حتى يتمكنوا من ضم ساق الشجرة بأكملها.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:21]</span>Narrator: [Arabic] في القرية معصرتين قديمتين، دشنتا داخل كهفين من الكهوف المنتشرة في القرية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:28]</span>Narrator: [Arabic] عرفت هذه القرية أيضا بشخصيات فنية ومهنية وتراثية. منهم علي رمزي عازف البزق، وأيضا محمد رمزي، عازف البزق والنجار والحلاق.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:38]</span>Narrator: [Arabic] خالد بكر، عازف بزق متألق. وأيضا المايسترو علي، والمشرف على الأجهزة الصوتية في المناسبات والأعراس. والمطرب التراثي عبد الرؤوف. والفنان المتألق محمد جاويش.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[21:54]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:01]</span>Narrator: [Arabic] وأيضا هاوية جمع التراث الزراعي والتاريخي، يشار أحمد شقلي. العائلة المتألقة بالرقص الفلكلوري والفردي، عائلة رشيد ريبي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:14]</span>Ahmed Abdulrahman: Ehlen wa sehlen, eleykum selam. Ez Ehmed Ebdilrehman Ebû Şiyar, jimara tê, tewelûd 56. Ez bixwe mwezef bûm li Heleb.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:25]</span>Ahmed Abdulrahman: Me kar kir, em badî em teqawid derketin, em fitilîn hatin gundê xwe rûniştin. Badî em li gund rûniştin, de me kar kir, em vir de çûn, wê de çûn, em şkora misê kirin, em de aciz bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:39]</span>Ahmed Abdulrahman: Wa çaxê êzing jî hebûn, kûtkê zeytûna. Me got ka em şkora... wele kêserkî me hebû, çakûç me hebû. Yanî karê... ewê mijî tune bû bixwe, va tiştî ne şixulî me, ne caran ne şixulî me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:51]</span>Ahmed Abdulrahman: Mi şkora derxist û eşkora rû bi rû me, derdixist, wa pê te seleh dibûm, va tiştan min rid derxist. Wek pênc şeş meh e tê de şixulî me ji va tiştî de. Erê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[22:59]</span>Ahmed Abdulrahman: Û hav tiştî me çêkir, tiştê ji eslen hewa ê berê... ê kolkê me, va tişta pê ow dikir, gi dar lûxe, gi şixre ye, gi hefcar e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:09]</span>Ahmed Abdulrahman: Yanî berê dîrektor tune bûn, bi cot û bi dewar dajotin. Şixre... dîrektor û der tune bûn, bi dewar dîsa şixre ow dikirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:19]</span>Ahmed Abdulrahman: Gi genim e, gi nîsk in, lê bar dikirin, dianîn ser bêderê. Cercer hebû... cercer jî me pê dewar, girêdida, me pê hûr dikir. Mehnî genim e, gi nîsk in, gi nok in, me pê dihêra. Işta va tiştana hebûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:36]</span>Ahmed Abdulrahman: Dergûş heye, dergûş ê textî bûn. Berê qîçik çûçik dikirinê, dihezandin, darda dikirin. Pê işta, pê disekinîn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:45]</span>Ahmed Abdulrahman: Ew tune bû dest... berê va... ewê dask, hedîs, destar genim bikutan û derbixin. Tûmaq me çêdikir ji... avê kefir... me dikuta, menî wa kepeka jê derkeve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[23:59]</span>Ahmed Abdulrahman: Me paşîngê delûb hebû, paşê destar hebû, me dihêra, wa genimê, badî me kelandin, me hûr dikir, dikir bilxur, menî işta xwarinê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:10]</span>Ahmed Abdulrahman: Eyy, hewa yek, yek, tiştê me yê kevn e. Wele xweşiya xwe tenê hewa me gîş darê zeytûnê hew kir. Kutek min dipaqijand, çi cî, vî mîsekir [mûşekir], neqlekê min hane kutek paqij, mîsekir ji cî da, wekî neqşa derdikeve.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:25]</span>Ahmed Abdulrahman: Mîgî kutkê zeytûnê min dipaqijand û min ji wa kutkê zeytûnê çêdikirin va... ewna.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:30]</span>Ahmed Abdulrahman: Mara... berê kanî hebûn. Kaniya Maratê me‘rûf bû, digot ew henarê di Maratê. Berê di Basûtek dageriyan, henarê Maratê me‘rûf bûn. Kaniya xwe av pir bû, jiber dima, diçû teva Efrînê dibû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[24:42]</span>Ahmed Abdulrahman: Ê de henar hebûn, wa çaxê. Paşîngê de henar hişk bûn, dar bûn. De her yek arta gî fitilîn bûn zeytûn. Berê va zeytûna tune bûn. Me nûq diçandin, me bîstan diçandin, yanî de va kara me dikir. Em li gund rûniştî bûn yanî wa çaxê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:03]</span>Ahmed Abdulrahman: Ê, badî ew bûn, noqan erd nema, gî bûn e zeytûn, û gî kask, kar mar jî nema. De her kes berdabûn, yek çû li Heleb şkora şixulî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:13]</span>Ahmed Abdulrahman: Û dîsa ehbab, cîran, hewa li hene, em dihatin cem hev de, em tên bêvarê em şkora rûdinin, em weraqa dilîzin, yanî... em lefdê rûdinin. Em hezkirin zêberê çêtir bûye. Elhemdu lîllah, rind e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:25]</span>Ahmed Abdulrahman: Wele hene. Hene yekî din heye, bixwe berber di şixulî. De hew jî va kîrê çêdike, biçqo destgirtê biçqo çêdike, yanî cota, qol, molan, hene, şixre û cota çêdike. Yanî tişt miştan çêdike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:39]</span>Ahmed Abdulrahman: Û heye jî yekî din, Ehmed Ebû Şiyar, vê re dibêjin... Ehmed Şiyar heye. Hew jî tiştê... gav... me yê kevn, esasî. Gî va tiştana kom dike, turasê me, di kal û... kalê di me. Gi mi cem heye, va tişta heye. Ê hew jî wa tiştî kom dike.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[25:57]</span>Ahmed Abdulrahman: Na, ê... ihtîmamê xwe em dibêjin, mehnî qişke bila bizanibin, va cîlê ecer derdikeve, zanibin berê me çi kar dikir. Bi çi tûnî me va kara dikir, yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:09]</span>Ahmed Abdulrahman: Hewa mehnî bimîne turasê me yê Kurmanc, cî kî em pê dişixulîn e. Gi şixre ye, va tiştana işta, gi yekî kevn e berê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:17]</span>Ahmed Abdulrahman: Ez dixwazim em ji hevdu ra rind bin. Em wekî ew tî, em gi bi hevdu ra yek bin. Wekî ew tî, gi li ser mirikê ye, li ser dawetê ye, li ser naxweşiyê ye, em li hevdu wenxwin [werin xwedî], em hevdu ji bîr nekin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:31]</span>Ahmed Abdulrahman: Û tiştê berê em ji bîr bikin... gi berê çi hebû, wa tiştî em ji bîr bikin. Tiştni ecer em pêda bikin û pê da herin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:37]</span>Musician: Ez Can, babê Remzî, meqamê turaz ji we xwestin, emê daxin jêra... Xemê Zalim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[26:50]</span>Musician: Pêşkêş dikim ji bo... Mihemedê Elî Tijo... ji bunyana gundê Hesen Dêra, hezar rehmet li gora wî be, û li hecî meytê te hazira be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:07]</span>Musician: Wî jî xoşgir Xemê Zalim. Em kanibin bibêjin, ji wî dama Xemê Zalim. Ax Xemê Zalim...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:16]</span>[Music playing - Buzuq Instrumental]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[27:37]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:14]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[28:44]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:15]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[29:45]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:00]</span>[Music continues]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[30:00]</span>[Muzîk]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:01]</span>Elî Remzî Xaçê: Bi xêr hatin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:05]</span>Elî Remzî Xaçê: Bi xêr hatin ser çavên me. Ez ji gundê Maratê me, berîkiya ji malê Çiwîş im. Ez Elî lawê Remzî Xaçê me. Bavê Remzî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:15]</span>Elî Remzî Xaçê: Hûn bi xêr hatin ser çavên me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:17]</span>Elî Remzî Xaçê: Fena cem me, yanî di bav û pîrên me de, em pê dazin dikin... aîla me bi şiklê giştî em ji fen hez dikin. Çimkî mezinê me, em guhdariya fen dikin. Ciyê destê me dan tîşandin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:30]</span>Elî Remzî Xaçê: Yanî di aîla me de, hinek dibêjin dengbêj... hene... dengbêj... em karin bêjin... mekin hene.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:40]</span>Elî Remzî Xaçê: Tembûrvan jî jê çêdibin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:45]</span>Elî Remzî Xaçê: Tembûrvan di aîla me de pirr in.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:48]</span>Elî Remzî Xaçê: Ê... hîwa ye ev xwa... ev xwa hîwaya coka... di hîsê me de hatiye çandin, va mûsîqa xwa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[32:55]</span>Elî Remzî Xaçê: Mûsîqa jî yanî... alek jî hez dike mûsîqa. Mûsîqa rinde yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:00]</span>Elî Remzî Xaçê: De men... ez bi xwa... ez gîştimê bavê min kilamcî bû, Xwedê rehma xwa lê ke bavê min Remzî Xaçê, bavê min Remzî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:07]</span>Elî Remzî Xaçê: Bapîrê min Ehmedê Reşo, bavê min bi xwa kilamcî bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:10]</span>Elî Remzî Xaçê: Ez di sefê didûyê sêsê bûm diçûm mektebê... ez elimîm... yanî meraqa tembûrê... hîwaya tembûrê bi min girt û min deqet pê girt, berber me da.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:20]</span>Elî Remzî Xaçê: Bavê min dida kilama... me guhê dida... em jî elimîn toraz jî, em jî elimîn mûsîqa jî... em elimîn fen yanî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:30]</span>Elî Remzî Xaçê: Û pêşiya me giya yanî... qonmiş fen û mûsîqa dibûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:35]</span>Elî Remzî Xaçê: Hîwa ye yanî... ev tiştekî, aîla me di hîsêiyayê de hatiye çandin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:40]</span>Elî Remzî Xaçê: Me bi kêr helanî? Me bi giyayê helanî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:45]</span>Elî Remzî Xaçê: Yanî... me bi pirra ra... pirr cimeet hatin cem me û em jî pirr çûn pirr cimeeta...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[33:55]</span>Elî Remzî Xaçê: Berê giya, em elimîn va kilamê toraz.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:00]</span>Elî Remzî Xaçê: Û... hunerek... me ji Elî Tico rehmetî jî, ciyê wî dinê be, ji wî jî me zêde dikirî, hinek tiştin wî jî di hîsê me de hatin çandin. Hez jê tê heye, xweş... yanî... maqamê xweş wê hebin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:10]</span>Elî Remzî Xaçê: Me ji wî jî girtin, ji xelkê dinê jî... ji Cemîl Horo me jê birin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:20]</span>Elî Remzî Xaçê: Me guhdariya wî jî kir, me tembûr jî jê bir û me... lehnê kilama jî me jê birin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:25]</span>Elî Remzî Xaçê: Elî Tico, em rûniştin, em pirr ba rûniştin, bes vê taliyê em bi hev re rûniştin... ê... berê dihat gundê Maratê.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:30]</span>Elî Remzî Xaçê: Heta em kanin bibêjin jî, em ji dûr de xaltiya hev du jî tên.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:40]</span>Elî Remzî Xaçê: Yanî... fen, ya heyatê ji her yekî re vedike. Û hewa ciwaniyê te ye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:45]</span>Elî Remzî Xaçê: Ya... ji êşa derbirîn... hewayê birîn, mûsîqê di wî, kilamê di wî... ya ji Elî Tico, ya ji Cemîl Horo, Xwedê rehma xwa lê kin... kî cimeeta hazira be.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[34:55]</span>Elî Remzî Xaçê: Ê hîwa ye, meraq e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:00]</span>Elî Remzî Xaçê: Yanî mûsîqa ta her... û fenê te jî tebe&#x27;en heye. Û hîwayê ji her... kanê ji her yekî re çêbibe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:10]</span>Elî Remzî Xaçê: Ê min ez li mal lê dixim. Ba zewac çêdibin, wekî we tên cem min, ez lê dixim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:15]</span>Elî Remzî Xaçê: Ba dawet dibin, diwacînin ez darim.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:20]</span>Elî Remzî Xaçê: Fenan nînin hene... yanî fenanîn ji aîla me de hene... wek din kes pirr fenan tune ne di gundê me de.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:30]</span>Elî Remzî Xaçê: Mihemed Şo, Wehîd... lawê xalê min e... Evana kalê Tirkiyê ne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:37]</span>Elî Remzî Xaçê: Maratê ma xwedî nedî, em di gund de bûn e. Yanî em ma xwedî nediye, em li Maratê bûn. Û heta royê îro, Marat qedîm e. Dinya kevin e yanî. Û gund ma xwedî nediye, em li ba gundî bûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:37]</span>[Muzîk]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[35:58]</span>Elî Remzî Xaçê: Lê vurxûnê, vurxûnê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:05]</span>Elî Remzî Xaçê: Delalê şur şêrînê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:09]</span>Elî Remzî Xaçê: Lê vurxûnê, vurxûnê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:14]</span>Elî Remzî Xaçê: Delalê şur şêrînê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:20]</span>Elî Remzî Xaçê: Xeyrê ji te min nabîne...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:29]</span>Elî Remzî Xaçê: Wer derman ke birînê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:35]</span>Elî Remzî Xaçê: Şurxweşê şurşêrînê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:42]</span>Elî Remzî Xaçê: Xeyrê ji te min nabîne...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:50]</span>Elî Remzî Xaçê: Wer derman ke birînê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[36:58]</span>Elî Remzî Xaçê: Lê vurxûnê, vurxûnê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:05]</span>Elî Remzî Xaçê: Şurxweşê şurşêrînê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:12]</span>[Muzîk]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:29]</span>Elî Remzî Xaçê: Lê vurxûnê, vurxûnê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:35]</span>Elî Remzî Xaçê: Delalê şur şêrînê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:42]</span>Elî Remzî Xaçê: Lê vurxûnê, vurxûnê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:49]</span>Elî Remzî Xaçê: Delalê şur şêrînê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[37:55]</span>Elî Remzî Xaçê: Xeyrê ji te min nabîne...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:00]</span>Elî Remzî Xaçê: Wer derman ke birînê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:06]</span>Elî Remzî Xaçê: Hingivê tevlî rûn e...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:12]</span>Elî Remzî Xaçê: Zerka te bi kûr ve nîne...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:20]</span>Elî Remzî Xaçê: Ziravê hatim mala we...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:24]</span>Elî Remzî Xaçê: Silav çûyî te ne da min...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:29]</span>Elî Remzî Xaçê: Min dît deka te li min kir...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:33]</span>Elî Remzî Xaçê: Dibê xanê ez nas nakim...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:35]</span>Elî Remzî Xaçê: Çima kî ye vayî kalê...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:38]</span>[Muzîk]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:41]</span>Pêşkêşvan: Belê, ji gundewarê Maratê, ji yên kevneşopî û tiştên kevnar...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:49]</span>Pêşkêşvan: Me îro li vî gundewarî jî gelek tiştên kevnar dîtin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:54]</span>Pêşkêşvan: Û me gelek hunermend jî nas kirin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[38:57]</span>Pêşkêşvan: Li benda me bin, di beşek nû de ji bernameya me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:00]</span>Pêşkêşvan: Yê gundê me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[39:03]</span>[Muzîk]</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on February 08, 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Copy to clipboard function
+        function copySection(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Find the button that was clicked and update its text
+                const btn = event.target.closest('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ✓';
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

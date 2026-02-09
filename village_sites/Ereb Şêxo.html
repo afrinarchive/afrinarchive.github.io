@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -104,6 +125,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">عرب شيخو</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Emîrat</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Eyûb</p></div>
                         </div>
                     </div>
                     
@@ -126,27 +149,68 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Ereb Şêxo</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Named after its first inhabitant from the Arab Emîrat tribe, whose name was Şêxo</p>
+<p><strong>Foundation Date/Period:</strong> Around 75 years ago</p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çemê Efrîn</span>, <span class="internal-link">Çemê Zerafkê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Ereb Şêxo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>From the book Jabal al-Kurd (Afrin): A Geographical Study by Dr. Muhammad Abdu Ali:</p>
-<p><strong>Ereb Şêxo, Arab Sheikho, Sheikh al-Arab /387p - 340m/:</strong></p>
-<p>Translator&#x27;s Note: The numbers likely refer to population (p) and elevation (m).</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Ereb Şêxo</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ereb%20shexo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ereb%20shexo.htm</a></p>
+<p>It is stated in the book <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: Ereb Şxo / 387 inhabitants - 340m altitude:</p>
+<p>The village is named after its first inhabitant from the Arab <span class="internal-link">Emîrat</span> tribe, whose name was <span class="internal-link">Şêxo</span>. He came from the <span class="internal-link">Ezaz</span> area following a family dispute and settled in that location more than fifty years ago. It is a small village located approximately 1km southwest of the village of <span class="internal-link">Gemrûk</span>. It consists of several families of brothers and cousins.</p>
+<p>It is stated in the book <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Ereb Şxo is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Mabeta</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village located in the central part of the mentioned mountain, on the southeastern slope of a limestone plateau furrowed by seasonal streams descending toward the Efrîn river. It overlooks an agricultural plain to the south and west. It lies 14km to the northeast of the town of Mabeta. Its soil is clay-alluvial, fertile, and rich in groundwater. It is situated near the Efrîn river and the <span class="internal-link">Zerafkê</span> river.</p>
+<p>It is bordered to the north by a mountainous height, a seasonal valley, and the nearby village of Gemrûk at a distance of 1km. To the south, it is bordered by a slope, an agricultural plain, the valley of the Zerafkê river, the valley of the Efrîn river, and the villages of <span class="internal-link">Eyn Elhecer Mezin</span> and <span class="internal-link">Eyn Elhecer Biçûk</span>. To the west, it is bordered by mountainous heights planted with olive trees and the village of <span class="internal-link">Şêx Hûtko</span>. To the east, it is bordered by a slope, a plain, the course of the Efrîn river valley, and the villages of <span class="internal-link">Helûbî Mezin</span> and <span class="internal-link">Helûbî Biçûk</span>.</p>
+<p>The number of its houses is about 15, and its age is approximately 75 years. It is a modern village; their origin is from sheep herders who settled in the caves found at the mentioned site. Its old dwellings are made of stone and mud, while the modern ones are of stone and cement, spread to the east and west. The village is divided into two parts (Eastern and Western) due to a seasonal valley flowing through its center toward the Efrîn river valley.</p>
+<p>An electricity network is available, and a paved road passes through its center connecting to several neighboring villages and the district center. Its residents work in rainfed agriculture on an area of 98 hectares with grains and olive trees, and in irrigated agriculture from the Efrîn river or artesian wells producing summer vegetables, cotton, and fruit trees, alongside raising sheep and goats. The village drinks from cisterns that collect rainwater in winter, and currently from artesian wells dug next to the houses. It contains a modern olive press. Among its most important families is the <span class="internal-link">Eyûb</span> family, who are Arabs from the villages of the Heleb governorate.</p>
+<p>Village Mukhtar: <span class="internal-link">Eyûb Şêxo Mihemed</span></p>
+<p>Preparation and Execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>Named after its first inhabitant from the Arab &quot;Amirat&quot; tribe, whose name was Sheikho. He came from the Azaz region following a family dispute and settled in this location more than fifty years ago.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A small village located about 1 km southwest of the village of Gumruk, consisting of several families of brothers and paternal cousins.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>From the book: Afrin... Its River and Green Hills by the author Abd al-Rahman Muhammad from the village of Qatma:</p>
-<p><strong>Arab Sheikho:</strong> A village in Jabal al-Kurd, belonging to the sub-district of Maabatli, Afrin district, Aleppo Governorate.</p>
-<p>It is a small village located in the central part of the aforementioned mountain, on the southeastern slope of a limestone plateau grooved by streams sloping towards the Afrin River. It overlooks an agricultural plain to the south and west and is situated 14 km northeast of the town of Maabatli. Its soil is fertile, clayey, alluvial, and has abundant groundwater. It is located near the Afrin River and the Zarafka River.</p>
-<p>It is bordered to the north by a mountain highland, a stream valley, and the nearby village of al-Gumruk (1 km away); to the south by a slope, an agricultural plain, the Zarafka River valley, the Afrin River valley, and the villages of Ain al-Hajar al-Kabir and al-Saghir; to the west by mountain highlands planted with olive trees and the village of Sheikh Hatko; and to the east by a slope, a plain, the course of the Afrin River valley, and the villages of Halubi Kabir and Halubi Saghir.</p>
-<p>The village has about 15 houses and is approximately 75 years old, making it a recently established village. The inhabitants&#x27; origins are from shepherds who settled in the caves found at the location. Its old dwellings are made of stone and mud, while the modern ones are of stone and cement, spread out to the east and west. The village is divided into two sections (eastern and western) by a stream valley that runs through its middle towards the Afrin River valley.</p>
-<p>It has an electricity network and a paved road that passes through its center, connecting to several neighboring villages and the sub-district center. The residents practice rain-fed agriculture on an area of 98 hectares, cultivating grains and olive trees. They also practice irrigated agriculture, using water from the Afrin River or artesian wells, for summer vegetables, cotton, and fruit trees, in addition to raising sheep and goats. The village gets its drinking water from cisterns that collect rainwater in the winter, and currently from artesian wells drilled next to the houses. It has a modern olive press. One of its most prominent families is the Ayoub al-Areeba family, from the villages of Aleppo Governorate.</p></div></details></div>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Ereb Şxo ، عرب شيخو ، شيخ العرب /387ن - 340م/:</p>
+<ul>
+<li>على اسم ساكنها الأول من عشيرة &quot;عميرات&quot; العربية اسمه شيخو، وقد جاء من</li>
+</ul>
+<p>منطقة أعزاز اثر نزاع عائلي وأقام في ذلك الموقع منذ أكثر من خمسين عاما.</p>
+<ul>
+<li>قرية صغيرة تقع جنوبي غربي ق.گمروك بنحو1كم، وتتألف من عدة أسر من إخوة</li>
+</ul>
+<p>وأبناء عمومة. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه عرب شيخو : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في الجزء الأوسط للجبل المذكور ، على السفح الجنوبي الشرقي لهضبة كلسية تخددها المسيلات المنحدرة نحو نهر عفرين ، تطل جنوباً وغرباً على سهل زراعي إلى الشمال الشرقي من بلدة معبطلي على بعد 14كم تربتها غضارية لحقية خصبة كثيرة المياه الجوفية ، وتقع بالقرب من نهر عفرين ونهر زرافكة ، يحدها شمالاً مرتفع جبلي ووادي سيلي وقرية الكمروك القريبة على بعد1كم ، وجنوباً منحدر وسهل زراعي ووادي نهر زرافكة و وادي نهر عفرين وقرية عين الحجر الكبير والصغير ، وغرباً مرتفعات جبلية مزروعة بأشجار الزيتون وقرية شيخ هتكو ، وشرقاً منحدر وسهل و مجرى وادي نهر عفرين وقرية حلوبي كبير وحلوبي صغير ، يبلغ عدد بيوتها حوالي15بيتاً وعمرها حوالي 75عاماً ، فهي قرية حديثة العهد ، أصلهم من رعاة الأغنام ، استوطنوا في المغر الموجودة في الموقع المذكور ، مساكنها القديمة حجرية طينية والحديثة حجرية إسمنتية تنتشر شرقاً وغرباً ، وتنقسم القرية إلى قسمين (شرقي وغربي) بسبب وادي سيلي يجري في وسطها نحو وادي نهر عفرين ، تتوفر فيها شبكة كهرباء و طريق مزفت يمر في وسطها إلى عدة قرى مجاورة ومركز الناحية ، يعمل سكانها بالزراعة البعلية على مساحة 98 هـ بالحبوب وأشجار الزيتون ، ورياً من نهر عفرين أو من الآبار الارتوازية بالخضار الصيفية والقطن والأشجار المثمرة إلى جانب تربية الأغنام و الماعز ، تشرب القرية من صهاريج تجمع فيها مياه الأمطار شتاءً وحالياً من الآبار الارتوازية المحفورة بجوار المنازل فيها معصرة حديثة للزيتون ومن أهم عوائلها عائلة أيوب العريبة من قرى محافظة حلب .</p>
+<p>مختار القرية : أيوب شيخو محمد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -155,7 +219,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ereb%20shexo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ereb%20shexo.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ereb%20shexo.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20ereb%20shexo.htm</a></li></ul>
             </div>
 
             
@@ -165,7 +229,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -283,6 +347,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

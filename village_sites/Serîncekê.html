@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -149,24 +170,59 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Serîncekê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
-<p><strong>Se&#x27;rîncek, <span class="internal-link">Sa&#x27;ranjak</span></strong> (سعرنجك) – <span class="internal-link">Sa&#x27;rkanli</span> (سعركانلي), <span class="internal-link">Al-Sa&#x27;r</span> (السعر) /752n - 840h - 15km - 600m/:</p>
-<ul>
-<li>Se&#x27;rîncek: Means &quot;underground water tank&quot; with the addition of the Kurdish diminutive suffix ek to the name. The Arabization of the name is arbitrary, as there is no meaning for &quot;sa&#x27;r&quot; in Arabic either.</li>
-<li>A small village located on the western bank of the <span class="internal-link">Afrin River</span> (عفرين) about 3km away, facing <span class="internal-link">Mount Sheikhurz</span> (شيخورز) to the north.</li>
-</ul>
-<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Sa&#x27;ranjak</span></strong> (سعرنجك): A village in <span class="internal-link">Jabal al-Akrad</span> (جبل الكرد) belonging to <span class="internal-link">Sheran District</span> (شران), Afrin (عفرين) region, Aleppo Governorate (حلب), (734 people).</p>
-<p>It is a small village located on an elevation and limestone plateau that slopes toward the south and a mountainous slope. It is connected by a plain, 27km from the town of <span class="internal-link">Sheran</span> (شران), and is located on the <span class="internal-link">Sheikh Khurzus Mountain</span> (الشيخ خوروز) chain. It is bordered to the north by a high and rugged mountainous chain planted with oak trees and the village of <span class="internal-link">Sheikh Khurzus</span> (الشيخ خوروز), to the south by a slope and plain planted with olive trees with two streams starting from the north and ending in the south at the <span class="internal-link">Afrin River</span> (عفرين) valley and the village of <span class="internal-link">Ballursank</span> (بللورسنك), to the west by a valley and high mountainous chain and the villages of <span class="internal-link">Qazeh Bash</span> (قزه باش) and <span class="internal-link">Bilan Kuyi</span> (بيلان كوي), and to the east by a valley and the village of <span class="internal-link">Omar Simo</span> (عمر سيمو). It has about 65 houses and is approximately 300 years old. Its old houses are stone and clay with wooden roofs, and the modern ones are stone and cement. It is one of the old villages in <span class="internal-link">Sheran District</span> (شران). It has an electricity network and drinking water from an artesian well. It has an elementary school and a paved road in the village center that connects to <span class="internal-link">Prophet Houri</span> (النبي هوري) and the road connecting to the village is a mountainous dirt road. There are also three modern villas on the western side of the village and a modern technical olive press. Its residents work in olive and grape cultivation alongside raising sheep and goats.</p>
-<p>It is noted that the artist <span class="internal-link">Jamil Horo</span> (جميل هورو) is from the sons of this village.</p>
-<p>Village mayor: <span class="internal-link">Horik Hanan</span> (هوريك حنان)</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Serîncekê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sarenjak.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sarenjak.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Se&#x27;rncek</span>, <span class="internal-link">Se&#x27;rkanlî</span>, <span class="internal-link">Al-Si&#x27;r</span> / 752 inhabitants, 840 meters altitude, 15km distance, 600m altitude /:</p>
+<p>Se&#x27;rncek: It means &quot;ground water cistern&quot; with the addition of the Kurdish diminutive suffix &quot;ek&quot; to the name. The Arabization of the name is arbitrary, as Al-Si&#x27;r has no meaning in Arabic either.</p>
+<p>It is a small village located on the western bank of the <span class="internal-link">Efrîn</span> river by about 3km, and it faces <span class="internal-link">Şêx Xûrz</span> mountain to the north.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Se&#x27;rncek: A village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Şeran</span> township, Efrîn region, Heleb governorate, (734 inhabitants). It is a small village located on an elevation and limestone plateau that descends towards the south and a mountainous slope; its soil is clay. It is 27km away from the town of Şeran. It is located on the Şêx Xûrz mountain chain.</p>
+<p>It is bordered to the north by a high and rugged mountain chain planted with oak trees and the village of Şêx Xûrz. To the south, it is bordered by a slope and a plain planted with olive trees with two watercourses that start from the north and end in the south at the valley of the Efrîn river and the village of <span class="internal-link">Bellûrsenk</span>. To the west, it is bordered by a valley and a high mountain chain and the village of <span class="internal-link">Qizilbaş</span> and the village of <span class="internal-link">Bîlan Kûy</span>. To the east, it is bordered by a valley and the village of <span class="internal-link">Omer Sîmo</span>.</p>
+<p>The number of its houses amounts to about 65 houses and its age is about 300 years. Its old houses are made of stone and mud with wooden ceilings, and the modern ones are of stone and cement. It is among the old villages in the Şeran township. An electricity network is available in it, as well as drinking water from an artesian well. There is a primary school in it and a paved road in the center of the village that connects to <span class="internal-link">Nebî Hûrî</span>, while the road connecting to the village is a dirt mountain road. There are also three modern villas on the western side of the village and a modern technical olive press.</p>
+<p>Its inhabitants work in the cultivation of olives and vines alongside raising sheep and goats. It is mentioned that the artist <span class="internal-link">Cemîl Horo</span> is one of the sons of this village.</p>
+<p>Village Mukhtar: <span class="internal-link">Horîk Henan</span></p>
 <p>Sources of Information:</p>
-<p>1 - Book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (محمد عبدو علي).</p>
-<p>2 - Book: &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27; by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatma Village</span> (قطمه).</p>
-<p>3 - Studies by <span class="internal-link">Tereij Soft Center</span> (تيريج سوفت) / <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>4 - Some village residents.</p>
-<p>Prepared and executed by: Director of <span class="internal-link">Tereij Afrin Website</span> (تيريج عفرين): <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20 / 12 / 2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Serîncekê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=rnxXMPsgEFw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=rnxXMPsgEFw</a></p>
+<ul>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
+</ul>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the website Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Se&#x27;rncek ، سعرنجك سعركانلي، السعر /752ن - 840هـ - 15كم - 600م/:</p>
+<ul>
+<li>سَعْرِنْجَك: تعني &quot;صهريج الماء الأرضي&quot; مع إضافة صيغة التصغير الكردية ek</li>
+</ul>
+<p>إلى الاسم. وتعريب الاسم اعتباطي، حيث لامعنى &quot; للسعر&quot; في العربية أيضاً.</p>
+<ul>
+<li>قرية صغيرة تقع على الضفة الغربية لنهر عفرين بنحو 3كم، وتقابل جبل شيخورز</li>
+</ul>
+<p>شمالا. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : سعرنجك : قرية في جبل الكرد تتبع ناحية شران منطقة عفرين محافظة حلب ، (734 ن) . وهي قرية صغيرة تقع على مرتفع وهضبة كلسية تنحدر نحو الجنوب ومنحدر جبلي تربتها غضارية ,تبعد عن بلدة شران 27كم , و تقع على سلسلة جبل الشيخ خوروز ، يحدها شمالا سلسلة جبلية عالية ووعرة ومزروعة بأشجار السنديان وقرية الشيخ خوروز وجنوبا منحدر وسهل مزروع بأشجار الزيتون مع مسيلين يبدأن من الشمال وينتهيان بالجنوب إلى وادي نهر عفرين وقرية بللورسنك وغربا وادي وسلسلة جبلية عالية وقرية قزه باش وقرية بيلان كوي وشرقا وادي وقرية عمر سيمو يبلغ عدد بيوتها حوالي65 بيت وعمرها حوالي300عام بيوتها القديمة حجرية طينية ذات سقوف خشبية والحديثة حجرية إسمنتية وهي من القرى القديمة في ناحية شران تتوفر فيها شبكة الكهرباء ومياه الشرب من بئر ارتوازي فيها مدرسة ابتدائية وطريق مزفت في وسط القرية يصل بالنبي هوري والطريق الواصل للقرية طريق ترابي جبلي كما توجد ثلاث فيلات حديثة من الجهة الغربية للقرية ومعصرة فنية حديثة للزيتون يعمل سكانها بزراعة الزيتون والكرمة إلى جانب تربية الأغنام والماعز . يذكر أن الفنان جميل هورو من أبناء هذه القرية</p>
+<p>مختار القرية : هوريك حنان</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Serîncekê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=rnxXMPsgEFw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=rnxXMPsgEFw</a></p>
 <p>The village of Se&#x27;rincekê, located in the <span class="internal-link">Şera</span> district of the <span class="internal-link">Efrîn</span> canton, sits upon the slopes of <span class="internal-link">Çiyayê Kilê Şêr</span> (also referred to as <span class="internal-link">Çiyayê Keleş</span>), roughly 4 kilometers from the <span class="internal-link">Çemê Efrînê</span> and near the Turkish border. The village was founded approximately 400 years ago by nomadic tribes (<span class="internal-link">koçer</span>) who settled in the area. The name Se&#x27;rincekê is derived from the word se&#x27;rinc (cistern). According to local elders, when the first settlers arrived, there were no natural springs within the immediate village site. To survive, the early families dug individual cisterns to harvest rainwater for their flocks of sheep and cattle. Today, approximately 60 of these historical cisterns remain, some still in use as water storage.</p>
 <p>The settlement history involves migration from nearby abandoned sites. Residents describe ancestors moving from <span class="internal-link">Xorabê Sê-malka</span>, a ruin located two kilometers away featuring wells like <span class="internal-link">Bîra Şadiyan</span> and <span class="internal-link">Bîra Tû</span>, and from <span class="internal-link">Gundê Belîsenkê</span>, which is now deserted. The social structure is defined by five founding families: <span class="internal-link">Malê Lîkû</span>, <span class="internal-link">Malê Reşê Ereb</span>, <span class="internal-link">Malê Omer</span>, <span class="internal-link">Malê Qemer-oxlan</span>, and Malê Lîkû (associated with the <span class="internal-link">Lîkûwa</span> tribe). Over time, other families arrived, such as <span class="internal-link">Malê Momedî</span> from <span class="internal-link">Tirkiyê</span>, and several families including <span class="internal-link">Malê Henûse</span> and <span class="internal-link">Malê Şêxmûs</span> from <span class="internal-link">Belîsenkê</span>. The village maintains a reputation for strong communal bonds, described by residents as a &quot;garden with every type of flower,&quot; where different lineages live as one household.</p>
 <p>Se&#x27;rincekê has a distinct history of resistance against the <span class="internal-link">French Mandate</span>. Notable figures like <span class="internal-link">Şêx Henîf</span> and <span class="internal-link">Elî Qurt-ele</span> organized local forces to fight the French occupation. The village was bombed by French aircraft in retaliation, resulting in civilian casualties. Şêx Henîf was eventually captured in <span class="internal-link">Nazanê</span> in 1941 and executed in Efrîn two years later; he is buried in <span class="internal-link">Qîbarê</span>. Other historical figures remembered for their bravery or social influence include <span class="internal-link">Mistefa Çolaq</span>, <span class="internal-link">Ehmedê Rîtû</span>, and <span class="internal-link">Bişra Kurd Elî</span>.</p>
@@ -236,7 +292,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sarenjak.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sarenjak.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=d1i1LMwxcZ8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=d1i1LMwxcZ8</a></li><li>Local FB page:<br><a href="https://www.facebook.com/gunde.sarinjake" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/gunde.sarinjake</a><br><a href="https://www.youtube.com/watch?v=rnxXMPsgEFw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=rnxXMPsgEFw</a><br><a href="https://www.youtube.com/watch?v=sQLGj8k5gAg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sQLGj8k5gAg</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sarenjak.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sarenjak.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=d1i1LMwxcZ8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=d1i1LMwxcZ8</a></li><li>Local FB page:<br><a href="https://www.facebook.com/gunde.sarinjake" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/gunde.sarinjake</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=rnxXMPsgEFw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=rnxXMPsgEFw</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=sQLGj8k5gAg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sQLGj8k5gAg</a></li></ul>
             </div>
 
             
@@ -246,7 +302,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -364,6 +420,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

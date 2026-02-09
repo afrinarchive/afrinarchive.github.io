@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,8 +203,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Kefer Şîlê, Keferşîl, Keferşîlê, كفر شيل</p></div>
-<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Reşwanî</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Cimo, Ehmed Sîdo, Hacîmenan, Kuleh, Memê, Mistê Osê, Qirik, Silêman, Sêjarazî, Çeqelî</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Reşwanî, Şikak</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Cimo, Ciqillî, Ehmed Sîdo, Hacîmenan, Kuleh, Memê, Misto, Mistê Osê, Qirik, Silêman, Sêjarazî, Xelbaş, Çeqelî</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -224,16 +245,50 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Keferşîlê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">Keferşîl</span>, كفرشيل</strong> /997N - 385E - 4km - 320m/:</p>
-<p><span class="internal-link">Kourani</span> says in his Kurdish-Arabic dictionary that the word <span class="internal-link">Şîle</span> means: grape juice before it ferments. And <span class="internal-link">Al-Khouri Barsoum</span> says it is Aramaic meaning &quot;قرية المصدوع&quot; (village of the cracked) /p.284/, and <span class="internal-link">Al-Asadi</span> mentioned from <span class="internal-link">Father Shelhat</span> that it is from Aramaic meaning: son of the adulteress. We believe the Kurdish naming is closest to the living reality of the region&#x27;s inhabitants past and present.</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Keferşîlê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefershil.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefershil.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc (Efrîn): A Geographical Study by <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Keferşîl</span> / 997 inhabitants, 385 hectares, 4 km, 320 m /. Kurani says in his Kurdish-Arabic dictionary that the word <span class="internal-link">Şle</span> means: grape juice before it ferments. Khouri Barsoum says that it is Aramaic, meaning &quot;village of the cracked&quot; (p. 284), and Al-Asadi mentioned from Father Shalhat that it is from Aramaic meaning: son of the adulteress. We believe that the Kurdish naming is closer to the living reality of the inhabitants of the region, both past and present.</p>
+<p>It is a large and prosperous village located on the southwestern slope of <span class="internal-link">Çiyayê Keferşîl</span>. To its west passes <span class="internal-link">Geliyê Tizbiyê</span>.</p>
+<p>It is stated in the book Efrîn... Her River and Her Green Hills by the writer <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Keferşîl is a village in <span class="internal-link">Çiyayê Kurmênc</span> belonging to the sub-district of the villages of the center and area of <span class="internal-link">Efrîn</span>, Heleb governorate. It is a large village located on the lower southwestern slope of the limestone Çiyayê Keferşîl in the southeastern part of <span class="internal-link">Çiyayê Heleb</span>. To its west passes a valley where lands suitable for agriculture and rich in groundwater are abundant.</p>
+<p>It is bordered to the north by a cultivated mountain height; to the south by a fertile agricultural plain planted with olive trees and the village of <span class="internal-link">Bablît</span>; to the west by a fertile plain, a mountain height, a valley, and the villages of <span class="internal-link">Xelnêr</span> and <span class="internal-link">Maratê</span>; and to the east by a wide, agriculturally fertile plain and the nearby city of Efrîn.</p>
+<p>The number of its houses reaches about 75 houses, and its age is about 300 years. Its dwellings are of stone and mud with wooden roofs, and the modern ones are of reinforced concrete and stone. This village is one of the beautiful villages due to the abundance of pomegranate, walnut, and apricot trees. An electricity network is available, as well as drinking water from <span class="internal-link">Bîra Maratê</span>, a primary school, a telephone, a modern mosque, and a paved road that passes through the center of the village up to the village of Xelnêr.</p>
+<p>The residents work in the cultivation of olives and other fruit trees and in raising sheep. Its lands are fertile and suitable for agriculture, and its soil is red. The village is surrounded on three sides, except the northern one, by a wide plain extending up to the city of Efrîn and the villages of Maratê and Xelnêr.</p>
+<p>Among the families present in the village are: <span class="internal-link">Ciqillî</span> family, <span class="internal-link">Xelbaş</span> family (from the <span class="internal-link">Şikak</span> tribe belonging to the <span class="internal-link">Şeran</span> sub-district), and <span class="internal-link">Misto</span> family. The mukhtar of the village is Mr. <span class="internal-link">Ebû Ebdo Miste</span>. Also mentioned is Engineer <span class="internal-link">Mistefa Mihemed Hac Mehmûd</span>, holder of a PhD in Engineering.</p>
+<p>Village Mukhtar: <span class="internal-link">Umer Mihemed</span></p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and Execution:</p>
+<p>Director of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Keferşl، كفرشيل /997ن - 385هـ - 4كم - 320م/: يقول كوراني في قاموسه الكردي- العربي، أن كلمة Şle تعني: عصير العنب قبل أن يختمر. والخوري برصوم يقول أنه آرامي بمعنى &quot;قرية المصدوع&quot; /ص284/، وذكر الأسدي عن الأب شلحت بأنه من الأ{امية بمعنى: ولد الزانية. نعتقد أن التسمية الكردية هي الأقرب إلى الواقع المعيشي لسكان المنطقة قديما وحديثا.</p>
 <ul>
-<li>A large and flourishing village located on the southwestern southern slope of <span class="internal-link">Kefershil</span> mountain, with <span class="internal-link">Tizbiya</span> valley (<span class="internal-link">Tizbiyê</span>) passing to its west.</li>
+<li>قرية كبيرة ومزدهرة تقع على السفح الجنوبي الغربي لجبل كفرشيل، يمر في</li>
 </ul>
-<p>And according to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmah</span> village:</p>
-<p><strong>كفرشيل</strong>: A village in <span class="internal-link">Kurdish Mountain</span> belonging to the central district villages and Afrin, Aleppo Governorate.</p>
-<p>It is a large village located on the lower southwestern southern slope of the calcareous Kefershil mountain in the southeastern part of <span class="internal-link">Halab Mountain</span>. Tizbiya valley passes to its west where agricultural lands suitable for cultivation abound, rich in groundwater. It is bordered to the north by a mountainous elevation planted, to the south by fertile agricultural plain planted with olive trees and <span class="internal-link">Bablit</span> village, to the west by fertile plain and mountainous elevation and valley and <span class="internal-link">Khalnir</span> and <span class="internal-link">Ma&#x27;rateh</span> villages, and to the east by a wide and fertile agricultural plain and nearby Afrin City. The number of houses reaches about 75 houses and its age is about 300 years. Its dwellings are stone-mud with wooden roofs and modern ones of reinforced cement and stone. This village is among the beautiful villages due to the abundance of trees including pomegranate, walnut and apricot. It has an electricity network, drinking water from Ma&#x27;rateh well, an elementary school, telephone, a modern mosque and a paved road passing through the village center to Khalnir village. Residents work in olive cultivation and other fruit trees and sheep herding. Its lands are fertile and suitable for cultivation with red soil, and the village is surrounded on three sides except the north by a wide plain extending to Afrin City and Ma&#x27;rateh and Khalnir villages. Among the families present in the village are (the <span class="internal-link">Al-Jaqlali</span> family - the <span class="internal-link">Al-Khalbash</span> family / from the <span class="internal-link">Shakkak</span> tribe belonging to <span class="internal-link">Sharan District</span> / - the <span class="internal-link">Al-Mastu</span> family, and the village mayor is <span class="internal-link">Mr. Abu Abdo Musteh</span>. <span class="internal-link">Engineer Mustafa Mohammed Haj Mahmoud</span>, holder of a doctorate degree in engineering -</p>
-<p>Village mayor: <span class="internal-link">Omar Mohammed</span></p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Keferşîlê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=v_gaLAJw-E8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=v_gaLAJw-E8</a></p>
+<p>غربها وادي تزبيه Tizbiy. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كفرشيل : قرية في جبل الكرد تتبع ناحية قرى مركز ومنطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع على السفح الجنوبي الغربي الأدنى لجبل كفرشيل الكلسي في الجزء الجنوبي الشرقي لجبل حلب يمر في غربها وادي تكثر فيها الأراضي الصالحة للزراعة والغنية بالمياه الباطنية .يحدها شمالاً مرتفع جبلي مزروع وجنوباً سهل خصب زراعياً مزروع بأشجار الزيتون وقرية بابليت وغرباً سهل خصب ومرتفع جبلي ووادي وقرية خلنير ومعراته وشرقاً سهل واسع وخصب زراعياً ومدينة عفرين القريبة .يبلغ عدد بيوتها حوالي75بيتاً وعمرها حوالي 300عاماً مساكنها حجرية طينية ذات سقوف خشبية والحديثة منها من الإسمنت المسلح والحجارة .وهذه القرية من القرى الجميلة لكثرة الأشجار من الرمان والجور والمشمش تتوفر فيها شبكة الكهرباء ومياه الشرب من بئر معراته ومدرسة ابتدائية وهاتف وجامع حديث وطريق مزفت يمر في وسط القرية حتى قرية خلنير . يعمل الأهالي بزراعة الزيتون والأشجار المثمرة الأخرى وتربية الأغنام أراضيها خصبة صالحة للزراعة وتربتها حمراء وتحيط بالقرية من جهاتها الثلاثة عدا الشمالية بسهل واسع ممتد حتى مدينة عفرين وقرية معراته و خلنير . ومن العائلات الموجودة في القرية ( آل جقللي - آل خلباش / من عشيرة</p>
+<p>شكاك التابعة لناحية شران / - آل مستو ، ومختار القرية هو السيد أبو عبدو</p>
+<p>مسته .  المهندس مصطفى محمد حاج محمود الحائز على شهادة الدكتواره في الهندسة -</p>
+<p>مختار القرية :  عمر محمد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Keferşîlê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=v_gaLAJw-E8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=v_gaLAJw-E8</a></p>
 <p>History and Origins</p>
 <p>The village of <span class="internal-link">Keferşîl</span> is located approximately three kilometers west of <span class="internal-link">Efrîn</span>. Its name is interpreted to mean &quot;Baxçê şîlan&quot; (Garden of wild roses). The site has deep historical roots; it is believed to have been a military post as far back as the era of the <span class="internal-link">Mîtaniyan</span> (Mitanni) due to the presence of ancient traces. The modern settlement, however, dates back approximately 250 to 400 years. According to village elder <span class="internal-link">Ebdurehman</span>, the area was inhabited about 70 years prior to the arrival of the current population by the <span class="internal-link">Malê Kuleh</span>, who originally came from <span class="internal-link">Şorbe</span>. These previous inhabitants eventually left, paving the way for the current families to settle.</p>
 <p>Social Structure and Migration</p>
@@ -293,7 +348,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefershil.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefershil.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=kqTu2LffvzQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=kqTu2LffvzQ</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=G-xUDfRwxH8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=G-xUDfRwxH8</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=MgFuVTBWcyQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=MgFuVTBWcyQ</a><br><a href="https://www.youtube.com/watch?v=GBZ4qDfVrIg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=GBZ4qDfVrIg</a><br><a href="https://www.youtube.com/watch?v=ZTGPFr3WXcc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZTGPFr3WXcc</a><br><a href="https://www.youtube.com/watch?v=UoQ9q2qQX4w" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=UoQ9q2qQX4w</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=eEz9SVHan18" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=eEz9SVHan18</a><br><a href="https://www.youtube.com/watch?v=zGXTjDiskAI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zGXTjDiskAI</a><br><a href="https://www.youtube.com/watch?v=dV_zyY003po" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=dV_zyY003po</a><br><a href="https://www.youtube.com/watch?v=7M_QNlqBbC0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=7M_QNlqBbC0</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=v_gaLAJw-E8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=v_gaLAJw-E8</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefershil.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefershil.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=kqTu2LffvzQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=kqTu2LffvzQ</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=G-xUDfRwxH8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=G-xUDfRwxH8</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=MgFuVTBWcyQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=MgFuVTBWcyQ</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=GBZ4qDfVrIg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=GBZ4qDfVrIg</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=ZTGPFr3WXcc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ZTGPFr3WXcc</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=UoQ9q2qQX4w" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=UoQ9q2qQX4w</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=eEz9SVHan18" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=eEz9SVHan18</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=zGXTjDiskAI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zGXTjDiskAI</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=dV_zyY003po" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=dV_zyY003po</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=7M_QNlqBbC0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=7M_QNlqBbC0</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=v_gaLAJw-E8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=v_gaLAJw-E8</a></li></ul>
             </div>
 
             
@@ -303,7 +358,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -421,6 +476,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

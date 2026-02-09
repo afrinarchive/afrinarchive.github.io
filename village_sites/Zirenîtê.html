@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -141,11 +162,38 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Zirenîtê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>And it came in the book: Afrin.... its river and green hills by writer Abdulrahman Mohammed from <span class="internal-link">Qatma village</span></p>
-<p><strong>زعرنيتا</strong>: A farm in <span class="internal-link">Lilon Mountain</span>, belonging to the center villages district and Afrin region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p>A small farm located on a mountainous elevation of the eastern <span class="internal-link">Lilon Mountain</span> chain belonging to the villages district of Afrin region. It is bordered to the north by a mountain chain and rough rocks and <span class="internal-link">Soughana village</span> and <span class="internal-link">Aqiba</span> and to the south by a mountainous slope and mountain chain and rough terrain and <span class="internal-link">Nabl town</span> at the bottom of <span class="internal-link">Lilon Mountain</span> and to the west by a stream and mountain chain of rough rocks and <span class="internal-link">Miyasa village</span> at 500m distance. The number of its houses reaches about 35 houses and its age is about 80 years. They came from <span class="internal-link">Sarin town</span>/<span class="internal-link">Ein al-Arab</span>/ and bought these lands. Its houses are modern of stone and cement. It has electricity network and an earth road connecting to <span class="internal-link">Nabl town</span>. In it is an elementary school and residents drink from pools and cisterns from rainwater collection. Its inhabitants work in grain cultivation and livestock and cattle raising primarily and currently it follows administratively <span class="internal-link">Nabl</span> district <span class="internal-link">A&#x27;zaz</span> region since 1980.</p>
-<p>Preparation and implementation: Director of <span class="internal-link">Tireij Afrin</span> website: <span class="internal-link">Abdulrahman Haji Othman</span></p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Zirenîtê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=59fBqC2SC24" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=59fBqC2SC24</a></p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Zirenîtê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20zarneta.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20zarneta.htm</a></p>
+<p>And it is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p><span class="internal-link">Zernîte</span>: A farm in <span class="internal-link">Çiyayê Lêlûn</span>, following the sub district of the villages of the center and region of <span class="internal-link">Efrîn</span>, Heleb governorate. It is a small farm located on a mountainous elevation of the eastern Çiyayê Lêlûn chain, following the sub district of the villages of the Efrîn region.</p>
+<p>It is bordered to the north by a rugged mountain chain of rocks and the village of <span class="internal-link">Soxanek</span> and <span class="internal-link">Eqîbê</span>; to the south by a mountain slope, a rugged mountain chain, and the town of <span class="internal-link">Nubl</span> at the bottom of Çiyayê Lêlûn; and to the west by a watercourse and a mountain chain of rugged rocks and the village of <span class="internal-link">Meyasê</span> at a distance of 500m.</p>
+<p>The number of its houses reaches about 35 houses, and its age is about 80 years. They came from the town of <span class="internal-link">Sirîn</span> <span class="internal-link">Kobanê</span> and bought these lands. Its dwellings are modern, made of stones and cement. An electricity network is available in it, as well as a leveled dirt road connecting to the town of Nubl. It has a primary school. The residents drink from pools and cisterns from gathered rainwater. Its inhabitants work in grain cultivation and the raising of sheep and cows primarily. Currently, it administratively follows the Nubl sub district, <span class="internal-link">Ezaz</span> region, since the year 1980.</p>
+<p>Sources</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه زعرنيتا : مزرعة في جبل ليلون , تتبع ناحية قرى مركز ومنطقة عفرين ، محافظة حلب . مزرعة صغيرة تقع على مرتفع جبلي لسلسلة جبل ليلون الشرقية تتبع ناحية قرى منطقة عفرين. يحدها شمالاً سلسلة جبلية وعرة من الصخور وقرية الصوغانة و عقيبة وجنوباً منحدر جبلي وسلسلة جبلية وعرة وبلدة نبل في أسفل جبل ليلون وغرباً مسيل وسلسلة جبلية من الصخور الوعرة وقرية المياسة على بعد500م يبلغ عدد بيوتها حوالي35 بيتاً وعمرها حوالي80عاماً أتوا من بلدة صرين/عين العرب/ واشتروا هذه الأراضي. مساكنها حديثة من الأحجار والأسمنت تتوفر فيها شبكة الكهرباء وطريق ترابي معبد يصل ببلدة نبل فيها مدرسة ابتدائية ويشرب الأهالي من البرك والصهاريج من تجمع مياه الأمطار يعمل سكانها بزراعة الحبوب وتربية الأغنام والأبقار بشكل أساسي وحالياً تتبع إدارياً لناحية نبل منطقة اعزاز منذ عام 1980.</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Zirenîtê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=59fBqC2SC24" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=59fBqC2SC24</a></p>
 <p>The village of <span class="internal-link">Zernêîtê</span> (also referred to as <span class="internal-link">Zirnaîtê</span>) is located in the <span class="internal-link">Şêrawa</span> region of <span class="internal-link">Efrîn</span>, situated upon <span class="internal-link">Çiyayê Lêlûn</span>. While the village is geographically and culturally integrated into the Kurdish landscapes. Its residents speak Kurmanji and wear the traditional black dress characteristic of Şêrawa. Its origins are distinct. According to the elder <span class="internal-link">Apê Îbrahîm</span>, the village was founded approximately 200 years ago by five brothers from the <span class="internal-link">Usûsî</span> tribe (specifically the <span class="internal-link">Awn</span> lineage). These founders were originally <span class="internal-link">Arabs</span> from <span class="internal-link">Sirîn</span>. Their migration path took them through <span class="internal-link">Deşta Cûmê</span> and the eastern plains, stopping in locations such as <span class="internal-link">Minx</span>, <span class="internal-link">Pişta Arê</span>, <span class="internal-link">Timb</span>, and <span class="internal-link">Aqîb</span>, before they eventually purchased the land for Zernêîtê from the people of <span class="internal-link">Kurzêl</span>. Over the last two centuries, the Usûsî settlers became completely &quot;Kurdified&quot; (bûne Kurd), adopting the language and customs of their neighbors.</p>
 <p>Historically, the village was known as <span class="internal-link">Zinarê Rûyt</span>, meaning &quot;Naked Cliff,&quot; or <span class="internal-link">Zênarîş</span>. A defining feature of the village&#x27;s architectural history is the <span class="internal-link">Qop</span> (or <span class="internal-link">Qube</span>), traditional conical domed houses built from stone and clay. In the past, the village consisted almost entirely of these structures, and families lived communally within them. Residents like <span class="internal-link">Mihemed</span> and <span class="internal-link">Xaltîka Fatma</span> describe a time when extended families, sometimes including multiple married couples, shared a single Qube, using curtains to separate sleeping quarters. The <span class="internal-link">Metkê</span> and <span class="internal-link">Qamber</span> families are specifically mentioned in relation to these traditional living arrangements. The largest Qop historically served as the guesthouse (odê) and was associated with the late elder <span class="internal-link">Elî Hesen</span>, who was a central figure in resolving social disputes.</p>
 <p>Culturally, Zernêîtê is a repository of traditional arts and knowledge. The village is known for its singers (dengbêj), most notably the late <span class="internal-link">Hesenê Dengbêj</span>. His son, <span class="internal-link">Apê Ehmed</span>, continues this oral tradition, reciting epics such as &quot;Genc Osman,&quot; though he notes that he is the last of his family to do so. The village is also a hub for traditional medicine; <span class="internal-link">Apê Hesen</span> and his wife <span class="internal-link">Xaltîka Eyş</span> (of the <span class="internal-link">Naso</span> family) are renowned for preparing <span class="internal-link">Mêrstone</span>, also known locally as <span class="internal-link">Hebba Salê</span> or <span class="internal-link">Hebba Helebê</span>. This herbal paste, made from burnt wheat oil and other ingredients, is used to treat boils and burns.</p>
@@ -193,7 +241,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20zarneta.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20zarneta.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=59fBqC2SC24" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=59fBqC2SC24</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20zarneta.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20zarneta.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=59fBqC2SC24" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=59fBqC2SC24</a></li></ul>
             </div>
 
             
@@ -203,7 +251,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -321,6 +369,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

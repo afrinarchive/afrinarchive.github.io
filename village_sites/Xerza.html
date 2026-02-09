@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Xerza, Xerzan, Xerze, خرزان, خارزا</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bakîr, Mistefa, Osman</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -201,25 +223,68 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Xerza</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Name of a region and Kurdish tribal group in northern Kurdistan, province of Bedlîs</p>
+<p><strong>Foundation Date/Period:</strong> 300 years</p>
+<p><strong>Shrines:</strong> <span class="internal-link">Şêx Ebdulrehman</span></p>
+<p><strong>Wells:</strong> <span class="internal-link">Bîreke Romanî</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Wadî Xerzan</span>, <span class="internal-link">Wadî Sîlê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Xerza</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Xerza, خرزان</strong> /744n - 320ha - 10km - 520m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Xerza</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xerza.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xerza.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Xerza</span>, <span class="internal-link">Xerzan</span> /744 inhabitants - 320 hectares - 520m altitude/:</p>
+<p>Xerza: Name of a region and Kurdish tribal group in northern Kurdistan, province of <span class="internal-link">Bedlîs</span>.</p>
+<p>It is a small village located on both sides of the Xerzan valley, which slopes steeply towards the south, and is surrounded by steep mountain slopes.</p>
+<p>It is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Xerzan is a village in <span class="internal-link">Çiyayê Kurmênc</span> following the township of <span class="internal-link">Cindirês</span>, area of <span class="internal-link">Efrîn</span>, governorate of <span class="internal-link">Heleb</span>.</p>
+<p>It is a small village located on both sides of the Xerzan valley, which slopes towards the southeast. It is surrounded by calcareous mountain slopes covered with clay soil. It is 12km away from Cindirês towards the northeast. It is bordered to the north by a high mountain range planted with forest trees and olives and the village of <span class="internal-link">Îkî Axûr</span>. To the south, a slope planted with olive trees, a wide and fertile plain, the shrine of <span class="internal-link">Şêx Ebdulrehman</span>, and the village of Şêx Ebdulrehman. To the west, a mountain range planted with olive trees and forest trees, and the village of <span class="internal-link">Eşkan Şerqî</span> and <span class="internal-link">Çeqelê Cûm</span>. To the east, the <span class="internal-link">Sîlê</span> valley, mountainous highlands, a fertile agricultural plain planted with olive trees, the village of <span class="internal-link">Colqa</span>, and the village of <span class="internal-link">Qerebaş</span> (<span class="internal-link">Feqîran</span>).</p>
+<p>The number of its houses is about 20 houses, and its age is about 300 years. Its old houses are stone and mud with flat wooden roofs; the modern ones are cement, scattered on the adjacent slopes. An electricity network is available, as well as a paved road connecting the township to the neighboring villages.</p>
+<p>The village drinks from cistern water where rainwater is collected in winter, or from an old Roman well in the valley. Currently, water is transported to it from the village of Colqa via a water network, and it belongs to the municipality of <span class="internal-link">Kûrkan</span>. The residents work in rain fed agriculture on an area of 320 hectares, producing olives, grains, and vines, alongside raising sheep and goats.</p>
+<p>Among the holders of higher degrees in the village:</p>
+<p><span class="internal-link">Celal Hesen Bakîr</span> / PhD in Experimental Nuclear Physics / Russia</p>
+<p><span class="internal-link">Cîhan Mistefa</span> / PhD in Economics / Russia</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Arif Osman</span></p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and execution:</p>
+<p>Manager of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Xerza ، خرزان /744ن - 320هـ10كم - 520م/:</p>
 <ul>
-<li>Xerza: Name of a region and Kurdish tribal group in northern <span class="internal-link">Kurdistan</span> - <span class="internal-link">Badlis</span> Province.</li>
-<li>A small village located on the edges of <span class="internal-link">Xerzan Valley</span> (خرزان) descending steeply toward the south, surrounded by mountainous slopes with steep gradients.</li>
+<li>خرزا: اسم منطقة ومجموعة عشائرية كردية في شمالي كردستان ولاية بدليس.</li>
 </ul>
-<p>According to the book: Afrin.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from Qatma village</p>
-<p><strong>خرزان</strong>: A village in the <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Cindires</span> district, Afrin region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p>It is a small village located on the edges of <span class="internal-link">Xerzan Valley</span> (خرزان) descending toward the southeast, surrounded by limestone mountainous slopes covered with loamy soil. It is 12km away from <span class="internal-link">Cindires</span> toward the northeast. It is bordered to the north by a high mountain chain planted with forest trees and olives and <span class="internal-link">Iki Akhur</span> village, to the south by a slope planted with olive trees and a wide fertile plain and the shrine of <span class="internal-link">Sheikh Abdul Rahman</span> and <span class="internal-link">Sheikh Abdul Rahman</span> village, to the west by a mountain chain planted with olive trees and forest trees and <span class="internal-link">Ishkan</span> village east and <span class="internal-link">Jaqalali Jum</span>, and to the east by <span class="internal-link">Sili Valley</span> (وادي سيلي) and mountain elevations and agricultural plain planted with olive trees and <span class="internal-link">Julqan</span> village and <span class="internal-link">Qara Bash</span> village (<span class="internal-link">Faqiran</span>). The number of its houses reaches about 20 houses and its age is about 300 years. Its old houses are stone and clay with flat wooden roofs, the modern ones are concrete scattered on the adjacent slopes. It has an electricity network and a paved road connecting to the district and neighboring villages. The village drinks from cistern water that collects rainwater in winter or from an old Roman well in the valley. Currently water is transported to it to <span class="internal-link">Julqan</span> village through a water network belonging to <span class="internal-link">Kurkan</span> municipality. The residents work in rain-fed agriculture on an area of 320 hectares producing olives, grains, and vineyards in addition to raising sheep and goats.</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Jalal Hassan Bakir</span> / Doctorate in Experimental Nuclear Physics / <span class="internal-link">Russia</span> - <span class="internal-link">Jihan Mustafa</span> / Doctorate in Economics / <span class="internal-link">Russia</span></p>
-<p>Village mayor: <span class="internal-link">Mohammed Aref Othman</span></p>
-<p>Prepared and implemented by: Site Manager of <span class="internal-link">Tirej Afrin</span>: Abdul Rahman Haji Othman</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>قرية صغيرة تقع على طرفي وادي خرزان المنحدر بشدة نحو الجنوب وتحيط بها</li>
+</ul>
+<p>سفوح جبلية شديدة الانحدار. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه خرزان : قرية في جبل الكرد تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع على طرفي وادي خرزان المنحدر نحو الجنوب الشرقي تحيط بها سفوح جبلية كلسية ، تغطيها تربة غضارية ، تبعد عن جنديرس 12كم باتجاه الشمال الشرقي ، يحدها شمالاً سلسلة جبلية عالية مزروعة بالأشجار الحراجية والزيتون وقرية إيكي آخور ، وجنوباً منحدر مزروع بأشجار الزيتون وسهل واسع وخصب ومزار الشيخ عبد الرحمن وقرية الشيخ عبد الرحمن ، وغرباً سلسلة جبلية مزروعة بأشجار الزيتون والأشجار الحراجية وقرية اشكان شرقي وجقاللي جوم ، وشرقاً وادي سيلي ومرتفعات جبلية وسهل زراعي خصب مزروع بأشجار الزيتون وقرية جولقان وقرية قره باش (فقيران) ، يبلغ عدد بيوتها حوالي 20بيتاً وعمرها حوالي 300عاماً ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية الحديثة إسمنتية متناثرة على السفوح المجاورة ، تتوفر فيها شبكة كهرباء وطريق مزفت يصل إلى الناحية القرى المجاورة ، تشرب القرية من مياه الصهاريج التي تجمع فيها مياه الأمطار شتاءاً أو من بئر روماني قديم في الوادي وحالياً تنقل إليها المياه إلى قرية جولقان عبر شبكة مائية وهي عائدة لبلدية كوركان ، يعمل السكان بالزراعة البعلية على مساحة 320 هـ تنتج الزيتون والحبوب والكرمة إلى جانب تربية الأغنام والماعز . ومن حاملي الشهادات العليا في القرية : جلال حسن باكير / دكتوراة في الفيزياء النووية التجريبية / روسيا - جيهان مصطفى / دكتوراة في الاقتصاد / روسيا</p>
+<p>مختار القرية :  محمد عارف عثمان</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -234,7 +299,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xerza.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xerza.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xerza.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20xerza.htm</a></li></ul>
             </div>
 
             
@@ -244,7 +309,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -362,6 +427,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

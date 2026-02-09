@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -195,26 +216,71 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Qestelê Kîşik</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Qestel means water source, and Kîşk is a Kurdish diminutive for the name of the slope, as the village is located on the slope of a small incline</p>
+<p><strong>Foundation Date/Period:</strong> About 300 years ago</p>
+<p><strong>Springs:</strong> <span class="internal-link">Kaniya Kefer Cenê</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Pira Cûmkê</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Xeta Hesinî</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qestelê Kîşik</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / عفرين / Geographic Study:</p>
-<p><strong>Qestelê kîšik, قسطل كيشك (قسطل كيشك), <span class="internal-link">Al-Qastal</span> (القسطل)</strong> /539n - 480m - 4km/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qestelê Kîşik</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kstal%20keshak.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kstal%20keshak.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Qestel Kîşk</span>, <span class="internal-link">El-Qestel</span> /539 inhabitants, 480m altitude, 4km/:</p>
+<p>The word Qestel means &quot;water source,&quot; and &quot;Kîşk&quot; is a Kurdish diminutive for the name of the slope. The village is located on the slope of a small incline. At its northern end, there is a clear spring whose waters flow towards the <span class="internal-link">Efrîn</span> river, and the village took its name from it. It is a small village located on the northern slope of the <span class="internal-link">Cûmkê</span> plateau, about 1km away from the Efrîn river to the east.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Qestel Kîşk is a village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Şeran</span> district, Efrîn region, <span class="internal-link">Heleb</span> province (526 inhabitants). It is located on the western slope of a limestone plateau in the northern part of <span class="internal-link">Çiyayê Simean</span>. A watercourse passes through it, heading west towards the valley of the Efrîn river. Its soil is fertile clay, and it is a very small village.</p>
+<p>It is bordered to the north by a slope and valley planted with olive trees and the village of <span class="internal-link">Qurtqulaqê Biçûk</span>. To the south, it is bordered by a highland planted with olive trees and the villages of Cûmkê and <span class="internal-link">Şêx Sîdî</span>. To the east, it is bordered by a slope, a valley, and a mountainous highland planted with olive trees and the village of <span class="internal-link">Qere Tepê</span>. To the west, it is bordered by a slope, the course of the Efrîn river, the <span class="internal-link">Xeta Hesinî</span> (railway line), the antique <span class="internal-link">Pira Cûmkê</span> (Cûmkê bridge) on the Efrîn river, and the village of <span class="internal-link">Estaro</span> located on the western bank of the Efrîn river.</p>
+<p>The number of its houses reaches 35 houses, and its age is about 300 years. Its old residences are made of stone and mud with wooden ceilings, and there are some modern houses in it. An electricity network and water are available in it from the <span class="internal-link">Kaniya Kefer Cenê</span> (Kefer Cenê spring). It has a primary school, and it is connected to the district and the region by a paved road. It was named El-Qestel in relation to the spring located in the middle of the village. Its residents work in agriculture on an area of 220 hectares (olives, sheep rearing, and summer vegetables) due to its proximity to the spring of the Efrîn river. The village drinks from a water network connected to the <span class="internal-link">Kefer Cenê</span> spring.</p>
+<p>Village Mokhtar: <span class="internal-link">Hikmet Şêx Neesan</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li>The word <span class="internal-link">qastal</span> (قسطل) means &quot;water source,&quot; and &quot;<span class="internal-link">kîšik</span>&quot; (كيشك) is a Kurdish diminutive of the slope name. The village is located on the slope of a small slope, and at its northern end is a thin spring whose waters flow toward the <span class="internal-link">Afrin River</span> (نهر عفرين), and the village took its name from it.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A small village located on the northern slope of <span class="internal-link">Jumka plateau</span> (هضبة جومكه), about 1km away from the <span class="internal-link">Afrin River</span> (نهر عفرين) from the east side.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها ورواببيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong>قسطل كشك (قسطل كشك)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Sheran district</span> (ناحية شران), Afrin (منطقة عفرين), <span class="internal-link">Aleppo governorate</span> (محافظة حلب), (526 n)</p>
-<p>Located on the western slope of a limestone plateau in the northern part of <span class="internal-link">Sam&#x27;an Mountain</span> (جبل سمعان) and a watercourse passes through it flowing west toward the <span class="internal-link">Afrin River</span> (نهر عفرين) valley. It is connected by limestone vegetation and is a very small village. It is bordered to the north by slopes and a valley planted with olive trees and <span class="internal-link">Qurt Qulaq Small village</span> (قرية قورت قولاق الصغير). To the south is an elevation planted with olive trees and <span class="internal-link">Jumka village</span> (قرية جومكة) and <span class="internal-link">Sheikh Saidi</span> (شيخ سيدي). To the east are slopes and a valley and a mountain elevation planted with olive trees and <span class="internal-link">Qara Tapa village</span> (قرية قره تبه). To the west are slopes and the <span class="internal-link">Afrin River</span> (نهر عفرين) course and the railway line and <span class="internal-link">Jumka archaeological bridge</span> (جسر جومكة الأثري) on the <span class="internal-link">Afrin River</span> (نهر عفرين) and <span class="internal-link">Astaro village</span> (قرية استارو) located on the western bank of the <span class="internal-link">Afrin River</span> (نهر عفرين).</p>
-<p>The number of its houses is 35 houses and its age is about 300 years. Its old dwellings are stone-clay with wooden roofs and it has some modern houses. It has an electrical network and water from the <span class="internal-link">Kafar Jannah spring</span> (نبع كفر جنة). It has an elementary school. It connects with the district and region by a paved road. It was named <span class="internal-link">Al-Qastal</span> (القسطل) in relation to the spring existing in the village center.</p>
-<p>Its residents work in agriculture over an area of 220 hectares (olives and sheep raising and summer vegetables) due to its proximity to the <span class="internal-link">Afrin River</span> (نهر عفرين) source. The village drinks from a water network connected to the <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة).</p>
-<p>Village mayor: <span class="internal-link">Hakmat Sheikh Na&#x27;san</span> (حكمت شيخ نعسان)</p></div></details></div>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Director of Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Qestel kşik ، قسطل كيشك ، القسطل /539ن - 480م - 4كم/:</p>
+<ul>
+<li>كلمة قسطل بمعنى &quot;مصدر ماء ، و&quot; كيشك&quot; هو تصغير كردي لاسم المنحدر، والقرية</li>
+</ul>
+<p>موجودة على سفح منحدر صغير، وفي نهايته الشمالية نبع رقراق تجري مياهه نحو نهر عفرين، وقد أخذت القرية اسمها منه.</p>
+<ul>
+<li>قرية صغيرة تقع على السفح الشمالي لهضبة جومكه، تبعد عن نهر عفرين بنحو1كم</li>
+</ul>
+<p>من جهة الشرق. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : قسطل كشك : قرية في جبل الكرد تتبع ناحية شران منطقة عفرين محافظة حلب ،(526 ن) تقع على السفح الغربي من هضبة كلسية في الجزء الشمالي لجبل سمعان ويمر منه مسيل مائي يتجه غرباً نحو وادي نهر عفرين ,تربتها غضارية خصبة وهي قرية صغيرة جدا . يحدها شمالا منحدر ووادي مزروع بأشجار الزيتون وقرية قورت قولاق الصغير . وجنوبا مرتفع مزروع بأشجار الزيتون وقرية جومكة وشيخ سيدي . وشرقا منحدر ووادي ومرتفع جبلي مزروع بأشجار الزيتون وقرية قره تبه .وغربا منحدر ومجرى نهر عفرين وخط الحديدي وجسر جومكه الأثري على نهر عفرين وقرية استارو الواقعة على الضفة الغربية لنهر عفرين .يبلغ عدد بيوتها 35بيت وعمرها حوالي 300عام .مساكنها القديمة حجرية طينية ذات سقوف خشبية وفيها بعض البيوت الحديثة .تتوفر فيها شبكة الكهرباء والمياه من نبع كفر جنة .فيها مدرسة ابتدائية تصل مع الناحية والمنطقة وطريق مزفت سميت بالقسطل نسبة للنبع الموجود في وسط القرية .يعمل سكانها بالزراعة على مساحة قدرها 220هكتار (الزيتون وتربية الأغنام والخضروات الصيفية ) بسبب قربها من نبع نهر عفرين تشرب القرية من شبكة مائية متصلة بنبع كفرجنة.</p>
+<p>مختار القرية : حكمت شيخ نعسان</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -229,7 +295,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kstal%20keshak.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kstal%20keshak.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=L_Ac0bSK2sM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=L_Ac0bSK2sM</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kstal%20keshak.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20kstal%20keshak.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=L_Ac0bSK2sM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=L_Ac0bSK2sM</a></li></ul>
             </div>
 
             
@@ -239,7 +305,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -357,6 +423,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

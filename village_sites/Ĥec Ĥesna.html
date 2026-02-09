@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Hechesna, Ĥec Ĥesena</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Xastiyan</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -200,27 +222,76 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Ĥec Ĥesna</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Hesen is the proper name of its first inhabitant, and Hec is his title</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 400 years ago</p>
+<p><strong>Ruins:</strong> <span class="internal-link">Xerba Qesîrê</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Wadî Cercem</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Ĥec Ĥesna</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>From the book Jabal al-Kurd (Afrin): A Geographical Study by Dr. Muhammad Abdu Ali:</p>
-<p><strong>Ĥec Ĥesna, Haj Hasanli, Haj Hasan /1379p - 700hh - 12km - 550m/:</strong></p>
-<p>Translator&#x27;s Note: The numbers likely refer to population (p), households (hh), distance from the district center (km), and elevation (m).</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Ĥec Ĥesna</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20hesena.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20hesena.htm</a></p>
+<p>Based on the book Çiyayê Kurmênc (Efrîn): A Geographical Study by <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Hec Hesna</span> <span class="internal-link">Hac Hesenlî</span> <span class="internal-link">Hac Hesen</span>.</p>
+<p>Population: 1379. Area: 700 hectares. Distance: 12km. Elevation: 550m.</p>
+<p>Regarding the name: <span class="internal-link">Hesen</span> is the proper name of its first inhabitant, and <span class="internal-link">Hec</span> is his title.</p>
+<p>It is a small village consisting of two parts, western and eastern. It is located on a mountain slope from which several drainage lines descend, heading north and west towards <span class="internal-link">Wadî Cercem</span>. It is surrounded by dense pine forests and is considered the last village of the <span class="internal-link">Xastiyan</span> group from the west. Approximately 1km south of the village lies <span class="internal-link">Xerba Qesîrê</span>, which contains ancient archaeological remains, many pottery shards, carved stones decorated with inscriptions, column capitals, and cisterns hewn into the rock, which the residents still use to this day.</p>
+<p>According to the book Efrîn... Her River and Her Green Hills by the writer <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Hec Hesna is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Cindirês</span> subdistrict, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a large village situated on the western side of the middle section of the aforementioned mountain block, atop a mountain slope. Several drainage lines descend from it towards the west, feeding into Wadî Cercem. It is covered by oak forests and is located about 31km northwest of the town of Cindirês. Its soil is clay, suitable for agriculture and grazing.</p>
+<p>The construction of the area is ancient, indicated by the presence of old archaeological remains such as pottery shards, carved limestone rocks decorated with inscriptions, and column capitals. It is bordered to the north by a rugged slope, Wadî Cercem, mountainous highlands, and the village of <span class="internal-link">Remedana</span> at the top of the valley. To the south, it is bordered by a rugged and harsh slope, three drainage lines, mountainous highlands planted with forest trees, and the villages of <span class="internal-link">Teteran</span> and <span class="internal-link">Kefer Sefrê</span>. To the west lies a rugged slope, the meeting point of drainage lines at the bottom of the valley, the village of <span class="internal-link">Sînka</span>, and the town of <span class="internal-link">Şiyê</span>. To the east, there is a high, rugged mountain chain planted with forest trees, and the villages of <span class="internal-link">Koran</span> and <span class="internal-link">Çobana</span>.</p>
+<p>The number of houses is approximately 80, and the village is about 400 years old, according to one of the elderly residents. The old houses are made of stone and mud with flat wooden roofs, though modern concrete dwellings have begun to dominate and extend along the transportation axis. A electricity network and a primary school are available. There is also a telephone center in the village used by all residents. The drinking water network is supplied by a well drilled by the state or from cisterns hewn into the rock, which residents still use today in Xerba Qesîrê, located 2km south of the village, where rainwater is collected.</p>
+<p>Its residents work in rain-fed agriculture on an area of 700 hectares, cultivating olive trees, grains, legumes, fig trees, pomegranates, walnuts, and vines, alongside raising sheep and goats. The <span class="internal-link">Riya Mabeta</span> (road to Mabeta) leading to the village has been newly asphalted through the mountains, and the road towards Kefer Sefrê and the town of Cindirês is asphalted.</p>
+<p>Village Mukhtar: <span class="internal-link">Mistefa Mihemed</span>.</p>
+<p>Sources:</p>
 <ul>
-<li>Hasan: A proper name of its first inhabitant, and Haj: his title.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A small village with two sections, western and eastern. It is located on a mountain slope from which several streams descend, heading north and west towards the Jarjam valley. It is surrounded by dense pine forests and is considered the last of the &quot;Khastiyan&quot; villages from the west. 1 km south of the village is &quot;Khirbet Qasiri,&quot; which contains ancient archaeological remains, numerous pottery shards, carved and decorated stones, column capitals, and cisterns carved into the rock, which residents still use today.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>From the book: Afrin... Its River and Green Hills by the author Abd al-Rahman Muhammad from the village of Qatma:</p>
-<p><strong>Haj Hasanli:</strong> A village in Jabal al-Kurd, belonging to the sub-district of Jinderes, Afrin district, Aleppo Governorate.</p>
-<p>It is a large village located on the western side of the central part of the aforementioned mountain mass, situated on a mountain slope from which several streams descend westward to feed the Jarjam valley. The slope is covered with oak forests. It is located about 31 km northwest of the town of Jinderes. Its soil is clayey and suitable for agriculture and grazing. The area&#x27;s settlement is ancient, as evidenced by the presence of old archaeological remains such as pottery shards, carved and decorated limestone blocks, and column capitals.</p>
-<p>It is bordered to the north by a rugged slope, the Jarjam valley, mountain highlands, and the village of Ramadanli at the top of the valley to the north; to the south by a rugged and harsh slope, three streams, and mountain highlands planted with forest trees, and the villages of Tataranli and Kafr Safra; to the west by a rugged slope and the meeting point of streams at the bottom of the valley, and the villages of Sannara and the town of Sheikh al-Hadid; and to the east by a high, rugged mountain range planted with forest trees and the villages of Koran and Jobanli. The village has about 80 houses and is approximately 400 years old, according to one of its elderly residents.</p>
-<p>Its old houses are made of stone and mud with flat wooden roofs, which are now being overtaken by modern cement dwellings extending along the transportation routes. It has an electricity network and an elementary school. There is also a telephone center in the village used by all the residents, and a drinking water network supplied by a well dug by the state or from rock-hewn cisterns that residents still use today in Khirbet Qasiri, located 2 km south of the village, which collect rainwater.</p>
-<p>Its residents practice rain-fed agriculture on an area of 700 hectares, cultivating olive trees, grains, legumes, and fig, pomegranate, walnut, and grapevine trees, alongside raising sheep and goats. The road connecting it towards the town of Maabatli is a recently paved mountain road, and the road towards Kafr Safra and the town of Jinderes is paved.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>221</p>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Manager of Navenda Tirej Efrîn: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Ĥec Ĥesna ، حاج حسنلي، حاج حسن /1379ن</p>
+<ul>
+<li>700هـ - 12كم - 550م/:</li>
+</ul>
+<ul>
+<li>حسن: اسم علم لساكنها الأول، و حاج: لقبه.</li>
+</ul>
+<ul>
+<li>قرية صغيرة ذات قسمين غربي وشرقي. تقع على سفح جبلي تنحدر منه عدة مسيلات</li>
+</ul>
+<p>تتجه شمالا وغربا نحو وادي جرجم. تحيط بها حراج كثيفة من الصنوبر، وتعتبر آخر قرية من قرى &quot;خاستيان&quot; من جهة الغرب. توجد جنوب القرية بـ 1كم &quot;خربة قسيري&quot;، فيها بقايا أثرية قديمة وكسر فخارية كثيرة وحجارة منحوتة ومزينة بالنقوش وتيجان أعمدة وصهاريج منقورة في الصخور، لا يزال السكان يستخدمونها حتى اليوم. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه حاج حسنلي : قرية في جبل الكرد، تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع في الجهة الغربية للقسم الأوسط من كتلة الجبل المذكور ، فوق سفح جبلي تنحدر منه عدة مسيلات نحو الغرب ترفد وادي جرجم ، وتغطيه حراج من السنديان ، تبعد عن بلدة جنديرس نحو / 31كم/ الشمال الغربي ، تربتها غضارية صالحة للزراعة والرعي ، بناء المنطقة قديم بدلالة وجود بقايا أثرية قديمة من الكسر الفخارية والأحجار الكلسية المنحوتة والمزينة بالنقوش وتيجان الأعمدة ، يحدها شمالاً منحدر وعر ووادي جرجم ومرتفعات جبلية وقرية رمضانلي في أعلى الوادي شمالاً ، وجنوباً منحدر وعر وقاسي وثلاث مسيلات ومرتفعات جبلية مزروعة بالأشجار الحراجية وقرية تاتارانلي وقرية كفر صفرة ، وغرباً منحدر وعر وملتقى مسيلات في أسفل الوادي وقرية سنارة وبلدة شيخ الحديد ، وشرقاً سلسلة جبلية عالية وعرة مزروعة بأشجار حراجية وقرية كوران وجوبانلي . يبلغ عدد بيوتها حوالي 80بيتاً وعمرها حوالي 400عاماً حسب أقوال أحد المعمرين في القرية . بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية ، باتت تطغى عليها المساكن الإسمنتية الحديثة وتمتد حول محور طرق المواصلات ، تتوفر فيها شبكة كهرباء ومدرسة إبتدائية كما يوجد مركز هاتف في القرية يستعمله جميع أهالي القرية وشبكة مياه الشرب من البئر المحفور من قبل الدولة أومن الصهاريج المحفورة في الصخور والتي يستعملها الأهالي حتى اليوم في خربة قصيري الواقعة جنوب القرية 2كم والتي تجمع فيها مياه الأمطار . يعمل سكانها بالزراعة البعلية على مساحة قدرها 700 هـ بأشجار الزيتون والحبوب والبقول وأشجار التين والرمان والجوز والكرمة ، إلى جانب تربية الأغنام والماعز ، الطريق الواصل إليها باتجاه بلدة معبطلي مزقت حديثاًَ جبلي و باتجاه كفر صفرة وبلدة جنديرس مزفتة .</p>
+<p>مختار القرية :  مصطفى محمد</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 1</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>221</p>
 <p>THE VILLAGE OF HECHESNA</p>
 <p>30.12.2016</p>
 <p>The village of Hechesna is the last village in the Xastiyan mountain range from the west. It is affiliated with the Şiyê district of Efrîn canton, located 10 km southeast of the town of Şiyê and 26 km northwest of the city of Efrîn. That is, it is located between the three districts of Mabeta, Cindirêsê, and Mabeta.</p>
@@ -253,7 +324,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>TirejAfrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20hesena.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20hesena.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=oR569IA6k3A" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=oR569IA6k3A</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=kFOIV17EMRY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=kFOIV17EMRY</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20hesena.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20hesena.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=oR569IA6k3A" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=oR569IA6k3A</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=kFOIV17EMRY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=kFOIV17EMRY</a></li></ul>
             </div>
 
             
@@ -263,7 +334,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -381,6 +452,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

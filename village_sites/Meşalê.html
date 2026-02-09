@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -168,6 +189,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şera</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Mashalh, Me&#x27;šalê, مشعلة, مشله</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Heyder Hemzo</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
@@ -210,20 +232,60 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Meşalê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / عفرين / Geographic Study:</p>
-<p><strong>Me&#x27;šalê, مشعلة (مشعلة)</strong> /1024n - 520m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Meşalê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Mashalh.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Mashalh.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> regarding <span class="internal-link">Meşelê</span>:</p>
+<p>Ibn al-Shihna and Yaqut al-Hamawi mentioned its name in the form of &quot;<span class="internal-link">Meşhela</span>&quot; and stated that the tomb of the Prophet David is located there, but we have not been able to determine the meaning of the name.</p>
+<p>It is a medium-sized village located on the northern side of the valley of <span class="internal-link">Kefer Cenê</span>. The railway line and the <span class="internal-link">Tunêla Meşelê</span> (Meşelê train tunnel) pass by its northern side. Next to it is the well-known <span class="internal-link">Ziyareta Evdê Henan</span>. From the west, it overlooks an archaeological site, evidenced by the presence of pottery fragments and trimmed stones.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Meşelê is a village located in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Şeran</span> district of the <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village situated on a mountainous rise, surrounded by slopes in the northern part of <span class="internal-link">Çiyayê Seman</span> on the southwestern foothills of a limestone plateau near the railway tunnel. It is located 5 km from the town of Şeran toward the southeast.</p>
+<p>It is bordered to the north by a slope, a mountain rise, a valley planted with olive trees and vines, the <span class="internal-link">Riya Kefer Cenê-Bilbil</span> (Kefer Cenê-Bilbil road), <span class="internal-link">Meydankê</span>, and the village of <span class="internal-link">Metîna</span>. To the south, it is bordered by a valley, a slope, <span class="internal-link">Mezarê Henan</span>, the <span class="internal-link">Kaniya Kefer Cenê</span> (Kefer Cenê spring), the <span class="internal-link">Riya Heleb-Efrîn</span> (Heleb-Efrîn road), and the village of <span class="internal-link">Kefer Mezê</span>. To the west, there is a slope, an agriculturally fertile plain, the railway line, the village of <span class="internal-link">Kortek</span>, and <span class="internal-link">Qurtqulaqa Mezin</span>.</p>
+<p>The number of its houses is approximately 60, and its age is about 400 years. It is one of the old villages, evidenced by the ancient construction in the area and the presence of building foundations made of huge dressed limestone, tombs, and wells carved into the rocks dating back to the Roman era. Its houses are made of mud and stone with wooden roofs, while the modern ones are made of stones and reinforced concrete. In the western side, there are old archaeological caves.</p>
+<p>An electricity network is available, as well as drinking water from the Kaniya Kefer Cenê line which extends to the reservoir of the city of Efrîn. It is reached via a paved road branching off from the <span class="internal-link">Riya Efrîn-Heleb</span> (Efrîn-Heleb road) up to the Şeran district. The village contains a primary school and <span class="internal-link">Mezarê Şêx Henan</span> near the Efrîn road, as well as a mosque. There is also a railway tunnel on the northern side, under which the train passes to <span class="internal-link">Meydan Ekbez</span> and Turkey, coming from Heleb.</p>
+<p>The residents work in the cultivation of grains, olives, and fruit trees such as pomegranates, apricots, walnuts, and almonds, as well as vegetables. These used to be irrigated from Kaniya Kefer Cenê, but currently, after the water was channeled to Efrîn, these orchards have begun to suffer from drought. It is a beautiful village in terms of weather, the abundance of surrounding trees, and its proximity to Kefer Cenê. Its population, according to the civil registry dated 31/12/2004, is 1002 people. The first to inhabit the village since its establishment was the family of <span class="internal-link">Heyder Hemzo</span>.</p>
+<p>Village Mukhtar: <span class="internal-link">Tonî Heyder Mihemed</span>.</p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">Ibn al-Shahna</span> (ابن الشحنة) and also <span class="internal-link">Yaqut al-Hamawi</span> (ياقوت الحموي) mentioned its name in the form &quot;<span class="internal-link">Mashahla</span>&quot; (مشحلا), and that there is the grave of <span class="internal-link">Prophet David</span> (النبي داوود) in it, but we have not reached knowledge of the name&#x27;s meaning.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>A medium-sized village located on the northern side of <span class="internal-link">Kafarjannah valley</span> (وادي كفرجنة). The railway line and <span class="internal-link">Mash&#x27;ala tunnel</span> (نفق مشعلة) for the train pass along its northern side. Near it is the well-known <span class="internal-link">Abdul Hanan shrine</span> (زيارة عبدالحنان). It overlooks from the west an archaeological site indicated by the presence of pottery pieces and carved stones in it.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها ورواببيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong>مشعلة (مشعلة)</strong>: A village located in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Sheran district</span> (ناحية شران), Afrin (منطقة عفرين), <span class="internal-link">Aleppo governorate</span> (محافظة حلب).</p>
-<p>It is a small village located on a mountain elevation with slopes around it in the northern part of <span class="internal-link">Sam&#x27;an Mountain</span> (جبل سمعان) on the southwestern slope of a limestone plateau near the railway tunnel. It is 5km away from <span class="internal-link">Sheran town</span> (بلدة شران) in the southeastern direction. It is bordered to the north by slopes and a mountain elevation and a valley planted with olive and vineyard trees and the <span class="internal-link">Kafar Jannah Bulbul and Medanaki road</span> (طريق كفر جنة بلبل وميدانكي) and <span class="internal-link">Matinli village</span> (قرية ماتينلي). To the south are a valley and slopes and <span class="internal-link">Hanan shrine</span> (مزار حنان) and <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة) and the <span class="internal-link">Aleppo Afrin road</span> (طريق حلب عفرين) and <span class="internal-link">Kafarmiz village</span> (قرية كفرمز). To the east lie slopes and fertile agricultural plains and the railway line and <span class="internal-link">Kortik village</span> (قرية كورتك) and <span class="internal-link">Qurt Qulaq Large</span> (قورت قولاق كبير). To the west are slopes and fertile agricultural plains and the railway line and <span class="internal-link">Kortik village</span> (قرية كورتك) and <span class="internal-link">Qurt Qulaq Large</span> (قورت قولاق كبير).</p>
-<p>The number of its houses is about 60 houses and its age is about 400 years. It is one of the old villages as indicated by the old construction of the region and the presence of stone foundations of large carved limestone stones and graves, and wells carved in rocks dating to the Roman period. Its houses are of clay and stone with wooden roofs, while the modern ones are of stone and reinforced cement. On the western side there are ancient archaeological caves. It has an electrical network and drinking water from the <span class="internal-link">Kafar Jannah spring</span> (نبع كفر جنة) line reaching the Afrin City (عفرين) tank. It is reached via a paved road branching from the <span class="internal-link">Afrin - Aleppo road</span> (طريق عفرين - حلب) to <span class="internal-link">Sheran district</span> (ناحية شران). It has an elementary school and <span class="internal-link">Sheikh Hanan shrine</span> (مزار شيخ حنان) near the <span class="internal-link">Afrin road</span> (طريق عفرين) as well as a mosque. There is also a railway tunnel from the northern side through which the train to <span class="internal-link">Medan Akbas</span> (ميدان اكبس) and <span class="internal-link">Turkey</span> (تركيا) passes coming from <span class="internal-link">Aleppo</span> (حلب).</p>
-<p>The residents work in grain, olive, and fruit tree cultivation such as pomegranates, apricots, walnuts, almonds, and vegetables, which were irrigated from the <span class="internal-link">Kafar Jannah spring</span> (نبع كفرجنة). But currently, after the water reached Afrin City (عفرين) through channels, these orchards suffer from drought. It is a beautiful village in terms of climate and the abundance of trees surrounding it and its proximity to <span class="internal-link">Kafar Jannah</span> (كفر جنة). The number of its population according to the civil registry dated <span class="internal-link">31/12/2004</span> is (1002 n) and the first to inhabit since the village&#x27;s establishment was the <span class="internal-link">Haider Hamzo family</span> (عائلة حيدر حمزو).</p>
-<p>Village mayor: <span class="internal-link">Toni Haider Mohammed</span> (توني حيدر محمد)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Meşalê from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Unk9bjkXE9o" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Unk9bjkXE9o</a></p>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Meşal ، مشعلة /1024ن - 520م/:</p>
+<ul>
+<li>ذكر ابن الشحنة وكذلك ياقوت الحموي اسمها على شكل &quot;مشحلا&quot;، وبأنه فيها قبر</li>
+</ul>
+<p>النبي داوود، ولكننا لم نتوصل إلى معرفة معنى الاسم.</p>
+<ul>
+<li>قرية متوسطة تقع على الجانب الشمالي لوادي كفرجنة، يمر بجانبها الشمالي خط</li>
+</ul>
+<p>سكة الحديد ونفق مشعلة للقطار. توجد بجوارها زيارة عبدالحنان المعروفة. وهي تشرف من الغرب على موقع أثري بدلالة وجود قطع فخارية وأحجار مشذبة فيها. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : مشعلة : قرية تقع في جبل الكرد تتبع ناحية شران منطقة عفرين محافظة حلب . وهي قرية صغيرة تقع على مرتفع جبلي ومن حولها منحدرات في الجزء الشمالي من جبل سمعان على السفح الجنوبي الغربي لهضبة كلسية قرب نفق سكة الحديد ، تبعد عن بلدة شران 5 كم باتجاه الجنوب الشرقي ، يحدها شمالاً منحدر ومرتفع جبلي ووادي مزروع بأشجار الزيتون والكرمة وطريق كفر جنة بلبل وميدانكي وقرية ماتينلي وجنوباً وادي ومنحدر ومزار حنان ونبع كفرجنة وطريق حلب عفرين وقرية كفرمز وغرباً منحدر وسهل خصب زراعيا والخط الحديدي وقرية كورتك وقورت قولاق الكبير . يبلغ عدد بيوتها حوالي 60 بيت وعمرها حوالي 400عام وهي من القرى القديمة بدلالة إعمار المنطقة القديم ووجود أساسات أبنية من الأحجار الكلسية الضخمة المهذبة ومدافن , وآبار منقورة في الصخور تعود للعهد الروماني . بيوتها من الطين والحجر ذات السقوف الخشبية أما الحديثة من الأحجار والإسمنت المسلح أما في الجهة الغربية فهناك كهوف أثرية قديمة. .تتوفر فيها شبكة الكهرباء ومياه الشرب من خط نبع كفر جنة الواصل إلى خزان مدينة عفرين يصل إليها عبر طريق مزفّت يتفرع عن طريق عفرين - حلب حتى ناحية شران . فيها مدرسة ابتدائية ومزار شيخ حنان قرب طريق عفرين وكذلك جامع , كما يوجد نفق لسكة الحديد من الطرف الشمالي يمر تحتها قطار إلى ميدان اكبس وتركيا قادما ًمن حلب . يعمل الأهالي بزراعة الحبوب والزيتون والأشجار المثمرة كالرمان والمشمش والجوز واللوز والخضراوات , والتي كانت تروى من نبع كفرجنة أما حالياً بعد وصول المياه عبر القنوات إلى عفرين أصبحت هذه البساتين تعاني من الجفاف . وهي قرية جميلة من حيث الجو وكثرة الأشجار المحيطة بها وقربها من كفر جنة ، يبلغ عدد نفوسها حسب السجل المدني بتاريخ 31/12/2004م ( 1002ن ) وأول من سكن منذ إنشاء القرية عائلة حيدر حمزو .</p>
+<p>مختار القرية : توني حيدر محمد</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Meşalê from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Unk9bjkXE9o" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Unk9bjkXE9o</a></p>
 <p>The village of <span class="internal-link">Meşale</span> is located in the <span class="internal-link">Şerawa</span> district of the <span class="internal-link">Efrîn</span> region, overlooking the plains of <span class="internal-link">Heleb</span>. According to local oral tradition, the settlement is ancient, with a history spanning approximately 700 years. An elder explains that the name Meşale is etymologically derived from the Arabic phrase &quot;Maşallah.&quot; In the past, the village lands were densely covered with fruit trees, specifically apricot, walnut, and pomegranate. The greenery and shade were so impressive that observers would repeatedly exclaim &quot;Maşallah,&quot; a name that eventually evolved into Meşale.</p>
 <p>Historically, the residents of Meşale did not live in masonry houses. Instead, they inhabited the numerous caves found in the area; the host notes there are approximately 140 caves within the village boundaries. Over the centuries, the population shifted from cave dwelling to stone construction and eventually modern concrete housing, though the village retains a historic atmosphere with narrow, difficult roads. A significant historical infrastructure feature is the <span class="internal-link">Reka Çîman</span> (railway), which passed through the village territory connecting <span class="internal-link">Ekbez</span> to Heleb. Although the tracks are no longer present in some sections, having been covered or removed, the route remains a known landmark.</p>
 <p>The spiritual entrance to the village is marked by the <span class="internal-link">Ziyareta Henan Menan</span>, a revered shrine and cemetery. The host pays extensive respects here, noting it as a resting place for thousands. Geographically, Meşale is situated on high ground with a view of neighboring villages such as <span class="internal-link">Kefermizê</span>, <span class="internal-link">Kefercenê</span>, <span class="internal-link">Oxler</span>, <span class="internal-link">Metîna</span>, and the hill or area of <span class="internal-link">Bekerê</span>. Water management is also highlighted, with a canal from the <span class="internal-link">Meydankê</span> dam project passing through the area to supply Efrîn and <span class="internal-link">Ezaz</span>.</p>
@@ -278,7 +340,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Mashalh.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Mashalh.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=8p8-75rOzMY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8p8-75rOzMY</a><br><a href="https://www.youtube.com/watch?v=nwmhDXZkwFg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=nwmhDXZkwFg</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=0H62JSyLxhQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=0H62JSyLxhQ</a><br><a href="https://www.youtube.com/watch?v=uGOxopuCPOo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=uGOxopuCPOo</a><br><a href="https://www.youtube.com/watch?v=3-S5kaDPenw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3-S5kaDPenw</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=Unk9bjkXE9o" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Unk9bjkXE9o</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Mashalh.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Mashalh.htm</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=8p8-75rOzMY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=8p8-75rOzMY</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=nwmhDXZkwFg" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=nwmhDXZkwFg</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=0H62JSyLxhQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=0H62JSyLxhQ</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=uGOxopuCPOo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=uGOxopuCPOo</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=3-S5kaDPenw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3-S5kaDPenw</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=Unk9bjkXE9o" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Unk9bjkXE9o</a></li></ul>
             </div>
 
             
@@ -288,7 +350,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -406,6 +468,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

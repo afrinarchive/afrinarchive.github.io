@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -104,6 +125,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Rif&#x27;etiyê, Rifetiye, رفعتية</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Emo, Heyder</p></div>
                         </div>
                     </div>
                     
@@ -126,23 +148,66 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Rif&#x27;etiyê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Named after Rif&#x27;et Axa of the Emo family</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 80 years ago</p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Deşta Cûmê</span>, <span class="internal-link">Deşta Cindirêsê</span>, <span class="internal-link">Newala Efrînê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Rif&#x27;etiyê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>رفعتية</strong> /205m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Rif&#x27;etiyê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20rifetiye.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20rifetiye.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Rif&#x27;etiyê</span> /205m/:</p>
+<p>It is named after <span class="internal-link">Rif&#x27;et Axa</span> of the <span class="internal-link">Emo</span> family, and his palace is located there. It contains a palace for the Emo family and has become part of the eastern neighborhood of the town of <span class="internal-link">Cindirês</span>.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Rif&#x27;etiyê is a farm in <span class="internal-link">Çiyayê Kurmênc</span> belonging to the Cindirês district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small farm located in the fertile Cindirês plain and <span class="internal-link">Cûm</span> plain. Its soil is alluvial clay. It is situated 500 meters away from the town of Cindirês.</p>
+<p>It is bordered to the north by the <span class="internal-link">Riya Cindirês-Efrîn</span> (Cindirês-Efrîn road), a fertile plain planted with olive trees, and the village of <span class="internal-link">Zindakan</span>. It is bordered to the south by a fertile plain planted with olive trees, the village of <span class="internal-link">Hacîler</span>, and the Efrîn valley. To the west, it is bordered by a torrential valley and the town of Cindirês at a distance of 500 meters. To the east, it is bordered by a torrential valley and the village of <span class="internal-link">Hemîlek</span>.</p>
+<p>The number of its houses currently reaches 25 houses, and its age is 80 years. Its old houses are made of stone with flat wooden roofs, while the modern ones are concrete. Formerly, it consisted of three luxurious villas for the family of <span class="internal-link">Heyder</span> and Rif&#x27;et Axa (the Emo family).</p>
+<p>An electricity network and a drinking water network connected to the Cindirês water network are available, or water is obtained from artesian wells drilled next to the houses. It has a telephone service. Its residents work in the cultivation of olives and grains alongside raising sheep and goats. Currently, it has been annexed to the Cindirês municipality and has become one of its eastern neighborhoods. Among its most important families are: <span class="internal-link">Rif&#x27;et</span> of the Emo family, who were the first to inhabit the village and were its founders. It connects with the town of Cindirês by a paved road.</p>
+<p>Preparation and execution:</p>
+<p>Manager of the <span class="internal-link">Tirej Efrîn</span> website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>Named after <span class="internal-link">Rifat Agha</span> <span class="internal-link">Aal Ammu</span> and his palace exists there.</li>
-<li>It has a palace for <span class="internal-link">Aal Ammu</span>, and became part of the eastern district of <span class="internal-link">Cindires</span> town.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: Afrin.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from Qatma village</p>
-<p><strong>رفعتية</strong>: A farm in the <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Cindires</span> district, Afrin region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p>It is a small farm located in the fertile <span class="internal-link">Cindires</span> and <span class="internal-link">Jum</span> plain with fertile loamy soil. It is 500m away from <span class="internal-link">Cindires</span> town. It is bordered to the north by the (<span class="internal-link">Cindires</span> – Afrin City) road and fertile plain planted with olive trees and <span class="internal-link">Zindkan</span> village, to the south by fertile plain planted with olive trees and <span class="internal-link">Hajiler</span> village and the Afrin valley, to the west by <span class="internal-link">Sili Valley</span> (وادي سيلي) and <span class="internal-link">Cindires</span> town at 500m distance, and to the east by <span class="internal-link">Sili Valley</span> (وادي سيلي) and <span class="internal-link">Hamilik</span> village. The number of its houses reaches 25 houses currently and its age is 80 years. Its old houses are stone with flat wooden roofs and the modern ones are concrete. It was previously three luxurious villas for the <span class="internal-link">Haider</span> and <span class="internal-link">Rifat Agha</span> (<span class="internal-link">Aal Ammu</span>) family. It has an electricity network and a drinking water network connected to the <span class="internal-link">Cindires</span> water network or from artesian wells dug beside the houses. It has a telephone. Its residents work in olive and grain cultivation in addition to raising sheep and goats. Currently it has been annexed to <span class="internal-link">Cindires</span> municipality and became a neighborhood of its eastern neighborhoods. Among its most important families: <span class="internal-link">Rifat Aal Ammu</span>, the first to inhabit and establish the village. It connects with <span class="internal-link">Cindires</span> town by a paved road.</p>
-<p>Prepared and implemented by: Site Manager of <span class="internal-link">Tirej Afrin</span>: Abdul Rahman Haji Othman</p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : رفعتية /205م/:</p>
+<ul>
+<li>على اسم رفعت آغا آل عمو ويوجد فيها قصره.</li>
+</ul>
+<ul>
+<li>فيها قصر لآل عمو، وأصبحت ضمن الحي الشرقي لبلدة جنديرس.</li>
+</ul>
+<p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه رفعتية : مزرعة في جبل الكرد تتبع ناحية جنديرس ، منطقة عفرين ، محافظة حلب . وهي مزرعة صغيرة تقع في سهل جنديرس الخصب وسهل جوم ، تربتها غضارية لحقية ، تبعد عن بلدة جنديرس (500م) يحدها شمالاً طريق (جنديرس  عفرين) وسهل خصب مزروع بأشجار الزيتون وقرية زندكان ، وجنوباً سهل خصب مزروع بأشجار الزيتون وقرية حاجيلر ووادي عفرين ، وغرباً واد ٍ سيلي وبلدة جنديرس على بعد 500م ، وشرقاً وادي سيلي وقرية حميلك ، يبلغ عدد بيوتها 25بيتاً حالياً وعمرها 80عاماً ، بيوتها القديمة حجرية ذات سقوف خشبية مستوية والحديثة إسمنتية ,كانت سابقاً عبارة عن ثلاث فيلات فخمة لعائلة حيدر ورفعت آغا (آل عمو) ، تتوفر فيها شبكة كهرباء وشبكة مياه شرب متصلة بشبكة مياه جنديرس أومن الآبار الارتوازية المحفورة بجانب المنازل ، فيها هاتف ، يعمل سكانها بزراعة الزيتون والحبوب إلى جانب تربية الأغنام والماعز ، وحالياً ضمت إلى بلدية جنديرس وأصبحت حياً من أحياءها الشرقية ومن أهم عوائلها : رفعت آل عمو أول من سكن القرية ومؤسوسها ، تتصل مع بلدة جنديرس بطريق مزفت .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -160,7 +225,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20rifetiye.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20rifetiye.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20rifetiye.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20rifetiye.htm</a></li></ul>
             </div>
 
             
@@ -170,7 +235,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -288,6 +353,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

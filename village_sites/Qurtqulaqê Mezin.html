@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -216,23 +237,54 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qurtqulaqê Mezin</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City / Geographic Study:</p>
-<p><strong>Qurtqulaq, <span class="internal-link">Qurt Qalaq</span></strong> (قورت قلاق), <span class="internal-link">Al-Deeb</span> (الديب):</p>
-<ul>
-<li><span class="internal-link">Qurt Qolaq</span> (قورت قولاق): A Turkish word meaning &quot;wolf&#x27;s ear&quot;. The Arabic name is an inaccurate translation of the Turkish meaning. They are two separate villages:</li>
-</ul>
-<p><strong>Qurtqulaqê Mezin, <span class="internal-link">Qurt Qalaq Large</span></strong> (قورت قلاق كبير), <span class="internal-link">Al-Deeb Al-Kabir</span> (الديب الكبير) /2549n - 5km - 380m/: A medium-sized village located on the eastern bank of the <span class="internal-link">Afrin River</span> (عفرين).</p>
-<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Qurt Qalaq Large</span></strong> (قورت قلاق كبير): A village located in <span class="internal-link">Jabal al-Akrad</span> (جبل الكرد) belonging to <span class="internal-link">Sheran District</span> (شران) villages, Afrin (عفرين) region, Aleppo Governorate (حلب) (2,478 people).</p>
-<p>It is a large village located on a mountainous slope with a wide plain in front of it extending to the course of the <span class="internal-link">Afrin River</span> (عفرين) valley. It is bordered to the north by a slope and valley and mountainous elevations planted with olive trees and the village of <span class="internal-link">Halobi Small</span> (حلوبي صغير), to the south by a valley and the village of <span class="internal-link">Qurt Qolaq Small</span> (قورت قولاق صغير), to the east by a mountainous chain planted with olive and forest trees and valleys and the villages of <span class="internal-link">Mash&#x27;ala</span> (مشعلة) and <span class="internal-link">Kurtak</span> (كورتك), and to the west by a slope and wide agricultural plain planted with olive trees and the valley course of the <span class="internal-link">Afrin River</span> (عفرين) nearby and the village of <span class="internal-link">Kafr Rum</span> (كفر روم) and the train station heading toward Turkey. It is about 6km from Afrin City (عفرين) in the northeast direction of Afrin City, with about 150 houses and the village is approximately 400 years old. Its old residences are stone and clay with wooden roofs, and the modern ones are stone and cement. It has an electricity network and drinking water from artesian wells from the water collection pool, an elementary school, and a modern mosque. A paved road comes from <span class="internal-link">Mash&#x27;ala</span> (مشعلة) on the <span class="internal-link">Aleppo-Afrin</span> (حلب عفرين) road to the village and passes through its center to <span class="internal-link">Qurt Qolaq Small</span> (قورت قولاق صغير) and <span class="internal-link">Kafr Rum</span> (كفر روم). The residents work in olive, grape, and vegetable cultivation due to its location near the <span class="internal-link">Afrin River</span> (عفرين) course. It is a beautiful village in terms of its location and surrounded by olive, forest, and walnut trees. There is a modern olive press and it is an old village in <span class="internal-link">Sheran District</span> (شران).</p>
-<p>Village mayor: <span class="internal-link">Mohammed Miqdad Omar</span> (محمد مقداد عمر)</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qurtqulaqê Mezin</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20k.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20k.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc / Efrîn / A Geographical Study: <span class="internal-link">Qurtqulaq</span>, <span class="internal-link">Qurt Qulaq</span>, Al-Deeb:</p>
+<p>Qurtqulaq: A Turkish word meaning &quot;Wolf&#x27;s Ear&quot; (Qurt = Wolf, Qulaq = Ear). The Arabized name is an inaccurate translation of the Turkish meaning. They are two separate villages: <span class="internal-link">Qurtqulaqa Mezin</span> / Big Qurtqulaq / Al-Deeb Al-Kabir /2549 inhabitants, 5km, 380m/: A medium-sized village located on the eastern bank of <span class="internal-link">Çemê Efrînê</span> (Afrin River).</p>
+<p>It is stated in the book Efrîn... Her River and Her Green Hills: Qurtqulaqa Mezin is a village located in <span class="internal-link">Çiyayê Kurmênc</span> following the subdistrict of <span class="internal-link">Şeran</span> villages, <span class="internal-link">Efrîn</span> region, Heleb governorate (2478 inhabitants). It is a large village situated on a mountain slope, with a wide plain in front of it extending to the course of the Çemê Efrînê valley.</p>
+<p>It is bordered on the north by a slope, a valley, and mountainous highlands planted with olive trees and the village of <span class="internal-link">Hulûbiyê Biçûk</span>. It is bordered on the south by a valley and the village of <span class="internal-link">Qurtqulaqa Biçûk</span>. It is bordered on the east by a mountain chain planted with olive and forest trees, valleys, the village of <span class="internal-link">Meşelê</span>, and the village of <span class="internal-link">Kortik</span>. It is bordered on the west by a slope, a wide agricultural plain planted with olive trees, the nearby valley of the Çemê Efrînê course, the village of <span class="internal-link">Kefer Rûm</span>, and the train station heading towards Turkey.</p>
+<p>It is about 6km away from the city of Efrîn towards the northeast of Efrîn. The number of its houses is 150 houses, and the age of the village is about 400 years. Its old dwellings are made of stone and mud with wooden roofs, and the modern ones are of stone and cement. An electricity network is available, as well as drinking water from artesian wells from water collection pools, a primary school, and a modern mosque.</p>
+<p>A paved road coming from Meşelê, the <span class="internal-link">Riya Heleb-Efrîn</span> (Heleb-Efrîn road), serves the village and passes through the middle of it to Qurtqulaqa Biçûk and Kefer Rûm. The residents work in the cultivation of olives, vines, and vegetables due to its presence near the course of Çemê Efrînê. It is a beautiful village in terms of its location and is surrounded by olive trees, forest trees, and walnuts. There is a modern olive press in it, and it is an old village in the Şeran subdistrict.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Miqdad Omer</span></p>
 <p>Sources of Information:</p>
-<p>1 - Book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (محمد عبدو علي).</p>
-<p>2 - Book: &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27; by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatma Village</span> (قطمه).</p>
-<p>3 - Studies by <span class="internal-link">Tereij Soft Center</span> (تيريج سوفت) / <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>4 - Some village residents.</p>
-<p>Prepared and executed by: Director of <span class="internal-link">Tereij Afrin Website</span> (تيريج عفرين): <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20 / 12 / 2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qurtqulaqê Mezin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=9Ljg9EW-eLY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=9Ljg9EW-eLY</a></p>
+<ul>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
+</ul>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of Tirej Efrîn website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Qurtqulaq، قورت قلاق ، الديب:</p>
+<ul>
+<li>قورت قولاق</li>
+</ul>
+<p>: كلمة تركية بمعنى &quot; أذن الذئب &quot;. والاسم المعرب ترجمة غير دقيقة للمعنى التركي. وهما قريتان منفصلتان: Qurtqulaq Mezin ، قورت قلاق كبير ، الديب الكبير /2549ن - 5كم - 380م/: قرية متوسطة تقع على الضفة الشرقية لنهر عفرين. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : قورت قلاق كبير :قرية تقع في جبل الكرد تتبع ناحية قرى شران منطقة عفرين محافظة حلب (2478 ن ) وهي قرية كبيرة تقع على منحدر جبلي وأمامه سهل واسع حتى مجرى وادي نهر عفرين يحدها شمالا منحدر ووادي ومرتفعات جبلية مزروعة بأشجار الزيتون وقرية حلوبي صغير .وجنوبا وادي وقرية قورت قولاق صغير وشرقا سلسلة جبلية مزروعة بأشجار الزيتون و الحراجية .ووديان وقرية مشعلة وقرية كورتك وغربا منحدر وسهل واسع زراعي مزروع بأشجار الزيتون ووادي مجرى نهر عفرين القريبة وقرية كفر روم ومحطة القطار المتوجه نحو تركيا ,تبعد عن مدينة عفرين حوالي 6كم باتجاه شمال شرقي عفرين ,يبلغ عدد بيوتها150بيت وعمر القرية حوالي400عام مساكنها القديمة حجرية طينية ذات سقوف خشبية والحديثة حجرية إسمنتية تتوفر فيها شبكة الكهرباء ومياه الشرب من الآبار الارتوازية من برك التجمع للمياه ومدرسة ابتدائية وجامع حديث .وطريق مزفت قادما من مشعلة طريق حلب عفرين للقرية ويمر في وسطها إلى قورت قولاق صغير وكفر روم .يعمل السكان بزراعة الزيتون والكرمة والخضراوات بسبب وجودها قرب مجرى نهر عفرين .وهي قرية جميلة من حيث موقعها ومحاطة بالأشجار الزيتون و الحراجية و الجوز يوجد فيها معصرة للزيتون حديثة وهي قرية قديمة في ناحية شران .</p>
+<p>مختار القرية : محمد مقداد عمر</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qurtqulaqê Mezin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=9Ljg9EW-eLY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=9Ljg9EW-eLY</a></p>
 <p>The village of <span class="internal-link">Qurtqulaq</span>, formally known as <span class="internal-link">Qurtqulaqa Mezin</span>, is a historic settlement located in the <span class="internal-link">Şera</span> district of the <span class="internal-link">Efrîn</span> region. Its history is deeply rooted in the pre Ottoman era, with its original Kurdish name being <span class="internal-link">Gurguhê</span>, which translates to &quot;Wolf&#x27;s Ear.&quot; Elders explain that this name arose because the area was once heavily populated by wolves that would gather at the springs without hiding their ears. During the Ottoman occupation, the name was translated to Qurtqulaq, and later, the Baathist regime attempted to Arabize it to <span class="internal-link">El Dîb El Kebîr</span>. Despite these administrative changes, the local population retains the memory of its original identity.</p>
 <p>The origins of the current settlement retrace to an earlier site called <span class="internal-link">Xirêbe</span>, also known as <span class="internal-link">Hafê Avê</span>, located to the west. The residents eventually migrated to the current location, with the <span class="internal-link">Mistixelo</span> family, a branch of the <span class="internal-link">Şikêk</span> tribe, being the first to settle. They initially lived in caves near the water sources before constructing homes. The village is now home to approximately three hundred households comprising about fourteen distinct families, including <span class="internal-link">Mirsel</span>, <span class="internal-link">Evdûnê</span>, <span class="internal-link">Evdê Reşê</span>, and <span class="internal-link">Mislimlêro</span>. While the majority are Kurds from the Şikêk confederation, the village also hosts Arab families such as the <span class="internal-link">Şêx</span> family, and the community is known for its strong internal cohesion where <span class="internal-link">Kurd</span> and <span class="internal-link">Arab</span> residents live as brothers.</p>
 <p>Geographically, Qurtqulaq is defined by its relationship with water and the surrounding terrain. In the past, the village relied on several abundant water sources, including <span class="internal-link">Kaniya Şurqût</span>, <span class="internal-link">Binitirba</span>, and <span class="internal-link">Bîra Menên</span>, though many of these have since dried up or been exhausted by well digging. To the west lies the <span class="internal-link">Çiyayê Kurtikê</span> forest, a pine and cypress woodland planted in 1977. The village is also historically significant for its infrastructure; the <span class="internal-link">Stasyona Qurtqulaqê</span> train station was established nearby in 1912 with German and French assistance. This station was the site of a notable historical event where a local figure named <span class="internal-link">Evdoyê Çepeq</span> killed a French officer, leading to a period of repression by the French mandate authorities.</p>
@@ -307,7 +359,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20k.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20k.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=FjQM8Tdi-ko" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FjQM8Tdi-ko</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=rQndSOaDMYI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=rQndSOaDMYI</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=iXe3B42OwAU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=iXe3B42OwAU</a><br><a href="https://www.youtube.com/watch?v=Cd0P8gzL1QI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Cd0P8gzL1QI</a><br><a href="https://www.youtube.com/watch?v=RfF0WF3cvrI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=RfF0WF3cvrI</a><br><a href="https://www.youtube.com/watch?v=giOgzthskG8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=giOgzthskG8</a><br><a href="https://www.youtube.com/watch?v=9Ljg9EW-eLY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9Ljg9EW-eLY</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20k.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20qort%20qolaq%20k.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=FjQM8Tdi-ko" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FjQM8Tdi-ko</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=rQndSOaDMYI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=rQndSOaDMYI</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=iXe3B42OwAU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=iXe3B42OwAU</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=Cd0P8gzL1QI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Cd0P8gzL1QI</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=RfF0WF3cvrI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=RfF0WF3cvrI</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=giOgzthskG8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=giOgzthskG8</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=9Ljg9EW-eLY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9Ljg9EW-eLY</a></li></ul>
             </div>
 
             
@@ -317,7 +369,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -435,6 +487,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

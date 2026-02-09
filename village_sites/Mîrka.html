@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -167,7 +188,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Amiriyah, Hise, Husê, Mirka, Hemtato, Mirkan, Mirkanli, Mîrka, Mîrkan, Ĥem Tato، الأميرية, الأميرية, حسة, ميركان, حسه, كونده حسه, ميركو</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Mîrkan, Mîrko</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ebû Ciwan, Ebû Kawa, Hec Emîr, Hec Selîm, Mala Cefir, Mala Goro, Mala Gênco, Mala Hemolîk, Mala Hemtat, Mala Sînê, Malê Cepiro, Malê Guro, Malê Gênco, Malê Hemalîkê, Malê Hemtatê, Malê Kêlo, Malê Sînê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ebû Ciwan, Ebû Kawa, Elîko, Hec Emîr, Hec Selîm, Hemlîko, Mala Cefir, Mala Goro, Mala Gênco, Mala Hemolîk, Mala Hemtat, Mala Sînê, Malê Cepiro, Malê Guro, Malê Gênco, Malê Hemalîkê, Malê Hemtatê, Malê Kêlo, Malê Sînê, Silêman</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -215,16 +236,61 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Mîrka</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد (عفرين)</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin City)</span>&#x27; geographical study by Dr. Mohammed Abdo Ali (محمد عبدو علي):</p>
-<p><strong><span class="internal-link">usêğ</span> - <span class="internal-link">Gundî Mîrka</span> - <span class="internal-link">Ğem Tato</span> (مريكان), الأميرية</strong> /3085n - 920ha - 5km - 630m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Mîrka</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mirka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mirka.htm</a></p>
+<p>The following states in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Gundê Husê</span>, <span class="internal-link">Hem Tato</span>, <span class="internal-link">Mîrkan</span>, <span class="internal-link">El Emîriye</span> / 3085 inhabitants - 920 H - 5 km - 630 m /:</p>
+<p>This village has three local names, all of which are of Kurdish origin:</p>
+<p>Mîrkan: The plural of &quot;Mîr&quot; (Princes). It is the name of a Kurdish tribe found in Mount <span class="internal-link">Şengal</span> (Lîrx, p. 51).</p>
+<p>Gundê Husê: A proper name derived from <span class="internal-link">Huseyn</span>.</p>
+<p>Hem Tato: Meaning <span class="internal-link">Mihemed</span> &quot;the Tat&quot;. He was nicknamed this because he was blond and fair-skinned, resembling the <span class="internal-link">Tat</span> people. This is a characteristic of some residents of Mount <span class="internal-link">Seman</span> known for their white skin.</p>
+<p>It is a large village located on the surface of a plateau at the beginning of the <span class="internal-link">Xastiya</span> valley. It contains commercial shops and small vocational workshops. Its mosque is perhaps the oldest in the region, with its construction dating back to the beginning of the twentieth century.</p>
+<p>The following states in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p><span class="internal-link">Mîrkanlî</span> is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the district of <span class="internal-link">Mabeta</span>, in the <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a large village located in the central part of Çiyayê Kurmênc, on the surface of a rolling limestone plateau, furrowed by watercourses heading towards the northeast and southwest. Its soil is clay/argillaceous, and forests and pastures are spread across it. It is 5 km away from the district center towards the southwest.</p>
+<p>It is bordered to the north by slopes, watercourses, and the village of <span class="internal-link">Berîmce</span>. To the south, it is bordered by a watercourse, the valley of <span class="internal-link">Cercim</span>, and the villages of <span class="internal-link">Şêrkanlî</span> and <span class="internal-link">Îkî Axur</span>. To the west, it is bordered by a slope, the valley of Cercim planted with olive, walnut, and apricot trees, high mountain elevations, and the village of <span class="internal-link">Mistû Aşûr</span>. To the east, it is bordered by slopes, several watercourses planted with olive trees, and the village of <span class="internal-link">Darkîrê Mezin</span>.</p>
+<p>The number of houses reaches 350, and its age is approximately 400 years. Its old houses are made of stone and mud with flat wooden roofs, while the modern ones are of stone and cement, spreading towards the south and west up to the village square next to the public road. An electricity network is available. The village drinks from a water network branching from the Berîmce village water network and from local wells. It contains a primary school, a preparatory school, telephone service, a mosque, and an agricultural cooperative society. There are four modern olive presses in the village. It is connected to the district center by a paved road which passes through its center to several neighboring villages.</p>
+<p>The residents work in rain-fed agriculture on an area of 880 hectares, growing grains, olives, legumes, and other fruit trees. The remaining 40 hectares are irrigated from artesian wells (summer vegetables, pomegranates, walnuts, and apricots) in the plain of the Cercim valley up to the valley of the <span class="internal-link">Rotanlî</span> spring, in addition to raising sheep and goats. Currently, the village drinks from a modern water network in the south of the village in the Cercim valley at <span class="internal-link">(Şbîrlaq)</span>.</p>
+<p>The village is divided into three sections: a northern section at the top of the elevation, a second section in the middle, and a third section in the south and around the public road. Here, there are several blacksmithing shops and commercial stores. Among its most important families are the <span class="internal-link">Hemlîko</span>, <span class="internal-link">Elîko</span>, and <span class="internal-link">Silêman</span> families.</p>
+<p>Village Mukhtar: <span class="internal-link">Mistefa Xelîl Qadir</span></p>
+<p>Preparation and execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>This village has three local names, all of Kurdish origin: <span class="internal-link">Mirkan</span> (مريكان) /the princes/ is the name of a Kurdish tribe found in <span class="internal-link">Sinjar Mountain</span> (جبل سنجار) /see Lerkh, p. 51/. And <span class="internal-link">usê ğ Gundî</span>: which is a proper name from <span class="internal-link">Hussein</span> (حسين). And <span class="internal-link">Ğem Tato</span>: meaning <span class="internal-link">Mohammed</span> (محمد) &quot;the Tatar&quot;, nicknamed so because he was blonde with fair skin resembling the Tatars, which is a characteristic of some inhabitants of <span class="internal-link">Sim&#x27;an Mountain</span> (جبل سمعان) known for their fair complexion.</li>
-<li>A large village located on the surface of a plateau at the beginning of <span class="internal-link">Khastiya valley</span> (وادي خاستيا). It has commercial establishments and small professional workshops. Perhaps its mosque is the oldest in the region, dating its construction to the beginning of the twentieth century.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: &#x27;<span class="internal-link">عفرين.... نهرها ورواbiها الخضراء</span>&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27; by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Mirkanli</span></strong> (ميركانلي): A village in <span class="internal-link">Kurd Mountain</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), <span class="internal-link">Afrin City Region</span> (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a large village located in the central part of <span class="internal-link">Kurd Mountain</span> (جبل الكرد), on the surface of a wavy calcareous plateau crossed by streams heading northeast and southwest. Its soil is clay-based and forests and pastures spread on it. It is 5km from the district center toward the southwest. To the north it is bordered by slopes and streams and <span class="internal-link">Barimjah village</span> (قرية بريمجة), to the south by a stream and <span class="internal-link">Jarjam valley</span> (وادي جرجم) and <span class="internal-link">Shirkanli village</span> (قرية شيركانلي) and <span class="internal-link">Iki Akhour</span> (إيكي آخور), to the west by a slope and <span class="internal-link">Jarjam valley</span> (وادي جرجم) planted with olive, walnut, and apricot trees and high mountain elevations and <span class="internal-link">Masto Ashour village</span> (قرية مستو عاشور), and to the east by slopes and several streams planted with olive trees and <span class="internal-link">Dar Kir Kabir village</span> (قرية دار كير كبير). It contains approximately 350 houses (بيتاً) and is about 400 years old (عاماً). Its old houses are stone and clay with flat wooden roofs, and the modern ones are stone and cement spreading toward the south and west to the village square beside the public road. It has an electricity network and the village drinks from a water network branched from the water network of <span class="internal-link">Barimjah village</span> (قرية بريمجة) and from local wells. It has a primary school and another preparatory school, telephone, mosque, and agricultural cooperative association. There are four modern olive presses. It is connected to the district center by a paved road passing through its center to several neighboring villages. The people work in rain-fed agriculture on an area of 880ha of grains, olives, legumes, and other fruit trees. They also cultivate the remaining 40ha irrigated with artesian wells (summer vegetables, pomegranates, walnuts, and apricots) in the <span class="internal-link">Jarjam valley</span> plain to <span class="internal-link">Rutanli spring valley</span> (وادي نبع روطانلي), alongside raising sheep and goats. Currently the village drinks from a modern water network in the south of the village <span class="internal-link">Jarjam valley</span> (وادي جرجم) with (Shabirlaq) and the village is divided into three sections: a northern section at the highest elevation, the second section in the center, and the third section in the south around the public road where there are several blacksmith shops and commercial establishments. Among its most important families are the <span class="internal-link">Hamliko</span> (حمليكو), <span class="internal-link">Aliko</span> (عليكو), and <span class="internal-link">Suleiman</span> (سليمان) families.</p>
-<p>Village headman: <span class="internal-link">Mustafa Khalil Qader</span> (مصطفى خليل قادر)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Mîrka from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=SM8rsva4AaQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=SM8rsva4AaQ</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : usĤ - Gund Mrka - Ĥem Tato ، ميركان ، الأميرية /3085ن - 920هـ - 5كم - 630م/:</p>
+<ul>
+<li>لهذه القرية ثلاثة أسماء محلية وجميعها كردية الأصل، وهي: ميركان /الأمراء/</li>
+</ul>
+<p>اسم عشيرة كردية توجد منها في جبل سنجار /ليرخ، ص 51/. وus Ĥ Gund: وهو اسم علم من حسين. و Ĥem Tato: أي محمد &quot;التات&quot;، ولقب بذلك لأنه كان أشقرا، أبيض البشرة يشبه التات، وهو سمة بعض سكان جبل سمعان المعروفين ببشرتهم البيضاء.</p>
+<ul>
+<li>قرية كبيرة تقع على سطح هضبة في بداية وادي خاستيا. فيها محال تجارية</li>
+</ul>
+<p>وورشات مهنية صغيرة. وربما كان مسجدها هو الأقدم في المنطقة، ويعود تاريخه بنائه إلى بداية القرن العشرين. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه ميركانلي : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع في الجزء الأوسط من جبل الكرد، على سطح هضبة كلسية متموجة، تخددها المسيلات المتجهة نحو الشمال الشرقي والجنوب الغربي، تربتها غضارية وتنتشر عليها الأحراج والمراعي وتبعد عن مركز الناحية5كم باتجاه الجنوب الغربي، يحدها شمالاً منحدرات ومسيلات وقرية بريمجة، وجنوباً مسيل ووادي جرجم وقرية شيركانلي وإيكي آخور، وغرباً منحدر ووادي جرجم مزروعة بأشجار الزيتون والجوز والمشمش والمرتفعات الجبلية العالية وقرية مستو عاشور، وشرقاً منحدرات وعدة مسيلات مزروعة بأشجار الزيتون وقرية دار كير كبير، يبلغ عدد بيوتها350بيتاً وعمرها حوالي400عاماً،بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية والحديثة حجرية إسمنتية تنتشر باتجاه الجنوب والغرب حتى ساحة القرية جانب الطريق العام، تتوفر فيها شبكة كهرباء وتشرب القرية من شبكة مائية متفرعة عن شبكة مياه قرية بريمجة ومن الآبار المحلية، فيها مدرسة ابتدائية وأخرى إعدادية و الهاتف وجامع وجمعية فلاحية تعاونية، يوجد فيها أربع معاصر حديثة لعصر الزيتون، تصلها بمركز الناحية بطريق مزفتة ويمر في وسطها إلى عدة قرى مجاورة، يعمل الأهالي بالزراعة البعلية على مساحة 880هـ من الحبوب والزيتون والبقول والأشجار المثمرة الأخرى، كما يزرع الباقي40هـ رياً من الآبار الارتوازية (الخضار الصيفية والرمان والجوز والمشمش) في سهل وادي جرجم حتى وادي نبع روطانلي، إلى جانب تربية الأغنام والماعز،وحالياً تشرب القرية من شبكة مائية حديثة في جنوب القرية وادي جرجم بـ(شبيرلاق) والقرية مقسمة إلى ثلاث أقسام:قسم شمالي في أعلى المرتفع والقسم الثاني في الوسط والقسم الثالث في الجنوب وحول الطريق العام وهنا يوجد عدة محلات للحدادة ومحلات تجارية ومن أهم عوائلها عائلة حمليكو وعليكو وسليمان .</p>
+<p>مختار القرية : مصطفى خليل قادر</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Mîrka from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=SM8rsva4AaQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=SM8rsva4AaQ</a></p>
 <p>Located in the <span class="internal-link">Mabeta</span> district of the <span class="internal-link">Çiyayê Kurmênc</span> region in <span class="internal-link">Efrîn</span>, the village commonly known as <span class="internal-link">Gundê Hisê</span> (or <span class="internal-link">Hisên</span>) has a distinct tripartite naming history reflecting its origins. According to village elder <span class="internal-link">Mihemed</span>, the settlement was founded more than 350 years ago by an individual named <span class="internal-link">Hemtat</span>, who migrated from <span class="internal-link">Sîncar</span> (Sinjar) in <span class="internal-link">Başûrê Kurdistanê</span>. Upon his arrival, the site was initially associated with the <span class="internal-link">Mîrkan</span> tribe (referred to as &quot;Eşîra Mîrko&quot;), giving it its first name, <span class="internal-link">Mîrka</span>. Later, it became known as <span class="internal-link">Hemtatu</span> or <span class="internal-link">Gundê Hemtatê</span> in honor of the founder. Eventually, the name changed a third time to Gundê Hisê, named after <span class="internal-link">Hisê</span>, the son of Hemtat.</p>
 <p>The social structure of the village is defined by six primary families (<span class="internal-link">malbat</span>): <span class="internal-link">Mala Cefir</span>, <span class="internal-link">Mala Sînê</span>, <span class="internal-link">Mala Hemolîk</span>, <span class="internal-link">Mala Hemtat</span>, <span class="internal-link">Mala Goro</span>, and <span class="internal-link">Mala Gênco</span>. Today, the village comprises approximately 350 households. It serves as a strategic economic hub for the surrounding area, particularly after the establishment of a local Tuesday market (Bazar) following the declaration of Democratic Autonomy. This market serves as a commercial center for roughly 15 to 20 nearby villages, including <span class="internal-link">Sotiya</span>, <span class="internal-link">Selo</span>, and <span class="internal-link">Xozana</span>.</p>
 <p>Economically, Gundê Hisê is renowned for its agriculture, specifically olive and sumac production. The head of the village council notes that unique olive varieties grow here, such as <span class="internal-link">Zeytûnê Kêlo</span>, <span class="internal-link">Xelxalî</span>, and the oil-rich <span class="internal-link">Zeytûnê Zêtî</span>. The village is a powerhouse for sumac, producing an estimated two-thirds (over 250 tons) of the total sumac yield in the Efrîn region. They formerly maintained trade relations with merchants in Jordan, Lebanon, and Turkey.</p>
@@ -322,7 +388,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mirka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mirka.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=ACzTE41G960" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ACzTE41G960</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=QEY0XKHHSd0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=QEY0XKHHSd0</a><br><a href="https://www.youtube.com/watch?v=3Dcvd11hhM8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3Dcvd11hhM8</a><br><a href="https://www.youtube.com/watch?v=a8i0LPsxsHQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=a8i0LPsxsHQ</a><br><a href="https://www.youtube.com/watch?v=9bk6IBqmysM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9bk6IBqmysM</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=SM8rsva4AaQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SM8rsva4AaQ</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=newxSpN-wwk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=newxSpN-wwk</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mirka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20mirka.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=ACzTE41G960" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ACzTE41G960</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=QEY0XKHHSd0" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=QEY0XKHHSd0</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=3Dcvd11hhM8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3Dcvd11hhM8</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=a8i0LPsxsHQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=a8i0LPsxsHQ</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=9bk6IBqmysM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9bk6IBqmysM</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=SM8rsva4AaQ" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SM8rsva4AaQ</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=newxSpN-wwk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=newxSpN-wwk</a></li></ul>
             </div>
 
             
@@ -332,7 +398,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -450,6 +516,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

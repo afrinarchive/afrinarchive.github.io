@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -168,6 +189,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şera</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Billuriya, Pelûsankê, بللورسنك, بللورية, باليسنكه, بلورية, بلورسينك</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Cemîl Axa, Faîq Menan Axa Şêx Ismaîl Zade</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
@@ -194,23 +216,65 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Pelûsankê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The Kurdish name for the elderberry tree, which is a tree with fragrant white flowers (Pelsank)</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 200 years ago</p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Pelûsankê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &quot;<span class="internal-link">Mountain of the Kurds</span>&quot; (جبل الكرد) / Afrin City / Geographic Study:</p>
-<p><strong>Pelûsank, <span class="internal-link">Billuriya</span></strong> (بلورية) /521n/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Pelûsankê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20balorsank.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20balorsank.htm</a></p>
+<p>It is stated in the book Çiyayê Kurmênc (Efrîn): A Geographical Study: <span class="internal-link">Pelsank</span>, <span class="internal-link">Bilûriye</span> /521 inhabitants/:</p>
+<p>Pelsank: The Kurdish name for the &quot;elderberry tree,&quot; which is a tree with fragrant white flowers. The name was Arabized to Bilûriye. Its location is between the villages of <span class="internal-link">Zeytûnak</span> and <span class="internal-link">Alciya</span>. It is the village of <span class="internal-link">Faîq Axa Şêx Ismaîl Zade</span>. Its inhabitants abandoned it after his death in the 1960s.</p>
+<p>It is stated in the book Efrîn... Her River and Her Green Hills: <span class="internal-link">Bilûrsink</span>: A village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Şera</span> subdistrict, <span class="internal-link">Efrîn</span> region, Heleb governorate, (551 inhabitants). It is a very small village located in an agriculturally fertile plain on the right bank of the <span class="internal-link">Çemê Efrînê</span>. It is bordered to the north by a plain and a valley planted with olive trees and the village of <span class="internal-link">Se&#x27;rincik</span>; to the south by the valley of the Çemê Efrînê, a mountain range on the southern side planted with olive and forest trees, and the village of <span class="internal-link">Omranlî</span> or <span class="internal-link">Senoberiye</span>; to the west by a valley, a wide agriculturally fertile plain, and the village of <span class="internal-link">Alicî</span>; and to the east by the valley of the Çemê Efrînê course and the village of <span class="internal-link">Wêrkan</span>.</p>
+<p>The number of its houses amounts to about 5 houses, and its age is about 200 years. Previously, it consisted of two houses belonging to the family of <span class="internal-link">Faîq Menan Axa Şêx Ismaîl Zade</span>. Currently, there are no houses in it, and it is as if it were a ruin. The old village was at a distance of 1km east of the current village. Currently, the family of <span class="internal-link">Cemîl Axa</span> and his grandson <span class="internal-link">Şewqî Cemîl Axa</span> live there.</p>
+<p>The road connecting to it is a paved dirt road coming from Alicî. Its lands are agriculturally fertile due to its proximity to the Çemê Efrînê on the northern side of the river. Its inhabitants work in the cultivation of olives, grains, and summer vegetables, some rain fed and some irrigated from the valley of the Çemê Efrînê, alongside raising sheep and goats. There are no services in it. They drink water from artesian wells, and a modern electricity network is currently available in it.</p>
+<p>Sources of Information:</p>
 <ul>
-<li>Palusank (پالوسانك): The Kurdish name for the &quot;birch tree&quot; (شجرة البيلسان), which is a tree with white bark with a pleasant fragrance. The name was arabized to <span class="internal-link">al-Billuriya</span> (البللورية).</li>
-<li>Its location is between the villages of &quot;<span class="internal-link">Zaytunak</span>&quot; (زيتوناك) and &quot;<span class="internal-link">Alija</span>&quot; (آلجيا), and it is a village of the late <span class="internal-link">Agha Sheikh Ismail Zadeh</span> (آغا شيخ إسماعيل زاده). Its inhabitants left it after his death in the sixties of the twentieth century.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &quot;<span class="internal-link">Afrin.... Its River and Green Hills</span>&quot; (عفرين .... نهرها وروابيها الخضراء):</p>
-<p><strong><span class="internal-link">Belursank</span></strong> (بلورسنك): A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد) belonging to <span class="internal-link">Sheran</span> sub-district (ناحية شران), Afrin City region (منطقة عفرين), <span class="internal-link">Aleppo</span> governorate (محافظة حلب), (551 n).</p>
-<p>It is a very small village located in a fertile agricultural plain on the right bank of <span class="internal-link">Afrin River</span> (نهر عفرين). It is bordered to the north by plain and valley planted with olive trees and <span class="internal-link">Sa&#x27;ranjak village</span> (قرية سعرنجك), to the south by <span class="internal-link">Afrin River</span> valley (وادي نهر عفرين) and mountain chain from the southern side planted with olive and forest trees and <span class="internal-link">Omranli village</span> (قرية عمرانلي) or <span class="internal-link">al-Sanubria</span> (الصنوبرية), to the west by valley and wide fertile plain and <span class="internal-link">Aliji village</span> (قرية آليجي), and to the east by valley of <span class="internal-link">Afrin River</span> course (مجرى نهر عفرين) and <span class="internal-link">Wireh Kan village</span> (قرية ويره كان).</p>
-<p>The number of its houses reaches about 5 houses and its age is about 200 years. It was previously two houses belonging to a family subordinate to the late <span class="internal-link">Agha Sheikh Ismail Zadeh</span> (آغا شيخ اسماعيل زاده), and currently there are no houses and it appears ruined. The old village was 1km east of the current village, and currently the <span class="internal-link">Jamil Agha family</span> (عائلة جميل آغا) and his grandson <span class="internal-link">Shawqi Jamil Agha</span> (شوقي جميل آغا) live there.</p>
-<p>The road leading to it is an earthen path coming from <span class="internal-link">Aliji</span> (آليجي). Its lands are agriculturally fertile due to its proximity to <span class="internal-link">Afrin River</span> from the northern side of the river. Its inhabitants work in olive cultivation, grains and summer vegetables, some rainfed and some irrigated from <span class="internal-link">Afrin River</span> valley, in addition to raising sheep and goats. There are no services available and they drink water from artesian wells. A modern electricity network is currently available.</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Manager of Tirej Efrîn site: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Pelsank ، بللورية /521ن/:</p>
+<ul>
+<li>پالوسانك: الاسم الكردي لـ &quot; شجرة البيلسان &quot;، وهي شجرة ذات زهر أبيض طيب</li>
+</ul>
+<p>الرائحة. وتم تعريب الاسم إلى البللورية.</p>
+<ul>
+<li>موقعها ما بين قريتي &quot;زيتوناك&quot; و&quot;آلجيا&quot;، وهي قرية فائق آغا شيخ إسماعيل</li>
+</ul>
+<p>زاده، هجرها سكانها بعد وفاته في ستينات القرن العشرين. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : بلورسنك : قرية في جبل الكرد تتبع ناحية شران منطقة عفرين محافظة حلب ، (551 ن) . وهي قرية صغيرة جدا تقع في سهل خصب زراعيا على الضفة اليمنى لنهر عفرين ، يحدها شمالا سهل ووادي مزروع بأشجار الزيتون وقرية سعرنجك وجنوبا وادي نهر عفرين وسلسلة جبلية من الجهة الجنوبية مزروعة بأشجار الزيتون والحراجية وقرية عمرانلي أو الصنوبرية وغربا وادي وسهل واسع خصب زراعيا وقرية آليجي وشرقا وادي مجرى نهر عفرين وقرية ويره كان . يبلغ عدد بيوتها حوالي /5/ بيوت وعمرها حوالي200عام وكانت سابقاً بيتان لعائلة فائق منان آغا شيخ اسماعيل زاده وحاليا لا يوجد فيها بيوت وكأنها خرابة ، وكانت القرية القديمة على بعد /1كم/ من شرق القرية الحالية وحالياً يسكنها عائلة جميل آغا وحفيده شوقي جميل آغا. الطريق الواصل إليها معبد ترابي قادما من آليجي أراضيها خصبة زراعيا بسبب قربها من نهر عفرين من الجهة الشمالية للنهر . يعمل سكانها بزراعة الزيتون والحبوب والخضروات الصيفية منه بعلا ومنه سقيا من وادي نهر عفرين إلى جانب تربية الأغنام والماعز كما لا توجد فيها خدمات ويشربون المياه من الآبار الارتوازية وتتوفر فيها حالياً شبكة كهرباء حديثة. مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -228,7 +292,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20balorsank.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20balorsank.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20balorsank.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20balorsank.htm</a></li></ul>
             </div>
 
             
@@ -238,7 +302,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -356,6 +420,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

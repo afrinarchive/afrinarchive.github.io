@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -104,8 +125,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Jazroniya Tahtani, Kokan Tahtani, Kokanê Jêrin, جزرونية تحتاني, كوكان تحتاني, كوكانه جيرن</p></div>
-<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Heseniyan, Rûbariyan, Şêxiyan</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Avdê Horê, Berket, Cilha, Evdê Horê, Hecçenan, Mala Celha, Mam Şemka, Meşikan, Oskopar, Oskoper, Xelîce, Xelîlê Çandikê</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Heseniyan, Rûbariyan, Rûbarî, Şêxiyan</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Avdê Horê, Berekat, Berket, Cilha, Elî, Evdê Horê, Hac Miho, Hecçenan, Mala Celha, Mam Şemka, Meşikan, Mihemed, Mistefa, Mûsa, Oskopar, Oskoper, Xelîce, Xelîlê Çandikê</p></div>
                         </div>
                     </div>
                     
@@ -152,27 +173,56 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kokanê Jêrin</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of Mabetli District (المعبطلي) / Mabeta</p>
-<p><span class="internal-link">1 - PhD/Villages/Kokanê Jêrin</span> (كوكان تحتاني) - <span class="internal-link">Kokan Tahtani</span> (كوكان تحتاني)</p>
-<p>===</p>
-<p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">Kokanê</span> (كوكان), <span class="internal-link">Al-Jazroniya</span> (الجزرونية)</strong> /2082N - 865H / :</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kokanê Jêrin</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kokane%20jerin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kokane%20jerin.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span> regarding Kokan (Arabized as <span class="internal-link">Al-Jazruniyah</span>):</p>
+<p>The name <span class="internal-link">Kok</span> means tree trunk or root, and <span class="internal-link">an</span> is a marker indicating the plural case in Kurdish. They consist of two villages, the Upper and the Lower.</p>
+<p><span class="internal-link">Kokan Jrîn</span> (<span class="internal-link">Kokan Tehtanî</span> / <span class="internal-link">Cezrûniye Tehtanî</span>)</p>
+<p>This is a modern village. It is located north of the Upper village, atop a height overlooking the <span class="internal-link">Zewr</span> valley which passes to its north. The origin of its inhabitants is from the village of Basilhaya of the <span class="internal-link">Rûbarî</span>, who then settled in the location of <span class="internal-link">Xirab Del</span> and founded this village.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Kokan Tehtanî is a farm in <span class="internal-link">Çiyayê Kurmênc</span>, following the <span class="internal-link">Mabeta</span> sub district, <span class="internal-link">Efrîn</span> district, <span class="internal-link">Heleb</span> province.</p>
+<p>It is a small farm located in the middle section of the mentioned mountain, upon a flat fertile plateau on the northeastern slope. It is surrounded by slopes and watercourses planted with olive, walnut, and almond trees. It is bordered to the north by a slope planted with olive trees, the <span class="internal-link">Xeta Trêna Heleb-Meydan Ekbez</span> (Heleb Meydan Ekbez railway), the <span class="internal-link">Riya Efrîn-Reco</span> (Efrîn Reco road), and the <span class="internal-link">Sîno</span> farm. To the south, it is bordered by a slope, a seasonal stream, and the village of <span class="internal-link">Kokan Foqanî</span> at the top of the mountain elevation. To the west, it is bordered by a slope, a seasonal stream, a plain, mountainous highlands, and the town of Mabeta.</p>
+<p>The number of houses reaches 25, and its age is approximately 80 years. It is a modern village; its old dwellings are made of stone and mud, while the modern ones are cement in the form of villas amidst the trees. An electricity network, a small mosque, and a school shared with Kokan Foqanî are available in the village. The farm drinks from the water of a spring located within it and from a water network connected to the well dug north of the farm at a distance of 1 kilometer.</p>
+<p>Its residents work in rainfed agriculture on an area of 200 hectares, cultivating grains, olive trees, and vines. They also practice irrigated agriculture using water from artesian wells or from the Kokan spring west of the village on an area of 43 hectares, cultivating summer vegetables, pomegranate trees, and walnut trees, alongside raising sheep and goats. It is connected to the sub district center by a paved road that passes through its center to the village of Kokan Foqanî.</p>
+<p>Among its most important families is the <span class="internal-link">Berekat</span> family (the first to inhabit the village in 1927 AD, who came from the village of Ibîn in <span class="internal-link">Çiyayê Lêlûn</span> due to personal disputes and the killing of a person from the mentioned village, leading them to settle in Kokan Tehtanî). They are: Berekat, <span class="internal-link">Elî</span>, <span class="internal-link">Mûsa</span>, <span class="internal-link">Mistefa</span>, and <span class="internal-link">Mihemed</span> / <span class="internal-link">Hac Miho</span>. There are many university degree holders in the village.</p>
+<p>The village mukhtar is <span class="internal-link">Mihemed Mistefa Hemo</span>.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and Execution:</p>
+<p>Manager of <span class="internal-link">Navenda Tirej Efrîn</span>: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Kokan ، كوكان ، الجزرونية /2082ن - 865هـ / :</p>
 <ul>
-<li>Kok: means tree trunk or root, and &quot;an&quot; is a marker indicating the plural state in Kurdish. It consists of two villages, Upper and Lower:</li>
+<li>كوك Kok : تعني جذع الشجر أو الجذر و an هي علامة تشير إلى حالة الجمع في</li>
 </ul>
-<p><strong><span class="internal-link">1 - PhD/Villages/Kokanê Jêrin</span> (كوكان تحتاني), <span class="internal-link">Jazroniya Tahtani</span> (جزرونية تحتاني)</strong> / 380m – 7km/:</p>
+<p>الكردية. وهي قريتان الفوقانية والتحتانية: Kokan Jrin ، كوكان تحتاني ، جزرونية تحتاني / 380م  7كم/:</p>
 <ul>
-<li>A village of recent establishment. Located north of the upper village on an elevation overlooking <span class="internal-link">Zewrê valley</span> (زورى) from its north. The original inhabitants came from <span class="internal-link">Basilahaya village</span> (باصلحايا الروبارية), then settled in the <span class="internal-link">Xirabî Delê</span> (خرابى ديلى) site and established this village.</li>
+<li>قرية حديثة العهد. تقع شمالي القرية الفوقانية فوق مرتفع يشرف على وادي</li>
 </ul>
-<p>According to the book: &#x27;عفرين.... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27; by writer Abdulrahman Mohammed from <span class="internal-link">Qitma village</span> (قطمه):</p>
-<p><strong><span class="internal-link">Kokan Tahtani</span> (كوكان تحتاني)</strong>: A farm in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), <span class="internal-link">Afrin City region</span> (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small farm located in the central part of the mentioned mountain, on a flat, fertile plateau on the northeastern slope, surrounded by slopes and streams planted with olive, walnut, and almond trees. To the north, it is bordered by a slope planted with olive trees and the railway line <span class="internal-link">Aleppo - Meydan Ekbez</span> (حلب – ميدان إكبس) and the <span class="internal-link">Afrin City-Rajo</span> road (عفرين-راجو) and <span class="internal-link">Sino farm</span> (مزرعة سينو). To the south, it is bordered by a slope and stream watercourse and <span class="internal-link">Kokan Foqani village</span> (قرية كوكان فوقاني) on the high mountain elevation. To the west, it is bordered by a slope and stream watercourse and plain and mountain elevations and <span class="internal-link">Mabetli town</span> (بلدة معبطلي).</p>
-<p>The number of houses is about 25, and its age is about 80 years. It is a village of recent establishment. Its old dwellings are stone and clay, and the modern ones are concrete built as villas among the trees. It has electricity network and a small mosque and a school shared with <span class="internal-link">Kokan Foqani</span> (كوكان فوقاني). The farm drinks from spring water found within it and from a water network connected to wells drilled north of the farm at a distance of 1km.</p>
-<p>Its inhabitants work in rain-fed agriculture on an area of 200 hectares with grains and olive and vineyard trees, irrigated from artesian well water or from <span class="internal-link">Kokan spring</span> (نبع كوكان) west of the village on an area of 43 hectares with summer vegetables and pomegranate and walnut trees, in addition to raising sheep and goats. It connects to the district center by a paved road that passes through its center to <span class="internal-link">Kokan Foqani village</span> (قرية كوكان فوقاني).</p>
-<p>Among its most important families is the <span class="internal-link">Barakat family</span> (عائلة بركات) (the first to inhabit the village in 1927 who came from <span class="internal-link">Iben village</span> (قرية إبين) from <span class="internal-link">Lilon Mountain</span> (جبل ليلون) due to personal disputes and the killing of one person from the mentioned village, and they settled in <span class="internal-link">Kokan Tahtani</span> (كوكان تحتاني)). They are: <span class="internal-link">Barakat</span>, <span class="internal-link">Ali</span>, <span class="internal-link">Musa</span>, <span class="internal-link">Mustafa</span>, <span class="internal-link">Mohammed</span>/<span class="internal-link">Haj Mahmo</span> (حاج محو). In the village are many university degree holders.</p>
-<p>Village mayor: <span class="internal-link">Mohammed Mustafa Hamo</span> (محمد مصطفى حمو)</p>
-<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin City Heritage</span>: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kokanê Jêrin and Kokanê Jorin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Uwpv8OPHzNA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Uwpv8OPHzNA</a></p>
+<p>Zewr المار من شمالها. أصل سكانها من ق.باصلحايا الروبارية، ثم استقروا في موقع Xirab Del، وأسسوا هذه القرية. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كوكان تحتاني : مزرعة في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي مزرعة صغيرة تقع في القسم الأوسط من الجبل المذكور ، فوق هضبة منبسطة خصبة في السفح الشمالي الشرقي ومن حولها منحدرات ومسيلات مزروعة بأشجار الزيتون و الجوز واللوز ، يحدها شمالاً منحدر مزروع بأشجار الزيتون وسكة حديد/حلب  ميدان إكبس/ و طريق /عفرين_راجو/ ومزرعة سينو ، وجنوباً منحدر ومسيل سيلي و قرية كوكان فوقاني في أعلى المرتفع الجبلي ، وغرباً منحدر ومسيل سيلي وسهل ومرتفعات جبلية وبلدة معبطلي ، يبلغ عدد بيوتها 25 بيتاً وعمرها حوالي 80عاماً ، قرية حديثة العهد ، مساكنها القديمة حجرية طينية والحديثة إسمنتية على شكل فيلات بين الأشجار ، تتوفر فيها شبكة كهرباء وجامع صغير ومدرسة مشتركة مع كوكان فوقاني ، تشرب المزرعة من مياه نبع الموجودة فيها و من شبكة مائية متصلة بالبئر المحفورة شمال المزرعة على مسافة 1كم ، يعمل سكانها بالزراعة البعلية على مساحة 200هـ بالحبوب وأشجار الزيتون والكرمة ورياً من مياه الآبار الارتوازية أومن نبع كوكان غرب القرية على مساحة 43هـ بالخضار الصيفية وأشجار الرمان والجوز إلى جانب تربية الأغنام والماعز ، تتصل بمركز الناحية بطريق مزفتة ويمر في وسطها إلى قرية كوكان فوقاني ، من أهم عوائلها عائلة بركات (أول من سكنوا القرية عام 1927م الذين جاءوا من قرية إبين من جبل ليلون بسبب خلافات شخصية وقتل أحد الأشخاص من القرية المذكورة واستوطنوا في كوكان تحتاني) ، وهم ( بركات - علي - موسى - مصطفى</p>
+<p>-</p>
+<p>محمد / حاج محو ) . وفي القرية العديد من حملة الشهادات الجامعية .</p>
+<p>مختار القرية : محمد مصطفى حمو</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kokanê Jêrin and Kokanê Jorin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Uwpv8OPHzNA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Uwpv8OPHzNA</a></p>
 <p>The area known as <span class="internal-link">Kûkanê</span> in the <span class="internal-link">Mabata</span> district of <span class="internal-link">Efrîn</span> consists of two distinct settlements: <span class="internal-link">Kûkana Jor</span> (Upper) and <span class="internal-link">Kûkana Jêr</span> (Lower). The name is derived from <span class="internal-link">Kûka Kaniyê</span>, referring to the geographical &quot;hollow&quot; of a mountain spring that defined the original site. Kûkana Jor, situated on the hill <span class="internal-link">Sirtê Bêrê</span>, is the older of the two, with oral history suggesting it was founded approximately 700 years ago, though specific records mentioned by elders cite the year 1733. Kûkana Jêr is a younger settlement, established roughly 100 years ago near the historic ruins of <span class="internal-link">Xerabê Dêle</span>, a site featuring over 20 ancient cisterns and caves indicative of a much older town.</p>
 <p>The social structure of the villages is defined by specific tribal and family lineages. Kûkana Jor is inhabited primarily by the <span class="internal-link">Şêxiyan</span> and <span class="internal-link">Heseniyan</span> tribes, housing families such as <span class="internal-link">Oskoper</span>, <span class="internal-link">Evdê Horê</span>, <span class="internal-link">Cilha</span>, <span class="internal-link">Xelîce</span>, and <span class="internal-link">Hecçenan</span>. Kûkana Jêr is historically linked to the <span class="internal-link">Rûbariyan</span> tribe. Its foundation is attributed to the <span class="internal-link">Berket</span> family, who migrated from the village of <span class="internal-link">Bênê</span> in the <span class="internal-link">Şêrawa</span> district due to social conflicts. Other families in the lower village include <span class="internal-link">Meşikan</span> and <span class="internal-link">Mam Şemka</span>, with the Cilha family having a presence in both settlements.</p>
 <p>A significant historical figure from Kûkana Jor is <span class="internal-link">Silêmanê Helebî</span> (born <span class="internal-link">Mihemed Emîn</span> in 1777). He traveled to <span class="internal-link">Misr</span> (Egypt) to study at <span class="internal-link">Ezher</span> and is famous for assassinating the French General <span class="internal-link">Kléber</span> in 1801. Local history recounts that following this event, the French bombarded the village, forcing the residents of Kûkana Jor into exile for three years. While he is often claimed as an Arab hero in regional narratives, the villagers maintain a distinct memory of his Kurdish origins and the location of his family home.</p>
@@ -263,7 +313,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kokane%20jerin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kokane%20jerin.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=Uwpv8OPHzNA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Uwpv8OPHzNA</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=riSYuMjc8-Q" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=riSYuMjc8-Q</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kokane%20jerin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20kokane%20jerin.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=Uwpv8OPHzNA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Uwpv8OPHzNA</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=riSYuMjc8-Q" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=riSYuMjc8-Q</a></li></ul>
             </div>
 
             
@@ -273,7 +323,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -391,6 +441,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

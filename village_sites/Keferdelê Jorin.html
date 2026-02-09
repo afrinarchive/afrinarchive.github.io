@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,7 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Keferdelê, Keferdelê Jorin, Keferdelê Jorîn, Keferdelê jorin, Kefirdellê, Kefr Dalî, كفردلي فوقاني, Keferdela Jûrin</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Erdo, Gênco, Mistefê Îsmaîl, Çolaq, Îbiş</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Beker Axa, Elî Îse, Erdo, Gênco, Mamed, Mistefê Îsmaîl, Taka, Çolaq, Îbiş, Şe&#x27;a</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -226,20 +247,67 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Keferdelê Jorin</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Keferdelê Jorin</span>, كفردلي فوقاني</strong> /1647N - 303E - 15km - 520m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Keferdelê Jorin</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Keferdele%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Keferdele%20jorin.htm</a></p>
+<p>The book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span> states regarding <span class="internal-link">Keferdelê Jorîn</span>:</p>
+<p><span class="internal-link">Keferdelê</span>: The name is a compound of <span class="internal-link">Kefer</span> + <span class="internal-link">Delê</span>. We have not arrived at the literal meaning of the name, although &quot;Delê&quot; is a Turkish word meaning reckless or mad, and &quot;Kefer&quot; is a Syriac Greek term meaning farm.</p>
+<p>It is a small village located on the two sides of <span class="internal-link">Geliyê Bîrê</span> (Valley of the Well), which slopes steeply from the north toward the south. Its location is fortified, and it is overlooked from its four sides by limestone mountain slopes. It is one of the old villages in the region.</p>
+<p>The book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme states regarding Keferdelê Jorîn:</p>
+<p>It is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the villages of the central <span class="internal-link">Efrîn</span> subdistrict and region, in the Aleppo governorate. It is a large village situated on the western and southern slope on the side of Geliyê Bîrê, which slopes from the north to the south. It is overlooked by limestone mountain slopes carved by watercourses from the southern side and the eastern side, and the village lies between two mountains in a deep depression.</p>
+<p>It is bordered to the north by a valley, a mountain chain, and the village of <span class="internal-link">Gazê Tepê</span>. To the south, it is bordered by a valley, a fertile plain of olive trees, and the village of <span class="internal-link">Keferdelê Jêrîn</span>. To the west, it is bordered by a mountain chain and the village of <span class="internal-link">Satiyanlî</span>. To the east, it is bordered by a mountain chain planted with olive trees, slopes, and the villages of <span class="internal-link">Me&#x27;rratê</span> and <span class="internal-link">Babîlît</span>.</p>
+<p>The number of its houses reaches approximately 80 houses, and its age is about 500 years. Its old houses are of stone and mud with flat wooden roofs, while the modern dwellings are made of stone and cement. The village has an electrical network and a primary school founded in 1947. The residents drink from artesian wells, and water collects in cisterns. Its inhabitants work in the cultivation of olives, grains, and legumes, and in raising sheep and goats. The road connecting to it from the <span class="internal-link">Darê</span> junction to the village is a paved dirt road.</p>
+<p>Among the families in the village are: <span class="internal-link">Beker Axa</span> (<span class="internal-link">Mihemed Kînc</span>), <span class="internal-link">Şe&#x27;a</span>, <span class="internal-link">Taka</span>, <span class="internal-link">Mamed</span>, and <span class="internal-link">Elî Îse</span>.</p>
+<p>In the past, Mr. <span class="internal-link">Mihemed Ebdullah</span>, the father of Dr. <span class="internal-link">Xelîl Ebdullah</span>, was the mukhtar of this village. Currently, Mr. <span class="internal-link">Faîq Îbiş</span> is the mukhtar of the village.</p>
+<p>There are many university degree holders, and among the cultural and scientific figures in the village are, for example but not limited to: Mr. <span class="internal-link">Azad Ebdulhenan</span> (a well known mathematics teacher in the region), Mr. <span class="internal-link">Ehmed Kînc</span>, and the poet <span class="internal-link">Mihemed Şêx Osman Hemdo</span> (<span class="internal-link">Dêrsim Memo</span>). Among the holders of higher degrees in the village is <span class="internal-link">Ebdulrehman Xelîl Îbiş</span> (PhD in Aviation Mechanics / Russia).</p>
+<p>Village Mukhtar: Faîq Îbiş</p>
+<p>Sources:</p>
 <ul>
-<li>كفردلي: The name is compound from كفر+ دلي. We could not determine the literal meaning of the name although &quot;دلي&quot; is a Turkish word meaning crazy or mad, and &quot;كفر&quot; is a Syriac-Greek term meaning farm.</li>
-<li>A small village located on the edge of &quot;وادي الجب&quot; (<span class="internal-link">Gelî Bîrê</span>) valley descending steeply from north to south. Its location is strategic and overlooks it from its four directions calcareous mountain slopes. It is among the ancient villages in the region.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>And according to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdul Rahman Mohammed from Qatmah village:</p>
-<p><strong>كفردلي فوقاني</strong>: A village in Kurdish Mountain, belonging to the central district villages and Afrin, Aleppo Governorate.</p>
-<p>It is a large village located on the western and southern slope of the edge of <span class="internal-link">Al-Jub</span> valley descending from north to south. Calcareous mountain slopes overlook it, carved by streams from the southern and eastern sides, and the village is located between two mountains in a deep depression. It is bordered to the north by a valley and mountain chain and <span class="internal-link">Ghazi Tabah</span> village. To the south by a valley and fertile plain of olive trees and <span class="internal-link">Kafr Dali Tahtani</span> village, to the west by a mountain chain and <span class="internal-link">Satianli</span> village, and to the east by a mountain chain planted with olive trees and slopes and <span class="internal-link">Ma&#x27;rateh</span> and <span class="internal-link">Bablit</span> villages. The number of houses reaches about 80 houses and its age is about 500 years. Its old houses are stone-mud with level wooden roofs while modern dwellings are of stone and cement. It has an electricity network and an elementary school modernized in 1947. Residents drink from artesian wells and water collects in pools. Its inhabitants work in olive, grain and legume cultivation and sheep and goat herding. The road reaching it is from the <span class="internal-link">Al-Dariya</span> junction to the village and is paved earth.</p>
-<p>Among the families in the village: the <span class="internal-link">Al-Bakr Agha</span> family (<span class="internal-link">Mohammed</span> - <span class="internal-link">Kinj</span>) - the <span class="internal-link">Al-Sha&#x27;a</span> family - the <span class="internal-link">Al-Taka</span> family - the <span class="internal-link">Al-Mamad</span> family - the <span class="internal-link">Al-Ali Issa</span> family.</p>
-<p>In the past <span class="internal-link">Mr. Mohammed Abdullah</span>, father of <span class="internal-link">Dr. Khalil Abdullah</span>, was mayor of this village, and currently <span class="internal-link">Mr. Faiq Aibash</span> is the village mayor.</p>
-<p>There are many university degree holders and among the cultural and scientific figures in the village, to mention but not limit (<span class="internal-link">Professor Azad Abdul Hanan</span> / mathematics teacher known in the region - <span class="internal-link">Professor Ahmed Kinj</span> - poet <span class="internal-link">Mohammed Sheikh Othman Hamdo</span> (<span class="internal-link">Dirsim Memo</span>)).</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Abdul Rahman Khalil Aibash</span> / doctorate in aviation mechanics / <span class="internal-link">Russia</span></p>
-<p>Village mayor: Faiq Aibash</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Keferdelê Jêrîn and Keferdelê Jorin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=ntK5ucTs_TE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=ntK5ucTs_TE</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Director of Tirej Efrîn site: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Keferdel Jorin ، كفردلي فوقاني /1647ن - 303هـ - 15كم - 520م/:</p>
+<ul>
+<li>كفردلي: الاسم مركب من كفر+ دلي. ولم نتوصل إلى المعنى الحرفي للاسم على</li>
+</ul>
+<p>الرغم من أن &quot;دلي&quot; كلمة تركية بمعنى الأهوج أو المجنون، و&quot;كفر&quot; مصطلح سرياني- يوناني بمعنى مزرعة.</p>
+<ul>
+<li>قرية صغيرة تقع على طرفي&quot;وادي الجب&quot; Gel Br المنحدر بشدة من الشمال نحو</li>
+</ul>
+<p>الجنوب. موقعها حصين وتشرف عليها من جهاتها الأربع سفوح جبلية كلسية. وهي من القرى القديمة في المنطقة. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كفردلى فوقاني : قرية في جبل الكرد, تتبع ناحية قرى مركز ومنطقة عفرين ، محافظة حلب . وهي قرية كبيرة تقع على السفح الغربي والجنوبي من طرف وادي الجب المنحدر من الشمال إلى الجنوب. تشرف عليها سفوح جبلية كلسية حفرتها المسيلات من الجهة الجنوبية والجهة الشرقية وتقع القرية بين جبلين في منخفض عميق . يحدها شمالاً وادي وسلسلة جبلية وقرية غازي تبه .وجنوباً وادي وسهل خصب من أشجار الزيتون وقرية كفر دلي تحتاني وغرباً سلسلة جبلية وقرية صاتيانلي وشرقاً سلسلة جبلية مزروعة بأشجار الزيتون ومنحدرات وقرية معراته وبابليت يبلغ عدد بيوتها حوالي80 بيتاً وعمرها حوالي500عاماً بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية أما المساكن الحديثة فهي من الأحجار والإسمنت تتوفر فيها شبكة الكهرباء ومدرسة ابتدائية المحدثة عام 1947. يشرب الأهالي من الآبار الارتوازية وتجمع المياه في البرك .يعمل سكانها بزراعة الزيتون والحبوب والبقول وتربية الأغنام والماعز .والطريق الواصل إليها من مفرق الضرية إلى القرية وهو ترابي معبد . ومن العائلات في القرية : آل بكر آغا ( محمد</p>
+<ul>
+<li>كينج ) - آل شعا - آل تاكا - آل مامد - آل علي عيسه .</li>
+</ul>
+<p>وقديماً كان السيد محمد عبدالله والد الدكتور خليل عبدالله مختاراً لهذه القرية ، وحالياً السيد فائق ايبش هو</p>
+<p>مختار القرية .</p>
+<p>وهناك العديد من حملة الشهادات الجامعية ومن بين الوجوه الثقافية والعلمية في القرية على سبيل الذكر لا الحصر ( الاستاذ آزاد عبدالحنان / مدرس الرياضيات المعروف في المنطقة - الاستاذ أحمد كينج - الشاعر محمد شيخ عثمان حمدو ( ديرسم ممو ) . ومن حاملي الشهادات العليا في القرية : عبدالرحمن خليل ايبش / دكتوراة في ميكانيك الطيران / روسيا</p>
+<p>مختار القرية :  فائق ايبش</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Keferdelê Jêrîn and Keferdelê Jorin from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=ntK5ucTs_TE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=ntK5ucTs_TE</a></p>
 <p>The village of <span class="internal-link">Keferdelê</span> is a historic settlement in the <span class="internal-link">Efrîn</span> region that consists of two distinct sections known as <span class="internal-link">Keferdeleya Jorin</span> and <span class="internal-link">Keferdeleya Jêrîn</span>. Residents explain that the name has Aramaic origins where the word Kefer signifies a village making the meaning <span class="internal-link">Gundê Delê</span>. The history of the settlement spans between four and five centuries. Originally Keferdeleya Jêrîn served merely as an agricultural mezra or farm for the upper village before the population expanded the cultivated land and established a permanent presence there. The geography is defined by <span class="internal-link">Çiyayê Hemdû</span> to the east and north and <span class="internal-link">Çiyayê Elî Îsa</span> to the south.</p>
 <p>The social structure and reputation of Keferdelê are deeply tied to education and intellectual achievement. The village is famous for having a high density of university graduates including over 110 professionals such as doctors and engineers. This legacy began with <span class="internal-link">Heyder Gênco</span> who is celebrated as the first teacher in the Efrîn region. In 1947 he established a school that served students from seven surrounding villages including <span class="internal-link">Satya</span> and <span class="internal-link">Gewrika</span> and <span class="internal-link">Çolaqa</span>. Before the construction of this formal schoolhouse education took place in caves under the guidance of religious figures like <span class="internal-link">Mela Ebdurehmanê Siltanê</span> and <span class="internal-link">Xoce Nebatî</span> as early as 1932. The <span class="internal-link">Îbiş</span> family is noted for its many educated members while <span class="internal-link">Mehmedê Evdile &#x27;Erdo</span> is remembered as the mukhtar who assisted in building the first school.</p>
 <p>The village landscape features significant natural and sacred sites. There are approximately 30 caves in the area which were historically used for habitation and sheltering livestock. Notable among these are <span class="internal-link">Şikefta Govşka Zeytûna</span> and <span class="internal-link">Şikefta Ga</span> the latter being the widest. A 400 year old well exists north of the village and residents still use traditional methods to locate water sources. For spiritual practices the community reveres the shrine of <span class="internal-link">Şêx Ûzim</span> located to the south. This site contains a sacred <span class="internal-link">palot</span> tree where locals light candles and pray for rain or personal wishes.</p>
@@ -316,7 +384,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Keferdele%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Keferdele%20jorin.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=FN7OHyASCpY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FN7OHyASCpY</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=TuJa9Nxszqc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TuJa9Nxszqc</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=sIPQ-v_GJEI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sIPQ-v_GJEI</a><br><a href="https://www.youtube.com/watch?v=6zfH2ZeuX3s" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=6zfH2ZeuX3s</a><br><a href="https://www.youtube.com/watch?v=SDU5_bAAHLU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SDU5_bAAHLU</a><br><a href="https://www.youtube.com/watch?v=cbbcln2MP6I" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=cbbcln2MP6I</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=9hVnzkBy8iE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9hVnzkBy8iE</a><br><a href="https://www.youtube.com/watch?v=9wkXCqlnPXM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9wkXCqlnPXM</a><br><a href="https://www.youtube.com/watch?v=ntK5ucTs_TE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ntK5ucTs_TE</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Keferdele%20jorin.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Keferdele%20jorin.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=FN7OHyASCpY" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=FN7OHyASCpY</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=TuJa9Nxszqc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=TuJa9Nxszqc</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=sIPQ-v_GJEI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sIPQ-v_GJEI</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=6zfH2ZeuX3s" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=6zfH2ZeuX3s</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=SDU5_bAAHLU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SDU5_bAAHLU</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=cbbcln2MP6I" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=cbbcln2MP6I</a></li><li>Drone video:<br><a href="https://www.youtube.com/watch?v=9hVnzkBy8iE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9hVnzkBy8iE</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=9wkXCqlnPXM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=9wkXCqlnPXM</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=ntK5ucTs_TE" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ntK5ucTs_TE</a></li></ul>
             </div>
 
             
@@ -326,7 +394,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -444,6 +512,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

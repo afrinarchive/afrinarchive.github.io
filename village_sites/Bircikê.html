@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -176,7 +197,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Bircikê, Birj Kamush, Burcikê, Burj Kamoush, Kamoush Tower, برج كموش</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Micadmî, Şêxmendî</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Dikê, Elî Beg, Hisên Mirîşê, Mamker, Mihemedî Şi&#x27;o, Mûsê, Nayîf, Necîr, Reşîdî Gemrûkê, Seydo Memê Xelîl Behçet, Seydê Memê, Sêvkeçelê, Îbkê, Şêr</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Behcet Betal Axa, Dikê, Elî Beg, Hisên Mirîşê, Mamker, Mihemedî Şi&#x27;o, Mûsê, Nayîf, Necîr, Reşîdî Gemrûkê, Seydo Memê Xelîl Behçet, Seydê Memê, Sêvkeçelê, Sîdo Mîmî, Îbkê, Şêr</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -219,16 +240,56 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Bircikê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin)</span>&#x27; Geographical Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Bircikê</span> (برج كموش), Kamoush Tower (كموش برج), Burj Kamoush (برج كموش)</strong> /637N - 492E - 6km - 310m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Bircikê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20barj%20kamush.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20barj%20kamush.htm</a></p>
+<p>According to the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Bircik</span>, also known as <span class="internal-link">Gumuş Burc</span> or <span class="internal-link">Burc Gumuş</span> /637 inhabitants - 492 hectares - 6km distance - 310m altitude/:</p>
+<p>The name goes back to a small tower that was located at the village site. The residents used to call it <span class="internal-link">Birca Zîv</span> (Silver Tower). <span class="internal-link">Gumuş</span> is a Turkish name meaning &quot;Silver.&quot; The name was shortened over time to Bircik: The Little Tower (birc + ik).</p>
+<p>It is a small village located in the middle of a plain rippling with olive trees. It was one of the villages of <span class="internal-link">Xelîl Axa Sîdo Mîmî</span> before the agrarian reform distributed its fields among the farmers. Its location and the tower that existed there indicate that it has been inhabited since ancient times. Currently, it contains some luxurious residential buildings belonging to the families of <span class="internal-link">Axayên Sîdo Mîmî</span>.</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Burc Gumuş is a village in <span class="internal-link">Çiyayê Kurmênc</span> belonging to the <span class="internal-link">Cindirês</span> district, <span class="internal-link">Efrîn</span> region, Aleppo governorate. It is a small village located in the undulating northeastern plain of Cindirês, which has fertile alluvial soil. It is 7km away from the town of Cindirês. It is bordered to the north by an agriculturally fertile plain, a flood valley, and <span class="internal-link">Miske Tehtanî</span>; to the south by a fertile plain and the nearby village of <span class="internal-link">Qîla</span>; to the west by a flood valley, an agriculturally fertile plain, and the village of <span class="internal-link">Zindikan</span>; and to the east by an agriculturally fertile plain planted with olive trees and the villages of <span class="internal-link">Qoceman</span> and <span class="internal-link">Qurbe</span>.</p>
+<p>The number of houses reaches about 25, and its age is approximately 85 years. It is a very modern village, founded in 1920 by the family of <span class="internal-link">Behcet Betal Axa</span>, who were the first to inhabit the village. Its old houses are made of stone and mud, while the modern ones are cement and spread along the edges of the village. An electricity network and a primary school are available. It is connected to the district center and neighboring villages by a paved road. The village drinks from artesian wells dug next to the houses.</p>
+<p>The residents work in the cultivation of grains, olives, and legumes, both rain-fed and irrigated from artesian wells for the cultivation of summer vegetables, alongside raising sheep and goats. There is a modern olive press and an agricultural cooperative in the village.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Hemo Husên</span></p>
+<p>Preparation and Execution:</p>
+<p>Manager of the <span class="internal-link">Tirej Efrîn</span> website: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>The name goes back to a small tower that was at the village site, and the residents used to call it &quot;the silver tower&quot; <span class="internal-link">Birca Zîv</span> (Birca Zîv), so &quot;<span class="internal-link">Kamoush</span>&quot; (كموش) <span class="internal-link">Gumûş</span> (Gumûş) is a Turkish name meaning &quot;silver&quot;, and the name was shortened over time to &quot;Bircikê&quot;: the small tower.</li>
-<li>A small village located in the middle of a plain wavy with olive trees. It was one of the villages of <span class="internal-link">Khalil Agha Sido Mimi</span> (خليل آغا سيدو ميمي) before the agricultural reform distributed his fields to the farmers. Its location and the tower that was there indicate that it was inhabited since ancient times. It currently has some residential buildings belonging to families from the <span class="internal-link">Sido Mimi</span> (سيدو ميمي) Aghas&#x27; descendants.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong>Burj Kamoush (برج كموش)</strong>: A village in the Kurdish Mountain (جبل الكرد) belonging to Cindirês District (ناحية جندیرس), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the northeastern plain of Cindirês (جندیرس), which is wavy with rich loamy soil. It is 7km from the town of Cindirês (جندیرس). To the north, there is a fertile agricultural plain and the <span class="internal-link">Sili Valley</span> (وادي سيلي) and <span class="internal-link">Miske Tahtani</span> (مسكة تحتاني). To the south, there is a fertile plain and the nearby <span class="internal-link">Qile</span> village (قرية قيله). To the west, there is the Sili Valley (وادي سيلي) and a fertile agricultural plain and <span class="internal-link">Zindkan</span> village (قرية زندكان). To the east, there is a fertile agricultural plain planted with olive trees and <span class="internal-link">Quje Man</span> village (قرية قوجه مان) and <span class="internal-link">Qurbe</span> (قوربه). It has about 25 houses and its age is about 85 years. It is a very modern village. The village was established in 1920 by the family of <span class="internal-link">Behjat Batal Agha</span> (بهجت بطال آغا) who were the first to inhabit the village. Its old houses are stone and clay, and the modern ones are concrete spread on the outskirts of the village. It has an electricity network and an elementary school. It connects with the subdistrict and neighboring villages by paved road. The village drinks from artesian wells dug beside the houses. The residents work in growing grains, olives, and legumes rainfed and irrigated from artesian wells for growing summer vegetables, in addition to raising sheep and goats. It has a modern olive mill and an agricultural association.</p>
-<p>Village Headman: <span class="internal-link">Mohammed Hamo Hussein</span> (محمد حمو حسين)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Bircikê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=VdKDZuUp1GM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=VdKDZuUp1GM</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Bircik ، كموش برج ، برج كموش /637ن - 492هـ - 6كم - 310م/:</p>
+<ul>
+<li>يعود الاسم إلى برج صغير كان في موقع القرية، وكان السكان يطلقون عليه</li>
+</ul>
+<p>&quot;البرج الفضي&quot; Birca Zv، فـ &quot;كموش&quot; Gumş اسم تركي بمعنى &quot;الفضة&quot;، وقد اختصر الاسم بمرور الزمن إلى &quot;برجكي Bircik&quot;: البرج الصغير.</p>
+<ul>
+<li>قرية صغيرة تقع وسط سهل يموج بأشجار الزيتون. كانت من قرى خليل آغا سيدو</li>
+</ul>
+<p>ميمي قبل أن يوزع الإصلاح الزراعي حقولها على الفلاحين. ويدل موقعها والبرج الذي كان موجودا فيه، إلى أنه كان مسكونا منذ القديم. فيها حالياً بعض الأبنية السكنية المرفهة لعائلات من آغوات سيدو ميمي. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه برج كموش : قرية في جبل الكرد تتبع ناحية جنديرس ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في سهل جنديرس الشمالي الشرقي المتموج ذي التربة اللحقية الخصبة , تبعد عن بلدة جنديرس 7كم يحدها شمالاً سهل خصب زراعياً ووادي سيلي ومسكة تحتاني ، وجنوباً سهل خصب وقرية قيلة القريبة وغرباً وادي سيلي وسهل خصب زراعياً وقرية زندكان ، وشرقاً سهل خصب زراعياً مزروع بأشجار الزيتون وقرية قوجه مان وقوربه ، يبلغ عدد بيوتها حوالي 25بيتاً وعمرها حوالي 85عاماً ، وهي قرية حديثة جداً تأسست القرية عام 1920م من قبل عائلة بهجت بطال آغا الذين كانوا أول من سكن القرية , بيوتها القديمة حجرية طينية والحديثة إسمنتية تنتشر على أطراف القرية , تتوفر فيها شبكة للكهرباء ومدرسة ابتدائية تتصل مع الناحية والقرى المجاورة بطريق مزفت , تشرب القرية من الآبار الارتوازية المحفورة بجانب المنازل, يعمل السكان بزراعة الحبوب والزيتون والبقول بعلاً ورياً من الآبار الارتوازية لزراعة الخضراوات الصيفية إلى جانب تربية الأغنام والماعز, يوجد فيها معصرة زيتون حديثة و جمعية فلاحية.</p>
+<p>مختار القرية :  محمد حمو حسين</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Bircikê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=VdKDZuUp1GM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=VdKDZuUp1GM</a></p>
 <p>The village of <span class="internal-link">Burcêkê</span>, also referred to as <span class="internal-link">Birjike</span>, is situated in the <span class="internal-link">Deşta Cûmê</span> within the <span class="internal-link">Cindirês</span> region of <span class="internal-link">Efrîn</span>. Its name originates from a high tower, or <span class="internal-link">Burc</span>, that once stood as a prominent fortification in the area. According to local elders, the village was established over two hundred years ago by their ancestor <span class="internal-link">Mihemed Axayê Seydê Mêmê</span>, who migrated from the nearby village of <span class="internal-link">Çolaqa</span>. Before his arrival, the site was inhabited by a figure known as <span class="internal-link">Alay Beg</span>, described as a Kurd from Istanbul. The narrator highlights a significant shift in religious identity, noting that fifty years ago, the residents were <span class="internal-link">Êzîdî</span> and identified as <span class="internal-link">Şêxmendî</span> before eventually converting to Islam. Historically, the village served as a grain depot for the region, but as water sources like the stream passing through <span class="internal-link">Miskê</span> diminished, the agricultural focus shifted almost entirely to olive cultivation, with the village now boasting tens of thousands of trees.</p>
 <p>The social structure of Burcêkê is characterized by a deep integration of Kurd and <span class="internal-link">Arab</span> families who describe their relationship as living as &quot;one house.&quot; The founding family, <span class="internal-link">Seydê Memê</span>, was followed by the arrival of other lineages such as <span class="internal-link">Mala Îbkê</span>, <span class="internal-link">Mala Sêvkeçelê</span>, and <span class="internal-link">Mala Mihemedî Şi&#x27;o</span> (also known as <span class="internal-link">Mala Elî Beg</span>). Several families of Arab origin, including <span class="internal-link">Mala Mûsê</span>, <span class="internal-link">Mala Hisên Mirîşê</span>, and <span class="internal-link">Mala Nayîf</span>, settled in the village and fully assimilated into the Kurdish community, intermarrying and sharing the local culture. A shepherd named <span class="internal-link">Hemîd Mûsa Şêr</span> notes that his lineage connects to the <span class="internal-link">Micadmî</span> tribe, with kin distributed across <span class="internal-link">Ezaz</span>, <span class="internal-link">Bab</span>, and <span class="internal-link">Dêr Hafir</span>.</p>
 <p>Notable residents and communal efforts define the village&#x27;s reputation. It is the home of the artist <span class="internal-link">Niyazî</span> from <span class="internal-link">Koma Engîzek</span>, who emphasizes the village&#x27;s musical culture and the preservation of historical epics like <span class="internal-link">Dewrêşê Evdî</span>. The community actively maintains its identity through a children&#x27;s commune named after <span class="internal-link">Şehîd Zekeriya</span> and a musical group honoring <span class="internal-link">Şehîd Rifat</span>. Innovation is also present in the village, exemplified by <span class="internal-link">Battal Seydo Memê Xelîl Behçet</span>, a resident who engineered a wind power generator using bicycle parts and a fan to provide electricity for his household. The village boundaries are defined by landmarks such as the <span class="internal-link">Sindiyankê</span> tree and the surrounding locations of <span class="internal-link">Çeqela</span>, <span class="internal-link">Miskê</span>, <span class="internal-link">Qucûma</span>, and the ancient site of <span class="internal-link">Qîlê</span> to the south.</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Ax û Walat Book 2</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>BIRCIKÊ</p>
@@ -307,7 +368,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20barj%20kamush.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20barj%20kamush.htm</a><br><a href="https://www.youtube.com/watch?v=VdKDZuUp1GM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VdKDZuUp1GM</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20barj%20kamush.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20barj%20kamush.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=VdKDZuUp1GM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=VdKDZuUp1GM</a></li></ul>
             </div>
 
             
@@ -317,7 +378,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -435,6 +496,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

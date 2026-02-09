@@ -140,6 +140,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -164,8 +185,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Bilbilê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Beg Oba Si, Bêkê, Bîkê, Oba, أوبه, بك أوبه سي, بيكه</p></div>
-<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Biyan</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Malbata Dindin, Malbata Şêx Ismaîl, Malbatî Xelîl Şivan, Malbatî Xidir, Malbatî Ça&#x27;beqo, Malî Elî Hesen, Malî Husênê Dêlê, Malî Kudi, Malî Kuju, Malî Mirîd, Malî Mıho, Malî Qasu, Malî Qumuş, Malî Çeleng, Malî Şêx Musler, Mihemedê Xidir</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Biyan, Bîkan</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Malbata Dindin, Malbata Şêx Ismaîl, Malbatî Xelîl Şivan, Malbatî Xidir, Malbatî Ça&#x27;beqo, Malî Elî Hesen, Malî Husênê Dêlê, Malî Kudi, Malî Kuju, Malî Mirîd, Malî Mıho, Malî Qasu, Malî Qumuş, Malî Çeleng, Malî Şêx Musler, Mihemedê Xidir, Şêx Îsmaîl Zade</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-bilbil-">
@@ -203,21 +224,64 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Bêkê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; / &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Geographic Study:</p>
-<p><strong><span class="internal-link">Gundî Bêkê</span> (گندی بێکێ), بك أوبه سي (Beg Oba Si), أوبه (Oba)</strong> /1151N – 345ha - 8km - 1000m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Bêkê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20beke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20beke.htm</a></p>
+<p>Village Entry: <span class="internal-link">Gundê Bik</span> <span class="internal-link">Beg Obesî</span> <span class="internal-link">Ube</span></p>
+<p>General Information</p>
+<p>In the book <span class="internal-link">Çiyayê Kurmênc</span> (Efrîn): A Geographical Study, the village is listed as Gundê Bik, Beg Obesî, and Ube. The data indicates 1151 inhabitants, a surface area of 345 hectares, a distance of 8 km from the center, and an altitude of 1000 meters.</p>
+<p>Etymology and History</p>
+<p>The village name means &quot;Village of the Beg&quot; (<span class="internal-link">Gundê Beg</span>). The Turks named it Beg Obesî, meaning &quot;Community of the Beg.&quot; It was historically the property of the Aghas of <span class="internal-link">Şêx Îsmaîl</span>. <span class="internal-link">Şerefxan</span> mentions the name <span class="internal-link">Bîkan</span> as one of the Kurdish tribes in <span class="internal-link">Botan</span>. As for the Arabicized name &quot;Ube,&quot; it means &quot;the group&quot; or &quot;community&quot; in both Turkish and Kurdish. The village is approximately 400 years old.</p>
+<p>Location and Geography</p>
+<p>It is a small village located on the northern slope of <span class="internal-link">Girê Biçûk</span> (The Small Hill), which is rich in oak forests. It is located 1 km away from the Turkish border and contains a border police station and some beautiful villas.</p>
+<p>According to the book <span class="internal-link">Efrîn</span>... Her River and Her Green Hills: Beg Obesî / Ube is a village in Çiyayê Kurmênc, administratively belonging to the <span class="internal-link">Bilbil</span> district of the Efrîn region, Heleb governorate. It is a small village situated atop the northern slope of the limestone mountain <span class="internal-link">Çiyayê Damer Begê Biçûk</span> (Girê Biçûk), on a rocky plateau rich in oak forests. It is located about 6 km northwest of the town of Bilbil and 1 km south of the Turkish border.</p>
+<p>Boundaries</p>
+<p>North: A mountain slope planted with trees and the Turkish border (1 km away).</p>
+<p>South: A high mountain range planted with forest trees (oak and acorn) and the village of <span class="internal-link">Baxçe Qonax</span>.</p>
+<p>West: A rugged mountain range and the village of <span class="internal-link">Şengêl</span>.</p>
+<p>East: A mountain slope, the villages of <span class="internal-link">Zehre</span> and <span class="internal-link">Elîkarlî</span>, and the Turkish border.</p>
+<p>Infrastructure and Services</p>
+<p>The village consists of 25 houses. The old houses are made of stone and mud with flat wooden roofs, while the modern ones are made of cement. The village has an electricity network, a modern mosque in the center of the village, and a border station. The village gets its drinking water from a network supplied by springs west of the village. There is also a spring in the western area used for personal purposes. An asphalt road, the <span class="internal-link">Riya Bilbil-Meydan Ekbez</span> (Bilbil-Meydan Ekbez road), connects it to the town of Bilbil and passes through the village center.</p>
+<p>Economy and Agriculture</p>
+<p>The residents work in rain-fed agriculture on an area of 345 hectares, cultivating olives, grains, legumes, and vineyards, alongside raising sheep and goats. A portion of the population works in the production of charcoal from the oak forests.</p>
+<p>Social Structure</p>
+<p>Among the most important families is the family of <span class="internal-link">Hec Henan Şêx Îsmaîl Zade</span> and the family of the lawyer <span class="internal-link">Mihemed Menan Şêx Îsmaîl Zade</span>. They were the first to inhabit the village since ancient times, evidenced by the presence of an old house (Qonax) in the center of the village belonging to Hec Henan Şêx Îsmaîl Zade.</p>
+<p>Administration</p>
+<p>The village mukhtar is <span class="internal-link">Mistefa Şêxo Mihemed</span>.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme.</p>
+<p>Studies of <span class="internal-link">Navenda Tirej Soft</span> / <span class="internal-link">Ebdulrehman Hacî Osman</span>.</p>
+<p>Some residents of the villages.</p>
+<p>Preparation and Execution: Director of the <span class="internal-link">Tirej Efrîn</span> website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Gund Bk، بك أوبه سي ، أوبه /1151ن 345هـ - 8كم - 1000م/:</p>
 <ul>
-<li>The village name means &quot;village of the Bey,&quot; and the Turks called it <span class="internal-link">Beg Obesi</span> &quot;community of the Bey,&quot; which was owned by the followers of <span class="internal-link">Sheikh Ismail</span> (الشيخ إسماعيل). <span class="internal-link">Sharfkhan</span> (شرفخان) mentions the name &quot;<span class="internal-link">Bîkan</span>&quot; (بيكان) among the Kurdish tribes in <span class="internal-link">Botan</span> (/Lirikh, p.48/). The Arabized name &quot;أوبه&quot; (Oba) means community in Turkish and Kurdish.</li>
+<li>اسم القرية بمعنى &quot; قرية البيك&quot;، وسماها الأتراك Beg Obesi &quot;جماعة البيك&quot;،</li>
 </ul>
+<p>وكانت خاصة بآغوات شيخ إسماعيل. ويذكر شرفخان اسم &quot;بيكان&quot; من العشائر الكردية في بوتان /ليرخ، ص48/. أما الاسم المعرب &quot;أوبه&quot;، فتعني الجماعة بالتركية والكردية.</p>
 <ul>
-<li>A small village located on the northern slope of the &quot;<span class="internal-link">Girê Çûçik</span>&quot; (گرێ چووچک) mountain rich in oak groves. It is 1km from the Turkish border and has a border police station and some beautiful villas.</li>
+<li>قرية صغيرة تقع على السفح الشمالي لجبل &quot;گر الصغير&quot; الغني بأحراج السنديان.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span>:</p>
-<p><strong>بك اوبه سي (Beg Oba Si) - أوبه (Oba)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Bulbul District</span> (ناحية بلبل), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located above the northern slope of the small limestone <span class="internal-link">Damir Bek</span> (داميربك) mountain (Girê Çûçik گرێ چووچک), on a rocky plateau rich in oak groves about 6km northwest of Bilbil (بلبل) town, 1km south of the Turkish border.</p>
-<p>It is bordered to the north by a mountain slope planted with trees and the Turkish border 1km away, to the south by a high mountain chain planted with oak and beech forest trees and &quot;<span class="internal-link">Baqjah Qonaq</span>&quot; (باقجة قوناق) village, to the west by a mountain chain and rugged terrain and &quot;<span class="internal-link">Shankil</span>&quot; (شنكل) village, and to the east by a mountain slope and the villages of <span class="internal-link">Za&#x27;reh</span> (زعره) and <span class="internal-link">Alikarli</span> (عليكارلي) and the Turkish border.</p>
-<p>The village has 25 houses and is about 400 years old. The old houses are stone and mud with flat wooden roofs, while the modern ones are cement. It has an electricity network and a modern mosque in the center of the village and a border station. The village drinks from a network that gets its water from springs west of the village, and there is a water spring on the western side used for personal purposes. It is connected to Bilbil (بلبل) town by a paved road that passes through its center to <span class="internal-link">Meydan Akbas</span> (ميدان اكبس) town.</p>
-<p>The residents work in rainfed agriculture on an area of 345 hectares growing olives, grains, legumes, and vineyards, in addition to raising sheep and goats. Some of them work in making wood charcoal from oak groves. Among its most important families are the <span class="internal-link">Haj Hanan Sheikh Ismail Zadeh</span> (حج حنان شيخ إسماعيل زادة) family and the lawyer &quot;<span class="internal-link">Mohammed Manan Sheikh Ismail Zadeh</span>&quot; (محمد منان شيخ إسماعيل زادة) family, who were the first to inhabit the village since ancient times. The presence of an old house (<span class="internal-link">Qonaq</span> قوناق) in the center of the village belonging to Haj Hanan Sheikh Ismail Zadeh (حج حنان شيخ إسماعيل زادة) indicates this.</p>
-<p>Village Head: <span class="internal-link">Mustafa Sheikho Mohammed</span> (مصطفى شيخو محمد)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Bêkê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Uon3TY0_dxI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Uon3TY0_dxI</a></p>
+<p>تبعد عن الحدود التركية بمسافة 1كم، فيها مخفر شرطة حدودي وبعض الفيلات الجميلة. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : بك اوبه سي - اوبه : قرية في جبل الكرد ، تتبع ناحية بلبل ، منطقة عفرين محافظة حلب . وهي قرية صغيرة تقع فوق السفح الشمالي لجبل دامر بك الصغير الكلسي (كري الصغير ) ، على منبسط صخري غني بأحراج السنديان على بعد حوالي /6/ كم شمال غرب بلدة بلبل إلى الجنوب من الحدود التركية بمسافة /1/ كم ، يحدها شمالا منحدر جبلي مزروع بأشجار والحدود التركية على مسافة /1/ كم ، وجنوبا سلسلة جبلية عالية مزروعة بالأشجار الحراجية السنديان و البلوط و قرية &quot; باقجة قوناق &quot; ، وغربا سلسلة جبلية وعرة وقرية &quot; شنكل &quot; ، وشرقا منحدر جبلي و قريتي زعره و عليكارلي و الحدود التركية ، يبلغ عدد بيوتها /25/ بيتا وعمرها حوالي /400/ عاما ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية والحديثة أسمنتية ، تتوفر فيها شبكة كهرباء و جامع حديث في وسط القرية و مخفر حدودي ، تشرب القرية من شبكة تستمد مياهها من الينابيع غرب القرية ، ويوجد نبع ماء في الجهة الغربية يستعمل للأغراض الشخصية ، تربطها ببلدة بلبل طريق مزفتة يمر في وسطها حتى بلدة ميدان اكبس ، يعمل السكان بالزراعة البعلية على مساحة /345/ هـ الزيتون و الحبوب و البقول و الكرمة إلى جانب تربية الأغنام و الماعز ، وقسما منهم يعمل في صناعة الفحم الخشبي من أحراج السنديان ، ومن أهم عوائلها عائلة حج حنان شيخ إسماعيل زادة وعائلة المحامي &quot; محمد منان شيخ إسماعيل زاده &quot; هم أول من سكن القرية منذ القدم , وبدلالة وجود دار قديم (قوناق ) في وسط القرية عائدة حج حنان شيخ إسماعيل زادة.</p>
+<p>مختار القرية : مصطفى شيخو محمد</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Bêkê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=Uon3TY0_dxI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=Uon3TY0_dxI</a></p>
 <p>This documentary focuses on the oral history and cultural heritage of a village in the Afrin region, identified in traditional song as <span class="internal-link">Gundê Bîkê</span>. The narrative is driven by <span class="internal-link">Mihemedê Xidir</span>, a local dengbêj (bard) who recounts his family’s migration history and the preservation of Kurdish folklore. The village is characterized by its deep connection to the dengbêj tradition, with the interviewee noting that his father and grandfather were also bards, though they never professionally recorded their songs on cassettes.</p>
 <p>History and Migration</p>
 <p>The history of the residents is defined by migration. Mihemedê Xidir explains that his grandfather, whose name he bears, originally came from <span class="internal-link">Mûş</span> in <span class="internal-link">Kurdistana Bakur</span> (North Kurdistan) and settled in the current village. The family did not stay stationary; approximately 70 years prior to the interview, his father moved the family from the village to a place called <span class="internal-link">Mîdanek Beze</span>. In 1954, the family relocated again to <span class="internal-link">Şingêl</span>.</p>
@@ -320,7 +384,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20beke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20beke.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=4yTxjF9StGo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=4yTxjF9StGo</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=Uon3TY0_dxI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Uon3TY0_dxI</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=sbNTmNg4Qus" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sbNTmNg4Qus</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20beke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20beke.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=4yTxjF9StGo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=4yTxjF9StGo</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=Uon3TY0_dxI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Uon3TY0_dxI</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=sbNTmNg4Qus" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=sbNTmNg4Qus</a></li></ul>
             </div>
 
             
@@ -330,7 +394,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -448,6 +512,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,7 +205,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Sawda, Qere Baba, Qerebaba, السوده, قره بابا, قربابا</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Birokê Heyder, Heyderî Bêkir, Mala Bekir Axa, Mala Bextê, Mala Elî Guleme, Mala Elî Gulemê, Mala Elî Hemed, Mala Elî Şeref, Mala Evdikê, Mala Gîsim, Mala Hecî Xelîl, Mala Heyderê Bekir, Mala Memîtkû, Mala Mixtê, Mala Piling, Mala Xalê Mistefa, Mala Şêref, Mala Şêxû, Malê Cîsim, Malê Elî Şeref, Malê Evdikin, Malê Memîtkin, Malê Piling, Maxtê, Molî Şêxû</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Beker Agha, Birokê Heyder, Heyderî Bêkir, Mala Bekir Axa, Mala Bextê, Mala Elî Guleme, Mala Elî Gulemê, Mala Elî Hemed, Mala Elî Şeref, Mala Evdikê, Mala Gîsim, Mala Hecî Xelîl, Mala Heyderê Bekir, Mala Memîtkû, Mala Mixtê, Mala Piling, Mala Xalê Mistefa, Mala Şêref, Mala Şêxû, Malê Cîsim, Malê Elî Şeref, Malê Evdikin, Malê Memîtkin, Malê Piling, Maxtê, Molî Şêxû</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -235,20 +256,59 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qere Baba</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin / Geographic Study:</p>
-<p><strong><span class="internal-link">Qerebaba</span> (قره بابا), <span class="internal-link">Al-Sawda</span> (السوده)</strong> /942N - 430H - 11km - 480m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qere Baba</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qere%20Baba.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qere%20Baba.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Qerebaba</span>, <span class="internal-link">Al-Sawda</span> /942 people, 430 hectares, 11km, 480m/:</p>
+<p>Qerebaba: A name of Turkish origin meaning &quot;The Black Father&quot; (Qere + Baba). The Arabized name is an incomplete translation of the Turkish designation.</p>
+<p>This medium sized village is located on the summit of an elevation that slopes down towards the course of the <span class="internal-link">Çemê Reş</span> to the west. It is 1km away from the Turkish border.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Qerebaba is a village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Reco</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village located on an elevation of the western slope of Çiyayê Kurmênc near the borders of Turkey on the northwestern side of the Efrîn region. It sits on a fertile mountain slope and is surrounded by olive trees.</p>
+<p>It is bordered to the north by a slope planted with forest trees and olives and the town of <span class="internal-link">Meydan Ekbez</span>. To the south, it is bordered by a slope, <span class="internal-link">Deşta Amûqê</span>, the course of the Çemê Reş, and the borders of Turkey directly. To the west, it is bordered by a slope, the Çemê Reş, and the borders of Turkey at a distance of 500m. To the east, it is bordered by a fertile plain, the public road (<span class="internal-link">Riya Reco-Meydan Ekbez</span>), and the villages of <span class="internal-link">Ferferîkê Jêrîn</span> and <span class="internal-link">Selûk</span>.</p>
+<p>The number of its houses reaches approximately 40 houses, and its age is approximately 350 years according to the account of the village Mukhtar. Its dwellings are old, made of stone and mud with flat wooden roofs, and recently cement houses have spread to the east and south. An electricity network and drinking water from an artesian well are available, as well as a primary school. It connects to the public road via a paved but unasphalted dirt road.</p>
+<p>The residents work in rain fed agriculture (olives, vines, grains) and irrigated agriculture from the Çemê Reş (summer vegetables, cotton, watermelon, sunflower, apples, walnuts, cherries...). Among its most key families is the <span class="internal-link">Beker Agha</span> family, who are the original owners of the village. Its soil is fertile and alluvial due to its proximity to the Çemê Reş.</p>
+<p>Village Mukhtar: <span class="internal-link">Mehmûd Mihemed Henan</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">1 - PhD/Villages/Qere Baba</span> (قره بابا): Originally a Turkish name meaning &quot;the black father&quot;. The Arabic name is an incomplete translation of the Turkish naming.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>This medium-sized village is located on an elevated summit that slopes toward the <span class="internal-link">Black River</span> (النهر الأسود) course to the west. It is 1 km from the <span class="internal-link">Turkish border</span> (الحدود التركية).</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin .... Its Rivers and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Qere Baba</span> (قره بابا)</strong>: A village in <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (ناحية راجو), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located on the elevation of the western slope of <span class="internal-link">Jabal al-Kurd</span> (جبل الكرد) near the <span class="internal-link">Turkish border</span> (حدود تركيا) from the northwestern direction of Afrin City region on a fertile mountainous slope with olive trees around it. To the north, a slope planted with forest and olive trees with <span class="internal-link">Medan Ikbas Town</span> (بلدة ميدان إكبس). To the south, a deep slope and plain with the <span class="internal-link">Black River</span> (النهر الأسود) course and direct <span class="internal-link">Turkish border</span> (حدود تركيا). To the west, a slope and the <span class="internal-link">Black River</span> (النهر الأسود) and <span class="internal-link">Turkish border</span> (حدود تركيا) 500m away. To the east, a fertile plain with the public road (Rajo (راجو) - <span class="internal-link">Medan Ikbas</span> (ميدان إكبس)) and <span class="internal-link">Firfirik Tahtani Village</span> (قرية فرفريك تحتاني) and <span class="internal-link">Saluk Village</span> (قرية سلوك).</p>
-<p>It has approximately 40 houses and is about 350 years old according to the village head. Its old dwellings are stone and clay with flat wooden roofs, and recently cement houses have spread to the east and south. It has an electrical network and drinking water from an artesian well and an elementary school. It connects to the main road by a paved dirt road.</p>
-<p>Residents work in rain-fed agriculture (olives, grapes, grains) and irrigation from the <span class="internal-link">Black River</span> (النهر الأسود) (summer vegetables, cotton, watermelon, sunflowers, apples, walnuts, cherries, etc.). Among its most important families: <span class="internal-link">Bakr Agha Family</span> (عائلة بكر آغا) who are the original owners of the village. Its fertile soil is due to its proximity to the <span class="internal-link">Black River</span> (النهر الأسود).</p>
-<p>Village Head: <span class="internal-link">Mahmoud Muhammad Hanan</span> (محمود محمد حنان)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qere Baba from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=lDQnk-ICujM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=lDQnk-ICujM</a></p>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Manager of the website Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Qerebaba ، قره بابا ، السوده /942ن - 430هـ - 11كم - 480م/:</p>
+<ul>
+<li>قَرَ بابا: اسم تركي الأصل بمعنى &quot;الأب الأسود&quot;. والاسم المعرب ترجمة غير</li>
+</ul>
+<p>كاملة للتسمية التركية.</p>
+<ul>
+<li>تقع هذه القرية المتوسطة الحجم على قمة مرتفع ينحدر نحو مجرى النهر الأسود</li>
+</ul>
+<p>غربا. وتبعد عن الحدود التركية 1كم. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : قره بابا : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع على مرتفع السفح الغربي لجبل الكرد قرب حدود تركيا من الجهة الغربية الشمالية لمنطقة عفرين و على منحدر جبلي خصب ومن حولها أشجار الزيتون ، يحدها شمالاً منحدر مزروع بالأشجار الحراجية والزيتون و بلدة /ميدان إكبس/ ، وجنوباً منحدر وسهل العمق و مجرى النهر الأسود وحدود تركيا مباشرة ، وغرباً منحدر و النهر الأسود و حدود تركيا على بعد 500 م ، و شرقاً سهل خصب و طريق عام ( راجو _ ميدان إكبس ) و قرية /فرفريك تحتاني/ و /سلوك/ ، يبلغ عدد بيوتها حوالي 40 بيتاً وعمرها حوالي 350 عاماً حسب رواية مختار القرية ،مساكنها قديمة حجرية طينية ذات سقوف خشبية مستوية ، وحديثاً انتشرت البيوت الأسمنتية شرقاً وجنوباً ، تتوفر فيها شبكة كهرباء و مياه شرب من بئر ارتوازي و مدرسة ابتدائية ، وتتصل مع الطريق العام بطريق ترابي معبد غير مزفت ، يعمل الأهالي بالزراعة البعلية ( الزيتون ، الكرمة ، الحبوب ) ، ورياً من النهر الأسود ( الخضر الصيفية ، القطن ، البطيخ ، عباد الشمس ، التفاح ، الجوز ، الكرز ،.... ) ، من أهم عوائلها : عائلة بكر آغـا وهم أصحاب القرية الأصليين ، تربتها خصبة لحقية بسبب قربها من النهر الأسود .</p>
+<p>مختار القرية :محمود محمد حنان</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qere Baba from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=lDQnk-ICujM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=lDQnk-ICujM</a></p>
 <p>The village of <span class="internal-link">Qerababa</span>, located in the <span class="internal-link">Reco</span> district of <span class="internal-link">Efrîn</span>, has a history spanning more than five centuries. According to local elder <span class="internal-link">Apê Elî</span>, the settlement was founded over 500 years ago, initially established as a small hamlet (mezre) by a stranger who settled near a spring. Over time, the abundance of water attracted others, expanding the hamlet into a full village. The village derives its name from the <span class="internal-link">Ziyareta Qerababa</span>, a shrine located at the village entrance. Residents explain that &quot;Qerababa&quot; is an Ottoman Turkish term meaning &quot;Black Father.&quot; Approximately twenty years prior to the filming, the Baathist government attempted to Arabize the name to <span class="internal-link">El-Sewda</span>, but the locals persist in using the original Kurdish and Ottoman designation.</p>
 <p>The Border and Separation</p>
 <p>A defining aspect of Qerababa&#x27;s modern history is the imposition of the border between <span class="internal-link">Rojava</span> and <span class="internal-link">Bakur</span>. In the 1920s and finalized around 1939, the border line was drawn, severing Qerababa from its neighboring villages of <span class="internal-link">Çaqela</span> and <span class="internal-link">Qerefaxlo</span> in the north. <span class="internal-link">Apê Feyzî</span>, an elder who recalls the border&#x27;s establishment in 1939, describes how the division cut the villagers off from their agricultural lands and relatives on the other side. Historically, the area functioned as a single community with fluid movement for grazing and trade, particularly towards <span class="internal-link">Axdapez</span>, but the erection of wire fences and military zones permanently fragmented these social and economic ties.</p>
@@ -337,7 +397,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qere%20Baba.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qere%20Baba.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=lDQnk-ICujM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lDQnk-ICujM</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=b2krctZNu70" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=b2krctZNu70</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=n1xGcIpynVI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=n1xGcIpynVI</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=Og28okvlIu8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Og28okvlIu8</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qere%20Baba.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20Qere%20Baba.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=lDQnk-ICujM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=lDQnk-ICujM</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=b2krctZNu70" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=b2krctZNu70</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=n1xGcIpynVI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=n1xGcIpynVI</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=Og28okvlIu8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Og28okvlIu8</a></li></ul>
             </div>
 
             
@@ -347,7 +407,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -465,6 +525,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

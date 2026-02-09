@@ -151,6 +151,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -175,6 +196,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Cindires</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">حاج اسكندر, Ḧaj Iskender</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Cilf, Ebas, El Ebîd, Heneş, Hûşan, Mame Ale, Muhacir, Oseb, Rehawî, Rifet, Salih</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-cindires">
@@ -201,28 +223,71 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Ĥec Îskenderê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Îskender is a local proper name</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 150 years ago</p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Hesîrkê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Ĥec Îskenderê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Ḧec Iskender, <span class="internal-link">Ḧaj Iskender</span> (حاج اسكندر)</strong> /1156n - 725h - 5km - 205m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Ĥec Îskenderê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20iskendere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20iskendere.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Hecî Îskender</span> / 1156 inhabitants, 725 hectares, 5km distance, 205m altitude.</p>
+<p><span class="internal-link">Îskender</span>: A local proper name.</p>
+<p>It is a small village located beside the valley of <span class="internal-link">Hesîrkê</span>.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Hecî Îskender: A village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Cindirês</span> subdistrict, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village situated on flat land at the southwestern edge of the mentioned mountain, west of a watercourse that descends southward to <span class="internal-link">Çemê Efrînê</span>.</p>
+<p>It is bordered to the north by a fertile plain and mountain highlands planted with olive trees and the village of <span class="internal-link">Eşkan Xerbî</span>. To the south, it is bordered by a plain and a valley planted with olive trees, the <span class="internal-link">Riya Cindirês-Hemam</span> road, the village of <span class="internal-link">Nisriye</span>, and Çemê Efrînê. To the west, it is bordered by mountain highlands planted with olive and forest trees and the village of <span class="internal-link">Hemam</span>. To the east, it is bordered by a valley and an agriculturally fertile plain planted with olive trees, the Riya Cindirês-Hemam road, and the village of <span class="internal-link">Axcelê</span>.</p>
+<p>The number of houses is approximately 40, and its age is about 150 years according to the statements of the village residents. It used to consist of zinc barracks for the English army after the departure of the Ottomans from Syria. Its old houses are made of mud and wood, while the modern ones are of cement and stone. The village has an electricity network, a primary school, a telephone center taken from the town of Cindirês, and a small mosque near the main road.</p>
+<p>The residents work in the rainfed cultivation of grains and legumes. The plain of Hecî Îskender is considered part of the Cindirês plain, which possesses fertile red soil and abundant groundwater. Its most important products are olives, which constitute 60% of the village area, while the rest is planted with grains, legumes, and cotton irrigated from artesian wells. Pomegranate trees and summer vegetables are also cultivated. The residents raise sheep and goats. The village gets its drinking water from the village&#x27;s artesian wells and cisterns that collect rainwater. An asphalt road connects it to the town of Cindirês, passing through its center to the village of Hemam and the Turkish border.</p>
+<p>The village is surrounded on all sides by olive trees and other fruit trees. At the entrance of the village, there is an old archaeological bridge about three meters high, dating back to the time of the French Mandate. On the eastern side of the village, there is a football field where league matches for popular neighborhoods are held between the villages of the region.</p>
+<p>Among the families present in the village are: <span class="internal-link">Mame Ale</span> family, <span class="internal-link">Heneş</span> family, <span class="internal-link">Rifet</span> family, <span class="internal-link">Muhacir</span> family, <span class="internal-link">Oseb</span> family, <span class="internal-link">Cilf</span> family, <span class="internal-link">Rehawî</span> family, <span class="internal-link">Ebas</span> family, <span class="internal-link">Hûşan</span> family, <span class="internal-link">Salih</span> family, and <span class="internal-link">El Ebîd</span> family.</p>
+<p>The mukhtar of the village is Mr. <span class="internal-link">Şukrî Mistefa Muhacir</span>.</p>
+<p>There are many university degree holders in the village. Among the social figures in the village is: <span class="internal-link">Hecî Mistefa Muhacir</span>.</p>
+<p>Preparation and Execution:</p>
+<p>Director of <span class="internal-link">Navenda Tirej Efrîn</span>: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed.</p>
+<p>Preparation and execution by Ebdulrehman Hacî Osman, director of Navenda Tirej Efrîn.</p>
+<p>Some residents of the village.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Ĥec Iskender ، حاج اسكندر /1156ن - 725هـ - 5كم - 205م/:</p>
 <ul>
-<li><span class="internal-link">Iskender</span> (اسكندر): A local proper name.</li>
-<li>A small village located beside the valley &quot;<span class="internal-link">Ḧesirkê</span>&quot; (حسيركي).</li>
+<li>اسكندر: اسم علم محلي.</li>
 </ul>
-<p>According to the book: Afrin.... its river and green hills by writer Abdulrahman Mohammed from <span class="internal-link">Qatmeh</span> village:</p>
-<p><strong><span class="internal-link">Ḧaj Iskender</span> (حاج اسكندر)</strong>: A village in the <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to <span class="internal-link">Cindires</span> district (جندريس), Afrin City region (عفرين), <span class="internal-link">Aleppo</span> governorate (حلب).</p>
-<p>It is a small village located on flat land on the southwestern side of the mentioned mountain, west of a watercourse flowing south to the <span class="internal-link">Afrin River</span> (نهر عفرين). It is bordered to the north by the fertile Ashkan plain (اشكان) and mountainous heights planted with olive trees and the village of Ashkan (اشكان) to the west, and to the south by a plain and valley planted with olive trees and the road (<span class="internal-link">Cindires</span> - <span class="internal-link">Al-Hammam</span>) (جندريس - الحمام) and the village of <span class="internal-link">Al-Nasriya</span> (النسرية) and the <span class="internal-link">Afrin River</span> (نهر عفرين), and to the west by mountainous heights planted with olive trees and forest trees and <span class="internal-link">Al-Hammam</span> village (الحمام), and to the east by a valley and fertile agricultural plain planted with olive trees and the road (<span class="internal-link">Cindires</span> - <span class="internal-link">Al-Hammam</span>) (جندريس - الحمام) and the village of <span class="internal-link">Ajallet</span> (اجلة). The number of its houses is about 40 houses and its age is about 150 years according to the villagers&#x27; statements, as it was originally barracks for the <span class="internal-link">British Army</span> after the departure of the <span class="internal-link">Ottomans</span> from <span class="internal-link">Syria</span>. Its old houses are clay and wood, while the modern ones are concrete stone with electricity network, an elementary school, and a telephone center taken from <span class="internal-link">Cindires</span> town, and a small mosque near the public road.</p>
-<p>The residents work in agriculture of grains and legumes through dry farming, and the plain of <span class="internal-link">Ḧaj Iskender</span> is considered part of the <span class="internal-link">Cindires</span> plain with red fertile soil and abundant groundwater. Its most important products are: olives, which form 60% of the village area, and the rest is planted with grains, legumes, and cotton irrigated from artesian wells, as well as growing pomegranate trees and summer vegetables. The residents also raise sheep and goats. The village drinks from the village&#x27;s artesian and cistern wells that collect rainwater. It is connected to <span class="internal-link">Cindires</span> town by a paved road that passes through its center to <span class="internal-link">Al-Hammam</span> village and the <span class="internal-link">Turkish</span> border.</p>
-<p>The village is surrounded on all sides by olive trees and other fruit trees. At the village entrance there is an old archaeological bridge about three meters high dating back to the time of the <span class="internal-link">French Mandate</span>.</p>
-<p>On the eastern side of the village there is a football field where popular neighborhood tournament matches are held between the villages of the region. Among the families present in the village are: <span class="internal-link">Al Mameh Al</span> (آل مامه آل), <span class="internal-link">Al Hanash</span> (آل حنش), <span class="internal-link">Al Rifat</span> (آل رفعت), <span class="internal-link">Al Muhajir</span> (آل مهاجر), <span class="internal-link">Al Ausab</span> (آل اوسب), <span class="internal-link">Al Jalaf</span> (آل الجلف), <span class="internal-link">Al Rahawi</span> (آل الرهاوي), <span class="internal-link">Al Abbas</span> (آل عباس), <span class="internal-link">Al Hushan</span> (آل هوشان), <span class="internal-link">Al Saleh</span> (آل صالح), <span class="internal-link">Al Abid</span> (آل العبيد)...</p>
-<p>The village mayor is <span class="internal-link">Mr. Shukri Mustafa Muhajir</span>, and there are many university degree holders in the village.</p>
-<p>Among the social personalities in the village: <span class="internal-link">Hajj Mustafa Muhajir</span> (الحاج مصطفى مهاجر).</p>
-<p><strong>Prepared and implemented by: Director of Tirej Afrin website: <span class="internal-link">Abdulrahman Haji Othman</span></strong></p>
-<p>20/12/2013</p></div></details></div>
+<ul>
+<li>قرية صغيرة تقع بجانب وادي &quot;حَسيركي&quot;.</li>
+</ul>
+<p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه حاج اسكندر : قرية في جبل الكرد ، تتبع ناحية جنديرس منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في أرض منبسطة من الطرف الجنوبي الغربي للجبل المذكور غرب مسيل مائي ينحدر جنوباً إلى نهر عفرين .يحدها شمالاً سهل خصب ومرتفعات جبلية مزروعة بأشجار الزيتون وقرية /اشكان/ غربي ، وجنوباً سهل و وادي مزروع بأشجار الزيتون وطريق ( جنديرس _ الحمام ) وقرية /النسرية/ ونهر عفرين، وغرباً مرتفعات جبلية مزروعة بأشجار الزيتون والأشجار الحراجية وقرية الحمام ، وشرقاً وادي وسهل خصب زراعياً مزروع بأشجار الزيتون وطريق (جنديرس _ الحمام ) وقرية /أغجلة/ ، يبلغ عدد بيوتها حوالي 40بيتاً وعمرها حوالي 150عاماً حسب أقوال سكان القرية ، حيث كانت عبارة عن براكات توتياء للجيش الإنكليزي وبعد رحيل العثمانيين من سورية . بيوتها القديمة طينية خشبية أما الحديثة إسمنتية حجرية تتوفر فيها شبكة الكهرباء ومدرسة إبتدائية وكذلك مركزاً للهاتف مأخوذ من بلدة جنديرس وجامع صغير قرب الطريق العام . يعمل السكان بزراعة الحبوب والبقول بعلاً ويعتبر سهل حاج اسكندر جزءاً من سهل جنديرس ذو التربة الحمراء الخصبة والمياه الجوفية الوفيرة ، أهم منتجاتها : الزيتون ويشكل 60% من مساحة القرية والباقي يزرع بالحبوب والبقول والقطن رياً من الآبار الارتوازية كما تزرع بأشجار الرمان والخضروات الصيفية ويقوم السكان بتربية الأغنام والماعز . تشرب القرية من آبار القرية الارتوازية والصهاريج التي تجمع فيها مياه الأمطار . تصلها ببلدة جنديرس طريق مزفتة يمر في وسطها إلى قرية الحمام والحدود التركية   . تحاط القرية من كل جوانبها بأشجار الزيتون والأشجار المثمرة الأخرى ، يوجد في مدخل القرية جسر أثري قديم ارتفاعه حوالي ثلاثة أمتار يعود إلى زمن الانتداب الفرنسي . من الناحية الشرقية للقرية يوجد ملعب لكرة القدم تقام عليها مباريات الدوري للأحياء الشعبية بين قرى المنطقة ، ومن العائلات الموجودة في القرية : آل مامه آله - آل حنش - آل رفعت - آل مهاجر - آل اوسب - آل الجلف - آل الرهاوي - آل عباس - آل هوشان - آل صالح - آل العبيد ...</p>
+<p>مختار القرية السيد شكري مصطفى مهاجر -</p>
+<p>وهناك العديد من حاملي الشهادات الجامعية في القرية . ومن الشخصيات الاجتماعية في القرية : الحاج مصطفى مهاجر .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -240,7 +305,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20iskendere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20iskendere.htm</a></li><li>Drone photo:<br><a href="https://www.facebook.com/photo/?fbid=793237056145213&amp;set=a.378934394242150" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/photo/?fbid=793237056145213&amp;set=a.378934394242150</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20iskendere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20Cindires%20-%20hec%20iskendere.htm</a></li><li>Drone photo:<br><a href="https://www.facebook.com/photo/?fbid=793237056145213&amp;set=a.378934394242150" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/photo/?fbid=793237056145213&amp;set=a.378934394242150</a></li></ul>
             </div>
 
             
@@ -250,7 +315,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -368,6 +433,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

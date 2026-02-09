@@ -140,6 +140,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -164,6 +185,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Bilbilê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Khadr, Khadryanli, Xidiriya, الخضر, خضريانلي</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Milan, Reşwan, Xidranlû</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-bilbil-">
@@ -177,7 +199,7 @@
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
                 <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
-                    <p class="text-sm">Coordinates: 36.746547, 36.794961</p>
+                    <p class="text-sm">Coordinates: 36.753726, 36.782729</p>
                 </div>
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
@@ -191,22 +213,72 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Xidiriya</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Xidranlû is the name of a clan from the large Kurdish Reşwan tribe; some say they are from the Milan tribe</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 500 years</p>
+<p><strong>Hills:</strong> <span class="internal-link">Semaq</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Qestel Xidriyanlî</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Xidiriya</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City (عفرين) / Geographical Study:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Xidiriya</span> (Xidiriya), خضريانلي, الخضر</strong> /2628N - 435ha - 8km - 750m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Xidiriya</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20%20Xidiriya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20%20Xidiriya.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Xidiriya</span>, <span class="internal-link">Xidriyanlî</span>, <span class="internal-link">El-Xidir</span> /2628 inhabitants - 435 hectares - 8km - 750m/:</p>
+<p><span class="internal-link">Xidranlû</span>: This is the name of a clan from the large Kurdish <span class="internal-link">Reşwan</span> tribe. Some say that they are from the <span class="internal-link">Milan</span> tribe. Members of it can be found near Mount <span class="internal-link">Ararat</span> /Zekî, Vol 1, p. 432/.</p>
+<p>It is a medium-sized village located on the northeastern slope of Mount <span class="internal-link">Semaq</span>. Some of its inhabitants displaced to a new site 1km away towards the north where water is available; the new village is called: <span class="internal-link">Qestel Xidriyanlî</span>.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Xidriyanlî: A village in <span class="internal-link">Çiyayê Kurmênc</span> following the sub-district of <span class="internal-link">Bilbile</span>, district of <span class="internal-link">Efrîn</span>, governorate of <span class="internal-link">Heleb</span>. It is a large village located on the northeastern slope of the limestone Mount Semaq in the northern section of the aforementioned mountain block. It is 8km southwest of the town of Bilbile.</p>
+<p>It is surrounded by agricultural lands with fertile clay soil, and seasonal streams flow down around it in various directions. It is bordered to the north by several seasonal streams, a fertile agricultural plain, <span class="internal-link">Qestel Xider</span>, and the villages of <span class="internal-link">Hêyamli</span> and <span class="internal-link">Se&#x27;riyanlî</span>. To the south, it is bordered by a high, rugged mountain range and the villages of <span class="internal-link">Berkeşlî</span> and <span class="internal-link">Şerqiyanlî</span>. To the west, it is bordered by a seasonal valley (wadi), rugged mountain heights, and the villages of <span class="internal-link">Çolaqlî</span>, <span class="internal-link">Hadir</span>, and <span class="internal-link">Dibirû</span>. To the east, there is a deep seasonal valley, a rugged mountain chain, and the village of <span class="internal-link">Okanlî</span>.</p>
+<p>The number of its houses reaches about 100, and its age is approximately 500 years. Its residences are made of stone and mud with flat wooden roofs, while modern ones are of stone and cement. Some of its inhabitants displaced to a new site 1km to its north called Qestel Xidriyanlî due to the availability of water there. An electricity network, a primary school, and a mosque are available in the village. The village drinks from water in cisterns where rainwater is collected.</p>
+<p>There is an agricultural cooperative in the village. Most of its inhabitants work in rain-fed agriculture on an area of 435 hectares, growing olive trees, grains, vines, and legumes, alongside raising sheep and goats. Its lands are mountainous, rugged, steep, and poor; therefore, most of its inhabitants have displaced to the cities of Efrîn, Heleb, and Bilbile due to a lack of resources. It is connected to the town of Bilbile by a paved mountain road that is 8km long. The farms of Dibirû, <span class="internal-link">Hadiro</span>, and Çolaqlî are dependencies of the village.</p>
+<p>Village Mukhtar: <span class="internal-link">Bekir Bekir Remezan</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">Khadryanlu</span> (خضرانلو): Name of a clan from the large Kurdish <span class="internal-link">Rashwan</span> (رشوان) tribe, and some say it is from the <span class="internal-link">Milan</span> (ميلان) tribe. There are some of them near <span class="internal-link">Mount Ararat</span> (جبل آرارات) /Zaki, J1, p.432/.</li>
-<li>A medium-sized village located on the northeastern slope of <span class="internal-link">Mount Sumaq</span> (جبل سماق). Some of its inhabitants migrated to a new location 1km north of it where water is available, and the new village is called: <span class="internal-link">Qastal Khadryanli</span> (قسطل خضريانلي).</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين.... نهرها ورواباتها الخضراء&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong>خضريانلي</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد) belonging to <span class="internal-link">Bilbil</span> (بلبل) district, Afrin City (عفرين) region, <span class="internal-link">Aleppo</span> (حلب) governorate.</p>
-<p>It is a large village located on the northeastern slope of the limestone &quot;<span class="internal-link">Sumaq</span>&quot; (سماق) mountain in the northern part of the mentioned mountain mass. It is 8km southwest of <span class="internal-link">Bilbil</span> (بلبل) town. It is surrounded by agricultural lands with fertile alluvial soil, and water courses descend around it to different directions. It is bordered to the north by several water courses and a fertile agricultural plain and &quot;<span class="internal-link">Qastal Khadr</span>&quot; (قسطل خضر) and the villages of &quot;<span class="internal-link">Heyamli</span>&quot; (هيامليl) and &quot;<span class="internal-link">Sa&#x27;riyanli</span>&quot; (سعريانلي), and to the south by a high and rugged mountain chain and the villages of &quot;<span class="internal-link">Berkeshli</span>&quot; (بركشلي) and &quot;<span class="internal-link">Sharqiyanli</span>&quot; (شرقيانلي), and to the west by a water valley and mountain elevations and rugged villages of &quot;<span class="internal-link">Jolaqli</span>&quot; (جولاقلي), &quot;<span class="internal-link">Hadir</span>&quot; (حاضر), and &quot;<span class="internal-link">Dubiru</span>&quot; (دبيرو), and to the east by a deep water valley and a rugged mountain chain and the village of &quot;<span class="internal-link">Ukanli</span>&quot; (عوكانلي). The number of its houses is about 100 houses and its age is about 500 years. Its dwellings are stone-clay with flat wooden roofs and the modern ones are stone-cement. Some of its inhabitants migrated to a new location 1km to its north called &quot;<span class="internal-link">Qastal Khadryanli</span>&quot; (قسطل خضريانلي) for water availability. There is an electricity network, elementary school, and mosque available. The village drinks from cisterns where rainwater collects. There is an agricultural cooperative. Most of its inhabitants work in rain-fed agriculture on 435 hectares of olive trees, grains, grapes, and legumes, in addition to raising sheep and goats. Its lands are mountainous and rugged with steep slopes and poor, therefore most of its inhabitants migrated to the cities of Afrin City (عفرين), <span class="internal-link">Aleppo</span> (حلب), <span class="internal-link">Bilbil</span> (بلبل) due to lack of resources. It is connected to <span class="internal-link">Bilbil</span> (بلبل) town by a paved mountain road 8km long. The farms of &quot;<span class="internal-link">Dubiru</span>&quot; (دبيرو), &quot;<span class="internal-link">Hadiru</span>&quot; (حاضرو), and &quot;<span class="internal-link">Jolaqli</span>&quot; (جولاقلي) are affiliated with it.</p>
-<p>Village mayor: <span class="internal-link">Bakr Bakr Ramadan</span> (بكر بكر رمضان)</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by the writer عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Director of the Tirej Efrîn website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Xidiriya ، خضريانلي ، الخضر /2628ن - 435هـ - 8كم - 750م/:</p>
+<ul>
+<li>خضرانلو: اسم عشيرة من قبيلة رشوان الكردية الكبيرة، ويقول بعضهم إنها من</li>
+</ul>
+<p>قبيلة مللي Milan. ويوجد منها بجوار جبل آرارات /زكي، ج1، ص432/.</p>
+<ul>
+<li>قرية متوسطة تقع على السفح الشمالي الشرقي لجبل سماق. نزح بعض سكانها إلى</li>
+</ul>
+<p>موقع جديد يبعد عنها 1كم باتجاه الشمال حيث تتوفر المياه، وتسمى القرية الجديدة: قسطل خضريانلي. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : خضريانلي : قرية في جبل الكرد تتبع ناحية بلبل ، منطقة عفرين محافظة حلب . وهي قرية كبيرة تقع على السفح الشمالي الشرقي لجبل &quot;سماق&quot; الكلسي في القسم الشمالي من كتلة الجبل الآنف الذكر ، وهي جنوب غرب بلدة بلبل بـ /8/ كم ، تحيط بها الأراضي الزراعية ذات التربة الغضارية الخصبة وتنحدر حولها المسيلات إلى الجهات المختلفة ، يحدها شمالاً عدة مسيلات وسهل زراعي خصب و&quot;قسطل خضر&quot;وقرية &quot;هياملي&quot; و&quot;سعريانلي&quot; , وجنوباً سلسلة جبلية عالية وعرة وقرية &quot;بركشلي&quot; و&quot;شرقيانلي&quot; وغرباً واد سيلي ومرتفعات جبلية وعرة وقرية &quot;جولاقلي&quot; و&quot;حاضر&quot; و&quot;دبيرو&quot; ، وشرقاً واد سيلي عميق وسلسلة جبلية وعرة وقرية &quot;عوكانلي&quot; ، يبلغ عدد بيوتها حوالي100بيتاً وعمرها حوالي 500عاماً ، مساكنها حجرية طينية بسقوف خشبية مستوية والحديثة حجرية أسمنتية ، نزح بعض سكانها إلى موقع جديد يبعد1كم إلى شمالها يسمى&quot;قسطل خضريانلي&quot; لتوفر المياه فيه ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وجامع ، تشرب القرية من مياه صهاريج تجمع فيه مياه الأمطار ، يوجد فيها جمعية فلاحية ، ويعمل معظم سكانها بالزراعة البعلية على مساحة /435/هـ أشجار الزيتون والحبوب والكرمة والبقول إلى جانب تربية الأغنام و الماعز ، أراضيها جبلية وعرة شديدة الانحدار وفقيرة لذلك نزح أكثر سكانها إلى مدن عفرين ، حلب ، بلبل لقلة الموارد ، تصبها ببلدة بلبل طريق جبلية مزفتة طولها 8كم ، تتبعها مزارع &quot;دبيرو&quot; و&quot;حاضرو&quot; و&quot;جولاقلي &quot; .</p>
+<p>مختار القرية : بكر بكر رمضان</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -224,7 +296,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20%20Xidiriya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20%20Xidiriya.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=At5_aPSdk3Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=At5_aPSdk3Y</a></li><li>video:<br><a href="https://www.youtube.com/watch?v=g1m1twp7L84" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=g1m1twp7L84</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20%20Xidiriya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20%20Xidiriya.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=At5_aPSdk3Y" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=At5_aPSdk3Y</a></li><li>video:<br><a href="https://www.youtube.com/watch?v=g1m1twp7L84" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=g1m1twp7L84</a></li></ul>
             </div>
 
             
@@ -234,7 +306,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -321,8 +393,8 @@
                 return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
             const mainVillageName = "Xidiriya";
-            const villageLat = 36.746547;
-            const villageLng = 36.794961;
+            const villageLat = 36.753726;
+            const villageLng = 36.782729;
             const initialZoom = 14;
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
             const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
@@ -352,6 +424,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

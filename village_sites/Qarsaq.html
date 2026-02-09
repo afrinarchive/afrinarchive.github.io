@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -104,6 +125,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Qarsaq, قارساق</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Sebxawî</p></div>
                         </div>
                     </div>
                     
@@ -126,21 +148,64 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Qarsaq</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Name of a site at the foot of Çiyayê Lêlûn west of Îska, meaning unknown</p>
+<p><strong>Foundation Date/Period:</strong> 1960s</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Lêlûn</span>, <span class="internal-link">Çiyayê Seman</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çemê Efrîn</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qarsaq</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27;, a geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Qarsaq, قارساق</strong> /210m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qarsaq</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Qarsaq.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Qarsaq.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span> regarding <span class="internal-link">Qarsaq</span> /210m/:</p>
+<p>Qarsaq is a name for a site at the foot of <span class="internal-link">Çiyayê Lêlûn</span>, approximately 1.5km west of the village of <span class="internal-link">Îska</span>. We did not know a meaning for the name.</p>
+<p>Habitation in this site dates back to the sixties of the twentieth century by several <span class="internal-link">Arab</span> families from the <span class="internal-link">Sebxawî</span> clan. They settled there after obtaining lands from the agrarian reform. The number of its houses is currently around ten.</p>
+<p>It is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Qarsaq is a farm in <span class="internal-link">Deşta Cûmê</span> belonging to the subdistrict of the <span class="internal-link">Efrîn</span> villages center, Heleb governorate. The name of this site exists in the Çiyayê Lêlûn chain, but the mentioned farm is located about 5km west of the village of Îska. The paved <span class="internal-link">Riya Cindirês</span> (Cindirês road) passes by it.</p>
+<p>It is bordered to the north by an agriculturally fertile plain, the valley of <span class="internal-link">Çemê Efrîn</span>, and the village of <span class="internal-link">Zelaqa</span>, <span class="internal-link">Mensûriyê</span>, and <span class="internal-link">Ferîriyê</span>. To the south, the rugged mountain heights of western <span class="internal-link">Çiyayê Seman</span> and some villages of <span class="internal-link">Idlib</span> governorate. To the west, an agriculturally fertile plain planted with pomegranate trees and the village of <span class="internal-link">Celemê</span>. To the east, a fertile agricultural plain and the village of Îska.</p>
+<p>The number of its houses reaches 15 houses, and the age of the farm is 35 years. Its modern houses are made of stones and reinforced cement. The habitation of this area dates back to the sixties of the last century after an Arab family that came from the <span class="internal-link">Firat</span> districts obtained agrarian reform lands, so they built residences there.</p>
+<p>An electricity network and a primary school are available there, as well as two luxurious villas. This new residential site is located between the villages of Îska and Celemê. Adjacent to the farm, there are houses for livestock herders from the <span class="internal-link">Arabs</span> who settled there after they benefited from the agrarian reform laws regarding the distribution of the Aghas&#x27; lands to the peasants.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Qarsaq ، قارساق /210م/:</p>
 <ul>
-<li>A name for a location on the <span class="internal-link">Jebel Leiloun</span> slope west of <span class="internal-link">Eskan</span> village by about 1.5km, and we do not know the meaning of the name.</li>
-<li>Settlement at this location dates to the 1960s by several Arab families from the &quot;<span class="internal-link">Subkhawi</span>&quot; tribe. They settled there after obtaining lands from agricultural reform. The number of its current houses is about ten.</li>
+<li>اسم لموقع في سفح جبل ليلون غربي ق.إسكان بحوالي 1.5كم، ولم نعرف معنى</li>
 </ul>
-<p>According to the book: Afrin.... its river and green hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qutmeh</span> village:</p>
-<p><strong>قارساق</strong>: A farmstead in <span class="internal-link">Jom</span> plain belonging to the central villages district of Afrin, <span class="internal-link">Aleppo</span> governorate.</p>
-<p>The name of this location exists in the <span class="internal-link">Jebel Leiloun</span> chain but the mentioned farmstead is located west of <span class="internal-link">Eskan</span> village about 5km where the paved road to <span class="internal-link">Jandaris</span> passes. It is bordered to the north by a fertile agricultural plain and Afrin river valley and <span class="internal-link">al-Zallaqah</span>, <span class="internal-link">al-Mansouriya</span>, and <span class="internal-link">al-Fairiya</span> villages, to the south by rugged mountainous elevations of western <span class="internal-link">Jebel Samaan</span> and some villages of <span class="internal-link">Idlib</span> governorate, to the west by a fertile agricultural plain planted with pomegranate trees and <span class="internal-link">Jalmeh</span> village, and to the east by a fertile agricultural plain and <span class="internal-link">Eskan</span> village. The number of its houses is 15 houses and the farmstead age is 35 years. Its modern houses are made of stones and reinforced cement. Settlement in this region dates to the 1960s of the last century after an Arab family from the <span class="internal-link">Euphrates</span> regions obtained agricultural reform lands and established a residential settlement there. It has an electricity network and an elementary school and two prestigious villas. This new residential site is located between <span class="internal-link">Eskan</span> and <span class="internal-link">Jalmeh</span> villages and near the farmstead are houses for livestock herders from Arabs who settled there after benefiting from agricultural reform laws in distributing estate lands to farmers.</p></div></details></div>
+<p>للاسم.</p>
+<ul>
+<li>يعود السكن في هذا الموقع إلى ستينات القرن العشرين من قبل عدة عائلات</li>
+</ul>
+<p>عربية من عشيرة &quot;سبخاوي&quot;. استقروا فيها بعد حصولهم على أراض من الإصلاح الزراعي. ويبلغ عدد دورها حالياً نحو عشرة. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه قارساق : مزرعة في سهل جوم تتبع ناحية مركز قرى عفرين محافظة حلب اسم هذا الموقع موجود في سلسلة جبل ليلون لكن المزرعة المذكورة تقع غرب قرية اسكان نحو /5/كم يمر الطريق المعبد إلى جنديرس . يحدها شمالاً سهل خصب زراعياً ووادي نهر عفرين وقرية الزلاقة والمنصورية والفريرية وجنوباً مرتفعات جبلية وعرة لجبل سمعان الغربية وبعض قرى محافظة ادلب وغرباً سهل خصب زراعياً مزروعة بأشجار الرمان وقرية جلمة وشرقاً سهل زراعي خصب وقرية اسكان يبلغ عدد بيوتها 15بيتاً وعمر المزرعة 35عاماً بيوتها الحديثة من الأحجار والأسمنت المسلح ، يعود سكن هذه المنطقة إلى الستينات من القرن الماضي بعد حصول آسرة عربية جاءت من نواحي الفرات على أراضى الإصلاح الزراعي فأقاموا دور سكنياً هنالك تتوفر فيها شبكة الكهرباء ومدرسة ابتدائية وفيلتين فخمتين وبقع هذا الموقع السكني الجديد بين قريتي اسكان و جلمة ويوجد جوار المزرعة بيوت لرعاة المواشي من العرب استقروا فيها بعد أن استفادوا من فوانين الإصلاح الزراعي في توزيع أراضي الأغاوات على الفلاحين .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -158,7 +223,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Qarsaq.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Qarsaq.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Qarsaq.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Qarsaq.htm</a></li></ul>
             </div>
 
             
@@ -168,7 +233,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -286,6 +351,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

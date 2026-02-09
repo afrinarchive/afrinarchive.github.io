@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,6 +205,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Sheikh Mohammad, Şêx Mihemed, شيخ محمد, شيخ محمدلي</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Meydaniyat</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-reco">
@@ -210,23 +232,79 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Şêx Mihemed</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> The village has two names: Kur, meaning &quot;the barren/treeless place&quot; (implying the Kurdish word kur/kûr), and Şêx Mihemed, which is the name of its shrine.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 250 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Biêv</span>, <span class="internal-link">Qere Bêl</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Şêx Mihemed</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Meydan Ekbez</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Şêx Mihemed</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin / Geographic Study:</p>
-<p><strong><span class="internal-link">Şêx Miḧemed</span> - <span class="internal-link">Gundî Kurê</span> (شيخ محمدلي) (شيخ محمد)</strong> /1023n - 114h - 13km - 750m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Şêx Mihemed</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-shx%20mihemed.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-shx%20mihemed.htm</a></p>
+<p><span class="internal-link">Şêx Mihemed</span> <span class="internal-link">Gund Kur</span> <span class="internal-link">Şêx Mihemedlî</span></p>
+<p>According to the book Çiyayê Kurmênc (Efrîn): A Geographical Study:</p>
+<p>The village has two names: <span class="internal-link">Kur</span>, meaning &quot;the barren&quot; (or treeless), and Şêx Mihemed, which is the name of its shrine. It is a medium-sized village belonging to the <span class="internal-link">Meydaniyat</span> villages, located on the southeastern slope of the <span class="internal-link">Çiyayê Biêv</span> height. Vital statistics: 1023 inhabitants, 114 hectares of land, 13 km from the center, at an altitude of 750 m.</p>
+<p>According to the book Efrîn... Her River and Her Green Hills regarding Şêx Mihemedlî:</p>
+<p>It is a village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Reco</span> subdistrict, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a medium-sized village situated in the northwestern part of the aforementioned mountain, on the southeastern slope of a limestone height. It overlooks the alluvial plain of <span class="internal-link">Meydan Ekbez</span> to the south.</p>
+<p>The village is located 13 km northeast of the town of Reco. It is bordered to the north by the farm of <span class="internal-link">Tepe Koy</span>; to the south by a fertile agricultural plain followed by a high mountain chain called <span class="internal-link">Qere Bêl</span> and the village of <span class="internal-link">Cîlanlî</span>; to the east, 100 meters away, is the farm of <span class="internal-link">Elwalîklî</span>; and to the west, 1 km away, is the village of <span class="internal-link">Simalik Reco</span>.</p>
+<p>The number of houses reaches approximately 70, and the village is about 250 years old according to the account of one of its residents. It is one of the seven Meydaniyat villages. Its old dwellings are made of stone and mud with flat wooden roofs, while modern cement buildings have expanded toward the south and west. The village features an electricity network and a drinking water network supplied by a state-owned well. A municipality has been established in the village, and it also contains a primary school, a middle school, a mosque, a telephone network, and an agricultural center.</p>
+<p>A main street was established in the village, running from south to north up to the village of Tepe Koy (round trip). At the end of the street on the northern side, a &quot;Victory Arch&quot; was placed; it is considered one of the most beautiful arches in the Efrîn region and spans both sides of the highway.</p>
+<p>The residents work in rain-fed agriculture (olives, vineyards) on an area of 114 hectares, and in the production of bastiq (fruit leather) from grape extract, alongside raising sheep and goats. The village connects to the subdistrict center via a winding asphalt road. Administratively, the farms of Tepe Koy and Elwalîklî are attached to it.</p>
+<p>Notable holders of higher degrees in the village include: <span class="internal-link">Ebdulrehman Ewnî</span> (PhD in Civil Engineering, Russia).</p>
+<p>The Mukhtar of the village is <span class="internal-link">Şêx Mûs Bekir</span>.</p>
+<p>Sources:</p>
 <ul>
-<li>It has two names: <span class="internal-link">1 - PhD/Villages/Kurê</span> (كريه) meaning &quot;the rat&#x27;s burrow,&quot; and &quot;<span class="internal-link">Sheikh Mohammad</span>&quot; (شيخ محمد) which is the name of its shrine.</li>
-<li>A medium-sized village among the plains villages, located on the southeastern slope of <span class="internal-link">Çiyayê Bi&#x27;îvê</span> (جبل بيعيفي) mountain.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين نهرها ورواييها الخضراء&#x27; &#x27;<span class="internal-link">Afrin... Its Rivers and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Sheikh Mohammedli</span> (شيخ محمدلي)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to Rajo (راجو) subdistrict, Afrin (عفرين) region, <span class="internal-link">Aleppo</span> (حلب) governorate.</p>
-<p>It is a medium-sized village located in the northwestern part of the aforementioned mountain, on the southeastern slope of the <span class="internal-link">Kilsi</span> (كلسي) heights, overlooking southward the fertile plain/field of <span class="internal-link">Ekbas</span> (اكباس) alluvium. It is 13 km northeast of Rajo (راجو) town. To the north lies the <span class="internal-link">Taeba Kuyi</span> (تبة كوي) farm, to the south an agricultural fertile plain with a high mountain chain called <span class="internal-link">Mount Qara Bil</span> (جبل قره بيل) and <span class="internal-link">Jilanli</span> (جيلانلي) village. To the east, 100 meters away, lies the <span class="internal-link">Al-Walikli</span> (الواليكلي) farm, and to the west, 1 km away, lies <span class="internal-link">Simalk Rajo</span> (سمالك راجو) village. The number of houses is approximately 70, and its age is approximately 250 years according to the account of one of the village residents. It is one of the seven plains villages. Its old dwellings are stone-clay with flat wooden roofs, while the modern ones are concrete and have extended toward the south and west. It has electricity and drinking water networks from a state well, and a municipality has been established there. It also has an elementary and preparatory school, a mosque, telephone network, and agricultural center. The village has created a main street that runs from south to north to <span class="internal-link">Taeba Kuyi</span> (تبة كوي) village, going and coming. At the end of the street on the northern side, a victory arch was placed, considered one of the most beautiful arches in the Afrin (عفرين) region, extending between both sides of the highway. The residents work in rain-fed agriculture (olives, grapes) on an area of 114 hectares and carpet making from grape extract, in addition to raising sheep and goats. It connects with the subdistrict center via a winding paved road followed by the <span class="internal-link">Taeba Kuyi</span> (تبة كوي) and <span class="internal-link">Walikli</span> (واليكلي) farms.</p>
-<p>Among the holders of higher degrees in the village: <span class="internal-link">Abdulrahman Awni</span> (عبدالرحمن عوني) / Doctorate in Civil Engineering / Russia</p>
-<p>Village mayor: <span class="internal-link">Sheikh Musa Bakr</span> (شيخ موس بكر)</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution:</p>
+<ul>
+<li>Manager of the Tirej Efrîn website: Ebdulrehman Hacî Osman</li>
+<li>20/12/2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Şx Miĥemed - Gund Kur ، شيخ محمدلي ، شيخ محمد ، /1023ن - 114هـ - 13كم - 750م/:</p>
+<ul>
+<li>لها اسمان: Kur بمعنى &quot;الجرداء&quot;، و&quot;شيخ محمد&quot; وهو اسم مزارها.</li>
+</ul>
+<ul>
+<li>قرية متوسطة من قرى ميدانيات، تقع على السفح الجنوبي الشرقي لمرتفع iyay</li>
+</ul>
+<p>Bi&#x27;v. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : شيخ محمدلي : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية متوسطة تقع في الجزء الشمالي الغربي من الجبل المذكور ، على السفح الجنوبي الشرقي لمرتفع كلسي ، و تطل جنوباً على سهل /ميدان إكبس/ اللحقي ، تبعد عن بلدة راجو 13 كم باتجاه الشمال الشرقي ، يحدها شمالاً مزرعة /تبة كوي/ و جنوباً سهل خصب زراعياً و منه سلسلة جبلية عالية تسمى جبل /قره بيل/ و قرية /جيلانلي/ ، و شرقاً على بعد 100 م مزرعة /الواليكلي/ ، و غرباً على بعد 1 كم قرية /سمالك راجو/ ، يبلغ عدد بيوتها حوالي 70 بيتاً و عمرها حوالي 250 عاماً حسب رواية أحد سكان القرية ، وهي من القرى الميدانيات السبع ، مساكنها القديمة حجرية طينية بسقوف خشبية مستوية ، والحديثة أسمنتية امتدت باتجاه الجنوب والغرب ، تتوفر فيها شبكة كهرباء وشبكة مياه الشرب من بئر عائد للدولة وأحدثت فيها بلدية و كما يوجد فيها مدرسة ابتدائية و أخرى إعدادية و جامع و شبكة هاتف و مركز زراعي ، أحدثت في القرية شارع رئيسياً الذي يتجه من الجنوب إلى الشمال حتى قرية /تبة كوي/ ذهاباً وإياباً و في آخر الشارع من الطرف الشمالي وضع قوس للنصر و يعتبر من أجمل الأقواس في منطقة عفرين وهو ممتد بين جانبي الاتوستراد ، يعمل السكان بالزراعة البعلية ( الزيتون ، الكرمة ) على مساحة 114 هـ و صناعة البسطيق من مستخلص العنب ، إلى جانب تربية الأغنام والماعز ، تتصل مع مركز الناحية بطريق مزفتة متعرجة تتبعها مزرعتا /تبة كوي/ و /واليكلي/. ومن حاملي الشهادات العليا في القرية : عبدالرحمن عوني / دكتوراة في الهندسة المدنية / روسيا</p>
+<p>مختار القرية : شيخ موس بكر</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -241,7 +319,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-shx%20mihemed.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-shx%20mihemed.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-shx%20mihemed.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-shx%20mihemed.htm</a></li></ul>
             </div>
 
             
@@ -251,7 +329,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -369,6 +447,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

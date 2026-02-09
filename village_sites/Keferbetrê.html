@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Keferbetrê, كفر بطرة</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Xubarî, Şêxo</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -207,21 +229,70 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Keferbetrê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Compound of Kefer + Betr. Likely Aramaic or Syriac. Al-Asadi suggests it means Village of the Farrier (Gundê Bîtar). Father Shalhat suggests Betr is Greek for The Rock (Petra)</p>
+<p><strong>Foundation Date/Period:</strong> 150 years</p>
+<p><strong>Hills:</strong> <span class="internal-link">Qerac Reş</span>, <span class="internal-link">Ikaniya</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Wadî El-Betîna</span>, <span class="internal-link">Wadî Efrîn</span>, <span class="internal-link">Riya Cindirês-Efrîn</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Keferbetrê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin) geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Keferbetrê</span>, <span class="internal-link">كفرבطرة</span></strong> /282N - 327E - 7km - 295m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Keferbetrê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefepetre.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefepetre.htm</a></p>
+<p>According to the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p>Keferbetr / 282 inhabitants, 327 hectares, 7 km, 295 m /.</p>
+<p>It is believed that the name is a compound of <span class="internal-link">Kefer</span> + <span class="internal-link">Betr</span>. We have not found a definitive meaning for this name, although it leans towards Aramaic or Syriac names. <span class="internal-link">El-Esedî</span> stated regarding the name that it is from Aramaic meaning &quot;Village of the Farrier&quot;, and it is not unlikely that Betr is Greek meaning &quot;The Rock&quot; (Petra), as Father <span class="internal-link">Şelhet</span> believes.</p>
+<p>It is a small village consisting of several houses. It is located on the southern slope of Mount <span class="internal-link">Qerac Reş</span> or <span class="internal-link">Ikaniya</span> (Forty Springs). There are indications of ancient habitation evidenced by the presence of sites with soil used for habitation on the slopes located to its south. It is one of the villages of the <span class="internal-link">Xubarî</span> family, and the Kurdish writer, linguist, and journalist Dr. <span class="internal-link">Ebdulmecîd Şêxo</span> resides there.</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Keferbetr is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the Central Subdistrict of the <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a very small village located on the southern slope of Mount Qerac Reş (Black Garage) to the southeast of Çiyayê Kurmênc. A stream cuts through it from the northwest to the southeast, feeding into <span class="internal-link">Wadî El-Betîna</span> which heads toward <span class="internal-link">Wadî Efrîn</span> in the east. It is 7 km away from the city of Efrîn toward the southwest.</p>
+<p>It is bordered to the north by a wide plain, the <span class="internal-link">Riya Cindirês-Efrîn</span> (Cindirês-Efrîn road) planted with olive trees and grapevines, and the village of <span class="internal-link">Keferdelê Jêrîn</span>. To the south, it is bordered by an agriculturally fertile plain and the villages of <span class="internal-link">Telif</span> and <span class="internal-link">Kewkebel</span>. To the west, a wide and fertile plain and the <span class="internal-link">Endêriyê</span> farm. To the east, a wide agricultural plain, the village of <span class="internal-link">Betîtê</span>, the <span class="internal-link">Hesûn</span> farm, and <span class="internal-link">Şêx Ebdulhenan</span>.</p>
+<p>The number of its houses is small, approximately seven houses, and its age is 150 years. Its old houses are made of stone and mud with wooden ceilings, while the modern ones are of stone and reinforced concrete. An electricity network is available, as well as a paved road up to the center of the village and a primary school. Residents drink water from artesian wells and pools. Its inhabitants work in the cultivation of grains, vegetables, and olives, and they raise sheep and goats. There are two modern presses in the village on the sides of the <span class="internal-link">Riya Efrîn-Cindirês</span> (Efrîn-Cindirês road), and it is situated in an agriculturally fertile plain.</p>
+<p>Sources:</p>
 <ul>
-<li>It is believed to be compound from: كفر+ بطرة, and we did not determine the meaning of this name. However, it tends toward Aramaic-Syriac names. <span class="internal-link">Al-Asadi</span> mentioned about the name: that it is from Aramaic: village of the veterinarian, and it is not unlikely that &quot;بطره&quot; is Greek meaning rock, as <span class="internal-link">Father Shelhat</span> sees.</li>
-<li>A small village consisting of several houses. It is located on the southern slope of <span class="internal-link">Qeracî Reş</span> or <span class="internal-link">Çêlkaniya</span> mountain &quot;قراج الأسود – أربعين نبع&quot; (Black Garage - Forty Springs). There are indications of ancient settlement evidenced by the presence of sites with used soil for settlement on the slopes located to its south. It is among the <span class="internal-link">Al-Ghabari</span> family villages, and the Kurdish writer and linguist journalist <span class="internal-link">Dr. Abdul Majid Sheikho</span> lives in it.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>And according to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdul Rahman Mohammed from Qatmah village:</p>
-<p><strong><span class="internal-link">كفرבطرة</span></strong>: A village in Kurdish Mountain, belonging to the central district and Afrin, Aleppo Governorate.</p>
-<p>It is a very small village located on the southern slope of the black <span class="internal-link">Karaj</span> mountain southeast of Kurdish Mountain, crossed by a stream from northwest to southeast that feeds <span class="internal-link">Al-Batina</span> valley heading toward Afrin valley eastward. It is 7 km southwest of Afrin City. It is bordered to the north by a wide plain and <span class="internal-link">Jandaris</span>-Afrin road planted with olive and vine trees and <span class="internal-link">Kafrdali Tahtani</span> village, to the south by fertile agricultural plain and <span class="internal-link">Tillaf</span> and <span class="internal-link">Kokaba</span> villages, to the west by a wide and fertile plain and farm and <span class="internal-link">Andari</span> farm, and to the east by a wide agricultural plain and <span class="internal-link">Batita</span> village and <span class="internal-link">Hasoun</span> and <span class="internal-link">Sheikh Abdul Hanan</span> farms. The number of houses is small, about seven houses, and its age is 150 years. Its old houses are stone-mud with wooden roofs and modern ones of stone and reinforced cement. It has an electricity network and a paved road to the village center and an elementary school. Residents drink water from artesian wells and pools. Its inhabitants work in grain, vegetable and olive cultivation and sheep and goat herding. There are two modern presses in the village on both sides of the Afrin-Jandaris route, located in fertile agricultural plain.</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<p>Preparation and execution:</p>
+<ul>
+<li>Manager of Navenda Tirej Efrîn: Ebdulrehman Hacî Osman</li>
+<li>20 12 2013</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Keferbetr، كفربطرة /282ن - 327هـ - 7كم - 295م/:</p>
+<ul>
+<li>يعتقد أنه مركب من: كفر+ بطرة، ولم نستدل على معنى هذا الاسم. إلا أنه يميل</li>
+</ul>
+<p>إلى الأسماء الآرامية - السريانية. وقد ورد لدى الأسدي حول الاسم: بأنه من الأرامية: قرية البيطار، ولايستبعد أن تكون &quot;بطره&quot; يونانية بمعنى الصخرة، كما يرى الأب شلحت.</p>
+<ul>
+<li>قرية صغيرة تتألف من عدة بيوت. تقع على السفح الجنوبي لجبل Qerac Reş أو</li>
+</ul>
+<p>lkaniya &quot;قراج الأسود  أربعين نبع&quot;. هناك دلائل على سكن قديم بدلالة وجود مواقع ذات تربة مستعملة في السكن على السفوح الواقعة إلى جنوبها. وهي من قرى آل غباري، ويسكن فيها الكاتب واللغوي الكردي الدكتور الصحفي عبدالمجيد شيخو. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كفربطرة : قرية في جبل الكرد ، تتبع ناحية مركز ومنطقة عفرين محافظة حلب . وهي قرية صغيرة جداً تقع على سفح الجنوبي لجبل كراج الأسود إلى الجنوب الشرقي من جبل الكرد ، يخترقها مسيل من الشمال الغربي إلى الجنوب الشرقي الذي يرفد وادي البطينة المتجهة نحو وادي عفرين شرقاً وهي تبعد عن مدينة عفرين 7كم نحو الجنوب الغربي ، يحدها شمالاً سهل واسع وطريق جنديرس عفرين مزروعة بأشجار الزيتون والكرمة وقرية كفردلة تحتاني , وجنوباً سهل خصب زراعيا وقرية تلف وكوكبه , وغرباً سهل واسع وخصب ومزرعة العندرية , وشرقاً سهل واسع زراعياً وقرية بتيته ومزرعة حسون وشيخ عبد الحنان عدد بيوتها قليل حوالي سبع بيوت وعمرها150 عاماً بيوتها القديمة حجرية طينية ذات سقوف خشبية والحديثة من الحجر والإسمنت المسلح تتوفر فيها شبكة الكهرباء والطريق المزفت حتى وسط القرية ومدرسة ابتدائية ويشربون المياه من الآبار الارتوازية والبرك . يعمل سكانها بزراعة الحبوب والخضراوات والزيتون ويقومون بتربية الأغنام والماعز . يوجد في القرية معصرتين حديثتين على جانبي عفرين جنديرس وهي واقعة في سهل خصب زراعياً .</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -239,7 +310,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefepetre.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefepetre.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefepetre.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20kefepetre.htm</a></li></ul>
             </div>
 
             
@@ -249,7 +320,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -367,6 +438,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

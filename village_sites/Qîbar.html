@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -183,7 +204,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">&#x27;Erşqîbar, Al-Hawa, Arshqibar, Erşqîbar, Qibarê, Qîbar, Qîbarê, الهوى, عرشقيبار, قيباريه, Semra</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Reşî, Şêx Mirzayan</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Abdo, Abdo Nemir, Abdo Sîdo, Cemîl Ebdal, Ebu Nimir, Ebû Enter, Eysû, Kelaş, Melcer, Mihemed Seîdo, Nemir, Qêdî</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Abdo, Abdo Nemir, Abdo Sîdo, Cemîl Ebdal, Derwîş Şemo, Ebu Nimir, Ebû Enter, Eysû, Kelaş, Melcer, Mihemed Seîdo, Nemir, Qêdî</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -229,22 +250,55 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qîbar</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of Central District / City of Afrin / Efrîn</p>
-<p>Qîbarê عرشقيبار /</p>
-<p>===</p>
-<p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Qîbar – &#x27;Erşqîbar, Arshqibar, Al-Hawa</strong> /6144 inhabitants - 335 hectares - 3km - 360m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qîbar</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-qibara.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-qibara.htm</a></p>
+<p><span class="internal-link">Erşqîbar</span> / <span class="internal-link">Qîbar</span></p>
+<p>According to the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Qbar</span> / <span class="internal-link">&#x27;Erşqbar</span>, Erşqîbar, Al Hawa /6144 inhabitants, 335 hectares, 3km, 360m altitude/:</p>
+<p>The popular name, prior to Arabization, is a compound of two words: <span class="internal-link">&#x27;Erş</span>, which is the southern section of the village, and Qîbar, which is the northern section. This name has been mentioned since the Middle Ages, as a person named Ali Qîbar was the governor of the Qîbar fortress located west of the village. As for Qîbar or <span class="internal-link">Qîvar</span>, in Kurdish it means the fruit of the artichoke plant (according to the Qamus Kurani dictionary), which used to grow densely in the southern plain of the village. The Arabizers initially believed the name was &quot;Ishq Kibar&quot; (Great Love), so they used that, and later, after official Arabization, it was named &quot;Al Hawa&quot; (Passion/Love) under the belief that its popular pronunciation was in the form of &quot;Eşqîbar,&quot; meaning love and passion.</p>
+<p>It is one of the old, beautiful, and large villages in the <span class="internal-link">Cûme</span> plain. At the beginning of the twentieth century, it was a center for <span class="internal-link">Êzîdî</span> leadership in this region, and about half of its residents are still Êzîdî Kurds. It is divided into two sections separated by a valley. Its northern section with the attached plain is called Qîbar, and its southern section with the wide attached plain is called &#x27;Erş. In the southern vicinity of the &#x27;Erş section, at the location of the village threshing floors, there are wide grottos and caves. Excavation work nearby reveals huge stones from archaeological structures indicating ancient habitation predating the Islamic era. There are also ruins of the Qîbar fortress to the west of the village.</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Erşqîbar is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the central subdistrict of the <span class="internal-link">Efrîn</span> area, Heleb governorate. It is a large village located on the western slope of the western <span class="internal-link">Lîlûn</span> mountain and <span class="internal-link">Siman</span> mountain. It is bordered to the north by a plain planted with olive trees, a mountain range, and the villages of <span class="internal-link">Kefermez</span> and <span class="internal-link">Qere Tepê</span>. To the south, it is bordered by a wide plain, a mountainous plateau, and the villages of <span class="internal-link">Tûrindê</span> and <span class="internal-link">Qerzîhel</span>. To the west, it is bordered by an agricultural plain, the archaeological <span class="internal-link">Tel Qîbar</span> (Qîbar Hill), the <span class="internal-link">Riya Heleb-Efrîn</span> (Heleb Efrîn road), and the village of <span class="internal-link">Cûmkê</span>. To the east, it is bordered by the northern Siman mountain range, the western Lîlûn mountain range, and the villages of <span class="internal-link">Merîmîn</span>, <span class="internal-link">Xaldiye</span>, and <span class="internal-link">Enab</span>, along with a very high mountain range.</p>
+<p>The number of houses reaches about 250, and the age of the village is approximately 500 years. It is one of the very old villages in the region. Its old houses are made of stone, mud, and wooden ceilings, while the modern ones are made of stone and reinforced concrete. An electricity network is available, as well as drinking water taken from the source of <span class="internal-link">Kefer Cenê</span>. The village has a primary school and telephone service, and it is connected to the district center and neighboring villages by a paved road. A town council (municipality) was established in the village in the year 2002.</p>
+<p>The residents of the village work in the cultivation of grains, vegetables, olives, and fruit trees. Its lands are agriculturally fertile due to the passing of the course of the torrent from the Kefer Cenê spring and the presence of artesian wells. Tel Qîbar is an archaeological site, evidenced by the presence of Roman and Byzantine ruins. Among its most important families is the <span class="internal-link">Derwîş Şemo</span> family, who were the first to inhabit the village since its founding. The <span class="internal-link">Nemer</span> tourist restaurant is located west of the village next to the Riya Heleb-Efrîn (Heleb Efrîn road). It is mentioned that the visual artist <span class="internal-link">Lutfî Cefer</span> is a son of this village.</p>
+<p>Village Mukhtar: Lawyer <span class="internal-link">Besam Bekû</span>.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Studies of <span class="internal-link">Navenda Tirej Soft</span> / <span class="internal-link">Ebdulrehman Hacî Osman</span>.</p>
+<p>Prepared and executed by:</p>
+<p>Manager of Tirej Efrîn website: Ebdulrehman Hacî Osman</p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Qbar  &#x27;Erşqbar ، عرشقيبار ، الهوى /6144ن - 335هـ - 3كم - 360م/:</p>
 <ul>
-<li>The popular name and pre-Arabization is composed of two words, Arsh: which is the southern section of the village, and Qibar: the northern section of it. This name has been mentioned since the Middle Ages, when someone called <span class="internal-link">Ali Qibar</span> was ruler of &quot;<span class="internal-link">Qibar fortress</span>&quot; located west of the village. As for Qibar or &quot;Qîçar&quot;, in Kurdish it means the fruit of an &quot;artichoke plant&quot; / Kurdish dictionary/, and it used to grow densely in the southern plain of the village. The Arabizers initially believed that its name was &quot;Love of the Great&quot; so they used it, then it was called after Arabization &quot;Al-Hawa&quot; believing that its popular pronunciation in the form &quot;Ashqibar&quot; means &quot;Love and Passion!&quot;.</li>
-<li>One of the old, beautiful and large villages in <span class="internal-link">Jumeh plain</span>. At the beginning of the twentieth century it was a center for <span class="internal-link">Yezidi</span> leadership in this region, and still about half of its inhabitants are <span class="internal-link">Yezidi Kurds</span>. It is divided into two sections separated by a valley. Its northern section with the attached plain is called &quot;<span class="internal-link">Qibar</span>&quot;, and its southern section with the wide attached plain is called <span class="internal-link">Arshi</span> &#x27;Erşê. There are caves and wide caverns in the southern vicinity of the &quot;<span class="internal-link">Arshi</span>&quot; section at the village&#x27;s threshing floors. Excavation work near them reveals massive masonry for archaeological buildings indicating ancient habitation predating the Islamic era. The ruins of <span class="internal-link">Qibar fortress</span> also exist west of the village.</li>
+<li>الاسم الشعبي وما قبل التعريب مركب من كلمتين، عرش: هو القسم الجنوبي</li>
 </ul>
-<p>And according to the book: Afrin.... Its River and Green Hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qatmeh village</span></p>
-<p><strong>Arshqibar</strong>: A village in <span class="internal-link">Mount of the Kurds</span>, belonging to the central villages district of Afrin region, <span class="internal-link">Aleppo</span> Governorate.</p>
-<p>It is a large village located on the western slope of western <span class="internal-link">Mount Liloun</span> and <span class="internal-link">Mount Samaan</span>, bounded to the north by a plain cultivated with olive trees and a mountain chain and <span class="internal-link">Kafr Mez village</span> and <span class="internal-link">Qareh Taba village</span>, to the south by a wide plain and mountain plateau and <span class="internal-link">Tur Nadeh village</span> and <span class="internal-link">Qarzihel village</span>, to the west by an agricultural plain and <span class="internal-link">Tel Qibar</span> archaeological site and the <span class="internal-link">Aleppo-Afrin</span> road and <span class="internal-link">Jumkah village</span>, and to the east by the northern <span class="internal-link">Mount Samaan</span> chain and western <span class="internal-link">Mount Liloun</span> chain and <span class="internal-link">Mreymen village</span> and <span class="internal-link">Al-Khalidiya</span> and <span class="internal-link">Anab</span> and a very high mountain chain. The number of its houses reaches about 250 houses and the village&#x27;s age is about 500 years. It is one of the very ancient villages in the region. Its old houses are of stone and clay with wooden roofs, while the modern ones are of stone and reinforced concrete. There is an electricity network and drinking water taken from <span class="internal-link">Kafr Jannah spring</span>. It has an elementary school and telephone and connects with the region center and neighboring villages by paved road. A municipal council was established in the village in 2002. The village residents work in cultivating grains and vegetables and growing olives and fruit trees. Its lands are agriculturally fertile due to the passage of the <span class="internal-link">Kafr Jannah spring</span> stream and artesian wells, and <span class="internal-link">Tel Qibar</span> is archaeological with evidence of the existence of Roman and Byzantine archaeological remains. Among its most important families is the <span class="internal-link">Darwish Shamo family</span>, who were the first to inhabit the village since its establishment, and there is the <span class="internal-link">Al-Namar</span> tourist site west of the village beside the <span class="internal-link">Aleppo-Afrin</span> road.</p>
-<p>It is mentioned that the plastic artist <span class="internal-link">Lutfi Jaafar</span> is from the sons of this village.</p>
-<p>Village Mukhtar: Lawyer <span class="internal-link">Bassam Bakko</span></p>
-<p>Preparation and implementation: <span class="internal-link">Tirij Afrin</span> website director: Abdul Rahman Haji Othman</p>
-<p>20 / 12 / 2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qîbar from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=T8am1JvEiC4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=T8am1JvEiC4</a></p>
+<p>للقرية، وقيبار: القسم الشمالي منها. ولهذا الاسم ذكر منذ القرون الوسطى، حيث كان المدعو علي قيبار حاكما لحصن &quot;قيبار&quot; الموجود غربي القرية. أما قيبار أو &quot;قيڤار&quot; فهي في الكردية تعني ثمرة نبات &quot;أرضي شوكي&quot; / قاموس كوراني/، وكانت تنبت بشكل كثيف في السهل الجنوبي للقرية. وقد اعتقد المعربون بداية أن اسمها هو &quot;عشق كبار&quot; فاستعملوه، ثم سميت في ما بعد التعريب بـ &quot;الهوى&quot; اعتقادا بأن لفظها الشعبي على صيغة &quot;عشقيبار&quot; بمعنى &quot;العشق والهوى!&quot;.</p>
+<ul>
+<li>من القرى القديمة والجميلة والكبيرة في سهل جومه. كانت في بداية القرن</li>
+</ul>
+<p>العشرين مركزا للزعامة الإيزيدية في هذه المنطقة، ولا يزال نحو نصف سكانها من الأكراد الإيزيديين. وهي تقسم إلى قسمين يفصلهما واد. قسمها الشمالي مع السهل الملحق بها يسمى &quot;قيبار&quot;، وقسمها الجنوبي مع السهل الواسع الملحق بها يسمى عرشي &#x27;Erş. توجد في الجوار الجنوبي لقسم &quot;عرشي&quot; في مكان بيادر القرية، مغاور وكهوف واسعة. وتكشف أعمال الحفر بجوارها عن حجارة ضخمة لأبنية أثرية تدل على سكن قديم يسبق العهد الإسلامي. كما توجد أطلال حصن قيبار غربي القرية. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه عرشقيبار : قرية في جبل الكرد , تتبع ناحية قرى مركز منطقة عفرين , محافظة حلب . وهي قرية كبيرة تقع على السفح الغربي لجبل ليلون الغربية وجبل سمعان, يحدها شمالاً سهل مزروع بأشجار الزيتون وسلسلة جبلية وقرية كفرمز وقره تبه, وجنوباً سهل واسع وهضبة جبلية وقرية طور نده و قرزيحل ، وغربا ًسهل زراعي وتل قيبار الأثري وطريق حلب عفرين وقرية جومكة وشرقاً سلسلة جبل سمعان الشمالية وسلسلة جبل ليلون الغربية وقرية مريمين والخالدية وأناب وسلسلة جبلية عالية جداً يبلغ عدد بيوتها حوالي250بيتاً وعمر القرية حوالي 500عاماً وهي من القرى القديمة جداً في المنطقة بيوتها القديمة من الأحجار والطين والأسقف الخشبية , أما الحديثة منها فهي من الأحجار والإسمنت المسلح , تتوفر فيها شبكة الكهرباء ومياه الشرب المأخوذة منبع كفر جنة. فيها مدرسة ابتدائية وهاتف وتتصل مع مركز المنطقة والقرى المجاورة بطريق مزفتة ,وأحدثت في القرية عام /2002/ مجلس البلدة , يعمل سكان القرية بزراعة الحبوب والخضراوات وزراعة الزيتون والأشجار المثمرة أراضيها خصبة زراعياً بسبب مرور مجرى سيل نبع كفرجنة والآبار الارتوازية, وتل قيبار أثري بدلالة وجود بقايا آثار رومانية وبيزنطية ,من أهم عوائلها عائلة درويش شمو وهم أول من سكن القرية منذ تأسيسها ويوجد مقصف النمر السياحي غربي القرية جانب طريق حلب عفرين . يذكر أن الفنان التشكيلي لطفي جعفر من أبناء هذه القرية</p>
+<p>مختار القرية : المحامي بسام بكو</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qîbar from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=T8am1JvEiC4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=T8am1JvEiC4</a></p>
 <p>The village of <span class="internal-link">Qîbar</span> (also referred to as <span class="internal-link">Eşqîbar</span>), located in the <span class="internal-link">Efrîn</span> region, is a historically significant settlement inhabited by both <span class="internal-link">Misilman</span> and <span class="internal-link">Êzîdî</span> Kurds who live in close coexistence. The village’s name is attributed to an ancient king named <span class="internal-link">Erş Qîbar</span> or <span class="internal-link">Kîbar</span> from the <span class="internal-link">Keyaniyan</span> empire; the name is said to mean &quot;the elder of the citizens,&quot; though some locals also link it to the deity <span class="internal-link">Kîban</span> or the term <span class="internal-link">Kebanî</span>. While the current village structure was established approximately 350 years ago, the site possesses a much deeper history dating back to the <span class="internal-link">Mitanni</span> and <span class="internal-link">Hewîrî</span> eras (1000–1500 B.C.), evidenced by cross symbols and ancient ruins found at locations such as <span class="internal-link">Diyarê Bîra</span> and <span class="internal-link">Arşê Melekî</span>.</p>
 <p>Before the modern village was built, residents lived in caves in areas such as <span class="internal-link">Qişlê</span>, <span class="internal-link">Merîkê</span>, and most notably <span class="internal-link">Çilxane</span>. The elder <span class="internal-link">Seydo</span> explains that the community gradually coalesced from these scattered cave dwellings to form the current settlement. Notable families in the village include the <span class="internal-link">Kelaş</span> family, who have inhabited the historic <span class="internal-link">Diyarê Bîra</span> area since before the current village was founded, as well as the <span class="internal-link">Qêdî</span> and <span class="internal-link">Eysû</span> families. The tribes mentioned in the village include the <span class="internal-link">Reşî</span> (or <span class="internal-link">Reşan</span>) and the <span class="internal-link">Şêx Mirzayan</span>.</p>
 <p>Qîbar is defined by its sacred landscape. The most prominent site is Çilxane, a cave shrine located two kilometers south of the village. Its name, meaning &quot;Place of the Forty,&quot; refers to forty Êzîdî families who once lived there or ascetics who undertook forty-day fasting rituals. The site is renowned for a miraculous dripping water source believed to restore breast milk to nursing mothers; residents like <span class="internal-link">Zêneb a Cemîl Ebdal</span> recount personal stories of this miracle. Historically, the village also utilized <span class="internal-link">Kaniya Ferjanê</span> for water, as the village itself lacked a spring. Another sacred spot is <span class="internal-link">Hecerê Şêx Huseyn</span>, where villagers formerly circled their livestock to ward off disease. Nearby lies the shrine of <span class="internal-link">Melekê Adî</span> and the ruins of the King&#x27;s fortress, <span class="internal-link">Kelaha padîşah</span>.</p>
@@ -306,7 +360,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-qibara.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-qibara.htm</a><br><a href="https://www.esyria.sy/2013/11/%D8%B9%D8%B1%D8%B4%D9%82%D9%8A%D8%A8%D8%A7%D8%B1-%D9%82%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%88%D8%A7%D8%AF%D9%8A-%D9%88%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.esyria.sy/2013/11/%D8%B9%D8%B1%D8%B4%D9%82%D9%8A%D8%A8%D8%A7%D8%B1-%D9%82%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%88%D8%A7%D8%AF%D9%8A-%D9%88%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=T8am1JvEiC4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T8am1JvEiC4</a></li><li>Local FB page:<br><a href="https://www.facebook.com/xalilmahoGundeQibare" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/xalilmahoGundeQibare</a><br><a href="https://www.facebook.com/profile.php?id=100064477758493" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100064477758493</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=fUDPwMklSEs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=fUDPwMklSEs</a><br><a href="https://www.youtube.com/watch?v=OWoFk798Fmw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=OWoFk798Fmw</a><br><a href="https://www.youtube.com/watch?v=T8am1JvEiC4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T8am1JvEiC4</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=t54gRZUgKlc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=t54gRZUgKlc</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-qibara.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-qibara.htm</a></li><li>Link:<br><a href="https://www.esyria.sy/2013/11/%D8%B9%D8%B1%D8%B4%D9%82%D9%8A%D8%A8%D8%A7%D8%B1-%D9%82%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%88%D8%A7%D8%AF%D9%8A-%D9%88%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.esyria.sy/2013/11/%D8%B9%D8%B1%D8%B4%D9%82%D9%8A%D8%A8%D8%A7%D8%B1-%D9%82%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%88%D8%A7%D8%AF%D9%8A-%D9%88%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=T8am1JvEiC4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=T8am1JvEiC4</a></li><li>Local FB page:<br><a href="https://www.facebook.com/xalilmahoGundeQibare" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/xalilmahoGundeQibare</a></li><li>Link:<br><a href="https://www.facebook.com/profile.php?id=100064477758493" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100064477758493</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=fUDPwMklSEs" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=fUDPwMklSEs</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=OWoFk798Fmw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=OWoFk798Fmw</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=t54gRZUgKlc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=t54gRZUgKlc</a></li></ul>
             </div>
 
             
@@ -316,7 +370,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -434,6 +488,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

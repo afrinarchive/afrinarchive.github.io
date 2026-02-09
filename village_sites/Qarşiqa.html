@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -103,7 +124,7 @@
                     <div class="flex-1">
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Bilbilê</p></div>
-<div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Qarshaq Farm, Qarşiqa, قارشق, قارشيق</p></div>
+<div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Qarşiqa, Qarşiq</p></div>
                         </div>
                     </div>
                     
@@ -114,7 +135,7 @@
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
                 <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
-                    <p class="text-sm">Coordinates: 36.761336, 36.770775</p>
+                    <p class="text-sm">Coordinates: , </p>
                 </div>
                  <p class="text-xs subtext mt-3">Source: <a href="https://akmckeever.substack.com/" class="hover:underline external-link">akmckeever.substack.com</a></p>
             </div>
@@ -127,19 +148,61 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Qarşiqa</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Qarşiq: Meaning &quot;The Mixture&quot; or &quot;Mixed&quot; (Qarşiq). It was named &quot;The Mixture&quot; because the residents of the village belonged to four families from different tribes.</p>
+<p><strong>Foundation Date/Period:</strong> Ancient/Roman era</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Kurê yê Piçûk</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qarşiqa</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City (عفرين) / Geographical Study: (قارشق), <span class="internal-link">Qarshaq Farm</span> (مزرعة قارشق)** /204N - 920m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qarşiqa</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20qarsheq.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20qarsheq.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Qarşiqa</span>, the farm of <span class="internal-link">Qarşiq</span> / 204 inhabitants - 920m /:</p>
+<p>Qarşiq: Meaning &quot;The Mixture&quot; or &quot;Mixed&quot;. The residents of the village belong to four families from different tribes, so it was named &quot;The Mixture&quot;.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Qarşiq: A farm in <span class="internal-link">Çiyayê Kurmênc</span> following the district of <span class="internal-link">Bilbil</span>, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is an ancient village located on a mountainous height and the southern slope of <span class="internal-link">Çiyayê Kurê yê Piçûk</span> (Little Kurê Mountain). It is about 300m away from the village of Baxçe Qonaq.</p>
+<p>Currently, three modern residences have been built upon it, among them the house of <span class="internal-link">Silêman Cefer</span>. The real owners of the village are not currently present; they are residing in <span class="internal-link">Şam</span> (Damascus). The old site is devoid of residents and has become an agricultural site. There is a water spring between the two villages from which the people of the village drink, and the age of the spring dates back to the days of the Romans.</p>
+<p>Sources:</p>
 <ul>
-<li><span class="internal-link">Qarshaq</span> (قارشق): means &quot;the mixture or mixed,&quot; and the village inhabitants belong to four families from different tribes, so it was named &quot;the mixture.&quot;</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها ورواطيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Qarshaq</span> (قارشق)</strong>: A farm in <span class="internal-link">Kurdistan Mountain</span> (جبل الكرد) that belongs to <span class="internal-link">Bulbul District</span> (ناحية بلبل), Afrin City region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is an old village located on a mountainous elevation and the southern slope of small <span class="internal-link">Kari Mountain</span> (جبل كري الصغير). It is about 300m away from <span class="internal-link">Baqja Qunaqa Village</span> (قرية باقجة قوناق). Currently, three modern dwellings are built above it, including the house of <span class="internal-link">Sulaiman Jaafar</span> (سليمان جعفر). The real owners of the village are currently not residing there, living in <span class="internal-link">Damascus</span> (دمشق), and the old site is empty of inhabitants and has become an agricultural site. There is a water spring between the two villages from which the village people drink, and the spring&#x27;s age dates back to Roman times.</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the website Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Qarşiqa ، مزرعة قارشق /204ن - 920م/:</p>
+<ul>
+<li>قارشق: بمعنى &quot;الخليط أو المختلط&quot;، وينتمي سكان القرية إلى أربع عائلات من</li>
+</ul>
+<p>عشائر مختلفة فسميت بالخليط. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : قارشق : مزرعة في جبل الكرد تتبع ناحية بلبل ، منطقة عفرين محافظة حلب . وهي قرية قديمة تقع على مرتفع جبلي والسفح الجنوبي لجبل كري الصغير ,تبعد عن قرية باقجة قوناق حوالي 300م بني فوقها حالياً ثلاث مساكن حديثة ومنهم بيت سليمان جعفر وأصحاب القرية الحقيقيين غير موجودين حالياً مقيمين في دمشق والموقع القديم خالي من السكان وأصبحت موقعاً زراعياً ويوجد نبع ماء بين القريتين يشرب منه أهل القرية ويعود عمر النبع إلى أيام الرومان. مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -148,7 +211,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20qarsheq.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20qarsheq.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20qarsheq.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20qarsheq.htm</a></li></ul>
             </div>
 
             
@@ -158,7 +221,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -245,8 +308,8 @@
                 return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
             }
             const mainVillageName = "Qarşiqa";
-            const villageLat = 36.761336;
-            const villageLng = 36.770775;
+            const villageLat = null;
+            const villageLng = null;
             const initialZoom = 14;
             const map = L.map('map').setView([villageLat, villageLng], initialZoom);
             const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
@@ -276,6 +339,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

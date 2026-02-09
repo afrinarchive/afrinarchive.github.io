@@ -140,6 +140,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -164,6 +185,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Bilbilê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Sa&#x27;ida, Korzîlê, Kurzêl, السعيدة, كورزيل, كورزيلي</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Al Şêx Ismaîl, Mihemed Reşîd</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-bilbil-">
@@ -190,23 +212,71 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Kurzêl</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Its name resembles the name of the village of Kurzêl of Cûme, and it is said that there are kinship ties between families of those two villages. The Arabized name has no connection to the meaning of the old name.</p>
+<p><strong>Foundation Date/Period:</strong> approximately 350 years</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Simaq</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Wadî Cerqa</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kurzêl</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; / Afrin City (عفرين) / Geographical Study:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Kurzêlê</span> (كورزيلي), <span class="internal-link">Al-Sa&#x27;ida</span> (السعيدة)</strong> /754N – 14km - 740m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kurzêl</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Kuzel.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Kuzel.htm</a></p>
+<p>It is stated in the book Jebel al-Kurd / Afrin / Geographical Study: <span class="internal-link">Kurzêlê</span>, <span class="internal-link">el-Seîde</span> /754 inhabitants, 14km, 740m/:</p>
+<p>Its name resembles the name of the village of <span class="internal-link">Kurzêl</span> of <span class="internal-link">Cûme</span>, and it is said that there are kinship ties between families of those two villages. The number of its houses in the year 1923 was thirty houses /<span class="internal-link">Cemîl Kene</span>.../. The Arabized name has no connection whatsoever to the meaning of the old name.</p>
+<p>It is a small village located at the western slope of one of the heights of <span class="internal-link">Çiyayê Simaq</span>. Around it, there are many watercourses that head west towards <span class="internal-link">Wadî Cerqa</span>. Families of the <span class="internal-link">Al Şêx Ismaîl</span> lineage live there.</p>
+<p>It is stated in the book Afrin... Her River and Her Green Hills: Kurzêlê: A village in <span class="internal-link">Çiyayê Kurmênc</span> that follows the <span class="internal-link">Bilbile</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a medium-sized village located on the middle and northern slope and on three mountain heights. It is approximately 15km away from the town of Bilbile towards the southwest.</p>
+<p>It is bordered to the north by a torrential valley, a mountain range, the <span class="internal-link">Riya Bilbile-Reco</span> (Bilbile-Reco road), and the village of <span class="internal-link">Solaqlî</span>. To the south, it is bordered by a deep torrential valley, a mountain range, and the village of <span class="internal-link">Qotanlî</span>. To the west, it is bordered by a torrential valley, a fertile plain, the village of <span class="internal-link">Alemdar</span>, and the village of <span class="internal-link">Zerkanlî</span>. To the east, it is bordered by a torrential valley, mountain heights, and the village of <span class="internal-link">Berkeşlî</span>.</p>
+<p>The number of its houses reaches approximately 35 houses, and its age is approximately 350 years. Its old houses are stone and mud with flat wooden roofs, while the modern ones are cement. A modern electricity network is available (under construction), as well as a primary school. Its residents work in rain-fed agriculture of olives, grains, and legumes, and in raising sheep and goats. The village drinks from cisterns where rainwater collects in winter. The road to the district center and neighboring villages is dirt, mountainous, and unpaved. Its most important families include the <span class="internal-link">Mihemed Reşîd</span> family located in the western side of the village.</p>
+<p>Village Mukhtar: <span class="internal-link">Reşîd Husên</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li>Its name resembles the name of <span class="internal-link">Kurzil-Juma Village</span> (ق.كورزيل- جومه), and it is said that there are kinship relations between families from those two villages. The number of its houses in 1923 was thirty houses /<span class="internal-link">Jamil Kana</span>.../ and the Arabic name has no connection to the meaning of the old name.</li>
-<li>A small village located at the western slope of one of the elevations of <span class="internal-link">Samaq Mountain</span> (جبل سماق). Streams that head west toward <span class="internal-link">Jarqa Valley</span> (وادي جرقا) abound around it. <span class="internal-link">Al Sheikh Ismail</span> (آل شيخ إسماعيل) families live in it.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها ورواطيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong><span class="internal-link">Kurzil</span> (كورزيل)</strong>: A village in <span class="internal-link">Kurdistan Mountain</span> (جبل الكرد) that belongs to <span class="internal-link">Bulbul District</span> (ناحية بلبل), Afrin City region (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a medium village located on the middle and northern slope and on three mountainous elevations. It is about 15km southwest of <span class="internal-link">Bulbul Town</span> (بلدة بلبل). To the north it is bordered by a torrent valley and mountain chain and the <span class="internal-link">Bulbul – Rajo</span> (بلبل – راجو) road and <span class="internal-link">Sulaqli Village</span> (قرية صولاقلي), to the south by a deep torrent valley and mountain chain and <span class="internal-link">Qutanli Village</span> (قرية قوطانلي), to the west by a torrent valley and fertile plain and <span class="internal-link">Alamdar Village</span> (قرية علمدار) and <span class="internal-link">Zarkanli Village</span> (قرية زركانلي), and to the east by a torrent valley and mountainous elevations and <span class="internal-link">Barkshli Village</span> (قرية بركشلي).</p>
-<p>The number of its houses is about 35 houses, age about 350 years. Its old houses are stone-clay with flat wooden roofs and the modern ones are concrete. It has a modern electricity network under implementation and an elementary school. Its inhabitants work in olive, grain, and legume cultivation, and in sheep and goat raising. The village drinks from cisterns that collect rainwater in winter. The road to the district center and neighboring villages is mountainous dirt unpaved. The most important of its families is the <span class="internal-link">Muhammad Rashid</span> (محمد رشيد) family located in the western part of the village.</p>
-<p>Village Mayor: <span class="internal-link">Rashid Hussein</span> (رشيد حسين)</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Director of the Tirej Efrîn website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Kurzl ، كورزيلي ، السعيدة /754ن 14كم - 740م/:</p>
+<ul>
+<li>يماثل اسمها اسم ق.كورزيل- جومه، ويقال أن هناك صلات قرابة بين عائلات من</li>
+</ul>
+<p>تلك القريتين. وكان عدد منازلها سنة 1923 ثلاثين بيتا /جميل كنة.../ وليس للاسم المعرب أية صلة بمعنى الاسم القديم.</p>
+<ul>
+<li>قرية صغيرة تقع عند السفح الغربي لأحد مرتفعات جبل سماق، تكثر حولها</li>
+</ul>
+<p>المسيلات التي تتجه غربا نحو وادي جرقا. يسكن فيها عائلات آل شيخ إسماعيل. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : كورزيل : قرية في جبل الكرد تتبع ناحية بلبل ، منطقة عفرين محافظة حلب . وهي قرية متوسطة تقع على السفح الأوسط والشمالي وعلى ثلاثة مرتفعات جبلية ، تبعد عن بلدة بلبل حوالي15كم باتجاه الجنوب الغربي ، يحدها شمالاً واد سيلي وسلسلة جبلية وطريق بلبل  راجو وقرية &quot;صولاقلي&quot; ، وجنوباً واد سيلي عميق و سلسلة جبلية وقرية &quot;قوطانلي&quot; ، وغرباً واد سيلي وسهل خصب وقرية &quot;علمدار&quot; وقرية &quot;زركانلي&quot; ، وشرقاً واد سيلي و مرتفعات جبلية وقرية &quot;بركشلي&quot; ، يبلغ عدد بيوتها حوالي35بيتاً وعمرها حوالي350عاماً ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية والحديثة أسمنتية تتوفر فيها شبكة كهرباء حديثة قيد التنفيذ ومدرسة ابتدائية ، يعمل سكانها بزراعة الزيتون والحبوب والبقول بعلاً ، وبتربية الأغنام والماعز ، تشرب القرية من الصهاريج التي تجمع فيها مياه الأمطار شتاء ، الطريق إلى مركز الناحية و القرى المجاورة ترابية جبلية غير مزفتة وأهم عوائلها عائلة محمد رشيد الواقعة في الجهة الغربية من القرية.</p>
+<p>مختار القرية : رشيد حسين</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -224,7 +294,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Kuzel.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Kuzel.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=2Zca9_LHsd8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=2Zca9_LHsd8</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Kuzel.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Kuzel.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=2Zca9_LHsd8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=2Zca9_LHsd8</a></li></ul>
             </div>
 
             
@@ -234,7 +304,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -352,6 +422,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

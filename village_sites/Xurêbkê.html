@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -183,7 +204,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Xirbet el-Heyat, Xirêbke, Xirêbkê, Xurêbkê, خربة الحياة, زهرة الحياة, خراب حياة</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Rûbariyan</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Betal, Ebdê, Evd, Hec Bîlal, Hec Xelûf, Hec Ûso, Hemê Pîr, Hût, Mist, Miste, Mistê Hemê, Osê, Seyd, Xelîl, Îb</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Betal, Ebdo, Ebdê, Evd, Hacî Osman, Hec Bîlal, Hec Xelûf, Hec Ûso, Hembîro, Hemê Pîr, Hût, Mist, Miste, Mistê Hemê, Osê, Seyd, Sîdo, Xelîl, Îb, Îd</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -221,20 +242,54 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Xurêbkê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Xurêbkê, خربة الحياة</strong> /1435n - 178h - 36km - 445m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Xurêbkê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xurebka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xurebka.htm</a></p>
+<p><span class="internal-link">Xurbk</span> / <span class="internal-link">Xirbet El-Heyat</span></p>
+<p>The following details appear in the book Çiyayê Kurmênc (Efrîn): A Geographical Study by <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p>Xurbk, Xirbet El-Heyat /1435 inhabitants 178 hectares 36 km 445 m/:</p>
+<p>The village was built on the ruins of an archaeological site, and there is an archaeological hill <span class="internal-link">Tel</span> to the south of it. The name of the village is derived from the archaeological ruin (xirbe), and from &quot;Hayat,&quot; which is a female name of one of its early inhabitants.</p>
+<p>It is a medium sized village located on the eastern slopes of <span class="internal-link">Çiyayê Lêlûn</span>, west of the public road leading to <span class="internal-link">Heleb</span>.</p>
+<p>According to the book Efrîn... Her River and Her Green Hills by the writer <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Xirbet El-Heyat is a village in Çiyayê Lêlûn, administratively following the subdistrict of the central villages of the <span class="internal-link">Efrîn</span> region, Heleb governorate.</p>
+<p>It is a small village located in a fertile agricultural plain called <span class="internal-link">Xubariyê</span> and Çiyayê Lêlûn. It is bordered to the north by an agricultural plain and the village of <span class="internal-link">Dêr Jemal</span> and <span class="internal-link">Ibîn</span>; to the south by the village of <span class="internal-link">Mayêr</span>, <span class="internal-link">Ziyaret</span>, and the <span class="internal-link">Riya Heleb-Efrîn</span> (Heleb Efrîn road); to the east by the <span class="internal-link">Riya Efrîn-Heleb</span> (Efrîn Heleb road) and the village of <span class="internal-link">Kefîn</span>; and to the west by a valley, a rocky chain, and the villages of Ziyaret, <span class="internal-link">Basilhaya</span>, and <span class="internal-link">Aqîbê</span>.</p>
+<p>The number of houses in the village is about 50, and the age of the village is approximately 150 years. Its old houses are made of mud with wooden ceilings, while the modern ones are made of reinforced concrete and stone. The village has an electricity and water network, a paved road reaching the center of the village, and a primary school. Its residents work in grain cultivation, livestock breeding, and other jobs.</p>
+<p>Among the families present in the village are: <span class="internal-link">Îd</span> family, <span class="internal-link">Ebdo</span> family, <span class="internal-link">Hacî Osman</span> family, <span class="internal-link">Hembîro</span> family, and <span class="internal-link">Sîdo</span> family. Among the social figures is the village mukhtar: <span class="internal-link">Ibrahîm Ibrahîm Cemal</span>.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Xurbk ، خربة الحياة /1435ن - 178هـ - 36كم - 445م/:</p>
 <ul>
-<li>The village was built on the ruins of an archaeological site, and there exists to the south of it an archaeological hill. The village name was derived from the archaeological ruin, and from &quot;حياة&quot; which is a female name of one of its first inhabitants.</li>
-<li>A medium village located on the eastern slopes of <span class="internal-link">Lilon Mountain</span> west of the public road leading to <span class="internal-link">Aleppo</span>.</li>
+<li>بنيت القرية على أنقاض موقع أثري، ويوجد إلى الجنوب منها تل أثري. اشتق اسم</li>
 </ul>
-<p>And it came in the book: Afrin.... its river and green hills by writer Abdulrahman Mohammed from <span class="internal-link">Qatma village</span></p>
-<p><strong>خربة الحياة</strong>: A village in <span class="internal-link">Lilon Mountain</span>, belonging to the center villages district and Afrin region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p>A small village located in a fertile agricultural plain called <span class="internal-link">Ghubaria</span> and <span class="internal-link">Lilon Mountain</span>. It is bordered to the north by an agricultural plain and <span class="internal-link">Deir al-Jamal village</span> and <span class="internal-link">Iben</span> and to the south by <span class="internal-link">Mayer village</span> and <span class="internal-link">Zeyara</span> and <span class="internal-link">Aleppo</span> Afrin road and to the east by Afrin <span class="internal-link">Aleppo</span> road and <span class="internal-link">Kafin village</span> and to the west by a valley and rocky chain and <span class="internal-link">Zeyara village</span> and Baslahaya and <span class="internal-link">Aqiba</span>. The number of its houses reaches about /50/ houses and the village age is about /150/ years. Its old houses are of mud with wooden roofs while the modern ones are of reinforced cement and stone. It has electricity and water networks and an asphalt road to the village center and elementary school. Its inhabitants work in grain cultivation and livestock raising and other works.</p>
-<p>Among the families existing in the village: <span class="internal-link">Al Eid</span> - <span class="internal-link">Al Abdo</span> - <span class="internal-link">Al Haji Othman</span> - <span class="internal-link">Al Hambiro</span> - <span class="internal-link">Al Seido</span></p>
-<p>Among the social figures:</p>
-<p>Village mayor: <span class="internal-link">Ibrahim Ibrahim Jamal</span></p>
-<p>Preparation and implementation: Director of <span class="internal-link">Tireij Afrin</span> website: <span class="internal-link">Abdulrahman Haji Othman</span></p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Xurêbkê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=0W-SfOmicVc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=0W-SfOmicVc</a></p>
+<p>القرية من الخربة الأثرية، ومن &quot;حياة&quot; وهو اسم نسائي لأحدى ساكناتها الأوائل.</p>
+<ul>
+<li>قرية متوسطة تقع على السفوح الشرقية لجبل ليلون غربي الطريق العام المؤدي</li>
+</ul>
+<p>إلى حلب. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه خربة الحياة : قرية في جبل ليلون , تتبع ناحية قرى مركز ومنطقة عفرين ، محافظة حلب . قرية صغيرة تقع في سهل زراعي خصب تسمى الغبارية وجبل ليلون . يحدها شمالاً سهل زراعي وقرية دير الجمال وإبين وجنوباً قرية ماير والزيارة وطريق حلب عفر ين وشرقاً طريق عفر ين حلب وقرية كفين وغرباً وادي وسلسلة صخرية وقرية الزيارة و باصلحايا و عقيبة يبلغ عدد بيوتها حوالي/50/ بيتاً وعمر القرية حوالي/150/ عاماَ بيوتها القديمة من الطين وذات السقوف الخشبية أما الحديثة منها من الأسمنت المسلح والأحجار تتوفر فيها شبكة الكهرباء والمياه والطريق المزفت حتى وسط القرية ومدرسة ابتدائية يعمل سكانها بزراعة الحبوب وتربية المواشي والأعمال الأخرى . ومن العائلات الموجودة في القرية : آل عيد - آل عبدو - أل حاجي عثمان - أل حمبيرو - آل سيدو - ومن الوجوه الاجتماعية :</p>
+<p>مختار القرية : ابراهيم ابراهيم جمال</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Xurêbkê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=0W-SfOmicVc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=0W-SfOmicVc</a></p>
 <p>The village of <span class="internal-link">Xurêpkê</span>, also referred to as <span class="internal-link">Xirabê Kê</span>, is a settlement with deep historical roots located in the <span class="internal-link">Şêrawa</span> district of the <span class="internal-link">Efrîn</span> region. The village is exclusively inhabited by members of the <span class="internal-link">Rûbariyan</span> tribe. According to local elders, Xurêpkê is one of five villages in the area, alongside <span class="internal-link">Bênê</span>, <span class="internal-link">Cilbir</span>, <span class="internal-link">Kistear</span>, and <span class="internal-link">Basilê</span>, that all originated from the village of Basilê. The settlement was established approximately 200 years ago, specifically cited as the year 1234 Hijri. The founders were two brothers, <span class="internal-link">Hec Bîlal</span> and <span class="internal-link">Betal</span>, accompanied by their cousin <span class="internal-link">Hemê Pîr</span>. When they arrived, the location was a ruin, leading them to name it <span class="internal-link">Xurebet el heyat</span>, which evolved into its current name.</p>
 <p>The social structure of Xurêpkê is defined by the lineages of these founders. Over time, the population expanded into several key families. The documentary narrator identifies five primary families currently residing there: <span class="internal-link">Xelîl</span>, <span class="internal-link">Osê</span>, <span class="internal-link">Ibê</span>, <span class="internal-link">Ebdê</span>, and Hemê Pîr. Elders provide further genealogical detail, explaining that from Hec Bîlal came the lines of <span class="internal-link">Seyd</span> and <span class="internal-link">Îb</span>, while Betal is the ancestor of <span class="internal-link">Hec Ûso</span> and <span class="internal-link">Hec Xelûf</span>. The village has historically relied on agriculture, particularly olive cultivation, with some trees dating back 170 years. Additionally, they grow lentils, chickpeas, wheat, and cumin.</p>
 <p>A distinctive feature of Xurêpkê is a large, man made pond or lake located within the village. Before modern infrastructure, water was scarce, and the villagers collectively dug this reservoir over a century ago to catch rainwater. It became the center of daily life where women would wash clothes, wool, and carpets, and where livestock were watered. Elders recount tragic stories associated with this site, including the drowning of a young girl who was the speaker&#x27;s cousin, as well as two other individuals named <span class="internal-link">Ehmed</span>. Despite these tragedies, the site remains a symbol of the village&#x27;s communal effort and history.</p>
@@ -294,7 +349,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xurebka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xurebka.htm</a></li><li>Local FB page:<br><a href="https://www.facebook.com/Gund%C3%AA-Xir%C3%AAbk%C3%AA-%D8%AE%D8%B1%D8%A8%D8%A9-%D8%A7%D9%84%D8%AD%D9%8A%D8%A7%D8%A9-1390681924499336/" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Gund%C3%AA-Xir%C3%AAbk%C3%AA-%D8%AE%D8%B1%D8%A8%D8%A9-%D8%A7%D9%84%D8%AD%D9%8A%D8%A7%D8%A9-1390681924499336/</a><br><a href="https://www.youtube.com/watch?v=0W-SfOmicVc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=0W-SfOmicVc</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xurebka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20xurebka.htm</a></li><li>Local FB page:<br><a href="https://www.facebook.com/Gund%C3%AA-Xir%C3%AAbk%C3%AA-%D8%AE%D8%B1%D8%A8%D8%A9-%D8%A7%D9%84%D8%AD%D9%8A%D8%A7%D8%A9-1390681924499336/" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Gund%C3%AA-Xir%C3%AAbk%C3%AA-%D8%AE%D8%B1%D8%A8%D8%A9-%D8%A7%D9%84%D8%AD%D9%8A%D8%A7%D8%A9-1390681924499336/</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=0W-SfOmicVc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=0W-SfOmicVc</a></li></ul>
             </div>
 
             
@@ -304,7 +359,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -422,6 +477,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

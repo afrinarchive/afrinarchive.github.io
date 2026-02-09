@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -167,7 +188,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Ma&#x27;sarah, Ma&#x27;sarjaq, Me&#x27;serkê, المعصرة, معصرجق, معصركه</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Omerî</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Mala Ciddû, Mala Ereb, Mala Heddû, Mala Memo, Mala Resûl, Mala Şalîkê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Hec Hemo, Mala Ciddû, Mala Ereb, Mala Heddû, Mala Memo, Mala Resûl, Mala Şalîkê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -208,17 +229,52 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Me&#x27;serkê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد (عفرين)</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin City)</span>&#x27; geographical study by Dr. Mohammed Abdo Ali (محمد عبدو علي):</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Me&#x27;serkê</span> (معصرجق), المعصرة</strong> /986n - 1150ha - 15km - 710m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Me&#x27;serkê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20meserke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20meserke.htm</a></p>
+<p><span class="internal-link">Me&#x27;serk</span> / <span class="internal-link">Me&#x27;serciq</span></p>
+<p>According to the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p>Me&#x27;serk, Me&#x27;serciq, Al-Ma&#x27;sara / 986 inhabitants - 1150 hectares - 15km - 710m /:</p>
+<p>The name comes from &quot;Al-Ma&#x27;sara&quot; (The Press). It is a small village located on the southern slope of a plateau of <span class="internal-link">Çiyayê Xastiya</span>. It overlooks <span class="internal-link">Geliyê Cercum</span> to the south.</p>
+<p>According to the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Me&#x27;serciq is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the <span class="internal-link">Mabeta</span> sub-district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village located in the central section of the mentioned mountain, on the southern slope of a marly limestone plateau. It overlooks <span class="internal-link">Geliyê Sîlê</span> to the east, which descends towards the south. It is located 15km southwest of the town of Mabeta. Its soil is clay-heavy, covered by forestry and pastures.</p>
+<p>It is bordered to the north by a high mountain chain planted with olive trees and forestry, and the village of <span class="internal-link">Xaziyanliya Jorîn</span>. To the south, it is bordered by Geliyê Sîlê, mountainous highlands planted with olive trees and forestry, and the village of <span class="internal-link">Misto Aşûr</span>. To the west, it is bordered by a valley, a mountainous height planted with olive trees, the village of <span class="internal-link">Mixarcik</span>, and the village of <span class="internal-link">Kelanlî</span>. To the east, it is bordered by the deep Geliyê Sîlê and the village of <span class="internal-link">Qişle</span>.</p>
+<p>The number of houses reaches approximately 30, and the village is approximately 400 years old. Its old houses are made of stone and mud with flat wooden roofs, while modern cement dwellings have begun to spread around them. An electricity network is available, as well as a water network supplied recently from the well of <span class="internal-link">Elî Caro</span> or from cisterns that collect rainwater in winter. The residents rely on cultivating 1150 hectares of rain-fed land with grains, legumes, and olive trees, alongside raising sheep and goats. It is connected to the sub-district center by a paved road that passes near it and leads to several neighboring villages.</p>
+<p>It is one of the old villages in the Mabeta sub-district. There are two modern villas on the southern side of the village and a large banana tree aged 250 years. Among its most important families is the <span class="internal-link">Hec Hemo</span> family, who were the first to inhabit the village. Previously, the following farms/hamlets were attached to it: Misto Aşûr, <span class="internal-link">Cumazanlî</span>, Qişle, Elî Caro, and <span class="internal-link">Hemo Raco</span>; currently, these villages have become independent from the village of Me&#x27;serciq.</p>
+<p>Among the holders of higher degrees in the village is <span class="internal-link">Saîd Ereb</span> (PhD in Agriculture / Cuba). The village Mukhtar is <span class="internal-link">Remzî Heqî</span>.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p><span class="internal-link">Navenda Tirej Efrîn</span> / <span class="internal-link">Ebdulrehman Hacî Osman</span>.</p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Me&#x27;serk ، معصرجق ، المعصرة /986ن - 1150هـ - 15كم - 710م/:</p>
 <ul>
-<li>The name comes from &quot;<span class="internal-link">al-Ma&#x27;sarah</span>&quot; (المعصرة).</li>
-<li>A small village located on the southern slope of a plateau from <span class="internal-link">Khastiya Mountain</span> (جبل خاستيا). It overlooks <span class="internal-link">Jarjam valley</span> (وادي جرجم) to the south.</li>
+<li>الاسم من &quot;المعصرة &quot;.</li>
 </ul>
-<p>According to the book: &#x27;<span class="internal-link">عفرين.... نهرها ورواbiها الخضراء</span>&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27; by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Ma&#x27;sarjaq</span></strong> (معصرجق): A village in <span class="internal-link">Kurd Mountain</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), <span class="internal-link">Afrin City Region</span> (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the central section of the mentioned mountain, on the southern slope of a calcareous marine plateau overlooking a stream valley sloping south. It is 15km from <span class="internal-link">Mabetli town</span> (بلدة معبطلي) toward the southwest. Its soil is clay-based, covered with forests and pastures. To the north it is bordered by a high mountain range planted with olive and forest trees and <span class="internal-link">Khaziyanli Foqani village</span> (قرية خازيانلي فوقاني), to the south by a stream valley and mountain elevations planted with olive and forest trees and <span class="internal-link">Masto Ashour village</span> (قرية مستو عاشور), to the west by a valley and mountain elevation planted with olive trees and <span class="internal-link">Magharjiq village</span> (قرية مغارجق) and <span class="internal-link">Kalanli village</span> (قرية كلانلي), and to the east by a deep stream valley and <span class="internal-link">Qashlah village</span> (قرية قشلة). It contains approximately 30 houses (بيتاً) and is about 400 years old (عاماً). Its old houses are stone and clay with flat wooden roofs. Modern cement residences have begun to spread around it. It has an electricity network and a water network from a well on <span class="internal-link">Ali Jarou</span> (علي جارو) recently or from cisterns that collect rainwater in winter. The people work and depend on cultivating 1150ha rain-fed area with grains, legumes, and olive trees alongside raising sheep and goats. It is connected to the district center and passes near it to several neighboring villages by a paved road. It is one of the old villages in Mabetli District (ناحية معبطلي). There are two modern villas on the southern side of the village and a large walnut tree 250 years old (عاماً). Among its most important families is the <span class="internal-link">Haj Hamo family</span> (عائلة حج حمو), the first to inhabit the village. The following farms previously belonged to it: (<span class="internal-link">Masto Ashour</span> (مستو عاشور), <span class="internal-link">Jomazanli</span> (جومازانلي), <span class="internal-link">Qashlah</span> (قشلة), <span class="internal-link">Ali Jarou</span> (علي جارو), <span class="internal-link">Hamo Rajo</span> (حمو راجو)) and currently these villages have become independent from <span class="internal-link">Ma&#x27;sar Jaq village</span> (قرية معصر جق).</p>
-<p>Among the holders of higher education in the village: <span class="internal-link">Sa&#x27;ed Arab</span> (سائد عرب) / Doctorate in Agriculture / Cuba -</p>
-<p>Village headman: <span class="internal-link">Ramzi Haqqi</span> (رمزي حقي)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Me&#x27;serkê from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=HoVgEQBYWZ8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=HoVgEQBYWZ8</a></p>
+<ul>
+<li>قرية صغيرة تقع على السفح الجنوبي لهضبة من جبل خاستيا. تشرف على وادي جرجم</li>
+</ul>
+<p>في الجنوب. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه معصرجق : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب. وهي قرية صغيرة تقع في القسم الأوسط من الجبل المذكور ، على السفح الجنوبي لهضبة كلسية مارنية ، تطل شرقاً على وادي سيلي ينحدر نحو الجنوب ، تبعد 15كم عن بلدة معبطلي باتجاه الجنوب الغربي ، تربتها غضارية ، تغطيها الحراج والمراعي ، يحدها شمالاً سلسلة جبلية عالية مزروعة بأشجار الزيتون والحراج وقرية خازيانلي فوقاني ، وجنوباً وادي سيلي ومرتفعات جبلية مزروعة بأشجار الزيتون والحراج وقرية مستو عاشور ، وغرباً وادي ومرتفع جبلي مزروعة بأشجار الزيتون وقرية مغارجق وقرية كلانلي ، وشرقاً وادي سيلي عميق وقرية قشلة ، يبلغ عدد بيوتها حوالي 30بيتاً وعمرها حوالي 400عاماً ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية ، بدأت تنتشر حولها المساكن الأسمنتية الحديثة ، تتوفر فيها شبكة الكهرباء و شبكة مياه من بئر علي جارو حديثاً أو من صهاريج تجمع فيها مياه الأمطار شتاءً ، يعمل يعتمدون على زراعة 1150هـ بعلاً بالحبوب والبقول وأشجار الزيتون إلى جانب تربية الأغنام والماعز ، تصلها بمركز الناحية ويمر من قربها إلى عدة قرى مجاورة طريق مزفت , وهي من القرى القديمة في ناحية معبطلي ، يوجد فيها فيلتين حديثتين من الجهة الجنوبية للقرية وشجرة موز كبيرة عمرها 250عاماً ومن أهم عوائلها عائلة حج حمو أول من سكنوا القرية ، كانت سابقاً تتبعها المزارع التالية : (مستو عاشور ، جومازانلي ، قشلة ، علي جارو ، حمو راجو) وحالياً أصبحت هذه القرى مستقلة عن قرية معصر جق . ومن حاملي الشهادات العليا في القرية : سائد عرب / دكتوراة في الزراعة / كوبا -</p>
+<p>مختار القرية : رمزي حقي</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Me&#x27;serkê from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=HoVgEQBYWZ8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=HoVgEQBYWZ8</a></p>
 <p>The documentary explores the history and social fabric of two villages in the <span class="internal-link">Afrin</span> region, specifically <span class="internal-link">Mehserkê</span> and <span class="internal-link">Şikate</span>, which are located within the administrative district of <span class="internal-link">Mobata</span>. The narrative begins in Mehserkê, a small village described as being approximately five hundred years old. It is home to thirty two households and is defined by the presence of four specific families: <span class="internal-link">Mala Ereb</span>, <span class="internal-link">Mala Resûl</span>, <span class="internal-link">Mala Memo</span>, and <span class="internal-link">Mala Şalîkê</span>. The village center features a large old tree and stone basins used historically for processing wheat, representing the traditional agricultural life of the inhabitants.</p>
 <p>The focus then shifts to the nearby village of Şikate, situated among neighbors such as <span class="internal-link">Tirmîşo</span>, <span class="internal-link">Berko</span>, <span class="internal-link">Çûmasna</span>, <span class="internal-link">Elcora</span>, and <span class="internal-link">Xastora</span>. A knowledgeable elder named <span class="internal-link">Ebû Fîras</span> provides a detailed account of the village&#x27;s deep history. He reveals that the original name of the site was <span class="internal-link">Keferpêva</span>. According to him, the prefix &quot;Kefer&quot; originates from the language of the <span class="internal-link">Rûm</span> and translates to <span class="internal-link">Hedîqe</span> or garden. He compares this naming convention to other regional locations such as <span class="internal-link">Kefersefrê</span>, <span class="internal-link">Kefercanê</span>, <span class="internal-link">Keferhemra</span>, and <span class="internal-link">Keferbatîx</span>, suggesting the area was historically an agricultural garden or orchard during the Byzantine or Roman era.</p>
 <p>While the physical ruins and foundations in Şikate are attributed to the Rûm and are estimated to be between 1,500 and 2,000 years old, the Kurdish settlement history is also significant. Ebû Fîras mentions that the original Kurdish founders of the village belonged to the <span class="internal-link">Omerî</span> tribe, descending from seven brothers who settled there. The current social structure includes families such as <span class="internal-link">Mala Ciddû</span> and <span class="internal-link">Mala Heddû</span>.</p>
@@ -277,7 +333,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20meserke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20meserke.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=98MMCcW3aY4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=98MMCcW3aY4</a><br><a href="https://www.youtube.com/watch?v=Sm0Q6JROwls" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Sm0Q6JROwls</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=HoVgEQBYWZ8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=HoVgEQBYWZ8</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20meserke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20meserke.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=98MMCcW3aY4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=98MMCcW3aY4</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=Sm0Q6JROwls" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=Sm0Q6JROwls</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=HoVgEQBYWZ8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=HoVgEQBYWZ8</a></li></ul>
             </div>
 
             
@@ -287,7 +343,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -405,6 +461,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -160,6 +160,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,7 +205,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Reco</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Kosa, Kosan, Kosanli, Kûsa, كوسان, كوسانلي, كوسو</p></div>
-<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Kûsa, Şêxî</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Kasan, Kosan, Kûsa, Reşwan, Şêxî</p></div>
 <div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Mala Berîmce, Mala Garcîn, Mala Hesen, Mala Kosen, Mala Qamber, Mala Qîse, Mala Reşkê, Mala Sîno, Mala Çêxel</p></div>
                         </div>
                     </div>
@@ -230,23 +251,58 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kosa</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> Geographic Study:</p>
-<p><strong>Kosa, كوسانلي, كوسان</strong> /1088n - 47h - 22km - 600m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kosa</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kosa.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kosa.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Kosa</span>, <span class="internal-link">Kosanlî</span>, <span class="internal-link">Kosan</span> /1088 people - 47 hectares - 22km - 600m/:</p>
+<p>Kosa: Meaning &quot;beardless&quot; (sparse chin hair). It is the name of a Kurdish clan from the <span class="internal-link">Reşwan</span> tribe; members of it are found in <span class="internal-link">Şehrezûr</span> in southern <span class="internal-link">Kurdistan</span> (Lerch, p. 57). The &quot;<span class="internal-link">Kose</span> or <span class="internal-link">Kosiye</span>&quot; clan was mentioned by Ibn Battuta. There is also a clan named <span class="internal-link">Kasan</span> in <span class="internal-link">Rewandûz</span> (Lerch, p. 55).</p>
+<p>This small village is located on the northern slope of the <span class="internal-link">Bêv</span> highland. It is about 2km away from the Turkish border. There are numerous small springs west of the village.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Kosanlî: A village in <span class="internal-link">Çiyayê Kurmênc</span> following the <span class="internal-link">Reco</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village located in the northern section of the mentioned mountain on the northwestern slope of the <span class="internal-link">Beîfe</span> mountain height, from which streams descend toward the northwest and west toward the <span class="internal-link">Wadiyê Çemê Reş</span> (Black River valley). Its soil is alluvial. It is located 2km south of the current Turkish border and 22km northeast of the town of Reco.</p>
+<p>It is bordered to the north by a deep stream and, at a distance of 500m, the village of <span class="internal-link">Benerkê</span>. To the south, it is bordered by a high, rugged mountain chain planted with oak, cypress, and almond trees, called the Almond Mountains (Beîfe) or <span class="internal-link">Çiyayê Şehîdan</span> (Mountain of Martyrs), named after a battle that took place between Syrian Mujahideen revolutionaries and soldiers of the French occupation during the independence era, and the village of <span class="internal-link">Walîklî</span>. To the west, a deep stream, a rugged mountain chain, the farm of <span class="internal-link">Ereblî</span>, and the <span class="internal-link">Riya Meydan Ekbez-Bilbil</span> (Meydan Ekbez-Bilbil road). To the east, a high mountain chain from the northern Çiyayê Kurmênc chain and the village of <span class="internal-link">Şingêlê</span>.</p>
+<p>The number of its houses reaches 35 houses, and the age of the village, according to the account of the village residents, is approximately 400 years. Its old houses are of stone and mud with wooden ceilings, while the modern ones are cement and have expanded toward the west and north. An electricity network, a primary school, and a telephone network are available there. The village drinks from cisterns in which rainwater collects and from the springs found to its west. Currently, water has been extended to it via a network from an artesian well belonging to the state.</p>
+<p>The residents work in rain-fed agriculture (olives, vineyards) on a narrow patch of land /47 hectares/, alongside raising sheep and goats. Its lands are generally mountainous and rugged from all sides. A deep stream separates the village and the village of <span class="internal-link">Benderklî</span>. This village was historically considered among the <span class="internal-link">Meydaniyan</span> villages.</p>
+<p>Sources of Information:</p>
 <ul>
-<li>كوسا: means &quot;beardless chin&quot;. Name of a <span class="internal-link">Kurdish</span> clan from <span class="internal-link">Rashwan</span> (رشوان) tribe, there are some of them in <span class="internal-link">Shahrazur</span> (شهرزور) in southern <span class="internal-link">Kurdistan</span> (/Lerkh p. 57/). The mention of &quot;<span class="internal-link">Al-Kosah or Al-Kosiyah</span>&quot; (الكوسه أو الكوسية) clan has been recorded by <span class="internal-link">Ibn Battutah</span> (ابن بطوطه). There is a clan named <span class="internal-link">Kasan</span> (كاسان) in <span class="internal-link">Rawanduz</span> (/Lerkh, p.55/).</li>
-<li>This small village is located on the northern slope of <span class="internal-link">Bi&#x27;îvê</span> (بعيڤه) elevation. It is about 2 km away from the <span class="internal-link">Turkish</span> borders. There are several small springs west of the village.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span>:</p>
-<p><strong>كوسانلي</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد) belonging to <span class="internal-link">Rajo District</span> (راجو), Afrin (عفرين), Aleppo Governorate (حلب).</p>
-<p>It is a small village located in the northern section of the aforementioned mountain on the northwestern slope of Ba&#x27;ifah (بعيفة) mountain from which streams descend toward the northwest and west toward Black River (النهر الأسود) valley. Its soil is loamy and it is 2 km away south of the current Turkish borders and 22 km northeast of Rajo (راجو) town. It is bordered to the north by a deep stream and at 500m distance village Bandarki (بندركي), to the south by a high and rough mountainous chain planted with oak, oak, almond and mastic trees and called Almond Mountains (Ba&#x27;ifah) (جبال اللوز (بعيفة)) or Martyrs Mountain (جبل الشهداء) relative to a battle that took place between <span class="internal-link">Syrian</span> mujahideen revolutionaries and <span class="internal-link">French</span> occupation soldiers during independence and village Al-Walikli (الواليكلي), to the west by a deep stream and rough mountainous chain and Arab Li (عرب لي) farm and the (Meydan Ikbas - Bulbul) (ميدان إكبس _ بلبل) road, and to the east by a high mountainous chain from the northern Mountain of the Kurds (جبل الكرد) chain and village Shankali (شنكلي). The number of houses is 35 houses and the village age according to village residents&#x27; narration is about 400 years. Its old houses are stone-clay with wooden roofs and the modern concrete ones expanded toward the west and north. It has electricity network and elementary school and telephone network. The village drinks from cisterns that collect rainwater and from springs existing west of it and currently water has been extended to it through a network from a state artesian well. The residents work in rainfed agriculture (olives, vines) on a narrow area /47 hectares/, in addition to raising sheep and goats. Its lands are generally mountainous and rough from all directions with a deep stream separating the village from village Bandarakli (بندراكلي). This village was formerly considered among the Meydan (الميدان) villages.</p>
-<p>Village mayor:</p>
-<p>Information Sources:</p>
-<p>1 - Book <span class="internal-link">Mountain of the Kurds</span> (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (د. محمد عبدو علي).</p>
-<p>2 - Book: <span class="internal-link">Afrin City .... Its Rivers and Green Hills</span> (عفرين .... نهرها ورواب يها الخضراء) by writer Abdulrahman Mohammed (عبدالرحمن محمد) from village <span class="internal-link">Qatmah</span> (قطمه).</p>
-<p>3 - Studies by <span class="internal-link">Tirij Soft Center</span> / <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>4- Some village residents.</p>
-<p>Prepared and executed by: Tirij Afrin website director: Abdulrahman Haji Othman (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kosa from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=75efleuVzSM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=75efleuVzSM</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Director of the Tirej Efrîn website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Kosa ، كوسانلي ، كوسان /1088ن - 47هـ - 22كم - 600م/:</p>
+<ul>
+<li>كوسا: بمعنى &quot;أجرد الذقن&quot;. اسم عشيرة كردية من قبيلة رشوان، يوجد منها في</li>
+</ul>
+<p>شهرزور في جنوبي كردستان /ليرخ ص 57/. وقد ورد ذكر عشيرة &quot;الكوسه أو الكوسيه&quot; لدى ابن بطوطه. وهناك عشيرة باسم كاسان في راوندوز /ليرخ، ص55/.</p>
+<ul>
+<li>تقع هذه القرية الصغيرة على السفح الشمالي لمرتفع Bi&#x27;v. وتبعد نحو 2كم من</li>
+</ul>
+<p>الحدود التركية. توجد غربي القرية ينابيع صغيرة عديدة. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : كوسانلي : قرية في جبل الكرد تتبع ناحية راجو ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في القسم الشمالي من الجبل المذكور على السفح الشمالي الغربي لمرتفع جبل ( بعيفة ) الذي تنحدر منه مسيلات باتجاه الشمال الغربي و الغرب نحو وادي النهر الأسود ، تربتها لحقية تبعد 2 كم جنوب الحدود التركية الحالية و 22 كم شمالي شرقي بلدة راجو ، يحدها شمالاً مسيل عميق و على بعد 500 م قرية /بنركي/ ، وجنوباً سلسلة جبلية عالية وعرة مزروعة بأشجار البلوط و السنديان و اللوز و المسمى بجبال اللوز ( بعيفة ) أو جبل الشهداء نسبة إلى معركة دارت بين الثوار المجاهدين السوريين وجنود الاحتلال الفرنسي أثناء الاستقلال وقرية /الواليكلي/ ، غرباً مسيل عميق و سلسلة جبلية وعرة و مزرعة /عرب لي/ و طريق ( ميدان إكبس _ بلبل ) ، وشرقاً سلسلة جبلية عالية من سلسلة جبل الكرد الشمالية و قرية /شنكلي/ ، يبلغ عدد بيوتها 35 بيتاً و عمر القرية حسب رواية أهل القرية حوالي 400 عاماً ، بيوتها القديمة حجرية طينية بسقوف خشبية و الحديثة أسمنتية توسعت نحو الغرب والشمال ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية و شبكة هاتف ، تشرب القرية من الصهاريج التي تجمع فيها مياه الأمطار و من الينابيع الموجودة غربها و حالياً مددت إليها المياه عن طريق شبكة من بئر ارتوازي عائدة للدولة ، يعمل السكان بالزراعة البعلية ( الزيتون ، الكرمة ) على رقعة ضيقة / 47 هـ / ، إلى جانب تربية الأغنام والماعز ، أراضيها جبلية عامة ً و وعرة من كافة الجهات يوجد مسيل عميق يفصل بين القرية و قرية /بندركلي/ ، وتعتبر هذه القرية قديماً ضمن قرى الميدانيات .</p>
+<p>مختار القرية :</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kosa from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=75efleuVzSM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=75efleuVzSM</a></p>
 <p>The village of <span class="internal-link">Kûsa</span> is situated in the <span class="internal-link">Raco</span> district of the <span class="internal-link">Efrîn</span> region, located directly along the border separating <span class="internal-link">Rojava</span> from <span class="internal-link">Bakur</span>. This ancient settlement sits opposite <span class="internal-link">Çiyayê Taros</span> and has a history spanning approximately nine hundred years. According to local elders, the village was originally founded at a site called <span class="internal-link">Tilê Gozê</span>, located about five hundred meters away from the current settlement. The ancestors of the current residents moved the village to its present location to be closer to water sources. The name of the village is derived from the <span class="internal-link">Êla Kûsa</span>, a tribe that is identified as a branch of the broader <span class="internal-link">Şêxî</span> confederation.</p>
 <p>The history of Kûsa is deeply marked by the drawing of the modern border in 1938. This geopolitical division separated the villagers from much of their agricultural land and their relatives on the <span class="internal-link">Turkish</span> side. Despite this separation, the residents maintain strong kinship ties, noting that they all belong to the same lineage. The social structure of the village consists of several interrelated families, including <span class="internal-link">Mala Çêxel</span>, <span class="internal-link">Mala Qamber</span>, <span class="internal-link">Mala Reşkê</span>, <span class="internal-link">Mala Sîno</span>, <span class="internal-link">Mala Garcîn</span>, <span class="internal-link">Mala Berîmce</span>, <span class="internal-link">Mala Qîse</span>, <span class="internal-link">Mala Hesen</span>, and <span class="internal-link">Mala Kosen</span>. While the village currently houses around fifty families, a significant number of the original inhabitants have migrated to cities such as <span class="internal-link">Heleb</span> and <span class="internal-link">Hums</span> for economic opportunities.</p>
 <p>Geography and water play a central role in the identity of Kûsa. The village is famous for its eight springs, which include <span class="internal-link">Kaniya Gund</span>, <span class="internal-link">Kaniya Olq</span>, <span class="internal-link">Qestel</span>, <span class="internal-link">Kaniya Ga</span>, <span class="internal-link">Kaniya Eho</span>, <span class="internal-link">Kaniya Germik</span>, and <span class="internal-link">Kaniya Drikê</span>. These water sources have historically supported orchards of pomegranate and walnut trees, although some have dried up in recent years. The surrounding landscape features distinct valleys such as <span class="internal-link">Geliyê Mûsê</span>, <span class="internal-link">Geliyê Penêreka</span>, and <span class="internal-link">Geliyê Şurkê</span>. Additionally, the village is home to <span class="internal-link">Kelha Sorê</span>, a ruined fortress dating back to the <span class="internal-link">Byzantine</span> era. An elder named <span class="internal-link">Apê Mûsa</span> describes this site as a former military garrison used to defend against invasions, linking it to the <span class="internal-link">El-Hesiyîn</span> and the region&#x27;s turbulent history.</p>
@@ -320,7 +376,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kosa.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kosa.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=LlMZg1muOEU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=LlMZg1muOEU</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=qZe1FVCC-xk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=qZe1FVCC-xk</a><br><a href="https://www.youtube.com/watch?v=75efleuVzSM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=75efleuVzSM</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kosa.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20Reco%20-%20kosa.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=LlMZg1muOEU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=LlMZg1muOEU</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=qZe1FVCC-xk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=qZe1FVCC-xk</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=75efleuVzSM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=75efleuVzSM</a></li></ul>
             </div>
 
             
@@ -330,7 +386,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -448,6 +504,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

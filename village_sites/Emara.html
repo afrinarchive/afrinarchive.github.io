@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -167,7 +188,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Amaro, Anbar, Anbarli, Emara, أنبار, انبارلي, عماورو</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Badîna</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bîro, Gilkawî, Mehemedê Elî, Mûsa, Nivîsê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Bîro, Ehmed Rûto, Gilkawî, Mehemedê Elî, Mûsa, Nivîsê, Osman Axa Şorbe</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -207,26 +228,52 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Emara</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>Villages of Mabetli District (المعبطلي) / Mabeta</p>
-<p><span class="internal-link">1 - PhD/Villages/Emara</span> (انبارلي) - Emara</p>
-<p>===</p>
-<p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds</span> (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali:</p>
-<p><strong>Emara (أنبارلي), <span class="internal-link">Anbar</span> (أنبار)</strong> /654N - 340H - 8km - 430m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Emara</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20emara.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20emara.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p>Emara, <span class="internal-link">Anbarlî</span>, <span class="internal-link">Anbar</span>, /654 inhabitants - 340 hectares - 8km - 430m/:</p>
+<p>The name is pronounced &quot;Emara&quot;. As for &quot;<span class="internal-link">Ambarlû</span>&quot;, it is a Kurdish tribe found around the city of <span class="internal-link">Bedlîs</span> and the regions of <span class="internal-link">Dêrsim</span>, <span class="internal-link">Mûş</span>, and <span class="internal-link">Amed</span> /B. Lerch, p.49/. It is a medium-sized village located on a high limestone slope, surrounded by wide fields of olives.</p>
+<p>It is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Anbarlî: A village in <span class="internal-link">Çiyayê Kurmênc</span>, belonging to the <span class="internal-link">Mabeta</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village located in the central part of Çiyayê Kurmênc on the slope of a high limestone rocky elevation. It is furrowed by small torrents descending southward towards agricultural lands with clay soil. It is located 10km towards the northeast from the district center.</p>
+<p>It is bordered to the north by a slope and a fertile plain planted with olive trees, the high mountain heights of <span class="internal-link">Çiyayê Hawarê</span>, and the villages of <span class="internal-link">Daxoba</span> and <span class="internal-link">Rûta</span>. It is bordered to the south by a slope, a wide and agriculturally fertile plain, <span class="internal-link">Newala Zerafke</span> (Zerafke valley), and the villages of <span class="internal-link">Eyn Hecerê Mezin</span> and <span class="internal-link">Biçûk</span>. It is bordered to the west by a slope, a plain, <span class="internal-link">Kaniya Zerafke</span> (Zerafke spring), and the villages of <span class="internal-link">Ebrez</span> and <span class="internal-link">Şêx Kêlo</span>. To the east is the village of <span class="internal-link">Şêx Hotko</span> at a distance of 700m.</p>
+<p>The number of its houses is about 55, and its age is about 350 years. Its old residences are made of stone and mud with flat wooden roofs, while the modern ones are concrete, spreading towards the east and west and around the public road. An electricity network and a primary school are available, as well as a small mosque in the center of the village.</p>
+<p>The village drinks from cisterns that collect rainwater in winter, and currently from artesian wells dug next to the houses. It is connected to the district center by a paved road that passes through its center to several neighboring villages.</p>
+<p>The residents work in rain-fed agriculture on an area of 340 hectares (grains, olives, and melons), and irrigated agriculture from the waters of <span class="internal-link">Zerafke</span>, a tributary of the Efrîn river (pomegranates, cotton, summer vegetables, sugar beet), alongside raising sheep and goats. A modern olive press is available there. It is a beautiful village in terms of construction and its excellent location overlooking <span class="internal-link">Deşta Kitix</span> (Kitix plains).</p>
+<p>Among its most important families are: the family of <span class="internal-link">Ehmed Rûto</span> and <span class="internal-link">Osman Axa Şorbe</span> (brother of <span class="internal-link">Eslan Axa</span>, and their origin is from the village of Şorbe).</p>
+<p>Village Mukhtar: <span class="internal-link">Sebrî Emîn Arslan</span></p>
+<p>Preparation and execution:</p>
+<p>Director of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Emara ، أنبارلي، أنبار ، /654ن - 340هـ - 8كم - 430م/:</p>
 <ul>
-<li>The name is pronounced as &quot;<span class="internal-link">Amara</span>&quot; (عَمَارا), while &quot;<span class="internal-link">Ambarlo</span>&quot; (أمبارلو) is a Kurdish tribe found around <span class="internal-link">Badlis city</span> (مدينة بدليس) and the regions of <span class="internal-link">Dirsim</span> (ديرسم) and <span class="internal-link">Mush</span> (موش) and <span class="internal-link">Amid</span> (آمد) /B. Lirkh, p.49/.</li>
-<li>A medium village located on a limestone elevated slope surrounded by vast olive fields.</li>
+<li>يلفظ الاسم على شكل &quot;عَمَارا&quot;، أما &quot;أمبارلو&quot; فهي عشيرة كردية يوجد منها</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed from Qitma village (قطمه):</p>
-<p><strong><span class="internal-link">Anbarli</span> (انبارلي)</strong>: A village in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located in the central part of Kurdish Mountain (جبل الكرد) on an elevated rocky limestone slope, crossed by small streams sloping south toward agricultural lands with clay soil, 10km away from the district center toward the northeast.</p>
-<p>It is bordered to the north by a slope and fertile plain planted with olive trees and high mountain elevations of <span class="internal-link">Hawari Mountain</span> (جبل هواري) and <span class="internal-link">Tag Oba Si village</span> (قرية طاغ أوبه سي) and Ruto (رطو), to the south by a slope and wide plain and fertile agricultural land and <span class="internal-link">Zarafka valley</span> (وادي زرافكة) and <span class="internal-link">Ayn Al-Hajar Al-Kabir</span> (عين الحجر الكبير) and <span class="internal-link">Al-Saghir</span> (والصغير) villages, to the west by a slope and plain and <span class="internal-link">Zarafka spring</span> (نبع زرافكة) and <span class="internal-link">Abraz village</span> (قرية أبرز) and Sheikh Kilo (شيخ كيلو), and to the east by <span class="internal-link">Sheikh Hitko village</span> (قرية شيخ هتكو) at 700m distance.</p>
-<p>The number of houses is about 55, and its age is about 350 years. Its old dwellings are stone and clay with flat wooden roofs, and the modern concrete ones spread in the eastern and western directions and around the public road. It has electricity network and primary school and small mosque in the village center.</p>
-<p>The village drinks from cisterns that collect rainwater in winter and currently from artesian wells drilled next to the houses. It connects with the district center by a paved road passing through its center to several neighboring villages.</p>
-<p>The inhabitants work in rain-fed agriculture on an area of 340 hectares (grains, olives, and watermelons), and irrigation from <span class="internal-link">Zarafka tributary</span> (زرافكة الرافد) to <span class="internal-link">Afrin City river</span> (لنهر عفرين) (pomegranates, cotton, summer vegetables, sugar beet), in addition to raising sheep and goats.</p>
-<p>It has a modern olive press and is a beautiful village in terms of construction and its excellent location overlooking the <span class="internal-link">Katkh plains</span> (سهول كتخ). Among its most important families: <span class="internal-link">Ahmad Ruto family</span> (عائلة أحمد روطو), <span class="internal-link">Othman Agha Shorba</span> (عثمان آغا شوربه) (brother of <span class="internal-link">Aslan Agha</span> (أصلان آغا) and originally from <span class="internal-link">Shorba Oghli village</span> (قرية شوربه أوغلي)).</p>
-<p>Village mayor: <span class="internal-link">Sabri Amin Arslan</span> (صبري أمين ارسلان)</p>
-<p>Prepared and implemented by: Site manager of <span class="internal-link">Afrin City Heritage</span>: Abdulrahman Haji Othman (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Emara from Afrin Flo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=5et9bqWmbyI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=5et9bqWmbyI</a></p>
+<p>حول مدينة بدليس ومناطق ديرسم وموش وآمد /ب.ليرخ، ص49/.</p>
+<ul>
+<li>قرية متوسطة تقع على سفح مرتفع كلسي تحيط بها حقول واسعة من الزيتون.</li>
+</ul>
+<p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه أنبارلي : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية صغيرة تقع في القسم الأوسط من جبل الكرد على سفح مرتفع صخري كلسي ، تخددها المسيلات الصغيرة المنحدرة جنوباً نحو أراضي زراعية ذات تربة غضارية ، تبعد عن مركز الناحية10كم نحو الشمال الشرقي ، يحدها شمالاً منحدر وسهل خصب مزروع بأشجار الزيتون ومرتفعات جبلية عالية لجبل هواري و قرية طاغ أوبه سي ورطو ، وجنوباً منحدر وسهل واسع وخصب زراعياً ووادي زرافكة وقرية عين الحجر الكبير والصغير ، وغرباً منحدر وسهل و نبع زرافكة وقرية أبرز و شيخ كيلو ، وشرقاً قرية شيخ هتكو على بعد700م ، يبلغ عدد بيوتها حوالي55بيتاً وعمرها حوالي350عاماً ، مساكنها القديمة حجرية طينية ذات سقوف خشبية مستوية والحديثة إسمنتية تنتشر بالاتجاه الشرقي والغربي وحول الطريق العام ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية جامع صغير في وسط القرية ، تشرب القرية من صهاريج تجمع مياه الأمطار شتاءً وحالياً من الآبار الارتوازية المحفورة بجانب المنازل ، تتصل مع مركز الناحية بطريق مزفتة يمر في وسطها إلى عدة قرى مجاورة ، يعمل السكان بالزراعة البعلية على مساحة 340 هـ (الحبوب ، الزيتون، ، و البطيخ) ، ورياً من مياه زرافكة الرافد لنهر عفرين (الرمان ، القطن ، الخضار الصيفية ، الشمندر السكري) ، إلى جانب تربية الأغنام والماعز ، تتوفر فيها معصرة زيتون حديثة وهي قرية جميلة من حيث البناء وموقعها الممتاز المشرف على سهول كتخ ، من أهم عوائلها : عائلة أحمد روطو ، عثمان آغا شوربه (شقيق أصلان آغا وأصلهم من قرية شوربه أوغلي ) .</p>
+<p>مختار القرية : صبري أمين ارسلان</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Emara from Afrin Flo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=5et9bqWmbyI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=5et9bqWmbyI</a></p>
 <p>The village of <span class="internal-link">&#x27;Emara</span>, located in the <span class="internal-link">Efrîn</span> region, is described by its residents as an ancient settlement with roots tracing back to the Roman era. According to local oral history shared by an elder named <span class="internal-link">&#x27;Ezîz</span>, the village derives its name from its original founder or owner; he mentions that the <span class="internal-link">&#x27;Elewa</span> people were the first to settle there and the name reflects this lineage. The historical depth of the village is anchored by its most prominent landmark, <span class="internal-link">Bîra Deferê</span>. This well is attributed to the <span class="internal-link">Rûma</span> (Romans) and is celebrated for its reliable water source which has never dried up.</p>
 <p>Historically, the social and daily life of &#x27;Emara revolved around Bîra Deferê. Before the advent of modern plumbing, the entire community, along with neighboring areas like <span class="internal-link">Ma&#x27;melo</span>, utilized this well for washing clothes, cleaning wool, and watering livestock. In the past, the village architecture consisted largely of earthen houses (<span class="internal-link">xaniyê axê</span>), and the community relied on four communal cisterns, referred to as <span class="internal-link">sarînc</span>, for water storage. There is also a water source known as <span class="internal-link">Delîb</span>, estimated to be between 30 and 45 years old, which served the village before modern infrastructure was established.</p>
 <p>The social structure of &#x27;Emara includes several distinct lineages. One shopkeeper identifies himself as <span class="internal-link">Şiyar Mecîd Gilkawî</span>, indicating the presence of the <span class="internal-link">Gilkawî</span> family. Other residents mention connections to specific patriarchs such as <span class="internal-link">Nivîsê</span>, <span class="internal-link">Bîro</span>, and <span class="internal-link">Mûsa</span>. The village also hosts residents with origins from outside the immediate vicinity; an elder named <span class="internal-link">Mes&#x27;ûd</span> notes that he originates from <span class="internal-link">Badîna</span>, though he has lived in &#x27;Emara for a long time.</p>
@@ -281,7 +328,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20emara.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20emara.htm</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100070214672254" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100070214672254</a></li><li>Afrin Flo:<br><a href="https://www.youtube.com/watch?v=5et9bqWmbyI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=5et9bqWmbyI</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20emara.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20emara.htm</a></li><li>Local FB page:<br><a href="https://www.facebook.com/profile.php?id=100070214672254" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/profile.php?id=100070214672254</a></li><li>Afrin Flo:<br><a href="https://www.youtube.com/watch?v=5et9bqWmbyI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=5et9bqWmbyI</a></li></ul>
             </div>
 
             
@@ -291,7 +338,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -409,6 +456,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -80,6 +80,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -126,16 +147,50 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Mosankî</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Foundation Date/Period:</strong> Approximately 80 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Ziyaret</span>, <span class="internal-link">Çiyayê Sirtê Xoce</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Mosankî</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book: Afrin.... its river and green hills by writer <span class="internal-link">Abdul Rahman Mohammed</span> from <span class="internal-link">Qutmeh</span> village:</p>
-<p><strong>موسانكي</strong>: A farmstead in <span class="internal-link">Jebel al-Kurd</span>, belonging to the central villages district and Afrin region, <span class="internal-link">Aleppo</span> governorate.</p>
-<p>It is a small farmstead located on the eastern slope of <span class="internal-link">Jebel al-Ziyara</span> and the northern slope of <span class="internal-link">Jebel Sartih Khojah</span>. It is bordered to the north by mountainous elevations planted with olive trees and <span class="internal-link">Jowiq</span> village, to the south by a slope planted with olive trees and <span class="internal-link">Kafr Sheil</span> village, to the west by a mountainous chain and <span class="internal-link">Khalnir</span> village, and to the east by a slope planted with olive trees and Afrin city.</p>
-<p>The number of its houses is approximately 10 houses and its age is about 80 years according to one of the elderly residents in the farmstead, whose origins are from <span class="internal-link">Abein</span> village belonging to Afrin region. Its modern houses are cement and stone. It has an electricity network that recently arrived. The road to the farmstead is dirt, unpaved, and mountainous. No other services are available.</p></div></details></div>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Mosankî</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Mosanke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Mosanke.htm</a></p>
+<p>It was stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p><span class="internal-link">Mûsankê</span>: A farm in <span class="internal-link">Çiyayê Kurmênc</span>, following the subdistrict of the center villages and the district of <span class="internal-link">Efrîn</span>, Heleb governorate. It is a small farm located on the eastern slope of <span class="internal-link">Çiyayê Ziyaret</span>, and the northern slope of <span class="internal-link">Çiyayê Sirtê Xoce</span>.</p>
+<p>It is bordered to the north by mountainous highlands planted with olive trees and the village of <span class="internal-link">Cûyê</span>, and to the south by a slope planted with olive trees and the village of <span class="internal-link">Kefer Şîl</span>, and to the west by a mountain range and the village of <span class="internal-link">Xelner</span>, and to the east by a slope planted with olive trees and the city of Efrîn.</p>
+<p>The number of its houses reaches about 10 houses and its age is about 80 years according to the statements of one of the elders in the farm. Their origin is from the village of Ebîn belonging to the Efrîn area.</p>
+<p>Its modern houses are made of cement and stone. An electricity network is available in it which arrived recently. The road to the farm is dirt, unpaved, and mountainous. No other services are available in it.</p>
+<p>Preparation and Execution:</p>
+<p>Manager of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه موسانكي : مزرعة في جبل الكرد, تتبع ناحية قرى مركز ومنطقة عفرين, محافظة حلب وهي مزرعة صغيرة تقع على السفح الشرقي لجبل الزيارة , والسفح الشمالي لجبل سرتيه خوجه , يحدها شمالاً مرتفعات جبلية مزروعة بأشجار الزيتون وقرية جويق , وجنوباً منحدر مزروع بأشجار الزيتون وقرية كفر شيل , وغرباً سلسلة جبلية وقرية خلنير, وشرقاً منحدر مزروع بأشجار الزيتون ومدينة عفرين. يبلغ عدد بيوتها حوالي /10/ بيوت وعمرها حوالي /80/ عاماً حسب أقوال أحد المعمرين في المزرعة وأصلهم من قرية إبين التابعة لمنطقة عفرين , بيوتها الحديثة إسمنتية حجرية تتوفر فيها شبكة الكهرباء التي وصلت حديثاً ,الطريق إلى المزرعة ترابي غير معبد جبلي. لا تتوفر فيها خدمات أخرى.</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -150,7 +205,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Mosanke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Mosanke.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Mosanke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20Mosanke.htm</a></li></ul>
             </div>
 
             
@@ -160,7 +215,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -278,6 +333,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

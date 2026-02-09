@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -168,6 +189,8 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şera</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Sinkanli, Sinkari, Sinkarli, Sînka, سنكانلي، سنكري, سنكرلي, سينكو</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Sinkan</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Mala Mistefê Kelek, Îbrahîm Elî Axa</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--era">
@@ -194,24 +217,106 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Sînka</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Afrin 366</h5>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Nîrwa Ozan</span>, <span class="internal-link">Geliyê avê</span>, <span class="internal-link">Mekteba gundê Sînko</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Sînka</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &quot;جبل الكرد&quot; &quot;<span class="internal-link">Mountain of the Kurds</span>&quot; / عفرين (Afrin) / geographical study:</p>
-<p><strong>Sînka, سنكرلي – سنكانلي, سنكري</strong> /2818n - 590h - 1km - 550m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Sînka</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20S%C3%AEnka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20S%C3%AEnka.htm</a></p>
+<p>It was stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Snka</span>, <span class="internal-link">Sinkerlî</span>, <span class="internal-link">Sinkanlî</span>, <span class="internal-link">Sinkerî</span> / 2818 inhabitants, altitude 590m, 1km distance /:</p>
+<p><span class="internal-link">Sînka</span>: The name of a winter bird, and <span class="internal-link">Sinkan</span> is a Kurdish tribe found in the province of <span class="internal-link">Batman</span> in Northern Kurdistan. And Sinkerlî means &quot;tool maker,&quot; which is a designation of Kurdish origin.</p>
+<p>It is a large village situated on a limestone plateau. The settlement of the area is ancient, indicated by the presence of caves and carved grottoes on the slope of the plateau.</p>
+<p>It was stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Sinkerlî: A village in <span class="internal-link">Çiyayê Kurmênc</span> following the district of <span class="internal-link">Şeran</span>, area of <span class="internal-link">Efrîn</span>, governorate of <span class="internal-link">Heleb</span>, (2776 inhabitants). It is a village of medium size regarding population and is old, located on a slope and limestone plateau, with a valley in front of it from the southern side.</p>
+<p>It is bordered on the north by a mountain chain and slopes planted with olive trees, grapevines, and forest trees, and the village of <span class="internal-link">Cemanlî</span>; and on the south by a deep watercourse, mountain chains, and valleys planted with olive trees, and the village of <span class="internal-link">Qetme</span>; and on the east by a rugged mountain chain and a deep valley, and at the top of the mountain elevation is the village of <span class="internal-link">Bafilyûn</span>; and on the west by a slope and a plain planted with olive and walnut trees and the town of Şeran nearby, where a deep valley separates Sinkerlî and Şeran.</p>
+<p>The number of its houses reaches approximately 150 houses and its age is about 500 years. Its old houses are stone and mud with flat wooden roofs, and the modern ones are cement and stone, which have spread westward and southward. It is among the old villages in the district of Şeran.</p>
+<p>Available in the village are an electricity network, drinking water belonging to the state, telephone from Şeran, a mosque, a modern primary school, and a technical olive press. There is also a shrine (mazar) on the eastern side of the village. It belongs to the municipality of Şeran. An asphalt road reaches the center of the village, connecting it with the district center. The residents work in the cultivation of olives and grapevines and livestock breeding.</p>
+<p>Among its most important families is the family of <span class="internal-link">Îbrahîm Elî Axa</span>.</p>
+<p>Village Mukhtar: <span class="internal-link">Cemal Cabo</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li>Sinka: Name of a winter bird, and &quot;سنكان&quot; (Sinkan) is a Kurdish tribe found in باتمان (Batman) province in northern <span class="internal-link">Kurdistan</span>. And سنكرلي (Sinkarli) means &quot;tool maker&quot;, and it is a Kurdish naming of origin.</li>
-<li>A large village located above a limestone plateau. The settlement of the region is ancient evidenced by the presence of caves and caverns carved in the slope of the plateau.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book عفرين.... نهرها ورواييها الخضراء &quot;Afrin.... <span class="internal-link">Her River and Green Hills</span>&quot;:</p>
-<p><strong>سنكرلي</strong> (Sinkarli): A village in <span class="internal-link">Kurdish Mountain</span> belonging to <span class="internal-link">Sheran</span> district, Afrin region, <span class="internal-link">Aleppo</span> governorate, (2776 n).</p>
-<p>It is a medium-sized village in terms of population and ancient. It is located on a slope and limestone plateau with a valley in front of it from the southern side. To the north it is bordered by a mountain chain and slopes planted with olive, grape, and forest trees and <span class="internal-link">Jamanli</span> village. To the south by a deep stream and mountain chains and valleys planted with olive trees and Qatma village. To the east by a mountain chain and plateau and a deep valley and at the top of the mountain elevation is <span class="internal-link">Baflion</span> village. To the west by a slope and plain planted with olive and walnut trees and the nearby town of <span class="internal-link">Sheran</span> which is separated from <span class="internal-link">Sinkarli</span> and <span class="internal-link">Sheran</span> by a deep valley. The number of its houses is about 150 houses and its age is about 500 years. Its old houses are stone-clay with flat wooden roofs and the modern concrete stone ones have spread westward and southward. It is one of the old villages in <span class="internal-link">Sheran</span> district. It has electricity network and state drinking water and telephone from <span class="internal-link">Sheran</span> and a mosque and a modern elementary school and a technical olive oil press. There is also a shrine on the eastern side of the village. It belongs to the municipality of <span class="internal-link">Sheran</span>. A paved road reaches the village center with the district center. The residents work in cultivating olives, grapes, and raising livestock. Among its most important families is the family of <span class="internal-link">Ibrahim Ali Agha</span>.</p></div></details></div>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and execution: Manager of the site Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Snka ، سنكرلي  سنكانلي ، سنكري /2818ن - 590هـ - 1كم - 550م/:</p>
+<ul>
+<li>سينكا: اسم طائر شتوي، و&quot;سنكان&quot; عشيرة كردية يوجد منها في ولاية &quot;باتمان&quot;</li>
+</ul>
+<p>في شمالي كردستان. وسنكرلي بمعنى &quot;صانع الأدوات&quot;، وهي تسمية كردية الأصل.</p>
+<ul>
+<li>قرية كبيرة تقع فوق هضبة كلسية. إعمار المنطقة قديم بدلالة وجود مغاور</li>
+</ul>
+<p>وكهوف منحوتة في سفح الهضبة. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : سنكرلي : قرية في جبل الكرد تتبع ناحية شران منطقة عفرين محافظة حلب ، (2776 ن) . وهي قرية متوسطة الحجم من ناحية السكان وقديمة تقع على منحدر وهضبة كلسية ومن أمامها وادي من الجهة الجنوبية . يحدها شمالا سلسلة جبلية ومنحدرات مزروعة بأشجار الزيتون والكرمة والأشجار الحراجية وقرية جمانلي وجنوبا مسيل عميق وسلاسل جبلية ووديان مزروعة بأشجار الزيتون وقرية قاطمة وشرقا سلسلة جبلية وعرة ووادي عميق وفي أعلى المرتفع الجبلي قرية بافليون وغربا منحدر وسهل مزروع بأشجار الزيتون والجوز وبلدة شران القريبة منها والذي يفصل بين سنكرلي وشران وادي عميق . يبلغ عدد بيوتها حوالي 150بيت وعمرها حوالي 500عام ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية و الحديثة أسمنتية حجرية انتشرت غرباً و جنوباً ، و هي من القرى القديمة في ناحية شران تتوفر فيها شبكة الكهرباء ومياه الشرب العائدة للدولة والهاتف من شران وجامع ومدرسة ابتدائية حديثة ومعصرة فنية للزيتون كما يوجد مزار في الجهة الشرقية للقرية ,وهي عائدة لبلدية شران يصل للقرية طريق مزفتة لوسطها مع مركز الناحية يعمل الأهالي بزراعة الزيتون والكرمة وتربية المواشي ومن أهم عوائلها عائلة إبراهيم علي آغا .</p>
+<p>مختار القرية : جمال جابو</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Sînka from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=SatzlseopvA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=SatzlseopvA</a></p>
+<p>The documentary focuses on the village of <span class="internal-link">Sînka</span> (also referred to as <span class="internal-link">Sînko</span>), situated in the <span class="internal-link">Şeran</span> district of the Afrin region. The village is geographically significant due to its close proximity to the district center of Şeran, located directly opposite the town. The settlement is described as large and picturesque, nestled within a landscape defined by a water valley known as <span class="internal-link">Geliyê avê</span>. A watercourse flows through this area, and the terrain is connected by a bridge, contributing to an environment described as lush and water rich.</p>
+<p>The history of Sînka is deeply rooted in the ancient landscape. According to the host and a village elder named <span class="internal-link">Apê Mihemed</span>, the ancestors of the current residents originally inhabited the numerous natural caves (<span class="internal-link">şikeft</span>) that characterize the area. These caves, which are described as ancient (&quot;kevnar&quot;) and potentially thousands of years old, served as dwellings and stables long before the construction of modern concrete structures or traditional earthen houses. The elder recalls that in the past, each cave had a specific owner and name associated with the family that utilized it, though these specific names have largely faded from collective memory. This transition from cave dwelling to constructed housing represents the primary historical evolution of the community.</p>
+<p>Socially, Sînka is a substantial community, with estimates of its size ranging between 200 and 250 households. While the transcript does not detail specific tribal affiliations, it highlights the social history of <span class="internal-link">Mala Mistefê Kelek</span>. This family is remembered for possessing the first landline telephone (&quot;nosilkî&quot;) in the village. Their home became a vital social hub where neighbors would gather to communicate with relatives living in Europe or other cities, illustrating the communal nature of the village before the spread of mobile technology. Other residents mentioned include <span class="internal-link">Ebû Stêf</span> and <span class="internal-link">Mezet</span>.</p>
+<p>In the present day, Sînka is equipped with modern infrastructure, including a government electricity grid and a local school, <span class="internal-link">Mekteba gundê Sînko</span>. During the filming, the village appeared relatively quiet, as many residents were reported to be working in the bazaars or tending to their olive groves. The driver mentions a specific location within the village called <span class="internal-link">Nîrwa Ozan</span>. The narrative emphasizes a strong sense of nostalgia and attachment to the land, with the driver contrasting the difficulties of life in exile (&quot;gurbet&quot;) with the comfort of being in one&#x27;s homeland. The documentary concludes with the host preparing to visit the neighboring villages of <span class="internal-link">Xerabê Şara</span> and <span class="internal-link">Elqê</span>.</p></div></details></div>
                 </div>
 
-            
+            <div class="card p-6 rounded-xl">
+            <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Transcriptions and Subtitles</h2>
+            <div class="p-4 prose-compact max-w-none">
+    <div class="mb-4">
+        <a href="../village_subtitles/how_to_use_substital.html" target="_blank" class="text-base font-medium external-link hover:underline">Need help with using this subtitles on Youtube? (Click here)</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b-2 themed-border">
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Source</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Video</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Subtitles</th>
+                    <th class="px-4 py-2 text-sm font-semibold uppercase tracking-wider opacity-70">Transcript</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="border-b themed-border hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <td class="px-4 py-3 text-base">Afrin 366 1</td>
+                <td class="px-4 py-3 text-base"><a href="https://www.youtube.com/watch?v=SatzlseopvA" target="_blank" class="external-link hover:underline">Watch Video</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_subtitles/subtitles/afrin366_videos_128_Sinka.srt" download="afrin366_videos_128_Sinka.srt" class="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition">Download SRT</a></td>
+                <td class="px-4 py-3 text-base"><a href="../village_transcripts/Sînka_Afrin 366_1.html" target="_blank" class="external-link hover:underline">View Transcript</a></td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    </div>
+        </div>
 
             <div class="card p-6 rounded-xl space-y-6">
                 <div class="border-b themed-border pb-3 mb-4"><h2 class="text-2xl font-semibold">Foundation/Origin Information of Sînka</h2></div><div class="p-4 prose max-w-none"><blockquote>
@@ -226,7 +331,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20S%C3%AEnka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20S%C3%AEnka.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=6coPbGngf04" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=6coPbGngf04</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=zdE7TrB1r4k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zdE7TrB1r4k</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=_lA83HoJWiM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_lA83HoJWiM</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20S%C3%AEnka.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20S%C3%AEnka.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=6coPbGngf04" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=6coPbGngf04</a></li><li>Jawlat:<br><a href="https://www.youtube.com/watch?v=zdE7TrB1r4k" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zdE7TrB1r4k</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=_lA83HoJWiM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_lA83HoJWiM</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=SatzlseopvA" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SatzlseopvA</a></li></ul>
             </div>
 
             
@@ -236,7 +341,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -354,6 +459,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

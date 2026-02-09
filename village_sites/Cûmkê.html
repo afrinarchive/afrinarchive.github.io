@@ -158,6 +158,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +203,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Efrîn</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Jamila, Cûmkê, Jumka, الجميلة, جومكة, جومكه</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Gubarî, Şêx Sîdo</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-efr-n">
@@ -208,22 +230,66 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Cûmkê</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Named after the Cûme plain</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 150 years ago</p>
+<p><strong>Springs:</strong> <span class="internal-link">Kefer Cenê</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Şêx Sîdî</span>, <span class="internal-link">Şêx Sîdo</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Çemê Efrînê</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Cûmkê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book <span class="internal-link">جبل الكرد|Mountain of the Kurds (Afrin)</span> Geographic Study by Dr. Mohammed Abdo Ali (محمد عبدو علي):</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Cûmkê</span></strong> (جومكة), <strong><span class="internal-link">Al-Jamila</span></strong> (الجميلة) /479N - 407E - 3km - 335m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Cûmkê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cumke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cumke.htm</a></p>
+<p><span class="internal-link">Cumke</span> (Al-Jamila)</p>
+<p>According to the book Çiyayê Kurmênc (Efrîn): A Geographical Study by Dr. Mihemed Ebdo Elî: Cumke, <span class="internal-link">Al-Jamila</span> / 479 inhabitants - 407 hectares - 3 km - 335 m /:</p>
+<p>Its name derives from the plain of <span class="internal-link">Cûme</span>. The Arabicized name &quot;Al-Jamila&quot; has no connection to its ancient name.</p>
+<p>It is a small village consisting of several houses, situated on the southern slope of a volcanic plateau overlooking the <span class="internal-link">Efrîn</span> river. It is one of the villages of the <span class="internal-link">Gubarî</span> family, and they own most of its agricultural lands. A railway line passes through it. Adjacent to it was the village of <span class="internal-link">Şêx Sîdî</span> or <span class="internal-link">Şêx Sîdo</span>, which is now ruins.</p>
+<p>According to the book Efrîn... Her River and Her Green Hills by the writer Ebdulrehman Mihemed from the village of Qetme:</p>
+<p>Cumke is a village in <span class="internal-link">Çiyayê Kurmênc</span> that administratively follows the villages of the Efrîn center sub district, Aleppo governorate. It is a small village located on a mountain slope with a vast plain in front of it. It is bordered to the north by a mountainous rise planted with olive trees and the villages of <span class="internal-link">Qeretepe</span> and <span class="internal-link">Qestel Kîşk</span>; to the south by a slope, a wide plain, and the town of Efrîn; to the east by an agricultural plain, the <span class="internal-link">Riya Heleb-Efrîn</span> (Heleb-Efrîn road), and the village of <span class="internal-link">Erşqîbar</span>; and to the west by a slope, the plain of the Efrîn river, and the village of <span class="internal-link">Til Tewîl</span>.</p>
+<p>The number of houses reaches approximately 15. Its age is about 150 years. Its old houses are made of stone and mud with flat wooden roofs, while the modern ones are made of stone and reinforced concrete. An electricity network is available, as well as drinking water taken from the <span class="internal-link">Kefer Cenê</span> spring via a water network.</p>
+<p>Residents work in rain fed grain cultivation, and irrigated cultivation of cotton and summer vegetables from the Efrîn river, in addition to raising livestock. A graded dirt road connects it to the main road, and the <span class="internal-link">Xeta Hesinî ya Meydan Ekbez</span> (Meydan Ekbez railway line) passes beside the village. Among its most important families is the Şêx Sîdo family.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Henîf Şêxo</span></p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme.</p>
+<p>Preparation and Execution:</p>
+<p><span class="internal-link">Navenda Tirej Efrîn</span> Director: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Cmk ، جومكة ، الجميلة /479ن - 407هـ - 3كم - 335م/:</p>
 <ul>
-<li>Its name comes from the plain <span class="internal-link">Cûmê</span> (جومه). The Arabized name &quot;<span class="internal-link">Al-Jamila</span>&quot; (الجميلة) has no connection to its ancient name.</li>
-<li>A small village consisting of several houses, located on the southern slope of the <span class="internal-link">Birkani plateau</span> (هضبة برقانية) overlooking the <span class="internal-link">Afrin River</span> (نهر عفرين). It is one of the villages of the <span class="internal-link">Al-Ghabari family</span> (آل غباري), and they own most of its agricultural lands. The railway line passes through it. There was a village called <span class="internal-link">Sheikh Saidi</span> (شيخ سيدي) or <span class="internal-link">Sheikh Saido</span> (شيخ سيدو) next to it, which is now ruins.</li>
+<li>اسمها من سهل جومه Cm. وليس للاسم المعرب &quot;الجميلة&quot; صلة باسمها القديم.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdul Rahman Mohammed (عبدالرحمن محمد) from Qatmeh village (قرية قطمه):</p>
-<p><strong>Jumka</strong>: A village in the Kurdish Mountain (جبل الكرد) belonging to the <span class="internal-link">Central District</span> (ناحية قرى مركز عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located on a mountain slope with a wide plain in front of it. It is bordered to the north by a mountainous highland planted with olive trees, <span class="internal-link">Qara Tapa village</span> (قرية قره تبه), and Qastal Kash (قسطل كش); to the south by a slope and wide plain and Afrin City (بلدة عفرين); to the east by an agricultural plain, the <span class="internal-link">Aleppo</span>-Afrin City road (طريق حلب عفرين), and <span class="internal-link">Arshqibar village</span> (قرية عرشقيبار); and to the west by a slope, the <span class="internal-link">Afrin River</span> (نهر عفرين) plain, and <span class="internal-link">Tal Tawil village</span> (قرية تل طويل). It has about 15 houses, and its age is about 150 years. Its old houses are stone and clay with flat wooden roofs, and the modern ones are of stone and reinforced concrete. It has an electricity network and drinking water taken from <span class="internal-link">Kefer Jana spring</span> (نبع كفر جنة) through a water network. The residents work in rainfed grain cultivation, and irrigated cotton and summer vegetables from the <span class="internal-link">Afrin River</span> (نهر عفرين), in addition to livestock raising. It connects to the main road by a paved dirt road, and the railway line passes next to the village to <span class="internal-link">Ikbis station</span> (ميدان اكبس). Among its most important families is the <span class="internal-link">Sheikh Saido family</span> (عائلة الشيخ سيدو).</p>
-<p>Village Mukhtar: <span class="internal-link">Mohammed Hanif Sheikho</span> (محمد حنيف شيخو)</p></div></details></div>
+<ul>
+<li>قرية صغيرة تتألف من عدة منازل، تقع على السفح الجنوبي لهضبة بركانية تشرف</li>
+</ul>
+<p>على نهر عفرين. وهي من قرى آل غباري، ويملكون معظم أراضيها الزراعية. وتمر منها خط السكة الحديدية. وكان بجانبها قرية شيخ سيدي أو شيخ سيدو، وهي الآن أطلال. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه جومكه : قرية في جبل الكرد تتبع ناحية قرى مركز عفرين ، محافظة حلب . وهي قرية صغيرة تقع على منحدر جبلي وأمامه سهل واسع , يحدها شمالاً مرتفع جبلي مزروعة بأشجار الزيتون وقرية قره تبه وقسطل كشك , وجنوباً منحدر وسهل واسع وبلدة عفرين , وشرقاً سهل زراعي وطريق حلب عفرين وقرية عرشقيبار ، وغرباً منحدر وسهل نهر عفرين وقرية تل طويل , يبلغ عدد بيوتها حوالي 15 بيوت ، أما عمرها حوالي150 عاماً ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية , والحديثة من الأحجار والأسمنت المسلح . تتوفر فيها شبكة كهرباء ومياه الشرب المأخوذة من نبع كفر جنة عبر شبكة مائية . يعمل السكان بزراعة الحبوب بعلاً , وزراعة القطن والخضراوات الصيفية رياً من نهر عفرين . إلى جانب تربية المواشي ، تتصل مع الطريق العام طريق ترابي معبد , ويمر الخط الحديدي بجانب القرية إلى ميدان اكبس . ومن أهم عوائلها عائلة الشيخ سيدو .</p>
+<p>مختار القرية : محمد حنيف شيخو</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -241,7 +307,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cumke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cumke.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cumke.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20markaz-%20cumke.htm</a></li></ul>
             </div>
 
             
@@ -251,7 +317,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -369,6 +435,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

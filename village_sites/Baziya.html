@@ -201,6 +201,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -225,6 +246,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şiyê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Al-Baziya, Bazayanli, Baziya, Xirabî Baziya, البازية, بازيانلي, خربة بازيانلي/ خربة البازية, بازيا</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Baziya</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap--iy-">
@@ -266,24 +288,67 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Baziya</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Baziya is the name of a region and a tribe in southern Kurdistan, and Baz is a Kurdish name for a type of bird of prey</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 200 years ago (modern village); Roman era (ancient site)</p>
+<p><strong>Hills:</strong> <span class="internal-link">Çiyayê Na&#x27;so</span></p>
+<p><strong>Shrines:</strong> <span class="internal-link">Qazaqlî</span></p>
+<p><strong>Ruins:</strong> <span class="internal-link">Roman ruins</span></p>
+<p><strong>Other Landmarks:</strong> <span class="internal-link">Wadî Cerçem</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Baziya</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin)</span>&#x27; geographical study by Dr. Mohammed Abdo Ali:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Baziya</span> (بازيانلي), <span class="internal-link">Al-Baziya</span> (البازية)</strong> /167n - 6km - 460m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Baziya</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20baziya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20baziya.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Baziya</span>, <span class="internal-link">Baziyanlî</span>, or <span class="internal-link">El-Baziya</span> has 167 inhabitants, is located 6km away, and sits at an altitude of 460m.</p>
+<p>Baziya is the name of a region and a tribe in southern Kurdistan, and <span class="internal-link">Baz</span> is a Kurdish name for a type of bird of prey. It is a small village containing hewn stones believed to be ruins of antiquities dating back to the Roman era, which were reused in modern construction. Due to the lack of services and the deterioration of economic conditions, most of its inhabitants have abandoned it in recent decades.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme regarding Baziyanlî: It is a village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively belonging to the township of <span class="internal-link">Şêx el-Hedîd</span>, <span class="internal-link">Efrîn</span> region, Heleb governorate.</p>
+<p>It is a small village located on the western slope of the aforementioned mountain, <span class="internal-link">Çiyayê Na&#x27;so</span>, near <span class="internal-link">Wadî Cerçem</span>, at a distance of 6km southeast of Şêx el-Hedîd. It is bordered to the north by a high mountain chain planted with forest trees and olives and the village of <span class="internal-link">Hec Hesenlî</span>; to the south by a deep valley, a high mountain chain planted with olive and forest trees, the village of <span class="internal-link">Kefer Sefrê</span>, and the shrine of <span class="internal-link">Qazaqlî</span>; to the west by three watercourses, Wadî Cerçem, and the villages of <span class="internal-link">Sînara</span> and <span class="internal-link">Enqelê</span>; and to the east by a high mountain chain planted with olives and forest trees and the village of <span class="internal-link">Tataranlî</span>.</p>
+<p>The number of its houses reaches approximately 20 houses, and its age is about 200 years. Its old houses are made of limestone and mud with flat wooden roofs, while the modern ones are of cement and stone. Its habitation is ancient, dating back to the Roman era, indicated by stones reused in construction.</p>
+<p>Services are completely unavailable in the village. The residents work in the cultivation of olives, vines, and grains. The village drinks from rainwater collected in cisterns dug into the houses. Currently, the residents have migrated to the nearby cities of Heleb, Efrîn, and <span class="internal-link">Cindirês</span>, and the reason is the lack of public facilities such as electricity and schools, and the ruggedness of the area where the village is located.</p>
+<p>Village Mukhtar: <span class="internal-link">Abidîn Umer</span></p>
+<p>Preparation and execution:</p>
+<p>Manager of <span class="internal-link">Navenda Tirej Efrîn</span>: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Studies of <span class="internal-link">Navenda Tirej Soft</span> / Ebdulrehman Hacî Osman.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Baziya ، بازيانلي ، البازية /167ن - 6كم - 460م/:</p>
 <ul>
-<li>Baziya (بازيا): Name of a region and tribe in southern <span class="internal-link">Kurdistan</span> (كردستان). <span class="internal-link">Baz</span> (باز): is a Kurdish name for a type of predatory bird.</li>
-<li>A small village with carved stones believed to be ruins dating back to the Roman era, which have been reused in modern construction. Due to lack of services and deteriorating economic conditions, most of its inhabitants emigrated in recent decades.</li>
+<li>بازيا: اسم منطقة وعشيرة في جنوبي كردستان. و باز: هو اسم كردي لنوع من</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span> by writer <span class="internal-link">Abdul Rahman Mohammed</span> from Qatma village:</p>
-<p><strong>Bazayanli (بازايانلي)</strong>: A village in <span class="internal-link">Mount Kurdistan</span> (جبل الكرد), belonging to <span class="internal-link">Sheikh al-Hadid District</span> (ناحية شيخ الحديد), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small village located on the western slope of the mentioned mountain/<span class="internal-link">Mount Na&#x27;su</span> (جبل نعسو) near Jarjam Valley (وادي جرجم) 6km southeast of Sheikh al-Hadid. It is bordered to the north by a high mountain chain planted with forest trees and olives and <span class="internal-link">Haj Hasenli</span> village, to the south by a deep valley and high mountain chain planted with olive and forest trees and <span class="internal-link">Kefer Safra</span> village and <span class="internal-link">Mazar</span>/<span class="internal-link">Qazaqli</span> farms (مزار /قازاقلي), to the west by three streams and Jarjam Valley and Sanara and <span class="internal-link">Anqela</span> villages, and to the east by a high mountain chain planted with olives and forest trees and <span class="internal-link">Tataranli</span> village. The number of houses is approximately 20 houses and its age is around 200 years. Its old houses are made of calcareous stones and clay with flat wooden roofs, while the modern ones are cement and stone. Its construction is ancient dating back to the <span class="internal-link">Roman</span> era as evidenced by carved stones that have been reused in building. It lacks complete services. The inhabitants work in olive, vine and grain cultivation. The village drinks from collected rainwater in cisterns dug in houses. Currently the residents have migrated to nearby cities like <span class="internal-link">Aleppo</span> (حلب), Afrin City (عفرين) and Jindires (جندريس) due to the lack of public facilities such as electricity, schools and the difficult terrain where the village is located.</p>
-<p>Village mayor: <span class="internal-link">Abidin Omar</span> (عابدين عمر)</p>
-<p>Prepared and implemented by: Director of <span class="internal-link">Tirrej Afrin</span> website: Abdul Rahman Haji Othman (عبدالرحمن حاجي عثمان)</p>
-<p>20/12/2013</p></div></details></div>
+<p>الطيور الجارحة.</p>
+<ul>
+<li>قرية صغيرة فيها حجارة مشذبة يعتقد أنها أطلال آثار تعود إلى العهد</li>
+</ul>
+<p>الروماني، وقد أعيد استخدامها في البناء الحديث. وبسبب قلة الخدمات وتردي الأحوال الاقتصادية، هجرها معظم سكانها في العقود الأخيرة. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه بازايانلي : قرية في جبل الكرد, تتبع ناحية شيخ الحديد, منطقة عفرين , محافظة حلب . وهي قرية صغيرة تقع في السفح الغربي للجبل المذكور/جبل نعسو/ قرب وادي جرجم على بعد 6كم جنوب شرقي شيخ الحديد . يحدها شمالاً سلسلة جبلية عالية مزروعة بأشجار حراجية والزيتون وقرية حاج حسنلي , وجنوباً وادي عميق وسلسلة جبلية عالية مزروعة بأشجار الزيتون والحراجية وقرية كفر صفرة ومزار /قازاقلي/ , وغرباً ثلاث مسيلات ووادي جرجم وقرية سنارة وأنقلة , وشرقاً سلسلة جبلية عالية مزروعة بالزيتون والأشجار الحراجية وقرية تاتارانلي . يبلغ عدد بيوتها حوالي20بيتاً وعمرها حوالي 200عاماً , بيوتها القديمة من الأحجار الكلسية والطين ذات سقوف خشبية مستوية , أما الحديثة إسمنتية حجرية . إعمارها قديم يعود إلى العهد الروماني حيث تدل عليها حجارة أعيد استخدامها في البناء . لا تتوفر فيها خدمات نهائياً . يعمل السكان بزراعة الزيتون والكرمة والحبوب . تشرب القرية من تجمع مياه الأمطار في الصهاريج المحفورة في البيوت . حالياً هاجر الأهالي إلى المدن القريبة منها حلب وعفرين وجنديرس والسبب هو عدم وجود مرافق عامة مثل الكهرباء والمدارس ووعورة المنطقة التي تقع فيها القرية .</p>
+<p>مختار القرية : عابدين عمر</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -301,7 +366,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20baziya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20baziya.htm</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20baziya.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-%20baziya.htm</a></li></ul>
             </div>
 
             
@@ -311,7 +376,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -429,6 +494,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

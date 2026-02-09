@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -166,7 +187,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Qantarah, Qenterê, قنطرة</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Henan, Hesen, Nejar, Qibê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Hemo Qîbo, Henan, Hesen, Nejar, Qibê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -207,16 +228,65 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Qenterê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">جبل الكرد (عفرين)</span>&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin City)</span>&#x27; geographical study by Dr. Mohammed Abdo Ali (محمد عبدو علي):</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Qenterê</span> (قنطرة)</strong> /2000n - 560m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Qenterê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20qentere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20qentere.htm</a></p>
+<p>It is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Qenter</span>, Qantara /2000 inhabitants - 560m altitude/:</p>
+<p>From &quot;<span class="internal-link">Qantara</span>&quot; (arch/bridge) in construction, which is a Kurdish name. The village site is archaeological, and it is said that there were remains of an arch from an ancient archaeological structure at the village site. Abdullah Al-Helou says regarding the word &quot;Qantara&quot; that it is an Arabization from Aramaic and Syriac, and there are those who view its origin as Greek or Latin (p. 53).</p>
+<p>It is a small village located on the summit of a highland that slopes steeply on three sides, except for the eastern side where it connects to the town of <span class="internal-link">Mabeta</span>.</p>
+<p>It is stated in the book: عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme: Qenter: A village in <span class="internal-link">Çiyayê Kurmênc</span>, administratively following the Mabeta sub-district, <span class="internal-link">Efrîn</span> region, Heleb governorate.</p>
+<p>It is a medium-sized village located in the central part of the mentioned mountain, atop a high limestone plateau. It is furrowed by watercourses from all its sides to the west of the town of Mabeta at a distance of 500m. Its soil is clayey, and forests and pastures are spread upon it.</p>
+<p>It is bordered to the north by a rugged slope, a fertile plain planted with olive trees, the <span class="internal-link">Xeta Trêna Heleb-Meydan Ekbez</span> (Heleb-Meydan Ekbez railway), and the villages of <span class="internal-link">Şêx Kîlo</span> and <span class="internal-link">Heyat</span>.</p>
+<p>It is bordered to the south by a harsh slope planted with olive and almond trees, several watercourses, and the village of <span class="internal-link">Mîrkan</span>.</p>
+<p>It is bordered to the east by a harsh slope, a deep watercourse planted with olive and almond trees, mountainous highlands, the village of <span class="internal-link">Darkîr Mezin</span>, and the town of Mabeta at a distance of 500m.</p>
+<p>It is bordered to the west by a harsh slope, a watercourse, a plain planted with olive trees, the <span class="internal-link">Riya Mabeta-Mîrkan</span> (Mabeta and Mîrkan road), and the village of <span class="internal-link">Ereb Uşaxî</span> at a distance of 2km.</p>
+<p>The number of its houses reaches about 75 houses, and its age is approximately 400 years. Its old houses were made of stone and mud with flat wooden roofs; all of these houses are currently extinct, and modern buildings have been built in their place, with modern cement construction spreading around them.</p>
+<p>Available in the village are an electricity network, a primary school, a small mosque, and a telephone connected to the Mabeta center. It contains a farmers&#x27; cooperative and two modern olive presses. Its people drink from a water network derived from a well southeast of the village, from the waters of the spring of <span class="internal-link">Berbeûş</span> at a distance of 2km north of the village, or from cisterns in which rainwater is collected in winter.</p>
+<p>It is connected to the sub-district center by a paved road which passes near it to several neighboring villages. It belongs to the Mabeta municipality. Among its most important families is the <span class="internal-link">Hemo Qîbo</span> family.</p>
+<p>The residents work in rain-fed agriculture on an area of 110 hectares (olives, grains, legumes, almonds, apricots). They also cultivate summer vegetables, pomegranate trees, walnut trees, and other fruit trees via irrigation from artesian wells, alongside raising sheep, goats, and cows.</p>
+<p>Village Mukhtar: <span class="internal-link">Cemîl Mistefa</span></p>
+<p>Preparation and Execution:</p>
+<p>Director of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources:</p>
 <ul>
-<li>From &quot;<span class="internal-link">al-qantarah</span>&quot; (القنطرة) in construction, and it is a Kurdish name. The village&#x27;s location is archaeological, and it is said that there were remains of a bridge for an ancient archaeological building at the village&#x27;s location. <span class="internal-link">Abdullah al-Halwu</span> (عبدالله الحلو) says about the word <span class="internal-link">qantarah</span> (قنطرة) that it is an Arabization from Aramaic and Syriac, and there are those who see that its origin is Greek or Latin /p.53/.</li>
-<li>A small village located on the summit of an elevation sloping steeply in three directions except for the eastern direction where it connects with <span class="internal-link">Mabetli town</span> (بلدة معبطلي).</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book: &#x27;<span class="internal-link">عفرين.... نهرها ورواbiها الخضراء</span>&#x27; &#x27;<span class="internal-link">Afrin City.... Its River and Green Hills</span>&#x27; by writer <span class="internal-link">Abdul Rahman Mohammed</span> (عبدالرحمن محمد) from <span class="internal-link">Qatmeh village</span> (قرية قطمه):</p>
-<p><strong><span class="internal-link">Qantarah</span></strong> (قنطرة): A village in <span class="internal-link">Kurd Mountain</span> (جبل الكرد), belonging to Mabetli District (ناحية المعبطلي), <span class="internal-link">Afrin City Region</span> (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a medium-sized village located in the central section of the mentioned mountain, on a high calcareous plateau crossed by streams from all its peripheries. It is to the west of <span class="internal-link">Mabetli town</span> (بلدة معبطلي) at a distance of 500m. Its soil is clay-based, forests and pastures spread on it. To the north it is bordered by a slope and fertile plain planted with olive trees and the railway /<span class="internal-link">Aleppo _ Meydan Ekbas</span>/ (حلب _ ميدان إكبس) and <span class="internal-link">Sheikh Kilo village</span> (قرية الشيخ كيلو) and <span class="internal-link">al-Hayat</span> (الحياة), to the south by a harsh slope planted with olive and almond trees and several water streams and <span class="internal-link">Mirkanli village</span> (قرية ميركانلي), to the east by a harsh slope and deep stream planted with olive and almond trees and mountain elevations and <span class="internal-link">Dar Kir Kabir village</span> (قرية دار كير كبير) and <span class="internal-link">Mabetli town</span> (بلدة معبطلي) at 500m distance, and to the west by a harsh slope and stream and plain planted with olive trees and the <span class="internal-link">Mabetli and Mirkanli road</span> (طريق معبطلي) and <span class="internal-link">Arab Oshaghi village</span> (قرية عرب أوشاغي) at 2km distance. It contains approximately 75 houses (بيتاً) and is about 400 years old (عاماً). Its old houses are stone and clay with flat wooden roofs, and all these houses are currently ruined, modern buildings have been built in their place and modern cement construction has spread around them. It has an electricity network and a primary school and a small mosque and telephone from <span class="internal-link">Mabetli center</span> (مركز معبطلي). It has an agricultural association and two modern olive presses. Its people drink from a water network sourced from a well in the southeast of the village and from the waters of <span class="internal-link">Barb&#x27;ush spring</span> (نبع بربعوش) at 2km distance north of the village or from cisterns that collect rainwater in winter. It is connected to the district center by a paved road and passes near it to several neighboring villages. It belongs to <span class="internal-link">Mabetli municipality</span> (بلدية معبطلي). Among its most important families is the <span class="internal-link">Hamo Qibo family</span> (عائلة حمو قيبو). The inhabitants work in rain-fed agriculture on an area of 110ha (olives, grains, legumes, almonds, apricots), and they cultivate irrigated artesian wells with summer vegetables and pomegranate, walnut, and other fruit trees alongside raising sheep, goats, and cattle.</p>
-<p>Village headman: <span class="internal-link">Jamil Mustafa</span> (جميل مصطفى)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qenterê from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=4QdFIsfPhVw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=4QdFIsfPhVw</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Qenter ، قنطرة /2000ن - 560م/:</p>
+<ul>
+<li>من &quot; القنطرة &quot; في البناء، وهي تسمية كردية. موقع القرية أثري، ويقال أنه</li>
+</ul>
+<p>كان في موقع القرية بقايا قنطرة لبناء أثري قديم. ويقول عبدالله الحلو عن كلمة قنطرة بأنها تعريب من الآرامية والسريانية، وهناك من يرى بأن أصله يوناني أو لاتيني /ص53/.</p>
+<ul>
+<li>قرية صغيرة تقع على قمة مرتفع ينحدر بشدة في ثلاث جهات ما عدا الجهة</li>
+</ul>
+<p>الشرقية حيث تتصل ببلدة معبطلي. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه قنطرة : قرية في جبل الكرد، تتبع ناحية معبطلي ، منطقة عفرين ، محافظة حلب . وهي قرية متوسطة تقع في القسم الأوسط من الجبل المذكور ، فوق هضبة كلسية عالية ، تخددها المسيلات من كافة أطرافها إلى الغرب من بلدة معبطلي على بعد 500م ، تربتها غضارية ، تنتشر عليها الأحراج و المراعي ، يحدها شمالاً منحدر وعر وسهل خصب مزروع بأشجار الزيتون وسكة حديد /حلب _ ميدان إكبس/ وقرية الشيخ كيلو والحياة ، وجنوباً منحدر قاسي مزروع بأشجار الزيتون و اللوز وعدة مسيلات مائية وقرية ميركانلي , وشرقاً منحدر قاسي ومسيل عميق مزروع بأشجار الزيتون واللوز ومرتفعات جبلية وقرية داركير كبير وبلدة معبطلي على بعد 500 م ، و غرباً منحدر قاسي و مسيل و سهل مزروع بأشجار الزيتون و طريق معبطلي و ميركانلي و قرية عرب أوشاغي على بعد 2كم ، يبلغ عدد بيوتها حوالي 75بيتاً وعمرها حوالي 400عاماً ، بيوتها القديمة حجرية طينية ذات سقوف خشبية مستوية وجميع هذه البيوت مندثرة حالياً بنيت مكانها الأبنية الحديثة وانتشر من حولها البناء الإسمنتي الحديث ، تتوفر فيها شبكة كهرباء ومدرسة ابتدائية وجامع صغير وهاتف من مركز معبطلي فيها جمعية فلاحية ومعصرتان للزيتون حديثتان ، تشرب أهلها من شبكة مائية مستمدة من بئر في جنوب شرقي القرية ومن مياه نبع (بربعوش) على مسافة 2كم شمال القرية أومن صهاريج تجمع فيها مياه الأمطار شتاءاً ، تصلها بمركز الناحية بطريق مزفت و يمر من قربها إلى عدة قرى مجاورة و هي عائدة لبلدية معبطلي ، من أهم عوائلها عائلة حمو قيبو ، يعمل السكان بالزراعة البعلية على مساحة 110هـ (الزيتون ، الحبوب ، البقول ، اللوز ، المشمش), ويزرعون رياً من الآبار الارتوازية الخضر الصيفية وأشجار الرمان والجوز والأشجار المثمرة الأخرى إلى جانب تربية الأغنام والماعز والأبقار .</p>
+<p>مختار القرية :  جميل مصطفى</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Qenterê from Afrin 366</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=4QdFIsfPhVw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=4QdFIsfPhVw</a></p>
 <p>The village of <span class="internal-link">Qenterê</span> is situated in the <span class="internal-link">Mabatê</span> district of the <span class="internal-link">Efrîn</span> region. It is positioned on high ground that overlooks the <span class="internal-link">Hawarê</span> mountain area and <span class="internal-link">Cebel Ehlam</span>. According to a local resident the name of the village is derived from the architectural style of its original buildings. The term Qenterê refers to arches or vaults because the ancient stone houses in the village were constructed with distinctive arched roofs. The village currently consists of approximately 150 households and features a mix of historic architecture and modern amenities like electricity and network water.</p>
 <p>The history of Qenterê is physically marked by a central stone arch known as <span class="internal-link">Qentera Koko Doro Zenterê</span>. A resident interviewed near the village water tank states that this structure dates back to the <span class="internal-link">French</span> mandate era. The name of this landmark preserves a specific local oral history concerning a figure named <span class="internal-link">Koko Doro Zenterê</span> who was the father of <span class="internal-link">Zenter</span>. The resident clarifies that while there is a village named <span class="internal-link">Zenterê</span> elsewhere in Efrîn the name in this context refers to a person rather than a place. Another geographical feature mentioned in relation to this area is <span class="internal-link">Geliyê Cernê</span> which is a valley located nearby.</p>
 <p>The social landscape of Qenterê includes several specific family lineages and compounds. The host connects with the village through <span class="internal-link">Ferhad Ebdo Henan</span> suggesting the presence of the <span class="internal-link">Henan</span> family. During the tour the host points out specific households such as <span class="internal-link">mala Hesen</span> and directs the camera toward notable compounds like <span class="internal-link">Hewşa Qibê</span> and <span class="internal-link">Hewşa Nejar</span>. The terrain is described as steep and difficult in places with roads winding down toward <span class="internal-link">Gundikê jêr</span> and connecting to neighboring locations like <span class="internal-link">Gundê Welîklî</span> and <span class="internal-link">Gundê Birîmce</span>. The village is also noted for its agriculture particularly walnut trees and the ancient water tank that serves the community.</p></div></details></div>
@@ -266,7 +336,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20qentere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20qentere.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=jBANvligqUw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=jBANvligqUw</a><br><a href="https://www.youtube.com/watch?v=qRUqlr53FLk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=qRUqlr53FLk</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=4QdFIsfPhVw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=4QdFIsfPhVw</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20qentere.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-%20qentere.htm</a></li><li>Video:<br><a href="https://www.youtube.com/watch?v=jBANvligqUw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=jBANvligqUw</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=qRUqlr53FLk" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=qRUqlr53FLk</a></li><li>Afrin 366:<br><a href="https://www.youtube.com/watch?v=4QdFIsfPhVw" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=4QdFIsfPhVw</a></li></ul>
             </div>
 
             
@@ -276,7 +346,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -394,6 +464,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

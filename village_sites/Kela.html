@@ -201,6 +201,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -225,6 +246,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Şiyê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Kalanli, Kela, Kêlê, al-Malsa&#x27;a, الملساء, كلانلي</p></div>
+<div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Kela</p></div>
 <div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Ce&#x27;fû, Ezo Zewcî, Hebê Birîm, Heskînê, Heso, Kalo, Kurce, Mala Mamoyê Bilîzbê, Mala Mûsê, Mala Şurbê, Mehmedê Zînkê, Ore, Osman Hebeş, Seraşê Hemê, Xelîl Mihmed, Şêx Birîm</p></div>
                         </div>
                     </div>
@@ -288,18 +310,49 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Kela</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &quot;<span class="internal-link">Mountain of the Kurds</span>&quot; (جبل الكرد) (Afrin City) Geographic Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong>Kela, <span class="internal-link">Kalanli</span>, <span class="internal-link">al-Malsa&#x27;a</span></strong> (المسلاء) /228n, 560m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Kela</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-kale.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-kale.htm</a></p>
+<p>The following comes from the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>: <span class="internal-link">Kela</span>, <span class="internal-link">Kelanlî</span>, <span class="internal-link">Al-Malsaa</span> /228 inhabitants, 560m altitude/:</p>
+<p>Kela is the name of a Kurdish tribe. The Arabized name has no connection to the popular name.</p>
+<p>It is a small village located on the southern side of the middle of the Kelanlî valley. Its location is forested and rugged. Next to the village and near the bottom of the valley is the sweet water spring <span class="internal-link">Kaniya Kela</span>. The location of the village possesses beautiful nature.</p>
+<p>The following comes from the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Kelanlî: A farm in <span class="internal-link">Çiyayê Kurmênc</span>, following the <span class="internal-link">Şiyê</span> sub district, <span class="internal-link">Efrîn</span> district, Heleb governorate. It is a small farm located on an elevation and mountain plateau, surrounded by three watercourses except for the eastern side.</p>
+<p>It is bordered to the north by a deep valley and the village of <span class="internal-link">Hec Bîlal</span>; to the south by a high mountain range and the village of <span class="internal-link">Turmişa</span>; to the west by a deep watercourse, a high mountain range planted with olive trees and forest trees, and the villages of <span class="internal-link">Şêx Çeqelê Jorîn</span> and <span class="internal-link">Jêrîn</span>; and to the east by a high mountain range planted with forest trees and the village of <span class="internal-link">Meyserê</span>.</p>
+<p>The number of its houses is about 15 houses, and its age is 125 years. Its dwellings are of stone and mud with wooden roofs, while the modern ones are concrete. The residents work in the cultivation of olives, walnuts, and vines. It connects with the sub district and neighboring villages via a newly paved road. A modern electricity network became available there in 2006.</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Preparation and execution:</p>
+<p>Manager of <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Kela ، كلانلي ، الملساء /228ن ، 560م/:</p>
 <ul>
-<li>&quot;Kela&quot; (كه لا) is the name of a Kurdish tribe. The Arabic name has no connection to the popular name.</li>
-<li>A small village located on the southern side of the middle of <span class="internal-link">Kalanli valley</span> (وادي كلانلي). Its location is forest and rugged. There is a spring &quot;Kela&quot; (كلا) K.Kela with sweet water beside the village and near the valley bottom. The village location has a picturesque nature.</li>
+<li>&quot;كَه لا&quot; اسم لعشيرة كردية. والاسم المعرب لا صلة له بالاسم الشعبي.</li>
 </ul>
-<p>According to the book: <span class="internal-link">Afrin... Her River and Green Hills</span> by writer Abdulrahman Mohammed (عبدالرحمن محمد) from <span class="internal-link">Qatma village</span> (قرية قطمه):</p>
-<p><strong>Kalanli</strong> (كلانلي): A farm in Mountain of the Kurds (جبل الكرد), belonging to <span class="internal-link">Sheikh al-Hadid District</span> (ناحية شيخ الحديد), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small farm located on an elevation and mountain plateau surrounded by three streams except the eastern one. It is bordered to the north by deep valley and <span class="internal-link">Haj Bilal village</span> (قرية حاج بلال), to the south by high mountain chain and <span class="internal-link">Turmishkanli village</span> (قرية طورمشكانلي), to the west by deep stream and high mountain chain planted with olive and forest trees and <span class="internal-link">Sheikh Jiqallali Foqani and Tahtani village</span> (قرية شيخ جقاللي فوقاني وتحتاني), and to the east by high mountain chain planted with forest trees and <span class="internal-link">Ma&#x27;sara Jiq village</span> (قرية معصرة جق).</p>
-<p>The number of its houses reaches about 15 houses and its age is 125 years. Its dwellings are stone-clay with wooden roofs. The modern ones are concrete. The inhabitants work in olive, walnut and vine cultivation. It connects with the sub-district and neighboring villages by recently paved road. Electricity network is available since 2006 (2006).</p>
-<p><strong>Prepared and executed by: Site manager of Tireij Afrin: <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</strong></p>
-<p>20/12/2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kela from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=SwEy5Av5BFo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=SwEy5Av5BFo</a></p>
+<ul>
+<li>قرية صغيرة تقع على الجهة الجنوبية من منتصف وادي كَلانلي. موقعها حراجي</li>
+</ul>
+<p>وعر. يوجد بجانب القرية وبالقرب من قعر الوادي نبع &quot;كلا&quot; K.Kela العذب. موقع القرية ذو طبيعة خلابة. وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه كلانلي : مزرعة في جبل الكرد , تتبع ناحية شيخ الحديد, منطقة عفرين , محافظة حلب . وهي مزرعة صغيرة تقع على مرتفع وهضبة جبلية ومن حولها ثلاث مسيلات ماعدا الشرقية منها . يحدها شمالاً وادي عميق وقرية حاج بلال , وجنوباً سلسلة جبلية عالية وقرية طورمشكانلي , وغرباً مسيل عميق وسلسلة جبلية عالية مزروعة بأشجار الزيتون والأشجار الحراجية وقرية شيخ جقاللي فوقاني وتحتاني , وشرقاً سلسلة جبلية عالية مزروعة بأشجار الحراجية وقرية معصرة جق . يبلغ عدد بيوتها حوالي 15بيتاً وعمرها 125عاماً . مساكنها حجرية طينية بسقوف خشبية . والحديثة منها إسمنتية، يعمل السكان بزراعة الزيتون والجوز والكرمة . تتصل مع الناحية والقرى المجاورة طريق مزفتة حديثاً. حيث تتوفر فيها شبكة كهرباء حديثاً عام 2006</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Kela from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=SwEy5Av5BFo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=SwEy5Av5BFo</a></p>
 <p>The village of <span class="internal-link">Kela</span> is located in the <span class="internal-link">Şiyê</span> district of the <span class="internal-link">Efrîn</span> region in northwestern Syria. It sits upon a mountain ridge surrounded by valleys and forests. The history of the settlement dates back approximately two hundred years. According to local oral history the name Kela is derived from <span class="internal-link">Keleş</span> which refers to bandits or brigands. In earlier times these outlaws utilized the rugged terrain and dense forests to ambush travelers and hide from authorities. Once the bandits abandoned the area the village was formally established. The founder was an individual named <span class="internal-link">Hebê Birîm</span> who migrated from <span class="internal-link">Çeqelo</span> and belonged to the lineage of <span class="internal-link">Ezo Zewcî</span>. He constructed the first permanent dwelling in the village which is known locally as <span class="internal-link">Viraqine</span>.</p>
 <p>The social structure of Kela is defined by specific families rather than large tribal confederations. The documentary identifies several core families including <span class="internal-link">Hebûyê Birîm</span> and <span class="internal-link">Ore</span> and <span class="internal-link">Mehmedê Zînkê</span> and <span class="internal-link">Şêx Birîm</span> and <span class="internal-link">Osman Hebeş</span>. Other prominent lineages include the <span class="internal-link">Kurce</span> family and the <span class="internal-link">Kalo</span> family. Residents describe historical intermarriage with the <span class="internal-link">Ce&#x27;fû</span> family and people from Şiyê. Due to the lack of services such as schools and paved roads many inhabitants have migrated to Efrîn city or <span class="internal-link">Heleb</span> and <span class="internal-link">Şam</span> over the decades. However roughly half the population remains or maintains contact with their ancestral land.</p>
 <p>Daily life in Kela is dictated by its geography. The land is described as qiraç meaning rocky and difficult to cultivate. Because modern tractors cannot navigate the steep slopes farmers continue to use traditional animal plowing with oxen and donkeys. They cultivate olives and grapes and sumac and figs. The village is bordered by distinct natural landmarks including the forests of <span class="internal-link">Daristana Hemî Hebeş</span> and <span class="internal-link">Daristana Qûla Sosê</span> and <span class="internal-link">Daristana Qûla Guran</span> as well as the heights of <span class="internal-link">Çiyayê Hêreblîc</span> and <span class="internal-link">Çiyayê Siq</span>.</p>
@@ -396,7 +449,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-kale.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-kale.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=3cZBlfWMquI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3cZBlfWMquI</a></li><li>Local FB page:<br><a href="https://www.facebook.com/Gunde.kela.rojava" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Gunde.kela.rojava</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=SwEy5Av5BFo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SwEy5Av5BFo</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=ssV6yk6cJZI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ssV6yk6cJZI</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-kale.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20shiye%20-kale.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=3cZBlfWMquI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=3cZBlfWMquI</a></li><li>Local FB page:<br><a href="https://www.facebook.com/Gunde.kela.rojava" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.facebook.com/Gunde.kela.rojava</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=SwEy5Av5BFo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=SwEy5Av5BFo</a></li><li>Khalil Sino:<br><a href="https://www.youtube.com/watch?v=ssV6yk6cJZI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=ssV6yk6cJZI</a></li></ul>
             </div>
 
             
@@ -406,7 +459,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -524,6 +577,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

@@ -142,6 +142,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -166,6 +187,7 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Mabeta</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Hamo Rajo, Reca, Reh Ja, حمو راجو, ره جا, راجا</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">Hemo Raco</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-mabeta">
@@ -192,28 +214,67 @@
 </div>
             </div>
 
-            
+            <div class="card p-6 rounded-xl">
+                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Basic Information about Reca</h2>
+                <div class="p-4 prose-compact max-w-none"><h5 class="font-semibold text-base mt-5 mb-2 text-gray-600 dark:text-gray-400">Source: Tirej Afrin</h5>
+<p><strong>Etymology:</strong> Derived from the name Rec, believed to be a female proper name. A resident named Ĥusn Rec was attributed to his mother Rec. The letter a is a Kurdish feminizing suffix. Alternatively named after the Hemo Raco family.</p>
+<p><strong>Foundation Date/Period:</strong> Approximately 250 years ago</p>
+<p><strong>Hills:</strong> <span class="internal-link">Xastiya</span></p></div>
+            </div>
 
             
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Reca</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds</span>&#x27; (Afrin City) Geographical Study by Dr. Mohammed Abdo Ali (الدكتور محمد عبدو علي):</p>
-<p><strong>Reca, رهجا, حمو راجو /660n – 15km - 690m/:</strong></p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Reca</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hemo%20reca.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hemo%20reca.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span> by د. محمد عبدو علي <span class="internal-link">Dr. Mihemed Ebdo Elî</span>:</p>
+<p><span class="internal-link">Reca</span>, <span class="internal-link">Hemo Raco</span> (660 inhabitants, 15km, 690m):</p>
+<p>The village derived its name from <span class="internal-link">Rec</span>, and it is believed to be a female proper name. One of the residents of the village from the nineteenth century was called <span class="internal-link">Ĥusn Rec</span>, and the letter &quot;a&quot; in Kurdish is a feminizing suffix, meaning that this <span class="internal-link">Ĥusn</span> was attributed to his mother Rec who gave her name to the village.</p>
+<p>It is a small village located on the southern slopes of the <span class="internal-link">Xastiya</span> highlands.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span> by the writer عبدالرحمن محمد <span class="internal-link">Ebdulrehman Mihemed</span> from the village of Qetme:</p>
+<p>Hemo Raco: A village in the Mountain of the Kurds, administratively belonging to the district of <span class="internal-link">Mabeta</span>, <span class="internal-link">Efrîn</span> region, Heleb governorate. It is a small village located in the middle part of the mentioned mountain, on the summit of a limestone and marly plateau that is furrowed and surrounded by watercourses. Forests and scrub are spread across its slopes. It is located 12km southwest of the town of Mabeta toward the southwest.</p>
+<p>It is bordered to the north by a mountainous height planted with olive trees and the village of <span class="internal-link">Qişle</span>. It is bordered to the south by a harsh slope planted with olive trees, a deep watercourse, a mountain chain, and the village of <span class="internal-link">Misto Aşûr</span>. To the west, at a distance of 50m, lies the nearby village of <span class="internal-link">Elî Caro</span>. To the east, there is a slope and a torrential valley planted with olive, walnut, and almond trees, and the village of <span class="internal-link">Cumazanli</span>.</p>
+<p>Its soil is clay based, over which pastures and forests are spread. The number of its houses reaches 35 houses, and its age is approximately 250 years. Its old houses are made of stone and mud with flat wooden roofs, while the modern ones are cement and spread on the edges of the village to the north and south. An electricity network, a small mosque, and a primary school are available in the village.</p>
+<p>The village drinks from cisterns where rainwater collects in winter, and currently from artesian wells drilled next to the homes. The residents work in rain fed agriculture (150 hectares), producing olives, grains, and legumes alongside the raising of sheep and goats. A paved road connects it to the district center, passing through its center to several neighboring villages. Among its most important families is the Hemo Raco family, after whom the village was named.</p>
+<p>Village Mukhtar: <span class="internal-link">Remzî Heqî</span></p>
+<p>Preparation and execution:</p>
+<p>Manager of the <span class="internal-link">Tirej Efrîn</span> site: <span class="internal-link">Ebdulrehman Hacî Osman</span></p>
+<p>20/12/2013</p>
+<p>Sources</p>
+<p>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</p>
+<p>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</p>
+<p>Studies of <span class="internal-link">Navenda Tirej Soft</span> / Ebdulrehman Hacî Osman.</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي : Reca ، ره جا ، حمو راجو /660ن  15كم - 690م/:</p>
 <ul>
-<li>It derived its name from <span class="internal-link">Rec</span> (رج), and it is believed to be a feminine proper name. One of the village residents from the nineteenth century was named <span class="internal-link">Ḩusênê Recê</span> (حسينێ رجێ), and the letter ê in Kurdish is a feminine letter, meaning that this <span class="internal-link">Hussein</span> was attributed to his mother <span class="internal-link">Rec</span> who gave her name to the village.</li>
-<li>A small village located on the southern slopes of <span class="internal-link">Khastiya</span> elevations (مرتفعات خاستيا).</li>
+<li>استمدت اسمها من رَجْ Rec، ويعتقد أنه اسم علم مؤنث، فأحد سكان القرية من</li>
 </ul>
-<p>According to the book &#x27;عفرين .... نهرها وروابيها الخضراء&#x27; &#x27;<span class="internal-link">Afrin City.... Its Rivers and Green Hills</span>&#x27; by Abdulrahman Mohammed from <span class="internal-link">Qatmah</span> village (عبدالرحمن محمد من قرية قطمه):</p>
-<p><strong>حمو راجو</strong>: A village in <span class="internal-link">Mountain of the Kurds</span> (جبل الكرد), belonging to <span class="internal-link">Mabetli</span> district (ناحية المعبطلي), Afrin City region (منطقة عفرين), <span class="internal-link">Aleppo</span> governorate (محافظة حلب).</p>
-<p>It is a small village located in the middle part of the aforementioned mountain, on the summit of a limestone plateau, marine, eroded and surrounded by water streams, and forests spread on its slopes. It is 12km southwest of <span class="internal-link">Mabetli</span> town (بلدة المعبطلي) toward the southwest.</p>
-<p>It is bounded to the north by a mountain elevation planted with olive trees and <span class="internal-link">Qashla</span> village (قرية قشلة), to the south by a steep slope planted with olive trees and a deep stream and mountain chain and <span class="internal-link">Mastu Ashur</span> village (قرية مستو عاشور), to the west by 50m <span class="internal-link">Ali Jaro</span> village (قرية علي جارو) nearby, and to the east by a slope and <span class="internal-link">Sili Valley</span> (وادي سيلي) planted with olive, walnut, and almond trees and <span class="internal-link">Jumazanli</span> village (قرية جومازانلي).</p>
-<p>Its soil is hilly with pastures and groves spread above it. The number of its houses reaches 35 houses and its age is about 250 years. Its old houses are of stone and clay with flat wooden roofs, while the modern ones are concrete spread on the outskirts of the village north and south.</p>
-<p>It has an electricity network, small mosque, and elementary school. The village drinks from cisterns that collect rainwater in winter, and currently from artesian wells dug next to houses. The residents work in agriculture (150 hectares) rain-fed, producing olives, grains, and legumes in addition to raising sheep and goats. It connects with the district center by a paved road passing through its center to several neighboring villages.</p>
-<p>Among its most important families: <span class="internal-link">Hamo Rajo</span> family (عائلة حمو راجو) which named the village after them.</p>
-<p>Village mayor: <span class="internal-link">Ramzi Haqi</span> (رمزي حقي)</p>
-<p>Prepared and executed by: <span class="internal-link">Tirej Afrin</span> website manager: <span class="internal-link">Abdulrahman Haji Othman</span></p>
-<p>20/12/2013</p></div></details></div>
+<p>القرن التاسع عشر كان يسمى Ĥusn Rec، وحرف  في الكردية هو حرف تأنيث، أي أن حسين هذا كان ينسب إلى أمه Rec التي منحت اسمها للقرية.</p>
+<ul>
+<li>قرية صغيرة تقع على السفوح الجنوبية من مرتفعات خاستيا.</li>
+</ul>
+<p>وجاء في كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه حمو راجو : قرية في جبل الكرد ، تتبع ناحية المعبطلي ، منطقة عفرين ، محافظة حلب. وهي قرية صغيرة تقع في الجزء الأوسط من الجبل المذكور ، على قمة هضبة كلسية مارنية مخددة و محاطة بالمسيلات المائية ، و تنتشر على سفوحها الحراج ، تبعد 12كم جنوبي غربي بلدة المعبطلي باتجاه الجنوب الغربي ، يحدها شمالاً مرتفع جبلي مزروع بأشجار الزيتون وقرية قشلة ، وجنوباً منحدر قاسي مزروع بأشجار الزيتون ومسيل عميق وسلسلة جبلية وقرية مستو عاشور ، وغرباً على بعد50م قرية علي جارو القريبة ، وشرقاً منحدر ووادي سيلي مزروع بأشجار الزيتون و الجوز و اللوز و قرية جومازانلي ، تربتها غضارية تنتشر فوقها المراعي والأحراج ، يبلغ عدد بيوتها 35 بيتاً وعمرها حوالي 250عاماً ، بيوتها القديمة من الحجارة والطين ، ذات سقوف خشبية مستوية أما الحديثة فهي إسمنتية منتشرة على أطراف القرية شمالاً وجنوباً ، تتوفر فيها شبكة كهرباء وجامع صغير ومدرسة ابتدائية ، تشرب القرية من صهاريج تجمع فيها مياه الأمطار شتاءً , وحالياً من الآبار الارتوازية المحفورة بجوار المنازل ، يعمل السكان بالزراعة (150 هـ) بعلاً ، تنتج الزيتون والحبوب والبقول إلى جانب تربية الأغنام والماعز ، تصلها بمركز الناحية طريق مزفت يمر في وسطها إلى عدة قرى مجاورة ، من أهم عوائلها : عائلة حمو راجو والتي سميت القرية باسمهم .</p>
+<p>مختار القرية : رمزي حقي</p>
+<p>إعداد وتنفيذ</p>
+<p>:</p>
+<p>مدير موقع تيريج عفرين : عبدالرحمن حاجي عثمان</p>
+<p>20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     </div>
                 </div>
 
             
@@ -239,7 +300,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hemo%20reca.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hemo%20reca.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=xxSjZLNmE8c" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=xxSjZLNmE8c</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hemo%20reca.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20mebetli%20-hemo%20reca.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=xxSjZLNmE8c" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=xxSjZLNmE8c</a></li></ul>
             </div>
 
             
@@ -249,7 +310,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -367,6 +428,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

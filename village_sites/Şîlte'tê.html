@@ -144,6 +144,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -213,23 +234,59 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Şîlte&#x27;tê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;<span class="internal-link">Mountain of the Kurds (Afrin)</span>&#x27; Geographic Study:</p>
-<p><strong>Şîlte&#x27;t, Sheltah</strong> (شلتاح) /280n - 300h - 15km - 430m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Şîlte&#x27;tê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sheltata.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sheltata.htm</a></p>
+<p>The following is stated in the book جبل الكرد (عفرين) دراسة جغرافية <span class="internal-link">Çiyayê Kurmênc (Efrîn): A Geographical Study</span>: <span class="internal-link">Şlte&#x27;t</span>, <span class="internal-link">Şiltah</span> / 280 people, 300H, 15km, 430m /:</p>
+<p>Şiltah: The origin of the word is Şiltah, and it means the blue rocks. However, the letter l was substituted for n, which is a possible occurrence in the Kurdish language. The rocks in those parts are of various colors, but those that appear near the <span class="internal-link">Çemê Efrînê</span> (Efrîn river) tend towards a greyish color tinged with blue, so that they appear light blue in color.</p>
+<p>It is a small village situated on a plateau that slopes steeply towards the valley of the Çemê Efrînê (Efrîn river) in the east, and it abuts the Turkish border from the north. Archaeological ruins and caves exist around it.</p>
+<p>The following is stated in the book عفرين .... نهرها وروابيها الخضراء <span class="internal-link">Efrîn... Her River and Her Green Hills</span>: Şiltah is a village in <span class="internal-link">Çiyayê Kurmênc</span> administratively belonging to the <span class="internal-link">Şeran</span> district, <span class="internal-link">Efrîn</span> region, Heleb governorate (263 people). It is a small village situated on a wide and undulating limestone plateau that slopes steeply towards the valley of the Çemê Efrînê (Efrîn river) to the east, and slowly towards the south and west. Its soil is clay and pastures are spread over it. It is 15km away from the town of Şeran towards the northeast, and it abuts the current borders with Turkey. The settlement of the area is ancient as evidenced by the presence of ruins and caves around it and near the Turkish border on the eastern side.</p>
+<p>It is bordered on the north by a deep valley and the Turkish Syrian border point directly at a distance of 200 meters. To the south, it is bordered by a valley, a fertile plain, and the course of the Çemê Efrînê (Efrîn river). To the east, it is bordered by a slope, a valley, the course of the Çemê Efrînê (Efrîn river), and the Turkish Syrian border point. To the west, it is bordered by a valley, a fertile agricultural plain planted with olive trees, the village of <span class="internal-link">Dêr Sewan</span>, and the archaeological <span class="internal-link">Pira Nebî Hûrî</span> (Prophet Huri bridge) which is named the bridge of <span class="internal-link">Nebî Hûrî</span>.</p>
+<p>The number of its houses amounts to about 35 houses, and the age of the village is about 150 years. Its old houses are made of stone and mud with wooden roofs, while the modern dwellings are made of cement and stone. An electricity network is available there, and the village drinks from a water network connected to the artesian well on its eastern side. There is a paved road up to the center of the village and the village of <span class="internal-link">Mersawa</span>.</p>
+<p>The village contains a primary school, a mosque, and a border police station. Its inhabitants work in the cultivation of olives and vines and in raising livestock. It has telephone lines and a modern olive press located near the <span class="internal-link">Pira Romanî</span> (Roman bridge), which is three kilometers away from the bridge. It is a border village on the eastern edge of Efrîn.</p>
+<p>Village Mukhtar: <span class="internal-link">Mihemed Hemo</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li>Sheltah (شلتاح): The origin of the word &quot;Sheltah&quot; (شلتاح), meaning &quot;blue rocks&quot; (الصخور الزرقاء), but the letter &quot;l&quot; was replaced with &quot;n&quot;, which is common in the <span class="internal-link">Kurdish</span> language. The rocks of those areas are of different colors, with what appears near the <span class="internal-link">Afrin River</span> (عفرين) tending toward an ash-gray color mixed with blue, making them appear bright blue.</li>
-<li>A small village located on a plateau that slopes steeply toward the Afrin River (عفرين) valley to the east, bordering the Turkish borders from the north. Around it are archaeological ruins and caves.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
-<p>According to the book &#x27;<span class="internal-link">Afrin.... Its River and Green Hills</span>&#x27;:</p>
-<p><strong>Sheltah</strong> (شلتاح): A village in <span class="internal-link">Jabal al-Akrad</span> (جبل الكرد) belonging to <span class="internal-link">Sheran District</span> (شران), Afrin (عفرين) region, Aleppo Governorate (حلب), (263 people).</p>
-<p>It is a small village located on a wide and undulating limestone plateau that slopes steeply toward the Afrin River (عفرين) valley to the east, and gently toward the south and west. It is connected by a plain where pastures spread above it. It is 15km from the town of <span class="internal-link">Sheran</span> (شران) in the northeastern direction, and borders the current borders with <span class="internal-link">Turkey</span>. The region&#x27;s construction is ancient, evidenced by the presence of ruins and caves around it and near the Turkish borders from the eastern side. It is bordered to the north by a deep valley and the point of the Turkish-Syrian border directly at 200m distance, to the south by a valley and fertile plain and the course of the Afrin River (عفرين), to the east by a slope and valley and the course of the Afrin River (عفرين) and the point of the Turkish-Syrian border, and to the west by a valley and fertile agricultural plain planted with olive trees and the village of <span class="internal-link">Dêr Sawan</span> (دير صوان) and the ancient <span class="internal-link">Prophet Houri Bridge</span> (جسر النبي هوري) named after <span class="internal-link">Prophet Houri</span> (النبي هوري). It has about 35 houses and the village is approximately 150 years old. Its old houses are stone and clay with wooden roofs, and the modern residences are cement and stone. It has an electricity network and the village drinks from a water network connected to artesian wells in its eastern direction and a paved road to the village center and <span class="internal-link">1 - PhD/Villages/Mersewa</span> (مرساوا). It has an elementary school, a mosque, and a border police station. Its residents work in olive and grape cultivation and livestock raising. It has telephone lines and a modern olive press located near the <span class="internal-link">Roman</span> bridge, 3 kilometers from the bridge. It is a border village on the eastern side of <span class="internal-link">Afrin city</span>.</p>
-<p>Village mayor: <span class="internal-link">Mohammed Hamo</span> (محمد حمو)</p>
-<p><strong>Information Sources:</strong></p>
-<p>1 - Book &#x27;Mountain of the Kurds (Afrin)&#x27; Geographic Study by Dr. Mohammed Abdo Ali (محمد عبدو علي).</p>
-<p>2 - Book: &#x27;Afrin.... Its River and Green Hills&#x27; by writer Abdulrahman Mohammed (عبدالرحمن محمد) from Qatma (قطمه).</p>
-<p>3 - Studies by <span class="internal-link">Tereij Soft Center</span> (تيريج سوفت) / <span class="internal-link">Abdulrahman Haji Othman</span> (عبدالرحمن حاجي عثمان)</p>
-<p>4 - Some village residents.</p>
-<p>Prepared and executed by: Director of <span class="internal-link">Tereij Afrin Website</span> (تيريج عفرين): Abdulrahman Haji Othman (عبدالرحمن حاجي عثمان)</p>
-<p>20 / 12 / 2013</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Şîlte&#x27;tê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=UtvYRj3RiGo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=UtvYRj3RiGo</a></p>
+<ul>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
+</ul>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Manager of the site Tirej Efrîn: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Şlte&#x27;t ، شلتاح /280ن - 300هـ - 15كم - 430م /:</p>
+<ul>
+<li>شيلتاح: أصل الكلمة &quot;شيلتاح&quot;، وتعني &quot;الصخور الزرقاء&quot;، ولكن استبدل حرف &quot;</li>
+</ul>
+<p>ل&quot; بـ &quot;ن &quot; وهو أمر وارد في اللغة الكردية، وصخور تلك النواحي مختلفة الألوان، يميل ما ظهر منها بجوار نهر عفرين إلى اللون الرمادي المشوب بالزرقة، بحيث تبدو زرقاء فاتحة اللون.</p>
+<ul>
+<li>قرية صغيرة، تقع على هضبة تنحدر بشدة نحو وادي نهر عفرين شرقا، وتتاخم</li>
+</ul>
+<p>الحدود التركية من الشمال. وتوجد حولها خرائب أثرية وكهوف. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : شلتاح : قرية في جبل الكرد تتبع ناحية شران منطقة عفرين محافظة حلب ، (263 ن) . وهي قرية صغيرة تقع في هضبة كلسية واسعة ومتموجة تنحدر بشدة نحو وادي نهر عفرين شرقاً ,وببطء نحو الجنوب والغرب , تربتها غضارية تنتشر فوقها المراعي , تبعد عن بلدة شران 15كم باتجاه الشمال الشرقي , وتتاخم الحدود الحالية مع تركيا ,إعمار المنطقة قديم بدلالة وجود الخرائب والكهوف حولها وبالقرب من الحدود التركية من الجهة الشرقية ، يحدها شمالا وادي عميق ونقطة الحدود التركية السورية مباشرة على بعد/200/م , وجنوباً وادي وسهل خصب ومجرى نهر عفرين وشرقا منحدر ووادي ومجرى نهر عفرين ونقطة الحدود التركية السورية وغربا وادي وسهل خصب زراعيا مزروع بأشجار الزيتون وقرية دير صوان وجسر النبي هوري الأثري والمسمى بجسر النبي هوري يبلغ عدد بيوتها حوالي35 بيت وعمر القرية حوالي150عام بيوتها القديمة حجرية طينية ذات سقوف خشبية والمساكن الحديثة إسمنتية حجرية. تتوفر فيها شبكة الكهرباء وتشرب القرية من شبكة مائية متصلة بالبئر الإرتوازية في جهتها الشرقية وطريق مزفت حتى وسط القرية وقرية مرساوا. فيها مدرسة ابتدائية وجامع ومخفر للشرطة حدودي . يعمل سكانها بزراعة الزيتون والكرمة وتربية المواشي و فيها خطوط للهاتف ومعصرة زيتون حديثة الواقعة قرب الجسر الروماني تبعد عن الجسر ثلاث كيلو مترات وهي قرية حدودية من الطرف الشرقي لعفرين .</p>
+<p>مختار القرية : محمد حمو</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Şîlte&#x27;tê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=UtvYRj3RiGo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=UtvYRj3RiGo</a></p>
 <p>The village of <span class="internal-link">Şîltat</span>, also referred to as <span class="internal-link">Şîl Tehtê</span>, is a settlement defined by its abundance of water and its proximity to the border between <span class="internal-link">Bakur</span> and <span class="internal-link">Rojava</span>. Located in the <span class="internal-link">Rajo</span> district of <span class="internal-link">Efrîn</span>, the village sits on the <span class="internal-link">Deşta Kifirê</span> and derives its name from the Kurdish words for &quot;wet&quot; and &quot;bedrock.&quot; Residents explain that the <span class="internal-link">Tat</span> or rock foundation beneath the village is permanently damp due to the high water table. The village is historically significant as the entry point where <span class="internal-link">Ava Efrînê</span> flows from Bakur into Rojava. It is flanked by Ava Efrînê on the east and <span class="internal-link">Ava Sabûnê</span> on the west, while <span class="internal-link">Ava Germikê</span>, a stream sourced from the springs of <span class="internal-link">Keleha Hûrî</span>, runs through the area.</p>
 <p>The modern village was established approximately one hundred years ago, though the land previously belonged to the <span class="internal-link">Hecî Omerliyan</span> tribe, specifically landlords from Bakur. Before the borders were hardened, these lands were used by the Hecî Omerliyan, who later retreated to <span class="internal-link">Kilis</span> and <span class="internal-link">Qernêbî</span>. The current population consists largely of settled nomads. The first three families to establish the modern village, <span class="internal-link">Mihemedê Usê</span>, <span class="internal-link">Elikê Urê</span>, and <span class="internal-link">Ebdo Silo</span>, migrated from <span class="internal-link">Dêrswan</span>. Subsequent waves of migration brought families such as <span class="internal-link">Eliko Çerê</span>, <span class="internal-link">Birîmê Kekec</span>, <span class="internal-link">Hesen Naso</span>, <span class="internal-link">Reşkî Sêvo</span>, and <span class="internal-link">Kêlê</span> from places like <span class="internal-link">Qerşa</span>, <span class="internal-link">Qurta</span>, <span class="internal-link">Berkaşê</span>, and <span class="internal-link">Bircqasê</span>. The majority of these residents belong to the <span class="internal-link">Rûşkiyan</span> tribe and originally maintained a lifestyle focused on shepherding.</p>
 <p>Religious and healing practices are woven into the local geography. A sacred site known as <span class="internal-link">Kewsane</span>, located between Şîltat and the neighboring village of <span class="internal-link">Mersawa</span>, is visited by people seeking healing for ailments such as headaches or leg pain, particularly on Wednesdays. The village is also located very close to the historical ruins of Keleha Hûrî, which serves as the source for the Ava Germikê. This water is famous for staying warm during the winter, giving it its name, and is used for both drinking and irrigation.</p>
@@ -306,7 +363,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sheltata.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sheltata.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=aOAmOMR1w9s" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=aOAmOMR1w9s</a><br><a href="https://www.youtube.com/watch?v=UtvYRj3RiGo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=UtvYRj3RiGo</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sheltata.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20Sheltata.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=aOAmOMR1w9s" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=aOAmOMR1w9s</a></li><li>Link:<br><a href="https://www.youtube.com/watch?v=UtvYRj3RiGo" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=UtvYRj3RiGo</a></li></ul>
             </div>
 
             
@@ -316,7 +373,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -434,6 +491,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>

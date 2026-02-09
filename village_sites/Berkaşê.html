@@ -140,6 +140,27 @@
         .highlight-box { display: none; position: absolute; background-color: yellow; opacity: 0.5; border-radius: 50%; pointer-events: none; }
         /* --- END MINIMAP --- */
 
+        /* --- TIREJ TOGGLE --- */
+        .tirej-toggle-btn {
+            background-color: #15803d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .tirej-toggle-btn:hover {
+            background-color: #166534;
+        }
+        .dark .tirej-toggle-btn {
+            background-color: #16a34a;
+        }
+        .dark .tirej-toggle-btn:hover {
+            background-color: #22c55e;
+        }
+
     </style>
 </head>
 <body>
@@ -165,7 +186,7 @@
                             <div><h3 class="text-sm font-medium subtext">Nahiya (Subdistrict)</h3><p class="text-lg">Bilbilê</p></div>
 <div><h3 class="text-sm font-medium subtext">Also Known As</h3><p class="text-lg">Berkaşê, Berkesheh, Berkeshli, Berkêş, بركشة, بركشلي, بركيشه</p></div>
 <div><h3 class="text-sm font-medium subtext">Tribes</h3><p class="text-lg">Amkan, Omka, Qerebaba</p></div>
-<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">&#x27;Emwî, Avdî Şêşê, Besûş Gube, Elîf, Elîkê, Ibik, Me&#x27;mik, Seydik, Şêşê</p></div>
+<div><h3 class="text-sm font-medium subtext">Families, Clans, etc.</h3><p class="text-lg">&#x27;Emwî, Avdî Şêşê, Besûş Gube, Elîf, Elîkê, Family of Ebdo Mihemed, Ibik, Me&#x27;mik, Seydik, Şêşê</p></div>
                         </div>
                     </div>
                     <div class="flex-1 min-w-0"><div class="map-container" id="minimap-bilbil-">
@@ -204,21 +225,59 @@
 
             <div class="card p-6 rounded-xl">
                     <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Summaries</h2>
-                    <div class="space-y-4"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>I. Summary from TirejAfrin Site (English) of Berkaşê</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p>According to the book &#x27;جبل الكرد&#x27; &#x27;<span class="internal-link">Mountain of the Kurds (Afrin)</span>&#x27; Geographic Study:</p>
-<p><strong><span class="internal-link">1 - PhD/Villages/Berkaşê</span> (بەرکاشێ), بركشلي (Berkeshli), بركشة (Berkesheh)</strong> /427N - 700m/:</p>
+                    <div class="space-y-4">
+                     <details class="group" open>
+                        <summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg">
+                            <span>I. Summary from TirejAfrin Site (English) of Berkaşê</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div class="p-4 prose max-w-none">
+                            <div class="flex justify-end mb-2">
+                                <button id="tirej-summary-btn" class="tirej-toggle-btn" onclick="toggleAfrinSummary('tirej-summary')">النص العربي الأصلي</button>
+                            </div>
+                            <div id="tirej-summary-en">
+                                <p class="mb-6 font-semibold">Source: <a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Barkshle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Barkshle.htm</a></p>
+<p><span class="internal-link">Berkaş</span>, <span class="internal-link">Berkeşlî</span>, <span class="internal-link">Berkeşe</span> / 427 inhabitants - 700m /</p>
+<p><span class="internal-link">Berkaşî</span>: This means &quot;at the slope&quot; in Kurdish (ber + kaş), which is a true attribute of the village&#x27;s location. As for <span class="internal-link">Xûrî Bersûm</span>, he says that it is an Aramaic name meaning &quot;House of Disturbances,&quot; or from Syriac meaning &quot;The secluded ones knelt,&quot; or &quot;Blessed the ulcer or the cave&quot; (p. 69). All of this is contrary to the truth.</p>
+<p>It is located on the steep southern slope of <span class="internal-link">Çiyayê Simaq</span> (Sumac Mountain), and it is about 4km away from the village of Şerqiyan in the east. Its location is not visible, as if it were carefully hidden.</p>
+<p>It is stated in the book <span class="internal-link">Efrîn</span>... Her River and Her Green Hills: Berkeşlî is a farm in <span class="internal-link">Çiyayê Kurmênc</span> belonging to the <span class="internal-link">Bilbil</span> district, Efrîn area, Heleb governorate. It is a small farm located on the steep middle southern slope of the limestone Çiyayê Simaq, in the northern part of the Heleb plateau. Flood streams descend with the slope towards the south. It is 4km away from the village of Şerqiyan towards the southwest, and 20km from the town of Bilbil towards the southwest.</p>
+<p>It is bordered to the north by a high and rugged mountain chain and the villages of <span class="internal-link">Dûbîra</span> and <span class="internal-link">Xidriyan</span>; to the south by a deep flood valley and the village of <span class="internal-link">Qutan</span> at a distance of 1km; to the west by a pass and a flood valley between two mountainous heights planted with olive trees and the village of <span class="internal-link">Kurzêlê</span>; and to the east by a deep flood valley and the village of <span class="internal-link">Bêk Oba</span>.</p>
+<p>Its lands are mountainous, rugged, and poor from an economic standpoint. Most of its inhabitants have migrated to the cities, to Heleb and Efrîn, in search of a livelihood. The number of its houses is about 15, and its age is approximately 250 years. Its old houses are made of stone and mud with flat wooden roofs, while the modern ones are made of cement blocks. An electricity network and a modern olive press are available. The village drinks from artesian wells recently dug or from cisterns in which rainwater is collected.</p>
+<p>The residents work in rain-fed agriculture: olives, vines, and grains. Due to the limited cultivated areas, they are interested in raising sheep and goats. The road to the village is mountainous, earthen, and unpaved. Among the most important people of the village is the family of the artist and singer <span class="internal-link">Ebdo Mihemed</span>.</p>
+<p>Village Mukhtar: <span class="internal-link">Cemîl Henan Cefer</span></p>
+<p>Sources of Information:</p>
 <ul>
-<li><span class="internal-link">Berkashi</span> (بەرکاشی): means &quot;at the slope&quot; in Kurdish, which is a true description of the village&#x27;s location. <span class="internal-link">Al-Khoury Barsom</span> (الخوري برصوم) says it is an Aramaic name: from the house of disturbances, or from the Syriac &quot;the kneeling retreated,&quot; or <span class="internal-link">Bark Al-Karh</span> (بارك الكرح) or the cave /p.69/. All of this contradicts the facts.</li>
+<li>Book: جبل الكرد (عفرين) دراسة جغرافية Çiyayê Kurmênc (Efrîn): A Geographical Study by د. محمد عبدو علي Dr. Mihemed Ebdo Elî.</li>
 </ul>
 <ul>
-<li>Located on the steep southern slope of <span class="internal-link">Mount Samaq</span> (جبل سماق), about 4km east of <span class="internal-link">Sharqiyan</span> (شرقيان) village. Its location is not ideal and seems hidden with care.</li>
+<li>Book: عفرين .... نهرها وروابيها الخضراء Efrîn... Her River and Her Green Hills by عبدالرحمن محمد Ebdulrehman Mihemed from the village of Qetme.</li>
 </ul>
-<p>According to the book <span class="internal-link">Afrin... Her River and Green Hills</span>:</p>
-<p><strong>بركشلي (Berkeshli)</strong>: A farm in <span class="internal-link">Kurdish Mountain</span> (جبل الكرد) belonging to <span class="internal-link">Bulbul District</span> (ناحية بلبل), Afrin (منطقة عفرين), Aleppo Governorate (محافظة حلب).</p>
-<p>It is a small farm located on the middle steep southern slope of the limestone Mount Samaq (جبل سماق), in the northern part of the <span class="internal-link">Aleppo plateau</span> (هضبة حلب). Streams descend with the slope southward. It is 4km southwest of &quot;Sharqiyan&quot; (شرقيان) village and 20km southwest of Bilbil (بلبل) town.</p>
-<p>It is bordered to the north by a high mountain chain and rugged terrain and &quot;<span class="internal-link">Dubiru</span>&quot; (دوبيرو) and &quot;<span class="internal-link">Khadriyanli</span>&quot; (خضريانلي) villages, to the south by a deep stream valley and <span class="internal-link">Qotanli</span> (قوتانلي) village 1km away, to the west by a passage and stream valley between two mountain elevations planted with olive trees and &quot;<span class="internal-link">Kurzil Bilbil</span>&quot; (كورزيل بلبل) village, and to the east by a deep stream valley and &quot;<span class="internal-link">Bîk Oshaghi</span>&quot; (بيك أوشاغي) village.</p>
-<p>Its lands are mountainous, rugged, and economically poor. Most of its residents migrated to cities like Aleppo (حلب) and Afrin (عفرين) seeking livelihood. The village has approximately 15 houses and is about 250 years old. The houses are stone and mud with flat wooden roofs, while the modern ones are stone and cement. It has an electricity network and a modern olive press. The village drinks from recent artesian wells or from cisterns that collect rainwater.</p>
-<p>The residents work in rainfed agriculture growing olives, vineyards, and grains. Due to the narrow cultivated areas, they focus on raising sheep and goats. The road to the village is mountainous dirt unpaved. Among the most important owners of the village is the family of artist and singer (<span class="internal-link">Abdo Mohammed</span>) (عبدو محمد).</p>
-<p>Village Head: <span class="internal-link">Jamil Hanan Ja&#x27;far</span> (جميل حنان جعفر)</p></div></details><hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Berkaşê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=J8tH7xWQJjc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=J8tH7xWQJjc</a></p>
+<ul>
+<li>Studies of Navenda Tirej Soft / Ebdulrehman Hacî Osman.</li>
+</ul>
+<ul>
+<li>Some residents of the villages.</li>
+</ul>
+<p>Preparation and Execution: Manager of the Tirej Efrîn website: Ebdulrehman Hacî Osman 20/12/2013</p>
+                            </div>
+                            <div id="tirej-summary-ar" style="display:none;" dir="rtl">
+                                <p>جاء في كتاب جبل الكرد / عفرين / دراسة جغرافية : Berkaş‏ ، بركشلي ، بركشة /427ن - 700م/:</p>
+<ul>
+<li>بَركاشي: ويعني بالكردية &quot;عند المنحدر&quot;، وهو صفة حقيقية لموقع القرية. أما</li>
+</ul>
+<p>الخوري برصوم فيقول أنه اسم آرامي: من بيت الاضطرابات، أو من السريانية &quot;ركع المعتزلون&quot;، أو بارك الكرح أو المغارة /ص69/. وكل ذلك مخالف للحقيقة.</p>
+<ul>
+<li>تقع على السفح الجنوبي الشديد الانحدار لجبل سماق، وتبعد عن ق.شرقيان في</li>
+</ul>
+<p>الشرق بنحو 4كم. موقعها غير مرئي وكأنها مخبأة بعناية. جاء في كتاب عفرين .... نهرها وروابيها الخضراء : بركشلي : مزرعة في جبل الكرد تتبع ناحية بلبل ، منطقة عفرين محافظة حلب . وهي مزرعة صغيرة تقع على السفح الجنوبي الأوسط الشديد الانحدار لجبل سماق الكلسي ، في الجزء الشمالي من هضبة حلب ، و تنحدر مع السفح مسيلات باتجاه الجنوب ، تبعد عن قرية &quot;شرقان&quot; 4كم نحو الجنوب الغربي ، وعن بلدة بلبل20كم باتجاه الجنوب الغربي ، يحدها شمالاً سلسلة جبلية عالية ووعرة وقرية &quot;دوبيرو&quot;و&quot;خضريانلي&quot; وجنوباً واد سيلي عميق وقرية قوطانلي على بعد1كم ، وغرباً ممر وواد سيلي بين مرتفعين جبليين مزروعين بأشجار الزيتون وقرية &quot;كورزيل بلبل&quot;، وشرقاً واد سيلي عميق وقرية &quot;بيك أوشاغي&quot; ، أراضيها جبلية وعرة و فقيرة من الناحية الاقتصادية ، أغلب سكانها هاجروا إلى المدن إلى حلب ، عفرين بحثا عن الرزق ، يبلغ عدد بيوتها حوالي15بيت وعمرها حوالي250عام ، بيوتها حجرية طينية ذات سقوف خشبية مستوية و الحديثة حجرية أسمنتية ، تتوفر فيها شبكة كهرباء و معصرة زيتون حديثة ، تشرب القرية من آبار ارتوازية حديثا أو من صهاريج تجمع فيها مياه الأمطار ، يعمل السكان بالزراعة البعلية الزيتون و الكرمة والحبوب ونظرا لضيق المساحات المزروعة فإنهم يهتمون بتربية الأغنام و الماعز ، الطريق إلى القرية جبلي ترابي غير مزفت ، من أهم أصحاب القرية عائلة الفنان المطرب (عبدو محمد).</p>
+<p>مختار القرية : جميل حنان جعفر</p>
+<p>مصادر المعلومات : 1 -  كتاب جبل الكرد ( عفرين ) دراسة جغرافية للدكتور محمد عبدو علي . 2 - كتاب : عفرين .... نهرها وروابيها الخضراء للكاتب عبدالرحمن محمد من قرية قطمه . 3 - دراسات مركز تيريج سوفت / عبدالرحمن حاجي عثمان 4- بعض أهالي القرى .</p>
+<p>إعداد وتنفيذ  : مدير موقع</p>
+<p>تيريج عفرين : عبدالرحمن حاجي عثمان 20/12/2013//</p>
+                            </div>
+                        </div>
+                     </details>
+                     <hr class="themed-border"><details class="group" open><summary class="flex justify-between items-center font-semibold p-3 cursor-pointer text-lg"><span>II. Summary of Berkaşê from Ax û Welat</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="p-4 prose max-w-none"><p class="mb-6 font-semibold">Source: <a href="https://www.youtube.com/watch?v=J8tH7xWQJjc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline">https://www.youtube.com/watch?v=J8tH7xWQJjc</a></p>
 <p>The village of Berkaşê, located in the Afrin region, is highlighted in this documentary not through its physical monuments or ancient ruins, but through the living memory of its residents, specifically regarding the cultural and political resistance of the 1990s. The primary historical narrative focuses on the role of village residents in the Kurdish theater and arts movement during a period of intense pressure from the Syrian government.</p>
 <p>Two notable residents, <span class="internal-link">Ehmed</span> (often referred to as <span class="internal-link">Apê Ehmed</span>) and <span class="internal-link">Menan Osman &#x27;Emwî</span>, provide a detailed oral history of this era. Ehmed is a veteran stage actor who began his theatrical work around 1976, continuing through the early 1990s. The transcript reveals that Berkaşê was home to individuals deeply involved in regional artistic troupes, specifically <span class="internal-link">Koma Berxwedan</span> and <span class="internal-link">Koma Agirî</span>. These groups were part of a broader movement (including <span class="internal-link">Koma Engîzekê</span>) that used folklore and theater to preserve Kurdish identity and articulate political resistance.</p>
 <p>The historical significance of the village&#x27;s residents lies in their dedication to these cultural activities despite severe state oppression. Ehmed recounts the years between 1990 and 1995 as a particularly volatile period where security forces frequently targeted their performances. The plays were typically performed during <span class="internal-link">Newroz</span> celebrations at various regional locations, including <span class="internal-link">Binê Seringekê</span>, the area around the <span class="internal-link">Kelê</span> (fortress), and the hills of <span class="internal-link">Cindirêsê</span>. The content of these plays was often allegorical or satirical; Ehmed describes playing a comedic but politically charged character named <span class="internal-link">Inxîfat</span> (or <span class="internal-link">Imiş</span>), a &quot;kuşkar&quot; (fuel/dung collector), to mock the absurdity of the political situation.</p>
@@ -319,7 +378,7 @@
 
             <div class="card p-6 rounded-xl">
                 <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">V. Links</h2>
-                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirejafrin:<br><a href="http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Barkshle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">http://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Barkshle.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=_hVQS_nEcjI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_hVQS_nEcjI</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=J8tH7xWQJjc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=J8tH7xWQJjc</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=iO71bGoP6i8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=iO71bGoP6i8</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=zBiZO9xtqgU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zBiZO9xtqgU</a></li></ul>
+                <ul class="list-disc list-inside space-y-2 p-4"><li>Tirej Afrin:<br><a href="https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Barkshle.htm" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.tirejafrin.com/site/kura%20afrin%20%20%20bilbile%20-%20Barkshle.htm</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=_hVQS_nEcjI" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=_hVQS_nEcjI</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=J8tH7xWQJjc" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=J8tH7xWQJjc</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=iO71bGoP6i8" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=iO71bGoP6i8</a></li><li>Ax û Welat:<br><a href="https://www.youtube.com/watch?v=zBiZO9xtqgU" target="_blank" rel="noopener noreferrer" class="external-link hover:underline break-all">https://www.youtube.com/watch?v=zBiZO9xtqgU</a></li></ul>
             </div>
 
             
@@ -329,7 +388,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on January 21, 2026</p>
+            <p class="text-sm subtext">Page Updated on February 09, 2026</p>
         </footer>
     </div>
 
@@ -447,6 +506,24 @@
                     document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
                 });
         });
+
+        function toggleAfrinSummary(idPrefix) {
+            const enDiv = document.getElementById(idPrefix + '-en');
+            const arDiv = document.getElementById(idPrefix + '-ar');
+            const btn = document.getElementById(idPrefix + '-btn');
+
+            if (enDiv.style.display !== 'none') {
+                // Switch to Arabic
+                enDiv.style.display = 'none';
+                arDiv.style.display = 'block';
+                btn.textContent = 'English Translation';
+            } else {
+                // Switch to English
+                enDiv.style.display = 'block';
+                arDiv.style.display = 'none';
+                btn.textContent = 'النص العربي الأصلي';
+            }
+        }
     </script>
 </body>
 </html>
