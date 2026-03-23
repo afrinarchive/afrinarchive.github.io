@@ -24,6 +24,28 @@
             }
         }
 
+        @keyframes villageGlow {
+            0% {
+                border-color: rgba(0, 154, 61, 0.95);
+                box-shadow: 0 0 0 3px rgba(0, 154, 61, 0.55), 0 0 22px rgba(0, 154, 61, 0.85), 0 0 42px rgba(255, 204, 0, 0.4);
+            }
+
+            33% {
+                border-color: rgba(255, 204, 0, 0.98);
+                box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.65), 0 0 26px rgba(255, 204, 0, 0.92), 0 0 46px rgba(243, 40, 55, 0.45);
+            }
+
+            66% {
+                border-color: rgba(243, 40, 55, 0.98);
+                box-shadow: 0 0 0 3px rgba(243, 40, 55, 0.65), 0 0 26px rgba(243, 40, 55, 0.92), 0 0 46px rgba(0, 154, 61, 0.45);
+            }
+
+            100% {
+                border-color: rgba(0, 154, 61, 0.95);
+                box-shadow: 0 0 0 3px rgba(0, 154, 61, 0.55), 0 0 22px rgba(0, 154, 61, 0.85), 0 0 42px rgba(255, 204, 0, 0.4);
+            }
+        }
+
         .animate-bounce {
             animation: bounce 1s infinite;
         }
@@ -277,6 +299,32 @@
             color: #999;
         }
 
+        .search-options {
+            width: 100%;
+            max-width: 420px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .search-checkbox-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #3a3a3a;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .search-checkbox {
+            width: 16px;
+            height: 16px;
+            accent-color: #8b7355;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
         .search-button {
             background-color: #ffcc00;
             color: #3a3a3a;
@@ -464,10 +512,20 @@
             border-radius: 2px;
         }
 
+        .sections-group {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 14px;
+        }
+
         .sections-container {
             display: flex;
             height: 320px;
             width: 100%;
+            gap: 14px;
+            padding: 0 14px;
+            box-sizing: border-box;
         }
 
         .section {
@@ -483,6 +541,14 @@
             background-position: center;
             background-repeat: no-repeat;
             min-width: 0;
+            border-radius: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.78);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+            box-sizing: border-box;
+        }
+
+        .section-link {
+            text-decoration: none;
         }
 
         .section::before {
@@ -494,6 +560,7 @@
             bottom: 0;
             background: inherit;
             z-index: 1;
+            border-radius: inherit;
         }
 
         .section-content {
@@ -523,57 +590,119 @@
         .section-text {
             font-size: 15px;
             line-height: 1.4;
-            font-weight: 400;
+            font-weight: 700;
         }
 
         .section-1 {
             background-color: #009A3D;
-            background-image: linear-gradient(rgba(0, 154, 61, 0.75), rgba(0, 154, 61, 0.75)), url('landing/images/villages.jpg');
+            background-image: linear-gradient(rgba(0, 154, 61, 0.94), rgba(0, 154, 61, 0.94)), url('landing/images/villages.jpg');
             cursor: pointer;
-            transition: background-image 0.2s ease;
+            transition: background-image 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            animation: villageGlow 2.4s linear infinite;
         }
 
         .section-1:hover {
-            background-image: linear-gradient(rgba(0, 220, 88, 0.85), rgba(0, 220, 88, 0.85)), url('landing/images/villages.jpg');
+            background-image: linear-gradient(rgba(0, 220, 88, 0.97), rgba(0, 220, 88, 0.97)), url('landing/images/villages.jpg');
         }
 
         .section-2 {
             background-color: #F32837;
-            background-image: linear-gradient(rgba(243, 40, 55, 0.75), rgba(243, 40, 55, 0.75)), url('landing/images/infographics.jpg');
+            background-image: linear-gradient(rgba(243, 40, 55, 0.9), rgba(243, 40, 55, 0.9)), url('landing/images/substack.png');
             cursor: pointer;
             transition: background-image 0.2s ease;
         }
 
         .section-2:hover {
-            background-image: linear-gradient(rgba(255, 85, 100, 0.9), rgba(255, 85, 100, 0.9)), url('landing/images/infographics.jpg');
+            background-image: linear-gradient(rgba(255, 85, 100, 0.96), rgba(255, 85, 100, 0.96)), url('landing/images/substack.png');
         }
 
         .section-3 {
             background-color: #FFCC00;
             color: #333;
-            background-image: linear-gradient(rgba(255, 204, 0, 0.8), rgba(255, 204, 0, 0.8)), url('landing/images/who.jpg');
+            background-image: linear-gradient(rgba(255, 204, 0, 0.9), rgba(255, 204, 0, 0.9)), url('landing/images/who.jpg');
         }
 
         .section-4 {
             background-color: #F32837;
-            background-image: linear-gradient(rgba(243, 40, 55, 0.75), rgba(243, 40, 55, 0.75)), url('landing/images/updates.jpg');
+            background-image: linear-gradient(rgba(243, 40, 55, 0.9), rgba(243, 40, 55, 0.9)), url('landing/images/updates.jpg');
             cursor: pointer;
             transition: background-image 0.2s ease;
         }
 
         .section-4:hover {
-            background-image: linear-gradient(rgba(255, 85, 100, 0.9), rgba(255, 85, 100, 0.9)), url('landing/images/updates.jpg');
+            background-image: linear-gradient(rgba(255, 85, 100, 0.96), rgba(255, 85, 100, 0.96)), url('landing/images/updates.jpg');
         }
 
         .section-5 {
             background-color: #009A3D;
-            background-image: linear-gradient(rgba(0, 154, 61, 0.75), rgba(0, 154, 61, 0.75)), url('landing/images/contact.jpg');
+            background-image: linear-gradient(rgba(0, 154, 61, 0.94), rgba(0, 154, 61, 0.94)), url('landing/images/contact.jpg');
             cursor: pointer;
             transition: background-image 0.2s ease;
         }
 
         .section-5:hover {
-            background-image: linear-gradient(rgba(0, 220, 88, 0.85), rgba(0, 220, 88, 0.85)), url('landing/images/contact.jpg');
+            background-image: linear-gradient(rgba(0, 220, 88, 0.97), rgba(0, 220, 88, 0.97)), url('landing/images/contact.jpg');
+        }
+
+        .section-6 {
+            background-color: #F32837;
+            background-image: linear-gradient(rgba(243, 40, 55, 0.9), rgba(243, 40, 55, 0.9)), url('landing/images/youtube.png');
+            cursor: pointer;
+            transition: background-image 0.2s ease;
+        }
+
+        .section-6:hover {
+            background-image: linear-gradient(rgba(255, 85, 100, 0.96), rgba(255, 85, 100, 0.96)), url('landing/images/youtube.png');
+        }
+
+        .section-7 {
+            background-color: #FFCC00;
+            color: #333;
+            background-image: linear-gradient(rgba(255, 204, 0, 0.9), rgba(255, 204, 0, 0.9)), url('landing/images/dialogue_project.png');
+            cursor: pointer;
+            transition: background-image 0.2s ease;
+        }
+
+        .section-7:hover {
+            background-image: linear-gradient(rgba(255, 223, 77, 0.96), rgba(255, 223, 77, 0.96)), url('landing/images/dialogue_project.png');
+        }
+
+        .section-8 {
+            background-color: #009A3D;
+            background-image: linear-gradient(rgba(0, 154, 61, 0.94), rgba(0, 154, 61, 0.94)), url('landing/images/infographics.jpg');
+            cursor: pointer;
+            transition: background-image 0.2s ease;
+        }
+
+        .section-8:hover {
+            background-image: linear-gradient(rgba(0, 220, 88, 0.97), rgba(0, 220, 88, 0.97)), url('landing/images/infographics.jpg');
+        }
+
+        .section-9 {
+            background-color: #FFCC00;
+            color: #333;
+            background-image: linear-gradient(rgba(255, 204, 0, 0.9), rgba(255, 204, 0, 0.9)), url('landing/images/converter.png');
+            cursor: pointer;
+            transition: background-image 0.2s ease;
+        }
+
+        .section-9:hover {
+            background-image: linear-gradient(rgba(255, 223, 77, 0.96), rgba(255, 223, 77, 0.96)), url('landing/images/converter.png');
+        }
+
+        .section-10 {
+            background-color: #F32837;
+            background-image: linear-gradient(rgba(243, 40, 55, 0.9), rgba(243, 40, 55, 0.9)), url('landing/images/timeline.png');
+            cursor: pointer;
+            transition: background-image 0.2s ease;
+        }
+
+        .section-10:hover {
+            background-image: linear-gradient(rgba(255, 85, 100, 0.96), rgba(255, 85, 100, 0.96)), url('landing/images/timeline.png');
+        }
+
+        .section-coming-soon {
+            cursor: default;
         }
 
         .village-directory-title {
@@ -585,14 +714,53 @@
             margin-top: 8px;
         }
 
+        .section-3 .section-header {
+            margin-bottom: 2px;
+        }
+
+        .section-3 .secondary-title {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .section-3 .section-text {
+            font-size: 15px;
+            line-height: 1.25;
+        }
+
+        .section-3 p.section-text {
+            margin-top: 0;
+            margin-bottom: 6px;
+        }
+
+        .section-3 ul.section-text {
+            margin-top: 0 !important;
+            margin-bottom: 0;
+            padding-left: 18px !important;
+        }
+
+        .section-3 li {
+            margin-bottom: 8px;
+        }
+
+        .section-3 ul.section-text li {
+            font-size: 14px;
+            line-height: 1.3;
+        }
+
         .section-1 .section-text,
         .section-2 .section-text,
         .section-3 .section-text,
         .section-4 .section-text,
-        .section-5 .section-text {
+        .section-5 .section-text,
+        .section-6 .section-text,
+        .section-7 .section-text,
+        .section-8 .section-text,
+        .section-9 .section-text,
+        .section-10 .section-text {
             font-size: 16px;
             line-height: 1.4;
-            font-weight: 400;
+            font-weight: 700;
         }
 
         .secondary-title {
@@ -731,14 +899,20 @@
                 font-size: 20px;
             }
 
+            .sections-group,
             .sections-container {
                 flex-direction: column;
+            }
+
+            .sections-container {
                 height: auto;
+                padding: 0 12px;
+                gap: 12px;
             }
 
             .section {
                 height: auto;
-                min-height: 100px;
+                min-height: 140px;
                 padding-top: 25px;
                 padding-bottom: 25px;
                 justify-content: center;
@@ -774,6 +948,15 @@
 
         /* For smaller mobile phones */
         @media (max-width: 480px) {
+            .sections-group {
+                gap: 10px;
+            }
+
+            .sections-container {
+                padding: 0 10px;
+                gap: 10px;
+            }
+
             .site-title-en {
                 font-size: 36px;
             }
@@ -854,6 +1037,12 @@
                 <div class="search-wrapper">
                     <input type="text" id="search-input" class="search-input"
                         placeholder="Search villages, people, places...">
+                    <div class="search-options">
+                        <label class="search-checkbox-label" for="villages-only-toggle">
+                            <input type="checkbox" id="villages-only-toggle" class="search-checkbox" checked>
+                            <span>Search Village Directory Only</span>
+                        </label>
+                    </div>
                     <div id="search-results" class="search-results"></div>
                     <button class="search-button" onclick="showSearchResultsPage()">Search</button>
                 </div>
@@ -873,63 +1062,115 @@
         </div>
     </div>
 
-    <div class="sections-container">
-        <div class="section section-1" onclick="window.open('village_site_files/00_village_names.html', '_blank')">
-            <div class="section-content">
-                <div class="section-header">
-                    <div class="play-icon"></div>
-                    <h3 class="section-title">Online Archive</h3>
+    <div class="sections-group">
+        <div class="sections-container">
+            <a class="section section-1 section-link" href="village-directory/village-directory.html">
+                <div class="section-content">
+                    <div class="section-header">
+                        <div class="play-icon"></div>
+                        <h3 class="section-title">Online Archive</h3>
+                    </div>
+                    <h4 class="village-directory-title">Village Directory</h4>
+                    <p class="section-text">A collection of information about the villages of Afrin. The database currently
+                        holds information about 366 villages.</p>
                 </div>
-                <h4 class="village-directory-title">Village Directory</h4>
-                <p class="section-text">A collection of information about the villages of Afrin. The database currently
-                    holds information about 366 villages.</p>
+            </a>
+            <a class="section section-2 section-link" href="https://substack.com/@afrinarchive" target="_blank"
+                rel="noopener noreferrer">
+                <div class="section-content">
+                    <div class="section-header">
+                        <h3 class="secondary-title">Substack</h3>
+                    </div>
+                    <p class="section-text">Articles about Afrin every Tuesday.</p>
+                </div>
+            </a>
+            <div class="section section-3">
+                <div class="section-content">
+                    <div class="section-header">
+                        <h3 class="secondary-title">About Us</h3>
+                    </div>
+                    <p class="section-text">The Afrin Archive is dedicated to preserving and documenting the rich cultural heritage,
+                        history, and stories of Afrin for future generations.</p>
+                    <ul class="section-text"
+                        style="list-style-type: disc; margin-top: 10px; padding-left: 20px; text-align: left;">
+                        <li><b>184 Hours, 38 Minutes of Transcripts</b></li>
+                        <li><b>288 Interview Videos Transcribed</b></li>
+                        <li><b>366 Villages Recorded</b></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="section section-2"
-            onclick="window.open('https://www.zachariahhopkins.com/landing_pages/charts.html', '_blank')">
-            <div class="section-content">
-                <div class="section-header">
-                    <h3 class="secondary-title">Infographics</h3>
-                </div>
-                <p class="section-text">Charts, posters, and graphs created from the Afrin Archive's data.</p>
-            </div>
-        </div>
-        <div class="section section-3">
-            <div class="section-content">
-                <div class="section-header">
-                    <h3 class="secondary-title">About Us</h3>
-                </div>
-                <p class="section-text">We are dedicated to preserving and documenting the rich cultural heritage,
-                    history, and stories of Afrin for future generations.</p>
-                <ul class="section-text"
-                    style="list-style-type: disc; margin-top: 10px; padding-left: 20px; text-align: left;">
-                    <li><b>184 Hours, 38 Minutes of Transcripts</b></li>
-                    <li><b>288 Interview Videos Transcribed</b></li>
-                    <li><b>366 Villages Recorded</b></li>
-                </ul>
-            </div>
-        </div>
-        <div class="section section-4" onclick="window.location.href = 'updates/updates.html'">
-            <div class="section-content">
-                <div class="section-header">
-                    <h3 class="secondary-title">Updates</h3>
-                </div>
-                <div class="updates-slider-wrapper">
-                    <div class="updates-slider">
-                        <!-- Update items will be loaded here -->
+            <div class="section section-4" onclick="window.location.href = 'updates/updates.html'">
+                <div class="section-content">
+                    <div class="section-header">
+                        <h3 class="secondary-title">Updates</h3>
+                    </div>
+                    <div class="updates-slider-wrapper">
+                        <div class="updates-slider">
+                            <!-- Update items will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="updates-nav">
+                        <!-- Navigation dots will be added here -->
                     </div>
                 </div>
-                <div class="updates-nav">
-                    <!-- Navigation dots will be added here -->
+            </div>
+            <div class="section section-5" onclick="window.location.href = 'mailto:afrin.archive@gmail.com'">
+                <div class="section-content">
+                    <div class="section-header">
+                        <h3 class="secondary-title">Contact Us</h3>
+                    </div>
+                    <p class="section-text">afrin.archive@gmail.com</p>
                 </div>
             </div>
         </div>
-        <div class="section section-5" onclick="window.location.href = 'mailto:afrin.archive@gmail.com'">
-            <div class="section-content">
-                <div class="section-header">
-                    <h3 class="secondary-title">Contact Us</h3>
+
+        <div class="sections-container">
+            <a class="section section-6 section-link" href="https://www.youtube.com/@endlesslynow" target="_blank"
+                rel="noopener noreferrer">
+                <div class="section-content">
+                    <div class="section-header">
+                        <h3 class="secondary-title">Youtube</h3>
+                    </div>
+                    <p class="section-text">My Youtube channel dedicated to the history of Afrin and more. Videos are
+                        both in Kurmanji Kurdish and English.</p>
                 </div>
-                <p class="section-text">afrin.archive@gmail.com</p>
+            </a>
+            <a class="section section-7 section-link" href="https://www.instagram.com/afrini_zimane/"
+                target="_blank" rel="noopener noreferrer">
+                <div class="section-content">
+                    <div class="section-header">
+                        <h3 class="secondary-title">Dialogue Project</h3>
+                    </div>
+                    <p class="section-text">The Afrini Dialect Project collects and documents Afrini proverbs, making
+                        them accessible in written form to both native speakers and the world in general.</p>
+                </div>
+            </a>
+            <a class="section section-8 section-link" href="https://www.zachariahhopkins.com/landing_pages/charts.html"
+                target="_blank" rel="noopener noreferrer">
+                <div class="section-content">
+                    <div class="section-header">
+                        <h3 class="secondary-title">Infographics</h3>
+                    </div>
+                    <p class="section-text">Charts, posters, and graphs created from the Afrin Archive's data.</p>
+                </div>
+            </a>
+            <a class="section section-9 section-link" href="https://www.zachariahhopkins.com/landing_pages/hijri.html"
+                target="_blank" rel="noopener noreferrer">
+                <div class="section-content">
+                    <div class="section-header">
+                        <h3 class="secondary-title">Hijri / Gregorian Converter</h3>
+                    </div>
+                    <p class="section-text">A simple Hijri to Gregorian / Gregorian to Hijri converter.</p>
+                </div>
+            </a>
+            <div class="section section-10 section-coming-soon">
+                <div class="section-content">
+                    <div class="section-header">
+                        <h3 class="secondary-title">Timeline of Afrin</h3>
+                    </div>
+                    <p class="section-text">A detailed timeline from 2700 BCE until 2010 AD for Afrin, Syria and the
+                        surrounding region, in English, Kurmanji Kurdish, and Arabic. Coming soon.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1040,6 +1281,8 @@
         function setupSearchUI() {
             const searchInput = document.getElementById('search-input');
             const searchResults = document.getElementById('search-results');
+            const searchWrapper = document.querySelector('.search-wrapper');
+            const villagesOnlyToggle = document.getElementById('villages-only-toggle');
             let searchTimeout;
             searchInput.addEventListener('input', () => {
                 clearTimeout(searchTimeout);
@@ -1049,7 +1292,7 @@
                 if (e.key === 'Enter') { e.preventDefault(); showSearchResultsPage(); }
             });
             document.addEventListener('click', e => {
-                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                if (!searchWrapper.contains(e.target)) {
                     searchResults.style.display = 'none';
                 }
             });
@@ -1058,6 +1301,48 @@
                     searchResults.style.display = 'block';
                 }
             });
+            villagesOnlyToggle.addEventListener('change', () => {
+                if (searchInput.value.trim()) {
+                    performDropdownSearch();
+                } else {
+                    searchResults.style.display = 'none';
+                }
+            });
+        }
+
+        function villagesOnlyEnabled() {
+            return document.getElementById('villages-only-toggle')?.checked === true;
+        }
+
+        function isVillageSiteUrl(url = '') {
+            return url.replace(/^(\.\.\/|\.\/|\/)+/, '').startsWith('village_sites/');
+        }
+
+        async function getScopedSearch(query) {
+            const search = await pagefind.search(query);
+            const villagesOnly = villagesOnlyEnabled();
+
+            if (!villagesOnly) {
+                return {
+                    villagesOnly,
+                    results: search.results,
+                    resultCount: search.results.length,
+                    hydratedResults: null
+                };
+            }
+
+            const hydratedResults = await Promise.all(search.results.map(async result => {
+                const data = await result.data();
+                return { result, data };
+            }));
+            const filteredResults = hydratedResults.filter(({ data }) => isVillageSiteUrl(data.url));
+
+            return {
+                villagesOnly,
+                results: filteredResults.map(({ result }) => result),
+                resultCount: filteredResults.length,
+                hydratedResults: filteredResults
+            };
         }
 
         async function performDropdownSearch() {
@@ -1066,18 +1351,19 @@
             const query = searchInput.value.trim();
             if (!query || !pagefind) { searchResults.style.display = 'none'; return; }
 
-            const search = await pagefind.search(query);
+            const search = await getScopedSearch(query);
             lastSearchQuery = query;
             lastSearchResults = search.results;
 
-            if (search.results.length === 0) {
-                searchResults.innerHTML = '<div class="search-result-item"><div class="search-result-title">No results found</div></div>';
+            if (search.resultCount === 0) {
+                searchResults.innerHTML = `<div class="search-result-item"><div class="search-result-title">${search.villagesOnly ? 'No village results found' : 'No results found'}</div></div>`;
                 searchResults.style.display = 'block';
                 return;
             }
 
-            // Load data for first 8 results for the dropdown
-            const topResults = await Promise.all(search.results.slice(0, 8).map(r => r.data()));
+            const topResults = search.hydratedResults
+                ? search.hydratedResults.slice(0, 8).map(({ data }) => data)
+                : await Promise.all(search.results.slice(0, 8).map(r => r.data()));
 
             const dropdownHTML = topResults.map(data => {
                 const url = data.url;
@@ -1089,9 +1375,9 @@
                 </div>`;
             }).join('');
 
-            const seeMoreHTML = search.results.length > 8 ? `
+            const seeMoreHTML = search.resultCount > 8 ? `
                 <div class="see-more-button" onclick="showSearchResultsPage()">
-                    See All ${search.results.length} results
+                    See All ${search.resultCount} ${search.villagesOnly ? 'village ' : ''}results
                 </div>` : '';
             searchResults.innerHTML = dropdownHTML + seeMoreHTML;
             searchResults.style.display = 'block';
@@ -1102,29 +1388,30 @@
             const query = document.getElementById('search-input').value.trim() || lastSearchQuery;
             if (!query) return;
 
-            const search = await pagefind.search(query);
+            const search = await getScopedSearch(query);
             lastSearchResults = search.results;
             lastSearchQuery = query;
 
             document.querySelector('.main-section').style.display = 'none';
-            document.querySelector('.sections-container').style.display = 'none';
+            document.querySelector('.sections-group').style.display = 'none';
             const arrow = document.querySelector('.floating-scroll-arrow');
             if (arrow) arrow.style.display = 'none';
             document.getElementById('search-results').style.display = 'none';
             document.getElementById('search-results-page').style.display = 'block';
 
-            document.getElementById('search-results-page-title').textContent = `Search Results for "${query}"`;
-            document.getElementById('search-results-count').textContent = `${search.results.length} result${search.results.length !== 1 ? 's' : ''} found`;
+            document.getElementById('search-results-page-title').textContent = `${search.villagesOnly ? 'Village Search Results' : 'Search Results'} for "${query}"`;
+            document.getElementById('search-results-count').textContent = `${search.resultCount} ${search.villagesOnly ? 'village result' : 'result'}${search.resultCount !== 1 ? 's' : ''} found`;
 
             const list = document.getElementById('search-results-page-list');
 
-            if (search.results.length === 0) {
-                list.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">No results found.</div>';
+            if (search.resultCount === 0) {
+                list.innerHTML = `<div style="text-align: center; padding: 40px; color: #666;">${search.villagesOnly ? 'No village results found.' : 'No results found.'}</div>`;
                 return;
             }
 
-            // Load all result data
-            const allData = await Promise.all(search.results.map(r => r.data()));
+            const allData = search.hydratedResults
+                ? search.hydratedResults.map(({ data }) => data)
+                : await Promise.all(search.results.map(r => r.data()));
 
             list.innerHTML = allData.map(data => {
                 const url = data.url;
@@ -1139,7 +1426,7 @@
 
         function returnToMain() {
             document.querySelector('.main-section').style.display = 'flex';
-            document.querySelector('.sections-container').style.display = 'flex';
+            document.querySelector('.sections-group').style.display = 'flex';
             document.getElementById('search-results-page').style.display = 'none';
         }
 
@@ -1222,7 +1509,7 @@
 
     // This function scrolls to the target section and then hides the arrow
     function scrollToSections() {
-        document.querySelector('.sections-container').scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('.sections-group').scrollIntoView({ behavior: 'smooth' });
         scrollArrow.style.display = 'none';
     }
 
