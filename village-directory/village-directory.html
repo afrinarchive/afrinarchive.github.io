@@ -93,8 +93,11 @@
         .map-wrapper { padding: 20px 0; border-bottom: 1px solid var(--village-border); margin-bottom: 20px; }
         .map-layout-container { display: flex; gap: 20px; align-items: flex-start; }
         .map-village-links-multicolumn { flex: 1; column-count: 2; column-gap: 10px; }
-        .map-village-links-multicolumn a { display: block; padding: 9px 12px; color: var(--internal-link-color); text-decoration: none; border: 1px solid var(--village-border); transition: background-color 0.2s; border-radius: 4px; margin-bottom: 5px; break-inside: avoid-column; }
-        .map-village-links-multicolumn a:hover { background-color: var(--village-bg); }
+        .map-village-link-row { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border: 1px solid var(--village-border); border-radius: 4px; margin-bottom: 5px; break-inside: avoid-column; background-color: transparent; transition: background-color 0.2s; }
+        .map-village-link-row:hover { background-color: var(--village-bg); }
+        .map-village-highlight-link { flex: 1; min-width: 0; color: var(--internal-link-color); text-decoration: none; }
+        .map-village-page-link { margin-left: auto; padding: 6px 10px; border: 1px solid var(--village-border); border-radius: 4px; color: var(--text-color); text-decoration: none; white-space: nowrap; font-size: 12px; background-color: var(--card-bg-color); }
+        .map-village-page-link:hover { background-color: var(--brown-color); color: white; }
         .map-layout-container .map-container { flex: 1; margin: 0; }
         .map-container { position: relative; width: 100%; max-width: 500px; }
         .map-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
@@ -134,6 +137,8 @@
             .nahiya-title { font-size: 24px; } .nahiya-section { padding: 20px; }
             .map-layout-container { flex-direction: column; }
             .map-village-links-multicolumn { column-count: 1; margin-bottom: 20px; }
+            .map-village-link-row { align-items: flex-start; }
+            .map-village-page-link { align-self: flex-end; }
             .search-results-header { flex-direction: column; align-items: flex-start; gap: 15px; }
             .back-button { padding: 16px 30px; font-size: 16px; }
             .search-results-title { font-size: 24px; }
@@ -6483,6 +6488,66 @@
                 return linkWrapper;
             }
 
+            const specialMapVillagePages = {
+                "Bilbil\u00ea::Elcara": "Elcara - Bilbil\u00ea.html",
+                "Bilbil\u00ea::Ziving\u00ea": "Ziving\u00ea - Bilbil\u00ea.html",
+                "Cindires::\u00c7obana": "\u00c7obana - Cindires.html",
+                "Cindires::\u00c7olaqa (North)": "\u00c7olaqa - Cindires.html",
+                "Cindires::\u00c7olaqa (South)": "\u00c7olaqa - Cindires.html",
+                "Efr\u00een::Ba\u015femr\u00ea": "Ba\u015femr\u00ea.html",
+                "Efr\u00een::Bircilqaz\u00ea": "Bircilqaz\u00ea.html",
+                "Efr\u00een::Gaz\u00ea": "Gaz\u00ea - Erf\u00een.html",
+                "Efr\u00een::Meyas\u00ea": "Meyas\u00ea.html",
+                "Reco::\u015e\u00eax": "\u015e\u00eax - Mt Hawar.html",
+                "\u015eiy\u00ea::H\u00eaki\u00e7\u00ea": "H\u00eaki\u00e7\u00ea.html"
+            };
+
+            function normalizeVillageName(value) {
+                return (value || '')
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '')
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '');
+            }
+
+            function findMapVillageFilename(nahiyaName, village, nahiyaData) {
+                const specialKey = `${nahiyaName}::${village.name}`;
+                if (specialMapVillagePages[specialKey]) {
+                    return specialMapVillagePages[specialKey];
+                }
+
+                const detailed = nahiyaData.all_villages_detailed || [];
+                const exact = detailed.find(item => item.name === village.name);
+                if (exact) {
+                    return exact.filename;
+                }
+
+                const target = normalizeVillageName(village.name);
+                const normalizedExact = detailed.find(item => normalizeVillageName(item.name) === target);
+                if (normalizedExact) {
+                    return normalizedExact.filename;
+                }
+
+                const looseMatches = detailed.filter(item => {
+                    const itemName = normalizeVillageName(item.name);
+                    if (!itemName) {
+                        return false;
+                    }
+                    if (itemName.includes(target) || target.includes(itemName)) {
+                        return true;
+                    }
+                    return (item.alt || []).some(alt => {
+                        const altName = normalizeVillageName(alt);
+                        return altName && (altName === target || altName.includes(target) || target.includes(altName));
+                    });
+                });
+                if (looseMatches.length === 1) {
+                    return looseMatches[0].filename;
+                }
+
+                return null;
+            }
+
             const sortedNahiyaNames = Object.keys(nahiyas).sort((a, b) => a.localeCompare(b));
             for (const nahiyaName of sortedNahiyaNames) {
                 const nahiyaData = nahiyas[nahiyaName];
@@ -6503,10 +6568,27 @@
                     const villageLinks = document.createElement('div');
                     villageLinks.className = 'map-village-links-multicolumn';
                     nahiyaData.villages.forEach(village => {
-                        const link = document.createElement('a');
-                        link.href = `#${village.id}`;
-                        link.textContent = village.name;
-                        villageLinks.appendChild(link);
+                        const row = document.createElement('div');
+                        row.className = 'map-village-link-row';
+
+                        const highlightLink = document.createElement('a');
+                        highlightLink.className = 'map-village-highlight-link';
+                        highlightLink.href = `#${village.id}`;
+                        highlightLink.textContent = village.name;
+                        row.appendChild(highlightLink);
+
+                        const filename = findMapVillageFilename(nahiyaName, village, nahiyaData);
+                        if (filename) {
+                            const pageLink = document.createElement('a');
+                            pageLink.className = 'map-village-page-link';
+                            pageLink.href = `../village_sites/${filename}`;
+                            pageLink.target = '_blank';
+                            pageLink.rel = 'noopener noreferrer';
+                            pageLink.textContent = 'Go to Village Page';
+                            row.appendChild(pageLink);
+                        }
+
+                        villageLinks.appendChild(row);
                     });
                     const mapContainer = document.createElement('div');
                     mapContainer.className = 'map-container';

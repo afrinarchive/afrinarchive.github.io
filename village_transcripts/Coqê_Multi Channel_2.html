@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript | Coqê - Multi Channel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .jump-btn { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.875rem; transition: all 0.2s; }
+        .jump-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; font-size: 0.75rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .copy-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Coqê</h1>
+            <div class="mt-2 flex flex-wrap items-center gap-3">
+                <p class="text-xl subtext">Transcript from Multi Channel</p>
+                <a href="../village_sites/Coqê.html" class="jump-btn inline-flex items-center gap-2">Go to Village Site</a>
+            </div>
+        </header>
+
+        <main class="space-y-6">
+            <!-- General Info Card -->
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transcript Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Village</h3>
+                        <p class="text-lg">Coqê</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Source Channel</h3>
+                        <p class="text-lg">Multi Channel</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Length</h3>
+                        <p class="text-lg">00:35:44</p>
+                    </div>
+                    <div class="mt-4">
+                    <a href="https://www.youtube.com/watch?v=r0hDvpBgfGM" target="_blank" rel="noopener noreferrer" class="external-link hover:underline flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+                </div>
+                <!-- Jump Buttons -->
+                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t themed-border">
+                    <a href="#english" class="jump-btn">Go to Translation</a>
+                    <a href="#kurdish" class="jump-btn">Biçe Transkrîptê</a>
+                </div>
+            </div>
+
+            <!-- English Translation Card -->
+            <div id="english" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">English Translation</h2>
+                    <button class="copy-btn" onclick="copySection('translation-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Copy
+                    </button>
+                </div>
+                <div id="translation-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00:41]</span>Host: Jweq, the very beautiful mountainous village in the western countryside of Afrin, as we mentioned in the previous episode,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00:48]</span>Host: had great geographical and political importance in the entire Afrin region.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00:54]</span>Host: This is due to the partisan and political activity of its people, and the abundance of university degrees in all specializations among them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:05]</span>Host: This village is situated between the Afrin River and the village of Qartlaq to the north, and the village of Darkir to the west.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:13]</span>Host: A large percentage of its people previously lived in the city of Aleppo,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:17]</span>Host: especially in the Bustan al-Basha and Ashrafieh neighborhoods.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:21]</span>Host: Now, however, most of them have migrated to Turkey and Europe for work and study, as we mentioned earlier.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:28]</span>Host: In this village, the traditional old intertwines with the creative modern in an eye-catching way,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:36]</span>Host: forming a beautiful, creative canvas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:39]</span>Host: It is 440 meters above sea level, and its climate is considered moderate in summer and cold in winter.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:53]</span>Host: Peace be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:55]</span>Barber: And upon you be peace.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:56]</span>Host: God give you health. Can we get to know you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:00]</span>Barber: Wahid Bakr.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:01]</span>Host: Welcome, Mr. Wahid. Wahid, are you the only barber in the village?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:05]</span>Barber: No, there are several barbers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:08]</span>Host: Several barbers?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:08]</span>Barber: Yes, there are five of us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:09]</span>Host: How long have you been here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:10]</span>Barber: Six years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:11]</span>Host: Six years. And you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:13]</span>Customer: I am from the countryside of Hama.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:14]</span>Host: Displaced here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:14]</span>Customer: Yes, displaced.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:15]</span>Host: Welcome. Now, what kind of haircut are you giving him? Your choice or his?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:20]</span>Barber: No, his choice.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:22]</span>Host: What is his preference now?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:23]</span>Barber: His preference is to trim and shape, meaning trim the beard and shape the neckline.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:28]</span>Host: And what is your preference?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:30]</span>Customer: [laughs]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:32]</span>Host: Do you give him a zero-guard shave?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:34]</span>Barber: No, he asked me to, I will shave it for him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:37]</span>Host: What are the haircuts here, the types of haircuts the young men get here? What are the styles?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:41]</span>Barber: The styles, you have several styles. You have Marines, you have Turkish. Now, generally, there are Turkish styles, Marines...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:53]</span>Barber: And a normal fade.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:55]</span>Host: The older men, the elderly?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:57]</span>Barber: No, the older men are different, the elderly are different. I mean, a normal trim, with scissors on top normally, a standard, classic haircut.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:05]</span>Host: And the young guys?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:06]</span>Barber: The young guys follow the fashion.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:08]</span>Host: Following the fashion.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:09]</span>Barber: Following the fashion, lines and no lines and...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:11]</span>Host: Has there been a change in taste, I mean the taste in men&#x27;s haircuts over these past six or seven years?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:17]</span>Barber: Well, yes, it has changed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:20]</span>Host: How? I mean, these styles weren&#x27;t around before?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:23]</span>Barber: No, how can I say it... every year or so something new comes out, every year or so something new comes out.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:30]</span>Host: Is there a specific haircut for the village, for Jweq in particular, for example? Or something similar, I mean, do the people of Afrin get the same haircut?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:35]</span>Barber: No, there isn&#x27;t, there isn&#x27;t.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:38]</span>Host: Let&#x27;s ask this man. Are you happy with this haircut the man is giving you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:41]</span>Customer: Yes, may God give him health, a master.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:43]</span>Host: Do you like it? Did he cut you or nick you or anything?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:45]</span>Customer: No, no, no, there&#x27;s none of that. No, a master, may God give him health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:48]</span>Host: Have you tried him before?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:49]</span>Customer: Yes, this is the third time I get a haircut from him.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:51]</span>Barber: The third time?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:53]</span>Customer: Yes, may God give him health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:54]</span>Host: How often do you come here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:55]</span>Customer: I am here permanently. I&#x27;m a keyboard player, and the band is located here in the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:01]</span>Host: No, I meant how often do you get a haircut from him?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:03]</span>Customer: Every week or ten days, week or ten days approximately, a normal shaping. The hair, I mean, every twenty or twenty-five days.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:10]</span>Host: Good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:11]</span>Customer: Yes sir, may it be blessed (Naeeman).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:12]</span>Barber: May God bless you and bless your life, good man.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:14]</span>Host: May God honor you, peace be upon you. Thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:16]</span>Barber: And upon you be peace, on my head, welcome to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:27]</span>Host: Hello, uncle.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:29]</span>Host: How are you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:30]</span>Host: What is your name?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:32]</span>Host: What is your name?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:36]</span>Host: Your daughter?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:37]</span>Shopkeeper: No, my son&#x27;s daughter.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:38]</span>Host: Your son&#x27;s daughter? Welcome, peace be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:40]</span>Shopkeeper: And upon you be peace, and the mercy of God and His blessings.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:41]</span>Host: May God give you health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:42]</span>Shopkeeper: May God give you health, welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:43]</span>Host: Can we get to know you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:44]</span>Shopkeeper: Fouad Bakr.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:46]</span>Host: Fouad Bakr. From Jweq?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:47]</span>Shopkeeper: From Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:48]</span>Host: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:49]</span>Shopkeeper: May God keep you safe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:50]</span>Host: How long have you had the shop open?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:51]</span>Shopkeeper: It&#x27;s been 28 years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:53]</span>Host: 28 years in this same place?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:54]</span>Shopkeeper: The same place.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:55]</span>Host: You didn&#x27;t change your profession?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:56]</span>Shopkeeper: No, I didn&#x27;t change my profession.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:58]</span>Host: Alright, tell me, how is the people&#x27;s situation these days, considering that you... I mean, people buy from you and sell, I mean, buy from you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:03]</span>Shopkeeper: Well, people come... over the time I&#x27;ve had the shop open, they come and buy goods, and thank God, our matters are going well, and the customers&#x27; matters are going well.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:12]</span>Shopkeeper: And things are going alright, I mean, things are like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:14]</span>Host: How is the purchasing power of the people? Do they have money, are they buying?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:17]</span>Shopkeeper: Well, in this situation, people are tired. In this situation, they don&#x27;t have money.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:21]</span>Shopkeeper: But before, work was better than this.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:23]</span>Host: Better, right? Now, what do you sell?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:25]</span>Shopkeeper: Well, we sell goods, like sugar, tea...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:29]</span>Host: Groceries, meaning everything?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:30]</span>Shopkeeper: Groceries, I mean. Detergents, household stuff, I mean cleaning supplies, groceries, detergents and such.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:35]</span>Host: How are the prices today here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:37]</span>Shopkeeper: Well, right now the prices are high.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:38]</span>Host: High, right?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:39]</span>Shopkeeper: Very high.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:41]</span>Host: Is there anything here, I mean, village-made products sold, like yogurt, milk, cheese, and so on, considering it&#x27;s an agricultural town? Oil, olives...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:48]</span>Shopkeeper: Olives... from here, yes, everything is sold. Yogurt and such, milk, oil, olives, Attun (cured black olives), I mean the things...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:58]</span>Host: Do you sell them here in your shop?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:59]</span>Shopkeeper: Well, sometimes... sometimes we bring yogurt and such, sometimes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:01]</span>Host: Alright, how many shops are there in the village here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:03]</span>Shopkeeper: There are around 10 shops.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:05]</span>Host: 10 shops? Approximately.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:07]</span>Shopkeeper: Approximately.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:08]</span>Host: May God provide for you. May God give you health. Thank you. Peace be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:12]</span>Shopkeeper: May God grant you success. Welcome, a hundred greetings. You honored us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:14]</span>Host: May God keep you safe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:24]</span>Host: Peace be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:26]</span>Women: And upon you be peace.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:27]</span>Host: May God give you health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:28]</span>Women: May God give you health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:29]</span>Host: Can I talk to you a bit, just a little chat with you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:31]</span>Woman: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:32]</span>Host: Have you opened a shop?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:33]</span>Woman: No, honestly.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:34]</span>Host: Please come here a bit, why are you shy? Come, come, come, look, I&#x27;m standing here, please.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:40]</span>Host: Your good name?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:42]</span>Woman: Jamila Othman.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:43]</span>Host: Welcome. A customer coming to buy from here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:45]</span>Woman: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:46]</span>Host: The sister here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:47]</span>Woman 2: Madina Dado.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:48]</span>Host: Welcome. Also from here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:50]</span>Woman 2: May God keep you safe. Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:51]</span>Host: Stand here a bit, let&#x27;s talk a little, please.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:55]</span>Host: This is a clothing store. Are there others here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:58]</span>Woman 2: No, honestly, there is no other store.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:00]</span>Host: Just this store?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:01]</span>Woman 2: Yes, definitely.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:02]</span>Host: Since a long time or just now there are none?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:03]</span>Woman 2: No, it&#x27;s been here for a long time.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:04]</span>Host: For a long time.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:05]</span>Host: Yes. What does it sell here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:06]</span>Woman 2: Items, I mean sweaters, pants, things like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:10]</span>Host: Children&#x27;s, women&#x27;s...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:11]</span>Woman 2: Children&#x27;s, it has everything.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:13]</span>Host: Sells everything?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:14]</span>Woman 2: Yes, definitely.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:15]</span>Host: So you don&#x27;t need to go down to Afrin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:16]</span>Woman 2: We go down, but rarely.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:18]</span>Host: Rarely. Generally, what do the older people wear here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:20]</span>Woman 2: Pants, sweaters. Young men wear pants and sweaters.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:25]</span>Host: I am talking about women.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:26]</span>Woman 2: Women, dresses, I mean.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:28]</span>Host: Dresses, because the older men wear baggy trousers (Shirwal).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:31]</span>Woman 2: Yes. But women wear dresses, things like that.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:34]</span>Host: Dresses.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:35]</span>Woman 2: Yes, definitely.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:36]</span>Host: How are the prices here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:37]</span>Woman 2: Thank God, no, they are good.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:39]</span>Woman: Honestly, not so much. Very expensive. It&#x27;s gotten very expensive.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:43]</span>Host: More expensive than Afrin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:44]</span>Woman: More expensive than Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:46]</span>Woman 2: No, Afrin is more expensive than here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:48]</span>Host: Here is cheaper?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:49]</span>Woman 2: Here is cheaper.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:51]</span>Host: May God help you, and may God give you health, and may God provide for you. Peace be upon you, thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:55]</span>Woman 2: May God keep you safe. Welcome, a hundred greetings.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:57]</span>Woman: You honored us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:58]</span>Host: May God keep you safe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:06]</span>Host: The improvement in economic conditions and the stability that Jweq has been experiencing lately,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:11]</span>Host: in addition to the need for job opportunities for people who have been unemployed for a long time due to recent economic and social conditions,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:20]</span>Host: prompted one of the sons of this village to open a sewing workshop.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:24]</span>Host: We will go with you inside this workshop to learn about it, and also to learn about the job opportunities it provides,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:30]</span>Host: and the nature of its production and where it is distributed. Please come with us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:38]</span>Host: Oh Lord. Peace be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:42]</span>Host: Peace be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:43]</span>Owner: And upon you be peace.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:44]</span>Host: How are you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:45]</span>Owner: Thank God, welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:46]</span>Host: Can we get to know you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:47]</span>Owner: Jiwan, from Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:49]</span>Host: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:50]</span>Owner: May God keep you safe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:51]</span>Host: The owner of the workshop?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:52]</span>Owner: I am the owner of the workshop.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:54]</span>Host: Tell me about the workshop.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:56]</span>Owner: Well, we work on a manufacturing basis. We bring work from outside and bring it to the workshop, and every worker works...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:07]</span>Host: So you mean these goods are not yours?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:10]</span>Owner: No, not us, they brought these from Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:13]</span>Host: From Afrin? From the Rayan company?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:15]</span>Owner: Yes, Rayan company.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:17]</span>Host: You bring them and manufacture them for their account?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:19]</span>Owner: For manufacturing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:20]</span>Host: For manufacturing, and you take the wage for it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:22]</span>Owner: Yes, my wage. I work in manufacturing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:24]</span>Host: How many job opportunities are here? I mean, how many workers?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:26]</span>Owner: These are them, approximately about 10.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:30]</span>Host: 10. How many hours do they work?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:32]</span>Owner: Approximately 9 hours.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:34]</span>Host: 9 hours every day. Is there another workshop in Jweq, or just this one?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:37]</span>Owner: No, just this one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:39]</span>Host: How much does a worker earn here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:40]</span>Owner: Well, it depends on the worker. Some of them are young and take 35, some of them 50, approximately...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:47]</span>Host: 50 what?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:48]</span>Owner: 50 thousand.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:49]</span>Host: Per week?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:50]</span>Owner: Per week. As a weekly wage.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:51]</span>Host: Alright, how is your production?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:52]</span>Owner: Depending on the week.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:54]</span>Owner: Depending on the week. Some weeks 1000 pieces, some 1200 pieces, approximately like that, I mean.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:59]</span>Host: Alright, wishing you success.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:00]</span>Host: Okay. But do you... do you sell or market them yourself? Is it a company?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:04]</span>Man: No, no, we just work as a factory.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:08]</span>Host: Do they bring you the fabric?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:09]</span>Man: Yes, the business owner does, we just do the manufacturing, the sewing, only the sewing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:13]</span>Host: Is the marketing on you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:14]</span>Man: No, it&#x27;s not on us. Just sewing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:16]</span>Host: You just sew?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:17]</span>Man: Just sewing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:18]</span>Host: So, honestly, today, does this workshop</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:22]</span>Host: provide a living for the ten or fifteen people working here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:25]</span>Man: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:26]</span>Host: They make a living here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:27]</span>Man: Yes, with this job.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:28]</span>Host: Does each person have a family behind them?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:30]</span>Man: Each person has a family behind them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:32]</span>Host: And where are your workers from?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:34]</span>Man: All of them are from the village. All of them are from this village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:36]</span>Host: The people of Jweq?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:37]</span>Man: All of them are from Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:38]</span>Host: Are there any displaced people here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:39]</span>Man: No, there aren&#x27;t. All of them are the people of Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:43]</span>Host: What was this place previously?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:44]</span>Man: This used to be an olive press.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:46]</span>Host: An olive press?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:47]</span>Man: An olive press, an old press.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:49]</span>Host: I see. You came and operated it, and...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:51]</span>Man: Yes, and we stayed until today.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:52]</span>Host: My man, may God bless you and open doors for you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:54]</span>Man: Let&#x27;s see the guys too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:56]</span>Host: Yes, I want to see the guys. I want to talk to this young man.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:00]</span>Host: Peace be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:01]</span>Young Man: Peace be upon you and the mercy of God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:02]</span>Host: May God give you health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:03]</span>Young Man: May God give you health too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:04]</span>Host: Let&#x27;s get to know you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:05]</span>Young Man: My name is Muhammad.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:06]</span>Host: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:07]</span>Host: Now, what stage are you working on here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:10]</span>Young Man: Well, these are called watch pockets.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:11]</span>Host: Watch pockets?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:12]</span>Young Man: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:13]</span>Host: You sew the watch pockets?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:14]</span>Young Man: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:15]</span>Host: How long have you been in this profession?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:16]</span>Young Man: I&#x27;ve been in it since around 2003.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:19]</span>Host: Since 2003?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:20]</span>Young Man: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:21]</span>Host: Have you worked here and in Afrin, where have you worked?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:22]</span>Young Man: I first used to work in Aleppo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:24]</span>Host: Before the revolution?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:25]</span>Young Man: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:26]</span>Host: And then you came here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:27]</span>Young Man: Then we came here. We were displaced here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:29]</span>Host: How do you see the work in this workshop?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:31]</span>Young Man: By God, thank God. It&#x27;s going well, thank God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:34]</span>Host: Thank God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:35]</span>Host: Haven&#x27;t you thought of opening a workshop for yourself one day?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:37]</span>Young Man: I don&#x27;t have the means.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:39]</span>Host: Are you married?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:40]</span>Young Man: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:41]</span>Host: How many children do you have?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:42]</span>Young Man: I have one, and hopefully, one on the way.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:44]</span>Host: May God protect them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:46]</span>Young Man: May God keep you safe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:47]</span>Host: Hopefully, the wage you are getting is suitable?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:49]</span>Young Man: Yes, thank God. Better than nothing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:52]</span>Host: Do you also have land you make a living from?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:54]</span>Young Man: Yes, thank God. I have.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:56]</span>Host: Thank God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:57]</span>Young Man: About a hundred olive trees.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:58]</span>Host: A blessing from God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:59]</span>Young Man: Thank God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:00]</span>Host: May God bless you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:01]</span>Young Man: Thank you, dear.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:02]</span>Host: Thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:03]</span>Young Man: Thanks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:04]</span>Host: Peace be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:05]</span>Young Man: May God give you health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:15]</span>Host: It&#x27;s raining and you are herding.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:21]</span>Host: May God give you health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:22]</span>Shepherd: How are you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:23]</span>Host: May God greet you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:24]</span>Shepherd: Welcome to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:25]</span>Host: Are you from the village here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:26]</span>Shepherd: Honestly, no.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:27]</span>Host: You are very welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:28]</span>Host: This is Wadi Dargir, isn&#x27;t it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:30]</span>Shepherd: Well, I don&#x27;t know, I don&#x27;t know these areas.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:33]</span>Host: You don&#x27;t know it. You are not from here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:35]</span>Shepherd: No.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:35]</span>Host: Then where are you from?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:36]</span>Shepherd: I am from the southern countryside of Aleppo, displaced here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:37]</span>Host: You are very welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:39]</span>Host: How many sheep do you have?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:40]</span>Shepherd: Honestly, their exact number, brother, today, like a count, an exact count, I don&#x27;t know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:43]</span>Host: Approximately?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:44]</span>Shepherd: I mean, maybe around ninety, eighty... I don&#x27;t know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:46]</span>Host: Hopefully. It&#x27;s strange that you don&#x27;t know the sheep, brother, walk a little.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:48]</span>Shepherd: I am a shepherd, a shepherd.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:49]</span>Host: You are a shepherd!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:50]</span>Shepherd: A shepherd, a shepherd.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:51]</span>Host: Oh, I see. A shepherd for the whole village or just these sheep?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:53]</span>Shepherd: No, a man has these sheep and I herd them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:55]</span>Host: I see, I see. Is this young boy your son?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:57]</span>Shepherd: My son, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:58]</span>Host: As God willed. May God keep him safe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:59]</span>Shepherd: May God keep you safe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:00]</span>Host: How are you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:01]</span>Boy: Thank God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:02]</span>Host: Let&#x27;s get to know you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:03]</span>Boy: Abd Al-Malik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:04]</span>Host: Welcome, Abd Al-Malik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:05]</span>Host: What is this called, Abd Al-Malik? Tell me, let&#x27;s see.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:07]</span>Boy: A sheep.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:08]</span>Host: A sheep. Is this the lead sheep or is this the lead sheep?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:11]</span>Boy: This one.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:12]</span>Host: This is the lead sheep, and this one?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:13]</span>Boy: A goat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:14]</span>Host: Aha, and this bell?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:16]</span>Boy: Lead sheep.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:17]</span>Host: Lead sheep, the bell of the lead sheep too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:19]</span>Host: So there is a ram lead sheep, and a goat lead sheep?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:22]</span>Shepherd: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:23]</span>Host: There are two?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:24]</span>Shepherd: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:25]</span>Host: Oh wow. Wow.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:27]</span>Host: Now if you were to tell me, like, the daily routine of a shepherd.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:32]</span>Host: When does the shepherd go out to herd in the morning?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:34]</span>Shepherd: Well, at this time, in winter, he doesn&#x27;t go early.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:37]</span>Host: Meaning?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:38]</span>Shepherd: Depends on the dew, depends, you know...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:40]</span>Host: I mean, what time?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:41]</span>Shepherd: Maybe nine, maybe ten, depending, the sheep depend on what they graze.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:43]</span>Host: And in the summer?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:44]</span>Shepherd: In the summer, when it&#x27;s in the fields, they say the fields and the harvest.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:47]</span>Host: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:48]</span>Shepherd: When the harvesters finish harvesting, brother, you let the sheep graze.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:50]</span>Host: What time in the morning does he go out?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:52]</span>Shepherd: In the harvest, they don&#x27;t get covered in dew in the morning, you know what I mean, in this harvest, in this barley, a shepherd secures the area, brother, and in these harvested lands, the sheep graze.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:58]</span>Host: And when do you return in the evening?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:59]</span>Shepherd: We return at noon.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:00]</span>Shepherd: He takes them to water, sheep get thirsty in the summer, he milks them, brother, at noon, and they graze in the afternoon, and then milks them again at sunset, and returns.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:06]</span>Host: You milk them twice?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:07]</span>Shepherd: Yes. Now in the winter, how much do you milk?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:08]</span>Shepherd: One milking, now there isn&#x27;t much, just in the morning.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:10]</span>Host: Just in the morning?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:11]</span>Shepherd: Just in the morning.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:12]</span>Host: From morning to morning?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:13]</span>Shepherd: In the morning, during the day, the lambs, we pen the lambs at night, and in the morning we let them out, my brother.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:16]</span>Host: How much does a sheep milk?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:19]</span>Shepherd: It depends, it depends on the ewe&#x27;s udder. There&#x27;s a ewe that gives half a kilo, there&#x27;s a ewe that gives a kilo, there&#x27;s a ewe that gives a quarter of a kilo, it just depends.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:25]</span>Host: And the goats?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:26]</span>Shepherd: The goats give milk.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:27]</span>Host: How much?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:28]</span>Shepherd: There are goats, depending on each one, they aren&#x27;t all the same. There&#x27;s a goat that gives half a kilo, there&#x27;s a goat that gives two kilos, there&#x27;s a goat that gives a kilo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:35]</span>Host: Today, are you making cheese, or is it not the season for cheese yet?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:38]</span>Shepherd: It&#x27;s not the time for cheese yet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:39]</span>Host: It&#x27;s not the time for cheese.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:40]</span>Shepherd: No, not yet. Right now they are just eating, you know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:44]</span>Host: This one is special, what is it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:45]</span>Shepherd: This is a ram... this is called black agrah (bald).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:48]</span>Host: Black agrah?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:49]</span>Shepherd: Yes, agharr (white-faced).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:50]</span>Host: Agharr?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:51]</span>Shepherd: Yes, agharr.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:51]</span>Host: Ah, and this one?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:52]</span>Shepherd: A billy goat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:53]</span>Host: A billy goat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:54]</span>Host: Is this a Shami (Damascene) breed?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:55]</span>Shepherd: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:56]</span>Host: Shami, right? It&#x27;s obvious from its nose.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:57]</span>Shepherd: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:58]</span>Shepherd: This one is akhal (black-eyed).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:59]</span>Host: This one is akhal?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:00]</span>Shepherd: This one, yes, which one is the akhal?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:01]</span>Shepherd: This one is akhal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:02]</span>Host: This one?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:03]</span>Shepherd: Yes, because around its eyes it&#x27;s black.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:05]</span>Host: Black, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:06]</span>Shepherd: Yes, black akhal. This one...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:08]</span>Shepherd: is abrash abyad (white-spotted).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:09]</span>Host: This is abrash abyad?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:10]</span>Shepherd: Yes, and this one is arkham (gray-white).</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:11]</span>Host: This one is arkham.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:12]</span>Host: What does arkham mean?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:13]</span>Shepherd: Ah, blue arkham, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:14]</span>Host: You&#x27;re an expert, you know about sheep.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:15]</span>Host: May God give you health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:16]</span>Shepherd: May God give you health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:17]</span>Host: Thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:18]</span>Shepherd: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:19]</span>Host: Peace be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:20]</span>Shepherd: Peace be upon you too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:27]</span>Host: The knife and blade maker, Uncle Mustafa Kocher Abu Ahmed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:32]</span>Host: A very special and important figure in Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:35]</span>Host: He is well-known because his profession is also very important for the people of Jweq and the people of the region in general.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:40]</span>Host: We will be with you in this short segment, to get to know this profession and to get to know Uncle Abu Ahmed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:45]</span>Host: And to see how important it is today, in these current circumstances for the people of Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:49]</span>Host: Follow us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:00]</span>Host: Peace be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:06]</span>Man: Peace be upon you and the mercy of God.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:08]</span>Host: How are you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:09]</span>Man: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:10]</span>Host: How is your health?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:11]</span>Man: Welcome, welcome sir, welcome, welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:13]</span>Host: May God give you health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:14]</span>Host: I want to sit next to you for a bit to get to know you and your profession.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:18]</span>Host: I need something to sit on next to you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:21]</span>Man: Bring a chair for the sir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:23]</span>Host: Yes, give me this please.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:25]</span>Man: Welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:30]</span>Host: First of all, can we get to know you?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:33]</span>Man: Mustafa Ahmed Sido, from Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:37]</span>Host: Welcome. Known as Mustafa Kocher.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:40]</span>Man: Yes, a nickname, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:41]</span>Host: So you are from the Kocher family here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:43]</span>Man: Yes, yes. It&#x27;s a nickname, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:45]</span>Host: You are very welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:46]</span>Man: For the tribes previously.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:48]</span>Host: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:49]</span>Host: Now, this profession that you are currently working in. What is it called?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:53]</span>Man: The profession of pocketknives, making pocketknives, knives.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:57]</span>Host: Making pocketknives and knives.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:58]</span>Man: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:59]</span>Host: How long have you been in this profession?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:01]</span>Man: I&#x27;ve been doing this for almost thirty years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:03]</span>Host: Here in Jweq?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:04]</span>Man: Yes, from Jweq, I used to live in Afrin, I used to work in Afrin. I&#x27;ve been back in the village for four or five years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:08]</span>Man: So we went back to our profession. We have to do our work, you know, everyone does their job to feed their family.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:13]</span>Host: Previously, wasn&#x27;t there this profession here in Jweq?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:16]</span>Man: There was in Jweq, there was the imam of the Jweq mosque, from forty years ago and later, fifty years ago and later,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:24]</span>Man: they used to work, maybe they continued for ten, fifteen, twenty years, maybe even more, they were young.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:30]</span>Man: They used to make knives, Jweq knives are famous in the region, in Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:34]</span>Host: What&#x27;s their fame? Tell me about them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:36]</span>Man: Jweq knives, I mean, they are more practical, and the mosque imam used to perfect his work, you know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:42]</span>Host: Meaning, for example, they are distinguished by being sharp, durable, and they last long.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:47]</span>Man: Of course, sharp and its tempering is good, and masterly work, you know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:51]</span>Man: And he was a religious and good man and he did a, you know, good job.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:55]</span>Host: Now, did you have a shop open in Afrin before you were here in Afrin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:59]</span>Man: I had a shop open in Afrin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:00]</span>Man: next to my house, and I would work to feed my children.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:04]</span>Host: From the profession itself or did you have another job?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:06]</span>Man: I was an employee alongside my job. After my shift, I would work until the evening, until midnight, making knives,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:13]</span>Man: on market days in Afrin, Afrin market, Jinderis, Sheikh Hadid, Rajo. I would go sell them and come back.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:19]</span>Man: Sometimes I wouldn&#x27;t go sell them, just at my place, you know.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:22]</span>Host: So in addition to your work, you work in this profession. A question, today, does this profession make a living?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:26]</span>Man: Today, you know...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:29]</span>Man: the high cost of living, you know...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:34]</span>Man: we are working but it doesn&#x27;t... it doesn&#x27;t make a living.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:36]</span>Man: It doesn&#x27;t... it doesn&#x27;t cover the living expenses.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:38]</span>Host: I understand you, I understand you, I understand you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:42]</span>Host: First of all, tell me what is the importance of this profession for the people of the region currently?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:46]</span>Man: We are an agricultural region, you know, a farmer might have a vineyard, he might have olives, he has pomegranates, something.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:54]</span>Man: He needs to cut a branch, he needs to... kill the worm of the olive tree. He hollows out the place of the worm where the worm is.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:00]</span>Man: He hollows out its place a bit with the tip of the knife, and brings a stick, thins it out like this and cleans it, and pokes the stick in that spot and kills the worm.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:09]</span>Man: If he doesn&#x27;t kill the worm, the worm kills the olive tree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:12]</span>Host: This is for the farmer, what about, for example, the animal breeder who has sheep and so on?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:16]</span>Man: For the animals, he needs... to slaughter something, I mean, if a sheep gets a little sick...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:23]</span>Man: better than it dying. He goes to it, slaughters it, sells it, so on, you know...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:27]</span>Host: So we can say that every farmer or every animal breeder has a knife in his pocket?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:31]</span>Man: Yes. For household use.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:33]</span>Host: Yes, as you said. Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:34]</span>Host: Well... what are the types of knives?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:36]</span>Man: The types of knives, brother, you have... a folding pocketknife...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:43]</span>Man: standard.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:44]</span>Man: This one is not completed yet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:46]</span>Host: A folding pocketknife.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:47]</span>Man: Yes, yes, it folds, yes, it folds like this, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:50]</span>Host: And you have... a click pocketknife.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:56]</span>Man: This one has clicks. It can be put in the pocket, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:00]</span>Man: ... from here in this shape...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:02]</span>Man: Well brother, we work just the way we learned...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:06]</span>Man: Everyone prefers his work over... over others&#x27;,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:11]</span>Man: and it is covered either with wood, these are two thin steel layers,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:17]</span>Man: and then comes a wood covering or...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:22]</span>Man: bakelite or plastic or something, and then it&#x27;s assembled in this shape.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:28]</span>Host: This... what is this, a folding pocket knife?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:30]</span>Man: This is a folding pocket knife, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:32]</span>Man: This is a folding pocket knife that doesn&#x27;t close unless you pull its ring.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:36]</span>Host: What is this used for?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:37]</span>Man: This is used for everything... so it doesn&#x27;t close on your hand and cut it...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:43]</span>Man: It can be used for whatever you want.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:44]</span>Host: Alright... what else?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:45]</span>Man: Yes. Kitchen knives, repairs, and things... I mean, whatever comes to us, we don&#x27;t turn it away...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:53]</span>Man: These are saws... someone&#x27;s saw broke... we said this is an agricultural area, excuse me...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:58]</span>Man: Someone&#x27;s saw broke, we fix it for him... we keep them next to us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:02]</span>Man: We saw it to the size of his saw, attach it for him, and take our wage.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:06]</span>Host: Alright. Now these kitchen knives...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:09]</span>Host: that housewives use, I mean, there is something for cutting vegetables and fruits,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:13]</span>Host: and there is something for meat, and there is something for other things...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:15]</span>Host: What are their types? There&#x27;s big and there&#x27;s small and...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:17]</span>Man: Yes... and there&#x27;s a kebab skewer...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:18]</span>Host: And there&#x27;s a kebab skewer.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:20]</span>Man: Yes, yes, yes, yes, yes, these, yes. Our field, excuse me, is a bit narrower than this...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:25]</span>Man: The kebab skewer needs bigger tools and so on... I mean, its length is about 50 cm or 60 cm...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:31]</span>Host: For cutting meat...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:32]</span>Man: For cutting meat... mincing meat... there were no machines, I mean, manual cutting.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:36]</span>Man: We haven&#x27;t made this currently, we haven&#x27;t worked on this thing... but we do repairs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:42]</span>Man: Sharpening, whatever, changing the handle, we repair.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:46]</span>Host: I want to ask you a question... I mean, I heard that you have a reputation here in the area.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:52]</span>Man: Ehh, of course, there is a reputation, there is, there is, there is, there is a reputation. Because my work, I mean, is a bit... better than others&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:01]</span>Man: I mean, my work is a bit better than others&#x27;...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:06]</span>Man: So I mean, most of my customers, I mean, more than others, customers come to me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:11]</span>Host: Right, they come from other villages.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:13]</span>Man: They come from other villages...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:14]</span>Host: What are these blades made of?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:16]</span>Man: The blades, we bring broken springs of shop doors...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:24]</span>Man: Their tips are broken and they don&#x27;t need them. We buy them, cut them, heat them...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:28]</span>Host: I mean, is it steel? What kind of steel is it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:30]</span>Man: It is steel... but after it&#x27;s worked on, we have to harden it. Every master, I mean, a craftsman, has to work according to his knowledge.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:40]</span>Man: I mean, my knowledge is that I must, after working on it, harden it a bit so it can withstand extra sharpening, and not become blunt quickly,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:48]</span>Man: I mean, it cuts more.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:50]</span>Host: Now, we saw a little while ago how you were cutting a blade for a knife,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:54]</span>Host: and how you cut it, I think it&#x27;s here behind me.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:57]</span>Host: There&#x27;s burnt oil here, what&#x27;s here?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:01]</span>Man: Oil, of course. It&#x27;s for cooling, I mean, we harden it by cooling, the faster it cools, the harder it gets.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:10]</span>Host: It cools down quickly?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:11]</span>Man: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:12]</span>Host: Does it cool down quickly in burnt oil?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:14]</span>Man: In oil... whether it&#x27;s burnt or not burnt...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:17]</span>Host: Alright, where is the blade you made? Let&#x27;s see it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:19]</span>Man: Yeah...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:19]</span>Host: Will a handle be attached to it?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:22]</span>Man: Yes indeed, this is the blade.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:24]</span>Man: It needs sharpening on the grinder, this and that, a bit of adjusting on the grinder, and then we attach the handle.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:29]</span>Host: Let&#x27;s see what you&#x27;re working on with it a bit, is that okay?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:31]</span>Man: Yes, no problem. This means... we leave this... now I wanted to attach it, aha, we left it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:41]</span>Host: Of course, your tools are a vise, and a forge, and the... what do you call this?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:49]</span>Man: A fire stove.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:51]</span>Host: A fire stove.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:52]</span>Man: And an air blower forge, and a generator to generate electricity.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:00]</span>Man: And a vise, a hammer, an anvil, files... cutters and things... yes indeed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:07]</span>Host: Is this the anvil? Just to know, I mean.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:08]</span>Man: Exactly, yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:09]</span>Host: Go ahead.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:11]</span>Man: Come on, oh Lord. We work with this...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:59]</span>Host: Well, Uncle Abu Ahmad, may God give you health, we will leave you to work,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:03]</span>Host: this is a sample of your work, it is clearly here. May God give you health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:06]</span>Host: I want to thank you, we bothered you with us.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:09]</span>Man: You are welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:10]</span>Host: But we got to know a profession that today, unfortunately, has become very important for the Syrian people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:13]</span>Man: Welcome to you all, and to the whole Syrian people, we are all brothers, and we make things, and we help each other...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:22]</span>Man: and we are considerate with the prices too, and everything. I mean, instead of paying for a car fare to go to the city, and sharpening a sheep-shearing scissors, shearing sheep hair, sheep wool, and sharpening his razors and knives, we do it for them here and cheaper than anywhere else.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:41]</span>Host: May God give you health.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:43]</span>Man: You&#x27;re welcome.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:43]</span>Host: Thank you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:44]</span>Man: May God greet you, goodbye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:56]</span>Reporter: The atmosphere today is opposite to the atmosphere of the first tour in Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:02]</span>Reporter: The atmosphere today is rainy and cold indeed, and it was expected there would be a storm,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:09]</span>Reporter: and a snowstorm, but the weather remained rainy and cold.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:15]</span>Reporter: Despite this, and despite the fact that the first tour&#x27;s atmosphere was sunny...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:18]</span>Reporter: but the atmosphere here is very beautiful in the winter vibes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:21]</span>Reporter: The reason is the mountains surrounding Jweq, which are planted with olive and fruit trees,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:31]</span>Reporter: and also the topographical nature of Jweq, which is really houses stacked and built on the slopes of the hills.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:43]</span>Reporter: So the nature is very beautiful. We are walking from the road coming from Dargir...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:50]</span>Reporter: and parallel to Jweq from the southern side. I mean, we are now south of Jweq, on our right...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:56]</span>Reporter: you see the almond trees that are fruitful now, blossoming, notice the very beautiful mountains, lined with olives.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:10]</span>Reporter: The rain is falling little by little.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:12]</span>Reporter: Enjoyable. Of course, Jweq&#x27;s geographical spread is large, let&#x27;s say, the reason is that the houses in it,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:19]</span>Reporter: have spacious courtyards, I mean, every house&#x27;s area is not less than 500 to 700 to 1000 square meters.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:26]</span>Reporter: That&#x27;s why we see its horizontal spread, there is no vertical spread, I mean there are no multi-story buildings except rarely.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:33]</span>Reporter: And mostly, as we are seeing on our left, now, mostly these courtyards are used for growing...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:41]</span>Reporter: vegetables, growing fava beans, growing parsley, onions, radishes, I mean, in other words...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:48]</span>Reporter: self-sufficiency... self-sufficiency in this village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:04]</span>Reporter: We will notice now on our right in a little bit... how the valley appears and reveals itself, from behind...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:12]</span>Reporter: the houses built on its southern slope.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:17]</span>Reporter: A very beautiful view, and especially...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:22]</span>Reporter: with the beginning... I mean the spring season, the season of spring, and the beginning of the appearance of grass at the bottom of the valley.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:35]</span>Reporter: Notice how beautiful the view is on our right now!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:39]</span>Reporter: Very beautiful. Even the ancient caves that humans inhabited... are apparent and clear.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:46]</span>Reporter: These are the umbrellas we talked about...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:48]</span>Reporter: Now their shape is beautiful, symmetrical.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:50]</span>Reporter: Despite the rain, but... the sheep and goats are grazing now, because the rain is not heavy.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:01]</span>Reporter: The shepherds take the animals out to graze at this time.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:05]</span>Reporter: Notice the very beautiful view on the northern slope of the village, how beautiful the houses are,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:12]</span>Reporter: built in a stacked way... on top of each other. A very beautiful view.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:17]</span>Reporter: I will go down with you a little, towards the valley from here, despite the ruggedness and difficulty,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:23]</span>Reporter: just to give an idea of the beauty of this village. This road leads to the valley. A slightly rugged road but it is beautiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:40]</span>Reporter: Now we are almost...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:45]</span>Reporter: in the heart of the valley, notice...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:48]</span>Reporter: On the right and left... the valley where there used to flow... a water stream from a water spring in the middle of the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:57]</span>Reporter: Now...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:00]</span>Host: ...planted with wheat, barley, and some trees.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:04]</span>Host: And here, it divides the village into two parts.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:07]</span>Host: The exact place where we are standing right now is a bridge with a water crossing underneath.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:23]</span>Host: We will conclude this short car tour with a brief visit to the northeastern neighborhood of the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:30]</span>Host: And it seems to be a somewhat modern neighborhood compared to the rest of the alleys in Jweik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:43]</span>Host: It&#x27;s clear, this is an old or ancient house in the village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:52]</span>Host: A large, massive tree, I think an oak tree, in the middle of one of the houses, covering the whole house.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31:03]</span>Host: A modern villa, the modern is neighboring the old traditional building style in this village in a very beautiful way.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31:40]</span>Host: The sight of the blooming almond trees is very beautiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31:44]</span>Host: The red and white flowers, the pink ones, it&#x27;s very beautiful.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31:49]</span>Host: This road wraps around Jweik from the northeastern side and goes back up into its center.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:07]</span>Host: We will conclude this episode with you by meeting one of the famous buzuq players in this village.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:15]</span>Host: And who generally plays the singing folklore of this region,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:20]</span>Host: and God willing, it will be a special conclusion.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:37]</span>Host: As we promised you, the conclusion will be playing the buzuq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:41]</span>Host: But Riyad, our brother Riyad Gharib from Jweik,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:45]</span>Host: insisted that the playing be in this rainy weather in nature.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:48]</span>Host: He says it gives him more inspiration to play something from the village&#x27;s folklore and heritage.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:55]</span>Host: Riyad, what will you play today?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:57]</span>Riyad: A song by Ali Tajo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:59]</span>Host: Ali Tajo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:00]</span>Riyad: Ali Tajo. The song &quot;Ane Şivan e&quot;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:02]</span>Riyad: It means &quot;my mother, a shepherd&quot;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:04]</span>Host: Your mother is a shepherd?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:05]</span>Riyad: It&#x27;s about a shepherd, someone gives his daughter to a shepherd, and she doesn&#x27;t agree.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:09]</span>Riyad: Her father wants to give her to a shepherd and she doesn&#x27;t want to.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:11]</span>Host: Her father wants to give her to a shepherd and she doesn&#x27;t want to?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:13]</span>Riyad: Her father doesn&#x27;t want to, she wants to marry the shepherd.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:15]</span>Host: Her father doesn&#x27;t want to, and she wants to marry the shepherd?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:17]</span>Riyad: He doesn&#x27;t want the shepherd, she doesn&#x27;t want to, her father doesn&#x27;t want the shepherd but his daughter wants the shepherd.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:24]</span>Host: Alright, the daughter wants the shepherd.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:26]</span>Riyad: Yes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:26]</span>Host: Go ahead.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:34:00]</span>Riyad: Mother, he is a shepherd, by God, he is a shepherd.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:34:03]</span>Riyad: Oh mother, he is a shepherd, oh mother, by God, he is a shepherd.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:06]</span>Host: Dear viewers, here our second tour in the village of Jweik in the western countryside of Afrin comes to an end.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:13]</span>Host: In this tour, we were happy to join you in learning about some traditional and newly introduced professions and crafts in Jweik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:21]</span>Host: And about the different lifestyles, the most important of which is animal breeding.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:25]</span>Host: We also learned about the economic and social situation of the people.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:29]</span>Host: We will be with you next week on a new tour from another beloved Syrian region.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:34]</span>Host: To follow our program, follow the channel&#x27;s Facebook page, and also our website halabtodaytv.net.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:40]</span>Host: Peace, mercy, and blessings of God be upon you.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:44]</span>Music: [Music]</p>
+                </div>
+            </div>
+
+            <!-- Kurdish Transcript Card -->
+            <div id="kurdish" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transkrîpta bi Kurmancî</h2>
+                    <button class="copy-btn" onclick="copySection('transcript-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Kopî bike
+                    </button>
+                </div>
+                <div id="transcript-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00:41]</span>Host: جويق القرية الجبلية الجميلة جدا في ريف عفرين الغربي كما ذكرنا في الحلقة السابقة</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00:48]</span>Host: كان لها أهمية جغرافية وسياسية كبيرة في عموم منطقة عفرين</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:00:54]</span>Host: وذلك بسبب النشاط الحزبي والسياسي لأبنائها وبسبب كثرة الشهادات الجامعية من كافة التخصصات لهم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:05]</span>Host: تتربع هذه القرية ما بين نهر عفرين وقرية قرتلاق شمالا، وقرية داركير غربا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:13]</span>Host: نسبة كبيرة من أبنائها كانوا يسكنون في مدينة حلب سابقا</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:17]</span>Host: وخاصة في أحياء بستان الباشا والأشرفية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:21]</span>Host: أما الآن فإن معظمهم مهاجرون إلى تركيا وأوروبا للعمل والدراسة كما قلنا سابقا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:28]</span>Host: يتداخل في هذه القرية القديم التراثي بالحديث المبدع بشكل ملفت للنظر</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:36]</span>Host: ليشكل لوحة إبداعية جميلة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:39]</span>Host: ترتفع عن سطح البحر 440 مترا، ويعتبر مناخها معتدلا صيفا، باردا شتاء.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:53]</span>Host: السلام عليكم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:55]</span>Barber: وعليكم السلام.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:56]</span>Host: يعطيكم العافية. نتعرف عليك؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:00]</span>Barber: وحيد بكر.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:01]</span>Host: يا أهلا وسهلا فيك يا سيد وحيد. وحيد الحلاق الوحيد في الضيعة؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:05]</span>Barber: لا في عدة حلاقين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:08]</span>Host: عدة حلاقين؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:08]</span>Barber: إيه خمسة نحن.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:09]</span>Host: قديش صار لك إنت هون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:10]</span>Barber: ست سنين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:11]</span>Host: ست سنين، وحضرتك؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:13]</span>Customer: أنا من ريف حماه.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:14]</span>Host: مهجر لهون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:14]</span>Customer: مهجر إيه.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:15]</span>Host: يا أهلين وسهلين. هلق شو عم تحلق له؟ على ذوقك ولا على ذوقه؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:20]</span>Barber: لا على ذوقه.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:22]</span>Host: شو ذوقه هلق هو؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:23]</span>Barber: ذوقه هو بده يخفف وحنجرة، يعني يخفف دقن ويحنجر له إياها.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:28]</span>Host: وأنت شو ذوقك؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:30]</span>Customer: [يضحك]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:32]</span>Host: أنت بتحلق له على الزيرو؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:34]</span>Barber: لا هو طلب مني بدي احلق له إياها.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:37]</span>Host: شو الحلاقات اللي هون، أنواع الحلاقات اللي بيحلقوها الشباب هون؟ القصات شو هي؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:41]</span>Barber: القصات، عدة قصات عندك. عندك مارينز، عندك تركي، هلق بالشكل العام قصات تركية في، مارينز...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:53]</span>Barber: وعادي تدريج.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:55]</span>Host: الكبار الختيارية؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:57]</span>Barber: لا الكبار الختيارية بيختلف، الختيارية بيختلف، يعني حلاقة تخفيف عادي، عالمقص فوق عادي، حلاقة ركز يعني عادية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:05]</span>Host: والشباب الصغار؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:06]</span>Barber: الشباب الصغار عالموضة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:08]</span>Host: عالموضة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:09]</span>Barber: عالموضة، خط وما خط و...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:11]</span>Host: صار شيء تغيير بالذوق، يعني ذوق القصات الرجالية خلال هالسنوات هي ست سبع سنوات الأخيرة؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:17]</span>Barber: والله تغير إيه.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:20]</span>Host: شلون؟ يعني هي القصات ما كانت سابقا؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:23]</span>Barber: لا شلون بدي أقول لك... كل سنة سنة بيطلع شيء جديد، كل سنة سنة بيطلع شيء جديد.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:30]</span>Host: في شيء هون قصة للضيعة لجويق خاصة فيها مثلا؟ أو قريبة يعني مثلا أهل عفرين بيقصوا نفس الشيء؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:35]</span>Barber: لا ما في، ما في.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:38]</span>Host: خلينا نسأل هالزلمة هاد، مبسوط من الحلاقة هي اللي عم يحلق لك إياها الزلمة؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:41]</span>Customer: إيه الله يعطيه العافية معلم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:43]</span>Host: عاجبك؟ ما قصك ما ضربك شيء ضربة هيك؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:45]</span>Customer: لا لا لا ما في هالحكي لا معلم الله يعطيه العافية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:48]</span>Host: مجربه سابقا؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:49]</span>Customer: إيه هي ثالث مرة بحلق عنده أنا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:51]</span>Barber: ثالث مرة؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:53]</span>Customer: إيه الله يعطيه العافية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:54]</span>Host: إنت قديش بتجي لهون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:55]</span>Customer: أنا بشكل دائم أنا هون أنا عازف أورغ، فالفرقة موجودة هون بالضيعة هون.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:01]</span>Host: لا أنا أقصد كل قديش بتحلق عنده؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:03]</span>Customer: كل أسبوع عشر أيام، أسبوع عشر أيام تقريبا بتحنجر عادي، الشعر يعني على العشرين خمسة وعشرين يوم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:10]</span>Host: كويس.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:11]</span>Customer: إيه سيدي نعيما.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:12]</span>Barber: الله ينعم عليك ويبارك فيك يا طيب.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:14]</span>Host: الله يكرمك، السلام عليكم. شكرا إلك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:16]</span>Barber: وعليكم السلام، على راسي، أهلا وسهلا بحضرتك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:27]</span>Host: مرحبا عمو.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:29]</span>Host: شلونك؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:30]</span>Host: شو اسمك إنت؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:32]</span>Host: شو اسمك؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:36]</span>Host: بنتك؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:37]</span>Shopkeeper: لا بنت ابني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:38]</span>Host: بنت ابنك؟ يا أهلا وسهلا، السلام عليكم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:40]</span>Shopkeeper: وعليكم السلام ورحمة الله وبركاته.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:41]</span>Host: الله يعطيك العافية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:42]</span>Shopkeeper: الله يعافيك يا أهلا وسهلا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:43]</span>Host: نتعرف عليك؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:44]</span>Shopkeeper: فؤاد بكر.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:46]</span>Host: فؤاد بكر. من جويق؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:47]</span>Shopkeeper: من جويق.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:48]</span>Host: يا أهلا وسهلا فيك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:49]</span>Shopkeeper: الله يسلمك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:50]</span>Host: قد ايش صار لك فاتح الدكان؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:51]</span>Shopkeeper: صار لي 28 سنة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:53]</span>Host: 28 سنة بنفس هذا المكان؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:54]</span>Shopkeeper: نفس المكان.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:55]</span>Host: ما غيرت الصنعة؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:56]</span>Shopkeeper: لا ما غيرت الصنعة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:58]</span>Host: طيب احكي لي هالأيام شلون وضع الناس باعتبارك إنت يعني الناس تشتري من عندك وتبيع، يعني تشتري من عندك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:03]</span>Shopkeeper: والله الناس بيجوا بالزمن يعني أنا فاتح المحل، بيجوا بياخذوا أغراض، وعم الحمد لله عم ماشي أمورنا وعم ماشي أمور الزباين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:12]</span>Shopkeeper: وعم يمشي الحال يعني الأمور هيك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:14]</span>Host: شلون القوة الشرائية للناس؟ معهم مصاري عم يشتروا؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:17]</span>Shopkeeper: والله هالوضع الناس تعبانين، هالوضع ما عندهم مصاري.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:21]</span>Shopkeeper: بس الأول كان الشغل أحسن من هيك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:23]</span>Host: أحسن مو هيك؟ هلا إنت شو بتبيع؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:25]</span>Shopkeeper: والله بنبيع أغراض، مثل سكر، شاي...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:29]</span>Host: سمانة يعني كل شيء؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:30]</span>Shopkeeper: سمانة يعني، منظفات، شغلات البيوت يعني، شغلات النظافات، سمانة، منظفات، ما منظفات هيك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:35]</span>Host: الأسعار شلون اليوم هون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:37]</span>Shopkeeper: والله هلق غالي الأسعار.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:38]</span>Host: غالي مو هيك؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:39]</span>Shopkeeper: غالي جدا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:41]</span>Host: في شيء هون يعني شغل الضيعة بينباع مثلا لبن، حليب، جبنة، كذا، باعتبارها بلد زراعي، زيت، زيتون...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:48]</span>Shopkeeper: زيتون... من هون، إيه بتنباع كل شيء. لبن، ما لبن، حليب، زيت، زيتون، عطون، يعني الشغلات الـ...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:58]</span>Host: أنت بتبيع عندك هون بالمحل؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:59]</span>Shopkeeper: والله أحيانا... أحيانا نجيب لبن وما لبن، أحيانا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:01]</span>Host: طيب كم محل في بالضيعة هون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:03]</span>Shopkeeper: في بيجي 10 محلات.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:05]</span>Host: 10 محلات؟ تقريبا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:07]</span>Shopkeeper: تقريبا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:08]</span>Host: الله يرزقكم يا رب، الله يعطيك العافية، شكرا إلك، السلام عليكم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:12]</span>Shopkeeper: الله يوفقكم، أهلا مية سلامة، شرفتونا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:14]</span>Host: الله يسلمك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:24]</span>Host: السلام عليكم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:26]</span>Women: وعليكم السلام.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:27]</span>Host: الله يعطيكم العافية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:28]</span>Women: الله يعافيك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:29]</span>Host: ممكن أحكي معكم هيك شوي دردشة شوي معكم؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:31]</span>Woman: أهلا وسهلا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:32]</span>Host: حضرتك فاتحة محل؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:33]</span>Woman: لا والله.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:34]</span>Host: تفضلي لهون شوي ليش خجلتي؟ تعي تعي تعي ليكي أنا واقف هون لو سمحتي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:40]</span>Host: الاسم الكريم؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:42]</span>Woman: جميلة عثمان.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:43]</span>Host: أهلا وسهلا فيكي. زبونة جاية تشتري من هون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:45]</span>Woman: إيه.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:46]</span>Host: الأخت هون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:47]</span>Woman 2: مدينة دادو.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:48]</span>Host: يا أهلا وسهلا كمان من هون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:50]</span>Woman 2: الله يسلمك. إيه.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:51]</span>Host: وقفي هون شوي خلينا نحكي شوي لو سمحتي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:55]</span>Host: هذا محل بيع ألبسة في غيره هون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:58]</span>Woman 2: لا والله ما في غير هالمحل.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:00]</span>Host: بس هذا المحل؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:01]</span>Woman 2: إيه مبلى.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:02]</span>Host: من زمان ولا هلا بس ما في؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:03]</span>Woman 2: لا من زمان هون.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:04]</span>Host: من زمان.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:05]</span>Host: إيه شو ببيع هون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:06]</span>Woman 2: أغراض، يعني كنزات، بناطيل، هيك شيء.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:10]</span>Host: ولادي، نسائي...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:11]</span>Woman 2: ولادي، كل شيء فيه.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:13]</span>Host: بتاع كله؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:14]</span>Woman 2: إيه مبلى.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:15]</span>Host: يعني ما بتحتاجوا تنزلوا على عفرين؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:16]</span>Woman 2: ننزل بس قليل.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:18]</span>Host: قليل. عموما الكبارية هون شو بيلبسوا؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:20]</span>Woman 2: بناطيل، كنزات، شباب بيلبسوا بناطيل كنزات.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:25]</span>Host: عم أحكي عن النساء.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:26]</span>Woman 2: نساء، فساتين يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:28]</span>Host: فساتين، لأن الرجال الكبار بيلبسوا شروال.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:31]</span>Woman 2: إيه. بس النسوان بيلبسوا فساتين، هيك شغلات.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:34]</span>Host: فساتين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:35]</span>Woman 2: إيه مبلى.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:36]</span>Host: شلون الأسعار هون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:37]</span>Woman 2: الحمد لله لا منيحا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:39]</span>Woman: والله مو زيادة. كثير غالي. كثير غالي صاير.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:43]</span>Host: أغلى من عفرين؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:44]</span>Woman: أغلى من عفرين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:46]</span>Woman 2: لا عفرين أغلى من هون.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:48]</span>Host: هون أرخص؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:49]</span>Woman 2: هون أرخص.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:51]</span>Host: الله يعينكم والله يعطيكم العافية يا رب والله يرزقكم. السلام عليكم، شكرا لكم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:55]</span>Woman 2: الله يسلمك أهلاً مية سلامة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:57]</span>Woman: شرفتونا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:58]</span>Host: الله يسلمك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:06]</span>Host: تحسن الظروف الاقتصادية والاستقرار اللي عم تعيشه جويق بالفترة الأخيرة</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:11]</span>Host: إضافة إلى الحاجة إلى فرص عمل للناس اللي عاطلين عن العمل من فترة طويلة بسبب الظروف الاقتصادية والاجتماعية الأخيرة،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:20]</span>Host: خلت أحد أبناء هالقرية يفتح ورشة للخياطة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:24]</span>Host: رح ندخل معكم لداخل هالورشة نتعرف عليها ونتعرف أيضا على فرص العمل اللي موفرتها،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:30]</span>Host: وعلى طبيعة إنتاجها ووين بتصرفه، تفضلوا معنا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:38]</span>Host: يا رب. السلام عليكم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:42]</span>Host: السلام عليكم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:43]</span>Owner: وعليكم السلام.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:44]</span>Host: شلونك؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:45]</span>Owner: الحمد لله، أهلا وسهلا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:46]</span>Host: نتعرف عليك؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:47]</span>Owner: جوان، من جويق.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:49]</span>Host: أهلا وسهلا فيك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:50]</span>Owner: الله يسلمك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:51]</span>Host: صاحب الورشة؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:52]</span>Owner: أنا صاحب الورشة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:54]</span>Host: احكيلي عن الورشة؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:56]</span>Owner: والله نحن بنشتغل مصانعة، بنجيب شغل من برا وعم نجيبه عالورشة وكل صانع بيشتغل...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:07]</span>Host: يعني أنتم معناها هي البضاعة مو إلكن؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:10]</span>Owner: لا مو إحنا، هدول جابوها من عفرين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:13]</span>Host: من عفرين؟ من شركة ريان؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:15]</span>Owner: إيه شركة ريان.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:17]</span>Host: بتجيبوها بتصنعوها لحسابهم؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:19]</span>Owner: للمصانعة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:20]</span>Host: للمصانعة وبتاخذوا أجرتها؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:22]</span>Owner: إيه أجرتي. أنا بشتغل مصانعة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:24]</span>Host: كم فرصة عمل هون؟ يعني كم شغّيل؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:26]</span>Owner: هدول هنه، تقريبا شي 10.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:30]</span>Host: 10، بيشتغلوا كم ساعة؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:32]</span>Owner: تقريبا 9 ساعات.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:34]</span>Host: 9 ساعات كل نهار. في ورشة، في جويق تاني ولا بس هاي؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:37]</span>Owner: لا بس هاي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:39]</span>Host: كم بياخد العامل هون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:40]</span>Owner: والله حسب العامل، في منهم صغار بياخدوا 35، في منهم 50، تقريبا...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:47]</span>Host: 50 شو؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:48]</span>Owner: 50 ألف.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:49]</span>Host: بالجمعة؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:50]</span>Owner: بالجمعة. بالأسبوعية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:51]</span>Host: تمام، إنتاجكم شلون؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:52]</span>Owner: حسب الأسبوع.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:54]</span>Owner: حسب الأسبوع، في أسبوع 1000 قطعة، في 1200 قطعة، تقريبا هيك يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:59]</span>Host: تمام، موفقين يا رب.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:00]</span>Host: Tamam. Bas entu bima inno bitkunu entu ya&#x27;ni bitsarfuha aw btsawquha? La, sharike hiye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:04]</span>Man: La la, nahna bas mnishitghel masna&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:08]</span>Host: Hiye btejiblekun l-kmash?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:09]</span>Man: Ewa, huwe saheb l-shighel, nahna bas ssan&#x27;a, kheyata, bas kheyata.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:13]</span>Host: Taswiq &#x27;alekun?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:14]</span>Man: La, mo &#x27;aleina. Bas kheyata.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:16]</span>Host: Entu bas bitkhaytu?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:17]</span>Man: Bas kheyata.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:18]</span>Host: Ya&#x27;ni hala&#x27; l-yom saraha hal-warshe hay,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:22]</span>Host: bit&#x27;ayesh hal-&#x27;ashra aw khamstashar shakhis yalli &#x27;am byishtighlu hon?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:25]</span>Man: Bala.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:26]</span>Host: Byi&#x27;ishu hon?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:27]</span>Man: E, b-hay shaghle.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:28]</span>Host: Kil shakhis ilu &#x27;ayle min wara?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:30]</span>Man: Kil shakhis fi &#x27;ayle min wara.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:32]</span>Host: O &#x27;ummalakun min wein?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:34]</span>Man: Killon min d-de&#x27;a. Killon min hal-de&#x27;a.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:36]</span>Host: Ahli Jweq?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:37]</span>Man: Killon min Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:38]</span>Host: Fi shi min l-muhajerin hon?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:39]</span>Man: La, ma fi. Killon ahli Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:43]</span>Host: Had l-makan shu kan hon sabiqan?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:44]</span>Man: Hada kan awwali ma&#x27;sara.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:46]</span>Host: Ma&#x27;saret zetun?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:47]</span>Man: Ma&#x27;saret zetun, ma&#x27;saret &#x27;adim hada.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:49]</span>Host: Ewa. Entu jitu ta&#x27;amaltu, o...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:51]</span>Man: Ewa, o dallelna l-yom.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:52]</span>Host: Ya sidi Allah yirzi&#x27;ak ya rab w yiftah &#x27;alek.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:54]</span>Man: W nshuf sh-shabab kaman.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:56]</span>Host: E, biddi shuf sh-shabab. Biddi ehki ma&#x27; hal-shabb.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:00]</span>Host: Salam &#x27;alekum.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:01]</span>Young Man: &#x27;Alekum s-salam w rahmatullah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:02]</span>Host: Allah ya&#x27;tik l-&#x27;afiye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:03]</span>Young Man: Allah y&#x27;afik ya rab.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:04]</span>Host: Nita&#x27;arraf &#x27;alek.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:05]</span>Young Man: Ismi Muhammad wallah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:06]</span>Host: Ahlan w sahlan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:07]</span>Host: Hala&#x27; enta shu ayy marhale &#x27;am tishtighel hon?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:10]</span>Young Man: Wallah hadol bisammuhun jyab sa&#x27;a.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:11]</span>Host: Jyab sa&#x27;a?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:12]</span>Young Man: E.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:13]</span>Host: Enta bitkhayet jyab s-sa&#x27;a?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:14]</span>Young Man: E.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:15]</span>Host: Sh&#x27;ad sarlak b-hal mihne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:16]</span>Young Man: Wallah sar li bil alfein w tlati taqriban.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:19]</span>Host: Min l-alfein w tlati?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:20]</span>Young Man: E.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:21]</span>Host: Shtaghalt hon w shtaghalt b-Afrin, wein shtaghalt?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:22]</span>Young Man: Kint awwal shi ishtighel b-Halab.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:24]</span>Host: Abl s-sawra?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:25]</span>Young Man: Ewa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:26]</span>Host: W ba&#x27;dein jitu la-hon?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:27]</span>Young Man: Ba&#x27;dein ijina la-hon. Nazahna la-hon.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:29]</span>Host: Shlon shayef s-shighel b-hal warshe?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:31]</span>Young Man: Wallah l-hamdulillah. Mashi l-hal l-hamdulillah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:34]</span>Host: L-hamdulillah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:35]</span>Host: Ma fakart shi nhar tiftah warshe la-halak?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:37]</span>Young Man: Wallah ma fi imkaniye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:39]</span>Host: Mitzawwej?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:40]</span>Young Man: E.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:41]</span>Host: Shu &#x27;andak awlad?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:42]</span>Young Man: Wallah &#x27;andi wahid, w nshallah wahid &#x27;a-tariq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:44]</span>Host: Allah yikhallihun ya rab.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:46]</span>Young Man: Allah ysalmak.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:47]</span>Host: Nshallah l-ajir lli &#x27;am takhdu munasib?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:49]</span>Young Man: Wallah l-hamdulillah. Ahsan min balakih.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:52]</span>Host: &#x27;Andak ared kaman &#x27;ayesh minha?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:54]</span>Young Man: Wallah e l-hamdulillah. Fi.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:56]</span>Host: L-hamdulillah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:57]</span>Young Man: Shi miyyet shajaret zetun.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:58]</span>Host: Ni&#x27;met Allah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:59]</span>Young Man: L-hamdulillah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:00]</span>Host: Allah yirzi&#x27;kun.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:01]</span>Young Man: Tislam ya ghali.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:02]</span>Host: Shukran elak.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:03]</span>Young Man: Tislam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:04]</span>Host: Salam &#x27;alekum.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:05]</span>Young Man: Allah ya&#x27;tikun l-&#x27;afiye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:15]</span>Host: Matar w &#x27;am tir&#x27;a.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:21]</span>Host: Allah ya&#x27;tik l-&#x27;afiye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:22]</span>Shepherd: Shlonak?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:23]</span>Host: Allah yihayyik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:24]</span>Shepherd: Ahlan fik, ya hala.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:25]</span>Host: Min d-de&#x27;a min hon?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:26]</span>Shepherd: Wallah saraha la&#x27; ana.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:27]</span>Host: Ya ahla w sahla fik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:28]</span>Host: Had wadi Dargir mo hek?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:30]</span>Shepherd: Wallah ma ba&#x27;ref ana hal qita&#x27;at ma ba&#x27;rifa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:33]</span>Host: Ma bta&#x27;rifa. Ma nak min hon?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:35]</span>Shepherd: La&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:35]</span>Host: Lakan min wein?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:36]</span>Shepherd: Ana min rif Halab j-janubi, nazih hon.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:37]</span>Host: Ahlan w sahlan fik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:39]</span>Host: &#x27;Andak kam ghaname?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:40]</span>Shepherd: Wallahi &#x27;adadon b-zabit, akhi l-yom ya&#x27;ni ta&#x27;dad, ta&#x27;dad bi-zabit ma b&#x27;arif.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:43]</span>Host: Taqribi?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:44]</span>Shepherd: Ya&#x27;ni hawali tis&#x27;in yumkin, tmanin... ma ba&#x27;rif.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:46]</span>Host: Inshallah. Gharib inno ma bta&#x27;rif l-ghanemat, akhi imshi shway.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:48]</span>Shepherd: Ana ra&#x27;i, ra&#x27;i.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:49]</span>Host: Enta ra&#x27;i!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:50]</span>Shepherd: Ra&#x27;i, ra&#x27;i.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:51]</span>Host: Aywa. Ra&#x27;i la-kil d-de&#x27;a walla bas hal ghanamat?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:53]</span>Shepherd: La, zalama hada &#x27;andu ghanam w ana asrah fiyyon.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:55]</span>Host: Aywa, aywa. Had sh-shabb ibnak had?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:57]</span>Shepherd: Ibni, e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:58]</span>Host: Masha&#x27;Allah. Allah yikhallih.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:59]</span>Shepherd: Allah ysallmak.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:00]</span>Host: Shlonak?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:01]</span>Boy: L-hamdulillah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:02]</span>Host: Nt&#x27;arraf &#x27;alek?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:03]</span>Boy: &#x27;Abd l-Malik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:04]</span>Host: Ahlein ya &#x27;Abd l-Malik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:05]</span>Host: Hada shu ismu ya &#x27;Abd l-Malik, illi lashufak.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:07]</span>Boy: Ghaname.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:08]</span>Host: Ghaname, hada l-marya&#x27; walla hada l-marya&#x27;?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:11]</span>Boy: Hada.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:12]</span>Host: Hada l-marya&#x27;, w hada?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:13]</span>Boy: Jahish.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:14]</span>Host: Ahaa, w hada l-jaras?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:16]</span>Boy: Marya&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:17]</span>Host: Marya&#x27;, jaras l-marya&#x27; kaman.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:19]</span>Host: Ya&#x27;ni fi marya&#x27; kabish, w fi marya&#x27; teys?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:22]</span>Shepherd: E.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:23]</span>Host: Fi tnein?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:24]</span>Shepherd: E.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:25]</span>Host: Ya salam. Ya salam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:27]</span>Host: Hala&#x27; iza baddak tqilli, ya&#x27;ni yawmiyyet ra&#x27;i.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:32]</span>Host: R-ra&#x27;i min eymat byitla&#x27; s-subih &#x27;a-r-ra&#x27;iye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:34]</span>Shepherd: Wallah, b-hal waqt eish, b-sh-shatwiye ma ybakkir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:37]</span>Host: Ya&#x27;ni?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:38]</span>Shepherd: Hasab n-nada, hasab ya&#x27;ni ta&#x27;rif enta...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:40]</span>Host: Ya&#x27;ni s-sa&#x27;a sh&#x27;ad?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:41]</span>Shepherd: Yijuz tis&#x27;a, yijuz &#x27;ashra, hasab l-ya&#x27;ni, l-ghanam hasab ma tar&#x27;a.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:43]</span>Host: W b-s-seyf?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:44]</span>Shepherd: B-s-seyf liman b-d-dasht, ya&#x27;ni yqulu d-dasht u m-l-hasid.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:47]</span>Host: E.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:48]</span>Shepherd: Ma tehsed l-hassadat akhi wa tasrah l-ghanam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:50]</span>Host: Eyy sa&#x27;a ya&#x27;ni s-subih bitla&#x27;?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:52]</span>Shepherd: Ya&#x27;ni b-l-hasid s-subih ma byinda, &#x27;reft &#x27;aley shlon, b-hal hasid b-hal sh&#x27;ir, ra&#x27;i yidman akhi u b-hal hasdan tasrah l-ghanam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:58]</span>Host: W eymat btirja&#x27; l-masa?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:59]</span>Shepherd: Byiji z-zuhur</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:00]</span>Shepherd: Ywarrid, ghanam ta&#x27;tash b-s-seyf, yhallib akhi z-zuhur, w tasrah l-&#x27;asriyat, w tridd thallib l-maghrib, w tridd.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:06]</span>Host: Tihlub martein?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:07]</span>Shepherd: E. Hala&#x27; b-sh-shiti sh&#x27;ad tihlub?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:08]</span>Shepherd: Halbe, hala&#x27; ma fi, bas s-subih.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:10]</span>Host: S-subih bas?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:11]</span>Shepherd: Bas s-subih.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:12]</span>Host: Min s-subih la-s-subih?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:13]</span>Shepherd: S-subih nhar talyan minkawwez t-talyan bil leil, wa s-subih mniflit ha khayo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:16]</span>Host: Sh&#x27;ad tahlub l-ghaname?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:19]</span>Shepherd: Wallah hasab, hasab darrt n-na&#x27;je. Fi na&#x27;je thalib nos kilo, fi na&#x27;je tahlib kilo, fi na&#x27;je thallib rubi&#x27; kilo, hasab ya&#x27;ni.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:25]</span>Host: W l-ma&#x27;iz?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:26]</span>Shepherd: L-ma&#x27;iz i hallib.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:27]</span>Host: Addeish?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:28]</span>Shepherd: Fi ma&#x27;iz, b-hasab zata kilu mo mitil ba&#x27;du, fi &#x27;anze thalib nos kilo, fi &#x27;anze thalib kilewein, fi &#x27;anze thalib kilo.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:35]</span>Host: L-yom &#x27;am tsawwu jibne aw ma sar waqt j-jibne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:38]</span>Shepherd: Lissa mo waqt j-jibne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:39]</span>Host: Ma sar waqt j-jibne.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:40]</span>Shepherd: La, lissa. Hala&#x27; ghaban ya&#x27;ni, &#x27;a-l-akil ta&#x27;rif inta.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:44]</span>Host: Had mumayaz had, shu had?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:45]</span>Shepherd: Had kabish... had ismu aswad agrah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:48]</span>Host: Aswad agrah?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:49]</span>Shepherd: E, agharr.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:50]</span>Host: Agharr?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:51]</span>Shepherd: E, agharr.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:51]</span>Host: Ah, w had?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:52]</span>Shepherd: Teys.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:53]</span>Host: Teys.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:54]</span>Host: Hada shami?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:55]</span>Shepherd: E.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:56]</span>Host: Shami, mo hek? Mbayyen min anfu.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:57]</span>Shepherd: E.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:58]</span>Shepherd: Had akhal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:59]</span>Host: Had akhal?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:00]</span>Shepherd: Hada e, anhu l-akhal?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:01]</span>Shepherd: Had akhal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:02]</span>Host: Had?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:03]</span>Shepherd: E, li-anno &#x27;yunu hawaleytoun aswad.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:05]</span>Host: Aswad e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:06]</span>Shepherd: E, aswad akhal. Hada...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:08]</span>Shepherd: abrash abyad.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:09]</span>Host: Hada abrash abyad?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:10]</span>Shepherd: E, w had arkham.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:11]</span>Host: Hada arkham.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:12]</span>Host: Shu ya&#x27;ni arkham?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:13]</span>Shepherd: Ah, arkham azraq e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:14]</span>Host: Qata&#x27;at, ta&#x27;ref bil ghanam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:15]</span>Host: Allah ya&#x27;tik l-&#x27;afiye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:16]</span>Shepherd: Allah y&#x27;afik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:17]</span>Host: Shukran elak.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:18]</span>Shepherd: Ahlein fik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:19]</span>Host: Salam &#x27;alekum.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:20]</span>Shepherd: &#x27;Alekum s-salam.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:27]</span>Host: Sani&#x27; l-mawas u s-sakakin l-&#x27;am Mustafa Kocher Abu Ahmed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:32]</span>Host: Shakhsiye mumayaze w muhimme ktir b-Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:35]</span>Host: Ma&#x27;rufe la-inno mihnitu aydan ktir muhimme la-ahali Jweq w la-ahl l-mantiqa &#x27;umuman.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:40]</span>Host: Rah nkun ma&#x27;kun b-hal faqra z-zghire, nt&#x27;arraf &#x27;a-hal mihne w nt&#x27;arraf &#x27;a-l-&#x27;am Abu Ahmed.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:45]</span>Host: W nshuf mada ahamiyyeta l-yom, b-hal zarf r-rahin la-ahali Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:49]</span>Host: Tabi&#x27;una.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:00]</span>Host: Salam &#x27;alekum.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:06]</span>Man: &#x27;Alekum s-salam wa rahmatullah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:08]</span>Host: Shlonak?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:09]</span>Man: Ahlan wa sahlan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:10]</span>Host: Shlon sahtak?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:11]</span>Man: Ahlan wa sahlan, ahlan b-l-ustaz, ahlan wa sahlan, ahlan wa sahlan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:13]</span>Host: Allah yi&#x27;afik.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:14]</span>Host: Biddi ubruk janbak hek shway la-at&#x27;arraf &#x27;alek w ta&#x27;arraf &#x27;a-mihintak.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:18]</span>Host: Biddi shaghle hek ubruk &#x27;aleha janbak.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:21]</span>Man: Jiblu kirsi la-l-ustaz.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:23]</span>Host: E, &#x27;tini ha law samaht.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:25]</span>Man: Ahlan wa sahlan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:30]</span>Host: Awwal shi btit&#x27;arraf &#x27;alek?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:33]</span>Man: Mustafa Ahmed Sido, min Jweq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:37]</span>Host: Ahlan wa sahlan. Ma&#x27;ruf b-Mustafa Kocher.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:40]</span>Man: E, laqab, e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:41]</span>Host: Ya&#x27;ni entu min beyt Kocher hon?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:43]</span>Man: E, e. Laqab hada, e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:45]</span>Host: Ya ahlein wa sahlein.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:46]</span>Man: L-l-&#x27;ashayer awwali.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:48]</span>Host: Na&#x27;am.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:49]</span>Host: Hala&#x27; hay l-mihne lli &#x27;am tishtighel fiha enta l-an. Shu tusamma?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:53]</span>Man: Mihnit mawas, sunu&#x27; mawas, skakin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:57]</span>Host: Sunu&#x27; mawas u skakin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:58]</span>Man: E.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:59]</span>Host: Eymat sarlak b-hal mihne?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:01]</span>Man: Sali shi tlatin sine taqriban.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:03]</span>Host: Hon b-Jweq?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:04]</span>Man: E min Jweq, kint saken b-Afrin, kint ishtighel b-Afrin, sar li arba&#x27; khamis sanawat jay &#x27;a-d-de&#x27;a.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:08]</span>Man: Bqa rji&#x27;na &#x27;a mihnitna. Bidna nishtighel shughilna ya&#x27;ni, kil min bishtighel shughlu w bi&#x27;ilu.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:13]</span>Host: Sabiqan ma kan b-Jweq fi hal mihne hon?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:16]</span>Man: Kan fi b-Jweq, kan fi imam jami&#x27; Jweq, min shi arba&#x27;in sine w ba&#x27;id, khamsin sine w ba&#x27;id,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:24]</span>Man: kanu yishtighlu, yimkin dallu shi &#x27;ashir khamstashar sine, ishrin sine, yijuz aktar kaman, kanu zghar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:30]</span>Man: Kanu yishtighlu skakin, skakin Jweq illon shuhra bil-mantiqa, bil-Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:34]</span>Host: Shu shuhrton, ihkili &#x27;annon?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:36]</span>Man: Skakin Jweq, ya&#x27;ni &#x27;amaliyyat aktar, w kan imam jami&#x27; yitqin shughlu ya&#x27;ni.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:42]</span>Host: Ya&#x27;ni masalan bimyazu inno hinne haddat, matinat, byistamirru ktir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:47]</span>Man: Tab&#x27;an, hadd w sqaytu kwayse w shughul m&#x27;almiye ya&#x27;ni.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:51]</span>Man: W rijjal dayyen w kwayyes w yishtighel shi ya&#x27;ni kwayyes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:55]</span>Host: Hala&#x27; enta kint fatih mahal b-Afrin qabl ma tkun hon b-Afrin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:59]</span>Man: Kint fatih mahal b-Afrin...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:00]</span>Man: janb beyti, wa ashtighel a&#x27;ayyish wlati.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:04]</span>Host: M-l-mihne bi-z-zat walla kan &#x27;andak wazife tanye?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:06]</span>Man: Kint mwasaf janb wazifti. Ba&#x27;d dawami ashtighel l-l-masa la nos l-leil asawi skakin,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:13]</span>Man: ayyam aswaq Afrin, suq Afrin, Jinderes, Sheikh Hadid, Rajo. Aruh abi&#x27;on u aji.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:19]</span>Man: Awqat ma aruh abi&#x27;on fi makani ya&#x27;ni.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:22]</span>Host: Ya&#x27;ni idafe la-shighlak btishtighel b-hal mihne. Su&#x27;al, l-yom hal mihne bi-t&#x27;ayyish?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:26]</span>Man: L-yom ya&#x27;ni...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:29]</span>Man: ghala m&#x27;ishe, ya&#x27;ni...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:34]</span>Man: am nishtighel ma bi... ma btitla&#x27; m&#x27;ishe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:36]</span>Man: Ma b-ti... ma b-tghatti m&#x27;ishe.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:38]</span>Host: Fhimt &#x27;alek, fhimt &#x27;alek, fhimt &#x27;alek.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:42]</span>Host: Ihkili awwal shi shu ahamiyyet hay l-mihne la-ahl l-mantiqa haliyan?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:46]</span>Man: Nihna k-mantiqa zira&#x27;iye, ya&#x27;ni l-muzari&#x27; ikan ykun &#x27;andu karim, ykun &#x27;andu zeytun, &#x27;andu rimman, shaghle.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:54]</span>Man: Biddu yiqta&#x27; &#x27;ude, biddu... yuqtul dud s-sajaret z-zeytun. Byiqa&#x27;wer mahal d-dude mahal ma fi dude.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:00]</span>Man: Biqa&#x27;wer mahalla shway b-buz s-sikkine, w bijib &#x27;ude, braffi&#x27;a hek u binaddifa w biduqqa l-l-&#x27;ude b-hal matrah buqtul d-dude.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:09]</span>Man: Iza ma qatal d-dude, d-dude btiqtul z-zeytune.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:12]</span>Host: Hada bi-n-nisbe l-l-muzari&#x27;, w bi-n-nisbe masalan la mrubbi l-haywanat lli &#x27;andu ghanam u hek?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:16]</span>Man: L-haywanat biddu... yidbahluh shaghle, ya&#x27;ni ghaname murdat shway...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:23]</span>Man: ahsan ma tmut. Yruh &#x27;aleha yidbaha ibi&#x27;a kaza, ya&#x27;ni...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:27]</span>Host: Ya&#x27;ni fina nqul inno kil fallah aw kil mrabbi haywanat &#x27;andu sikkin fi jebtu?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:31]</span>Man: E. Bi-sti&#x27;mal m-manzili.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:33]</span>Host: E, mitil ma tfaddalt. E, na&#x27;am.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:34]</span>Host: Tayeb... eish anwa&#x27; s-skakin?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:36]</span>Man: Anwa&#x27; s-skakin khayo, fi &#x27;andak... mus dabb...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:43]</span>Man: &#x27;adi.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:44]</span>Man: Hada lissa ma ktamal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:46]</span>Host: Mus dabb.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:47]</span>Man: E, e, bindabb e, byindabb hek e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:50]</span>Host: Wa fi &#x27;andak... mus taqqat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:56]</span>Man: Hada alu taqqat hada. Byinhat b-j-jeb e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:00]</span>Man: ... min hên bi heşşekil hada...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:02]</span>Man: ma xeyyo nehna mitil ma mita&#x27;llmîn nişteğil am nişteğil beqa...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:06]</span>Man: kil wahid beqa bifaddil şuğlo ala... ala ğêro,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:11]</span>Man: w bitlebbes imma bi xaşab, aw taqên fûlaz reqîq,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:17]</span>Man: w ba&#x27;dên bîcî telbîs xaşab aw...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:22]</span>Man: bîkalêt aw baqa aw şağle, w ba&#x27;dên bitrekkeb bi heşşekil hada.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:28]</span>Host: Hada... hada şû hada mûs tqati&#x27;?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:30]</span>Man: Hada mûs tqati&#x27;, êh.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:32]</span>Man: Hada mûs tqati&#x27; ma byindabb illa tşidd il-halaqa teba&#x27;o.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:36]</span>Host: Hada la şû byista&#x27;mal?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:37]</span>Man: Hada yusta&#x27;mal la kil iş-şağlat... mişan ma yîcî ala îdak w ycarrih îdak...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:43]</span>Man: La êş ma kan byinşiğil.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:44]</span>Host: Tamam... ğêr hêk?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:45]</span>Man: Êh. Sakakîn matbax, w taslîhat w şağlat... ya&#x27;nî êş ma bîcîna ma mindaşşir...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:53]</span>Man: Hay manaşîr... wahid inkasar minşaro... qulna mintaqa zira&#x27;iyye la tu&#x27;axiznî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:58]</span>Man: Wahid inkasar minşaro, nişşiğillo... mihattîn jambna.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:02]</span>Man: Ninşurlo yaho ala qadd minşaro w nrekkiblo yaho, w naxud icritna.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:06]</span>Host: Tamam. Hallaq hat sakakîn matbax...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:09]</span>Host: illî btista&#x27;mil set il-bêt, ya&#x27;nî fî şî la taqtî&#x27; il-xudar w il-fawakih,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:13]</span>Host: w fî şî la l-lahme, w fî şî la şî tanî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:15]</span>Host: Êş hiyye anwa&#x27;on? Fî kbîr w fî sğîr w...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:17]</span>Man: Êh... w fî sîx ma&#x27;aş...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:18]</span>Host: W fî sîx ma&#x27;aş.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:20]</span>Man: Êh, êh, êh, êh, êh, hażôl êh. Neḥna majalna la twaxiznî adyaq min hêk şwayye...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:25]</span>Man: Is-sîx ma&#x27;aş biddo idde akbar w kaza... ya&#x27;nî byîcî tûlo şî xamsîn santî aw sittîn santî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:31]</span>Host: La taqtî&#x27; il-lahim...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:32]</span>Man: La taqtî&#x27; il-lahim... farim lahim... ma kan fî makînat, ya&#x27;nî taqtî&#x27; yadawî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:36]</span>Man: Hada haliyyan ma swayna, ma ştağalna b-haş-şağle... walakin taslîh.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:42]</span>Man: Sann, kaza, tağyîr maske, mnsallih.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:46]</span>Host: Biddî is&#x27;alak su&#x27;al... ya&#x27;nî smi&#x27;it inno ilak şuhra hôn inte fi-l mantiqa.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:52]</span>Man: Ehh, tab&#x27;an, fî şuhra, fî, fî, fî, fî şuhra. Li-anno şuğlî ya&#x27;nî şway... aytab min şuğl ğêrî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:01]</span>Man: Ya&#x27;nî şway şuğlî aytab min şuğl ğêrî...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:06]</span>Man: baqa ya&#x27;nî, akbar zbûnatî aktar şî, ya&#x27;nî aktar min ğêrî byîcû zbûnat la andî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:11]</span>Host: Tamam, byîcû min ğêr day&#x27;a.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:13]</span>Man: Byîcû min ğêr day&#x27;a...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:14]</span>Host: In-naslat min êş hażôl masnû&#x27;at?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:16]</span>Man: In-naslat, mincîb rasurat taba&#x27; abwab dakakîn imkassara...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:24]</span>Man: bkun bûzon imkassar ma byilzamon. Nehna minştrîhon mincî minqisson, minhammîhon...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:28]</span>Host: Ya&#x27;nî huwwe fûlaz? Fûlaz şû huwwe?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:30]</span>Man: Huwwe fûlaz... walakin ba&#x27;d ma byinşiğil fî, biddna nqassî. Kil m&#x27;allim, ya&#x27;nî sahîb san&#x27;a biddo yiştiğil ala ma&#x27;rifto.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:40]</span>Man: Ya&#x27;nî ana ma&#x27;riftî lazim iza, ba&#x27;d ma ştağalt fî, aqassî şway mişan yithammal hadd sann zyade, ma yitallam bisur&#x27;a,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:48]</span>Man: Ya&#x27;nî yiqta&#x27; zyade.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:50]</span>Host: Hallaq nehna şifna qabl şway, inte kîf kint am tiqta&#x27; nasle la sikkîn,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:54]</span>Host: w kîf qassêta, a&#x27;taqid hôn wara&#x27;î.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:57]</span>Host: Hôn fî zêt mahrûq, şû fî hôn?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:01]</span>Man: Zêt tab&#x27;an. Huwwe tabrîd, ya&#x27;nî minqassî bit-tabrîd, kil ma barad bisur&#x27;a bitqassa aktar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:10]</span>Host: Byibrud bisur&#x27;a?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:11]</span>Man: Êh.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:12]</span>Host: Bi-zêt il-mahrûq byibrud bisur&#x27;a?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:14]</span>Man: Bi-zêt... in kan mahrûq aw ğêr mahrûq...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:17]</span>Host: Tayyib, in-nasle illî sana&#x27;ta wênha xallîna nşûfha?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:19]</span>Man: Êh...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:19]</span>Host: Biddha tirekkab alêha maske?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:22]</span>Man: Êh na&#x27;am, in-nasle hay hiyye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:24]</span>Man: Biddha sann a-ş-çarx, kaza, tazbît şway a-ş-çarx, w ba&#x27;dên mnrekkibla il-maske.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:29]</span>Host: Xallîna nşûf şû am tişteğil fîha şway ma&#x27;lîş?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:31]</span>Man: Êh ma&#x27;lîş. Hayy ma&#x27;nata... hay mna&#x27;îfa... hallaq kint biddî rekkiba, ahan, hayy afnaha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:41]</span>Host: Tab&#x27;an il-idde taba&#x27;ak hiyye malzame, w hiyye il-kûr, w hiyye il... hada şû bitsammî?</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:49]</span>Man: Mawqid nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:51]</span>Host: Mawqid nar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:52]</span>Man: W kûr minfax hawa, w muwallide la tawlîd il-kahraba.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:00]</span>Man: W malzame, w çakûç, w sindiyan, w mabared... w qatta&#x27;at w şağlat... eyy na&#x27;am.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:07]</span>Host: Hada huwwe is-sindiyan? Bas lil-ilim ya&#x27;nî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:08]</span>Man: Êwa na&#x27;am.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:09]</span>Host: Tifaddal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:11]</span>Man: Yallah yâ rabb. Mnişteğil bi-hay...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:59]</span>Host: Tayyib Ammî Abû Ahmad Allâh ya&#x27;tîk il-afye, nehna rah nitirkak am tişteğil,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:03]</span>Host: hada namûzac şuğlak wadih kwanne. Allâh ya&#x27;tîk il-afye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:06]</span>Host: Biddî işkurak, tazzabnak ma&#x27;na nehna.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:09]</span>Man: Ahlan w sahlan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:10]</span>Host: Lakn t&#x27;arrafna ala mihne ya&#x27;nî il-yôm muhimme ktîr sarit liş-şa&#x27;b is-Sûrî b-kull asaf.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:13]</span>Man: Ahlan w sahlan bîkon, w biş-şa&#x27;b is-Sûrî killiyyato, killiyyatna ixwe, w minşni&#x27;, w mntsa&#x27;ad ba&#x27;dna...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:22]</span>Man: w mra&#x27;î bi-l-as&#x27;ar kaman, w kil şî. Ya&#x27;nî il-wahid ahsan ma yhutt ujar sayyara yirûh a-l-balad, w ysinn maqass taba&#x27; qass ğanam, qass şa&#x27;ar ğanam, sûf ğanam, w ysinn mwas w sakakîno, nehna mniştiğil-lon hôn w bi-arxas min ğêr matrah.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:41]</span>Host: Allâh ya&#x27;tîk il-afye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:43]</span>Man: Ahlan w sahlan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:43]</span>Host: Şukran îlak.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:44]</span>Man: Hayyak Allâh, ma&#x27; as-salame.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:56]</span>Reporter: Il-acwa&#x27; il-yôm a-aks acwa&#x27; il-cawle il-ûla b-Cwêq.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:02]</span>Reporter: Acwa&#x27; il-yôm matra w barde haqîqatan, w kan mutawaqqa&#x27; tsîr asife,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:09]</span>Reporter: w asife talciyye, walakin baqiya l-caw matir w barid.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:15]</span>Reporter: Ruğm haş-şî, w ruğm inno il-cawle il-ûla kanit acwa&#x27;ha şamis...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:18]</span>Reporter: lakin il-acwa&#x27; hôn ktîr camîle bi-acwa&#x27; iş-şita.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:21]</span>Reporter: Is-sabab, huwwe il-cibal il-muhîta b-Cwêq, w illî mazrû&#x27;a biz-zêtûn w il-aşcar fawakih,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:31]</span>Reporter: w aydan it-tabî&#x27;a it-tadarîsiyye la-Cwêq w illî hiyye byût haqîqatan mrakkabe w m&#x27;ammara bi sufûh il-hidab.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:43]</span>Reporter: Fa-t-tabî&#x27;a ktîr hilwe. Nehna maşyîn min it-tarîq il-qadim min Dargîr...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:50]</span>Reporter: w il-muhazî la Cwêq min it-taraf ic-cinûbî. Ya&#x27;nî nehna il-an cinûb Cwêq, a-yamînna...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:26:56]</span>Reporter: tişahdû aşcar il-lôz il-mismira il-an, il-mizhira, lahzû il-cibal il-camîle ktîr, il-mxattata biz-zêtûn.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:10]</span>Reporter: Il-matar am yinzil qalîlan qalîlan.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:12]</span>Reporter: Mumti&#x27;. Tab&#x27;an Cwêq intişarha ic-cuğrafî kbîr xallîna nqûl, is-sabab anno il-byût illî fîha,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:19]</span>Reporter: ila ard diyar was&#x27;a, ya&#x27;nî kil bêt la taqill masahito an xamsmîye la saba&#x27;mîye lal alif mitir mrabba&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:26]</span>Reporter: Lihêk fa-minşûf intişar ila ufuqî, ma fî intişar amûdî, ya&#x27;nî ma fî abniye tabaqiyye illa fî ma nadar.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:33]</span>Reporter: W ğaliban, mitl ma na şayfîn a-yisarna, il-an, ğaliban haydi ard id-diyar tustaxdam l-zira&#x27;at...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:41]</span>Reporter: l-xudarawat, l-zira&#x27;at il-fûl, zira&#x27;at il-baqdûnis, il-basal, il-ficil, ya&#x27;nî bima ma&#x27;na axar...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:27:48]</span>Reporter: iktifa&#x27; iż-żatî... iż-żatî b-had-day&#x27;a.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:04]</span>Reporter: Rah nlahiz hallaq a-yamînna ba&#x27;d şway... kîf yizhar il-wadî binkişif, min xalf...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:12]</span>Reporter: il-byût il-mabniyye ala sifho il-cinûbî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:17]</span>Reporter: Manzar ktîr camîl, w xassatan...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:22]</span>Reporter: ma&#x27; bida&#x27;... ya&#x27;nî mawsam ir-rabî&#x27;, fasl ir-rabî&#x27;, w bid&#x27; zuhûr il-haşa&#x27;iş fî asfal il-wadî.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:35]</span>Reporter: Lahzû qaddêş il-manzar camîl ala yamînna il-an!</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:39]</span>Reporter: Ktîr hilû. Hatta l-kuhûf il-qadîme illî sakanha il-insan... mbayne w wadiha.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:46]</span>Reporter: Hay di hiyye il-mazallat illî hakêna anha...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:48]</span>Reporter: İl-an şekla camîl, mutanazir.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:28:50]</span>Reporter: Ruğm l-matar, lakin... il-ağnam w il-ma&#x27;iz am tira il-an, li-anno l-matar mû qasîf.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:01]</span>Reporter: Ir-ru&#x27;at bîtali&#x27;ûhon la-l-haywanat l-tira b-had-il-waqit.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:05]</span>Reporter: Lahzû il-manzar il-camîl ciddan a-s-safh iş-şimalî mn il-qarye, kîf il-byût şekla camîl,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:12]</span>Reporter: mabniyye b-şekil mrakkab... fôq ba&#x27;da. Manzar ktîr hilû.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:17]</span>Reporter: Rah inzil ma&#x27;kon şwayye, bi-tticah il-wadî min hôn, ruğm il-wu&#x27;ûre w is-su&#x27;ûbe,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:23]</span>Reporter: bas l-na&#x27;tî fikra an camal hal-qarye. Hada t-tarîq biy&#x27;addî ila il-wadî. Tarîq wa&#x27;ir qalîlan lakn-no camîl.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:40]</span>Reporter: Il-an nehna taqrîban...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:45]</span>Reporter: sirna fî qalb il-wadî, lahzû...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:48]</span>Reporter: A-l-yamîn w a-l-yasar... il-wadî illî kan yicrî fî... macra ma&#x27;î min nabi&#x27; ma&#x27; fî wasat il-qarye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:29:57]</span>Reporter: Il-an...</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:00]</span>Host: ...مزروع بالقمح ومزروع بالشعير وبعض الأشجار.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:04]</span>Host: وهون قاسم القرية إلى قسمين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:07]</span>Host: المكان اللي نحن واقفين فيه الآن تماماً هو عبارة عن جسر وتحته معبر مائي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:23]</span>Host: رح نختم هالجولة القصيرة بالسيارة بزيارة قصيرة للحي الشرقي الشمالي من القرية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:30]</span>Host: ويبدو أنه حي حديث قليلاً بالمقارنة مع باقي حارات جُوَيْق.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:43]</span>Host: واضح، هذا بيت عتيق أو عريق في القرية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:30:52]</span>Host: شجرة كبيرة ضخمة، أعتقد شجرة بلوط، في قلب أحد البيوت، مغطية كل البيت.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31:03]</span>Host: فيلا حديثة عم تتجاور الحديث مع نمط البناء التقليدي القديم بهالقرية بشكل كتير جميل.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31:40]</span>Host: كتير حلو منظر اللوز المزهر.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31:44]</span>Host: الزهر الأحمر على أبيض، الوردي، كتير جميل.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:31:49]</span>Host: هذا الطريق بيلتف حول جُوَيْق من الجهة الشمالية الشرقية وبيرجع بيطلع لقلبها.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:07]</span>Host: رح نختم معكم هالحلقة بلقاء مع أحد عازفي البزق المشهورين بهالقرية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:15]</span>Host: واللي بيعزف الفلكلور الغنائي لهالمنطقة بالعموم،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:20]</span>Host: ورح يكون إن شاء الله ختام مميز.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:37]</span>Host: متل ما وعدناكم الختام رح يكون بالعزف على البزق.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:41]</span>Host: لكن رياض، أخونا رياض غريب من جُوَيْق،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:45]</span>Host: أصر إنه يكون العزف بهذا الجو الماطر في الطبيعة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:48]</span>Host: عم يقول إنه بيعطيه إلهام أكتر لحتى يعزف شي من فلكلور وتراث القرية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:55]</span>Host: رياض شو رح تعزف اليوم؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:57]</span>Riyad: غنية علي تجو.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:32:59]</span>Host: علي تجو.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:00]</span>Riyad: علي تجو. غنية &quot;آني شفانا&quot;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:02]</span>Riyad: يعني أمي، راعي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:04]</span>Host: أمك راعي؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:05]</span>Riyad: يعني راعي، بيعطي بنته لراعي، وهي ما بترضى.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:09]</span>Riyad: أبوها بده يعطيها لراعي وهي ما بدها.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:11]</span>Host: أبوها بده يعطيها لراعي وهي ما بدها؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:13]</span>Riyad: أبوها ما بدو، هي بدها تاخد الراعي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:15]</span>Host: أبوها ما بدو وهي بدها تاخد الراعي؟</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:17]</span>Riyad: هو الراعي ما بدها، هي ما بدها، أبوها ما بدو الراعي بس بنته بدها الراعي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:24]</span>Host: تمام، البنت بدها الراعي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:26]</span>Riyad: أيوا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:33:26]</span>Host: تفضل.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:34:00]</span>Riyad: Anê şivan e, bi xwedê şivan e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:34:03]</span>Riyad: Lê anê şivan e, lê anê bi xwedê şivan e.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:06]</span>Host: أعزائي المشاهدين، لهون بتكون انتهت جولتنا الثانية بقرية جُوَيْق بريف عفرين الغربي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:13]</span>Host: بهالجولة سُعدنا معكم بالتعرف على بعض المهن والحرف التراثية والمستحدثة في جُوَيْق.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:21]</span>Host: وعلى أنماط الحياة المختلفة وأهمها تربية الحيوانات.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:25]</span>Host: وأيضاً تعرفنا على وضع الناس الاقتصادي والاجتماعي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:29]</span>Host: سنكون معكم في الأسبوع القادم في جولة جديدة من منطقة سورية أخرى حبيبة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:34]</span>Host: لمتابعة برنامجنا تابعوا صفحة الفيس الخاصة بالقناة، وأيضاً موقعنا على الإنترنت halabtodaytv.net.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:40]</span>Host: السلام عليكم ورحمة الله وبركاته.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:35:44]</span>Music: [موسيقى]</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on April 17, 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Copy to clipboard function
+        function copySection(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Find the button that was clicked and update its text
+                const btn = event.target.closest('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ✓';
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript | Basûtê - Multi Channel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #f0f2e6;
+            --text-color: #000000;
+            --border-color: #000000;
+            --card-bg-color: #f0f2e6;
+            --subtext-color: #4a5568;
+            --link-color: #2563eb;
+            --button-hover-bg: #000000;
+            --button-hover-text: #f0f2e6;
+            --internal-link-color: #2563eb;
+            --blockquote-border-color: #16a34a;
+        }
+        .dark {
+            --bg-color: #2d2d2d;
+            --text-color: #f1f1f1;
+            --border-color: #555555;
+            --card-bg-color: #2d2d2d;
+            --subtext-color: #999999;
+            --link-color: #63b3ed;
+            --button-hover-bg: #f1f1f1;
+            --button-hover-text: #2d2d2d;
+            --internal-link-color: #86efac;
+            --blockquote-border-color: #4ade80;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        h1, h2, h3, .prose { color: var(--text-color); }
+        .subtext { color: var(--subtext-color); }
+        .themed-border { border-color: var(--border-color); }
+        .internal-link { text-decoration: none; cursor: pointer; color: var(--internal-link-color); }
+        .external-link { color: var(--link-color); }
+        .button-style { border: 1px solid var(--border-color); }
+        .button-style:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .prose strong { font-weight: 600; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ol, .prose ul { margin-bottom: 1rem; }
+        .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
+        .prose blockquote p { color: var(--text-color); }
+        .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
+        .jump-btn { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.875rem; transition: all 0.2s; }
+        .jump-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; font-size: 0.75rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .copy-btn:hover { background-color: var(--button-hover-bg); color: var(--button-hover-text); }
+        .copy-btn svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">Basûtê</h1>
+            <div class="mt-2 flex flex-wrap items-center gap-3">
+                <p class="text-xl subtext">Transcript from Multi Channel</p>
+                <a href="../village_sites/Basûtê.html" class="jump-btn inline-flex items-center gap-2">Go to Village Site</a>
+            </div>
+        </header>
+
+        <main class="space-y-6">
+            <!-- General Info Card -->
+            <div class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transcript Information</h2>
+                    <button id="theme-toggle" class="toggle-button-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2" style="--ring-offset-color: var(--card-bg-color); --ring-color: var(--border-color);">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Village</h3>
+                        <p class="text-lg">Basûtê</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Source Channel</h3>
+                        <p class="text-lg">Multi Channel</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium subtext">Length</h3>
+                        <p class="text-lg">00:25:52</p>
+                    </div>
+                    <div class="mt-4">
+                    <a href="https://www.youtube.com/watch?v=I4vR0HypUh4" target="_blank" rel="noopener noreferrer" class="external-link hover:underline flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+                </div>
+                <!-- Jump Buttons -->
+                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t themed-border">
+                    <a href="#english" class="jump-btn">Go to Translation</a>
+                    <a href="#kurdish" class="jump-btn">Biçe Transkrîptê</a>
+                </div>
+            </div>
+
+            <!-- English Translation Card -->
+            <div id="english" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">English Translation</h2>
+                    <button class="copy-btn" onclick="copySection('translation-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Copy
+                    </button>
+                </div>
+                <div id="translation-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:53]</span>Reporter: English Translation: Amidst this breathtaking nature, and nine kilometers south of the city of Afrin,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:59]</span>Reporter: English Translation: lies the town of Basouta, one of the most beautiful villages and towns in the Afrin region.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:30]</span>Reporter: English Translation: Basouta is characterized by its pure air and abundant water,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:36]</span>Reporter: English Translation: as the Afrin River flows through the town.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:39]</span>Reporter: English Translation: It also has a copious water spring flowing from the foot of Mount Layloun,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:46]</span>Reporter: English Translation: and it is surrounded, along with its houses, by fruitful orchards.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:00]</span>Man: English Translation: Brother, the town of Basouta is an old town, I mean, very old.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:09]</span>Man: English Translation: It belongs to the center of Afrin, and is about 9 kilometers south of Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:18]</span>Man: English Translation: It is a village famous for its beautiful, breathtaking nature.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:26]</span>Man: English Translation: Of course, this nature is due to the abundance of water and greenery.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:33]</span>Man: English Translation: Its residents worked, I mean about 200 or 250 years ago, relying on raising livestock.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:43]</span>Man: English Translation: There were some crops; Basouta was famous for pomegranates.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:49]</span>Man: English Translation: The history of pomegranates there goes back about 200 to 250 years, so Basouta&#x27;s pomegranates are famous.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:59]</span>Man: English Translation: We have a spring, the Basouta spring, the spring of Ras Al-Nabe&#x27;.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:06]</span>Man: English Translation: This spring is considered one of the largest springs in the Aleppo governorate and the Afrin region.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:12]</span>Man: English Translation: It is famous for its sweet water, and people rely on it to irrigate crops and lands.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:22]</span>Man: English Translation: Its population is around 4000. Of course, we have a percentage of our Arab brothers, about 25 percent.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:36]</span>Man: English Translation: It is famous for its castle, the Basouta Castle, which has an ancient history, dating back to the Ayyubid era.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:48]</span>Man: English Translation: It has a lot of water. Now, in recent times, from 50 years ago until now,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:58]</span>Man: English Translation: they have relied on planting fruit trees, fruits in general, whether it&#x27;s peaches, apples, green plums, or plums.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:08]</span>Man: English Translation: It is about 60 kilometers away from the Aleppo governorate via Afrin.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:39]</span>Reporter: English Translation: The Afrin region is considered one of the ancient regions in the countryside of Aleppo,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:44]</span>Reporter: English Translation: and the town of Basouta is one of the oldest villages and towns in Afrin,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:50]</span>Reporter: English Translation: as its history dates back thousands of years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:53]</span>Reporter: English Translation: To find out the origin and meaning of the town&#x27;s name, we must meet the locals and ask them about it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:20]</span>Man: English Translation: Actually, Basouta is one of the very ancient villages in the Afrin region.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:26]</span>Man: English Translation: Of course, the entire Afrin region is old, and there are ruins proving its historical antiquity, which dates back thousands of years.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:34]</span>Man: English Translation: But the village of Basouta is one of the very ancient villages.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:38]</span>Man: English Translation: There is more than one village that starts with the word &quot;Ba&quot;, like Basouta, Baselhaya, Basamra, Bableet.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:47]</span>Man: English Translation: I checked several sources, and one source says that the word &quot;Ba&quot; indicates a spatial reference.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:53]</span>Man: English Translation: Like Bableet, for example, means the place of the swamp.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:57]</span>Man: English Translation: However, in our Kurdish language, &quot;Ba&quot; means wind.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:01]</span>Man: English Translation: If we interpret it this way, Basouta means the burning or very hot wind.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:09]</span>Man: English Translation: It is most likely that the area used to receive wind, meaning this valley used to get a hot wind.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:18]</span>Man: English Translation: It is most likely that the meaning of Basouta is the hot wind.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:45]</span>Reporter: English Translation: The town of Basouta has a rich history, having gone through many ancient eras,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:52]</span>Reporter: English Translation: which left behind many ruins and landmarks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:56]</span>Reporter: English Translation: Perhaps the most famous of these are the Basouta Spring and the ancient Basouta Castle,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:02]</span>Reporter: English Translation: upon whose ruins a part of the town&#x27;s houses was built,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:08]</span>Reporter: English Translation: and which was an important center in the early 19th century.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:34]</span>Man: English Translation: In reality, the Afrin region is a very ancient region.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:37]</span>Man: English Translation: The ruins there indicate that it dates back thousands of years, meaning there are ruins dating back to 3000 BC.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:45]</span>Man: English Translation: There are castles and fortresses proving this, and there is a very large and important temple here.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:50]</span>Man: English Translation: The village of Basouta is one of these very ancient villages, and it has a castle; this castle is proof, it&#x27;s the ruins of a castle.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:59]</span>Man: English Translation: Actually, regarding this castle, we checked sources which state that the Basouta Castle, around 1600 or 1601, in 1601, witnessed a very great epic, a major battle, and there was a hero.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:14]</span>Man: English Translation: His name was Battal.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:16]</span>Man: English Translation: The Kurds recorded this epic in their heritage, in their songs.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:21]</span>Man: English Translation: It was mentioned, and there was a hero, one of the region&#x27;s heroes, who fought wars.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:26]</span>Man: English Translation: Therefore, returning to this heritage and the history of the castle, we say that the town of Basouta is one of the very ancient towns.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:39]</span>Reporter: English Translation: The residents of Basouta, whose population reached about four thousand people,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:46]</span>Reporter: English Translation: mostly Kurds, are distinguished by their special Kurdish attire,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:51]</span>Reporter: English Translation: as the Kurdish character has prevailed among the town&#x27;s residents in dress, customs, and traditions.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:00]</span>Man: For men, they used to wear trousers.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:03]</span>Man: And these old red shoes,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:08]</span>Man: and put a shawl on their head and make a keffiyeh out of it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:14]</span>Man: As for women, the Kurdish dress is known to be long with a gather here, it&#x27;s known to be a Kurdish dress.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:32]</span>Narrator: The customs and traditions of the people here matched those of their neighbors in the adjacent villages and towns,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:41]</span>Narrator: where the weddings of the people of Basouta village were distinguished by Kurdish songs, music, and dabke dances, and its people were known for their love and generosity.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:57]</span>Man: Marriage ceremonies first begin with the engagement; they get to know each other, send their families to the bride&#x27;s house, and propose to her.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:05]</span>Man: After that, they agree on the marriage and the wedding.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:14]</span>Man: And the first night, for example, was the henna night.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:21]</span>Man: The village people and the relatives of both sides gather to celebrate them.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:27]</span>Man: The next day, they take her to the groom&#x27;s house and invite all the people from the neighboring village and their relatives as well.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:34]</span>Man: Sometimes the wedding would last about a week, but recently this has been shortened. It&#x27;s just normal parties now, mostly in halls.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:58]</span>Narrator: When visiting any Kurdish area, you must ask about the most important and beloved Kurdish rituals,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:08]</span>Narrator: as Kurds are distinguished by the Nowruz festival, which they celebrate every spring.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:18]</span>Man: We obviously have something special, we have the Nowruz festival, the Nowruz festival also has an ancient history.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:26]</span>Man: This festival symbolizes the day of salvation, the meaning of freedom, the meaning of a new day.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:34]</span>Man: There was injustice, there was oppression. There was a Kurdish young man named Kawa the Blacksmith, he defeated this man and told the youth to light a fire.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:44]</span>Man: This fire symbolizes the day of salvation, the day of freedom.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:56]</span>Narrator: The abundance of water in the town has made agriculture a primary source of livelihood for the residents.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:04]</span>Narrator: The people here work in agriculture and rely on diverse agricultural crops as a basic source of living.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:24]</span>Man: Basouta in general is an agricultural village and its people all live on agriculture.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:33]</span>Man: Agriculture is the basis for the village, and Basouta has almost all types of fruits available here in Syria.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:44]</span>Man: Especially pomegranates, apples, quinces, apricots, shakarpara, almonds, etc. All kinds of fruits are available.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:55]</span>Man: The youth and people of Basouta are skilled in agriculture. I mean, blessings upon the Prophet, I can tell you that an ordinary farmer has the equivalent experience of an engineer.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:10]</span>Man: The reason is that they bring most types of fruits from outside, and Basouta is specifically the basis.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:18]</span>Man: They plant them, tend to them, and they yield good production. Then our neighbors, the surrounding villages, also get into grafting, for example.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:26]</span>Man: We bring the seedlings, graft them, and give them to neighbors. All through selling, meaning with money, everything is for money.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:40]</span>Man: For example, fruits are brought in. We have French apples, the seed came from France. We didn&#x27;t have French pomegranates 30 or 40 years ago.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:50]</span>Man: Now it&#x27;s very famous here, and many others, all kinds of fruits.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:35]</span>Man: Our seasons, the first season we start with is around early May, which is the green plum season.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:43]</span>Man: Of course, there are the village youth, workers in the village, and all the village people have orchards and lands, most of them have lands.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:53]</span>Man: But a portion of them don&#x27;t have lands, those work in agriculture and all of them have become experts in agriculture. They are like me and like engineers, due to continuous experience.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:06]</span>Man: If we start in the fifth month, God willing, until the twelfth month.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:13]</span>Man: Green plums, plums, and such things in the fifth and sixth month. In the seventh, we start with apples.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:21]</span>Man: Then around the ninth month, the apple season lasts for two months. In the ninth, we start with quinces.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:29]</span>Man: In the tenth with pomegranates and mangoes, and the eleventh and twelfth with olives.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:39]</span>Narrator: Perhaps what most distinguishes Kurds is their art, as art is present wherever Kurds are.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:49]</span>Narrator: They try to convey their cause through their art, as Lava does, trying to convey the Kurdish heritage.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:58]</span>Narrator: From clothing, customs, and traditions through her artistic paintings.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:05]</span>Woman: Kurdish art, in general, I paint about Kurdish heritage in the Afrin region, meaning I embody Kurdish heritage.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:14]</span>Woman: Like Kurdish landmarks, Kurdish antiquities, Kurdish clothing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:23]</span>Woman: I mean, I embody them, I turn them into a painting, through my drawing and my art. I embody something about the Kurds.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:33]</span>Woman: The things we live with, I turn them into a painting.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:54]</span>Woman: The latest painting is an embodiment of Kurdish and Arabic landmarks. This is a painting of the Citadel of Salah al-Din al-Ayyubi,</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:04]</span>Woman: and Nabi Houri in the countryside of Afrin, which is a Kurdish archaeological landmark, and the Umayyad Mosque in Damascus too.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:12]</span>Woman: So, another teacher and I wanted to embody this painting, to show that our landmarks</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:21]</span>Woman: lead to unity, unifying the painting, meaning there is no difference between a Kurd or an Arab.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:29]</span>Woman: We wanted to show that they complement each other.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:35]</span>Woman: The Kurdish paintings that I draw, in general, there is definitely demand for them, about Kurdish heritage, Kurdish dress, or archaeological landmarks.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:44]</span>Woman: Some of them buy them, some I gift them to. I mean, certain people in general appreciate this.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:55]</span>Woman: On the contrary, to bring out what you have, or an archaeological landmark that you have and live with, and put it in a painting, or sell it, or gift it, this is a very good thing.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:34]</span>Singer: Welcome spring, you are beautiful, you are lovely</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:41]</span>Singer: Welcome spring, you are beautiful, you are lovely</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:48]</span>Singer: You are the good news of the new year, you made the trees and surroundings green</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:54]</span>Singer: You are the good news of the new year, you made the trees and surroundings green</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:00]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:30]</span>Singer: You are the red and yellow spring</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:33]</span>Singer: Oh boy, boy with a crown on your head</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:36]</span>Singer: You are the red and yellow spring</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:39]</span>Singer: Oh boy, boy with a crown on your head</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:43]</span>Singer: Oh, you put the black hair on your head</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:46]</span>Singer: Goodness and groans are at our door</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:49]</span>Singer: Oh, you put the black hair on your head</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:52]</span>Singer: Goodness and groans are at our door</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:55]</span>Singer: Goodness and groans are at our door</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:00]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:25]</span>Singer: In my heart there are sighs and plains</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:28]</span>Singer: The beloved washed her face in the basin</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:32]</span>Singer: In my heart there are sighs and plains</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:35]</span>Singer: The beloved washed her face in the basin</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:38]</span>Singer: You come as basil to the market</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:41]</span>Singer: The forgiver of the world comes to the dark ones</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:45]</span>Singer: You come as basil to the market</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:48]</span>Singer: The forgiver of the world comes to the dark ones</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:51]</span>Singer: The forgiver of the world comes to the dark ones</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:55]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:20]</span>Singer: You come down sweet and salty</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:23]</span>Singer: Beautiful one, the palm of his thigh</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:26]</span>Singer: You come down sweet and salty</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:29]</span>Singer: Beautiful one, the palm of his thigh</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:33]</span>Singer: With a shawl and walking straight</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:36]</span>Singer: You embroider the history of the Kurds</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:40]</span>Singer: With a shawl and walking straight</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:43]</span>Singer: You embroider the history of the Kurds</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:46]</span>Singer: You embroider the history of the Kurds</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:50]</span>Singer: Read with goodness</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:53]</span>Singer: Foam and shade, drunkard</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:56]</span>Singer: Read with goodness</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:59]</span>Singer: Foam and shade, drunkard</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:03]</span>Singer: You are the good news of the new year</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:06]</span>Singer: You are the life and vein of the brave</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:09]</span>Singer: You are the good news of the new year</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:12]</span>Singer: You are the life and vein of the brave</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:15]</span>Singer: You are the life and vein of the brave</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:20]</span>Reporter: Mr. Shadi is trying to teach children Kurdish music</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:26]</span>Reporter: Which carries an ancient heritage passed down from generation to generation</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:32]</span>Reporter: He told us about the importance of music and the buzuq among the Kurds</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:37]</span>Reporter: And the maqams they are distinguished by.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:41]</span>Shadi: Everyone who wants to introduce themselves</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:44]</span>Shadi: Shows their folklore to the world.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:48]</span>Shadi: At that time, the whole world will know</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:51]</span>Shadi: What the folklore is.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:54]</span>Shadi: How they live, how they present themselves.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:58]</span>Shadi: The buzuq is an instrument</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:00]</span>Shadi: In Kurdish, its name is tembûr.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:03]</span>Shadi: And mostly they play the buzuq, I mean</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:08]</span>Shadi: I mean, the popular one among Kurds is the buzuq</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:12]</span>Shadi: Besides that, some of them use the keyboard, that&#x27;s it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:16]</span>Shadi: Mostly popular dabkes</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:19]</span>Shadi: They dance popular dances, that&#x27;s it.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:23]</span>Shadi: For example, like Maqsum, Maqsum rhythm, Baladi</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:28]</span>Shadi: Laff, Georgina.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:30]</span>Shadi: They are mostly famous for these dabkes.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:34]</span>Shadi: Mostly in songs</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:38]</span>Shadi: Their songs, of course, mostly come in the Kurd maqam</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:44]</span>Shadi: And Hijaz and Bayat.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:47]</span>Shadi: They mostly sing to these songs</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:51]</span>Shadi: I mean something simple, rarely, they use Ajam a little.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:56]</span>Shadi: This, you can consider how the songs of the Palestinians are</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:00]</span>Shadi: There is a flavor of sadness in them</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:02]</span>Shadi: The Kurds are also the same, like the Palestinians</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:06]</span>Shadi: Persecuted, from this aspect.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:09]</span>[Music]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:29]</span>Reporter: The town of Basouta is considered one of the most beautiful areas in Syria</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:33]</span>Reporter: A town whose people are known for generosity and hospitality</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:38]</span>Reporter: Aside from the simplicity, customs, and traditions</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:41]</span>Reporter: Which they carried with them since past generations.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:44]</span>Reporter: Here we have reached the end of our episode for today</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:48]</span>Reporter: We will see you in upcoming episodes</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:50]</span>Reporter: Goodbye.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:52]</span>[Music]</p>
+                </div>
+            </div>
+
+            <!-- Kurdish Transcript Card -->
+            <div id="kurdish" class="card p-6 rounded-xl">
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Transkrîpta bi Kurmancî</h2>
+                    <button class="copy-btn" onclick="copySection('transcript-content')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        Kopî bike
+                    </button>
+                </div>
+                <div id="transcript-content" class="prose max-w-none">
+                    <p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:53]</span>Reporter: Arabic: وسط هذه الطبيعة الخلابة وعلى بعد تسعة كيلومترات جنوب مدينة عفرين،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:01:59]</span>Reporter: Arabic: تقع بلدة باصوطة، إحدى أجمل القرى والبلدات في منطقة عفرين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:30]</span>Reporter: Arabic: تتميز باصوطة بهوائها النقي ومائها الوفير،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:36]</span>Reporter: Arabic: حيث يمر في البلدة نهر عفرين،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:39]</span>Reporter: Arabic: كما يوجد فيها نبع ماء غزير، نابع من أسفل جبل ليلون،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:02:46]</span>Reporter: Arabic: وتحيط بها وبمنازلها البساتين المثمرة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:00]</span>Man: Arabic: خيو بلدة الباصوطة، بلدة قديمة يعني، يعني كتير قديمة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:09]</span>Man: Arabic: تابعة لمركز عفرين، وتبعد عن عفرين 9 كيلو متر قبلي عفرين يعني بتقع.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:18]</span>Man: Arabic: ضيعة بتشتهر بطبيعتها الخلابة الجميلة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:26]</span>Man: Arabic: طبعاً الطبيعة هي بتعود لكثرة المي، لكثرة الخضار.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:33]</span>Man: Arabic: أهاليها بيشتغلوا يعني قبل هلق 200، 250 سنة اعتمادهم على تربية المواشي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:43]</span>Man: Arabic: في بعض الزراعات كان، في الرمان كانت تشتهر فيها باصوطة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:49]</span>Man: Arabic: يعني تقريباً تاريخ الرمان بيعود إلى 200، 250 سنة، يعني رمان الباصوطة رمان مشهور.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:03:59]</span>Man: Arabic: في عنا نبعة، نبعة الباصوطة، نبعة راس النبع.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:06]</span>Man: Arabic: النبعة هي كمان يعني بيعتبر من أكبر النبعات تقريباً بمحافظة حلب ومنطقة عفرين يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:12]</span>Man: Arabic: بتشتهر بميتها العذبة يعني، والعالم بيعتمدوا عليها بري المزروعات والأراضي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:22]</span>Man: Arabic: عدد سكانها بحوالي 4000، طبعاً في عنا نسبة من اخواننا العرب يعني تقريبا بحدود 25 بالمية يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:36]</span>Man: Arabic: بتشتهر بقلعتها، قلعة الباصوطة يلي تاريخها تاريخ قديم يعني، يعني بتعود لعهد الأيوبيين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:48]</span>Man: Arabic: فيها مي كتير، هلق بالمرحلة الأخيرة هي من 50 سنة إنت وجاي،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:04:58]</span>Man: Arabic: اعتمدوا على زراعة الفاكهة يعني، الفواكه بشكل عام، إن كان دراق، تفاح، جانرك، خوخ.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:08]</span>Man: Arabic: بتبعد عن محافظة حلب عن طريق عفرين بحدود حوالي 60 كيلو متر.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:39]</span>Reporter: Arabic: تعد منطقة عفرين إحدى المناطق القديمة في ريف حلب،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:44]</span>Reporter: Arabic: وتعد بلدة الباصوطة من أقدم القرى والبلدات في عفرين،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:50]</span>Reporter: Arabic: حيث يعود تاريخها لآلاف السنين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:05:53]</span>Reporter: Arabic: وللتعرف على أصل تسمية البلدة ومعناها، لابد من لقاء الأهالي وسؤالهم عن ذلك.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:20]</span>Man: Arabic: حقيقة باصوطة هي من إحدى القرى القديمة جداً في منطقة عفرين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:26]</span>Man: Arabic: طبعاً منطقة عفرين كلها قديمة يعني وفي آثار بتدلل على قدمها التاريخي من، يعني بيعود إلى آلاف السنين.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:34]</span>Man: Arabic: ولكن قرية باصوطة إحدى القرى القديمة جداً.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:38]</span>Man: Arabic: في أكتر من قرية تبدأ بكلمة &quot;با&quot;، يعني متل باصوطة، باصلحايا، باصمرا، بابليت.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:47]</span>Man: Arabic: أنا رجعت لعدة مراجع، في مرجع بيقول أنه كلمة با تبدأ يعني هي دلالة مكانية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:53]</span>Man: Arabic: يعني متل بابليت، يعني مكان المستنقع، هيك معناها.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:06:57]</span>Man: Arabic: ولكن نحن عنا باللغة الكردية الـ&quot;با&quot; يعني الهواء.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:01]</span>Man: Arabic: نحن إذا فسرناها على هالتفسير يعني بتكون باصوطة معناها الهواء الحارق أو الساخن جداً يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:09]</span>Man: Arabic: فالأرجح أنه يبدو كان المنطقة يجيها هواء، يعني هاد الوادي كان يجي هواء من هواء ساخن يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:18]</span>Man: Arabic: الأرجح أنه يكون باصوطة معناها الهواء الساخن يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:45]</span>Reporter: Arabic: لبلدة باصوطة تاريخ حافل، حيث مر عليها العديد من العصور القديمة،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:52]</span>Reporter: Arabic: التي خلفت العديد من الآثار والمعالم،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:07:56]</span>Reporter: Arabic: ولعل أشهرها نبع باصوطة وقلعة باصوطة الأثرية،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:02]</span>Reporter: Arabic: التي بني على أنقاضها جزء من منازل البلدة،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:08]</span>Reporter: Arabic: والتي كانت مركزاً مهماً في أوائل القرن التاسع عشر.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:34]</span>Man: Arabic: حقيقة منطقة عفرين هي منطقة قديمة جداً.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:37]</span>Man: Arabic: الآثار فيها بتدلل أنه هي من آلاف السنين، يعني في آثار بتدلل على أنه 3000 سنة قبل الميلاد.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:45]</span>Man: Arabic: في قلاع وحصون تدلل، وفي معبد كتير كبير مهم هون.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:50]</span>Man: Arabic: قرية باصوطة هي من هي القرى القديمة جداً، ولها قلعة، هي القلعة بتدلل، هي بقايا قلعة.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:08:59]</span>Man: Arabic: حقيقة هي القلعة نحن رجعنا لمراجع، أنه قلعة الباصوطة من 1600، 1601 بتاريخ 1601 جرت فيها ملحمة كتير كبيرة، كان فيها معركة كبيرة وكان فيها بطل يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:14]</span>Man: Arabic: اسمه بطال يا بطال يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:16]</span>Man: Arabic: فهي الملحمة الأكراد دونوها في تراثهم، في أغانيهم يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:21]</span>Man: Arabic: فانذكرت يعني وكان في بطل، أحد أبطال المنطقة خاض حروب يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:26]</span>Man: Arabic: ولذلك نحن عودة إلى هذا التراث وتاريخ القلعة، منقول أنه بلدة باصوطة من البلدات القديمة جداً يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:39]</span>Reporter: Arabic: يتميز أهالي باصوطة الذين بلغ عددهم حوالي الأربعة آلاف نسمة،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:46]</span>Reporter: Arabic: وجلهم من الأكراد باللباس الكردي الخاص،</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:09:51]</span>Reporter: Arabic: حيث غلب على أهالي البلدة الطابع الكردي باللباس والعادات والتقاليد.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:00]</span>Man: بالنسبة للرجل كانوا يلبسوا السراويل</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:03]</span>Man: والصرماية الحمرا هاي العتيقة</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:08]</span>Man: ويحطوا على راسهم شال ويعملوا كوفية منها</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:14]</span>Man: أما بالنسبة للنسوان فاللباس الكردي معروف طويل وإلو زمة من هون يعني معروف إنه فستان كردي هذا</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:32]</span>Narrator: تشابهت عادات وتقاليد الأهالي هنا مع جيرانهم، أهالي القرى والبلدات المجاورة</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:41]</span>Narrator: حيث تميزت أعراس أهالي قرية باصوطة بالأغاني والموسيقى والدبكات الكردية، كما عرف أهلها بالحب والكرم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:10:57]</span>Man: مراسم الزواج أول ما تبدأ بالخطبة، يعني يتعرفوا على بعضهم، يبعتوا أهلهم لعند بيت العروس ويخطبوها</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:05]</span>Man: وبعد منها يتفقوا على الزواج والعرس</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:14]</span>Man: وأول ليلة مثلاً كان ليلة الحنة</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:21]</span>Man: يتجمعوا أهل الضيعة وقرايبين الطرفين يعني يحتفلوا فيهم</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:27]</span>Man: وثاني نهار يطالعوها لبيت العريس ويعزموا كل أهل الضيعة المجاورة وقرايبينهم كمان</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:34]</span>Man: وأحياناً كان يطول العرس شي أسبوع تقريباً، بعدين اختصرت هالموضوع هذا بالفترة الأخيرة، ما ضل شي يعني حفلات عادية وبالصالات تقريباً صارت</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:11:58]</span>Narrator: عند زيارتك لأي منطقة كردية لا بد لك إلا وأن تسأل عن أهم طقوس الأكراد وأحبها على قلوبهم</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:08]</span>Narrator: حيث يتميز الأكراد بعيد النيروز الذي يحتفلون فيه ربيع كل عام.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:18]</span>Man: نحن عنا طبعا شي خاص فيه، في عنا عيد النوروز، عيد النوروز كمان إله تاريخ القديم يعني</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:26]</span>Man: العيد هذا بترمز إلى يعني يوم الخلاص، معنى الحرية، معنى اليوم الجديد يعني</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:34]</span>Man: يعني كان في ظلم، في اضطهاد، في شب كردي اسمه كان كاوا الحداد، قضى على هالزلمة وإنه نبهوا الشباب يشعلوا النار</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:44]</span>Man: هذا النار بترمز ليوم الخلاص يوم الحرية يعني</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:12:56]</span>Narrator: وفرة المياه في البلدة جعلت من الزراعة مصدر رزق أساسي للأهالي</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:04]</span>Narrator: حيث يعمل الأهالي هنا على الزراعة ويعتمدون على المحاصيل الزراعية المتنوعة كمصدر أساسي للعيش</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:24]</span>Man: باصوطة بشكل عام ضيعة زراعية وشعبها كلهم عايشين عالزراعة</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:33]</span>Man: والزراعة هو أساس بالنسبة للضيعة وباصوطة فيها من جميع أنواع الفواكه تقريباً اللي موجودة عنا بسوريا</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:44]</span>Man: خاصة الرمان، التفاح، السفرجل، ومشمش، وشكربرة، واللوزي، وغيره، ومن جميع أنواع الفواكه موجودة</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:13:55]</span>Man: باصوطة شبابها وشعبها شاطرين بالزراعة، يعني اللهم صل عالنبي فيني أقلك المزارع العادي ما يعادل خبرة المهندس</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:10]</span>Man: السبب جميع الفواكه عم يجيبوها أكتر الأنواع من برا، وخاصة باصوطة هي الأساس</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:18]</span>Man: بيزرعها وبخدمها وبيعطي إنتاج كويس، وبعدين جيراننا الضيع اللي حوالينا كمان بصير مثلا التطعيم</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:26]</span>Man: النصب بنجيب النصب وبنطعمها وبنعطيها للجيران، كلو بالبيع يعني بالمصاري، كل شي بالمصاري.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:40]</span>Man: يعني الفواكه عم بتجيب، مثلا التفاح الفرنسي في عنا، البذرة جاية من فرنسا، الرمان الفرنسي ما كانت عنا، قبل ٣٠، ٤٠ سنة ما كانت عنا</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:14:50]</span>Man: هلأ مشهورة كتير مشهورة عنا، وغيرها وغيرها وغيرها، جميع أنواع الفواكه</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:35]</span>Man: مواسمنا أول موسم نحن منبلش فيها تقريباً بأول خمسة، هو موسم جارنك</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:43]</span>Man: طبعاً في شباب الضيعة، في عمال بالضيعة، وأهل الضيعة كلو عندو بساتين وعندو أراضي، أغلبيتهم عندهم أراضي</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:15:53]</span>Man: بس قسم كمان منهم ما عندهم أراضي، هدول بيشتغلوا بالزراعة وكلهم صايرين خبيرين بالزراعة، متلي متلهم متل المهندسين كلهم باستمرار الخبرة</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:06]</span>Man: إذا بلشنا بالشهر الخامس بإذن الله لشهر طنعش</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:13]</span>Man: الجارنك والخوخ وهالشغلات بالخامس بالسادس، بالسابع بنبلش بالتفاحيات</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:21]</span>Man: بعد بالتاسع تقريبا شهرين موسم التفاح، بالتاسع بنبلش بالسفرجل</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:29]</span>Man: بالعاشر بالرمان والمنجا، والحادي عشر والثاني عشر بالزيتون</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:39]</span>Narrator: لعل أبرز ما يميز الأكراد هو فنهم، حيث يتواجد الفن أينما يتواجد الأكراد</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:49]</span>Narrator: الذين يحاولون نقل قضيتهم بفنهم، كما تعمل لافا التي تحاول نقل التراث الكردي</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:16:58]</span>Narrator: من لباس وعادات وتقاليد بلوحاتها الفنية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:05]</span>Woman: الفن الكردي هو بشكل عام برسم عن التراث الكردي، بمنطقة عفرين، يعني بجسد التراث الكردي</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:14]</span>Woman: إنه مثلاً معالم كردية، آثار كردية، اللباس الكردي</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:23]</span>Woman: يعني بجسدهم بحولهم للوحة فنية يعني، من خلال رسمي ومن خلال فني، يعني بجسد شي عن الأكراد</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:33]</span>Woman: الشيء اللي نحن عم نتعايش معه، بحوله للوحة فنية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:17:54]</span>Woman: آخر لوحة هو تجسيد بين معالم كردية وعربية، هي اللوحة لقلعة صلاح الدين الأيوبي</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:04]</span>Woman: ونبي هوري بريف عفرين هو معلم أثري كردي، وفي مسجد الأموي بشام كمان</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:12]</span>Woman: فحبينا أنا وأنسة تانية معي نجسد هي اللوحة الفنية، نوصل إنه معالمنا</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:21]</span>Woman: يؤدي إلى توحد، توحيد اللوحة يعني ما في فرق بين الكردي أو العربي</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:29]</span>Woman: حبينا نوصل إنه بيكملوا البعض يعني</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:35]</span>Woman: اللوحات الكردية اللي أنا عم برسمهم هو بشكل عام يعني في إقبال لهالشي أكيد، عن التراث الكردي أو الزي الكردي أو معالم أثرية</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:44]</span>Woman: في منهم بيشتروا، في منهم بهديهم إياهم، يعني في أشخاص معينة يعني بشكل عام بيتقبلوا هالشي</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:18:55]</span>Woman: بالعكس يعني تطلع الشيء اللي عندك، أو معلم أثري اللي عندك واللي بتتعايش معه وطالعه بلوحة فنية أو تبيعه أو تهديه، يعني هاد الشي كتير منيح.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:34]</span>Singer: Tu bi xêr hatî buharê, tu xweşî tu nazdarê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:41]</span>Singer: Tu bi xêr hatî buharê, tu xweşî tu nazdarê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:48]</span>Singer: Tu mizgîna serê salê, te şîn kir dar û berê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:19:54]</span>Singer: Tu mizgîna serê salê, te şîn kir dar û berê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:00]</span>[Muzîk]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:30]</span>Singer: Tu bihara sûr û zer î</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:33]</span>Singer: Wey kuro kuro tac li ser î</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:36]</span>Singer: Tu bihara sûr û zer î</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:39]</span>Singer: Wey kuro kuro tac li ser î</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:43]</span>Singer: O te porê reş kirye serî</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:46]</span>Singer: Xêr û naliş meye derî</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:49]</span>Singer: O te porê reş kirye serî</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:52]</span>Singer: Xêr û naliş meye derî</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:20:55]</span>Singer: Xêr û naliş meye derî</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:00]</span>[Muzîk]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:25]</span>Singer: Di dilê min ax û deşte</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:28]</span>Singer: Yarê şuştî rû bi teşt e</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:32]</span>Singer: Di dilê min ax û deşte</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:35]</span>Singer: Yarê şuştî rû bi teşt e</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:38]</span>Singer: Tê rîhan e der sûkê tê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:41]</span>Singer: Xefarê dîna qemeran tê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:45]</span>Singer: Tê rîhan e der sûkê tê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:48]</span>Singer: Xefarê dîna qemeran tê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:51]</span>Singer: Xefarê dîna qemeran tê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:21:55]</span>[Muzîk]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:20]</span>Singer: Bi xwarî zêk a şorîn tê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:23]</span>Singer: Delalê kefa wî ran î</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:26]</span>Singer: Bi xwarî zêk a şorîn tê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:29]</span>Singer: Delalê kefa wî ran î</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:33]</span>Singer: Kemberşalyo bi meş û şişî</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:36]</span>Singer: Dîroka kurdan bi naqişî</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:40]</span>Singer: Kemberşalyo bi meş û şişî</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:43]</span>Singer: Dîroka kurdan bi naqişî</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:46]</span>Singer: Dîroka kurdan bi naqişî</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:50]</span>Singer: Tu bi xêratî bixwîne</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:53]</span>Singer: Kuf û sîtav meste re</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:56]</span>Singer: Tu bi xêratî bixwîne</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:22:59]</span>Singer: Kuf û sîtav meste re</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:03]</span>Singer: Tu mizgîniya serê salê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:06]</span>Singer: Te jîn e merdan damar e</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:09]</span>Singer: Tu mizgîniya serê salê</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:12]</span>Singer: Te jîn e merdan damar e</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:15]</span>Singer: Te jîn e merdan damar e</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:20]</span>Reporter: يحاول السيد شادي تعليم الأطفال الموسيقى الكردية</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:26]</span>Reporter: التي تحمل تراثاً قديماً نقل جيلاً بعد جيل</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:32]</span>Reporter: وحدثنا عن أهمية الموسيقى والبزق عند الأكراد</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:37]</span>Reporter: وعن المقامات التي يتميزون بها.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:41]</span>Shadi: كل شخص بده يعرف عن حاله</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:44]</span>Shadi: بفرجي فلكلوره للعالم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:48]</span>Shadi: هداك الوقت كل العالم بيعرف إنه</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:51]</span>Shadi: شو هو الفلكلور يعني.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:54]</span>Shadi: شلون بيعيش شلون بيقدم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:23:58]</span>Shadi: آلة البزق هي آلة</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:00]</span>Shadi: بالكردي اسمها طنبور.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:03]</span>Shadi: وأكثر شيء بيعزفوا عالبزق يعني</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:08]</span>Shadi: يعني الدارج بين الأكراد هو البزق يعني</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:12]</span>Shadi: غيره، بعض منهم بيستعملوا الأورغ هاي هي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:16]</span>Shadi: أكثر شي الدبكات الشعبية</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:19]</span>Shadi: بيدبكوا رقصات شعبية هي هي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:23]</span>Shadi: مثلا متل المقسوم، إيقاع مقسوم، بلدي</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:28]</span>Shadi: لف، جورجينا.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:30]</span>Shadi: أكثر شي هالدبكات مشهورين فيها.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:34]</span>Shadi: أكثر شي بالأغاني</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:38]</span>Shadi: أغانيهم طبعاً أكثر شي بيجي مقام الكرد</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:44]</span>Shadi: والحجاز والبيات.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:47]</span>Shadi: أكثر شي بيغنوا على هالأغاني</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:51]</span>Shadi: يعني شي بسيط، نادراً قليل بيستعملوا العجم.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:24:56]</span>Shadi: هاي بدك تعتبر شلون أغاني الفلسطينيين</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:00]</span>Shadi: بيكون فيها نكهة الحزن</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:02]</span>Shadi: الأكراد كمان هيك نفس الفلسطينيين</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:06]</span>Shadi: مضطهدين من هالشي.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:09]</span>[Muzîk]</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:29]</span>Reporter: تعد بلدة الباسوطة من أجمل المناطق في سوريا</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:33]</span>Reporter: بلدة عرف أهلها بالكرم وحسن الضيافة</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:38]</span>Reporter: عدا عن البساطة والعادات والتقاليد</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:41]</span>Reporter: التي حملوها معهم منذ الأجيال الماضية.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:44]</span>Reporter: إلى هنا نكون قد وصلنا لختام حلقتنا لهذا اليوم</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:48]</span>Reporter: نلقاكم في حلقات قادمة</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:50]</span>Reporter: إلى اللقاء.</p>
+<p class="mb-2"><span class="font-mono text-sm subtext mr-2">[00:25:52]</span>[Muzîk]</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-4 border-t themed-border">
+            <p class="text-sm subtext">Page Updated on April 17, 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Copy to clipboard function
+        function copySection(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Find the button that was clicked and update its text
+                const btn = event.target.closest('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ✓';
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
