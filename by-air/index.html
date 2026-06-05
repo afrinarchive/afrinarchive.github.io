@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afrin 3D Terrain Flyover Map</title>
+    <!-- Google Fonts Outfit and Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="module" crossorigin src="./assets/index-CswOF8Hl.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CxXuGjB3.css">
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <div id="ui-container">
+      <!-- Mobile Menu Toggle Button -->
+      <button id="mobile-menu-toggle" class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+      <!-- Mobile Eagle Soar Toggle Button -->
+      <button id="mobile-eagle-toggle" class="mobile-eagle-btn"><i class="fa-solid fa-crow"></i></button>
+
+      <!-- Mobile Flight Controls -->
+      <div id="mobile-controls-left" class="mobile-ctrl-container">
+        <button id="mobile-btn-left" class="mobile-ctrl-btn"><i class="fa-solid fa-chevron-left"></i></button>
+        <button id="mobile-btn-right" class="mobile-ctrl-btn"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <div id="mobile-controls-right" class="mobile-ctrl-container">
+        <button id="mobile-btn-up" class="mobile-ctrl-btn"><i class="fa-solid fa-chevron-up"></i></button>
+        <button id="mobile-btn-down" class="mobile-ctrl-btn"><i class="fa-solid fa-chevron-down"></i></button>
+      </div>
+      <button id="mobile-btn-exit" class="mobile-ctrl-btn mobile-exit-btn"><i class="fa-solid fa-xmark"></i></button>
+
+      <!-- Sidebar Backdrop Overlay -->
+      <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+      <!-- Main Sidebar -->
+      <aside id="sidebar" class="glass-panel">
+        <header id="app-header">
+          <div class="brand">
+            <span class="pulse-dot"></span>
+            <h1>AFRIN 3D</h1>
+          </div>
+          <p class="subtitle">Interactive Terrain Flyover • Syria</p>
+        </header>
+
+
+
+        <!-- Villages List Section -->
+        <section id="villages-section" class="panel-section">
+          <h2><i class="fa-solid fa-tree-city"></i> Archive Villages</h2>
+          <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="search-villages" placeholder="Search 300+ villages..." class="search-input">
+          </div>
+          <div id="villages-list" class="villages-list-container">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- Eagle Soar Mode Section -->
+        <section id="eagle-section" class="panel-section">
+          <h2><i class="fa-solid fa-feather-pointed"></i> Flight Operations</h2>
+          <label class="eagle-launch-btn" id="eagle-toggle-container">
+            <input type="checkbox" id="toggle-eagle">
+            <div class="btn-content">
+              <i class="fa-solid fa-crow flight-icon"></i>
+              <div class="flight-text">
+                <span class="title">EAGLE SOAR MODE</span>
+                <span class="status">Click to Launch Flight</span>
+              </div>
+            </div>
+          </label>
+        </section>
+      </aside>
+    </div>
+
+  </body>
+</html>
