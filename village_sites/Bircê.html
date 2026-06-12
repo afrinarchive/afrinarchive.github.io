@@ -19,9 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
+    <link href="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.css" rel="stylesheet" />
     <style>
         body { font-family: 'Inter', sans-serif; }
         :root {
@@ -66,19 +64,14 @@
         .prose blockquote { border-left: 3px solid var(--blockquote-border-color); padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; }
         .prose blockquote p { color: var(--text-color); }
         .toggle-button-colors { background-color: var(--text-color); color: var(--bg-color); border: 1px solid var(--border-color); }
-        .leaflet-popup-content-wrapper, .leaflet-control-layers { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border-radius: 8px; border: 1px solid var(--border-color); }
-        .leaflet-popup-tip { background: var(--card-bg-color) !important; }
-        .leaflet-popup-close-button { color: var(--text-color) !important; }
-        .leaflet-popup-content b { font-weight: 600; }
-        .leaflet-popup-content span { color: var(--subtext-color); text-transform: capitalize; }
-        .leaflet-control-layers-toggle {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
-            background-size: 20px 20px !important;
-        }
-        .dark .leaflet-control-layers-toggle {
-             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3e%3cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3e%3c/svg%3e") !important;
-        }
-        .leaflet-control-scale-line { background: var(--card-bg-color); border-color: var(--text-color); color: var(--text-color); }
+        .maplibregl-popup-content { background-color: var(--card-bg-color) !important; color: var(--text-color) !important; border: 1px solid var(--border-color) !important; border-radius: 8px !important; box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important; padding: 12px 16px !important; font-family: 'Inter', sans-serif !important; }
+        .maplibregl-popup-close-button { color: var(--text-color) !important; padding: 4px 6px !important; font-size: 14px !important; }
+        .maplibregl-popup-content b { font-weight: 600; display: block; margin-bottom: 2px; }
+        .maplibregl-popup-content span { color: var(--subtext-color); text-transform: capitalize; font-size: 11px; }
+        .maplibregl-popup-anchor-top .maplibregl-popup-tip { border-bottom-color: var(--border-color) !important; }
+        .maplibregl-popup-anchor-bottom .maplibregl-popup-tip { border-top-color: var(--border-color) !important; }
+        .maplibregl-popup-anchor-left .maplibregl-popup-tip { border-right-color: var(--border-color) !important; }
+        .maplibregl-popup-anchor-right .maplibregl-popup-tip { border-left-color: var(--border-color) !important; }
         .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
         .lightbox-image { max-width: 90vw; max-height: 90vh; border: 3px solid var(--border-color); border-radius: 8px; }
         .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
@@ -225,7 +218,10 @@
             </div>
 
             <div class="card p-6 rounded-xl">
-                <h2 class="text-2xl font-semibold border-b themed-border pb-3 mb-4">Map and Location</h2>
+                <div class="flex justify-between items-center border-b themed-border pb-3 mb-4">
+                    <h2 class="text-2xl font-semibold">Map and Location</h2>
+                    <button id="toggle-tilt-btn" class="button-style px-3 py-1.5 rounded-lg text-sm font-medium transition-colors">Switch to 3D View</button>
+                </div>
                 <div id="map" class="rounded-lg border themed-border" style="height: 450px;"></div>
                 <div class="mt-4 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4">
                     <p class="text-sm">Coordinates: 36.411309, 36.862674</p>
@@ -456,7 +452,7 @@
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.js"></script>
     <script>
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
@@ -516,14 +512,22 @@
                 military: { pinColor: '#dc3545', iconColor: '#ffffff', svg: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' },
                 default: { pinColor: '#343a40', iconColor: '#ffffff', svg: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' }
             };
-            function createCustomIcon(type, isMain) {
+
+            function createCustomIconElement(type, isMain, locationName) {
                 const config = iconConfig[type] || iconConfig.default;
                 const iconSize = isMain ? [36, 36] : [30, 30];
-                const iconAnchor = isMain ? [18, 36] : [15, 30];
-                const popupAnchor = [0, -iconSize[1] + 4];
                 const iconInnerSize = isMain ? 20 : 16;
                 const topPadding = (iconSize[1] - iconInnerSize) / 2 - (isMain ? 2 : 2);
-                const html = `
+                
+                const el = document.createElement('div');
+                el.style.display = 'flex';
+                el.style.flexDirection = 'column';
+                el.style.alignItems = 'center';
+                el.style.width = `${iconSize[0]}px`;
+                el.style.cursor = 'pointer';
+                
+                el.innerHTML = `
+                    <!-- Pin Icon -->
                     <div style="position: relative; width: ${iconSize[0]}px; height: ${iconSize[1]}px; display: flex; justify-content: center; align-items: flex-start; padding-top: ${topPadding}px;">
                         <svg viewBox="0 0 24 24" width="${iconSize[0]}" height="${iconSize[1]}" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
                             <path fill="${config.pinColor}" d="M12,2C8.1,2,5,5.1,5,9c0,5.2,7,13,7,13s7-7.8,7-13C19,5.1,15.9,2,12,2z"></path>
@@ -531,40 +535,109 @@
                         <svg viewBox="0 0 24 24" width="${iconInnerSize}" height="${iconInnerSize}" style="position: relative; fill: ${config.iconColor};">
                             ${config.svg}
                         </svg>
-                    </div>`;
-                return L.divIcon({ html, className: '', iconSize, iconAnchor, popupAnchor });
+                    </div>
+                    <!-- Label Text -->
+                    <span style="
+                        font-size: 12.5px;
+                        font-weight: 700;
+                        color: #ffffff;
+                        text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000, 0 1px 2px rgba(0,0,0,0.8);
+                        text-align: center;
+                        white-space: nowrap;
+                        margin-top: 3px;
+                        line-height: 1.1;
+                    ">
+                        ${locationName}
+                    </span>`;
+                return el;
             }
+
             const mainVillageName = "Bircê";
             const villageLat = 36.411309;
             const villageLng = 36.862674;
-            const initialZoom = 14;
-            const map = L.map('map').setView([villageLat, villageLng], initialZoom);
-            const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles &copy; Esri' });
-            const osmStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
-            const thunderforestTerrain = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}{r}.png?apikey={apikey}', {
-                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                apikey: 'e030b1cd0c1041a69a5ca2b0ca2ebe36',
-                maxZoom: 22
-            });
-            const baseMaps = { "Satellite": esriImagery, "Street": osmStreet, "Terrain": thunderforestTerrain };
-            L.control.layers(baseMaps).addTo(map);
-            esriImagery.addTo(map);
-            L.control.scale({ imperial: false }).addTo(map);
-            fetch('afrin_locations.json')
-                .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
-                .then(locations => {
-                    locations.forEach(location => {
-                        const isMainVillage = location.name === mainVillageName;
-                        const customIcon = createCustomIcon(location.type, isMainVillage);
-                        const marker = L.marker([location.lat, location.lng], { icon: customIcon, zIndexOffset: isMainVillage ? 1000 : 0 }).addTo(map);
-                        marker.bindPopup(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
-                        if (isMainVillage) { marker.openPopup(); }
-                    });
-                })
-                .catch(err => {
-                    console.error('Error loading location data:', err);
-                    document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+            const initialZoom = 13.5;
+            
+            if (villageLat !== null && villageLng !== null) {
+                const map = new maplibregl.Map({
+                    container: 'map',
+                    style: {
+                        version: 8,
+                        sources: {
+                            'satellite': {
+                                type: 'raster',
+                                tiles: [
+                                    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+                                ],
+                                tileSize: 256,
+                                attribution: 'Tiles &copy; Esri'
+                            },
+                            'terrainSource': {
+                                type: 'raster-dem',
+                                tiles: [
+                                    'https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer/tile/{z}/{y}/{x}'
+                                ],
+                                tileSize: 256,
+                                encoding: 'mapbox'
+                            }
+                        },
+                        layers: [
+                            {
+                                id: 'satellite-layer',
+                                type: 'raster',
+                                source: 'satellite'
+                            }
+                        ],
+                        terrain: {
+                            source: 'terrainSource',
+                            exaggeration: 1.2
+                        }
+                    },
+                    center: [villageLng, villageLat],
+                    zoom: initialZoom,
+                    pitch: 0, // Start flat in 2D
+                    bearing: 0 // Start looking straight North
                 });
+
+                map.addControl(new maplibregl.NavigationControl());
+
+                let isTilted = false;
+                const toggleTiltBtn = document.getElementById('toggle-tilt-btn');
+                if (toggleTiltBtn) {
+                    toggleTiltBtn.addEventListener('click', () => {
+                        isTilted = !isTilted;
+                        map.easeTo({
+                            pitch: isTilted ? 45 : 0,
+                            bearing: 0,
+                            duration: 1000
+                        });
+                        toggleTiltBtn.textContent = isTilted ? "Switch to 2D View" : "Switch to 3D View";
+                    });
+                }
+
+                fetch('afrin_locations.json')
+                    .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                    .then(locations => {
+                        locations.forEach(location => {
+                            const isMainVillage = location.name === mainVillageName;
+                            const el = createCustomIconElement(location.type, isMainVillage, location.name);
+                            
+                            const popup = new maplibregl.Popup({ offset: 25 })
+                                .setHTML(`<b>${location.name}</b><br><span>${location.type.replace(/_/g, ' ')}</span>`);
+                                
+                            const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
+                                .setLngLat([location.lng, location.lat])
+                                .setPopup(popup)
+                                .addTo(map);
+                        });
+                    })
+                    .catch(err => {
+                        console.error('Error loading location data:', err);
+                        document.getElementById('map').innerHTML = '<div style="text-align:center; padding: 20px; color: var(--subtext-color);">Could not load map data.<br>Please ensure <strong>afrin_locations.json</strong> is in the same folder as this HTML file.</div>';
+                    });
+            } else {
+                document.getElementById('map').style.display = 'none';
+            }
+        });
         });
 
         function toggleAfrinSummary(idPrefix) {
