@@ -87,9 +87,10 @@
         .nahiya-group:last-child { margin-bottom: 0; }
         .village-list { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
         .village-link { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0; background-color: var(--village-bg); color: var(--text-color); text-decoration: none; border-radius: 6px; transition: all 0.3s ease; border: 1px solid var(--village-border); font-weight: 500; overflow: hidden; }
-        .village-name-main { padding: 12px 18px; flex-grow: 1; }
-        .village-name-alt-container { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; }
+        .village-name-main { padding: 12px 18px; flex: 0 0 auto; text-align: left; }
+        .village-name-alt-container { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; flex: 1 1 auto; justify-content: center; }
         .village-name-alt { padding: 4px 8px; background-color: var(--alt-name-bg); color: var(--alt-name-text); border-radius: 4px; font-size: 12px; font-weight: 400; white-space: nowrap; transition: all 0.2s ease-in-out; }
+        .village-name-arabic { padding: 12px 18px; flex: 0 0 auto; text-align: right; font-weight: 500; font-size: 20px; }
         .village-link:hover { background-color: var(--brown-color); color: white; transform: translateX(5px); box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3); }
         .village-link:hover .village-name-alt { background-color: var(--bg-color); color: var(--brown-color); }
         .map-wrapper { padding: 20px 0; border-bottom: 1px solid var(--village-border); margin-bottom: 20px; }
@@ -149,7 +150,9 @@
             .header-section { padding: 25px 10px; } .main-content { padding: 20px 10px; }
             .site-title-en { font-size: 28px; } .site-title-ar { font-size: 32px; }
             .village-link { flex-direction: column; align-items: stretch; }
-            .village-name-alt-container { justify-content: flex-start; }
+            .village-name-alt-container { justify-content: flex-start; padding: 8px 18px; }
+            .village-name-main { padding: 12px 18px 4px 18px; }
+            .village-name-arabic { padding: 4px 18px 12px 18px; text-align: right; }
         }
     </style>
 </head>
@@ -869,7 +872,8 @@
                 "name": "Upila",
                 "nahiya": "Bilbilê",
                 "alt": [
-                    "'Ubila"
+                    "'Ubila",
+                    "أوبلا"
                 ],
                 "filename": "Upila.html",
                 "has_minimal_info": false
@@ -950,7 +954,9 @@
             {
                 "name": "Çolaqa - Bilbilê",
                 "nahiya": "Bilbilê",
-                "alt": [],
+                "alt": [
+                    "چولاقلي"
+                ],
                 "filename": "Çolaqa - Bilbilê.html",
                 "has_minimal_info": false
             },
@@ -1438,7 +1444,9 @@
             {
                 "name": "Fîlik",
                 "nahiya": "Cindires",
-                "alt": [],
+                "alt": [
+                    "فيلك"
+                ],
                 "filename": "Fîlik.html",
                 "has_minimal_info": false
             },
@@ -1472,7 +1480,9 @@
                 "name": "Gorkê",
                 "nahiya": "Cindires",
                 "alt": [
-                    "Gola Kêrê"
+                    "Gola Kêrê",
+                    "غوركة",
+                    "جورة"
                 ],
                 "filename": "Gorkê.html",
                 "has_minimal_info": true
@@ -1849,7 +1859,9 @@
                 "name": "Zivingê - Cindires",
                 "nahiya": "Cindires",
                 "alt": [
-                    "Zafinki"
+                    "Zafinki",
+                    "زفنكي",
+                    "زفنك"
                 ],
                 "filename": "Zivingê - Cindires.html",
                 "has_minimal_info": true
@@ -1925,7 +1937,9 @@
                 "nahiya": "Cindires",
                 "alt": [
                     "Hechesna",
-                    "Ĥec Ĥesena"
+                    "Ĥec Ĥesena",
+                    "حاج حسنلي",
+                    "حاج حسن"
                 ],
                 "filename": "Ĥec Ĥesna.html",
                 "has_minimal_info": false
@@ -2874,7 +2888,8 @@
                 "nahiya": "Efrîn",
                 "alt": [
                     "Rotankî",
-                    "Routank"
+                    "Routank",
+                    "روتنك"
                 ],
                 "filename": "Rotenk.html",
                 "has_minimal_info": true
@@ -2905,7 +2920,8 @@
                 "name": "Til Şeîrê",
                 "nahiya": "Efrîn",
                 "alt": [
-                    "Tal al-Sha'ir"
+                    "Tal al-Sha'ir",
+                    "تل شعير"
                 ],
                 "filename": "Til Şeîrê.html",
                 "has_minimal_info": true
@@ -3059,7 +3075,8 @@
                 "name": "Zêdiyê",
                 "nahiya": "Efrîn",
                 "alt": [
-                    "Ziyadiyah"
+                    "Ziyadiyah",
+                    "الزيدية"
                 ],
                 "filename": "Zêdiyê.html",
                 "has_minimal_info": false
@@ -3096,7 +3113,8 @@
                 "name": "Şehrenlî",
                 "nahiya": "Efrîn",
                 "alt": [
-                    "Shahranli"
+                    "Shahranli",
+                    "شهرانلي"
                 ],
                 "filename": "Şehrenlî.html",
                 "has_minimal_info": true
@@ -3380,7 +3398,9 @@
             {
                 "name": "Elcara - Mabeta",
                 "nahiya": "Mabeta",
-                "alt": [],
+                "alt": [
+                    "علي جارو"
+                ],
                 "filename": "Elcara - Mabeta.html",
                 "has_minimal_info": false
             },
@@ -3491,7 +3511,7 @@
                 "nahiya": "Mabeta",
                 "alt": [
                     "Kitikh",
-                    ""
+                    "كتخ"
                 ],
                 "filename": "Kitakh.html",
                 "has_minimal_info": true
@@ -3704,7 +3724,9 @@
             {
                 "name": "Qushla",
                 "nahiya": "Mabeta",
-                "alt": [],
+                "alt": [
+                    "قشلة"
+                ],
                 "filename": "Qushla.html",
                 "has_minimal_info": true
             },
@@ -4853,7 +4875,9 @@
             {
                 "name": "Sêlekê",
                 "nahiya": "Reco",
-                "alt": [],
+                "alt": [
+                    "سيلكة"
+                ],
                 "filename": "Sêlekê.html",
                 "has_minimal_info": true
             },
@@ -5073,7 +5097,11 @@
             {
                 "name": "Çobana - Reco",
                 "nahiya": "Reco",
-                "alt": [],
+                "alt": [
+                    "جوبانلي",
+                    "جوبان",
+                    "الراعي"
+                ],
                 "filename": "Çobana - Reco.html",
                 "has_minimal_info": false
             },
@@ -5424,7 +5452,9 @@
                 "nahiya": "Şera",
                 "alt": [
                     "Kela Horî",
-                    "Nebî Hûrî"
+                    "Nebî Hûrî",
+                    "قلعة النبي هوري",
+                    "النبي هوري"
                 ],
                 "filename": "Cyrrhus.html",
                 "has_minimal_info": true
@@ -5506,7 +5536,9 @@
             {
                 "name": "Elî Qîna",
                 "nahiya": "Şera",
-                "alt": [],
+                "alt": [
+                    "علقينو"
+                ],
                 "filename": "Elî Qîna.html",
                 "has_minimal_info": true
             },
@@ -5526,7 +5558,10 @@
             {
                 "name": "Gazê - Şera",
                 "nahiya": "Şera",
-                "alt": [],
+                "alt": [
+                    "غازي",
+                    "تل غازي"
+                ],
                 "filename": "Gazê - Şera.html",
                 "has_minimal_info": true
             },
@@ -5769,7 +5804,9 @@
             {
                 "name": "Qetlebiye",
                 "nahiya": "Şera",
-                "alt": [],
+                "alt": [
+                    "قتلبية"
+                ],
                 "filename": "Qetlebiye.html",
                 "has_minimal_info": true
             },
@@ -6252,7 +6289,8 @@
                 "name": "Xirabî 'Elî Zênê",
                 "nahiya": "Şiyê",
                 "alt": [
-                    "Ali Zayni"
+                    "Ali Zayni",
+                    "خربة علي زيني"
                 ],
                 "filename": "Xirabî 'Elî Zênê.html",
                 "has_minimal_info": true
@@ -6495,16 +6533,34 @@
                 if (village.has_minimal_info) { mainName.style.color = 'var(--internal-link-color)'; }
                 const altContainer = document.createElement('div');
                 altContainer.className = 'village-name-alt-container';
+
+                let arabicNameText = "";
+                const arabicRegex = /[\u0600-\u06FF]/;
+                const latinRegex = /[a-zA-Z]/;
+                
                 if (village.alt && village.alt.length > 0) {
                     village.alt.forEach(altText => {
+                        // Keep all alt names in center container (do not delete any)
                         const altName = document.createElement('span');
                         altName.className = "village-name-alt";
                         altName.textContent = altText;
                         altContainer.appendChild(altName);
+                        
+                        // Extract first clean Arabic name for the right side
+                        if (arabicRegex.test(altText) && !latinRegex.test(altText)) {
+                            if (!arabicNameText) {
+                                arabicNameText = altText;
+                            }
+                        }
                     });
                 }
+                const arabicName = document.createElement('span');
+                arabicName.className = "village-name-arabic";
+                arabicName.textContent = arabicNameText;
+                
                 linkWrapper.appendChild(mainName);
                 linkWrapper.appendChild(altContainer);
+                linkWrapper.appendChild(arabicName);
                 return linkWrapper;
             }
 

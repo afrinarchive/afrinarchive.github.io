@@ -1,0 +1,5 @@
+---
+trigger: always_on
+---
+
+NEVER OPEN THE BROWSER THIS IS SOMETHING YOU NEVER NEED TO DO
