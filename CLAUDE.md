@@ -134,8 +134,12 @@ if a new generator/template is added, add the tag to it.
 - Script 1 has a `DEAD_LINKS` set (YouTube IDs + dead article URLs verified 2026-06-12).
   `build_links_html()` renders matching URLs as non-clickable "(no longer available)"
   text. When a dead link is found or revived, update that set — not the generated HTML.
-- Google Search Console / Bing Webmaster registration and sitemap submission are manual,
-  owner-side tasks (status unknown — ask the owner, don't assume).
+- Google Search Console is verified via the `google9e1542e64711a6dc.html` file at the
+  repo root — **never delete it** (Google re-checks it; removal un-verifies the site).
+- `llms.txt` at the repo root describes the site for AI assistants (hand-maintained;
+  update it if major sections are added). AI crawlers are deliberately allowed in
+  robots.txt — the archive wants to be read and cited.
+- Bing Webmaster Tools matters for ChatGPT visibility (ChatGPT search uses Bing's index).
 
 ## Checklist before/after changing things
 
