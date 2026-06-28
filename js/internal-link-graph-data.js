@@ -282,6 +282,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "abû ke'bê şerqî": [
     "Abû Ke'bê Şerqî"
   ],
+  "abû nêçîrvan": [
+    "Ahmedî Mistê"
+  ],
   "abû semîr": [
     "Omo"
   ],
@@ -396,6 +399,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Mabeta",
     "Maratê",
     "Me'serkê",
+    "Memala",
     "Meydan Ekbez",
     "Omera",
     "Omo",
@@ -473,6 +477,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "agha": [
     "Bilbilê"
+  ],
+  "agirî": [
+    "Berkaşê"
   ],
   "agop": [
     "Be'dîna"
@@ -1182,6 +1189,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "almanya": [
     "Bi'îyê",
     "Coqê",
+    "Dodo",
     "Kaxrê",
     "Kokanê Jorin",
     "Me'mala",
@@ -1312,6 +1320,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Qeredepe"
   ],
   "amerîka": [
+    "Be'dîna",
     "Zerka"
   ],
   "amik": [
@@ -2084,6 +2093,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "axdapez": [
     "Qere Baba"
   ],
+  "axdapê": [
+    "Dodo"
+  ],
   "axdepê": [
     "Qere Baba"
   ],
@@ -2518,6 +2530,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "baiye": [
     "Bi'îyê"
   ],
+  "bajarê şeqîf": [
+    "Dodo"
+  ],
   "bakhashi": [
     "Baxaşê"
   ],
@@ -2662,6 +2677,12 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "banê": [
     "Edema"
+  ],
+  "banê cewşê": [
+    "Dodo"
+  ],
+  "banî birkê": [
+    "Dodo"
   ],
   "banî qertel": [
     "Tirmûşa"
@@ -2847,6 +2868,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Basilê"
   ],
   "basûfan": [
+    "Basûfanê",
     "Başemrê",
     "Bi'îyê",
     "Birc Ĥêderê",
@@ -2971,6 +2993,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "bavê kemal": [
     "Dêrsiwanê"
   ],
+  "bavê kenî hecî": [
+    "Be'dîna"
+  ],
   "bavê kewa": [
     "Endarê"
   ],
@@ -3088,6 +3113,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "bazo": [
     "Omo"
+  ],
+  "bazo fan": [
+    "Basûfanê"
   ],
   "bazyanlî": [
     "Anqelê"
@@ -3388,6 +3416,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "bekrî berî": [
     "Be'dîna"
   ],
+  "bekrî hebo": [
+    "Memala"
+  ],
   "bektaşî": [
     "Mabeta"
   ],
@@ -3607,6 +3638,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "ber avê": [
     "Qerqîna"
   ],
+  "ber kaş": [
+    "Berkaşê"
+  ],
   "ber til": [
     "Ebûdanê"
   ],
@@ -3675,6 +3709,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "bercade": [
     "Mîrka"
+  ],
+  "berdêna": [
+    "Be'dîna"
   ],
   "berecuqê": [
     "Baliya"
@@ -3790,6 +3827,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "berwarî": [
     "Basûtê"
+  ],
+  "berxwedan": [
+    "Berkaşê"
   ],
   "berxwedan ebdulkerîm heso": [
     "Ĥesen Dêra"
@@ -4070,6 +4110,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Mabeta",
     "Meydankê",
     "Qarşiqa",
+    "Qizilbaşa",
     "Qornê",
     "Qota",
     "Reco",
@@ -4988,6 +5029,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Qizilbaşa"
   ],
   "bêlo": [
+    "Ahmedî Mistê",
     "Bêlê"
   ],
   "bêlê": [
@@ -4995,7 +5037,8 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Axcelê",
     "Bêlê",
     "Kotana",
-    "Meydankê"
+    "Meydankê",
+    "Qizilbaşa"
   ],
   "bêlî": [
     "Omera"
@@ -5800,6 +5843,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "candar": [
     "Kitakh"
   ],
+  "cano": [
+    "Be'dîna"
+  ],
   "carcala": [
     "Uga"
   ],
@@ -6181,6 +6227,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "cemîl horo": [
     "Anqelê",
+    "Berkaşê",
     "Bilbilê",
     "Birîmce",
     "Cela",
@@ -6380,6 +6427,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "christian": [
     "Astêr",
+    "Basûfanê",
     "Kurzêlê",
     "Meydankê",
     "Meşalê",
@@ -6586,6 +6634,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Medaya",
     "Mehmediyê Xerbî",
     "Mehmediyê Şerqî",
+    "Memala",
     "Merwanê Jerin",
     "Merwanê Jorin",
     "Meydankê",
@@ -6965,6 +7014,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "cîwê": [
     "Sêmala"
+  ],
+  "cûcekan": [
+    "Qizilbaşa"
   ],
   "cûcik": [
     "Kêl Îbo"
@@ -7978,6 +8030,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "deşta meydan ekbes": [
     "Meydan Ekbez"
   ],
+  "deşta meydanekbasê": [
+    "Dodo"
+  ],
   "deşta meydanlî": [
     "Welîklî"
   ],
@@ -8808,6 +8863,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "dêra bazilîk": [
     "Beradê"
   ],
+  "dêra elkîdîs foqas": [
+    "Basûfanê"
+  ],
   "dêra juliyanos": [
     "Beradê"
   ],
@@ -8969,6 +9027,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "dîlber": [
     "Be'dîna"
   ],
+  "dîlo": [
+    "Dodo"
+  ],
   "dîlok": [
     "Dêrsiwanê",
     "Çe'inka",
@@ -9041,6 +9102,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Xirabî Şera"
   ],
   "dûdê": [
+    "Dodo",
     "Gewenda",
     "Meydan Ekbez",
     "Sêmala"
@@ -9863,6 +9925,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Bircê"
   ],
   "ebdî": [
+    "Be'dîna",
     "Bênê",
     "Mîrka",
     "Şadêrê"
@@ -9880,6 +9943,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "ebdî ûsê": [
     "Xelnêrê"
   ],
+  "ebdîn": [
+    "Be'dîna"
+  ],
   "ebdîn axa": [
     "Ĥemamê"
   ],
@@ -9893,6 +9959,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Bi'îyê",
     "Celemê",
     "Kefermizê"
+  ],
+  "ebdû mihemed": [
+    "Berkaşê"
   ],
   "ebdûyê kumo": [
     "Kanî Gewrkê"
@@ -10250,6 +10319,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "ecel": [
     "Meşalê"
   ],
+  "ecer": [
+    "Dodo"
+  ],
   "eclan": [
     "Kokebê"
   ],
@@ -10374,6 +10446,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "efrîn": [
     "Abû Ke'bê Xerbî",
     "Abû Ke'bê Şerqî",
+    "Ahmedî Mistê",
     "Alciya",
     "Alkana",
     "Andariya",
@@ -11019,6 +11092,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Be'dîna"
   ],
   "ehmed": [
+    "Ahmedî Mistê",
     "Be'dîna",
     "Berkaşê",
     "Bircikê Silêmên",
@@ -11146,7 +11220,8 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Maratê"
   ],
   "ehmed misto": [
-    "Ahmedî Mistê"
+    "Ahmedî Mistê",
+    "Qizilbaşa"
   ],
   "ehmed muxtar": [
     "Qitmê"
@@ -11252,6 +11327,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Ĥêcîka Jêrin"
   ],
   "ehmedê mistê": [
+    "Ahmedî Mistê",
     "Kotana"
   ],
   "ehmedê rîtû": [
@@ -11965,7 +12041,8 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "elî bego": [
     "Elî Bego",
-    "Me'mala"
+    "Me'mala",
+    "Memala"
   ],
   "elî bek": [
     "Çolaqa - Bilbilê"
@@ -12036,6 +12113,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "elî dawûd": [
     "Cela",
     "Keferdelê Jêrîn"
+  ],
+  "elî daxwaz": [
+    "Be'dîna"
   ],
   "elî ebdulqadir": [
     "Gubelê"
@@ -12233,6 +12313,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Be'dîna"
   ],
   "elîk": [
+    "Berkaşê",
     "Mîrka"
   ],
   "elîkar": [
@@ -12353,6 +12434,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "emersafînê": [
     "Keferdelê Jêrîn"
+  ],
+  "emerê elî": [
+    "Berkaşê"
   ],
   "emerê etûnê": [
     "Çe'inka"
@@ -13002,8 +13086,14 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "evdînê hecî hecûm": [
     "Qude"
   ],
+  "evdînê kêfo": [
+    "Ahmedî Mistê"
+  ],
   "evdûnê": [
     "Qurtqulaqê Mezin"
+  ],
+  "evon": [
+    "Be'dîna"
   ],
   "evris": [
     "Kosa"
@@ -13660,6 +13750,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "fewzî resûl": [
     "Efrîn"
   ],
+  "fexredîn": [
+    "Basûfanê"
+  ],
   "fexrî": [
     "Kela"
   ],
@@ -13779,6 +13872,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "fofana": [
     "Kora"
   ],
+  "fokas": [
+    "Basûfanê"
+  ],
   "four old villas of sîdo mêmê": [
     "Çolaqa - Cindires"
   ],
@@ -13804,6 +13900,8 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Başemrê"
   ],
   "french": [
+    "Ahmedî Mistê",
+    "Dodo",
     "Dumilya",
     "Gewrika",
     "Keştearê",
@@ -13934,11 +14032,15 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Erendê"
   ],
   "gawanda": [
+    "Dodo",
     "Gewenda",
     "Kûra"
   ],
   "gawidahat": [
     "Baliya"
+  ],
+  "gawir": [
+    "Qizilbaşa"
   ],
   "gawir dax": [
     "Şera"
@@ -13959,6 +14061,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "gaza hêro": [
     "Qêsim"
+  ],
+  "gaza kewa": [
+    "Berkaşê"
   ],
   "gaza kewê": [
     "Berkaşê"
@@ -14344,6 +14449,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "geliyê lûlkê": [
     "Kîmarê"
   ],
+  "geliyê ma'mo": [
+    "Memala"
+  ],
   "geliyê maraq": [
     "Keferdelê Jêrîn"
   ],
@@ -14364,6 +14472,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "geliyê mûsê": [
     "Kosa"
+  ],
+  "geliyê nasro": [
+    "Memala"
   ],
   "geliyê neşab": [
     "Be'dîna"
@@ -14563,6 +14674,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "geliyê xinzîr": [
     "Omo"
   ],
+  "geliyê xiraba": [
+    "Memala"
+  ],
   "geliyê xirbê": [
     "Umera"
   ],
@@ -14604,6 +14718,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "geliyê çêtê": [
     "Gazê - Erfîn"
+  ],
+  "geliyê çîlê": [
+    "Memala"
   ],
   "geliyê îbrahîm": [
     "Dargirê"
@@ -14852,6 +14969,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "gilkawî": [
     "Emara"
   ],
+  "gilyaqîb": [
+    "Ĥec Xelîl"
+  ],
   "gilê": [
     "Elcara - Mabeta"
   ],
@@ -15028,6 +15148,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "girê încirli": [
     "Gemrûkê"
+  ],
+  "girîn": [
+    "Berkaşê"
   ],
   "girû": [
     "Ĥec Xelîl"
@@ -16245,6 +16368,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Qeredepe"
   ],
   "hawar": [
+    "Berkaşê",
     "Çeqelê Ortê",
     "Çiyê",
     "Şêxûtka"
@@ -16327,6 +16451,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "hebeş axa": [
     "Qêsim"
   ],
+  "hebeş omer": [
+    "Memala"
+  ],
   "hebeşê ehdo": [
     "Ĥec Xelîl"
   ],
@@ -16352,9 +16479,13 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "hebî ewnê": [
     "Qornê"
   ],
+  "hebî sima'îl": [
+    "Memala"
+  ],
   "hebîb": [
     "Me'mala",
     "Me'serkê",
+    "Memala",
     "Qopê"
   ],
   "hebîşa": [
@@ -16887,6 +17018,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Başemrê",
     "Be'dîna",
     "Berbenê",
+    "Berkaşê",
     "Bilbilê",
     "Bilêlko",
     "Bircilqazê",
@@ -16964,6 +17096,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Qestelê Kîşik",
     "Qestelê Xidiriya",
     "Qitmê",
+    "Qizilbaşa",
     "Qopê",
     "Qota",
     "Qude",
@@ -17366,6 +17499,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Be'dîna",
     "Inabkê",
     "Me'mala",
+    "Memala",
     "Mîrka"
   ],
   "hemze mero": [
@@ -17476,6 +17610,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Celemê"
   ],
   "hemûdê": [
+    "Be'dîna",
     "Memala",
     "Qitmê"
   ],
@@ -17510,6 +17645,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kefermizê"
   ],
   "henan": [
+    "Ahmedî Mistê",
     "Baflûnê",
     "Basûtê",
     "Gemrûkê",
@@ -17982,6 +18118,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kela",
     "Kurkê Jorin",
     "Qitmê",
+    "Qizilbaşa",
     "Çeqelê Cûmê",
     "Îska",
     "Şera"
@@ -18235,6 +18372,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "heyva sor": [
     "Me'mala",
+    "Memala",
     "Xelîl"
   ],
   "heyêtê": [
@@ -18433,6 +18571,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "hisên mirîşê": [
     "Bircikê"
   ],
+  "hisên nasir": [
+    "Dodo"
+  ],
   "hisên reco": [
     "Kûra"
   ],
@@ -18534,6 +18675,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Satiya"
   ],
   "holenda": [
+    "Dodo",
     "Gemrûkê",
     "Umera"
   ],
@@ -18587,6 +18729,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "horî": [
     "Baliya",
+    "Basûfanê",
     "Maratê",
     "Soĝanekê"
   ],
@@ -20285,6 +20428,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "karsîn": [
     "Dodo"
   ],
+  "karzin": [
+    "Dodo"
+  ],
   "karzêlê": [
     "Kurzêlê"
   ],
@@ -20375,6 +20521,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "keberî sûk": [
     "Cela"
+  ],
+  "kebeşîn": [
+    "Basûfanê"
   ],
   "kebêşîn": [
     "Basûfanê"
@@ -20976,6 +21125,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "keledoş": [
     "Kefersefrê"
+  ],
+  "keleha": [
+    "Dodo"
   ],
   "keleha basûtê": [
     "Basûtê"
@@ -21745,6 +21897,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kurkê Jêrin"
   ],
   "kobanê": [
+    "Basûfanê",
     "Me'riskê",
     "Meyasê",
     "Mûskê",
@@ -22181,7 +22334,10 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "koze": [
     "Ebûdanê"
   ],
-  "kozê qey|kozê kurrê or kozê qey": [
+  "kozê kurrê": [
+    "Hêkiçê"
+  ],
+  "kozê qey": [
     "Hêkiçê"
   ],
   "kozê qey|kozê qey / kozê kurrê": [
@@ -22430,6 +22586,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Hêkiçê",
     "Kosa",
     "Kurzêlê",
+    "Memala",
     "Metîna",
     "Naza",
     "Satiya",
@@ -22573,6 +22730,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "kurta hemê": [
     "Xelnêrê"
   ],
+  "kurzelê": [
+    "Berkaşê"
+  ],
   "kurzil": [
     "Xilalka"
   ],
@@ -22668,6 +22828,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "kêl eliya": [
     "Meydankê"
   ],
+  "kêl heso": [
+    "Dodo"
+  ],
   "kêl îbo": [
     "Kêl Îbo"
   ],
@@ -22732,9 +22895,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kêl Îbo"
   ],
   "kêlşîr": [
-    "Qêsim"
-  ],
-  "kêlşîr|kêlşîr (also known as gilyaqîb)": [
+    "Qêsim",
     "Ĥec Xelîl"
   ],
   "kêlşîr|kêlşîr / gilyaqîb": [
@@ -23017,6 +23178,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "kûtanan": [
     "Kotana"
   ],
+  "kûtiya": [
+    "Berkaşê"
+  ],
   "kûtiyan": [
     "Gorda"
   ],
@@ -23140,6 +23304,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Cela"
   ],
   "libnan": [
+    "Berkaşê",
     "Celemê",
     "Mîrka",
     "Qere Baba",
@@ -23152,6 +23317,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "libnanê": [
     "Kurzêlê"
+  ],
+  "litfiyê": [
+    "Memala"
   ],
   "litfî": [
     "Me'mala"
@@ -23214,6 +23382,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Ĥec Xelîl"
   ],
   "lêlûn": [
+    "Basûfanê",
     "Başemrê",
     "Bircê",
     "Efrîn",
@@ -23235,6 +23404,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "lêylû": [
     "Bircê"
+  ],
+  "lêçê": [
+    "Dodo"
   ],
   "lîbya": [
     "Be'dîna"
@@ -23483,6 +23655,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Gewrika"
   ],
   "mahir": [
+    "Basûfanê",
     "Meşalê"
   ],
   "mahmoud oba si": [
@@ -23709,7 +23882,8 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Çeqelê Cûmê"
   ],
   "mala birîmê": [
-    "Me'mala"
+    "Me'mala",
+    "Memala"
   ],
   "mala birîmê hecî": [
     "Gazê - Erfîn"
@@ -23735,6 +23909,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mala cebûlî": [
     "Metîna"
   ],
+  "mala cefer": [
+    "Memala"
+  ],
   "mala cefer axa": [
     "Bêxçe"
   ],
@@ -23746,7 +23923,8 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kokanê Jêrin"
   ],
   "mala cemîl": [
-    "Me'mala"
+    "Me'mala",
+    "Memala"
   ],
   "mala cerah": [
     "Sînka"
@@ -24218,6 +24396,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mala gunpê": [
     "Çeqelê Ortê"
   ],
+  "mala gurdê": [
+    "Qizilbaşa"
+  ],
   "mala gênco": [
     "Mîrka"
   ],
@@ -24290,6 +24471,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "mala hecî 'izzet": [
     "Maratê"
+  ],
+  "mala hecî mehemed": [
+    "Dodo"
   ],
   "mala hecî xelîl": [
     "Qere Baba",
@@ -24504,6 +24688,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mala hesên cemal": [
     "Şorbe"
   ],
+  "mala hesûlero": [
+    "Dodo"
+  ],
   "mala hesûnê": [
     "Kurê"
   ],
@@ -24549,6 +24736,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mala heç ezet": [
     "Maratê"
   ],
+  "mala heşaşo": [
+    "Memala"
+  ],
   "mala heşoşo": [
     "Me'mala"
   ],
@@ -24579,6 +24769,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "mala hisênê mistî zelxû": [
     "Tilifê"
+  ],
+  "mala horê": [
+    "Memala"
   ],
   "mala huseynî têwê": [
     "Qermîtliq"
@@ -24697,7 +24890,8 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Be'dîna"
   ],
   "mala kurdî": [
-    "Me'mala"
+    "Me'mala",
+    "Memala"
   ],
   "mala kurmû": [
     "Şîtka"
@@ -24754,6 +24948,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Avraz"
   ],
   "mala mamo": [
+    "Memala",
     "Çeqelê Ortê"
   ],
   "mala mamoyê bilîzbê": [
@@ -24904,6 +25099,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mala mihemed seîdo": [
     "Qîbar"
   ],
+  "mala mihemed silo": [
+    "Memala"
+  ],
   "mala mihemedê hûrîkê": [
     "Eli Kera"
   ],
@@ -24997,6 +25195,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "mala mêmkê": [
     "Diraqliya"
+  ],
+  "mala mîro": [
+    "Basûfanê"
   ],
   "mala mûrad": [
     "Tilifê"
@@ -25145,6 +25346,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "mala qeydî": [
     "Endarê"
+  ],
+  "mala qib": [
+    "Basûfanê"
   ],
   "mala qirmo": [
     "Çeqmaqê Mezin"
@@ -25503,6 +25707,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Xaziyanê Jorin",
     "Xazyanê Jêrin"
   ],
+  "mala zibaro": [
+    "Memala"
+  ],
   "mala zibêro": [
     "Me'mala"
   ],
@@ -25570,12 +25777,16 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mala êlalka": [
     "Fafirtîn"
   ],
+  "mala êmir": [
+    "Qizilbaşa"
+  ],
   "mala êvî": [
     "Gazê - Erfîn"
   ],
   "mala îbiş": [
     "Kanî Gewrkê",
-    "Me'mala"
+    "Me'mala",
+    "Memala"
   ],
   "mala îbkê": [
     "Bircikê"
@@ -25675,6 +25886,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mala şewqî": [
     "Kêl Îbo"
   ],
+  "mala şeşê": [
+    "Berkaşê"
+  ],
   "mala şoro": [
     "Memala"
   ],
@@ -25729,6 +25943,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "mala şêx mislim": [
     "Şîtka"
+  ],
+  "mala şêx mîr": [
+    "Basûfanê"
   ],
   "mala şêx mûs": [
     "Serîncekê"
@@ -26719,6 +26936,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "mamo": [
     "Bablîtê",
+    "Memala",
     "Ĥec Xelîl"
   ],
   "mamola": [
@@ -26730,6 +26948,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "mamosta ehmed": [
     "Cela"
+  ],
+  "mamoste ehmed": [
+    "Be'dîna"
   ],
   "mamoste ferîd": [
     "Xalta"
@@ -26771,6 +26992,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mar cûqo": [
     "Qornê"
   ],
+  "mar dîmnyanos": [
+    "Basûfanê"
+  ],
   "mar maron": [
     "Kilotê"
   ],
@@ -26791,6 +27015,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "maratê": [
     "Bablîtê",
+    "Basûfanê",
     "Efrîn",
     "Gazê - Erfîn",
     "Gundê Mezin - above Ma'rata",
@@ -26885,6 +27110,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "matîna": [
     "Şera"
+  ],
+  "maxalo": [
+    "Qizilbaşa"
   ],
   "maxarcik": [
     "Mist'eşûra"
@@ -27178,6 +27406,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mehcûb": [
     "Satiya"
   ],
+  "mehdiyê": [
+    "Dodo"
+  ],
   "mehdîdîn": [
     "Me'mala"
   ],
@@ -27194,6 +27425,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Şorbe"
   ],
   "mehemed": [
+    "Be'dîna",
     "Meyasê"
   ],
   "mehemed agha": [
@@ -27235,6 +27467,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "mehkê": [
     "Xezîwê"
+  ],
+  "mehlero": [
+    "Dodo"
   ],
   "mehma": [
     "Dêrsiwanê"
@@ -27286,6 +27521,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mehmedî bekû": [
     "Si'iriya"
   ],
+  "mehmik": [
+    "Berkaşê"
+  ],
   "mehmiçan": [
     "Kotana"
   ],
@@ -27327,6 +27565,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "mehmûd berîmo": [
     "Satiya"
+  ],
+  "mehmûd cefer": [
+    "Memala"
   ],
   "mehmûd derwîş": [
     "Qermîtliq"
@@ -27472,12 +27713,18 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Coqê",
     "Merwanê Jorin"
   ],
+  "mela bêrîqudê": [
+    "Dodo"
+  ],
   "mela ebdurehmanê siltanê": [
     "Keferdelê Jorin",
     "Keferdelê Jêrîn"
   ],
   "mela elî": [
     "Ereba"
+  ],
+  "mela mehemedê dado": [
+    "Dodo"
   ],
   "mela mihemed": [
     "Birîmce"
@@ -28082,6 +28329,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "meydan ekbez": [
     "Be'dîna",
+    "Dodo",
     "Edema",
     "Ereblî",
     "Maseka",
@@ -28105,6 +28353,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Meydankê"
   ],
   "meydana": [
+    "Dodo",
     "Gewenda",
     "Kûra",
     "Sêmala"
@@ -28117,6 +28366,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "meydanan": [
     "Sorkê"
+  ],
+  "meydanek": [
+    "Ahmedî Mistê"
   ],
   "meydanekê": [
     "Meydankê"
@@ -28209,6 +28461,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "meyremê": [
     "Başemrê",
     "Me'mala",
+    "Memala",
     "Xirabî Silûg"
   ],
   "meyrê": [
@@ -28622,6 +28875,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kurkê Jêrin"
   ],
   "mihemed elî tico": [
+    "Berkaşê",
     "Maratê",
     "Ĥesen Dêra"
   ],
@@ -28955,6 +29209,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "mihemedê berko": [
     "Soĝanekê"
+  ],
+  "mihemedê dudê": [
+    "Dodo"
   ],
   "mihemedê elkûrî": [
     "Xezîwê"
@@ -29540,11 +29797,17 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mistefa şêxo mihemed": [
     "Bêkê"
   ],
+  "mistefayê biçûk": [
+    "Berkaşê"
+  ],
   "mistefayê celemê": [
     "Bablîtê"
   ],
   "mistefayê mamê hecî": [
     "Be'dîna"
+  ],
+  "mistefayê mezin": [
+    "Berkaşê"
   ],
   "mistefayê zengîl": [
     "Qornê"
@@ -29944,6 +30207,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "mustafa": [
     "Xelîlaka"
   ],
+  "mustefa": [
+    "Ahmedî Mistê"
+  ],
   "mustê bozo": [
     "Ĥec Qasma"
   ],
@@ -30101,6 +30367,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "mîta şehbû": [
     "Celemê"
+  ],
+  "mîtan": [
+    "Basûfanê"
   ],
   "mîtaniyan": [
     "Keferşîlê",
@@ -30302,6 +30571,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "nasir axa": [
     "Coqê"
   ],
+  "nasir dîn": [
+    "Basûfanê"
+  ],
   "nasirdîn": [
     "Basûfanê"
   ],
@@ -30431,6 +30703,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Ĥec Xelîl"
   ],
   "nazlî": [
+    "Memala",
     "Ĥilûbiyê Çuçik"
   ],
   "nazlî xatûn": [
@@ -30692,6 +30965,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "neşab": [
     "Kûra"
   ],
+  "neşat zîbar": [
+    "Memala"
+  ],
   "neşet": [
     "Gazê - Erfîn"
   ],
@@ -30822,6 +31098,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "nîdal henan": [
     "Kaxrê"
   ],
+  "nîdal hesen": [
+    "Memala"
+  ],
   "nîdal îso": [
     "Be'rava"
   ],
@@ -30950,6 +31229,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Sêwiya"
   ],
   "ocax": [
+    "Basûfanê",
     "Selo"
   ],
   "ocê": [
@@ -30963,6 +31243,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "oda mîvana": [
     "Birîmce"
+  ],
+  "odaya xelîl ehmed axa": [
+    "Memala"
   ],
   "odeya xelîl ehmed axa": [
     "Me'mala"
@@ -31209,6 +31492,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Berkaşê",
     "Qêsim"
   ],
+  "omkan": [
+    "Berkaşê"
+  ],
   "omko": [
     "Qêsim"
   ],
@@ -31302,6 +31588,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kokanê Jêrin"
   ],
   "osman": [
+    "Ahmedî Mistê",
     "Basilê",
     "Bilbilê",
     "Coqê",
@@ -31309,6 +31596,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kokebê",
     "Kurzêlê",
     "Me'serkê",
+    "Memala",
     "Qude",
     "Serê Kaniyê",
     "Xerza"
@@ -31356,6 +31644,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "osmanla": [
     "Alkana"
+  ],
+  "osmanlî": [
+    "Ahmedî Mistê"
   ],
   "osmanê berazî": [
     "Xirabî Silûg"
@@ -32161,6 +32452,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Xelnêrê"
   ],
   "qerababa": [
+    "Berkaşê",
     "Qere Baba"
   ],
   "qerabaş": [
@@ -32350,6 +32642,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "qerepîngar": [
     "Baliya"
   ],
+  "qereqan": [
+    "Memala"
+  ],
   "qereqişlê": [
     "Etmana"
   ],
@@ -32427,6 +32722,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Qermîtliq"
   ],
   "qermîtliq": [
+    "Basûfanê",
     "Mistika",
     "Qermîtliq"
   ],
@@ -32719,6 +33015,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Qitraniyê",
     "Şêx Kêlê"
   ],
+  "qewlê naserdîn": [
+    "Basûfanê"
+  ],
   "qews el-nesr": [
     "Xirabî Şera"
   ],
@@ -32936,10 +33235,14 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "qiwêliq": [
     "Qeredepe"
   ],
+  "qizil paşa": [
+    "Qizilbaşa"
+  ],
   "qizilbash": [
     "Qizilbaşa"
   ],
   "qizilbaş": [
+    "Ahmedî Mistê",
     "Bêlê",
     "Dewrîş",
     "Diraqliya",
@@ -32950,6 +33253,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Xelîlaka"
   ],
   "qizilbaşa": [
+    "Qizilbaşa"
+  ],
+  "qizilbaşo": [
     "Qizilbaşa"
   ],
   "qizilbaşê": [
@@ -33136,6 +33442,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Qota"
   ],
   "qota": [
+    "Berkaşê",
     "Qota"
   ],
   "qotan": [
@@ -33152,6 +33459,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kotana"
   ],
   "qotê": [
+    "Berkaşê",
     "Qota"
   ],
   "qotîş": [
@@ -33570,6 +33878,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "raco": [
     "Be'dîna",
     "Coqê",
+    "Dodo",
     "Edema",
     "Efrîn",
     "Elcara - Mabeta",
@@ -33651,6 +33960,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "raniye oso": [
     "Qitmê"
+  ],
+  "ranya çawîş": [
+    "Memala"
   ],
   "ras al-aswad": [
     "Feqîra"
@@ -33802,6 +34114,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "rehawî": [
     "Ĥec Îskenderê"
+  ],
+  "rehman": [
+    "Ahmedî Mistê"
   ],
   "rehmaniya": [
     "Ĥebo"
@@ -34091,6 +34406,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "reşîd": [
     "Be'dîna",
     "Dîkmedaşê",
+    "Memala",
     "Metîna",
     "Qerqîna",
     "Xelnêrê"
@@ -34169,6 +34485,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "reşîdê ehme": [
     "Maseka"
+  ],
+  "reşîdê ehmed": [
+    "Dodo"
   ],
   "reşîdê elî": [
     "Çeqelê Cûmê",
@@ -34653,6 +34972,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "romaniyan": [
     "Gewenda",
     "Şadêrê"
+  ],
+  "romans": [
+    "Dodo"
   ],
   "romanî": [
     "Maratê",
@@ -36045,6 +36367,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Edema",
     "Omo",
     "Qitmê",
+    "Qizilbaşa",
     "Selo"
   ],
   "siltan": [
@@ -36088,6 +36411,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Ĥemamê"
   ],
   "silêman cefer": [
+    "Basûfanê",
     "Qarşiqa"
   ],
   "silêman el-helebî": [
@@ -36521,6 +36845,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "subhî husên": [
     "Firêriyê"
   ],
+  "sufi": [
+    "Basûfanê"
+  ],
   "sulaiman": [
     "Selo"
   ],
@@ -36582,6 +36909,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "swêhlî": [
     "Qeredepe"
+  ],
+  "swîsre": [
+    "Dodo"
   ],
   "sykes picot": [
     "Dîkmedaşê"
@@ -37004,6 +37334,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "sûrranî": [
     "Meydan Ekbez"
   ],
+  "sûrê": [
+    "Dodo"
+  ],
   "sûrî": [
     "Dêrsiwanê",
     "Efrîn",
@@ -37141,6 +37474,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "tawisê melek": [
     "Feqîra"
   ],
+  "tawisî melek": [
+    "Basûfanê"
+  ],
   "tawlê zehra": [
     "Goliyê Jorin",
     "Goliyê Jêrin"
@@ -37270,6 +37606,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Keferdelê Jorin",
     "Maratê"
   ],
+  "telat efrînî": [
+    "Be'dîna"
+  ],
   "telbîse": [
     "Qeredepe"
   ],
@@ -37377,6 +37716,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "teqlike": [
     "Îska"
+  ],
+  "teraşleran": [
+    "Dodo"
   ],
   "terendê": [
     "Feqîra"
@@ -37701,6 +38043,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Be'dîna"
   ],
   "tirbespiyê": [
+    "Be'dîna",
     "Qerqîna",
     "Tilsilorê",
     "Şîtka"
@@ -37891,6 +38234,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "tirkiyê": [
     "Basûtê",
+    "Be'dîna",
     "Bilêlko",
     "Celemê",
     "Dêrsiwanê",
@@ -38373,6 +38717,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "upila": [
     "Upila"
   ],
+  "uqadîça": [
+    "Berkaşê"
+  ],
   "uqle": [
     "Şera"
   ],
@@ -38403,6 +38750,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "urmê mala reşê": [
     "Serîncekê"
+  ],
+  "uropa": [
+    "Qizilbaşa"
   ],
   "urta çaqala": [
     "Çeqelê Cûmê"
@@ -38918,6 +39268,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Mûskê"
   ],
   "xalta": [
+    "Basûfanê",
     "Feqîra",
     "Miskê Jorin",
     "Omera",
@@ -38968,6 +39319,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Xeltê Şerqî"
   ],
   "xaltî": [
+    "Basûfanê",
     "Bircê",
     "Dêrsiwanê",
     "Feqîra",
@@ -39004,6 +39356,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "xalê cafo": [
     "Be'dîna"
+  ],
+  "xalê cemal": [
+    "Qizilbaşa"
   ],
   "xalê cemîl": [
     "Sêwiya"
@@ -39110,6 +39465,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "xaniyê bi herya şîr": [
     "Ĥêcîka Jorin",
     "Ĥêcîka Jêrin"
+  ],
+  "xaniyê çenqit": [
+    "Qizilbaşa"
   ],
   "xanê kabîl": [
     "Ze'rê"
@@ -39387,6 +39745,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "xelo": [
     "Baliya",
+    "Qizilbaşa",
     "Xelîlaka",
     "Ze'rê",
     "Çeqelê Jorin"
@@ -39453,6 +39812,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "xelî hecî tankê": [
     "Basûtê"
+  ],
+  "xelî miho": [
+    "Memala"
   ],
   "xelîce": [
     "Kokanê Jorin",
@@ -39666,6 +40028,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Zivingê - Bilbilê"
   ],
   "xelîlaka": [
+    "Berkaşê",
     "Eli Kera",
     "Xelîlaka"
   ],
@@ -40321,6 +40684,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "xirêbê şera": [
     "Me'serkê"
   ],
+  "xiskê qizilbaşa": [
+    "Qizilbaşa"
+  ],
   "xitek": [
     "Til Ĥemo"
   ],
@@ -40425,6 +40791,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "xozyanê": [
     "Kurzêlê"
+  ],
+  "xoşekan": [
+    "Ahmedî Mistê"
   ],
   "xoşnav": [
     "Omo"
@@ -40638,6 +41007,12 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "yehmo": [
     "Gemrûkê"
+  ],
+  "yehya eşo": [
+    "Be'dîna"
+  ],
+  "yekitiya star": [
+    "Memala"
   ],
   "yekşemê": [
     "Coqê"
@@ -40927,6 +41302,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "zekerya hacî îbrahîm": [
     "Qermîtliq"
   ],
+  "zekerîya ge'do": [
+    "Memala"
+  ],
   "zekiye": [
     "Başemrê",
     "Kîbêşînê",
@@ -41160,6 +41538,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Zirenîtê"
   ],
   "zeyneb": [
+    "Ahmedî Mistê",
     "Dîkê",
     "Kefermizê",
     "Kurzêlê",
@@ -41171,6 +41550,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "zeynel": [
     "Tilifê"
+  ],
+  "zeynep": [
+    "Memala"
   ],
   "zeynlar": [
     "Dewrîş"
@@ -41660,6 +42042,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "ziyaretgeha çe'fêr": [
     "Omera"
+  ],
+  "ziyaretgeha şêx mûs": [
+    "Dodo"
   ],
   "ziyaretgeha şêx xurzê": [
     "Serîncekê"
@@ -42202,6 +42587,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "çenka": [
     "Çe'inka"
   ],
+  "çenqit": [
+    "Qizilbaşa"
+  ],
   "çençaliya": [
     "Ĥucemala"
   ],
@@ -42614,6 +43002,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Çe'inka",
     "Ĥucemala"
   ],
+  "çiyayê bilbile": [
+    "Ahmedî Mistê"
+  ],
   "çiyayê bilbilê": [
     "Cela",
     "Metîna"
@@ -42660,6 +43051,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "çiyayê bîlalê hebeş": [
     "Zerka"
+  ],
+  "çiyayê bîvê": [
+    "Dodo"
   ],
   "çiyayê bûsît": [
     "Kifêrê"
@@ -42784,6 +43178,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Şêx Bila"
   ],
   "çiyayê hawarê": [
+    "Ahmedî Mistê",
     "Dêrsiwanê",
     "Emara",
     "Metîna",
@@ -43625,6 +44020,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "çiyayê qere xalû": [
     "Qerqîna"
   ],
+  "çiyayê qerebelê": [
+    "Dodo"
+  ],
   "çiyayê qerebêl": [
     "Sêmala"
   ],
@@ -43655,6 +44053,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "çiyayê reş": [
     "Be'dîna",
+    "Dodo",
     "Metîna",
     "Sêmala",
     "Xirab Simaq",
@@ -44102,6 +44501,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Sariya",
     "Şêtana"
   ],
+  "çûçeleran": [
+    "Dodo"
+  ],
   "çûçik bil": [
     "Dêrsiwanê"
   ],
@@ -44168,6 +44570,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "êzidî": [
     "Qestela Cindo"
   ],
+  "êzî": [
+    "Basûfanê"
+  ],
   "êzîdî": [
     "Abû Ke'bê Xerbî",
     "Abû Ke'bê Şerqî",
@@ -44217,6 +44622,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "îb": [
     "Kurê",
     "Xurêbkê"
+  ],
+  "îbik": [
+    "Berkaşê"
   ],
   "îbikê omkêlê": [
     "Çolaqa - Cindires"
@@ -44269,6 +44677,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "îbrahîm dede": [
     "Çeqelê Ortê"
+  ],
+  "îbrahîm ehmed": [
+    "Ahmedî Mistê"
   ],
   "îbrahîm el eqre'": [
     "Kêl Îbo"
@@ -44473,6 +44884,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "îskender": [
     "Me'mala",
+    "Memala",
     "Omera",
     "Ĥec Îskenderê"
   ],
@@ -44507,6 +44919,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "îsmaîl zade": [
     "Qitraniyê"
+  ],
+  "îsmet": [
+    "Memala"
   ],
   "îso": [
     "Bablîtê",
@@ -44953,6 +45368,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kurkê Jorin",
     "Kurkê Jêrin"
   ],
+  "şehîd demhat": [
+    "Dodo"
+  ],
   "şehîd dilbirîn": [
     "Xirabî Silûg"
   ],
@@ -45167,6 +45585,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Efrîn",
     "Mersewa"
   ],
+  "şemal": [
+    "Memala"
+  ],
   "şemdînê ebdê": [
     "Qopê"
   ],
@@ -45193,6 +45614,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Ĥesen Dêra"
   ],
   "şengal": [
+    "Basûfanê",
     "Feqîra",
     "Kerê",
     "Kilotê",
@@ -45261,6 +45683,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Qestelê Kîşik",
     "Qetlebiye",
     "Qitmê",
+    "Qizilbaşa",
     "Qurtqulaqê Mezin",
     "Qurtqulaqê Çûçik",
     "Reco",
@@ -45460,6 +45883,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "şeş": [
     "Metîna"
+  ],
+  "şeşê": [
+    "Berkaşê"
   ],
   "şeşê reşko": [
     "Mersewa"
@@ -45754,6 +46180,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "şikêk": [
     "Qurtqulaqê Mezin"
   ],
+  "şikêr": [
+    "Qizilbaşa"
+  ],
   "şilik": [
     "Kotana",
     "Qurtqulaqê Mezin"
@@ -45859,6 +46288,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kela",
     "Mabeta",
     "Maratê",
+    "Memala",
     "Merwanê Jorin",
     "Mistika",
     "Qermîtliq",
@@ -46086,6 +46516,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "şêrawa": [
     "Aqîbê",
+    "Basûfanê",
     "Basûtê",
     "Başemrê",
     "Beradê",
@@ -46141,6 +46572,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Gorda",
     "Meydan Ekbez"
   ],
+  "şêro zor": [
+    "Berkaşê"
+  ],
   "şêrqiya": [
     "Şêrqiya"
   ],
@@ -46171,6 +46605,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "şêx": [
     "Bablîtê",
+    "Basûfanê",
     "Feqîra",
     "Qitmê",
     "Qurtqulaqê Mezin",
@@ -46411,6 +46846,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Be'dîna"
   ],
   "şêx hesen": [
+    "Basûfanê",
     "Kurkê Jorin",
     "Sariya",
     "Zerka"
@@ -46773,7 +47209,11 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Şêx - Mt Hawar"
   ],
   "şêxa": [
+    "Memala",
     "Qude"
+  ],
+  "şêxadî": [
+    "Basûfanê"
   ],
   "şêxan": [
     "Be'dîna",
@@ -46793,6 +47233,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "şêxanî": [
     "Be'dîna"
+  ],
+  "şêxbekir": [
+    "Basûfanê"
   ],
   "şêxdada": [
     "Edema"
@@ -46971,6 +47414,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "şêziyê": [
     "Remedena"
+  ],
+  "şêşims": [
+    "Basûfanê"
   ],
   "şêşê": [
     "Berkaşê"
