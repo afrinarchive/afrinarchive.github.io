@@ -1,366 +1,367 @@
-Unknown	Bilbilê	Baliya.html
-Unknown	Bilbilê	Baxaşê.html
-Unknown	Bilbilê	Berkaşê.html
-Unknown	Bilbilê	Bilbilê.html
-Unknown	Bilbilê	Bêkê.html
-Unknown	Bilbilê	Bêlê.html
-Unknown	Bilbilê	Bêxçe.html
-Unknown	Bilbilê	Bîbaka.html
-Unknown	Bilbilê	Cirqa.html
-Unknown	Bilbilê	Dupîra.html
-Unknown	Bilbilê	Dîkê.html
-Unknown	Bilbilê	Ebûdanê.html
-Unknown	Bilbilê	Elcara - Bilbilê.html
-Unknown	Bilbilê	Eli Kera.html
-Unknown	Bilbilê	Elî Bego.html
-Unknown	Bilbilê	Eşûnê.html
-Unknown	Bilbilê	Heyama.html
-Unknown	Bilbilê	Kerê.html
-Unknown	Bilbilê	Kotana.html
-Unknown	Bilbilê	Kurdo.html
-Unknown	Bilbilê	Kurzêl.html
-Unknown	Bilbilê	Kêla.html
-Unknown	Bilbilê	Miĥa.html
-Unknown	Bilbilê	Qarşiqa.html
-Unknown	Bilbilê	Qaşa.html
-Unknown	Bilbilê	Qestelê Miqdêd.html
-Unknown	Bilbilê	Qestelê Xidiriya.html
-Unknown	Bilbilê	Qiri Golê.html
-Unknown	Bilbilê	Qizilbaşa.html
-Unknown	Bilbilê	Qornê.html
-Unknown	Bilbilê	Qorta.html
-Unknown	Bilbilê	Qota.html
-Unknown	Bilbilê	Si'iriya.html
-Unknown	Bilbilê	Topel Meĥmûd.html
-Unknown	Bilbilê	Uga.html
-Unknown	Bilbilê	Upila.html
-Unknown	Bilbilê	Xelîlaka.html
-Unknown	Bilbilê	Xidiriya.html
-Unknown	Bilbilê	Xilalka.html
-Unknown	Bilbilê	Ze'rê.html
-Unknown	Bilbilê	Zivingê - Bilbilê.html
-Unknown	Bilbilê	Çolaqa - Bilbilê.html
-Unknown	Bilbilê	Ĥazira.html
-Unknown	Bilbilê	Ĥeftêr.html
-Unknown	Bilbilê	Ĥesen Dêra.html
-Unknown	Bilbilê	Şingêl.html
-Unknown	Bilbilê	Şêrqiya.html
-Unknown	Bilbilê	Şêxorz.html
-Unknown	Cindires	Abû Ke'bê Xerbî.html
-Unknown	Cindires	Abû Ke'bê Şerqî.html
-Unknown	Cindires	Andariya.html
-Unknown	Cindires	Axcelê.html
-Unknown	Cindires	Aşkê Xerbî.html
-Unknown	Cindires	Aşkê Şerqî.html
-Unknown	Cindires	Baflor.html
-Unknown	Cindires	Bircikê.html
-Unknown	Cindires	Celemê.html
-Unknown	Cindires	Cindirês.html
-Unknown	Cindires	Dêrbelûtê.html
-Unknown	Cindires	Dêwê Jorin.html
-Unknown	Cindires	Dêwê Jêrin.html
-Unknown	Cindires	Feqîra.html
-Unknown	Cindires	Firêriyê.html
-Unknown	Cindires	Fîlik.html
-Unknown	Cindires	Gewrika.html
-Unknown	Cindires	Gorda.html
-Unknown	Cindires	Gorkê.html
-Unknown	Cindires	Hêkiçê.html
-Unknown	Cindires	Kanî Gewrkê.html
-Unknown	Cindires	Kefersefrê.html
-Unknown	Cindires	Kora.html
-Unknown	Cindires	Medaya.html
-Unknown	Cindires	Mehmediyê Xerbî.html
-Unknown	Cindires	Mehmediyê Şerqî.html
-Unknown	Cindires	Merwanê Jerin.html
-Unknown	Cindires	Merwanê Jorin.html
-Unknown	Cindires	Miske Jerin.html
-Unknown	Cindires	Miskê Jorin.html
-Unknown	Cindires	Mîla Xelîla.html
-Unknown	Cindires	Nisriyê.html
-Unknown	Cindires	Qujûma.html
-Unknown	Cindires	Qulkê.html
-Unknown	Cindires	Qurbê.html
-Unknown	Cindires	Qîlê.html
-Unknown	Cindires	Remadiyê.html
-Unknown	Cindires	Remedena.html
-Unknown	Cindires	Rif'etiyê.html
-Unknown	Cindires	Sifriyê.html
-Unknown	Cindires	Sindiyankê.html
-Unknown	Cindires	Tetera.html
-Unknown	Cindires	Til Ĥemo.html
-Unknown	Cindires	Tilsilorê.html
-Unknown	Cindires	Xeltê Xerbî.html
-Unknown	Cindires	Xeltê Şerqî.html
-Unknown	Cindires	Xerza.html
-Unknown	Cindires	Yalanqozê.html
-Unknown	Cindires	Zivingê - Cindires.html
-Unknown	Cindires	Çamlî Bêl.html
-Unknown	Cindires	Çeqelê Cûmê.html
-Unknown	Cindires	Çobana - Cindires.html
-Unknown	Cindires	Çolaqa - Cindires.html
-Unknown	Cindires	Ĥec Îskenderê.html
-Unknown	Cindires	Ĥec Ĥesna.html
-Unknown	Cindires	Ĥecîler.html
-Unknown	Cindires	Ĥemamê.html
-Unknown	Cindires	Ĥemêlkê.html
-Unknown	Cindires	Ĥesîrkê.html
-Unknown	Cindires	Şêx Ebdirehmên.html
-Unknown	Efrîn	Aqîbê.html
-Unknown	Efrîn	Astêr.html
-Unknown	Efrîn	Bablîtê.html
-Unknown	Efrîn	Basilê.html
-Unknown	Efrîn	Basûfanê.html
-Unknown	Efrîn	Basûtê.html
-Unknown	Efrîn	Beradê.html
-Unknown	Efrîn	Bi'îyê.html
-Unknown	Efrîn	Birc Ĥêderê.html
-Unknown	Efrîn	Bircikê Silêmên.html
-Unknown	Efrîn	Bircê.html
-Unknown	Efrîn	Bozikê.html
-Unknown	Efrîn	Bênê.html
-Unknown	Efrîn	Cidêdê.html
-Unknown	Efrîn	Cilbirê.html
-Unknown	Efrîn	Coqê.html
-Unknown	Efrîn	Cûmkê.html
-Unknown	Efrîn	Duderiyah Cave.html
-Unknown	Efrîn	Dudêrê.html
-Unknown	Efrîn	Dêrmişmiş.html
-Unknown	Efrîn	Efrîn.html
-Unknown	Efrîn	Ein Majnoun.html
-Unknown	Efrîn	Endarê.html
-Unknown	Efrîn	Endîbê'.html
-Unknown	Efrîn	Fafirtîn.html
-Unknown	Efrîn	Gazê - Erfîn.html
-Unknown	Efrîn	Gobelê.html
-Unknown	Efrîn	Gundê Mezin - above Ma'rata.html
-Unknown	Efrîn	Gundê Mezin - Shirawa area.html
-Unknown	Efrîn	Inabkê.html
-Unknown	Efrîn	Keferbele.html
-Unknown	Efrîn	Keferbetrê.html
-Unknown	Efrîn	Keferdelê Jorin.html
-Unknown	Efrîn	Keferdelê Jêrîn.html
-Unknown	Efrîn	Keferlab.html
-Unknown	Efrîn	Kefermizê.html
-Unknown	Efrîn	Kefernebo.html
-Unknown	Efrîn	Keferzîtê.html
-Unknown	Efrîn	Keferşîlê.html
-Unknown	Efrîn	Kersanê.html
-Unknown	Efrîn	Kifêrê.html
-Unknown	Efrîn	Kokebê.html
-Unknown	Efrîn	Kurzêlê.html
-Unknown	Efrîn	Kîbêşînê.html
-Unknown	Efrîn	Kîmarê.html
-Unknown	Efrîn	Mansora.html
-Unknown	Efrîn	Maratê.html
-Unknown	Efrîn	Me'riskê.html
-Unknown	Efrîn	Mosankî.html
-Unknown	Efrîn	Mêremînê.html
-Unknown	Efrîn	Pitêtê.html
-Unknown	Efrîn	Qarsaq.html
-Unknown	Efrîn	Qîbar.html
-Unknown	Efrîn	Rotenk.html
-Unknown	Efrîn	Sheikh Barakat.html
-Unknown	Efrîn	Soĝanekê.html
-Unknown	Efrîn	Til Şeîrê.html
-Unknown	Efrîn	Tilifê.html
-Unknown	Efrîn	Tirtewîlê.html
-Unknown	Efrîn	Turindê.html
-Unknown	Efrîn	Xalta.html
-Unknown	Efrîn	Xelnêrê.html
-Unknown	Efrîn	Xezîwê.html
-Unknown	Efrîn	Xurêbkê.html
-Unknown	Efrîn	Zaretê.html
-Unknown	Efrîn	Zelaqe Serqi.html
-Unknown	Efrîn	Zelaqe Xerbi.html
-Unknown	Efrîn	Zirêgatê.html
-Unknown	Efrîn	Zêdiyê.html
-Unknown	Efrîn	Îska.html
-Unknown	Efrîn	Şadêrê.html
-Unknown	Efrîn	Şehrenlî.html
-Unknown	Efrîn	Şewarxa Arze.html
-Unknown	Efrîn	Şewarxa.html
-Unknown	Efrîn	Şêx Seydo.html
-Unknown	Ezaz	Yazi Baĝ.html
-Unknown	Mabeta	Avraz.html
-Unknown	Mabeta	Birka.html
-Unknown	Mabeta	Birîmce.html
-Unknown	Mabeta	Dargirê.html
-Unknown	Mabeta	Dela.html
-Unknown	Mabeta	Elcara - Mabeta.html
-Unknown	Mabeta	Emara.html
-Unknown	Mabeta	Ereb Şêxo.html
-Unknown	Mabeta	Ereba.html
-Unknown	Mabeta	Gemrûkê.html
-Unknown	Mabeta	Gulîka.html
-Unknown	Mabeta	Kaxrê.html
-Unknown	Mabeta	Kitakh.html
-Unknown	Mabeta	Kokanê Jorin.html
-Unknown	Mabeta	Kokanê Jêrin.html
-Unknown	Mabeta	Kurka.html
-Unknown	Mabeta	Kurkê Jorin.html
-Unknown	Mabeta	Kurkê Jêrin.html
-Unknown	Mabeta	Kêl Îbo.html
-Unknown	Mabeta	Mabeta.html
-Unknown	Mabeta	Mala Xelî Pîrê.html
-Unknown	Mabeta	Me'serkê.html
-Unknown	Mabeta	Mist'eşûra.html
-Unknown	Mabeta	Mîrka.html
-Unknown	Mabeta	Omo.html
-Unknown	Mabeta	Qenterê.html
-Unknown	Mabeta	Qitraniyê.html
-Unknown	Mabeta	Qushla.html
-Unknown	Mabeta	Reca.html
-Unknown	Mabeta	Rûta.html
-Unknown	Mabeta	Sariya.html
-Unknown	Mabeta	Satiya.html
-Unknown	Mabeta	Selo.html
-Unknown	Mabeta	Sêmalka.html
-Unknown	Mabeta	Sêwiya.html
-Unknown	Mabeta	Xaziyanê Jorin.html
-Unknown	Mabeta	Xazyanê Jêrin.html
-Unknown	Mabeta	Xirabî Rûtê.html
-Unknown	Mabeta	Çomazna.html
-Unknown	Mabeta	Ên' Ĥecer.html
-Unknown	Mabeta	Ĥebo.html
-Unknown	Mabeta	Ĥec Qasma.html
-Unknown	Mabeta	Ĥeyatê.html
-Unknown	Mabeta	Şorbe.html
-Unknown	Mabeta	Şêtana.html
-Unknown	Mabeta	Şêx Kêlê.html
-Unknown	Mabeta	Şêxûtka.html
-Unknown	Mabeta	Şîtka.html
-Unknown	Nubl	Başemrê.html
-Unknown	Nubl	Bircilqazê.html
-Unknown	Nubl	Kilotê.html
-Unknown	Nubl	Meyasê.html
-Unknown	Nubl	Xirabî Şêx 'Eqîl.html
-Unknown	Nubl	Zirenîtê.html
-Unknown	Reco	Banîkê.html
-Unknown	Reco	Be'dîna.html
-Unknown	Reco	Berbenê.html
-Unknown	Reco	Bilêlko.html
-Unknown	Reco	Cela.html
-Unknown	Reco	Dodo.html
-Unknown	Reco	Dumilya.html
-Unknown	Reco	Dêwrîş.html
-Unknown	Reco	Edema.html
-Unknown	Reco	Elbîskê.html
-Unknown	Reco	Elendara.html
-Unknown	Reco	Eltaniya.html
-Unknown	Reco	Ereblî.html
-Unknown	Reco	Etmana.html
-Unknown	Reco	Firfirkê Jorin.html
-Unknown	Reco	Firfirkê Jêrin.html
-Unknown	Reco	Gazê - Reco.html
-Unknown	Reco	Gewenda.html
-Unknown	Reco	Goliyê Jorin.html
-Unknown	Reco	Goliyê Jêrin.html
-Unknown	Reco	Holîlê.html
-Unknown	Reco	Hopka.html
-Unknown	Reco	Kosa.html
-Unknown	Reco	Kum Reşê.html
-Unknown	Reco	Kurê.html
-Unknown	Reco	Kûra.html
-Unknown	Reco	Maseka.html
-Unknown	Reco	Me'mala.html
-Unknown	Reco	Memala.html
-Unknown	Reco	Meydan Ekbez.html
-Unknown	Reco	Mûskê.html
-Unknown	Reco	Penêreka.html
-Unknown	Reco	Qere Baba.html
-Unknown	Reco	Qestela.html
-Unknown	Reco	Qopê.html
-Unknown	Reco	Qude.html
-Unknown	Reco	Qêsim.html
-Unknown	Reco	Reco.html
-Unknown	Reco	Sorkê.html
-Unknown	Reco	Sêlekê.html
-Unknown	Reco	Sêmala.html
-Unknown	Reco	Tilî Kêşû.html
-Unknown	Reco	Umera.html
-Unknown	Reco	Welîklî.html
-Unknown	Reco	Xirab Simaq.html
-Unknown	Reco	Xirabî Mecîd.html
-Unknown	Reco	Xirabî Qewala.html
-Unknown	Reco	Xirabî Silûg.html
-Unknown	Reco	Zerka.html
-Unknown	Reco	Çe'inka.html
-Unknown	Reco	Çençeliya.html
-Unknown	Reco	Çeqmaqê Mezin.html
-Unknown	Reco	Çeqmaqê Çûçik.html
-Unknown	Reco	Çerxûta.html
-Unknown	Reco	Çiyê.html
-Unknown	Reco	Çobana - Reco.html
-Unknown	Reco	Çêqilme.html
-Unknown	Reco	Ĥec Xelîl.html
-Unknown	Reco	Ĥesen.html
-Unknown	Reco	Ĥucemala.html
-Unknown	Reco	Ĥêcîka Jorin.html
-Unknown	Reco	Ĥêcîka Jêrin.html
-Unknown	Reco	Şediya.html
-Unknown	Reco	Şêx - Mt Hawar.html
-Unknown	Reco	Şêx Bila.html
-Unknown	Reco	Şêx Mihemed.html
-Unknown	Şera	Alciya.html
-Unknown	Şera	Baflûnê.html
-Unknown	Şera	Be'rava.html
-Unknown	Şera	Cyrrhus.html
-Unknown	Şera	Darkir.html
-Unknown	Şera	Dewrîş.html
-Unknown	Şera	Diraqliya.html
-Unknown	Şera	Dêrsiwanê.html
-Unknown	Şera	Dîkmedaşê.html
-Unknown	Şera	Elî Qîna.html
-Unknown	Şera	Ereb Wêranê.html
-Unknown	Şera	Gazê - Şera.html
-Unknown	Şera	Gubelê.html
-Unknown	Şera	Keferomê.html
-Unknown	Şera	Keştearê.html
-Unknown	Şera	Kortikê.html
-Unknown	Şera	Mersewa.html
-Unknown	Şera	Metîna.html
-Unknown	Şera	Meydankê.html
-Unknown	Şera	Meşalê.html
-Unknown	Şera	Naza.html
-Unknown	Şera	Omer Simo.html
-Unknown	Şera	Omera.html
-Unknown	Şera	Pelûsankê.html
-Unknown	Şera	Qeredepe.html
-Unknown	Şera	Qerqîna.html
-Unknown	Şera	Qestela Cindo.html
-Unknown	Şera	Qestelê Kîşik.html
-Unknown	Şera	Qetlebiye.html
-Unknown	Şera	Qitmê.html
-Unknown	Şera	Qurtqulaqê Mezin.html
-Unknown	Şera	Qurtqulaqê Çûçik.html
-Unknown	Şera	Serê Kaniyê.html
-Unknown	Şera	Serîncekê.html
-Unknown	Şera	Sînka.html
-Unknown	Şera	Tilîlaqê.html
-Unknown	Şera	Wêreganê.html
-Unknown	Şera	Xirabî Şera.html
-Unknown	Şera	Zêtûnekê.html
-Unknown	Şera	Çema.html
-Unknown	Şera	Îkîdamê.html
-Unknown	Şera	Ĥilûbiyê Mezin.html
-Unknown	Şera	Ĥilûbiyê Çuçik.html
-Unknown	Şera	Şera.html
-Unknown	Şera	Şîlte'tê.html
-Unknown	Şiyê	Alkana.html
-Unknown	Şiyê	Anqelê.html
-Unknown	Şiyê	Baziya.html
-Unknown	Şiyê	Erendê.html
-Unknown	Şiyê	Kela.html
-Unknown	Şiyê	Mistika.html
-Unknown	Şiyê	Qermîtliq.html
-Unknown	Şiyê	Senarê.html
-Unknown	Şiyê	Tirmûşa.html
-Unknown	Şiyê	Xelîl.html
-Unknown	Şiyê	Xirabî 'Elî Zênê.html
-Unknown	Şiyê	Çeqelê Jorin.html
-Unknown	Şiyê	Çeqelê Jêrin.html
-Unknown	Şiyê	Çeqelê Ortê.html
-Unknown	Şiyê	Ĥec Bilal.html
-Unknown	Şiyê	Şiketka.html
-Unknown	Şiyê	Şiyê.html
+Ahmedî Mistê	Bilbilê	Ahmedî Mistê.html
+Baliya	Bilbilê	Baliya.html
+Baxaşê	Bilbilê	Baxaşê.html
+Berkaşê	Bilbilê	Berkaşê.html
+Bilbilê	Bilbilê	Bilbilê.html
+Bêkê	Bilbilê	Bêkê.html
+Bêlê	Bilbilê	Bêlê.html
+Bêxçe	Bilbilê	Bêxçe.html
+Bîbaka	Bilbilê	Bîbaka.html
+Cirqa	Bilbilê	Cirqa.html
+Dupîra	Bilbilê	Dupîra.html
+Dîkê	Bilbilê	Dîkê.html
+Ebûdanê	Bilbilê	Ebûdanê.html
+Elcara - Bilbilê	Bilbilê	Elcara - Bilbilê.html
+Eli Kera	Bilbilê	Eli Kera.html
+Elî Bego	Bilbilê	Elî Bego.html
+Eşûnê	Bilbilê	Eşûnê.html
+Heyama	Bilbilê	Heyama.html
+Kerê	Bilbilê	Kerê.html
+Kotana	Bilbilê	Kotana.html
+Kurdo	Bilbilê	Kurdo.html
+Kurzêl	Bilbilê	Kurzêl.html
+Kêla	Bilbilê	Kêla.html
+Miĥa	Bilbilê	Miĥa.html
+Qarşiqa	Bilbilê	Qarşiqa.html
+Qaşa	Bilbilê	Qaşa.html
+Qestelê Miqdêd	Bilbilê	Qestelê Miqdêd.html
+Qestelê Xidiriya	Bilbilê	Qestelê Xidiriya.html
+Qiri Golê	Bilbilê	Qiri Golê.html
+Qizilbaşa	Bilbilê	Qizilbaşa.html
+Qornê	Bilbilê	Qornê.html
+Qorta	Bilbilê	Qorta.html
+Qota	Bilbilê	Qota.html
+Si'iriya	Bilbilê	Si'iriya.html
+Topel Meĥmûd	Bilbilê	Topel Meĥmûd.html
+Uga	Bilbilê	Uga.html
+Upila	Bilbilê	Upila.html
+Xelîlaka	Bilbilê	Xelîlaka.html
+Xidiriya	Bilbilê	Xidiriya.html
+Xilalka	Bilbilê	Xilalka.html
+Ze'rê	Bilbilê	Ze'rê.html
+Zivingê - Bilbilê	Bilbilê	Zivingê - Bilbilê.html
+Çolaqa - Bilbilê	Bilbilê	Çolaqa - Bilbilê.html
+Ĥazira	Bilbilê	Ĥazira.html
+Ĥeftêr	Bilbilê	Ĥeftêr.html
+Ĥesen Dêra	Bilbilê	Ĥesen Dêra.html
+Şingêl	Bilbilê	Şingêl.html
+Şêrqiya	Bilbilê	Şêrqiya.html
+Şêxorz	Bilbilê	Şêxorz.html
+Abû Ke'bê Xerbî	Cindires	Abû Ke'bê Xerbî.html
+Abû Ke'bê Şerqî	Cindires	Abû Ke'bê Şerqî.html
+Andariya	Cindires	Andariya.html
+Axcelê	Cindires	Axcelê.html
+Aşkê Xerbî	Cindires	Aşkê Xerbî.html
+Aşkê Şerqî	Cindires	Aşkê Şerqî.html
+Baflor	Cindires	Baflor.html
+Bircikê	Cindires	Bircikê.html
+Celemê	Cindires	Celemê.html
+Cindirês	Cindires	Cindirês.html
+Dêrbelûtê	Cindires	Dêrbelûtê.html
+Dêwê Jorin	Cindires	Dêwê Jorin.html
+Dêwê Jêrin	Cindires	Dêwê Jêrin.html
+Feqîra	Cindires	Feqîra.html
+Firêriyê	Cindires	Firêriyê.html
+Fîlik	Cindires	Fîlik.html
+Gewrika	Cindires	Gewrika.html
+Gorda	Cindires	Gorda.html
+Gorkê	Cindires	Gorkê.html
+Hêkiçê	Cindires	Hêkiçê.html
+Kanî Gewrkê	Cindires	Kanî Gewrkê.html
+Kefersefrê	Cindires	Kefersefrê.html
+Kora	Cindires	Kora.html
+Medaya	Cindires	Medaya.html
+Mehmediyê Xerbî	Cindires	Mehmediyê Xerbî.html
+Mehmediyê Şerqî	Cindires	Mehmediyê Şerqî.html
+Merwanê Jerin	Cindires	Merwanê Jerin.html
+Merwanê Jorin	Cindires	Merwanê Jorin.html
+Miske Jerin	Cindires	Miske Jerin.html
+Miskê Jorin	Cindires	Miskê Jorin.html
+Mîla Xelîla	Cindires	Mîla Xelîla.html
+Nisriyê	Cindires	Nisriyê.html
+Qujûma	Cindires	Qujûma.html
+Qulkê	Cindires	Qulkê.html
+Qurbê	Cindires	Qurbê.html
+Qîlê	Cindires	Qîlê.html
+Remadiyê	Cindires	Remadiyê.html
+Remedena	Cindires	Remedena.html
+Rif'etiyê	Cindires	Rif'etiyê.html
+Sifriyê	Cindires	Sifriyê.html
+Sindiyankê	Cindires	Sindiyankê.html
+Tetera	Cindires	Tetera.html
+Til Ĥemo	Cindires	Til Ĥemo.html
+Tilsilorê	Cindires	Tilsilorê.html
+Xeltê Xerbî	Cindires	Xeltê Xerbî.html
+Xeltê Şerqî	Cindires	Xeltê Şerqî.html
+Xerza	Cindires	Xerza.html
+Yalanqozê	Cindires	Yalanqozê.html
+Zivingê - Cindires	Cindires	Zivingê - Cindires.html
+Çamlî Bêl	Cindires	Çamlî Bêl.html
+Çeqelê Cûmê	Cindires	Çeqelê Cûmê.html
+Çobana - Cindires	Cindires	Çobana - Cindires.html
+Çolaqa - Cindires	Cindires	Çolaqa - Cindires.html
+Ĥec Îskenderê	Cindires	Ĥec Îskenderê.html
+Ĥec Ĥesna	Cindires	Ĥec Ĥesna.html
+Ĥecîler	Cindires	Ĥecîler.html
+Ĥemamê	Cindires	Ĥemamê.html
+Ĥemêlkê	Cindires	Ĥemêlkê.html
+Ĥesîrkê	Cindires	Ĥesîrkê.html
+Şêx Ebdirehmên	Cindires	Şêx Ebdirehmên.html
+Aqîbê	Efrîn	Aqîbê.html
+Astêr	Efrîn	Astêr.html
+Bablîtê	Efrîn	Bablîtê.html
+Basilê	Efrîn	Basilê.html
+Basûfanê	Efrîn	Basûfanê.html
+Basûtê	Efrîn	Basûtê.html
+Beradê	Efrîn	Beradê.html
+Bi'îyê	Efrîn	Bi'îyê.html
+Birc Ĥêderê	Efrîn	Birc Ĥêderê.html
+Bircikê Silêmên	Efrîn	Bircikê Silêmên.html
+Bircê	Efrîn	Bircê.html
+Bozikê	Efrîn	Bozikê.html
+Bênê	Efrîn	Bênê.html
+Cidêdê	Efrîn	Cidêdê.html
+Cilbirê	Efrîn	Cilbirê.html
+Coqê	Efrîn	Coqê.html
+Cûmkê	Efrîn	Cûmkê.html
+Duderiyah Cave	Efrîn	Duderiyah Cave.html
+Dudêrê	Efrîn	Dudêrê.html
+Dêrmişmiş	Efrîn	Dêrmişmiş.html
+Efrîn	Efrîn	Efrîn.html
+Ein Majnoun	Efrîn	Ein Majnoun.html
+Endarê	Efrîn	Endarê.html
+Endîbê'	Efrîn	Endîbê'.html
+Fafirtîn	Efrîn	Fafirtîn.html
+Gazê - Erfîn	Efrîn	Gazê - Erfîn.html
+Gobelê	Efrîn	Gobelê.html
+Gundê Mezin - above Ma'rata	Efrîn	Gundê Mezin - above Ma'rata.html
+Gundê Mezin - Shirawa area	Efrîn	Gundê Mezin - Shirawa area.html
+Inabkê	Efrîn	Inabkê.html
+Keferbele	Efrîn	Keferbele.html
+Keferbetrê	Efrîn	Keferbetrê.html
+Keferdelê Jorin	Efrîn	Keferdelê Jorin.html
+Keferdelê Jêrîn	Efrîn	Keferdelê Jêrîn.html
+Keferlab	Efrîn	Keferlab.html
+Kefermizê	Efrîn	Kefermizê.html
+Kefernebo	Efrîn	Kefernebo.html
+Keferzîtê	Efrîn	Keferzîtê.html
+Keferşîlê	Efrîn	Keferşîlê.html
+Kersanê	Efrîn	Kersanê.html
+Kifêrê	Efrîn	Kifêrê.html
+Kokebê	Efrîn	Kokebê.html
+Kurzêlê	Efrîn	Kurzêlê.html
+Kîbêşînê	Efrîn	Kîbêşînê.html
+Kîmarê	Efrîn	Kîmarê.html
+Mansora	Efrîn	Mansora.html
+Maratê	Efrîn	Maratê.html
+Me'riskê	Efrîn	Me'riskê.html
+Mosankî	Efrîn	Mosankî.html
+Mêremînê	Efrîn	Mêremînê.html
+Pitêtê	Efrîn	Pitêtê.html
+Qarsaq	Efrîn	Qarsaq.html
+Qîbar	Efrîn	Qîbar.html
+Rotenk	Efrîn	Rotenk.html
+Sheikh Barakat	Efrîn	Sheikh Barakat.html
+Soĝanekê	Efrîn	Soĝanekê.html
+Til Şeîrê	Efrîn	Til Şeîrê.html
+Tilifê	Efrîn	Tilifê.html
+Tirtewîlê	Efrîn	Tirtewîlê.html
+Turindê	Efrîn	Turindê.html
+Xalta	Efrîn	Xalta.html
+Xelnêrê	Efrîn	Xelnêrê.html
+Xezîwê	Efrîn	Xezîwê.html
+Xurêbkê	Efrîn	Xurêbkê.html
+Zaretê	Efrîn	Zaretê.html
+Zelaqe Serqi	Efrîn	Zelaqe Serqi.html
+Zelaqe Xerbi	Efrîn	Zelaqe Xerbi.html
+Zirêgatê	Efrîn	Zirêgatê.html
+Zêdiyê	Efrîn	Zêdiyê.html
+Îska	Efrîn	Îska.html
+Şadêrê	Efrîn	Şadêrê.html
+Şehrenlî	Efrîn	Şehrenlî.html
+Şewarxa Arze	Efrîn	Şewarxa Arze.html
+Şewarxa	Efrîn	Şewarxa.html
+Şêx Seydo	Efrîn	Şêx Seydo.html
+Yazi Baĝ	Ezaz	Yazi Baĝ.html
+Avraz	Mabeta	Avraz.html
+Birka	Mabeta	Birka.html
+Birîmce	Mabeta	Birîmce.html
+Dargirê	Mabeta	Dargirê.html
+Dela	Mabeta	Dela.html
+Elcara - Mabeta	Mabeta	Elcara - Mabeta.html
+Emara	Mabeta	Emara.html
+Ereb Şêxo	Mabeta	Ereb Şêxo.html
+Ereba	Mabeta	Ereba.html
+Gemrûkê	Mabeta	Gemrûkê.html
+Gulîka	Mabeta	Gulîka.html
+Kaxrê	Mabeta	Kaxrê.html
+Kitakh	Mabeta	Kitakh.html
+Kokanê Jorin	Mabeta	Kokanê Jorin.html
+Kokanê Jêrin	Mabeta	Kokanê Jêrin.html
+Kurka	Mabeta	Kurka.html
+Kurkê Jorin	Mabeta	Kurkê Jorin.html
+Kurkê Jêrin	Mabeta	Kurkê Jêrin.html
+Kêl Îbo	Mabeta	Kêl Îbo.html
+Mabeta	Mabeta	Mabeta.html
+Mala Xelî Pîrê	Mabeta	Mala Xelî Pîrê.html
+Me'serkê	Mabeta	Me'serkê.html
+Mist'eşûra	Mabeta	Mist'eşûra.html
+Mîrka	Mabeta	Mîrka.html
+Omo	Mabeta	Omo.html
+Qenterê	Mabeta	Qenterê.html
+Qitraniyê	Mabeta	Qitraniyê.html
+Qushla	Mabeta	Qushla.html
+Reca	Mabeta	Reca.html
+Rûta	Mabeta	Rûta.html
+Sariya	Mabeta	Sariya.html
+Satiya	Mabeta	Satiya.html
+Selo	Mabeta	Selo.html
+Sêmalka	Mabeta	Sêmalka.html
+Sêwiya	Mabeta	Sêwiya.html
+Xaziyanê Jorin	Mabeta	Xaziyanê Jorin.html
+Xazyanê Jêrin	Mabeta	Xazyanê Jêrin.html
+Xirabî Rûtê	Mabeta	Xirabî Rûtê.html
+Çomazna	Mabeta	Çomazna.html
+Ên' Ĥecer	Mabeta	Ên' Ĥecer.html
+Ĥebo	Mabeta	Ĥebo.html
+Ĥec Qasma	Mabeta	Ĥec Qasma.html
+Ĥeyatê	Mabeta	Ĥeyatê.html
+Şorbe	Mabeta	Şorbe.html
+Şêtana	Mabeta	Şêtana.html
+Şêx Kêlê	Mabeta	Şêx Kêlê.html
+Şêxûtka	Mabeta	Şêxûtka.html
+Şîtka	Mabeta	Şîtka.html
+Başemrê	Nubl	Başemrê.html
+Bircilqazê	Nubl	Bircilqazê.html
+Kilotê	Nubl	Kilotê.html
+Meyasê	Nubl	Meyasê.html
+Xirabî Şêx 'Eqîl	Nubl	Xirabî Şêx 'Eqîl.html
+Zirenîtê	Nubl	Zirenîtê.html
+Banîkê	Reco	Banîkê.html
+Be'dîna	Reco	Be'dîna.html
+Berbenê	Reco	Berbenê.html
+Bilêlko	Reco	Bilêlko.html
+Cela	Reco	Cela.html
+Dodo	Reco	Dodo.html
+Dumilya	Reco	Dumilya.html
+Dêwrîş	Reco	Dêwrîş.html
+Edema	Reco	Edema.html
+Elbîskê	Reco	Elbîskê.html
+Elendara	Reco	Elendara.html
+Eltaniya	Reco	Eltaniya.html
+Ereblî	Reco	Ereblî.html
+Etmana	Reco	Etmana.html
+Firfirkê Jorin	Reco	Firfirkê Jorin.html
+Firfirkê Jêrin	Reco	Firfirkê Jêrin.html
+Gazê - Reco	Reco	Gazê - Reco.html
+Gewenda	Reco	Gewenda.html
+Goliyê Jorin	Reco	Goliyê Jorin.html
+Goliyê Jêrin	Reco	Goliyê Jêrin.html
+Holîlê	Reco	Holîlê.html
+Hopka	Reco	Hopka.html
+Kosa	Reco	Kosa.html
+Kum Reşê	Reco	Kum Reşê.html
+Kurê	Reco	Kurê.html
+Kûra	Reco	Kûra.html
+Maseka	Reco	Maseka.html
+Me'mala	Reco	Me'mala.html
+Memala	Reco	Memala.html
+Meydan Ekbez	Reco	Meydan Ekbez.html
+Mûskê	Reco	Mûskê.html
+Penêreka	Reco	Penêreka.html
+Qere Baba	Reco	Qere Baba.html
+Qestela	Reco	Qestela.html
+Qopê	Reco	Qopê.html
+Qude	Reco	Qude.html
+Qêsim	Reco	Qêsim.html
+Reco	Reco	Reco.html
+Sorkê	Reco	Sorkê.html
+Sêlekê	Reco	Sêlekê.html
+Sêmala	Reco	Sêmala.html
+Tilî Kêşû	Reco	Tilî Kêşû.html
+Umera	Reco	Umera.html
+Welîklî	Reco	Welîklî.html
+Xirab Simaq	Reco	Xirab Simaq.html
+Xirabî Mecîd	Reco	Xirabî Mecîd.html
+Xirabî Qewala	Reco	Xirabî Qewala.html
+Xirabî Silûg	Reco	Xirabî Silûg.html
+Zerka	Reco	Zerka.html
+Çe'inka	Reco	Çe'inka.html
+Çençeliya	Reco	Çençeliya.html
+Çeqmaqê Mezin	Reco	Çeqmaqê Mezin.html
+Çeqmaqê Çûçik	Reco	Çeqmaqê Çûçik.html
+Çerxûta	Reco	Çerxûta.html
+Çiyê	Reco	Çiyê.html
+Çobana - Reco	Reco	Çobana - Reco.html
+Çêqilme	Reco	Çêqilme.html
+Ĥec Xelîl	Reco	Ĥec Xelîl.html
+Ĥesen	Reco	Ĥesen.html
+Ĥucemala	Reco	Ĥucemala.html
+Ĥêcîka Jorin	Reco	Ĥêcîka Jorin.html
+Ĥêcîka Jêrin	Reco	Ĥêcîka Jêrin.html
+Şediya	Reco	Şediya.html
+Şêx - Mt Hawar	Reco	Şêx - Mt Hawar.html
+Şêx Bila	Reco	Şêx Bila.html
+Şêx Mihemed	Reco	Şêx Mihemed.html
+Alciya	Şera	Alciya.html
+Baflûnê	Şera	Baflûnê.html
+Be'rava	Şera	Be'rava.html
+Cyrrhus	Şera	Cyrrhus.html
+Darkir	Şera	Darkir.html
+Dewrîş	Şera	Dewrîş.html
+Diraqliya	Şera	Diraqliya.html
+Dêrsiwanê	Şera	Dêrsiwanê.html
+Dîkmedaşê	Şera	Dîkmedaşê.html
+Elî Qîna	Şera	Elî Qîna.html
+Ereb Wêranê	Şera	Ereb Wêranê.html
+Gazê - Şera	Şera	Gazê - Şera.html
+Gubelê	Şera	Gubelê.html
+Keferomê	Şera	Keferomê.html
+Keştearê	Şera	Keştearê.html
+Kortikê	Şera	Kortikê.html
+Mersewa	Şera	Mersewa.html
+Metîna	Şera	Metîna.html
+Meydankê	Şera	Meydankê.html
+Meşalê	Şera	Meşalê.html
+Naza	Şera	Naza.html
+Omer Simo	Şera	Omer Simo.html
+Omera	Şera	Omera.html
+Pelûsankê	Şera	Pelûsankê.html
+Qeredepe	Şera	Qeredepe.html
+Qerqîna	Şera	Qerqîna.html
+Qestela Cindo	Şera	Qestela Cindo.html
+Qestelê Kîşik	Şera	Qestelê Kîşik.html
+Qetlebiye	Şera	Qetlebiye.html
+Qitmê	Şera	Qitmê.html
+Qurtqulaqê Mezin	Şera	Qurtqulaqê Mezin.html
+Qurtqulaqê Çûçik	Şera	Qurtqulaqê Çûçik.html
+Serê Kaniyê	Şera	Serê Kaniyê.html
+Serîncekê	Şera	Serîncekê.html
+Sînka	Şera	Sînka.html
+Tilîlaqê	Şera	Tilîlaqê.html
+Wêreganê	Şera	Wêreganê.html
+Xirabî Şera	Şera	Xirabî Şera.html
+Zêtûnekê	Şera	Zêtûnekê.html
+Çema	Şera	Çema.html
+Îkîdamê	Şera	Îkîdamê.html
+Ĥilûbiyê Mezin	Şera	Ĥilûbiyê Mezin.html
+Ĥilûbiyê Çuçik	Şera	Ĥilûbiyê Çuçik.html
+Şera	Şera	Şera.html
+Şîlte'tê	Şera	Şîlte'tê.html
+Alkana	Şiyê	Alkana.html
+Anqelê	Şiyê	Anqelê.html
+Baziya	Şiyê	Baziya.html
+Erendê	Şiyê	Erendê.html
+Kela	Şiyê	Kela.html
+Mistika	Şiyê	Mistika.html
+Qermîtliq	Şiyê	Qermîtliq.html
+Senarê	Şiyê	Senarê.html
+Tirmûşa	Şiyê	Tirmûşa.html
+Xelîl	Şiyê	Xelîl.html
+Xirabî 'Elî Zênê	Şiyê	Xirabî 'Elî Zênê.html
+Çeqelê Jorin	Şiyê	Çeqelê Jorin.html
+Çeqelê Jêrin	Şiyê	Çeqelê Jêrin.html
+Çeqelê Ortê	Şiyê	Çeqelê Ortê.html
+Ĥec Bilal	Şiyê	Ĥec Bilal.html
+Şiketka	Şiyê	Şiketka.html
+Şiyê	Şiyê	Şiyê.html

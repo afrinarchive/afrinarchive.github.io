@@ -4128,6 +4128,7 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Qorta"
   ],
   "bilbilê": [
+    "Ahmedî Mistê",
     "Baliya",
     "Baxaşê",
     "Be'dîna",
@@ -11144,6 +11145,9 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "ehmed mistefa": [
     "Maratê"
   ],
+  "ehmed misto": [
+    "Ahmedî Mistê"
+  ],
   "ehmed muxtar": [
     "Qitmê"
   ],
@@ -14847,9 +14851,6 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   ],
   "gilkawî": [
     "Emara"
-  ],
-  "gilyaqîb": [
-    "Ĥec Xelîl"
   ],
   "gilê": [
     "Elcara - Mabeta"
@@ -22180,10 +22181,10 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
   "koze": [
     "Ebûdanê"
   ],
-  "kozê kurrê": [
+  "kozê qey|kozê kurrê or kozê qey": [
     "Hêkiçê"
   ],
-  "kozê qey": [
+  "kozê qey|kozê qey / kozê kurrê": [
     "Hêkiçê"
   ],
   "koçer": [
@@ -22731,7 +22732,12 @@ window.INTERNAL_LINK_GRAPH_INDEX = {
     "Kêl Îbo"
   ],
   "kêlşîr": [
-    "Qêsim",
+    "Qêsim"
+  ],
+  "kêlşîr|kêlşîr (also known as gilyaqîb)": [
+    "Ĥec Xelîl"
+  ],
+  "kêlşîr|kêlşîr / gilyaqîb": [
     "Ĥec Xelîl"
   ],
   "kêmek": [
