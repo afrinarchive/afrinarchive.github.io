@@ -67,7 +67,7 @@ C:\Users\Zachar\Documents\Hatra\obsdian_vaults\Zachar\Files\for leaflet\000 Afri
 | `village_site_files/` | `00_village_names.html`, `graph-data.json` | **Generated** (scripts 3, 4) |
 | `js/` | `internal-link-graph-data.js` + graph code | data file **generated** (script 4) |
 | `nahiyas/` | 8 nahiya (subdistrict) pages + `All_Nahiyas_Clickable_Maps.html` | Hand-made (script 1 *reads* the clickable maps for minimaps) |
-| `village-directory/` | Searchable village directory with embedded dataset | Hand-made |
+| `village-directory/` | Searchable village directory with embedded dataset | Hand-made layout; data synced by script 3 |
 | `village_subtitles/` | `.srt` subtitle files + how-to page | `.srt` generated, page hand-made |
 | `village_photos/` | Photos used by village pages | Source assets |
 | `dialogue_project/` | Proverb-card gallery (`index.html` + `pics/`) | Hand-made |
