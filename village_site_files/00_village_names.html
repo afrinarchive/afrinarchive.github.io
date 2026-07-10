@@ -181,6 +181,7 @@
         </div>
     </div>
 
+    <script src="../js/directory-search.js"></script>
     <script src="../js/search.js"></script>
     <script>
         // --- 1. PAGE BUILDING AND THEME LOGIC (UNCHANGED) ---
@@ -6538,7 +6539,7 @@
             });
 
             // --- 2. SEARCH INITIALIZATION AND UI LOGIC ---
-            await AfrinArchiveSearch.init("graph-data.json");
+            AfrinArchiveSearch.init(allVillagesForAlphabeticalList, "graph-data.json");
             setupSearchUI();
         });
         
@@ -6557,7 +6558,7 @@
             let searchTimeout;
             searchInput.addEventListener('input', () => {
                 clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(performSearch, 300);
+                searchTimeout = setTimeout(performSearch, 120);
             });
             searchInput.addEventListener('keydown', e => {
                 if (e.key === 'Enter') { e.preventDefault(); showSearchResultsPage(); }
@@ -6611,8 +6612,8 @@
             // Show the search results page
             document.getElementById('search-results-page').style.display = 'block';
             
-            const safeQuery = escapeHtml(query || lastSearchQuery);
-            document.getElementById('search-results-page-title').textContent = `Search Results for "${safeQuery}"`;
+            const displayQuery = query || lastSearchQuery;
+            document.getElementById('search-results-page-title').textContent = `Search Results for "${displayQuery}"`;
             document.getElementById('search-results-count').textContent = `${results.length} result${results.length !== 1 ? 's' : ''} found`;
             
             const list = document.getElementById('search-results-page-list');
@@ -6644,9 +6645,15 @@
         }
         
         function highlightMatch(text, query) {
-            if (!query) return escapeHtml(text);
-            const regex = new RegExp(`(${escapeHtml(query)})`, 'gi');
-            return escapeHtml(text).replace(regex, '<span class="match-highlight">$1</span>');
+            const source = String(text || '');
+            const needle = String(query || '');
+            if (!needle) return escapeHtml(source);
+            const matchIndex = source.toLocaleLowerCase().indexOf(needle.toLocaleLowerCase());
+            if (matchIndex < 0) return escapeHtml(source);
+            const before = escapeHtml(source.slice(0, matchIndex));
+            const match = escapeHtml(source.slice(matchIndex, matchIndex + needle.length));
+            const after = escapeHtml(source.slice(matchIndex + needle.length));
+            return `${before}<span class="match-highlight">${match}</span>${after}`;
         }
     </script>
     <script data-goatcounter="https://afrinarchive.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

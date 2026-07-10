@@ -634,6 +634,50 @@
             border-radius: inherit;
         }
 
+        .section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            transition: background-color 0.2s ease;
+        }
+
+        .section.theme-green { color: white; }
+        .section.theme-red { color: white; }
+        .section.theme-yellow { color: #333; }
+        .section.theme-green::after { background-color: rgba(0, 154, 61, 0.78); }
+        .section.theme-red::after { background-color: rgba(243, 40, 55, 0.76); }
+        .section.theme-yellow::after { background-color: rgba(255, 204, 0, 0.76); }
+        .section.theme-green:hover::after { background-color: rgba(0, 190, 74, 0.84); }
+        .section.theme-red:hover::after { background-color: rgba(255, 70, 84, 0.84); }
+        .section.theme-yellow:hover::after { background-color: rgba(255, 218, 48, 0.84); }
+
+        /* Keep each card's original photograph visible under its position color. */
+        .section-1.theme-green { background-image: url('landing/images/villages.png'); }
+        .section-shrines.theme-red { background-image: url('landing/images/shrines.jpg'); }
+        .section-2.theme-yellow { background-image: url('landing/images/substack.png'); }
+        .section-3.theme-red { background-image: url('landing/images/who.jpg'); }
+        .section-4.theme-red { background-image: url('landing/images/updates.jpg'); }
+        .section-5.theme-green { background-image: url('landing/images/contact.jpg'); }
+        .section-6.theme-yellow { background-image: url('landing/images/youtube.png'); }
+        .section-7.theme-green { background-image: url('landing/images/converter.png'); }
+        .section-8.theme-yellow { background-image: url('landing/images/infographics.jpg'); }
+        .section-9.theme-red { background-image: url('landing/images/dialogue_project.png'); }
+        .section-10.theme-green { background-image: url('landing/images/timeline.png'); }
+        .section-by-air.theme-red { background-image: url('landing/images/by_air.jpg'); }
+        .section-1.theme-green:hover { background-image: url('landing/images/villages.png'); }
+        .section-shrines.theme-red:hover { background-image: url('landing/images/shrines.jpg'); }
+        .section-2.theme-yellow:hover { background-image: url('landing/images/substack.png'); }
+        .section-3.theme-red:hover { background-image: url('landing/images/who.jpg'); }
+        .section-4.theme-red:hover { background-image: url('landing/images/updates.jpg'); }
+        .section-5.theme-green:hover { background-image: url('landing/images/contact.jpg'); }
+        .section-6.theme-yellow:hover { background-image: url('landing/images/youtube.png'); }
+        .section-7.theme-green:hover { background-image: url('landing/images/converter.png'); }
+        .section-8.theme-yellow:hover { background-image: url('landing/images/infographics.jpg'); }
+        .section-9.theme-red:hover { background-image: url('landing/images/dialogue_project.png'); }
+        .section-10.theme-green:hover { background-image: url('landing/images/timeline.png'); }
+        .section-by-air.theme-red:hover { background-image: url('landing/images/by_air.jpg'); }
+
         .section-content {
             position: relative;
             z-index: 3;
@@ -666,14 +710,28 @@
 
         .section-1 {
             background-color: #009A3D;
-            background-image: linear-gradient(rgba(0, 154, 61, 0.94), rgba(0, 154, 61, 0.94)), url('landing/images/villages.jpg');
+            background-image: linear-gradient(rgba(0, 154, 61, 0.94), rgba(0, 154, 61, 0.94)), url('landing/images/villages.png');
             cursor: pointer;
             transition: background-image 0.2s ease;
             animation: villageGlow 2.4s ease-in-out infinite;
         }
 
         .section-1:hover {
-            background-image: linear-gradient(rgba(0, 220, 88, 0.97), rgba(0, 220, 88, 0.97)), url('landing/images/villages.jpg');
+            background-image: linear-gradient(rgba(0, 220, 88, 0.97), rgba(0, 220, 88, 0.97)), url('landing/images/villages.png');
+        }
+
+        .section-shrines {
+            background-color: #009A3D;
+            background-image: url('landing/images/shrines.jpg');
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            animation: villageGlow 2.4s ease-in-out infinite;
+        }
+
+        .section-shrines:hover {
+            background-color: #00b84a;
         }
 
         .section-2 {
@@ -681,6 +739,7 @@
             background-image: linear-gradient(rgba(243, 40, 55, 0.9), rgba(243, 40, 55, 0.9)), url('landing/images/substack.png');
             cursor: pointer;
             transition: background-image 0.2s ease;
+            animation: villageGlow 2.4s ease-in-out infinite;
         }
 
         .section-2:hover {
@@ -849,6 +908,7 @@
         }
 
         .section-1 .section-text,
+        .section-shrines .section-text,
         .section-2 .section-text,
         .section-4 .section-text,
         .section-5 .section-text,
@@ -1170,7 +1230,7 @@
 
     <div class="sections-group">
         <div class="sections-container">
-            <a class="section section-1 section-link" href="village-directory/village-directory.html">
+            <a class="section section-1 section-link theme-green" href="village-directory/village-directory.html">
                 <div class="section-content">
                     <div class="section-header">
                         <div class="play-icon"></div>
@@ -1178,10 +1238,20 @@
                     </div>
                     <h4 class="village-directory-title">Village Directory</h4>
                     <p class="section-text">A collection of information about the villages of Afrin. The database currently
-                        holds information about 366 villages.</p>
+                        holds information about <span id="homepage-village-count">367</span> villages.</p>
                 </div>
             </a>
-            <a class="section section-2 section-link" href="https://substack.com/@afrinarchive" target="_blank"
+            <a class="section section-shrines section-link theme-red" href="shrines-directory/shrines-directory.html">
+                <div class="section-content">
+                    <div class="section-header">
+                        <div class="play-icon"></div>
+                        <h3 class="section-title">Online Archive</h3>
+                    </div>
+                    <h4 class="village-directory-title">Shrines and Holy Sites Directory</h4>
+                    <p class="section-text">A directory of <span id="homepage-shrine-count">169</span> shrines and holy sites connected to Afrin's villages and communites.</p>
+                </div>
+            </a>
+            <a class="section section-2 section-link theme-yellow" href="https://substack.com/@afrinarchive" target="_blank"
                 rel="noopener noreferrer">
                 <div class="section-content">
                     <div class="section-header">
@@ -1190,7 +1260,7 @@
                     <p class="section-text">Articles about Afrin every Tuesday.</p>
                 </div>
             </a>
-            <div class="section section-3">
+            <div class="section section-3 theme-red">
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">About Us</h3>
@@ -1201,11 +1271,23 @@
                         style="list-style-type: disc; margin-top: 10px; padding-left: 20px; text-align: left;">
                         <li><b>281 Hours, 45 Minutes of Transcripts</b></li>
                         <li><b>435 Interview Videos Transcribed</b></li>
-                        <li><b>367 Villages Recorded</b></li>
+                        <li><b><span id="about-village-count">367</span> Villages Recorded</b></li>
+                        <li><b><span id="about-shrine-count">169</span> Shrines Recorded</b></li>
                     </ul>
                 </div>
             </div>
-            <div class="section section-4" onclick="window.location.href = 'updates/updates.html'">
+            <div class="section section-5 theme-green" onclick="window.location.href = 'mailto:afrin.archive@gmail.com'">
+                <div class="section-content">
+                    <div class="section-header">
+                        <h3 class="secondary-title">Contact Us</h3>
+                    </div>
+                    <p class="section-text">afrin.archive@gmail.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sections-container">
+            <div class="section section-4 theme-red" onclick="window.location.href = 'updates/updates.html'">
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Updates</h3>
@@ -1217,18 +1299,7 @@
                     </div>
                 </div>
             </div>
-            <div class="section section-5" onclick="window.location.href = 'mailto:afrin.archive@gmail.com'">
-                <div class="section-content">
-                    <div class="section-header">
-                        <h3 class="secondary-title">Contact Us</h3>
-                    </div>
-                    <p class="section-text">afrin.archive@gmail.com</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="sections-container">
-            <a class="section section-6 section-link" href="https://www.youtube.com/@endlesslynow" target="_blank"
+            <a class="section section-6 section-link theme-yellow" href="https://www.youtube.com/@endlesslynow" target="_blank"
                 rel="noopener noreferrer">
                 <div class="section-content">
                     <div class="section-header">
@@ -1238,7 +1309,7 @@
                         both in Kurmanji Kurdish and English.</p>
                 </div>
             </a>
-            <a class="section section-7 section-link" href="archive-research-tools/index.html">
+            <a class="section section-7 section-link theme-green" href="archive-research-tools/index.html">
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Archive Research Tools</h3>
@@ -1246,7 +1317,7 @@
                     <p class="section-text">Tools like Smart Search with a map, and Hijri converter for better searching the archive.</p>
                 </div>
             </a>
-            <a class="section section-8 section-link" href="https://www.zachariahhopkins.com/charts/charts.html"
+            <a class="section section-8 section-link theme-yellow" href="https://www.zachariahhopkins.com/charts/charts.html"
                 target="_blank" rel="noopener noreferrer">
                 <div class="section-content">
                     <div class="section-header">
@@ -1255,7 +1326,7 @@
                     <p class="section-text">Charts, posters, and graphs created from the Afrin Archive's data.</p>
                 </div>
             </a>
-            <a class="section section-9 section-link" href="dialogue_project/">
+            <a class="section section-9 section-link theme-red" href="dialogue_project/">
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Dialogue Project</h3>
@@ -1264,7 +1335,10 @@
                         them accessible in written form to both native speakers and the world in general.</p>
                 </div>
             </a>
-            <div class="section section-10 section-coming-soon">
+        </div>
+
+        <div class="sections-container">
+            <div class="section section-10 section-coming-soon theme-green">
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Timeline of Afrin - Coming Soon</h3>
@@ -1273,21 +1347,17 @@
                         surrounding region, in English, Kurmanji Kurdish, and Arabic. Coming soon.</p>
                 </div>
             </div>
-        </div>
-
-        <div class="sections-container">
-            <a class="section section-by-air section-link" href="by-air/index.html">
+            <a class="section section-by-air section-link theme-red" href="by-air/index.html">
                 <div class="section-content">
                     <div class="section-header">
-                        <h3 class="secondary-title">Afrin by Air</h3>
+                        <h3 class="secondary-title">Afrin Airlines</h3>
                     </div>
                     <p class="section-text">Interactive 3D terrain flyover map of the Afrin region.</p>
                 </div>
             </a>
-            <div class="section sections-spacer" style="visibility: hidden;"></div>
-            <div class="section sections-spacer" style="visibility: hidden;"></div>
-            <div class="section sections-spacer" style="visibility: hidden;"></div>
-            <div class="section sections-spacer" style="visibility: hidden;"></div>
+            <div class="section sections-spacer theme-yellow" style="visibility: hidden;"></div>
+            <div class="section sections-spacer theme-red" style="visibility: hidden;"></div>
+            <div class="section sections-spacer theme-green" style="visibility: hidden;"></div>
         </div>
     </div>
 

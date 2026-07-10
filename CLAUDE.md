@@ -27,12 +27,14 @@ C:\Users\Zachar\Desktop\update_site_Afrin_Archive\
 | :--- | :--- | :--- |
 | `0_md_to_html_transcripts_and_subtitles.py` | vault transcript notes | `village_transcripts/*.html` |
 | `1_md_to_html_villages.py` | vault village notes (incl. each note's `leaflet` block for coordinates) | `village_sites/*.html` |
+| `1a_md_to_html_shrines.py` | vault shrine notes (root `.md` files only) | `shrine_sites/*.html` + `shrines-directory/shrines-directory.html` |
 | `2_make_village_list.py` | generated village pages | `00_names_nahiyas.md` (back into vault) |
 | `3_00_village_names_creator.py` | village pages | `village_site_files/00_village_names.html` |
 | `4_make_graph.py` | village pages | `village_site_files/graph-data.json`, `js/internal-link-graph-data.js` |
 | `5_make_locations.py` | **master list note** (see below) | `village_sites/afrin_locations.json` |
 | `6_calculate_stats.py` | transcripts + name list | stats injected into `index.html` |
 | `7_make_seo.py` | the repo's public HTML folders | `sitemap.xml` + `robots.txt` at repo root |
+| `8_build_pagefind.py` | village pages, transcripts, and shrine pages | `pagefind/` search index |
 
 `site_update_gui.py` / `update_afrin_archive.bat` run the pipeline.
 
@@ -43,6 +45,7 @@ C:\Users\Zachar\Documents\Hatra\obsdian_vaults\Afrin Vault\Villages\          �
 C:\Users\Zachar\Documents\Hatra\obsdian_vaults\Afrin Vault\Villages_Transcripts\
 C:\Users\Zachar\Documents\Hatra\obsdian_vaults\Zachar\1 - PhD\Villages\       ← copy of the village notes
 C:\Users\Zachar\Documents\Hatra\obsdian_vaults\Zachar\1 - PhD\Villages_backup\ ← another copy
+C:\Users\Zachar\Documents\Hatra\obsdian_vaults\Zachar\1 - PhD\Shrines\        ← 171 shrine and holy-site notes
 C:\Users\Zachar\Documents\Hatra\obsdian_vaults\Zachar\Files\for leaflet\000 Afrin Villages and Landmarks Master List 000.md
 ```
 
@@ -63,11 +66,13 @@ C:\Users\Zachar\Documents\Hatra\obsdian_vaults\Zachar\Files\for leaflet\000 Afri
 | :--- | :--- | :--- |
 | `index.html` | Homepage (cards link to all sections) | Hand-made; stats numbers injected by script 6 |
 | `village_sites/` | 366 village pages + `afrin_locations.json` | **Generated** (scripts 1 and 5) |
+| `shrine_sites/` | Shrine and holy-site pages | **Generated** (script 1a) |
 | `village_transcripts/` | 379 transcript pages | **Generated** (script 0) |
 | `village_site_files/` | `00_village_names.html`, `graph-data.json` | **Generated** (scripts 3, 4) |
 | `js/` | `internal-link-graph-data.js` + graph code | data file **generated** (script 4) |
 | `nahiyas/` | 8 nahiya (subdistrict) pages + `All_Nahiyas_Clickable_Maps.html` | Hand-made (script 1 *reads* the clickable maps for minimaps) |
 | `village-directory/` | Searchable village directory with embedded dataset | Hand-made layout; data synced by script 3 |
+| `shrines-directory/` | Searchable shrines and holy-sites directory | **Generated** (script 1a) |
 | `village_subtitles/` | `.srt` subtitle files + how-to page | `.srt` generated, page hand-made |
 | `village_photos/` | Photos used by village pages | Source assets |
 | `dialogue_project/` | Proverb-card gallery (`index.html` + `pics/`) | Hand-made |
