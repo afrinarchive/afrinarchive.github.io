@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "index": "node scripts/build-pagefind.mjs",
-    "build:smart-search": "node scripts/build-smart-search.mjs"
+    "build:smart-search": "node scripts/build-smart-search.mjs",
+    "build:starscape": "node scripts/build-starscape.mjs && esbuild landing/starscape.js --bundle --minify --format=iife --global-name=AfrinStarscape --outfile=landing/starscape.bundle.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,8 @@
   "homepage": "https://github.com/afrinarchive/afrinarchive.github.io#readme",
   "description": "",
   "devDependencies": {
-    "pagefind": "^1.4.0"
+    "esbuild": "^0.28.1",
+    "pagefind": "^1.4.0",
+    "three": "^0.185.1"
   }
 }

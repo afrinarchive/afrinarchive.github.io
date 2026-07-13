@@ -28,8 +28,8 @@
     <meta name="twitter:image" content="https://www.afrinarchive.com/landing/images/logo.png">
     <meta name="twitter:image:alt" content="Afrin Archive logo">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Afrin Archive","url":"https://www.afrinarchive.com/","description":"Afrin Archive is a digital archive preserving the villages, oral history, and cultural heritage of Afrin, Syria."}</script>
-
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="preload" href="landing/starscape-data.json" as="fetch" crossorigin="anonymous">
+    <script src="landing/starscape.bundle.js?v=20260714-8" defer></script>
 
     <style>
         /* Bounce animation for the arrow */
@@ -107,24 +107,102 @@
         }
 
         .graph-column {
+            --graph-tear: polygon(
+                94.62% 4.93%, 91.52% 3.02%, 84.45% 3.42%, 81.83% 6.24%, 78.40% 5.54%,
+                72.54% 7.25%, 68.03% 3.22%, 61.37% 4.03%, 55.45% 0.00%, 37.75% 2.72%,
+                30.69% 1.31%, 24.50% 2.52%, 22.27% 4.33%, 13.86% 5.44%, 9.62% 3.12%,
+                8.61% 1.21%, 5.11% 0.50%, 3.84% 1.61%, 1.95% 11.28%, 1.01% 33.33%,
+                2.49% 41.79%, 0.67% 46.02%, 1.14% 48.94%, 0.27% 53.68%, 1.62% 56.29%,
+                0.61% 61.83%, 1.35% 62.54%, 0.00% 67.67%, 1.08% 76.64%, 2.83% 82.07%,
+                3.43% 90.94%, 6.66% 95.87%, 8.21% 95.17%, 9.35% 96.48%, 10.16% 94.36%,
+                9.56% 92.65%, 18.24% 93.86%, 22.14% 92.25%, 23.08% 93.66%, 25.24% 91.54%,
+                28.26% 91.34%, 32.37% 93.35%, 33.85% 92.75%, 36.41% 94.76%, 43.47% 93.25%,
+                52.83% 97.08%, 62.65% 97.58%, 66.55% 99.90%, 69.52% 100.00%, 72.61% 97.68%,
+                78.67% 96.17%, 84.25% 97.89%, 84.99% 99.50%, 89.10% 97.68%, 90.24% 99.40%,
+                90.98% 97.78%, 94.28% 97.68%, 94.75% 94.36%, 98.12% 92.55%, 97.78% 70.59%,
+                100.00% 58.81%, 97.64% 50.35%, 98.38% 39.98%, 97.58% 37.06%, 98.32% 32.63%,
+                97.85% 19.03%, 94.68% 12.08%
+            );
             flex: 3;
             height: 70vh;
             background-color: #000000;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             position: relative;
             cursor: grab;
-            border: 3px solid #009A3D;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: hidden;
+            user-select: none;
+            touch-action: none;
+            -webkit-clip-path: var(--graph-tear);
+            clip-path: var(--graph-tear);
+            filter: drop-shadow(0 10px 11px rgba(55, 38, 24, 0.34));
+            isolation: isolate;
         }
 
-        #graph-canvas {
+        .graph-column::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            box-shadow: inset 0 0 24px rgba(37, 25, 16, 0.58);
+        }
+
+        #graph-canvas,
+        #graph-label-canvas {
             position: absolute;
             top: 0;
             left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #graph-canvas {
+            touch-action: none;
+        }
+
+        #graph-label-canvas {
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .graph-column.is-orbiting {
+            cursor: grabbing;
+        }
+
+        .graph-tooltip {
+            position: absolute;
+            z-index: 4;
+            pointer-events: none;
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.88);
+            border: 1px solid rgba(134, 239, 172, 0.72);
+            border-radius: 5px;
+            padding: 6px 8px;
+            font: 600 12px/1.25 'Inter', sans-serif;
+            width: max-content;
+            max-width: min(360px, calc(100% - 16px));
+            white-space: normal;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+        }
+
+        .graph-tooltip[hidden] {
+            display: none;
+        }
+
+        .graph-tooltip-kind {
+            display: block;
+            margin-top: 2px;
+            color: #a9a9a9;
+            font-size: 10px;
+            font-weight: 500;
         }
 
         #loading-indicator {
             position: absolute;
+            z-index: 3;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -350,7 +428,14 @@
             justify-content: space-between;
             align-items: center;
             gap: 10px;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
+        }
+
+        .search-checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0;
         }
 
         .search-checkbox-label {
@@ -1080,7 +1165,7 @@
             }
 
             .graph-column {
-                height: 50vh;
+                height: clamp(330px, 72vw, 560px);
             }
 
             .floating-scroll-arrow {
@@ -1090,6 +1175,10 @@
 
         /* For smaller mobile phones */
         @media (max-width: 480px) {
+            .graph-column {
+                height: clamp(300px, 92vw, 420px);
+            }
+
             .sections-group {
                 gap: 10px;
             }
@@ -1167,8 +1256,13 @@
     <div class="main-section">
         <div class="layout-container">
             <div class="graph-column" id="graph-container">
-                <canvas id="graph-canvas"></canvas>
-                <div id="loading-indicator">Loading Graph Data...</div>
+                <canvas id="graph-canvas" role="img" aria-label="Interactive 3D network of Afrin villages and related tags"></canvas>
+                <canvas id="graph-label-canvas" aria-hidden="true"></canvas>
+                <div id="graph-tooltip" class="graph-tooltip" hidden>
+                    <span id="graph-tooltip-label"></span>
+                    <span id="graph-tooltip-kind" class="graph-tooltip-kind"></span>
+                </div>
+                <div id="loading-indicator" role="status">Loading 3D graph...</div>
             </div>
             <div class="content-column">
                 <div class="site-brand">
@@ -1203,10 +1297,16 @@
                     <input type="text" id="search-input" class="search-input"
                         placeholder="Search villages, people, places...">
                     <div class="search-options">
-                        <label class="search-checkbox-label" for="villages-only-toggle">
-                            <input type="checkbox" id="villages-only-toggle" class="search-checkbox" checked>
-                            <span>Search Village Directory Only</span>
-                        </label>
+                        <div class="search-checkbox-group">
+                            <label class="search-checkbox-label" for="villages-only-toggle">
+                                <input type="checkbox" id="villages-only-toggle" class="search-checkbox" checked>
+                                <span>Search Village Directory Only</span>
+                            </label>
+                            <label class="search-checkbox-label" for="shrines-only-toggle">
+                                <input type="checkbox" id="shrines-only-toggle" class="search-checkbox">
+                                <span>Search Shrine Files Only</span>
+                            </label>
+                        </div>
                         <a class="smart-search-link" href="smart-search/index.html">Smart-Search with map</a>
                     </div>
                     <div id="search-results" class="search-results"></div>
@@ -1363,105 +1463,52 @@
 
     <script type="text/javascript">
         let pagefind = null;
+        let pagefindReady = null;
         let lastSearchResults = [];
         let lastSearchQuery = '';
 
+        function loadPagefind() {
+            if (!pagefindReady) {
+                pagefindReady = import("./pagefind/pagefind.js")
+                    .then(module => {
+                        pagefind = module;
+                        return module;
+                    })
+                    .catch(error => {
+                        console.error('Could not initialize search.', error);
+                        return null;
+                    });
+            }
+            return pagefindReady;
+        }
+
         document.addEventListener('DOMContentLoaded', async function () {
-            // Initialize Pagefind search API
-            pagefind = await import("./pagefind/pagefind.js");
-
             setupSearchUI();
+            setupUpdatesSlider();
+            if ('requestIdleCallback' in window) {
+                window.requestIdleCallback(loadPagefind, { timeout: 1500 });
+            } else {
+                window.setTimeout(loadPagefind, 750);
+            }
 
-            // The D3 graph code remains here
             const container = document.getElementById('graph-container');
             const canvas = document.getElementById('graph-canvas');
-            const context = canvas.getContext('2d');
             const loadingIndicator = document.getElementById('loading-indicator');
-            const homeNodeId = 'Efrîn';
-
-            const isMobile = window.innerWidth <= 768;
-
-            let width = container.clientWidth;
-            let height = container.clientHeight;
-            canvas.width = width;
-            canvas.height = height;
-            let simulation;
-
-            window.addEventListener('resize', () => {
-                width = container.clientWidth;
-                height = container.clientHeight;
-                canvas.width = width;
-                canvas.height = height;
-                if (simulation) {
-                    simulation.force("center", d3.forceCenter(width / 2, height / 2)).restart();
+            try {
+                if (!window.AfrinStarscape?.initStarscape) {
+                    throw new Error('The local starscape renderer did not load.');
                 }
-            });
-
-            const graph = await d3.json("village_site_files/graph-data.json");
-            if (!graph) return;
-
-            let nodesForSimulation = graph.nodes;
-            let edgesForSimulation = graph.edges;
-
-            const nodeById = new Map(graph.nodes.map(node => [node.id, node]));
-            const homeNode = nodeById.get(homeNodeId);
-            if (homeNode) { homeNode.fx = width / 2; homeNode.fy = height / 2; }
-            const links = edgesForSimulation.map(link => ({ source: nodeById.get(link.from), target: nodeById.get(link.to) }));
-            const validLinks = links.filter(d => d.source && d.target);
-            loadingIndicator.innerText = 'Initializing Physics...';
-            simulation = d3.forceSimulation(nodesForSimulation)
-                .force("link", d3.forceLink(validLinks).id(d => d.id).distance(100).strength(0.1))
-                .force("charge", d3.forceManyBody().strength(-60))
-                .force("center", d3.forceCenter(width / 2, height / 2))
-                .on("tick", ticked);
-            function ticked() {
-                context.clearRect(0, 0, width, height);
-                context.save();
-                context.translate(transform.x, transform.y);
-                context.scale(transform.k, transform.k);
-                context.strokeStyle = "rgba(255, 255, 255, 0.15)";
-                context.beginPath();
-                validLinks.forEach(d => { context.moveTo(d.source.x, d.source.y); context.lineTo(d.target.x, d.target.y); });
-                context.stroke();
-                nodesForSimulation.forEach(d => {
-                    let radius = d.type === 'file' ? 5 : (d.id === homeNodeId ? 8 : 2);
-                    let labelColor = d.id === homeNodeId ? "#fff" : "#ccc";
-                    let labelFont = d.id === homeNodeId ? "14px sans-serif" : (d.type === 'file' ? "12px sans-serif" : "10px sans-serif");
-                    context.font = labelFont;
-                    context.textAlign = "center";
-                    context.strokeStyle = 'rgba(45, 45, 45, 0.8)';
-                    context.lineWidth = 2;
-                    context.strokeText(d.label, d.x, d.y - radius - 3);
-                    context.fillStyle = labelColor;
-                    context.fillText(d.label, d.x, d.y - radius - 3);
+                await window.AfrinStarscape.initStarscape({
+                    container,
+                    canvas,
+                    loadingIndicator,
+                    graphUrl: 'landing/starscape-data.json',
+                    homeNodeId: 'Efr\u00een'
                 });
-                nodesForSimulation.forEach(d => {
-                    context.beginPath();
-                    let radius = d.type === 'file' ? 5 : (d.id === homeNodeId ? 8 : 2);
-                    let fillColor = d.type === 'file' ? "#86efac" : (d.id === homeNodeId ? "#ffcc00" : "#666");
-                    context.moveTo(d.x + radius, d.y);
-                    context.arc(d.x, d.y, radius, 0, 2 * Math.PI);
-                    context.fillStyle = fillColor;
-                    context.fill();
-                });
-                context.restore();
+            } catch (error) {
+                console.error('Could not initialize the 3D graph.', error);
+                loadingIndicator.textContent = 'The 3D graph could not be loaded.';
             }
-            let transform = d3.zoomIdentity;
-            const zoom = d3.zoom().scaleExtent([0.1, 8]).on("zoom", (event) => { transform = event.transform; ticked(); });
-            d3.select(canvas).call(zoom);
-            d3.select(canvas).on("click", function (event) {
-                const [mx, my] = d3.pointer(event);
-                const simX = transform.invertX(mx);
-                const simY = transform.invertY(my);
-                const closestNode = simulation.find(simX, simY, 30 / transform.k);
-                if (closestNode && closestNode.type === 'file') {
-                    const filename = encodeURIComponent(closestNode.id) + '.html';
-                    window.open(`village_sites/${filename}`, '_blank');
-                }
-            });
-            setTimeout(() => { loadingIndicator.style.display = 'none'; }, 1000);
-
-            setupUpdatesSlider();
         });
 
         function setupSearchUI() {
@@ -1469,6 +1516,7 @@
             const searchResults = document.getElementById('search-results');
             const searchWrapper = document.querySelector('.search-wrapper');
             const villagesOnlyToggle = document.getElementById('villages-only-toggle');
+            const shrinesOnlyToggle = document.getElementById('shrines-only-toggle');
             let searchTimeout;
             searchInput.addEventListener('input', () => {
                 clearTimeout(searchTimeout);
@@ -1487,44 +1535,61 @@
                     searchResults.style.display = 'block';
                 }
             });
-            villagesOnlyToggle.addEventListener('change', () => {
+            const onScopeToggleChange = e => {
+                if (e.target.checked) {
+                    const other = e.target === villagesOnlyToggle ? shrinesOnlyToggle : villagesOnlyToggle;
+                    other.checked = false;
+                }
                 if (searchInput.value.trim()) {
                     performDropdownSearch();
                 } else {
                     searchResults.style.display = 'none';
                 }
-            });
+            };
+            villagesOnlyToggle.addEventListener('change', onScopeToggleChange);
+            shrinesOnlyToggle.addEventListener('change', onScopeToggleChange);
         }
 
-        function villagesOnlyEnabled() {
-            return document.getElementById('villages-only-toggle')?.checked === true;
+        function getSearchScope() {
+            if (document.getElementById('villages-only-toggle')?.checked) return 'villages';
+            if (document.getElementById('shrines-only-toggle')?.checked) return 'shrines';
+            return null;
         }
 
         function isVillageSiteUrl(url = '') {
             return url.replace(/^(\.\.\/|\.\/|\/)+/, '').startsWith('village_sites/');
         }
 
-        async function getScopedSearch(query) {
-            const search = await pagefind.search(query);
-            const villagesOnly = villagesOnlyEnabled();
+        function isShrineSiteUrl(url = '') {
+            return url.replace(/^(\.\.\/|\.\/|\/)+/, '').startsWith('shrine_sites/');
+        }
 
-            if (!villagesOnly) {
+        async function getScopedSearch(query) {
+            if (!pagefind) await loadPagefind();
+            if (!pagefind) throw new Error('Search is not ready.');
+            const search = await pagefind.search(query);
+            const scope = getSearchScope();
+
+            if (!scope) {
                 return {
-                    villagesOnly,
+                    scope,
+                    scopeLabel: '',
                     results: search.results,
                     resultCount: search.results.length,
                     hydratedResults: null
                 };
             }
 
+            const urlMatchesScope = scope === 'villages' ? isVillageSiteUrl : isShrineSiteUrl;
             const hydratedResults = await Promise.all(search.results.map(async result => {
                 const data = await result.data();
                 return { result, data };
             }));
-            const filteredResults = hydratedResults.filter(({ data }) => isVillageSiteUrl(data.url));
+            const filteredResults = hydratedResults.filter(({ data }) => urlMatchesScope(data.url));
 
             return {
-                villagesOnly,
+                scope,
+                scopeLabel: scope === 'villages' ? 'village ' : 'shrine ',
                 results: filteredResults.map(({ result }) => result),
                 resultCount: filteredResults.length,
                 hydratedResults: filteredResults
@@ -1535,14 +1600,16 @@
             const searchInput = document.getElementById('search-input');
             const searchResults = document.getElementById('search-results');
             const query = searchInput.value.trim();
-            if (!query || !pagefind) { searchResults.style.display = 'none'; return; }
+            if (!query) { searchResults.style.display = 'none'; return; }
+            if (!pagefind) await loadPagefind();
+            if (!pagefind) { searchResults.style.display = 'none'; return; }
 
             const search = await getScopedSearch(query);
             lastSearchQuery = query;
             lastSearchResults = search.results;
 
             if (search.resultCount === 0) {
-                searchResults.innerHTML = `<div class="search-result-item"><div class="search-result-title">${search.villagesOnly ? 'No village results found' : 'No results found'}</div></div>`;
+                searchResults.innerHTML = `<div class="search-result-item"><div class="search-result-title">${search.scope ? `No ${search.scopeLabel}results found` : 'No results found'}</div></div>`;
                 searchResults.style.display = 'block';
                 return;
             }
@@ -1563,7 +1630,7 @@
 
             const seeMoreHTML = search.resultCount > 8 ? `
                 <div class="see-more-button" onclick="showSearchResultsPage()">
-                    See All ${search.resultCount} ${search.villagesOnly ? 'village ' : ''}results
+                    See All ${search.resultCount} ${search.scopeLabel}results
                 </div>` : '';
             searchResults.innerHTML = dropdownHTML + seeMoreHTML;
             searchResults.style.display = 'block';
@@ -1585,13 +1652,14 @@
             document.getElementById('search-results').style.display = 'none';
             document.getElementById('search-results-page').style.display = 'block';
 
-            document.getElementById('search-results-page-title').textContent = `${search.villagesOnly ? 'Village Search Results' : 'Search Results'} for "${query}"`;
-            document.getElementById('search-results-count').textContent = `${search.resultCount} ${search.villagesOnly ? 'village result' : 'result'}${search.resultCount !== 1 ? 's' : ''} found`;
+            const capitalizedScopeLabel = search.scopeLabel.replace(/^[a-z]/, c => c.toUpperCase());
+            document.getElementById('search-results-page-title').textContent = `${search.scope ? `${capitalizedScopeLabel}Search Results` : 'Search Results'} for "${query}"`;
+            document.getElementById('search-results-count').textContent = `${search.resultCount} ${search.scope ? `${search.scopeLabel}result` : 'result'}${search.resultCount !== 1 ? 's' : ''} found`;
 
             const list = document.getElementById('search-results-page-list');
 
             if (search.resultCount === 0) {
-                list.innerHTML = `<div style="text-align: center; padding: 40px; color: #666;">${search.villagesOnly ? 'No village results found.' : 'No results found.'}</div>`;
+                list.innerHTML = `<div style="text-align: center; padding: 40px; color: #666;">${search.scope ? `No ${search.scopeLabel}results found.` : 'No results found.'}</div>`;
                 return;
             }
 
