@@ -211,6 +211,10 @@
             border-radius: 5px;
         }
 
+        .graph-mobile-controls {
+            display: none;
+        }
+
         .content-column {
             flex: 2;
             text-align: center;
@@ -233,6 +237,12 @@
             object-fit: contain;
             flex-shrink: 0;
             filter: drop-shadow(0 8px 18px rgba(58, 58, 58, 0.18));
+        }
+
+        .site-brand > picture {
+            display: block;
+            flex-shrink: 0;
+            line-height: 0;
         }
 
         .site-brand-text {
@@ -695,6 +705,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-image: none !important;
             min-width: 0;
             clip-path: var(--afrin-shape);
             box-sizing: border-box;
@@ -712,8 +723,25 @@
             right: 0;
             bottom: 0;
             background: inherit;
-            z-index: 1;
+            z-index: 0;
             border-radius: inherit;
+        }
+
+        .section-picture {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: block;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .section-background {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .section::after {
@@ -1084,13 +1112,56 @@
         @media (max-width: 1024px) {
             .layout-container {
                 flex-direction: column;
-                gap: 0;
+                gap: 30px;
             }
 
             .graph-column,
             .content-column {
                 width: 100%;
                 flex: none;
+            }
+
+            .graph-mobile-controls {
+                position: absolute;
+                right: 12px;
+                bottom: 12px;
+                z-index: 5;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .graph-mobile-control {
+                min-width: 48px;
+                min-height: 48px;
+                padding: 10px 8px;
+                border: 1px solid rgba(134, 239, 172, 0.7);
+                border-radius: 6px;
+                background-color: rgba(0, 0, 0, 0.88);
+                color: #ffffff;
+                font: 700 14px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                cursor: pointer;
+            }
+
+            body.graph-fullscreen-open {
+                overflow: hidden;
+            }
+
+            .graph-column.is-mobile-fullscreen {
+                position: fixed;
+                inset: 0;
+                z-index: 100000;
+                width: 100vw;
+                height: 100vh !important;
+                height: 100dvh !important;
+                margin: 0;
+                clip-path: none;
+                filter: none;
+                touch-action: none;
+            }
+
+            .graph-column.is-mobile-fullscreen #graph-canvas {
+                touch-action: none;
             }
         }
 
@@ -1099,12 +1170,10 @@
             body {
                 background-image: url('landing/images/mobile/background2.webp');
                 background-attachment: scroll;
-                font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             }
 
             .main-section {
-                min-height: auto;
-                padding: 18px 16px 28px;
+                padding: 30px 15px;
             }
 
             .site-brand {
@@ -1112,8 +1181,8 @@
             }
 
             .site-brand-logo {
-                width: 120px;
-                height: 120px;
+                width: 150px;
+                height: 150px;
             }
 
             .site-title-en {
@@ -1127,27 +1196,6 @@
 
             .welcome-lang {
                 font-size: 20px;
-                font-family: inherit;
-            }
-
-            .search-wrapper {
-                width: 100%;
-                margin-top: 10px;
-            }
-
-            .search-options {
-                align-items: stretch;
-            }
-
-            .search-checkbox-label,
-            .smart-search-link {
-                min-height: 44px;
-                box-sizing: border-box;
-            }
-
-            .search-checkbox {
-                width: 20px;
-                height: 20px;
             }
 
             .sections-group,
@@ -1168,19 +1216,6 @@
                 justify-content: center;
                 animation: none;
             }
-
-            .section-1 { background-image: url('landing/images/mobile/villages.webp') !important; }
-            .section-shrines { background-image: url('landing/images/mobile/shrines.webp') !important; }
-            .section-2 { background-image: url('landing/images/mobile/substack.webp') !important; }
-            .section-3 { background-image: url('landing/images/mobile/who.webp') !important; }
-            .section-4 { background-image: url('landing/images/mobile/updates.webp') !important; }
-            .section-5 { background-image: url('landing/images/mobile/contact.webp') !important; }
-            .section-6 { background-image: url('landing/images/mobile/youtube.webp') !important; }
-            .section-7 { background-image: url('landing/images/mobile/converter.webp') !important; }
-            .section-8 { background-image: url('landing/images/mobile/infographics.webp') !important; }
-            .section-9 { background-image: url('landing/images/mobile/dialogue_project.webp') !important; }
-            .section-10 { background-image: url('landing/images/mobile/timeline.webp') !important; }
-            .section-by-air { background-image: url('landing/images/mobile/by_air.webp') !important; }
 
             .graph-column {
                 height: clamp(330px, 72vw, 560px);
@@ -1238,8 +1273,8 @@
             }
 
             .site-brand-logo {
-                width: 112px;
-                height: 112px;
+                width: 150px;
+                height: 150px;
             }
 
             .site-brand-text {
@@ -1298,13 +1333,19 @@
     <div class="main-section">
         <div class="layout-container">
             <div class="graph-column" id="graph-container">
-                <canvas id="graph-canvas" role="img" aria-label="Interactive 3D network of Afrin villages and related tags"></canvas>
+                <canvas id="graph-canvas" role="img" aria-label="Interactive network of Afrin villages and related tags"></canvas>
                 <canvas id="graph-label-canvas" aria-hidden="true"></canvas>
                 <div id="graph-tooltip" class="graph-tooltip" hidden>
                     <span id="graph-tooltip-label"></span>
                     <span id="graph-tooltip-kind" class="graph-tooltip-kind"></span>
                 </div>
-                <div id="loading-indicator" role="status">Loading 3D graph...</div>
+                <div id="loading-indicator" role="status">Loading graph...</div>
+                <div class="graph-mobile-controls" aria-label="Graph controls">
+                    <button class="graph-mobile-control" type="button" data-graph-action="zoom-in" aria-label="Zoom in">+</button>
+                    <button class="graph-mobile-control" type="button" data-graph-action="zoom-out" aria-label="Zoom out">-</button>
+                    <button class="graph-mobile-control" type="button" data-graph-action="reset">Reset</button>
+                    <button class="graph-mobile-control" type="button" data-graph-action="fullscreen">Full screen</button>
+                </div>
             </div>
             <div class="content-column">
                 <div class="site-brand">
@@ -1377,6 +1418,10 @@
     <div class="sections-group">
         <div class="sections-container">
             <a class="section section-1 section-link theme-green" href="village-directory/village-directory.html">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/villages.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/villages.png" alt="" width="419" height="540" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <div class="play-icon"></div>
@@ -1388,6 +1433,10 @@
                 </div>
             </a>
             <a class="section section-shrines section-link theme-red" href="shrines-directory/shrines-directory.html">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/shrines.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/shrines.jpg" alt="" width="419" height="540" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <div class="play-icon"></div>
@@ -1399,6 +1448,10 @@
             </a>
             <a class="section section-2 section-link theme-yellow" href="https://substack.com/@afrinarchive" target="_blank"
                 rel="noopener noreferrer">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/substack.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/substack.png" alt="" width="474" height="570" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Substack</h3>
@@ -1407,6 +1460,10 @@
                 </div>
             </a>
             <div class="section section-3 theme-red">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/who.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/who.jpg" alt="" width="474" height="570" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">About Us</h3>
@@ -1423,6 +1480,10 @@
                 </div>
             </div>
             <div class="section section-5 theme-green" onclick="window.location.href = 'mailto:afrin.archive@gmail.com'">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/contact.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/contact.jpg" alt="" width="431" height="531" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Contact Us</h3>
@@ -1434,6 +1495,10 @@
 
         <div class="sections-container">
             <div class="section section-4 theme-red" onclick="window.location.href = 'updates/updates.html'">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/updates.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/updates.jpg" alt="" width="320" height="424" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Updates</h3>
@@ -1447,6 +1512,10 @@
             </div>
             <a class="section section-6 section-link theme-yellow" href="https://www.youtube.com/@endlesslynow" target="_blank"
                 rel="noopener noreferrer">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/youtube.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/youtube.png" alt="" width="474" height="570" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Youtube</h3>
@@ -1456,6 +1525,10 @@
                 </div>
             </a>
             <a class="section section-7 section-link theme-green" href="archive-research-tools/index.html">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/converter.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/converter.png" alt="" width="474" height="570" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Archive Research Tools</h3>
@@ -1465,6 +1538,10 @@
             </a>
             <a class="section section-8 section-link theme-yellow" href="https://www.zachariahhopkins.com/charts/charts.html"
                 target="_blank" rel="noopener noreferrer">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/infographics.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/infographics.jpg" alt="" width="399" height="517" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Infographics</h3>
@@ -1473,6 +1550,10 @@
                 </div>
             </a>
             <a class="section section-9 section-link theme-red" href="dialogue_project/">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/dialogue_project.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/dialogue_project.png" alt="" width="474" height="570" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Dialogue Project</h3>
@@ -1485,6 +1566,10 @@
 
         <div class="sections-container">
             <div class="section section-10 section-coming-soon theme-green">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/timeline.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/timeline.png" alt="" width="474" height="570" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Timeline of Afrin - Coming Soon</h3>
@@ -1494,6 +1579,10 @@
                 </div>
             </div>
             <a class="section section-by-air section-link theme-red" href="by-air/index.html">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/by_air.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/by_air.jpg" alt="" width="1253" height="885" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
                 <div class="section-content">
                     <div class="section-header">
                         <h3 class="secondary-title">Afrin Airlines</h3>
@@ -1546,32 +1635,54 @@
                 const container = document.getElementById('graph-container');
                 const canvas = document.getElementById('graph-canvas');
                 const loadingIndicator = document.getElementById('loading-indicator');
+                const useMobileRenderer = window.matchMedia('(max-width: 1024px)').matches;
 
                 try {
-                    await loadScript('landing/starscape.bundle.js?v=20260714-10');
-                    if (!window.AfrinStarscape?.initStarscape) {
-                        throw new Error('The local starscape renderer did not load.');
+                    if (useMobileRenderer) {
+                        await loadScript('landing/starscape-mobile.js?v=20260714-1');
+                    } else {
+                        await loadScript('landing/starscape.bundle.js?v=20260714-10');
                     }
-                    await window.AfrinStarscape.initStarscape({
+
+                    const initRenderer = useMobileRenderer
+                        ? window.AfrinMobileGraph?.initMobileGraph
+                        : window.AfrinStarscape?.initStarscape;
+                    if (!initRenderer) {
+                        throw new Error('The graph renderer did not load.');
+                    }
+                    await initRenderer({
                         container,
                         canvas,
                         loadingIndicator,
                         graphUrl: 'landing/starscape-data.json',
                         homeNodeId: 'Efr\u00een'
                     });
+                    return true;
                 } catch (error) {
-                    console.error('Could not initialize the 3D graph.', error);
-                    loadingIndicator.textContent = 'The 3D graph could not be loaded.';
+                    console.error('Could not initialize the graph.', error);
+                    loadingIndicator.textContent = 'The graph could not be loaded.';
+                    graphReady = null;
+                    return false;
                 }
             })();
 
             return graphReady;
         }
 
+        function setupGraph() {
+            if (window.matchMedia('(max-width: 1024px)').matches) {
+                window.requestAnimationFrame(() => {
+                    window.requestAnimationFrame(initializeGraph);
+                });
+            } else {
+                initializeGraph();
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             setupSearchUI();
             setupUpdatesSlider();
-            initializeGraph();
+            setupGraph();
         });
 
         function setupSearchUI() {
