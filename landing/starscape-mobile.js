@@ -273,16 +273,6 @@
             scheduleRender();
         }
 
-        function setZoom(nextZoom) {
-            const clamped = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, nextZoom));
-            const change = clamped / zoom;
-            panX *= change;
-            panY *= change;
-            zoom = clamped;
-            if (tooltip) tooltip.hidden = true;
-            scheduleRender();
-        }
-
         function setZoomAt(nextZoom, clientX, clientY) {
             const bounds = canvas.getBoundingClientRect();
             const pointX = (clientX - bounds.left) * (canvas.width / Math.max(1, bounds.width));
@@ -296,10 +286,6 @@
             panY += pointY - (newView.y + graphY * newView.scale);
             if (tooltip) tooltip.hidden = true;
             scheduleRender();
-        }
-
-        function isFullscreen() {
-            return container.classList.contains('is-mobile-fullscreen');
         }
 
         function getPinchDetails() {
@@ -321,12 +307,14 @@
                 horizontal: false,
                 dragged: false
             });
-            if (isFullscreen() && canvas.setPointerCapture) {
-                try { canvas.setPointerCapture(event.pointerId); } catch (error) { /* The pointer may already be gone. */ }
-            }
-            if (activePointers.size >= 2 && isFullscreen()) {
+            if (activePointers.size >= 2) {
                 activePointers.forEach(pointer => { pointer.dragged = true; });
                 pinchState = getPinchDetails();
+                if (canvas.setPointerCapture) {
+                    activePointers.forEach((pointer, pointerId) => {
+                        try { canvas.setPointerCapture(pointerId); } catch (error) { /* The pointer may already be gone. */ }
+                    });
+                }
             }
             if (tooltip) tooltip.hidden = true;
         });
@@ -339,7 +327,7 @@
             pointer.x = event.clientX;
             pointer.y = event.clientY;
 
-            if (activePointers.size >= 2 && isFullscreen()) {
+            if (activePointers.size >= 2) {
                 event.preventDefault();
                 const nextPinch = getPinchDetails();
                 if (pinchState && nextPinch) {
@@ -354,24 +342,17 @@
 
             const totalX = event.clientX - pointer.startX;
             const totalY = event.clientY - pointer.startY;
-            if (isFullscreen()) {
-                if (Math.hypot(totalX, totalY) > 6) pointer.dragged = true;
-                event.preventDefault();
-                panX += event.clientX - previousX;
-                panY += event.clientY - previousY;
-            } else {
-                if (!pointer.horizontal && Math.hypot(totalX, totalY) > 6) {
-                    pointer.horizontal = event.pointerType === 'mouse' || Math.abs(totalX) > Math.abs(totalY);
-                    if (pointer.horizontal && canvas.setPointerCapture) {
-                        try { canvas.setPointerCapture(event.pointerId); } catch (error) { /* The pointer may already be gone. */ }
-                    }
+            if (!pointer.horizontal && Math.hypot(totalX, totalY) > 6) {
+                pointer.horizontal = event.pointerType === 'mouse' || Math.abs(totalX) > Math.abs(totalY);
+                if (pointer.horizontal && canvas.setPointerCapture) {
+                    try { canvas.setPointerCapture(event.pointerId); } catch (error) { /* The pointer may already be gone. */ }
                 }
-                if (!pointer.horizontal) return;
-                pointer.dragged = true;
-                event.preventDefault();
-                panX += event.clientX - previousX;
-                if (event.pointerType === 'mouse') panY += event.clientY - previousY;
             }
+            if (!pointer.horizontal) return;
+            pointer.dragged = true;
+            event.preventDefault();
+            panX += event.clientX - previousX;
+            if (event.pointerType === 'mouse') panY += event.clientY - previousY;
             scheduleRender();
         });
 
@@ -381,6 +362,11 @@
             const distance = Math.hypot(event.clientX - pointer.startX, event.clientY - pointer.startY);
             activePointers.delete(event.pointerId);
             if (activePointers.size < 2) pinchState = null;
+            activePointers.forEach(activePointer => {
+                activePointer.startX = activePointer.x;
+                activePointer.startY = activePointer.y;
+                activePointer.dragged = true;
+            });
             if (!pointer.dragged && distance <= 7 && activePointers.size === 0) {
                 selectNode(findNearestNode(event.clientX, event.clientY), event);
             }
@@ -392,36 +378,10 @@
         });
         canvas.addEventListener('contextmenu', event => event.preventDefault());
 
-        container.querySelectorAll('.graph-mobile-control').forEach(button => {
-            button.addEventListener('click', () => {
-                const action = button.dataset.graphAction;
-                if (action === 'zoom-in') setZoom(zoom * 1.35);
-                if (action === 'zoom-out') setZoom(zoom / 1.35);
-                if (action === 'reset') {
-                    zoom = 1;
-                    panX = 0;
-                    panY = 0;
-                    selectedIndex = -1;
-                    if (tooltip) tooltip.hidden = true;
-                    scheduleRender();
-                }
-                if (action === 'fullscreen') {
-                    const open = !isFullscreen();
-                    container.classList.toggle('is-mobile-fullscreen', open);
-                    document.body.classList.toggle('graph-fullscreen-open', open);
-                    canvas.style.touchAction = open ? 'none' : 'pan-y pinch-zoom';
-                    button.textContent = open ? 'Close' : 'Full screen';
-                    button.setAttribute('aria-label', open ? 'Close full screen graph' : 'Open graph full screen');
-                    activePointers.clear();
-                    pinchState = null;
-                    if (tooltip) tooltip.hidden = true;
-                    window.requestAnimationFrame(() => {
-                        resize();
-                        scheduleRender();
-                    });
-                }
-            });
-        });
+        canvas.addEventListener('wheel', event => {
+            event.preventDefault();
+            setZoomAt(zoom * Math.exp(-event.deltaY * 0.0015), event.clientX, event.clientY);
+        }, { passive: false });
 
         if ('ResizeObserver' in window) {
             const resizeObserver = new ResizeObserver(resize);

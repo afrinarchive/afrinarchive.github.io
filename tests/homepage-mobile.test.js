@@ -156,15 +156,26 @@ test('the original mobile layout remains unchanged around the graph', () => {
     assert.doesNotMatch(html, /\.graph-column\s*\{\s*order:/);
 });
 
+test('the phone graph has no buttons and uses direct gestures', () => {
+    const rendererSource = fs.readFileSync('landing/starscape-mobile.js', 'utf8');
+    assert.doesNotMatch(html, /graph-mobile-control|data-graph-action/);
+    assert.doesNotMatch(rendererSource, /is-mobile-fullscreen|graph-fullscreen-open/);
+    assert.match(html, /#graph-canvas\s*\{\s*touch-action: pan-y;/);
+});
+
 test('the mobile canvas renderer initializes without WebGL or a render loop', async () => {
     const rendererSource = fs.readFileSync('landing/starscape-mobile.js', 'utf8');
     const eventHandlers = new Map();
+    const drawCalls = [];
     let animationFrameCount = 0;
+    let pointerCaptureCount = 0;
     const context = {
         arc() {},
         beginPath() {},
         clearRect() {},
-        drawImage() {},
+        drawImage(...argumentsList) {
+            drawCalls.push(argumentsList);
+        },
         fill() {},
         fillRect() {},
         fillText() {},
@@ -172,28 +183,6 @@ test('the mobile canvas renderer initializes without WebGL or a render loop', as
         moveTo() {},
         stroke() {},
         strokeText() {}
-    };
-    const makeClassList = () => {
-        const values = new Set();
-        return {
-            contains(value) {
-                return values.has(value);
-            },
-            toggle(value, force) {
-                if (force) values.add(value);
-                else values.delete(value);
-                return force;
-            }
-        };
-    };
-    const fullscreenHandlers = new Map();
-    const fullscreenButton = {
-        dataset: { graphAction: 'fullscreen' },
-        textContent: 'Full screen',
-        addEventListener(type, handler) {
-            fullscreenHandlers.set(type, handler);
-        },
-        setAttribute() {}
     };
     const canvas = {
         width: 0,
@@ -208,17 +197,16 @@ test('the mobile canvas renderer initializes without WebGL or a render loop', as
         getContext(type) {
             assert.equal(type, '2d');
             return context;
+        },
+        setPointerCapture() {
+            pointerCaptureCount += 1;
         }
     };
     const container = {
         clientWidth: 360,
         clientHeight: 320,
-        classList: makeClassList(),
         getBoundingClientRect() {
             return { left: 0, top: 0, width: 360, height: 320 };
-        },
-        querySelectorAll() {
-            return [fullscreenButton];
         }
     };
     const loadingIndicator = { textContent: '', style: {} };
@@ -243,7 +231,7 @@ test('the mobile canvas renderer initializes without WebGL or a render loop', as
         }
     };
     global.document = {
-        body: { classList: makeClassList() },
+        body: {},
         createElement() {
             return { width: 0, height: 0, getContext: () => context };
         },
@@ -271,16 +259,21 @@ test('the mobile canvas renderer initializes without WebGL or a render loop', as
     assert.ok(eventHandlers.has('pointerdown'));
     assert.ok(eventHandlers.has('pointermove'));
     assert.ok(eventHandlers.has('pointerup'));
+    assert.ok(eventHandlers.has('wheel'));
     assert.ok(animationFrameCount <= 2, 'The mobile graph should not animate continuously.');
 
-    fullscreenHandlers.get('click')();
-    assert.equal(container.classList.contains('is-mobile-fullscreen'), true);
-    assert.equal(global.document.body.classList.contains('graph-fullscreen-open'), true);
-    assert.equal(canvas.style.touchAction, 'none');
-    assert.equal(fullscreenButton.textContent, 'Close');
-
-    fullscreenHandlers.get('click')();
-    assert.equal(container.classList.contains('is-mobile-fullscreen'), false);
-    assert.equal(global.document.body.classList.contains('graph-fullscreen-open'), false);
-    assert.equal(canvas.style.touchAction, 'pan-y pinch-zoom');
+    const initialGraphWidth = drawCalls.at(-1)[3];
+    eventHandlers.get('pointerdown')({ pointerId: 1, pointerType: 'touch', clientX: 100, clientY: 140 });
+    eventHandlers.get('pointerdown')({ pointerId: 2, pointerType: 'touch', clientX: 200, clientY: 140 });
+    let pinchPrevented = false;
+    eventHandlers.get('pointermove')({
+        pointerId: 2,
+        pointerType: 'touch',
+        clientX: 250,
+        clientY: 140,
+        preventDefault() { pinchPrevented = true; }
+    });
+    assert.equal(pinchPrevented, true, 'Pinching the graph should control the graph instead of the page.');
+    assert.ok(pointerCaptureCount >= 2, 'Both fingers should remain attached to the graph during a pinch.');
+    assert.ok(drawCalls.at(-1)[3] > initialGraphWidth, 'Moving two fingers apart should zoom into the graph.');
 });

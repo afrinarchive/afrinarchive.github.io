@@ -211,10 +211,6 @@
             border-radius: 5px;
         }
 
-        .graph-mobile-controls {
-            display: none;
-        }
-
         .content-column {
             flex: 2;
             text-align: center;
@@ -1121,48 +1117,6 @@
                 flex: none;
             }
 
-            .graph-mobile-controls {
-                position: absolute;
-                right: calc(12px + env(safe-area-inset-right, 0px));
-                bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-                z-index: 5;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .graph-mobile-control {
-                min-width: 48px;
-                min-height: 48px;
-                padding: 10px 8px;
-                border: 1px solid rgba(134, 239, 172, 0.7);
-                border-radius: 6px;
-                background-color: rgba(0, 0, 0, 0.88);
-                color: #ffffff;
-                font: 700 14px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-                cursor: pointer;
-            }
-
-            body.graph-fullscreen-open {
-                overflow: hidden;
-            }
-
-            .graph-column.is-mobile-fullscreen {
-                position: fixed;
-                inset: 0;
-                z-index: 100000;
-                width: 100vw;
-                height: 100vh !important;
-                height: 100dvh !important;
-                margin: 0;
-                clip-path: none;
-                filter: none;
-                touch-action: none;
-            }
-
-            .graph-column.is-mobile-fullscreen #graph-canvas {
-                touch-action: none;
-            }
         }
 
         /* For smaller tablets and large phones */
@@ -1219,11 +1173,11 @@
 
             .graph-column {
                 height: clamp(330px, 72vw, 560px);
-                touch-action: pan-y pinch-zoom;
+                touch-action: pan-y;
             }
 
             #graph-canvas {
-                touch-action: pan-y pinch-zoom;
+                touch-action: pan-y;
             }
 
             .search-results-page {
@@ -1340,12 +1294,6 @@
                     <span id="graph-tooltip-kind" class="graph-tooltip-kind"></span>
                 </div>
                 <div id="loading-indicator" role="status">Loading graph...</div>
-                <div class="graph-mobile-controls" aria-label="Graph controls">
-                    <button class="graph-mobile-control" type="button" data-graph-action="zoom-in" aria-label="Zoom in">+</button>
-                    <button class="graph-mobile-control" type="button" data-graph-action="zoom-out" aria-label="Zoom out">-</button>
-                    <button class="graph-mobile-control" type="button" data-graph-action="reset">Reset</button>
-                    <button class="graph-mobile-control" type="button" data-graph-action="fullscreen">Full screen</button>
-                </div>
             </div>
             <div class="content-column">
                 <div class="site-brand">
@@ -1639,7 +1587,7 @@
 
                 try {
                     if (useMobileRenderer) {
-                        await loadScript('landing/starscape-mobile.js?v=20260714-2');
+                        await loadScript('landing/starscape-mobile.js?v=20260714-3');
                     } else {
                         await loadScript('landing/starscape.bundle.js?v=20260714-10');
                     }
