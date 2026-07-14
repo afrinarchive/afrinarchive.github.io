@@ -167,6 +167,7 @@ test('the mobile canvas renderer initializes without WebGL or a render loop', as
     const rendererSource = fs.readFileSync('landing/starscape-mobile.js', 'utf8');
     const eventHandlers = new Map();
     const drawCalls = [];
+    const drawnLabels = new Set();
     let animationFrameCount = 0;
     let pointerCaptureCount = 0;
     const context = {
@@ -178,7 +179,9 @@ test('the mobile canvas renderer initializes without WebGL or a render loop', as
         },
         fill() {},
         fillRect() {},
-        fillText() {},
+        fillText(label) {
+            drawnLabels.add(String(label));
+        },
         lineTo() {},
         moveTo() {},
         stroke() {},
@@ -260,6 +263,7 @@ test('the mobile canvas renderer initializes without WebGL or a render loop', as
     assert.ok(eventHandlers.has('pointermove'));
     assert.ok(eventHandlers.has('pointerup'));
     assert.ok(eventHandlers.has('wheel'));
+    assert.ok(drawnLabels.size >= 12, 'The initial phone graph should show many useful labels.');
     assert.ok(animationFrameCount <= 2, 'The mobile graph should not animate continuously.');
 
     const initialGraphWidth = drawCalls.at(-1)[3];

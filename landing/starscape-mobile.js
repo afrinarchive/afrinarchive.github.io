@@ -115,7 +115,7 @@
         const labelIndexes = Array.from({ length: nodeCount }, (_, index) => index)
             .filter(index => degree[index] > 0 && index !== graph.h)
             .sort((first, second) => degree[second] - degree[first])
-            .slice(0, 26);
+            .slice(0, 120);
         labelIndexes.unshift(graph.h);
 
         let zoom = 1;
@@ -150,22 +150,24 @@
 
             // Labels are drawn at screen size instead of being baked into the
             // large graph image. They therefore remain readable on a phone.
-            const labelLimit = canvas.width < 500 ? (zoom >= 1.7 ? 18 : 10) : 26;
+            const labelLimit = canvas.width < 500 ? (zoom >= 1.7 ? 48 : 24) : 56;
             const occupiedLabels = [];
-            context.font = '600 12px system-ui, sans-serif';
+            let labelsDrawn = 0;
+            context.font = '600 11px system-ui, sans-serif';
             context.textBaseline = 'middle';
-            for (let labelPosition = 0; labelPosition < labelIndexes.length && labelPosition < labelLimit; labelPosition += 1) {
+            for (let labelPosition = 0; labelPosition < labelIndexes.length && labelsDrawn < labelLimit; labelPosition += 1) {
                 const index = labelIndexes[labelPosition];
                 const label = String(nodes[index][0]);
                 const x = view.x + projectedX[index] * view.scale + 7;
                 const y = view.y + projectedY[index] * view.scale;
-                const labelWidth = Math.min(180, label.length * 7.2);
-                const box = { left: x - 3, right: x + labelWidth + 3, top: y - 9, bottom: y + 9 };
+                const labelWidth = Math.min(150, label.length * 6.2);
+                const box = { left: x - 2, right: x + labelWidth + 2, top: y - 7, bottom: y + 7 };
                 if (box.right < 0 || box.left > canvas.width || box.bottom < 0 || box.top > canvas.height) continue;
                 if (index !== graph.h && occupiedLabels.some(other =>
                     box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top
                 )) continue;
                 occupiedLabels.push(box);
+                labelsDrawn += 1;
                 context.lineWidth = 3;
                 context.strokeStyle = '#000000';
                 context.strokeText(label, x, y);
