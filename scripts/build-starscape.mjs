@@ -5,7 +5,9 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SOURCE_PATH = path.join(ROOT, 'village_site_files', 'graph-data.json');
 const OUTPUT_PATH = path.join(ROOT, 'landing', 'starscape-data.json');
+const MOBILE_OUTPUT_PATH = path.join(ROOT, 'landing', 'starscape-mobile-data.json');
 const HOME_NODE_ID = 'Efr\u00een';
+const MOBILE_MIN_DEGREE = 3;
 const TWO_PI = Math.PI * 2;
 
 function hashString(value) {
@@ -129,5 +131,44 @@ const compact = {
     })
 };
 
+function buildMobileGraph(source) {
+    const degree = new Uint16Array(source.n.length);
+    for (let edgeIndex = 0; edgeIndex < source.e.length; edgeIndex += 2) {
+        degree[source.e[edgeIndex]] += 1;
+        degree[source.e[edgeIndex + 1]] += 1;
+    }
+
+    // Every village stays in the phone graph. Terms used by fewer than three
+    // villages are omitted because they become untappable visual noise on a
+    // small screen. The complete graph remains available to desktop users.
+    const keptIndexes = [];
+    const mobileIndexBySourceIndex = new Int32Array(source.n.length);
+    mobileIndexBySourceIndex.fill(-1);
+    for (let sourceIndex = 0; sourceIndex < source.n.length; sourceIndex += 1) {
+        const node = source.n[sourceIndex];
+        if (node[1] !== 1 && degree[sourceIndex] < MOBILE_MIN_DEGREE && sourceIndex !== source.h) continue;
+        mobileIndexBySourceIndex[sourceIndex] = keptIndexes.length;
+        keptIndexes.push(sourceIndex);
+    }
+
+    const mobileEdges = [];
+    for (let edgeIndex = 0; edgeIndex < source.e.length; edgeIndex += 2) {
+        const fromIndex = mobileIndexBySourceIndex[source.e[edgeIndex]];
+        const toIndex = mobileIndexBySourceIndex[source.e[edgeIndex + 1]];
+        if (fromIndex < 0 || toIndex < 0) continue;
+        mobileEdges.push(fromIndex, toIndex);
+    }
+
+    return {
+        h: mobileIndexBySourceIndex[source.h],
+        n: keptIndexes.map(sourceIndex => source.n[sourceIndex]),
+        e: mobileEdges
+    };
+}
+
+const mobileCompact = buildMobileGraph(compact);
+
 fs.writeFileSync(OUTPUT_PATH, JSON.stringify(compact));
+fs.writeFileSync(MOBILE_OUTPUT_PATH, JSON.stringify(mobileCompact));
 console.log(`Built ${path.relative(ROOT, OUTPUT_PATH)} with ${compact.n.length} nodes and ${compact.e.length / 2} edges.`);
+console.log(`Built ${path.relative(ROOT, MOBILE_OUTPUT_PATH)} with ${mobileCompact.n.length} nodes and ${mobileCompact.e.length / 2} edges.`);

@@ -1123,8 +1123,8 @@
 
             .graph-mobile-controls {
                 position: absolute;
-                right: 12px;
-                bottom: 12px;
+                right: calc(12px + env(safe-area-inset-right, 0px));
+                bottom: calc(12px + env(safe-area-inset-bottom, 0px));
                 z-index: 5;
                 display: flex;
                 align-items: center;
@@ -1639,7 +1639,7 @@
 
                 try {
                     if (useMobileRenderer) {
-                        await loadScript('landing/starscape-mobile.js?v=20260714-1');
+                        await loadScript('landing/starscape-mobile.js?v=20260714-2');
                     } else {
                         await loadScript('landing/starscape.bundle.js?v=20260714-10');
                     }
@@ -1654,7 +1654,9 @@
                         container,
                         canvas,
                         loadingIndicator,
-                        graphUrl: 'landing/starscape-data.json',
+                        graphUrl: useMobileRenderer
+                            ? 'landing/starscape-mobile-data.json?v=20260714-1'
+                            : 'landing/starscape-data.json',
                         homeNodeId: 'Efr\u00een'
                     });
                     return true;

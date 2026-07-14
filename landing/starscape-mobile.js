@@ -97,18 +97,18 @@
         baseContext.fillStyle = '#777777';
         for (let index = 0; index < nodeCount; index += 1) {
             if (nodes[index][1] === 1 || index === graph.h) continue;
-            baseContext.fillRect(projectedX[index] - 0.8, projectedY[index] - 0.8, 1.6, 1.6);
+            baseContext.fillRect(projectedX[index] - 1.2, projectedY[index] - 1.2, 2.4, 2.4);
         }
 
         baseContext.fillStyle = '#86efac';
         for (let index = 0; index < nodeCount; index += 1) {
             if (nodes[index][1] !== 1 || index === graph.h) continue;
-            const size = Math.min(4.5, 2.2 + degree[index] * 0.08);
+            const size = Math.min(7.5, 4 + degree[index] * 0.1);
             baseContext.fillRect(projectedX[index] - size / 2, projectedY[index] - size / 2, size, size);
         }
 
         baseContext.beginPath();
-        baseContext.arc(projectedX[graph.h], projectedY[graph.h], 6, 0, Math.PI * 2);
+        baseContext.arc(projectedX[graph.h], projectedY[graph.h], 7, 0, Math.PI * 2);
         baseContext.fillStyle = '#ffcc00';
         baseContext.fill();
 
@@ -117,18 +117,6 @@
             .sort((first, second) => degree[second] - degree[first])
             .slice(0, 26);
         labelIndexes.unshift(graph.h);
-        baseContext.font = '600 11px system-ui, sans-serif';
-        baseContext.textBaseline = 'middle';
-        for (const index of labelIndexes) {
-            const label = String(nodes[index][0]);
-            const x = projectedX[index] + 7;
-            const y = projectedY[index];
-            baseContext.lineWidth = 3;
-            baseContext.strokeStyle = '#000000';
-            baseContext.strokeText(label, x, y);
-            baseContext.fillStyle = index === graph.h ? '#ffcc00' : (nodes[index][1] === 1 ? '#d6fbe0' : '#c8c8c8');
-            baseContext.fillText(label, x, y);
-        }
 
         let zoom = 1;
         let panX = 0;
@@ -159,6 +147,31 @@
             context.fillRect(0, 0, canvas.width, canvas.height);
             context.imageSmoothingEnabled = true;
             context.drawImage(baseCanvas, view.x, view.y, view.width, view.height);
+
+            // Labels are drawn at screen size instead of being baked into the
+            // large graph image. They therefore remain readable on a phone.
+            const labelLimit = canvas.width < 500 ? (zoom >= 1.7 ? 18 : 10) : 26;
+            const occupiedLabels = [];
+            context.font = '600 12px system-ui, sans-serif';
+            context.textBaseline = 'middle';
+            for (let labelPosition = 0; labelPosition < labelIndexes.length && labelPosition < labelLimit; labelPosition += 1) {
+                const index = labelIndexes[labelPosition];
+                const label = String(nodes[index][0]);
+                const x = view.x + projectedX[index] * view.scale + 7;
+                const y = view.y + projectedY[index] * view.scale;
+                const labelWidth = Math.min(180, label.length * 7.2);
+                const box = { left: x - 3, right: x + labelWidth + 3, top: y - 9, bottom: y + 9 };
+                if (box.right < 0 || box.left > canvas.width || box.bottom < 0 || box.top > canvas.height) continue;
+                if (index !== graph.h && occupiedLabels.some(other =>
+                    box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top
+                )) continue;
+                occupiedLabels.push(box);
+                context.lineWidth = 3;
+                context.strokeStyle = '#000000';
+                context.strokeText(label, x, y);
+                context.fillStyle = index === graph.h ? '#ffcc00' : (nodes[index][1] === 1 ? '#d6fbe0' : '#c8c8c8');
+                context.fillText(label, x, y);
+            }
 
             if (selectedIndex >= 0) {
                 const x = view.x + projectedX[selectedIndex] * view.scale;
@@ -200,7 +213,7 @@
             const view = getView();
             const graphX = (pointX - view.x) / view.scale;
             const graphY = (pointY - view.y) / view.scale;
-            const threshold = 18 / view.scale;
+            const threshold = 22 / view.scale;
             const thresholdSquared = threshold * threshold;
             let nearest = -1;
             let nearestDistance = thresholdSquared;
@@ -349,6 +362,9 @@
             } else {
                 if (!pointer.horizontal && Math.hypot(totalX, totalY) > 6) {
                     pointer.horizontal = event.pointerType === 'mouse' || Math.abs(totalX) > Math.abs(totalY);
+                    if (pointer.horizontal && canvas.setPointerCapture) {
+                        try { canvas.setPointerCapture(event.pointerId); } catch (error) { /* The pointer may already be gone. */ }
+                    }
                 }
                 if (!pointer.horizontal) return;
                 pointer.dragged = true;

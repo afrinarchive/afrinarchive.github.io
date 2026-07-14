@@ -121,6 +121,30 @@ test('card photographs use native lazy loading', () => {
     });
 });
 
+test('the phone graph keeps every village without shipping desktop-level clutter', () => {
+    const desktopGraph = JSON.parse(fs.readFileSync('landing/starscape-data.json', 'utf8'));
+    const mobileGraph = JSON.parse(fs.readFileSync('landing/starscape-mobile-data.json', 'utf8'));
+    const desktopVillages = desktopGraph.n.filter(node => node[1] === 1).map(node => node[0]).sort();
+    const mobileVillages = mobileGraph.n.filter(node => node[1] === 1).map(node => node[0]).sort();
+    const mobileDegree = new Uint16Array(mobileGraph.n.length);
+
+    for (let edgeIndex = 0; edgeIndex < mobileGraph.e.length; edgeIndex += 2) {
+        mobileDegree[mobileGraph.e[edgeIndex]] += 1;
+        mobileDegree[mobileGraph.e[edgeIndex + 1]] += 1;
+    }
+
+    assert.deepEqual(mobileVillages, desktopVillages, 'Every village must remain in the phone graph.');
+    assert.ok(mobileGraph.n.length < desktopGraph.n.length * 0.1, 'The phone graph should contain less than 10% of the desktop nodes.');
+    assert.ok(
+        mobileGraph.n.every((node, index) => node[1] !== 1 || mobileDegree[index] > 0),
+        'Every village in the phone graph must remain connected.'
+    );
+    assert.ok(
+        fs.statSync('landing/starscape-mobile-data.json').size < 125000,
+        'The uncompressed phone graph data must remain below 125 KB.'
+    );
+});
+
 test('the original mobile layout remains unchanged around the graph', () => {
     assert.ok(
         html.indexOf('class="graph-column"') < html.indexOf('class="content-column"'),
@@ -206,7 +230,7 @@ test('the mobile canvas renderer initializes without WebGL or a render loop', as
         'graph-tooltip-kind': { textContent: '' },
         'graph-label-canvas': labelCanvas
     };
-    const graph = JSON.parse(fs.readFileSync('landing/starscape-data.json', 'utf8'));
+    const graph = JSON.parse(fs.readFileSync('landing/starscape-mobile-data.json', 'utf8'));
 
     global.fetch = async () => ({ ok: true, async json() { return graph; } });
     global.window = {
