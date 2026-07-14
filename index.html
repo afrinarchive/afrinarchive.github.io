@@ -1166,24 +1166,21 @@
                 min-height: 300px;
                 padding: 55px 76px 60px 70px;
                 justify-content: center;
-                background-image: none !important;
                 animation: none;
-                content-visibility: auto;
-                contain-intrinsic-size: 300px;
             }
 
-            .section-1.mobile-image-loaded { background-image: url('landing/images/mobile/villages.webp') !important; }
-            .section-shrines.mobile-image-loaded { background-image: url('landing/images/mobile/shrines.webp') !important; }
-            .section-2.mobile-image-loaded { background-image: url('landing/images/mobile/substack.webp') !important; }
-            .section-3.mobile-image-loaded { background-image: url('landing/images/mobile/who.webp') !important; }
-            .section-4.mobile-image-loaded { background-image: url('landing/images/mobile/updates.webp') !important; }
-            .section-5.mobile-image-loaded { background-image: url('landing/images/mobile/contact.webp') !important; }
-            .section-6.mobile-image-loaded { background-image: url('landing/images/mobile/youtube.webp') !important; }
-            .section-7.mobile-image-loaded { background-image: url('landing/images/mobile/converter.webp') !important; }
-            .section-8.mobile-image-loaded { background-image: url('landing/images/mobile/infographics.webp') !important; }
-            .section-9.mobile-image-loaded { background-image: url('landing/images/mobile/dialogue_project.webp') !important; }
-            .section-10.mobile-image-loaded { background-image: url('landing/images/mobile/timeline.webp') !important; }
-            .section-by-air.mobile-image-loaded { background-image: url('landing/images/mobile/by_air.webp') !important; }
+            .section-1 { background-image: url('landing/images/mobile/villages.webp') !important; }
+            .section-shrines { background-image: url('landing/images/mobile/shrines.webp') !important; }
+            .section-2 { background-image: url('landing/images/mobile/substack.webp') !important; }
+            .section-3 { background-image: url('landing/images/mobile/who.webp') !important; }
+            .section-4 { background-image: url('landing/images/mobile/updates.webp') !important; }
+            .section-5 { background-image: url('landing/images/mobile/contact.webp') !important; }
+            .section-6 { background-image: url('landing/images/mobile/youtube.webp') !important; }
+            .section-7 { background-image: url('landing/images/mobile/converter.webp') !important; }
+            .section-8 { background-image: url('landing/images/mobile/infographics.webp') !important; }
+            .section-9 { background-image: url('landing/images/mobile/dialogue_project.webp') !important; }
+            .section-10 { background-image: url('landing/images/mobile/timeline.webp') !important; }
+            .section-by-air { background-image: url('landing/images/mobile/by_air.webp') !important; }
 
             .graph-column {
                 height: clamp(330px, 72vw, 560px);
@@ -1571,54 +1568,10 @@
             return graphReady;
         }
 
-        function scheduleGraph() {
-            if (window.matchMedia('(min-width: 1025px)').matches) {
-                initializeGraph();
-                return;
-            }
-
-            const container = document.getElementById('graph-container');
-            container.addEventListener('pointerdown', initializeGraph, { once: true });
-
-            const startWhenReady = () => {
-                if ('requestIdleCallback' in window) {
-                    window.requestIdleCallback(initializeGraph, { timeout: 1200 });
-                } else {
-                    window.setTimeout(initializeGraph, 600);
-                }
-            };
-
-            if (document.readyState === 'complete') startWhenReady();
-            else window.addEventListener('load', startWhenReady, { once: true });
-        }
-
-        function setupMobileCardImages() {
-            if (!window.matchMedia('(max-width: 768px)').matches) return;
-
-            const sections = document.querySelectorAll('.section:not(.sections-spacer)');
-            const showImage = section => section.classList.add('mobile-image-loaded');
-
-            if (!('IntersectionObserver' in window)) {
-                sections.forEach(showImage);
-                return;
-            }
-
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    showImage(entry.target);
-                    observer.unobserve(entry.target);
-                });
-            }, { rootMargin: '500px 0px' });
-
-            sections.forEach(section => observer.observe(section));
-        }
-
         document.addEventListener('DOMContentLoaded', function () {
             setupSearchUI();
             setupUpdatesSlider();
-            setupMobileCardImages();
-            scheduleGraph();
+            initializeGraph();
         });
 
         function setupSearchUI() {
