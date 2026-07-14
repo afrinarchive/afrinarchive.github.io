@@ -7,9 +7,9 @@
     <title>Afrin Archive</title>
     <meta name="description" content="Afrin Archive is a digital archive preserving the villages, oral history, and cultural heritage of Afrin.">
     <link rel="canonical" href="https://www.afrinarchive.com/">
-    <link rel="icon" type="image/png" href="/landing/images/logo.png">
-    <link rel="shortcut icon" href="/landing/images/logo.png">
-    <link rel="apple-touch-icon" href="/landing/images/logo.png">
+    <link rel="icon" type="image/png" href="/landing/images/favicon-64.png">
+    <link rel="shortcut icon" href="/landing/images/favicon-64.png">
+    <link rel="apple-touch-icon" href="/landing/images/apple-touch-icon-180.png">
     <meta name="theme-color" content="#f7f5f3">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
@@ -28,9 +28,6 @@
     <meta name="twitter:image" content="https://www.afrinarchive.com/landing/images/logo.png">
     <meta name="twitter:image:alt" content="Afrin Archive logo">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Afrin Archive","url":"https://www.afrinarchive.com/","description":"Afrin Archive is a digital archive preserving the villages, oral history, and cultural heritage of Afrin, Syria."}</script>
-    <link rel="preload" href="landing/starscape-data.json" as="fetch" crossorigin="anonymous">
-    <script src="landing/starscape.bundle.js?v=20260714-8" defer></script>
-
     <style>
         /* Bounce animation for the arrow */
         @keyframes bounce {
@@ -66,7 +63,7 @@
         }
 
         /* Importing a unique, historical font for each language */
-        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Cinzel&family=EB+Garamond&family=Forum&family=GFS+Didot&family=Inter:wght@400;500;700&family=Lateef&family=Marck+Script&family=Noto+Naskh+Arabic&family=Noto+Sans+Armenian&family=Noto+Sans+Cuneiform&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Syriac+Eastern&family=Noto+Serif+Armenian&family=Scheherazade+New:wght@400;700&family=UnifrakturMaguntia&family=Unna&family=Vollkorn&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Cinzel&family=EB+Garamond&family=Forum&family=GFS+Didot&family=Inter:wght@400;500;700&family=Lateef&family=Marck+Script&family=Noto+Naskh+Arabic&family=Noto+Sans+Armenian&family=Noto+Sans+Cuneiform&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Syriac+Eastern&family=Noto+Serif+Armenian&family=Scheherazade+New:wght@400;700&family=UnifrakturMaguntia&family=Unna&family=Vollkorn&display=swap') screen and (min-width: 1025px);
 
         /* Outline of the Afrin district borders (traced from the OSM admin boundary,
            relation 7641167), as a percentage polygon used to clip the section cards. */
@@ -1087,11 +1084,9 @@
         @media (max-width: 1024px) {
             .layout-container {
                 flex-direction: column;
-                /* Stack vertically */
-                gap: 30px;
+                gap: 0;
             }
 
-            /* Override desktop sizing and set both columns to full width for mobile */
             .graph-column,
             .content-column {
                 width: 100%;
@@ -1101,8 +1096,15 @@
 
         /* For smaller tablets and large phones */
         @media (max-width: 768px) {
+            body {
+                background-image: url('landing/images/mobile/background2.webp');
+                background-attachment: scroll;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            }
+
             .main-section {
-                padding: 30px 15px;
+                min-height: auto;
+                padding: 18px 16px 28px;
             }
 
             .site-brand {
@@ -1110,8 +1112,8 @@
             }
 
             .site-brand-logo {
-                width: 150px;
-                height: 150px;
+                width: 120px;
+                height: 120px;
             }
 
             .site-title-en {
@@ -1125,6 +1127,27 @@
 
             .welcome-lang {
                 font-size: 20px;
+                font-family: inherit;
+            }
+
+            .search-wrapper {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .search-options {
+                align-items: stretch;
+            }
+
+            .search-checkbox-label,
+            .smart-search-link {
+                min-height: 44px;
+                box-sizing: border-box;
+            }
+
+            .search-checkbox {
+                width: 20px;
+                height: 20px;
             }
 
             .sections-group,
@@ -1143,6 +1166,32 @@
                 min-height: 300px;
                 padding: 55px 76px 60px 70px;
                 justify-content: center;
+                background-image: none !important;
+                animation: none;
+                content-visibility: auto;
+                contain-intrinsic-size: 300px;
+            }
+
+            .section-1.mobile-image-loaded { background-image: url('landing/images/mobile/villages.webp') !important; }
+            .section-shrines.mobile-image-loaded { background-image: url('landing/images/mobile/shrines.webp') !important; }
+            .section-2.mobile-image-loaded { background-image: url('landing/images/mobile/substack.webp') !important; }
+            .section-3.mobile-image-loaded { background-image: url('landing/images/mobile/who.webp') !important; }
+            .section-4.mobile-image-loaded { background-image: url('landing/images/mobile/updates.webp') !important; }
+            .section-5.mobile-image-loaded { background-image: url('landing/images/mobile/contact.webp') !important; }
+            .section-6.mobile-image-loaded { background-image: url('landing/images/mobile/youtube.webp') !important; }
+            .section-7.mobile-image-loaded { background-image: url('landing/images/mobile/converter.webp') !important; }
+            .section-8.mobile-image-loaded { background-image: url('landing/images/mobile/infographics.webp') !important; }
+            .section-9.mobile-image-loaded { background-image: url('landing/images/mobile/dialogue_project.webp') !important; }
+            .section-10.mobile-image-loaded { background-image: url('landing/images/mobile/timeline.webp') !important; }
+            .section-by-air.mobile-image-loaded { background-image: url('landing/images/mobile/by_air.webp') !important; }
+
+            .graph-column {
+                height: clamp(330px, 72vw, 560px);
+                touch-action: pan-y pinch-zoom;
+            }
+
+            #graph-canvas {
+                touch-action: pan-y pinch-zoom;
             }
 
             .search-results-page {
@@ -1162,10 +1211,6 @@
 
             .search-results-title {
                 font-size: 24px;
-            }
-
-            .graph-column {
-                height: clamp(330px, 72vw, 560px);
             }
 
             .floating-scroll-arrow {
@@ -1196,8 +1241,8 @@
             }
 
             .site-brand-logo {
-                width: 150px;
-                height: 150px;
+                width: 112px;
+                height: 112px;
             }
 
             .site-brand-text {
@@ -1266,7 +1311,11 @@
             </div>
             <div class="content-column">
                 <div class="site-brand">
-                    <img class="site-brand-logo" src="landing/images/logo.png" alt="Afrin Archive logo">
+                    <picture>
+                        <source srcset="landing/images/logo-400.webp" type="image/webp">
+                        <img class="site-brand-logo" src="landing/images/logo-400.png" width="400" height="400"
+                            alt="Afrin Archive logo" decoding="async" fetchpriority="high">
+                    </picture>
                     <div class="site-brand-text">
                         <h1 class="site-title-en">Afrin Archive</h1>
                 <h2 class="site-title-ar">أرشيف عفرين</h2>
@@ -1466,6 +1515,7 @@
         let pagefindReady = null;
         let lastSearchResults = [];
         let lastSearchQuery = '';
+        let graphReady = null;
 
         function loadPagefind() {
             if (!pagefindReady) {
@@ -1482,33 +1532,93 @@
             return pagefindReady;
         }
 
-        document.addEventListener('DOMContentLoaded', async function () {
-            setupSearchUI();
-            setupUpdatesSlider();
-            if ('requestIdleCallback' in window) {
-                window.requestIdleCallback(loadPagefind, { timeout: 1500 });
-            } else {
-                window.setTimeout(loadPagefind, 750);
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+
+        function initializeGraph() {
+            if (graphReady) return graphReady;
+
+            graphReady = (async () => {
+                const container = document.getElementById('graph-container');
+                const canvas = document.getElementById('graph-canvas');
+                const loadingIndicator = document.getElementById('loading-indicator');
+
+                try {
+                    await loadScript('landing/starscape.bundle.js?v=20260714-10');
+                    if (!window.AfrinStarscape?.initStarscape) {
+                        throw new Error('The local starscape renderer did not load.');
+                    }
+                    await window.AfrinStarscape.initStarscape({
+                        container,
+                        canvas,
+                        loadingIndicator,
+                        graphUrl: 'landing/starscape-data.json',
+                        homeNodeId: 'Efr\u00een'
+                    });
+                } catch (error) {
+                    console.error('Could not initialize the 3D graph.', error);
+                    loadingIndicator.textContent = 'The 3D graph could not be loaded.';
+                }
+            })();
+
+            return graphReady;
+        }
+
+        function scheduleGraph() {
+            if (window.matchMedia('(min-width: 1025px)').matches) {
+                initializeGraph();
+                return;
             }
 
             const container = document.getElementById('graph-container');
-            const canvas = document.getElementById('graph-canvas');
-            const loadingIndicator = document.getElementById('loading-indicator');
-            try {
-                if (!window.AfrinStarscape?.initStarscape) {
-                    throw new Error('The local starscape renderer did not load.');
+            container.addEventListener('pointerdown', initializeGraph, { once: true });
+
+            const startWhenReady = () => {
+                if ('requestIdleCallback' in window) {
+                    window.requestIdleCallback(initializeGraph, { timeout: 1200 });
+                } else {
+                    window.setTimeout(initializeGraph, 600);
                 }
-                await window.AfrinStarscape.initStarscape({
-                    container,
-                    canvas,
-                    loadingIndicator,
-                    graphUrl: 'landing/starscape-data.json',
-                    homeNodeId: 'Efr\u00een'
-                });
-            } catch (error) {
-                console.error('Could not initialize the 3D graph.', error);
-                loadingIndicator.textContent = 'The 3D graph could not be loaded.';
+            };
+
+            if (document.readyState === 'complete') startWhenReady();
+            else window.addEventListener('load', startWhenReady, { once: true });
+        }
+
+        function setupMobileCardImages() {
+            if (!window.matchMedia('(max-width: 768px)').matches) return;
+
+            const sections = document.querySelectorAll('.section:not(.sections-spacer)');
+            const showImage = section => section.classList.add('mobile-image-loaded');
+
+            if (!('IntersectionObserver' in window)) {
+                sections.forEach(showImage);
+                return;
             }
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    showImage(entry.target);
+                    observer.unobserve(entry.target);
+                });
+            }, { rootMargin: '500px 0px' });
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setupSearchUI();
+            setupUpdatesSlider();
+            setupMobileCardImages();
+            scheduleGraph();
         });
 
         function setupSearchUI() {
@@ -1522,6 +1632,7 @@
                 clearTimeout(searchTimeout);
                 searchTimeout = setTimeout(performDropdownSearch, 300);
             });
+            searchInput.addEventListener('pointerdown', loadPagefind, { once: true });
             searchInput.addEventListener('keydown', e => {
                 if (e.key === 'Enter') { e.preventDefault(); showSearchResultsPage(); }
             });
@@ -1637,9 +1748,10 @@
         }
 
         async function showSearchResultsPage() {
-            if (!pagefind) return;
             const query = document.getElementById('search-input').value.trim() || lastSearchQuery;
             if (!query) return;
+            if (!pagefind) await loadPagefind();
+            if (!pagefind) return;
 
             const search = await getScopedSearch(query);
             lastSearchResults = search.results;

@@ -170,7 +170,7 @@ export async function initStarscape({
     controls.minDistance = 90;
     controls.maxDistance = 3900;
     controls.rotateSpeed = 0.58;
-    controls.autoRotate = !reducedMotion;
+    controls.autoRotate = !reducedMotion && !isMobile;
     controls.autoRotateSpeed = 0.35;
     controls.zoomSpeed = 0.82;
     controls.panSpeed = 0.68;
