@@ -9,7 +9,7 @@
     const BASE_HEIGHT = 700;
     const BASE_PADDING = 30;
     const MIN_ZOOM = 1;
-    const MAX_ZOOM = 4;
+    const MAX_ZOOM = 12;
     const MAX_PIXEL_RATIO = 2;
 
     // Camera. TILT leans the cloud so the turn reads as depth rather than a
@@ -38,6 +38,7 @@
     const TERM_LABEL_BASE_SMALL = 12;
     const TERM_LABEL_BASE = 22;
     const LABEL_CELL = 18;
+    const SCREEN_MARGIN = 8;
 
     const BACKGROUND = '#100e0b';
     const EDGE_COLOUR = 'rgba(158, 196, 168, 0.11)';
@@ -103,6 +104,9 @@
         const baseX = new Float32Array(nodeCount);
         const baseY = new Float32Array(nodeCount);
         const band = new Uint8Array(nodeCount);
+        const screenX = new Float32Array(nodeCount);
+        const screenY = new Float32Array(nodeCount);
+        const outcode = new Uint8Array(nodeCount);
 
         for (let index = 0; index < nodeCount; index += 1) {
             const node = nodes[index];
@@ -224,21 +228,44 @@
             };
         }
 
-        function drawEdges(view, moving) {
+        // One pass turns the fixed layout into screen positions and records
+        // which edge of the screen each node falls outside. A line whose two
+        // ends are off the same edge cannot cross the screen, so it is dropped
+        // before it is ever drawn. Zooming in therefore gets cheaper, not dearer.
+        function toScreen(view) {
+            for (let index = 0; index < nodeCount; index += 1) {
+                const x = view.x + baseX[index] * view.scale;
+                const y = view.y + baseY[index] * view.scale;
+                screenX[index] = x;
+                screenY[index] = y;
+                let code = 0;
+                if (x < -SCREEN_MARGIN) code = 1;
+                else if (x > cssWidth + SCREEN_MARGIN) code = 2;
+                if (y < -SCREEN_MARGIN) code |= 4;
+                else if (y > cssHeight + SCREEN_MARGIN) code |= 8;
+                outcode[index] = code;
+            }
+        }
+
+        function drawEdges(moving) {
             const list = moving ? liteEdges : edges;
+            let drawn = 0;
             context.beginPath();
             for (let edgeIndex = 0; edgeIndex < list.length; edgeIndex += 2) {
                 const first = list[edgeIndex];
                 const second = list[edgeIndex + 1];
-                context.moveTo(view.x + baseX[first] * view.scale, view.y + baseY[first] * view.scale);
-                context.lineTo(view.x + baseX[second] * view.scale, view.y + baseY[second] * view.scale);
+                if (outcode[first] & outcode[second]) continue;
+                context.moveTo(screenX[first], screenY[first]);
+                context.lineTo(screenX[second], screenY[second]);
+                drawn += 1;
             }
             context.strokeStyle = EDGE_COLOUR;
             context.lineWidth = 0.6;
             context.stroke();
+            return drawn;
         }
 
-        function drawDots(view, dotScale) {
+        function drawDots(dotScale) {
             for (let type = 0; type < 2; type += 1) {
                 const colour = type === 1 ? VILLAGE_COLOUR : TAG_COLOUR;
                 const alphas = type === 1 ? VILLAGE_ALPHA : TAG_ALPHA;
@@ -247,10 +274,9 @@
                     let drew = false;
                     for (let index = 0; index < nodeCount; index += 1) {
                         if (isVillage[index] !== type || band[index] !== bandIndex) continue;
-                        if (index === homeIndex) continue;
-                        const x = view.x + baseX[index] * view.scale;
-                        const y = view.y + baseY[index] * view.scale;
-                        if (x < -8 || y < -8 || x > cssWidth + 8 || y > cssHeight + 8) continue;
+                        if (index === homeIndex || outcode[index]) continue;
+                        const x = screenX[index];
+                        const y = screenY[index];
                         const radius = type === 1
                             ? (1.8 + Math.min(2.2, degree[index] * 0.045)) * dotScale * BAND_SIZE[bandIndex]
                             : 1.15 * dotScale * BAND_SIZE[bandIndex];
@@ -265,9 +291,9 @@
             }
         }
 
-        function drawHome(view, dotScale) {
-            const x = view.x + baseX[homeIndex] * view.scale;
-            const y = view.y + baseY[homeIndex] * view.scale;
+        function drawHome(dotScale) {
+            const x = screenX[homeIndex];
+            const y = screenY[homeIndex];
             const radius = 5 * dotScale;
             const glow = context.createRadialGradient(x, y, 0, x, y, radius * 4);
             glow.addColorStop(0, 'rgba(255, 204, 0, 0.42)');
@@ -321,8 +347,8 @@
                 for (let position = 0; position < candidates.length && drawn < limit; position += 1) {
                     const index = candidates[position];
                     if (band[index] !== pass) continue;
-                    const x = labelView.x + baseX[index] * labelView.scale;
-                    const y = labelView.y + baseY[index] * labelView.scale - offset;
+                    const x = screenX[index];
+                    const y = screenY[index] - offset;
                     if (x < -140 || x > cssWidth + 140 || y < -20 || y > cssHeight + 20) continue;
                     const label = String(nodes[index][0]);
                     if (!reserve(x, y, estimateWidth(label, fontSize), fontSize)) continue;
@@ -336,10 +362,7 @@
             return drawn;
         }
 
-        let labelView = null;
-
-        function drawLabels(currentView) {
-            labelView = currentView;
+        function drawLabels() {
             occupied.clear();
             context.textAlign = 'center';
             context.textBaseline = 'bottom';
@@ -351,8 +374,8 @@
             const growth = Math.pow(zoom, 1.65);
             const small = cssWidth < 500;
 
-            const homeX = labelView.x + baseX[homeIndex] * labelView.scale;
-            const homeY = labelView.y + baseY[homeIndex] * labelView.scale - 12;
+            const homeX = screenX[homeIndex];
+            const homeY = screenY[homeIndex] - 12;
             context.font = `700 13px Inter, "Noto Sans", system-ui, sans-serif`;
             context.fillStyle = HOME_COLOUR;
             reserve(homeX, homeY, estimateWidth(String(nodes[homeIndex][0]), 13), 13);
@@ -378,18 +401,15 @@
             const dotScale = Math.min(1.5, Math.max(0.85, view.scale / 0.7));
             context.fillStyle = BACKGROUND;
             context.fillRect(0, 0, cssWidth, cssHeight);
-            drawEdges(view, moving);
-            drawDots(view, dotScale);
-            drawHome(view, dotScale);
-            if (!moving) drawLabels(view);
+            toScreen(view);
+            drawEdges(moving);
+            drawDots(dotScale);
+            drawHome(dotScale);
+            if (!moving) drawLabels();
 
             if (selectedIndex >= 0) {
                 context.beginPath();
-                context.arc(
-                    view.x + baseX[selectedIndex] * view.scale,
-                    view.y + baseY[selectedIndex] * view.scale,
-                    12, 0, Math.PI * 2
-                );
+                context.arc(screenX[selectedIndex], screenY[selectedIndex], 12, 0, Math.PI * 2);
                 context.strokeStyle = 'rgba(255, 255, 255, 0.85)';
                 context.lineWidth = 1.5;
                 context.stroke();
