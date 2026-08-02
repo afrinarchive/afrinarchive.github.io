@@ -29,6 +29,16 @@
 
     const GLIDE_DURATION = 700;
 
+    // How many names to allow at zoom 1, before the steep climb with zoom and
+    // before collisions cut it down. Raise or lower these four numbers to make
+    // the graph busier or quieter. Names are only ever drawn when the graph is
+    // still, so none of this affects the turn or a drag.
+    const VILLAGE_LABEL_BASE_SMALL = 30;
+    const VILLAGE_LABEL_BASE = 52;
+    const TERM_LABEL_BASE_SMALL = 12;
+    const TERM_LABEL_BASE = 22;
+    const LABEL_CELL = 18;
+
     const BACKGROUND = '#100e0b';
     const EDGE_COLOUR = 'rgba(158, 196, 168, 0.11)';
     const TAG_COLOUR = '198, 168, 132';
@@ -171,13 +181,15 @@
             }
         }
 
-        // Labels are ranked once. Which of them actually fit is decided per
-        // frame by the collision test in drawLabels.
-        const labelCandidates = Array.from({ length: nodeCount }, (_, index) => index)
+        // Every node is a label candidate, ranked once by how many things it
+        // connects to. Village names are kept apart from archive terms so that
+        // villages get first claim on the space, the way the desktop graph
+        // labels every village page it can fit.
+        const ranked = Array.from({ length: nodeCount }, (_, index) => index)
             .filter(index => index !== homeIndex && degree[index] > 0)
-            .sort((first, second) => degree[second] - degree[first])
-            .slice(0, 140);
-        labelCandidates.unshift(homeIndex);
+            .sort((first, second) => degree[second] - degree[first]);
+        const villageLabels = ranked.filter(index => isVillage[index]);
+        const termLabels = ranked.filter(index => !isVillage[index]);
 
         let cssWidth = 1;
         let cssHeight = 1;
@@ -270,43 +282,95 @@
             context.fill();
         }
 
-        function drawLabels(view) {
-            const limit = cssWidth < 500 ? 18 : 30;
-            const occupied = [];
-            let drawn = 0;
-            context.font = '600 12px Inter, system-ui, sans-serif';
-            context.textBaseline = 'middle';
-            const canRound = typeof context.roundRect === 'function';
+        // A name is placed only if every grid square it needs is still free.
+        // Numeric keys, so no strings are built while placing labels.
+        const occupied = new Set();
 
-            for (let position = 0; position < labelCandidates.length && drawn < limit; position += 1) {
-                const index = labelCandidates[position];
-                const isHome = index === homeIndex;
-                if (!isHome && band[index] === 2) continue;
-                const x = view.x + baseX[index] * view.scale + 8;
-                const y = view.y + baseY[index] * view.scale;
-                const label = String(nodes[index][0]);
-                const width = context.measureText(label).width;
-                const box = { left: x - 5, right: x + width + 5, top: y - 9, bottom: y + 9 };
-                if (box.right < 0 || box.left > cssWidth || box.bottom < 0 || box.top > cssHeight) continue;
-                if (!isHome && occupied.some(other =>
-                    box.left < other.right && box.right > other.left &&
-                    box.top < other.bottom && box.bottom > other.top
-                )) continue;
-                occupied.push(box);
-                drawn += 1;
-
-                context.fillStyle = 'rgba(16, 14, 11, 0.74)';
-                context.beginPath();
-                if (canRound) {
-                    context.roundRect(box.left, box.top, box.right - box.left, box.bottom - box.top, 5);
-                } else {
-                    context.rect(box.left, box.top, box.right - box.left, box.bottom - box.top);
+        function reserve(x, y, width, fontSize) {
+            const left = Math.floor((x - width / 2 - 3) / LABEL_CELL) + 512;
+            const right = Math.floor((x + width / 2 + 3) / LABEL_CELL) + 512;
+            const top = Math.floor((y - fontSize - 4) / LABEL_CELL) + 512;
+            const bottom = Math.floor((y + 3) / LABEL_CELL) + 512;
+            for (let row = top; row <= bottom; row += 1) {
+                for (let column = left; column <= right; column += 1) {
+                    if (occupied.has(row * 1024 + column)) return false;
                 }
-                context.fill();
-
-                context.fillStyle = isHome ? HOME_COLOUR : (isVillage[index] ? '#d6fbe0' : '#cbb99f');
-                context.fillText(label, x, y);
             }
+            for (let row = top; row <= bottom; row += 1) {
+                for (let column = left; column <= right; column += 1) {
+                    occupied.add(row * 1024 + column);
+                }
+            }
+            return true;
+        }
+
+        // The width the desktop graph uses. Estimating it costs nothing and
+        // avoids asking the browser to measure hundreds of names every frame.
+        function estimateWidth(label, fontSize) {
+            return Math.min(260, Math.max(24, label.length * fontSize * 0.56));
+        }
+
+        function placeLabels(candidates, limit, fontSize, offset, colour, weight) {
+            if (limit < 1) return 0;
+            context.font = `${weight}${fontSize}px Inter, "Noto Sans", system-ui, sans-serif`;
+            context.fillStyle = colour;
+            let drawn = 0;
+            // Three passes, so the nearest names claim their space first and
+            // the ones behind the cloud only fill the gaps that are left.
+            for (let pass = 0; pass < 3 && drawn < limit; pass += 1) {
+                for (let position = 0; position < candidates.length && drawn < limit; position += 1) {
+                    const index = candidates[position];
+                    if (band[index] !== pass) continue;
+                    const x = labelView.x + baseX[index] * labelView.scale;
+                    const y = labelView.y + baseY[index] * labelView.scale - offset;
+                    if (x < -140 || x > cssWidth + 140 || y < -20 || y > cssHeight + 20) continue;
+                    const label = String(nodes[index][0]);
+                    if (!reserve(x, y, estimateWidth(label, fontSize), fontSize)) continue;
+                    drawn += 1;
+                    context.globalAlpha = pass === 2 ? 0.62 : 1;
+                    context.strokeText(label, x, y);
+                    context.fillText(label, x, y);
+                }
+            }
+            context.globalAlpha = 1;
+            return drawn;
+        }
+
+        let labelView = null;
+
+        function drawLabels(currentView) {
+            labelView = currentView;
+            occupied.clear();
+            context.textAlign = 'center';
+            context.textBaseline = 'bottom';
+            context.strokeStyle = 'rgba(0, 0, 0, 0.9)';
+            context.lineWidth = 2.2;
+
+            // Zooming in is how you see the size of the archive, so the
+            // allowance climbs steeply with the zoom, as it does on the desktop.
+            const growth = Math.pow(zoom, 1.65);
+            const small = cssWidth < 500;
+
+            const homeX = labelView.x + baseX[homeIndex] * labelView.scale;
+            const homeY = labelView.y + baseY[homeIndex] * labelView.scale - 12;
+            context.font = `700 13px Inter, "Noto Sans", system-ui, sans-serif`;
+            context.fillStyle = HOME_COLOUR;
+            reserve(homeX, homeY, estimateWidth(String(nodes[homeIndex][0]), 13), 13);
+            context.strokeText(String(nodes[homeIndex][0]), homeX, homeY);
+            context.fillText(String(nodes[homeIndex][0]), homeX, homeY);
+
+            placeLabels(
+                villageLabels,
+                Math.round((small ? VILLAGE_LABEL_BASE_SMALL : VILLAGE_LABEL_BASE) * growth),
+                small ? 11.5 : 12.5, 8, '#d6fbe0', '600 '
+            );
+            placeLabels(
+                termLabels,
+                Math.round((small ? TERM_LABEL_BASE_SMALL : TERM_LABEL_BASE) * growth),
+                small ? 10.5 : 11.5, 7, '#c6b092', ''
+            );
+
+            context.textAlign = 'left';
         }
 
         function render(moving) {
