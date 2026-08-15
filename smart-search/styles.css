@@ -163,16 +163,31 @@ body::before {
   transition: transform 120ms ease, background-color 120ms ease, color 120ms ease, border-color 120ms ease;
 }
 
-.home-link,
+.home-link {
+  background-color: transparent;
+  color: var(--text-color);
+}
+
 #search-button {
   background: var(--green-color);
   color: var(--bg-color);
 }
 
 .home-link {
-  padding: 10px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border-radius: 8px;
+  border-color: var(--text-color);
   font-weight: 700;
   white-space: nowrap;
+}
+
+.home-link svg {
+  width: 24px;
+  height: 24px;
 }
 
 .toggle-button-colors {
@@ -191,13 +206,17 @@ body::before {
   height: 20px;
 }
 
-.home-link:hover,
 #search-button:hover,
 .result-open:hover,
 .toggle-button-colors:hover {
   background: var(--button-hover-bg);
   color: var(--button-hover-text);
   transform: translateY(-1px);
+}
+
+.home-link:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
 }
 
 .secondary-button {
