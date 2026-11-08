@@ -8,6 +8,7 @@ const vm = require('node:vm');
 
 const root = path.resolve(__dirname, '..');
 const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const publicDirectory = fs.readFileSync(path.join(root, 'village-directory/village-directory.html'), 'utf8');
 const directory = fs.readFileSync(path.join(root, 'village_site_files/00_village_names.html'), 'utf8');
 const nahiyas = JSON.parse(directory.match(/const nahiyas = (\{[\s\S]*?\n\s*\});\s*\n\s*const alphabeticalContainer/)[1]);
 const villages = Object.values(nahiyas).flatMap(nahiya => nahiya.all_villages_detailed || []);
@@ -52,12 +53,17 @@ function links(markup, className) {
     });
 }
 
-for (const hydrated of [true, false]) {
-    test(`homepage dropdown and full results preserve page addresses (${hydrated ? 'filtered' : 'all'} search)`, async () => {
-        const { context, element } = environment(homepage, 'function setupGraph()');
+for (const [pageName, html, marker] of [
+    ['homepage', homepage, 'function setupGraph()'],
+    ['public village directory', publicDirectory, 'function performDropdownSearch()']
+]) for (const hydrated of [true, false]) {
+    test(`${pageName} dropdown and full results preserve page addresses (${hydrated ? 'filtered' : 'all'} search)`, async () => {
+        const { context, element } = environment(html, marker);
         const fixtures = [
             ...villages.filter(village => village.filename.includes("'")).slice(0, 2)
                 .map(village => ({ url: `/village_sites/${village.filename}`, meta: { title: village.name } })),
+            { url: "/village_sites/Endîbê'.html", meta: { title: "Endîbê'" } },
+            { url: '/village_sites/Basûtê.html', meta: { title: 'Basûtê' } },
             { url: '/shrine_sites/Şêx Berekat.html', meta: { title: 'Şêx Berekat' } },
             { url: '/village_sites/أبو كعب.html', meta: { title: 'أبو كعب' } },
             { url: '/village_sites/test.html?name="quoted"&other=1', meta: { title: 'Test' } }

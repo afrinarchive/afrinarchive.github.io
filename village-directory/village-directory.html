@@ -6801,10 +6801,10 @@
                 const url = data.url;
                 const title = data.meta.title || 'Untitled';
                 const excerpt = data.excerpt || '';
-                return `<div class="search-result-item" onclick="window.open('${url}', '_blank')">
+                return `<a class="search-result-item" style="display:block;text-decoration:none;color:inherit" href="${escapeHtml(url).replace(/"/g, '&quot;')}" target="_blank" rel="noopener">
                     <div class="search-result-title">${escapeHtml(title)}</div>
                     <div class="search-result-subtitle">${excerpt}</div>
-                </div>`;
+                </a>`;
             }).join('');
 
             const seeMoreHTML = search.resultCount > 8 ? `
@@ -6856,10 +6856,10 @@
                 const url = data.url;
                 const title = data.meta.title || 'Untitled';
                 const excerpt = data.excerpt || '';
-                return `<div class="search-result-card" onclick="window.open('${url}', '_blank')">
+                return `<a class="search-result-card" style="display:block;text-decoration:none;color:inherit" href="${escapeHtml(url).replace(/"/g, '&quot;')}" target="_blank" rel="noopener">
                     <div class="search-result-card-title">${escapeHtml(title)}</div>
                     <div class="search-result-card-excerpt">${excerpt}</div>
-                </div>`;
+                </a>`;
             }).join('');
         }
 
