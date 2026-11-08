@@ -14,12 +14,10 @@
     <meta property="og:image" content="https://www.afrinarchive.com/village_photos/heceka%20Jerin.jpg">
     <meta name="twitter:card" content="summary">
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Place", "name": "Ĥêcîka Jêrin", "url": "https://www.afrinarchive.com/village_sites/%C4%A4%C3%AAc%C3%AEka%20J%C3%AArin.html", "geo": {"@type": "GeoCoordinates", "latitude": 36.646891, "longitude": 36.651749}, "containedInPlace": {"@type": "AdministrativeArea", "name": "Reco nahiya, Afrin District, Syria"}, "alternateName": ["Hajika Tahtani", "Ĥecîka", "Ĥêcîka Jerin", "الحجيج", "حجيكا تحتاني", "حجيكلي", "حاجيكه جيرن"]}</script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/tailwind.css">
+            <link href="../assets/fonts/fonts-8f029b73ef9f.css" rel="stylesheet">
     
-    <link href="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.css" rel="stylesheet" />
+    <link href="../assets/vendor/maplibre-gl-4.3.2/maplibre-gl.css" rel="stylesheet" />
     <style>
         body { font-family: 'Inter', sans-serif; }
         :root {
@@ -310,7 +308,8 @@
         <span id="lightbox-close" class="lightbox-close">&times;</span>
         <img id="lightbox-image" class="lightbox-image" src="">
     </div>
-    <script src="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.js"></script>
+    <script src="../assets/vendor/maplibre-gl-4.3.2/maplibre-gl.js"></script>
+    <script src="../js/local-maps.js"></script>
     <script>
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
@@ -429,14 +428,7 @@
                                 tileSize: 256,
                                 attribution: 'Tiles &copy; Esri'
                             },
-                            'terrainSource': {
-                                type: 'raster-dem',
-                                tiles: [
-                                    'https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer/tile/{z}/{y}/{x}'
-                                ],
-                                tileSize: 256,
-                                encoding: 'mapbox'
-                            }
+                            'terrainSource': window.AfrinMaps.terrainSource()
                         },
                         layers: [
                             {
@@ -515,7 +507,7 @@
             }
         }
     </script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../assets/vendor/d3-7.9.2/d3.min.js"></script>
     <script src="../js/internal-link-graph-data.js"></script>
     <script src="../js/internal-link-graph.js"></script>
     <script data-goatcounter="https://afrinarchive.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

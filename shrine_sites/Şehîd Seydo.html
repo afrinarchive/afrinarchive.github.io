@@ -19,11 +19,9 @@
     <meta name="twitter:description" content="Şehîd Seydo is a martyrs&#x27; cemetery associated with Kefersefrê, Miske Jerin, and Miskê Jorin in the Cindires sub-district.">
     <meta name="twitter:image" content="https://www.afrinarchive.com/landing/images/afrin_archive_card.png">
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Place", "name": "Şehîd Seydo", "url": "https://www.afrinarchive.com/shrine_sites/%C5%9Eeh%C3%AEd%20Seydo.html", "alternateName": ["Şehîd Seydo shrine", "Şehîdgeha Şehîd Seydo", "الشهيد سيدو"], "geo": {"@type": "GeoCoordinates", "latitude": 36.435604, "longitude": 36.659478}, "containedInPlace": {"@type": "AdministrativeArea", "name": "Kefersefrê, Miske Jerin, Miskê Jorin"}}</script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/tailwind.css">
+            <link href="../assets/fonts/fonts-8f029b73ef9f.css" rel="stylesheet">
+    <link href="../assets/vendor/maplibre-gl-4.3.2/maplibre-gl.css" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
         :root {
@@ -192,7 +190,8 @@
         });
     </script>
     
-    <script src="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.js"></script>
+    <script src="../assets/vendor/maplibre-gl-4.3.2/maplibre-gl.js"></script>
+    <script src="../js/local-maps.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const shrineName = "Şehîd Seydo";
@@ -247,12 +246,7 @@
                             tileSize: 256,
                             attribution: 'Tiles &copy; Esri'
                         },
-                        terrainSource: {
-                            type: 'raster-dem',
-                            tiles: ['https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer/tile/{z}/{y}/{x}'],
-                            tileSize: 256,
-                            encoding: 'mapbox'
-                        }
+                        terrainSource: window.AfrinMaps.terrainSource()
                     },
                     layers: [{ id: 'satellite-layer', type: 'raster', source: 'satellite' }],
                     terrain: { source: 'terrainSource', exaggeration: 1.2 }

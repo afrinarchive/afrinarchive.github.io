@@ -875,15 +875,13 @@ function runSearch() {
 }
 
 function initMap() {
-  state.map = L.map("map", { attributionControl: false });
+  state.map = L.map("map", { attributionControl: false, minZoom: 6, maxZoom: 19, maxBounds: [[36.0, 36.3], [37.1, 37.35]], maxBoundsViscosity: 1 });
   L.control.attribution({ prefix: false })
     .addAttribution("&copy; OpenStreetMap &copy; CARTO")
     .addTo(state.map);
 
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png", {
-    subdomains: "abcd",
-    maxZoom: 19,
-  }).addTo(state.map);
+  window.AfrinMaps.register(maplibregl);
+  L.maplibreGL({ style: window.AfrinMaps.streetStyle(), interactive: false }).addTo(state.map);
 
   state.layerGroups = {
     village: L.layerGroup().addTo(state.map),
