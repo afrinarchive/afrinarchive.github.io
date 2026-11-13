@@ -87,11 +87,11 @@
         }
 
         .main-section {
-            padding: 40px;
-            min-height: 80vh;
+            --page-pad: 40px;
+            padding: var(--page-pad);
             display: flex;
-            align-items: flex-start;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             box-sizing: border-box;
         }
 
@@ -99,8 +99,8 @@
             display: flex;
             width: 100%;
             max-width: 1400px;
-            gap: 40px;
-            align-items: flex-start;
+            gap: 48px;
+            align-items: stretch;
         }
 
         .graph-column {
@@ -213,63 +213,69 @@
 
         .content-column {
             flex: 2;
+            align-self: stretch;
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
+            align-items: stretch;
+            min-width: 0;
+        }
+
+        /* Literata, free from Google Fonts: the English title, the Search and
+           Smart-Search buttons, and the article slider counter. The file covers
+           Latin letters and every weight from 200 to 900, fixed at Literata's
+           sturdy small-text letter shapes (its 'opsz' setting pinned to 7). */
+        @font-face {
+            font-family: 'Literata Title';
+            font-style: normal;
+            font-weight: 200 900;
+            font-display: swap;
+            src: url('assets/fonts/literata-variable-latin.woff2') format('woff2');
+        }
+
+        /* Arabic title font, cut down to only the letters of "أرشيف عفرين".
+           If the Arabic title changes, download the font again with the new letters. */
+
+        @font-face {
+            font-family: 'Aref Ruqaa Title';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('assets/fonts/aref-ruqaa-700-title.woff2') format('woff2');
         }
 
         .site-brand {
             display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 5px;
-        }
-
-        .site-brand-logo {
-            width: 200px;
-            height: 200px;
-            object-fit: contain;
-            flex-shrink: 0;
-            filter: drop-shadow(0 8px 18px rgba(58, 58, 58, 0.18));
-        }
-
-        .site-brand > picture {
-            display: block;
-            flex-shrink: 0;
-            line-height: 0;
-        }
-
-        .site-brand-text {
-            display: flex;
             flex-direction: column;
-            text-align: left;
+            align-items: stretch;
+            margin-bottom: 18px;
         }
 
         .site-title-en {
-            font-size: 55px;
-            font-weight: 1700;
+            font-family: 'Literata Title', Georgia, 'Times New Roman', serif;
+            font-size: 96px;
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.01em;
             color: #153b22;
-            margin-bottom: 0px;
-            letter-spacing: -1.5px;
-            font-family: 'Inter', sans-serif;
-            margin-top: 0;
-            line-height: 1.1;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            text-align: left;
+            margin: 0;
+        }
+
+        .site-title-en span {
+            display: block;
         }
 
         .site-title-ar {
-            font-size: 64px;
-            font-weight: 400;
-            color: #8b7355;
-            margin-top: -10px;
-            margin-bottom: -18px;
+            font-family: 'Aref Ruqaa Title', 'Amiri', 'Noto Naskh Arabic', serif;
+            font-size: 100px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #153b22;
             direction: rtl;
             text-align: right;
-            font-family: 'Scheherazade New', 'Amiri', 'Noto Naskh Arabic', 'Times New Roman', serif;
-            letter-spacing: 2px;
-            line-height: 1.8;
+            margin: 4px 0 0;
         }
 
         .welcome-container {
@@ -389,56 +395,73 @@
             font-family: 'Noto Sans Syriac Eastern', sans-serif;
         }
 
+        /* Horizontal search bar between the graph/title block and the section cards.
+           It runs edge to edge across the screen by cancelling the page padding of
+           .main-section; the controls inside stay within the same 1400px as the content above. */
         .search-wrapper {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
             align-items: center;
-            justify-content: center;
-            margin-top: 20px;
+            gap: 16px;
+            width: calc(100% + 2 * var(--page-pad));
+            max-width: none;
+            box-sizing: border-box;
+            margin: 36px calc(-1 * var(--page-pad)) 0;
+            padding: 3px max(var(--page-pad), calc(50% + var(--page-pad) - 700px));
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 0;
+            border-top: 1px solid rgba(139, 115, 85, 0.35);
+            border-bottom: 1px solid rgba(139, 115, 85, 0.35);
+            border-radius: 0;
             position: relative;
+            z-index: 5;
+        }
+
+        .search-field {
+            position: relative;
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .search-icon {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
         }
 
         .search-input {
+            display: block;
             width: 100%;
-            max-width: 420px;
-            padding: 16px 22px;
-            border: 2px solid #d4c4a8;
-            border-radius: 6px;
-            font-size: 16px;
-            background-color: rgba(255, 255, 255, 0.7);
-            transition: all 0.3s ease;
+            height: 60px;
+            padding: 0 18px;
+            border: 1px solid #d4c4a8;
+            border-radius: 0;
+            font-size: 18px;
+            background-color: #ffffff;
+            transition: border-color 0.15s ease;
             font-family: 'Inter', sans-serif;
             color: #3a3a3a;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             box-sizing: border-box;
         }
 
         .search-input:focus {
             outline: none;
             border-color: #8b7355;
-            box-shadow: 0 2px 12px rgba(139, 115, 85, 0.15);
         }
 
         .search-input::placeholder {
             color: #999;
         }
 
-        .search-options {
-            width: 100%;
-            max-width: 420px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
         .search-checkbox-group {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             gap: 6px;
-            min-width: 0;
+            flex-shrink: 0;
+            height: 60px;
+            box-sizing: border-box;
+            padding-right: 16px;
+            border-right: 1px solid rgba(139, 115, 85, 0.25);
         }
 
         .search-checkbox-label {
@@ -446,7 +469,8 @@
             align-items: center;
             gap: 10px;
             font-family: 'Inter', sans-serif;
-            font-size: 14px;
+            font-size: 15px;
+            line-height: 24px;
             color: #3a3a3a;
             cursor: pointer;
             user-select: none;
@@ -457,14 +481,17 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 6px 10px;
-            border-radius: 6px;
+            height: 60px;
+            padding: 0 28px;
+            box-sizing: border-box;
+            border-radius: 0;
             background-color: #009A3D;
             color: #f7f5f3;
             text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
+            font-family: 'Literata Title', Georgia, serif;
+            font-size: 21px;
+            font-weight: 600;
+            letter-spacing: 0.005em;
             white-space: nowrap;
             transition: background-color 0.2s ease;
             flex-shrink: 0;
@@ -475,8 +502,9 @@
         }
 
         .search-checkbox {
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
+            margin: 0;
             accent-color: #8b7355;
             cursor: pointer;
             flex-shrink: 0;
@@ -486,15 +514,20 @@
             background-color: #ffcc00;
             color: #3a3a3a;
             border: none;
-            padding: 18px 32px;
-            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            height: 60px;
+            padding: 0 40px;
+            border-radius: 0;
             cursor: pointer;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            width: 100%;
-            max-width: 420px;
+            font-size: 23px;
+            transition: background-color 0.2s ease;
+            font-family: 'Literata Title', Georgia, serif;
+            font-weight: 600;
+            color: #153b22;
+            flex-shrink: 0;
             box-sizing: border-box;
         }
 
@@ -502,18 +535,214 @@
             background-color: #e6b800;
         }
 
+        /* Latest Substack articles: English on the left, Arabic on the right.
+           The cards themselves are written by 9_latest_substack_articles.py. */
+
+        /* Noto Naskh Arabic with all weights 400-700 (the copy in fonts-*.css has
+           regular only), used for the Arabic article card. Free from Google Fonts. */
+        @font-face {
+            font-family: 'Article Naskh';
+            font-style: normal;
+            font-weight: 400 700;
+            font-display: swap;
+            src: url('assets/fonts/noto-naskh-arabic-variable.woff2') format('woff2');
+            unicode-range: U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+        }
+
+        /* Tall arrow column on each side, the sliding cards in the middle */
+        .articles {
+            display: grid;
+            grid-template-columns: 76px minmax(0, 1fr) 76px;
+            gap: 20px;
+            width: 100%;
+            max-width: 1400px;
+            margin-top: 36px;
+        }
+
+        /* One slide = one English + Arabic pair. The track scrolls sideways, so
+           phones and trackpads can swipe; the arrows scroll it one slide at a time. */
+        .articles-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            overscroll-behavior-x: contain;
+            scrollbar-width: none;
+            outline: none;
+        }
+
+        .articles-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .articles-slide {
+            flex: 0 0 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        /* Tall, narrow arrow bars as high as the cards */
+        .articles-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: stretch;
+            width: 100%;
+            padding: 0;
+            background-color: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(21, 59, 34, 0.3);
+            border-radius: 0;
+            color: #153b22;
+            cursor: pointer;
+            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+        }
+
+        .articles-arrow svg {
+            width: 44px;
+            height: 110px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 12;
+            stroke-linecap: square;
+            stroke-linejoin: miter;
+        }
+
+        .articles-arrow:hover:not(:disabled) {
+            background-color: #153b22;
+            border-color: #153b22;
+            color: #f7f5f3;
+        }
+
+        .articles-arrow:focus-visible {
+            outline: 2px solid #153b22;
+            outline-offset: 3px;
+        }
+
+        .articles-arrow:disabled {
+            opacity: 0.25;
+            cursor: default;
+        }
+
+        /* Thin full-width line between the article slider and the Afrin-shaped cards */
+        .section-divider {
+            width: calc(100% + 2 * var(--page-pad));
+            margin: 40px calc(-1 * var(--page-pad)) 0;
+            border: 0;
+            border-top: 1px solid rgba(139, 115, 85, 0.35);
+        }
+
+        .article-card {
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border: 1px solid rgba(139, 115, 85, 0.35);
+            color: #3a3a3a;
+            text-decoration: none;
+            overflow: hidden;
+            transition: border-color 0.15s ease;
+        }
+
+        .article-card:hover {
+            border-color: #8b7355;
+        }
+
+        .article-card-image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1.91 / 1;
+            object-fit: cover;
+            background-color: #e9e1d3;
+            border-bottom: 1px solid rgba(139, 115, 85, 0.25);
+        }
+
+        /* Square and tall pictures: crop from near the top so heads stay in the frame */
+        .article-card-image-tall {
+            object-position: 50% 8%;
+        }
+
+        .article-card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 18px 22px 20px;
+        }
+
+        .article-card-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #8b7355;
+        }
+
+        .article-card-title {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #153b22;
+        }
+
+        .article-card-subtitle {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.45;
+            color: #555555;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .article-card-source {
+            margin-top: auto;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #8b7355;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .article-card-ar .article-card-meta {
+            letter-spacing: 0;
+            font-family: 'Article Naskh', 'Noto Naskh Arabic', serif;
+            font-size: 15px;
+        }
+
+        .article-card-ar .article-card-title {
+            font-family: 'Article Naskh', 'Noto Naskh Arabic', serif;
+            font-size: 28px;
+            line-height: 1.45;
+        }
+
+        .article-card-ar .article-card-subtitle {
+            font-family: 'Article Naskh', 'Noto Naskh Arabic', serif;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .article-card-ar .article-card-source {
+            text-align: right;
+        }
+
         .search-results {
             position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
+            top: calc(100% + 6px);
+            left: 0;
             width: 100%;
-            max-width: 420px;
-            background-color: rgba(255, 255, 255, 0.95);
-            border: 2px solid #d4c4a8;
-            border-top: none;
-            border-radius: 0 0 6px 6px;
-            max-height: 300px;
+            box-sizing: border-box;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.97);
+            border: 1px solid #d4c4a8;
+            border-radius: 0;
+            max-height: 340px;
             overflow-y: auto;
             z-index: 1000;
             display: none;
@@ -769,25 +998,25 @@
         .section-shrines.theme-red { background-image: url('landing/images/shrines.jpg'); }
         .section-2.theme-yellow { background-image: url('landing/images/substack.png'); }
         .section-3.theme-red { background-image: url('landing/images/who.jpg'); }
-        .section-4.theme-red { background-image: url('landing/images/updates.jpg'); }
-        .section-5.theme-green { background-image: url('landing/images/contact.jpg'); }
-        .section-6.theme-yellow { background-image: url('landing/images/youtube.png'); }
+        .section-4.theme-green { background-image: url('landing/images/updates.jpg'); }
+        .section-5.theme-red { background-image: url('landing/images/contact.jpg'); }
+        .section-6.theme-green { background-image: url('landing/images/youtube.png'); }
         .section-7.theme-green { background-image: url('landing/images/converter.png'); }
         .section-8.theme-yellow { background-image: url('landing/images/infographics.jpg'); }
         .section-9.theme-red { background-image: url('landing/images/dialogue_project.png'); }
-        .section-10.theme-green { background-image: url('landing/images/timeline.png'); }
+        .section-10.theme-yellow { background-image: url('landing/images/timeline.png'); }
         .section-by-air.theme-red { background-image: url('landing/images/by_air.jpg'); }
         .section-1.theme-green:hover { background-image: url('landing/images/villages.png'); }
         .section-shrines.theme-red:hover { background-image: url('landing/images/shrines.jpg'); }
         .section-2.theme-yellow:hover { background-image: url('landing/images/substack.png'); }
         .section-3.theme-red:hover { background-image: url('landing/images/who.jpg'); }
-        .section-4.theme-red:hover { background-image: url('landing/images/updates.jpg'); }
-        .section-5.theme-green:hover { background-image: url('landing/images/contact.jpg'); }
-        .section-6.theme-yellow:hover { background-image: url('landing/images/youtube.png'); }
+        .section-4.theme-green:hover { background-image: url('landing/images/updates.jpg'); }
+        .section-5.theme-red:hover { background-image: url('landing/images/contact.jpg'); }
+        .section-6.theme-green:hover { background-image: url('landing/images/youtube.png'); }
         .section-7.theme-green:hover { background-image: url('landing/images/converter.png'); }
         .section-8.theme-yellow:hover { background-image: url('landing/images/infographics.jpg'); }
         .section-9.theme-red:hover { background-image: url('landing/images/dialogue_project.png'); }
-        .section-10.theme-green:hover { background-image: url('landing/images/timeline.png'); }
+        .section-10.theme-yellow:hover { background-image: url('landing/images/timeline.png'); }
         .section-by-air.theme-red:hover { background-image: url('landing/images/by_air.jpg'); }
 
         .section-content {
@@ -1123,6 +1352,15 @@
                 flex: none;
             }
 
+            .search-wrapper {
+                flex-wrap: wrap;
+                margin-top: 30px;
+            }
+
+            .search-field {
+                flex: 1 1 100%;
+            }
+
         }
 
         /* For smaller tablets and large phones */
@@ -1133,25 +1371,51 @@
             }
 
             .main-section {
-                padding: 30px 15px;
+                --page-pad: 15px;
+                padding: 30px var(--page-pad);
             }
 
-            .site-brand {
-                gap: 0px;
+            .articles {
+                margin-top: 26px;
             }
 
-            .site-brand-logo {
-                width: 150px;
-                height: 150px;
+            .articles-slide {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .articles {
+                grid-template-columns: 34px minmax(0, 1fr) 34px;
+                gap: 8px;
+            }
+
+            .articles-arrow svg {
+                width: 26px;
+                height: 66px;
+            }
+
+            .section-divider {
+                margin-top: 30px;
+            }
+
+            .article-card-body {
+                padding: 14px 16px 16px;
+            }
+
+            .article-card-title {
+                font-size: 21px;
+            }
+
+            .article-card-ar .article-card-title {
+                font-size: 23px;
             }
 
             .site-title-en {
-                font-size: 42px;
+                font-size: 72px;
             }
 
             .site-title-ar {
-                font-size: 46px;
-                margin-bottom: 25px;
+                font-size: 76px;
             }
 
             .welcome-lang {
@@ -1225,30 +1489,12 @@
                 gap: 10px;
             }
 
-            .site-brand {
-                flex-direction: column;
-                gap: 10px;
-                margin-bottom: 16px;
-                align-items: center;
-            }
-
-            .site-brand-logo {
-                width: 150px;
-                height: 150px;
-            }
-
-            .site-brand-text {
-                width: 100%;
-                max-width: 320px;
-                text-align: center;
-            }
-
             .site-title-en {
-                font-size: 36px;
+                font-size: 60px;
             }
 
             .site-title-ar {
-                font-size: 40px;
+                font-size: 64px;
             }
 
             .welcome-container {
@@ -1259,14 +1505,24 @@
                 font-size: 18px;
             }
 
+            .search-wrapper {
+                padding: 2px var(--page-pad);
+                gap: 6px;
+            }
+
             .search-input {
-                padding: 14px 18px;
                 font-size: 15px;
             }
 
-            .search-button {
-                padding: 15px 28px;
-                font-size: 16px;
+            .search-button,
+            .smart-search-link {
+                flex: 1 1 100%;
+            }
+
+            .search-checkbox-group {
+                flex: 1 1 100%;
+                padding-right: 0;
+                border-right: 0;
             }
 
             .village-directory-title,
@@ -1303,15 +1559,8 @@
             </div>
             <div class="content-column">
                 <div class="site-brand">
-                    <picture>
-                        <source srcset="landing/images/logo-400.webp" type="image/webp">
-                        <img class="site-brand-logo" src="landing/images/logo-400.png" width="400" height="400"
-                            alt="Afrin Archive logo" decoding="async" fetchpriority="high">
-                    </picture>
-                    <div class="site-brand-text">
-                        <h1 class="site-title-en">Afrin Archive</h1>
-                <h2 class="site-title-ar">أرشيف عفرين</h2>
-                    </div>
+                    <h1 class="site-title-en"><span>Afrin</span> <span>Archive</span></h1>
+                    <h2 class="site-title-ar">أرشيف عفرين</h2>
                 </div>
                 <div class="welcome-container">
                     <span class="welcome-lang lang-ar">أهلاً وسهلاً</span>
@@ -1322,6 +1571,7 @@
                     <span class="welcome-lang lang-so">بەخێربێیت</span>
                     <span class="welcome-lang lang-fa">خوش آمدید</span>
                     <span class="welcome-lang lang-ru">Добро пожаловать</span>
+                    <span class="welcome-lang lang-syr">ܫܠܵܡܵܐ</span>
                     <span class="welcome-lang lang-hy">Բարի գալուստ</span>
                     <span class="welcome-lang lang-arc">ܒܫܲܝܢܵܐ</span>
                     <span class="welcome-lang lang-ota">خوش کلدکز</span>
@@ -1332,29 +1582,461 @@
                     <span class="welcome-lang lang-egy">𓇍𓇋𓇋𓀀</span>
                     <span class="welcome-lang lang-hit">𒀀𒋗𒇷</span>
                     <span class="welcome-lang lang-hur">𒄷𒌨𒊑</span>
-                    <span class="welcome-lang lang-syr">ܫܠܵܡܵܐ</span>
-                </div>
-                <div class="search-wrapper">
-                    <input type="text" id="search-input" class="search-input"
-                        placeholder="Search villages, people, places...">
-                    <div class="search-options">
-                        <div class="search-checkbox-group">
-                            <label class="search-checkbox-label" for="villages-only-toggle">
-                                <input type="checkbox" id="villages-only-toggle" class="search-checkbox" checked>
-                                <span>Search Village Directory Only</span>
-                            </label>
-                            <label class="search-checkbox-label" for="shrines-only-toggle">
-                                <input type="checkbox" id="shrines-only-toggle" class="search-checkbox">
-                                <span>Search Shrine Files Only</span>
-                            </label>
-                        </div>
-                        <a class="smart-search-link" href="smart-search/index.html">Smart-Search with map</a>
-                    </div>
-                    <div id="search-results" class="search-results"></div>
-                    <button class="search-button" onclick="showSearchResultsPage()">Search</button>
                 </div>
             </div>
         </div>
+        <div class="search-wrapper" role="search">
+            <div class="search-field">
+                <input type="text" id="search-input" class="search-input"
+                    placeholder="Search villages, people, places..." aria-label="Search the archive">
+                <div id="search-results" class="search-results"></div>
+            </div>
+            <button class="search-button" onclick="showSearchResultsPage()">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="M20 20l-3.8-3.8"></path>
+                </svg>
+                <span>Search</span>
+            </button>
+            <div class="search-checkbox-group">
+                <label class="search-checkbox-label" for="villages-only-toggle">
+                    <input type="checkbox" id="villages-only-toggle" class="search-checkbox" checked>
+                    <span>Search Village Directory Only</span>
+                </label>
+                <label class="search-checkbox-label" for="shrines-only-toggle">
+                    <input type="checkbox" id="shrines-only-toggle" class="search-checkbox">
+                    <span>Search Shrine Files Only</span>
+                </label>
+            </div>
+            <a class="smart-search-link" href="smart-search/index.html">Smart-Search with map</a>
+        </div>
+        <!-- The block between these markers is written by 9_latest_substack_articles.py. Do not edit it by hand. -->
+        <!-- LATEST-ARTICLES:START -->
+        <section class="articles" aria-roledescription="carousel" aria-label="Articles from the Afrin Archive Substack">
+            <button class="articles-arrow" id="articles-prev" type="button" aria-label="Newer articles">
+                <svg viewBox="0 0 40 100" aria-hidden="true"><path d="M31 8 11 50l20 42"></path></svg>
+            </button>
+            <div class="articles-track" id="articles-track" tabindex="0">
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="1 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/helweci-guze" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" style="object-position: 50% 34%" src="https://substackcdn.com/image/fetch/$s_!IdHS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffafca0b3-7e08-4bee-8e63-17b06e1bcab8_1024x1024.png" alt="" loading="eager" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">7 November 2026</div>
+                        <h3 class="article-card-title">Helwecî Güzel</h3>
+                        <p class="article-card-subtitle">Cracking Open an Afrini Dengbeji</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/15c" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" style="object-position: 50% 37%" src="https://substackcdn.com/image/fetch/$s_!bDNv!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F310d5106-f1b2-439b-b4e2-6b2ba7f8813a_1024x1024.png" alt="" loading="eager" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٧ تشرين الثاني ٢٠٢٦</div>
+                        <h3 class="article-card-title">حلوجي غوزل</h3>
+                        <p class="article-card-subtitle">فكّ أسرار دنكبيجي عفريني</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="2 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/stone-mysteries-of-the-sky-fathers" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!D8yG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b062ae1-7acd-4bb9-b2e5-dc09b05771c3_1920x1080.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">1 September 2026</div>
+                        <h3 class="article-card-title">Stone Mysteries of the Sky Fathers</h3>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/db9" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!D8yG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b062ae1-7acd-4bb9-b2e5-dc09b05771c3_1920x1080.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">١ أيلول ٢٠٢٦</div>
+                        <h3 class="article-card-title">الأسرار الحجرية لآباء السماء</h3>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="3 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/the-seven-mends" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image article-card-image-tall" src="https://substackcdn.com/image/fetch/$s_!L-VR!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8f62ad1c-42e1-4601-93e9-720c5e06116b_573x823.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">8 August 2026</div>
+                        <h3 class="article-card-title">The Seven Mends</h3>
+                        <p class="article-card-subtitle">Wild Mythological Roots of Afrin&#x27;s Ruling Family</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/bb4" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image article-card-image-tall" src="https://substackcdn.com/image/fetch/$s_!L-VR!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8f62ad1c-42e1-4601-93e9-720c5e06116b_573x823.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٨ آب ٢٠٢٦</div>
+                        <h3 class="article-card-title">المنديون السبعة</h3>
+                        <p class="article-card-subtitle">الجذور الأسطورية الجامحة لعائلة عفرين الحاكمة</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="4 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/whats-up-with-the-number-366" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F682e300c-b0f4-41ba-80b4-901902472124_1280x720.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">3 July 2026</div>
+                        <h3 class="article-card-title">What&#x27;s up with the Number 366</h3>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/366" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe0bfaa90-eeb9-4753-82c0-8b687ba54876_1280x720.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٣ تموز ٢٠٢٦</div>
+                        <h3 class="article-card-title">ما قصة الرقم 366؟</h3>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="5 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/the-history-of-afrin-part-vii-collapse" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F95f45cd0-1fed-4510-ac48-9fdc871eeb58_1672x941.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">26 June 2026</div>
+                        <h3 class="article-card-title">The History of Afrin Part VII: Collapse</h3>
+                        <p class="article-card-subtitle">944 - 1086</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/f73" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa5795eb9-d79c-439d-bed1-1e66303eec24_1672x941.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٢٦ حزيران ٢٠٢٦</div>
+                        <h3 class="article-card-title">تاريخ عفرين - الجزء السابع: الانهيار</h3>
+                        <p class="article-card-subtitle">944 - 1086</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="6 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/from-city-to-dust-the-history-of" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!LnJs!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a436c3d-c399-460c-a534-1bc33983684d_1280x852.jpeg" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">16 June 2026</div>
+                        <h3 class="article-card-title">From Metropolis to Dust - The History of Nebi Huri</h3>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/68e" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!LnJs!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a436c3d-c399-460c-a534-1bc33983684d_1280x852.jpeg" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">١٦ حزيران ٢٠٢٦</div>
+                        <h3 class="article-card-title">من الحاضرة إلى التراب: تاريخ نبي هوري</h3>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="7 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/1017" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa7721802-8cbb-492a-bc12-c407cf68dc67_1672x941.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">9 June 2026</div>
+                        <h3 class="article-card-title">1017 - the End of Simeon</h3>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/1017-ee0" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F20696b6f-7a4d-43c4-b4fa-4bda7e54248c_1672x941.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٩ حزيران ٢٠٢٦</div>
+                        <h3 class="article-card-title">1017 - نهاية سمعان</h3>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="8 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/the-tell-of-jindires" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2a162546-7937-4213-a75e-612fb04ecfbb_1672x941.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">2 June 2026</div>
+                        <h3 class="article-card-title">The Tell of Jindires</h3>
+                        <p class="article-card-subtitle">Telling it like it is</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/f13" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fad719eee-0ef0-472a-9833-adf7351bf3dd_1672x941.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٢ حزيران ٢٠٢٦</div>
+                        <h3 class="article-card-title">ما هو أصل اسم جنديرس؟</h3>
+                        <p class="article-card-subtitle">جاء من كل مكان</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="9 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/history-of-afrin-part-vi" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image article-card-image-tall" src="https://substackcdn.com/image/fetch/$s_!gimm!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fee06e2f3-490b-41c5-9d72-8ab71e0c1758_1024x1024.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">26 May 2026</div>
+                        <h3 class="article-card-title">History of Afrin Part VI</h3>
+                        <p class="article-card-subtitle">Life under Muslims and Romans: the Dark Ages continue</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/ff0" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image article-card-image-tall" src="https://substackcdn.com/image/fetch/$s_!8sMe!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4dab19dd-b9fa-4367-b573-adc50c118e0e_1024x1024.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٢٦ أيار ٢٠٢٦</div>
+                        <h3 class="article-card-title">تاريخ عفرين الجزء السادس</h3>
+                        <p class="article-card-subtitle">الحياة في ظل المسلمين والرومان: استمرار العصور المظلمة</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="10 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/history-of-afrin-part-v" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!vtim!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3159efa1-7328-4315-9ff6-d15c5b8383e7_862x575.jpeg" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">19 May 2026</div>
+                        <h3 class="article-card-title">History of Afrin Part V</h3>
+                        <p class="article-card-subtitle">The Dark Age Begins</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/74e" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!vtim!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3159efa1-7328-4315-9ff6-d15c5b8383e7_862x575.jpeg" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">١٩ أيار ٢٠٢٦</div>
+                        <h3 class="article-card-title">تاريخ عفرين الجزء الخامس</h3>
+                        <p class="article-card-subtitle">بداية العصر المظلم</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="11 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/history-of-afrin-part-iv" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F32eca07d-76ca-46ac-8799-406c05d76681_1428x808.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">13 May 2026</div>
+                        <h3 class="article-card-title">History of Afrin Part IV</h3>
+                        <p class="article-card-subtitle">Recap before the Dark Ages</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/f7a" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F97e51a5a-399a-469e-b53a-53de664f6f5a_1428x808.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">١٣ أيار ٢٠٢٦</div>
+                        <h3 class="article-card-title">تاريخ عفرين الجزء الرابع</h3>
+                        <p class="article-card-subtitle">ملخص قبل العصور المظلمة</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="12 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/the-history-of-afrin-part-iii" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!tM1s!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3eedb08f-8674-4b9a-a41b-17dfee9665ca_1676x938.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">21 April 2026</div>
+                        <h3 class="article-card-title">The History of Afrin Part III</h3>
+                        <p class="article-card-subtitle">What did the Romans ever do for us?</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/b0f" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!tM1s!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3eedb08f-8674-4b9a-a41b-17dfee9665ca_1676x938.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٢١ نيسان ٢٠٢٦</div>
+                        <h3 class="article-card-title">تاريخ عفرين الجزء الثالث</h3>
+                        <p class="article-card-subtitle">ماذا قدم لنا الرومان على الإطلاق؟</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="13 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/the-history-of-afrin-part-ii" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!3Kfe!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7dec4afc-4987-4565-8ac8-475627592437_1024x836.jpeg" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">15 April 2026</div>
+                        <h3 class="article-card-title">The History of Afrin Part II</h3>
+                        <p class="article-card-subtitle">The City of Saints</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/a7e" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!3Kfe!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7dec4afc-4987-4565-8ac8-475627592437_1024x836.jpeg" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">١٥ نيسان ٢٠٢٦</div>
+                        <h3 class="article-card-title">تاريخ عفرين الجزء الثاني</h3>
+                        <p class="article-card-subtitle">مدينة القديسين</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="14 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/the-history-of-afrin-part-1" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!NeLG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0229f1c4-a37e-43a2-a359-bb7e191e0833_1536x1024.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">8 April 2026</div>
+                        <h3 class="article-card-title">The History of Afrin Part 1</h3>
+                        <p class="article-card-subtitle">from East to West</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/a80" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!NeLG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0229f1c4-a37e-43a2-a359-bb7e191e0833_1536x1024.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٨ نيسان ٢٠٢٦</div>
+                        <h3 class="article-card-title">تاريخ عفرين الجزء الأول</h3>
+                        <p class="article-card-subtitle">من الشرق إلى الغرب</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="15 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/saint-symeon-stylites-the-elder-part-a35" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image article-card-image-tall" src="https://substackcdn.com/image/fetch/$s_!_2KG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b59c3bf-5b10-472b-8876-1be4b521ca4e_735x1011.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">1 April 2026</div>
+                        <h3 class="article-card-title">Saint Symeon Stylites the Elder Part II</h3>
+                        <p class="article-card-subtitle">The Man Who Climbed Up and Never Came Down</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/846" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image article-card-image-tall" src="https://substackcdn.com/image/fetch/$s_!_qoL!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78661c6e-a48b-42d0-85ef-b5157547779d_735x1011.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">١ نيسان ٢٠٢٦</div>
+                        <h3 class="article-card-title">القديس سمعان العمودي الأكبر الجزء الثاني</h3>
+                        <p class="article-card-subtitle">الرجل الذي صعد ولم ينزل أبدًا</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="16 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/saint-symeon-stylites-the-elder-part" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image article-card-image-tall" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01a3bccd-5243-49fc-a4e8-e8a4206874f5_2050x2048.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">24 March 2026</div>
+                        <h3 class="article-card-title">Saint Symeon Stylites the Elder: Part I</h3>
+                        <p class="article-card-subtitle">The Man Who Climbed Up and Never Came Down</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/218" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image article-card-image-tall" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4888ad19-c359-4b61-a24c-c34e89314988_2050x2048.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٢٤ آذار ٢٠٢٦</div>
+                        <h3 class="article-card-title">القديس سمعان العمودي الكبير: الجزء الأول</h3>
+                        <p class="article-card-subtitle">الرجل الذي صعد ولم ينزل أبدًا</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="17 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/may-your-home-be-built" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!R6FG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff48575f8-5d3d-494d-bff2-f098d691731d_1280x859.jpeg" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">10 March 2026</div>
+                        <h3 class="article-card-title">May Your Home be Built</h3>
+                        <p class="article-card-subtitle">An X-File from Afrin, Syria</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/0a5" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!R6FG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff48575f8-5d3d-494d-bff2-f098d691731d_1280x859.jpeg" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">١٠ آذار ٢٠٢٦</div>
+                        <h3 class="article-card-title">الله يعمر بيتك</h3>
+                        <p class="article-card-subtitle">ملف X-File من عفرين، سوريا</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="18 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/mercy-in-a-village-called-satan" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!L54w!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc5f3857c-0437-4293-8134-4fab7457ea51_1536x1024.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">3 March 2026</div>
+                        <h3 class="article-card-title">Mercy in a Village called Satan</h3>
+                        <p class="article-card-subtitle">The Armenians of Afrin, Syria</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/4c6" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5917ef99-796e-4367-853f-f317fa3b854a_1536x1024.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٣ آذار ٢٠٢٦</div>
+                        <h3 class="article-card-title">الرحمة في قرية تُدعى شيطان</h3>
+                        <p class="article-card-subtitle">أرمن عفرين، سوريا</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="19 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/when-the-sun-gave-light-without-brightness" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d3fcab5-a18c-479a-a45f-cab4c739a7eb_1288x900.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">23 February 2026</div>
+                        <h3 class="article-card-title">When the Sun Gave Light Without Brightness</h3>
+                        <p class="article-card-subtitle">Uncovering the origins of Afrin&#x27;s native population</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/a5d" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fad22b32d-4c07-46b4-898b-8263d6284c86_1288x900.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٢٣ شباط ٢٠٢٦</div>
+                        <h3 class="article-card-title">عندما أضاءت الشمس بدون إشراق</h3>
+                        <p class="article-card-subtitle">الكشف عن أصول السكان الأصليين لعفرين</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="20 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/the-weve-always-been-here-mystery" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!Bq-E!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdef8174d-8e6b-40ae-83e2-b02ecd6b21af_1919x1079.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">17 February 2026</div>
+                        <h3 class="article-card-title">The &quot;We&#x27;ve Always Been Here&quot; Mystery</h3>
+                        <p class="article-card-subtitle">The Kurds of Afrin, Syria</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/2a7" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!Bq-E!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdef8174d-8e6b-40ae-83e2-b02ecd6b21af_1919x1079.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">١٧ شباط ٢٠٢٦</div>
+                        <h3 class="article-card-title">لغز : لقد كنا هنا دائماً</h3>
+                        <p class="article-card-subtitle">أكراد عفرين، سوريا</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            <div class="articles-slide" role="group" aria-roledescription="slide" aria-label="21 of 21">
+                <a class="article-card article-card-en" href="https://afrinarchive.substack.com/p/the-caves-of-afrin-part-1" target="_blank" rel="noopener" lang="en">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!Yqof!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F90b3c5dd-9642-4056-b4a1-f5f26e910461_779x600.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">4 December 2025</div>
+                        <h3 class="article-card-title">The Caves of Afrin, Part 1</h3>
+                        <p class="article-card-subtitle">English Version</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+                <a class="article-card article-card-ar" href="https://afrinarchive.substack.com/p/375" target="_blank" rel="noopener" lang="ar" dir="rtl">
+                    <img class="article-card-image" src="https://substackcdn.com/image/fetch/$s_!Yqof!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F90b3c5dd-9642-4056-b4a1-f5f26e910461_779x600.png" alt="" loading="lazy" decoding="async">
+                    <div class="article-card-body">
+                        <div class="article-card-meta">٤ كانون الأول ٢٠٢٥</div>
+                        <h3 class="article-card-title">كهوف عفرين، الجزء الأول</h3>
+                        <p class="article-card-subtitle">النسخة العربية</p>
+                        <div class="article-card-source">afrinarchive.substack.com</div>
+                    </div>
+                </a>
+            </div>
+            </div>
+            <button class="articles-arrow" id="articles-next" type="button" aria-label="Older articles">
+                <svg viewBox="0 0 40 100" aria-hidden="true"><path d="M9 8l20 42-20 42"></path></svg>
+            </button>
+        </section>
+        <!-- LATEST-ARTICLES:END -->
+        <hr class="section-divider">
     </div>
 
     <div class="search-results-page" id="search-results-page">
@@ -1410,7 +2092,7 @@
                     <div class="section-header">
                         <h3 class="secondary-title">Substack</h3>
                     </div>
-                    <p class="section-text">Articles about Afrin every Tuesday.</p>
+                    <p class="section-text">Weekly Articles about Afrin, always human-written.</p>
                 </div>
             </a>
             <div class="section section-3 theme-red">
@@ -1433,22 +2115,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="section section-5 theme-green" onclick="window.location.href = 'mailto:afrin.archive@gmail.com'">
-                <picture class="section-picture" aria-hidden="true">
-                    <source media="(max-width: 768px)" srcset="landing/images/mobile/contact.webp" type="image/webp">
-                    <img class="section-background" src="landing/images/contact.jpg" alt="" width="431" height="531" loading="lazy" decoding="async" fetchpriority="low">
-                </picture>
-                <div class="section-content">
-                    <div class="section-header">
-                        <h3 class="secondary-title">Contact Us</h3>
-                    </div>
-                    <p class="section-text">afrin.archive@gmail.com</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="sections-container">
-            <div class="section section-4 theme-red" onclick="window.location.href = 'updates/updates.html'">
+            <div class="section section-4 theme-green" onclick="window.location.href = 'updates/updates.html'">
                 <picture class="section-picture" aria-hidden="true">
                     <source media="(max-width: 768px)" srcset="landing/images/mobile/updates.webp" type="image/webp">
                     <img class="section-background" src="landing/images/updates.jpg" alt="" width="320" height="424" loading="lazy" decoding="async" fetchpriority="low">
@@ -1464,18 +2131,32 @@
                     </div>
                 </div>
             </div>
-            <a class="section section-6 section-link theme-yellow" href="https://www.youtube.com/@endlesslynow" target="_blank"
-                rel="noopener noreferrer">
+        </div>
+
+        <div class="sections-container">
+            <div class="section section-5 theme-red" onclick="window.location.href = 'mailto:afrin.archive@gmail.com'">
                 <picture class="section-picture" aria-hidden="true">
-                    <source media="(max-width: 768px)" srcset="landing/images/mobile/youtube.webp" type="image/webp">
-                    <img class="section-background" src="landing/images/youtube.png" alt="" width="474" height="570" loading="lazy" decoding="async" fetchpriority="low">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/contact.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/contact.jpg" alt="" width="431" height="531" loading="lazy" decoding="async" fetchpriority="low">
                 </picture>
                 <div class="section-content">
                     <div class="section-header">
-                        <h3 class="secondary-title">Youtube</h3>
+                        <h3 class="secondary-title">Contact Us</h3>
                     </div>
-                    <p class="section-text">My Youtube channel dedicated to the history of Afrin and more. Videos are
-                        both in Kurmanji Kurdish and English.</p>
+                    <p class="section-text">afrin.archive@gmail.com</p>
+                </div>
+            </div>
+            <a class="section section-10 section-link theme-yellow" href="https://www.zachariahhopkins.com/afrin_timeline/afrintimeline.html">
+                <picture class="section-picture" aria-hidden="true">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/timeline.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/timeline.png" alt="" width="474" height="570" loading="lazy" decoding="async" fetchpriority="low">
+                </picture>
+                <div class="section-content">
+                    <div class="section-header">
+                        <h3 class="secondary-title">Timeline of Afrin</h3>
+                    </div>
+                    <p class="section-text">A detailed timeline from 2700 BCE until 2010 AD for Afrin, Syria and the
+                        surrounding region, in English, Kurmanji Kurdish, and Arabic.</p>
                 </div>
             </a>
             <a class="section section-7 section-link theme-green" href="archive-research-tools/index.html">
@@ -1519,17 +2200,18 @@
         </div>
 
         <div class="sections-container">
-            <a class="section section-10 section-link theme-green" href="https://www.zachariahhopkins.com/afrin_timeline/afrintimeline.html">
+            <a class="section section-6 section-link theme-green" href="https://www.youtube.com/@endlesslynow" target="_blank"
+                rel="noopener noreferrer">
                 <picture class="section-picture" aria-hidden="true">
-                    <source media="(max-width: 768px)" srcset="landing/images/mobile/timeline.webp" type="image/webp">
-                    <img class="section-background" src="landing/images/timeline.png" alt="" width="474" height="570" loading="lazy" decoding="async" fetchpriority="low">
+                    <source media="(max-width: 768px)" srcset="landing/images/mobile/youtube.webp" type="image/webp">
+                    <img class="section-background" src="landing/images/youtube.png" alt="" width="474" height="570" loading="lazy" decoding="async" fetchpriority="low">
                 </picture>
                 <div class="section-content">
                     <div class="section-header">
-                        <h3 class="secondary-title">Timeline of Afrin</h3>
+                        <h3 class="secondary-title">Youtube</h3>
                     </div>
-                    <p class="section-text">A detailed timeline from 2700 BCE until 2010 AD for Afrin, Syria and the
-                        surrounding region, in English, Kurmanji Kurdish, and Arabic.</p>
+                    <p class="section-text">My Youtube channel dedicated to the history of Afrin and more. Videos are
+                        both in Kurmanji Kurdish and English.</p>
                 </div>
             </a>
             <a class="section section-by-air section-link theme-red" href="by-air/index.html">
@@ -1865,6 +2547,63 @@
                 setInterval(nextSlide, 4000); // 4-second interval
             }
         }
+    </script>
+    <script>
+        // Substack article slider: arrows and keyboard. Swiping is native
+        // sideways scrolling of the track. The slides are written by 9_latest_substack_articles.py.
+        (function () {
+            const track = document.getElementById('articles-track');
+            const prev = document.getElementById('articles-prev');
+            const next = document.getElementById('articles-next');
+            if (!track || !prev || !next) return;
+            const slides = track.querySelectorAll('.articles-slide');
+
+            const index = () => Math.round(track.scrollLeft / track.clientWidth);
+            const goTo = (i) => {
+                const target = Math.max(0, Math.min(slides.length - 1, i));
+                track.scrollTo({ left: target * track.clientWidth });
+            };
+            const update = () => {
+                const i = index();
+                prev.disabled = i <= 0;
+                next.disabled = i >= slides.length - 1;
+            };
+
+            // Moves on by itself every 5 seconds, back to the newest after the last one.
+            // It waits while the mouse is over the slider, and the 5 seconds start again
+            // whenever the reader uses the arrows, the keyboard or swipes.
+            const AUTO_MS = 5000;
+            const section = track.closest('.articles') || track;
+            let timer = null;
+            let hovering = false;
+            const advance = () => {
+                if (hovering || document.hidden) return;
+                const i = index();
+                goTo(i >= slides.length - 1 ? 0 : i + 1);
+            };
+            const restart = () => {
+                clearInterval(timer);
+                timer = setInterval(advance, AUTO_MS);
+            };
+            section.addEventListener('mouseenter', () => { hovering = true; });
+            section.addEventListener('mouseleave', () => { hovering = false; restart(); });
+            track.addEventListener('touchstart', restart, { passive: true });
+
+            prev.addEventListener('click', () => { goTo(index() - 1); restart(); });
+            next.addEventListener('click', () => { goTo(index() + 1); restart(); });
+            track.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(index() - 1); restart(); }
+                if (event.key === 'ArrowRight') { event.preventDefault(); goTo(index() + 1); restart(); }
+            });
+            let pending = null;
+            track.addEventListener('scroll', () => {
+                if (pending) cancelAnimationFrame(pending);
+                pending = requestAnimationFrame(update);
+            }, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+            if (slides.length > 1) restart();
+        })();
     </script>
 <script data-goatcounter="https://afrinarchive.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

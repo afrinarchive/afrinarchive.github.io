@@ -35,6 +35,7 @@ C:\Users\Zachar\Desktop\update_site_Afrin_Archive\
 | `6_calculate_stats.py` | transcripts + name list | stats injected into `index.html` |
 | `7_make_seo.py` | the repo's public HTML folders | `sitemap.xml` + `robots.txt` at repo root |
 | `8_build_pagefind.py` | village pages, transcripts, and shrine pages | `pagefind/` search index |
+| `9_latest_substack_articles.py` | the Substack API (`afrinarchive.substack.com/api/v1/posts`) | article slider in `index.html` (one English + Arabic pair per slide), between the `LATEST-ARTICLES` markers; the slider's arrow script in `index.html` is hand-made |
 
 `site_update_gui.py` / `update_afrin_archive.bat` run the pipeline.
 
@@ -64,7 +65,7 @@ C:\Users\Zachar\Documents\Hatra\obsdian_vaults\Zachar\Files\for leaflet\000 Afri
 
 | Path | What it is | Generated? |
 | :--- | :--- | :--- |
-| `index.html` | Homepage (cards link to all sections) | Hand-made; stats numbers injected by script 6 |
+| `index.html` | Homepage (cards link to all sections) | Hand-made; stats numbers injected by script 6, latest-article cards by script 9 |
 | `village_sites/` | 366 village pages + `afrin_locations.json` | **Generated** (scripts 1 and 5) |
 | `shrine_sites/` | Shrine and holy-site pages | **Generated** (script 1a) |
 | `village_transcripts/` | 379 transcript pages | **Generated** (script 0) |
