@@ -17,7 +17,7 @@ about 204 MB.
 ## Sources
 
 - `streets.pmtiles`: regional extract of the 2026-11-07 Protomaps build,
-  based on OpenStreetMap. OpenStreetMap attribution is retained on the maps.
+  based on OpenStreetMap. OpenStreetMap contributors are credited here.
 - `voyager-source.json`: the published CARTO Voyager style. Its BSD license
   is in `licenses/`. The generated `style.js` replaces its hosted data,
   font and sprite addresses with local files at runtime.
@@ -25,11 +25,12 @@ about 204 MB.
   name fields, including Kurdish and Arabic. The original Montserrat,
   Open Sans and Noto font licenses are included.
 - `terrain/`: Mapzen Terrarium elevation tiles saved from the public
-  elevation-tiles-prod dataset. The maps retain terrain attribution.
+  elevation-tiles-prod dataset. Terrain credit: Mapzen / USGS SRTM,
+  GMTED2010 / NOAA ETOPO1.
 - `satellite/`: Copernicus Sentinel-2 pictures from the single day named by
   `satelliteDate` in `scripts/map-data-config.json`, zooms 8 to 14. Their free
   license allows hosting with the credit "Contains modified Copernicus Sentinel
-  data", which the maps show. Rebuild with `python scripts/build-satellite-tiles.py`
+  data", given here because the maps no longer show a credit bar. Rebuild with `python scripts/build-satellite-tiles.py`
   (needs rasterio, pillow and numpy).
 - `vendor/`: local PMTiles, Leaflet–MapLibre adapter and RTL text plugin.
   The RTL plugin version works with the site's existing MapLibre 4.3.2.

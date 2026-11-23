@@ -111,6 +111,7 @@ Each generated village page contains:
   pictures are local: satellite in `assets/maps/satellite/`, streets, hills and labels in
   `assets/maps/`. **Never point a map at an outside map company again.** Afrin Airlines
   (`by-air/`) uses the same files; `scripts/link-local-maps.mjs` keeps it that way.
+- A district map: an iframe of `afrin-map/index.html?embed&focus=<page name>`, the joined map of the seven district scans, zoomed to the village's district with its area lit. Its build scripts and notes are in `C:\Users\Zachar\Documents\Hatra\Afrin_whole_map_test` (read `HANDOFF.md` there).
 - A `fetch('afrin_locations.json')` that draws every marker in the database.
   Adding extra JSON fields is safe (the JS reads only `name`, `lat`, `lng`, `type`).
 

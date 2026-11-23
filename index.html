@@ -98,9 +98,28 @@
         .layout-container {
             display: flex;
             width: 100%;
-            max-width: 1400px;
-            gap: 48px;
-            align-items: stretch;
+            max-width: 1640px;
+            gap: 36px;
+            align-items: center;
+        }
+
+        /* The joined map of Afrin's seven districts, on the right of the title. */
+        .map-column {
+            flex: 0.8 1 0;
+            min-width: 0;
+            aspect-ratio: 4950 / 6000;
+            max-height: 78vh;
+            overflow: hidden;
+            background-color: transparent;
+        }
+
+        .map-column iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background-color: transparent;
+            color-scheme: normal;
         }
 
         .graph-column {
@@ -120,8 +139,10 @@
                 100.00% 58.81%, 97.64% 50.35%, 98.38% 39.98%, 97.58% 37.06%, 98.32% 32.63%,
                 97.85% 19.03%, 94.68% 12.08%
             );
-            flex: 3;
-            height: 70vh;
+            flex: 1 1 0;
+            min-width: 0;
+            aspect-ratio: 1 / 1;
+            max-height: 78vh;
             background-color: #000000;
             position: relative;
             cursor: grab;
@@ -212,7 +233,7 @@
         }
 
         .content-column {
-            flex: 2;
+            flex: 0 0 420px;
             align-self: stretch;
             text-align: center;
             display: flex;
@@ -246,6 +267,7 @@
         }
 
         .site-brand {
+            align-self: center;
             display: flex;
             flex-direction: column;
             align-items: stretch;
@@ -1352,6 +1374,19 @@
                 flex: none;
             }
 
+            .graph-column {
+                aspect-ratio: auto;
+                height: 70vh;
+                max-height: none;
+            }
+
+            .map-column {
+                flex: none;
+                width: 100%;
+                max-width: 640px;
+                max-height: none;
+            }
+
             .search-wrapper {
                 flex-wrap: wrap;
                 margin-top: 30px;
@@ -1583,6 +1618,9 @@
                     <span class="welcome-lang lang-hit">𒀀𒋗𒇷</span>
                     <span class="welcome-lang lang-hur">𒄷𒌨𒊑</span>
                 </div>
+            </div>
+            <div class="map-column">
+                <iframe src="afrin-map/index.html?embed" title="Map of Afrin's villages and districts" loading="lazy"></iframe>
             </div>
         </div>
         <div class="search-wrapper" role="search">

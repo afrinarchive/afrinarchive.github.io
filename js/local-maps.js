@@ -4,6 +4,13 @@
     const base = new URL('../assets/maps/', document.currentScript.src);
     const bounds = [36.3, 36.0, 37.35, 37.1];
     const registered = new WeakSet();
+
+    // The archive's maps carry no credit bar. The sources are credited in assets/maps/README.md.
+    if (document.head) {
+        const hideCreditBar = document.createElement('style');
+        hideCreditBar.textContent = '.maplibregl-ctrl-attrib{display:none!important}';
+        document.head.appendChild(hideCreditBar);
+    }
     const url = filename => new URL(filename, base).href.replaceAll('%7B', '{').replaceAll('%7D', '}');
 
     // The public host supports byte ranges. This fallback also lets ordinary
