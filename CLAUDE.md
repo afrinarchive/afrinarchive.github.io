@@ -7,7 +7,7 @@ and the rules to follow when changing anything. Read this before editing.
 
 A static HTML archive preserving the villages, oral history, and cultural heritage of
 Afrin, Syria. Live at **https://www.afrinarchive.com** via **GitHub Pages** (see `CNAME`).
-Deployment = commit + push to `main` (commits are usually "Automated update of website content").
+Deployment = the user uploads with Rufus (Claude never commits or pushes) (commits are usually "Automated update of website content").
 GitHub Pages URLs are **case-sensitive** and this repo is developed on Windows (case-insensitive),
 so a link that works locally can 404 in production if the case is wrong.
 
@@ -35,7 +35,8 @@ C:\Users\Zachar\Desktop\update_site_Afrin_Archive\
 | `6_calculate_stats.py` | transcripts + name list | stats injected into `index.html` |
 | `7_make_seo.py` | the repo's public HTML folders | `sitemap.xml` + `robots.txt` at repo root |
 | `8_build_pagefind.py` | village pages, transcripts, and shrine pages | `pagefind/` search index |
-| `9_latest_substack_articles.py` | the Substack API (`afrinarchive.substack.com/api/v1/posts`) | article slider in `index.html` (one English + Arabic pair per slide), between the `LATEST-ARTICLES` markers; the slider's arrow script in `index.html` is hand-made |
+| `10_check_site.py` | the whole repo | nothing; stops publishing if pages disappeared, a page uses an outside map company, or satellite pictures are missing |
+| `9_latest_substack_articles.py` (runs the repo's `scripts/latest_substack_articles.py`; GitHub also runs that daily through `.github/workflows/update-articles.yml`) | the Substack API (`afrinarchive.substack.com/api/v1/posts`) | article slider in `index.html` (one English + Arabic pair per slide), between the `LATEST-ARTICLES` markers; the slider's arrow script in `index.html` is hand-made |
 
 `site_update_gui.py` / `update_afrin_archive.bat` run the pipeline.
 
@@ -106,6 +107,10 @@ Each generated village page contains:
   In the generator this must be written as a **raw JS string via `json.dumps`**, NOT
   HTML-escaped — `html.escape` turns `'` into `&#x27;` inside the script and the
   comparison silently fails (this was a real bug; it is fixed, keep it fixed).
+- `window.AfrinMaps.satelliteStyle()` and `setUpMap()` from `js/local-maps.js`. All map
+  pictures are local: satellite in `assets/maps/satellite/`, streets, hills and labels in
+  `assets/maps/`. **Never point a map at an outside map company again.** Afrin Airlines
+  (`by-air/`) uses the same files; `scripts/link-local-maps.mjs` keeps it that way.
 - A `fetch('afrin_locations.json')` that draws every marker in the database.
   Adding extra JSON fields is safe (the JS reads only `name`, `lat`, `lng`, `type`).
 
@@ -159,7 +164,7 @@ if a new generator/template is added, add the tag to it.
 5. After bigger changes, a full-site link check is worthwhile: verify every internal
    `href`/`src` resolves to an existing file (mind URL-encoding and HTML entities in
    hrefs) and that no case mismatches exist (GitHub Pages is case-sensitive).
-6. Deploy = commit + push to `main`.
+6. Deploy = leave the changed files in place; the user uploads them with Rufus. Claude never commits or pushes.
 
 ## Known external/loose ends (as of 2026-06-12)
 

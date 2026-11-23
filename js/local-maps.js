@@ -54,12 +54,102 @@
         };
     }
 
-    function flyoverStyle(renderer, satellite) {
+    // Satellite pictures are stored on this site; see assets/maps/README.md.
+    function satelliteSource() {
+        return {
+            type: 'raster',
+            tiles: [url('satellite/{z}/{x}/{y}.webp')],
+            tileSize: 256,
+            minzoom: 8,
+            maxzoom: 14,
+            bounds,
+            attribution: 'Contains modified Copernicus Sentinel data'
+        };
+    }
+
+    const terrain = { source: 'terrainSource', exaggeration: 1.2 };
+
+    function satelliteStyle() {
+        return {
+            version: 8,
+            sources: { satellite: satelliteSource(), terrainSource: terrainSource() },
+            layers: [
+                { id: 'background', type: 'background', paint: { 'background-color': '#8f7f63' } },
+                { id: 'satellite-layer', type: 'raster', source: 'satellite' }
+            ],
+            terrain
+        };
+    }
+
+    // The archive's own markers name every place, so the street map's different
+    // spellings of the same villages are left out.
+    function villageStreetStyle(renderer) {
         register(renderer);
         const style = streetStyle();
-        style.sources['satellite-tiles'] = satellite;
+        style.sources.terrainSource = terrainSource();
+        style.terrain = terrain;
+        style.layers = style.layers.filter(layer => !layer.id.startsWith('place_'));
+        return style;
+    }
+
+    function loadScript(src) {
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.onload = resolve;
+            script.onerror = () => reject(new Error(`Could not load ${src}`));
+            document.head.appendChild(script);
+        });
+    }
+
+    let streetFiles = null;
+    function loadStreetFiles() {
+        if (!streetFiles) {
+            const ready = window.pmtiles ? Promise.resolve() : loadScript(url('vendor/pmtiles-4.5.0.js'));
+            streetFiles = ready.then(() => window.AfrinLocalMapStyle ? null : loadScript(url('style.js')));
+            streetFiles.catch(() => { streetFiles = null; });
+        }
+        return streetFiles;
+    }
+
+    // Keeps the map inside the saved area and adds a button that changes
+    // between the satellite pictures and the street map.
+    function setUpMap(renderer, map) {
+        map.setMinZoom(8);
+        map.setMaxZoom(18);
+        map.setMaxBounds([[bounds[0], bounds[1]], [bounds[2], bounds[3]]]);
+
+        let street = false;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = 'Street Map';
+        button.style.cssText = 'width:auto;height:auto;padding:7px 12px;font:600 14px Inter,sans-serif;color:#222;';
+        button.addEventListener('click', async () => {
+            button.disabled = true;
+            try {
+                if (!street) await loadStreetFiles();
+                map.setStyle(street ? satelliteStyle() : villageStreetStyle(renderer), { diff: false });
+                street = !street;
+                button.textContent = street ? 'Satellite' : 'Street Map';
+            } catch (error) {
+                console.error('Could not change the map:', error);
+            } finally {
+                button.disabled = false;
+            }
+        });
+        const group = document.createElement('div');
+        group.className = 'maplibregl-ctrl maplibregl-ctrl-group';
+        group.appendChild(button);
+        map.addControl({ onAdd: () => group, onRemove: () => group.remove() }, 'top-left');
+    }
+
+    function flyoverStyle(renderer) {
+        register(renderer);
+        const style = streetStyle();
+        style.sources['satellite-tiles'] = satelliteSource();
         style.layers = [
-            { id: 'satellite-layer', type: 'raster', source: 'satellite-tiles', minzoom: 0, maxzoom: 20 },
+            { id: 'background', type: 'background', paint: { 'background-color': '#8f7f63' } },
+            { id: 'satellite-layer', type: 'raster', source: 'satellite-tiles' },
             // Existing overlays insert themselves before this transparent anchor.
             { id: 'labels-layer', type: 'background', paint: { 'background-opacity': 0 } },
             ...style.layers.filter(layer => layer.type === 'symbol')
@@ -67,5 +157,5 @@
         return style;
     }
 
-    window.AfrinMaps = Object.freeze({ bounds, register, streetStyle, terrainSource, flyoverStyle });
+    window.AfrinMaps = Object.freeze({ bounds, register, streetStyle, terrainSource, satelliteSource, satelliteStyle, setUpMap, flyoverStyle });
 })();

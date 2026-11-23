@@ -20,6 +20,6 @@ The desktop site updater also runs this command's script before rebuilding
 the search index. Its HTML templates reference these local assets directly.
 
 Street maps, map labels, glyphs and terrain now load from `maps/`; see that
-folder's README for the saved area and data sources. GoatCounter and Esri
-satellite imagery keep their existing outside providers. YouTube and other
+folder's README for the saved area and data sources. Satellite pictures load
+from there too. GoatCounter keeps its existing outside provider. YouTube and other
 external links remain unchanged.

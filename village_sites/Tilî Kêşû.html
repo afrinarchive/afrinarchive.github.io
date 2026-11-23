@@ -238,7 +238,7 @@
         </main>
 
         <footer class="text-center mt-12 py-4 border-t themed-border">
-            <p class="text-sm subtext">Page Updated on November 13, 2026</p>
+            <p class="text-sm subtext">Page Updated on November 23, 2026</p>
         </footer>
     </div>
 
@@ -350,42 +350,19 @@
             const mainVillageName = "Tilî Kêşû";
             const villageLat = 36.667485047;
             const villageLng = 36.591118891;
-            const initialZoom = 13.5;
+            const initialZoom = 13;
             
             if (villageLat !== null && villageLng !== null) {
                 const map = new maplibregl.Map({
                     container: 'map',
-                    style: {
-                        version: 8,
-                        sources: {
-                            'satellite': {
-                                type: 'raster',
-                                tiles: [
-                                    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
-                                ],
-                                tileSize: 256,
-                                attribution: 'Tiles &copy; Esri'
-                            },
-                            'terrainSource': window.AfrinMaps.terrainSource()
-                        },
-                        layers: [
-                            {
-                                id: 'satellite-layer',
-                                type: 'raster',
-                                source: 'satellite'
-                            }
-                        ],
-                        terrain: {
-                            source: 'terrainSource',
-                            exaggeration: 1.2
-                        }
-                    },
+                    style: window.AfrinMaps.satelliteStyle(),
                     center: [villageLng, villageLat],
                     zoom: initialZoom,
                     pitch: 0, // Start flat in 2D
                     bearing: 0 // Start looking straight North
                 });
 
+                window.AfrinMaps.setUpMap(maplibregl, map);
                 map.addControl(new maplibregl.NavigationControl());
 
                 let isTilted = false;

@@ -1,7 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import vm from 'node:vm';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const previewIndex = process.argv.indexOf('--preview');
@@ -18,15 +17,20 @@ async function write(relative, original, updated) {
     changed += 1;
 }
 
+// Existing village and shrine pages are switched to the pictures stored on this
+// site. Pages that already use them are left alone, so this is safe to repeat.
 for (const folder of ['village_sites', 'shrine_sites']) {
     for (const entry of await fs.readdir(path.join(root, folder))) {
         if (!entry.endsWith('.html')) continue;
         const relative = `${folder}/${entry}`;
         const original = await fs.readFile(path.join(root, relative), 'utf8');
-        if (!original.includes('elevation3d.arcgis.com/')) continue;
-        const updated = original.replace(/(['"]?terrainSource['"]?\s*:\s*)\{\s*type:\s*['"]raster-dem['"][\s\S]*?\n\s*\}/g, '$1window.AfrinMaps.terrainSource()')
-            .replace(/(<script\s+src="[^"\n]*maplibre-gl[^"\n]*\.js"[^>]*><\/script>)/, '$1\n    <script src="../js/local-maps.js"></script>');
-        if (updated.includes('elevation3d.arcgis.com/')) throw new Error(`Terrain replacement failed: ${relative}`);
+        if (!original.includes('arcgisonline.com/')) continue;
+        const updated = original
+            .replace(/style:\s*\{\s*version:\s*8,[\s\S]*?terrain:\s*\{[^}]*\}\s*\}/, 'style: window.AfrinMaps.satelliteStyle()')
+            .replace(/const initialZoom = 13\.5;/, 'const initialZoom = 13;')
+            .replace(/zoom: 13\.5,/, 'zoom: 13,')
+            .replace(/^([ \t]*)(\w+)\.addControl\(new maplibregl\.NavigationControl\(\)\);/m, '$1window.AfrinMaps.setUpMap(maplibregl, $2);\n$&');
+        if (updated.includes('arcgisonline.com/') || !updated.includes('AfrinMaps.setUpMap(')) throw new Error(`Map replacement failed: ${relative}`);
         await write(relative, original, updated);
     }
 }
@@ -59,15 +63,14 @@ for (const relative of ['smart-search/index.html', 'by-air/index.html']) {
 const flyoverHtml = await fs.readFile(path.join(root, 'by-air/index.html'), 'utf8');
 const flyoverFilename = `by-air/${flyoverHtml.match(/<script type="module" crossorigin src="\.\/([^"\n]+\.js)"/)[1]}`;
 const flyoverOriginal = await fs.readFile(path.join(root, flyoverFilename), 'utf8');
-if (!flyoverOriginal.includes('window.AfrinMaps.flyoverStyle')) {
-    const start = flyoverOriginal.indexOf('S7={version:8,');
+if (!flyoverOriginal.includes('S7=window.AfrinMaps.flyoverStyle(I6),')) {
+    const start = flyoverOriginal.search(/S7=(?:\{version:8,|window\.AfrinMaps\.flyoverStyle\()/);
     const end = flyoverOriginal.indexOf(',Nr={reset:', start);
     if (start < 0 || end < 0) throw new Error('Could not locate the flyover style.');
-    const style = vm.runInNewContext(`(${flyoverOriginal.slice(start + 3, end)})`);
-    let updated = `${flyoverOriginal.slice(0, start)}S7=window.AfrinMaps.flyoverStyle(I6,${JSON.stringify(style.sources['satellite-tiles'])})${flyoverOriginal.slice(end)}`;
+    let updated = `${flyoverOriginal.slice(0, start)}S7=window.AfrinMaps.flyoverStyle(I6)${flyoverOriginal.slice(end)}`;
     updated = updated.replace(/oe\.addSource\("terrain-source",\{type:"raster-dem",tiles:\["https:\/\/s3\.amazonaws\.com\/elevation-tiles-prod\/terrarium\/\{z\}\/\{x\}\/\{y\}\.png"\],tileSize:256,encoding:"terrarium",maxzoom:13\}\)/, 'oe.addSource("terrain-source",window.AfrinMaps.terrainSource())');
     if (updated.includes('elevation-tiles-prod/terrarium/')) throw new Error('Flyover terrain replacement failed.');
     await write(flyoverFilename, flyoverOriginal, updated);
 }
 
-console.log(`${preview ? 'Prepared preview copies of' : 'Updated'} ${changed} map files. Satellite imagery and GoatCounter are unchanged.`);
+console.log(`${preview ? 'Prepared preview copies of' : 'Updated'} ${changed} map files.`);

@@ -8,8 +8,11 @@ latitude 36.00 to 37.10. It contains all 463 locations currently in the
 archive. Smart Search keeps map panning within this area. Street data goes
 to zoom 15 and stays sharp when enlarged; terrain goes to zoom 13.
 
-Esri satellite imagery remains online to preserve the existing close-up
-detail. GoatCounter is unchanged. The local files total about 167 MB.
+Satellite pictures are also saved here, after Esri's server began refusing
+requests in November 2026. They show 10 meters per pixel, so fields, roads and
+village shapes are visible but single houses are not. The Street Map button on
+village and shrine maps opens the local street map. The local files total
+about 204 MB.
 
 ## Sources
 
@@ -23,6 +26,11 @@ detail. GoatCounter is unchanged. The local files total about 167 MB.
   Open Sans and Noto font licenses are included.
 - `terrain/`: Mapzen Terrarium elevation tiles saved from the public
   elevation-tiles-prod dataset. The maps retain terrain attribution.
+- `satellite/`: Copernicus Sentinel-2 pictures from the single day named by
+  `satelliteDate` in `scripts/map-data-config.json`, zooms 8 to 14. Their free
+  license allows hosting with the credit "Contains modified Copernicus Sentinel
+  data", which the maps show. Rebuild with `python scripts/build-satellite-tiles.py`
+  (needs rasterio, pillow and numpy).
 - `vendor/`: local PMTiles, Leaflet–MapLibre adapter and RTL text plugin.
   The RTL plugin version works with the site's existing MapLibre 4.3.2.
 

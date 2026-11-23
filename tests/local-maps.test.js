@@ -53,7 +53,19 @@ test('local terrain covers every archive location at its highest detail', () => 
     }
 });
 
-test('street styles, labels and terrain use local addresses while satellite imagery stays intact', () => {
+test('satellite pictures cover every archive location at every zoom', () => {
+    const points = JSON.parse(fs.readFileSync(path.join(root, 'village_sites/afrin_locations.json'), 'utf8'));
+    for (const point of points) {
+        for (let zoom = 8; zoom <= 14; zoom += 1) {
+            const n = 2 ** zoom;
+            const x = Math.floor((point.lng + 180) / 360 * n);
+            const y = Math.floor((1 - Math.asinh(Math.tan(point.lat * Math.PI / 180)) / Math.PI) / 2 * n);
+            assert.ok(fs.existsSync(path.join(maps, `satellite/${zoom}/${x}/${y}.webp`)), point.name);
+        }
+    }
+});
+
+test('street styles, labels and terrain and satellite pictures use local addresses', () => {
     const { api, renderer } = environment();
     const street = api.streetStyle();
     assert.equal(street.sources.protomaps.url, 'pmtiles://https://archive.test/assets/maps/streets.pmtiles');
@@ -63,11 +75,12 @@ test('street styles, labels and terrain use local addresses while satellite imag
     assert.equal(terrain.tiles[0], 'https://archive.test/assets/maps/terrain/{z}/{x}/{y}.png');
     assert.equal(terrain.encoding, 'terrarium');
     assert.equal(terrain.maxzoom, 13);
-    const satellite = { type: 'raster', tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'] };
-    const flyover = api.flyoverStyle(renderer, satellite);
-    assert.equal(flyover.sources['satellite-tiles'], satellite);
+    const satelliteTiles = 'https://archive.test/assets/maps/satellite/{z}/{x}/{y}.webp';
+    assert.equal(api.satelliteStyle().sources.satellite.tiles[0], satelliteTiles);
+    const flyover = api.flyoverStyle(renderer);
+    assert.equal(flyover.sources['satellite-tiles'].tiles[0], satelliteTiles);
     assert.ok(flyover.layers.some(layer => layer.id === 'labels-layer'));
-    assert.ok(flyover.layers.slice(2).every(layer => layer.type === 'symbol'));
+    assert.ok(flyover.layers.slice(3).every(layer => layer.type === 'symbol'));
     for (const stack of new Set(street.layers.flatMap(layer => layer.layout?.['text-font'] ? [layer.layout['text-font'].join(',')] : []))) {
         for (const start of config.glyphRanges) assert.ok(fs.existsSync(path.join(maps, `glyphs/${stack}/${start}-${start + 255}.pbf`)));
     }
@@ -96,15 +109,16 @@ test('range-capable hosting requests only the needed bytes', async () => {
     assert.deepEqual(requests, ['bytes=100-101', 'bytes=500-501']);
 });
 
-test('generated map pages use local terrain and keep satellite imagery and GoatCounter', () => {
+test('generated map pages use local satellite pictures and keep GoatCounter', () => {
     for (const folder of ['village_sites', 'shrine_sites']) {
         for (const entry of fs.readdirSync(path.join(root, folder))) {
             if (!entry.endsWith('.html')) continue;
             const html = fs.readFileSync(path.join(root, folder, entry), 'utf8');
-            if (!html.includes('window.AfrinMaps.terrainSource()')) continue;
+            assert.ok(!html.includes('arcgisonline.com'), entry);
+            if (!html.includes('window.AfrinMaps.satelliteStyle()')) continue;
             assert.match(html, /src="\.\.\/js\/local-maps\.js"/);
             assert.ok(!html.includes('elevation3d.arcgis.com'));
-            assert.ok(html.includes('server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/'));
+            assert.match(html, /AfrinMaps\.setUpMap\(maplibregl, /);
             assert.ok(html.includes('data-goatcounter="https://afrinarchive.goatcounter.com/count"'));
         }
     }

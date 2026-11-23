@@ -245,26 +245,14 @@
 
             const shrineMap = new maplibregl.Map({
                 container: 'map',
-                style: {
-                    version: 8,
-                    sources: {
-                        satellite: {
-                            type: 'raster',
-                            tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],
-                            tileSize: 256,
-                            attribution: 'Tiles &copy; Esri'
-                        },
-                        terrainSource: window.AfrinMaps.terrainSource()
-                    },
-                    layers: [{ id: 'satellite-layer', type: 'raster', source: 'satellite' }],
-                    terrain: { source: 'terrainSource', exaggeration: 1.2 }
-                },
+                style: window.AfrinMaps.satelliteStyle(),
                 center: [shrineLng, shrineLat],
-                zoom: 13.5,
+                zoom: 13,
                 pitch: 0,
                 bearing: 0
             });
 
+            window.AfrinMaps.setUpMap(maplibregl, shrineMap);
             shrineMap.addControl(new maplibregl.NavigationControl());
 
             let isTilted = false;

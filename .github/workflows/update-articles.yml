@@ -1,0 +1,42 @@
+name: Update homepage articles
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency: update-articles
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            /index.html
+            /scripts/latest_substack_articles.py
+          sparse-checkout-cone-mode: false
+
+      - name: Update the article slider
+        run: python3 -X utf8 scripts/latest_substack_articles.py
+
+      - name: Publish if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "The homepage already shows the newest articles."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Update homepage articles"
+          git push
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/pages/builds"

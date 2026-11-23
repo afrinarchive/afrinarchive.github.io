@@ -151,7 +151,7 @@ test('the original mobile layout remains unchanged around the graph', () => {
         'The graph must remain before the title and search area.'
     );
     assert.match(html, /@media \(max-width: 1024px\)[\s\S]*?\.layout-container\s*\{[\s\S]*?gap: 30px;/);
-    assert.match(html, /@media \(max-width: 768px\)[\s\S]*?\.main-section\s*\{\s*padding: 30px 15px;/);
+    assert.match(html, /@media \(max-width: 768px\)[\s\S]*?\.main-section\s*\{\s*--page-pad: 15px;\s*padding: 30px var\(--page-pad\);/);
     assert.doesNotMatch(html, /\.content-column\s*\{\s*order:/);
     assert.doesNotMatch(html, /\.graph-column\s*\{\s*order:/);
 });
@@ -184,6 +184,8 @@ test('the mobile canvas renderer initializes without WebGL or a render loop', as
         },
         lineTo() {},
         moveTo() {},
+        setTransform() {},
+        createRadialGradient: () => ({ addColorStop() {} }),
         stroke() {},
         strokeText() {}
     };
@@ -226,6 +228,7 @@ test('the mobile canvas renderer initializes without WebGL or a render loop', as
     global.fetch = async () => ({ ok: true, async json() { return graph; } });
     global.window = {
         addEventListener() {},
+        matchMedia: () => ({ matches: false }),
         open() {},
         requestAnimationFrame(callback) {
             animationFrameCount += 1;
@@ -235,6 +238,7 @@ test('the mobile canvas renderer initializes without WebGL or a render loop', as
     };
     global.document = {
         body: {},
+        addEventListener() {},
         createElement() {
             return { width: 0, height: 0, getContext: () => context };
         },
