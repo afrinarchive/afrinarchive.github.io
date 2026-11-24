@@ -1,0 +1,144 @@
+# Puts the website online after every upload.
+#
+# GitHub sometimes fails for no reason of ours: it cannot find files it received one second
+# earlier, or answers "Deployment failed, try again later". So nothing here is tried only once.
+# Publishing is tried 7 times, waiting longer each time, for about three hours. If that fails
+# too, or the machine itself breaks, the second job starts over on a fresh machine.
+# GitHub emails a failure only if both jobs fail. An upload that a newer upload has replaced
+# stops quietly, which is also why there is no "concurrency" setting: that one cancels runs,
+# and a cancelled run sends an email too.
+name: Publish the website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    environment:
+      name: github-pages
+    outputs:
+      done: ${{ steps.result.outputs.done }}
+    steps: &steps
+      - uses: actions/checkout@v6
+      # The same page builder GitHub uses when it publishes from a branch, so the site is identical.
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - id: upload1
+        continue-on-error: true
+        uses: actions/upload-pages-artifact@v5
+        with:
+          name: site-${{ github.job }}-${{ github.run_attempt }}-a
+          path: _site
+      - if: steps.upload1.outcome == 'failure'
+        run: sleep 120
+      - id: upload2
+        if: steps.upload1.outcome == 'failure'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          name: site-${{ github.job }}-${{ github.run_attempt }}-b
+          path: _site
+
+      # Try 1
+      - id: wait1
+        run: bash .github/wait_before_publishing.sh 20
+      - id: deploy1
+        if: steps.wait1.outputs.go == 'yes'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: site-${{ github.job }}-${{ github.run_attempt }}-${{ steps.upload1.outcome == 'success' && 'a' || 'b' }}
+
+      # Try 2
+      - id: wait2
+        if: steps.wait1.outputs.go == 'yes' && steps.deploy1.outcome == 'failure'
+        run: bash .github/wait_before_publishing.sh 60
+      - id: deploy2
+        if: steps.wait2.outputs.go == 'yes'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: site-${{ github.job }}-${{ github.run_attempt }}-${{ steps.upload1.outcome == 'success' && 'a' || 'b' }}
+
+      # Try 3
+      - id: wait3
+        if: steps.wait2.outputs.go == 'yes' && steps.deploy2.outcome == 'failure'
+        run: bash .github/wait_before_publishing.sh 180
+      - id: deploy3
+        if: steps.wait3.outputs.go == 'yes'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: site-${{ github.job }}-${{ github.run_attempt }}-${{ steps.upload1.outcome == 'success' && 'a' || 'b' }}
+
+      # Try 4
+      - id: wait4
+        if: steps.wait3.outputs.go == 'yes' && steps.deploy3.outcome == 'failure'
+        run: bash .github/wait_before_publishing.sh 600
+      - id: deploy4
+        if: steps.wait4.outputs.go == 'yes'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: site-${{ github.job }}-${{ github.run_attempt }}-${{ steps.upload1.outcome == 'success' && 'a' || 'b' }}
+
+      # Try 5
+      - id: wait5
+        if: steps.wait4.outputs.go == 'yes' && steps.deploy4.outcome == 'failure'
+        run: bash .github/wait_before_publishing.sh 1800
+      - id: deploy5
+        if: steps.wait5.outputs.go == 'yes'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: site-${{ github.job }}-${{ github.run_attempt }}-${{ steps.upload1.outcome == 'success' && 'a' || 'b' }}
+
+      # Try 6
+      - id: wait6
+        if: steps.wait5.outputs.go == 'yes' && steps.deploy5.outcome == 'failure'
+        run: bash .github/wait_before_publishing.sh 3600
+      - id: deploy6
+        if: steps.wait6.outputs.go == 'yes'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: site-${{ github.job }}-${{ github.run_attempt }}-${{ steps.upload1.outcome == 'success' && 'a' || 'b' }}
+
+      # Try 7
+      - id: wait7
+        if: steps.wait6.outputs.go == 'yes' && steps.deploy6.outcome == 'failure'
+        run: bash .github/wait_before_publishing.sh 5400
+      - id: deploy7
+        if: steps.wait7.outputs.go == 'yes'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: site-${{ github.job }}-${{ github.run_attempt }}-${{ steps.upload1.outcome == 'success' && 'a' || 'b' }}
+
+      # Succeeds if the last try that ran worked, or if a newer upload replaced this one.
+      - id: result
+        if: steps.deploy7.outcome != 'failure'
+        run: echo "done=yes" >> "$GITHUB_OUTPUT"
+      - if: steps.deploy7.outcome == 'failure'
+        run: |
+          echo "::error::GitHub refused to publish the website 7 times."
+          exit 1
+
+  # Only if the first job did not finish: the same steps again, on a fresh machine.
+  publish-again:
+    needs: publish
+    if: ${{ !cancelled() && needs.publish.outputs.done != 'yes' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps: *steps
